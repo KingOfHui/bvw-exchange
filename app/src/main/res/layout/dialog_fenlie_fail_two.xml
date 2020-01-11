@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/white_bg"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingTop="30dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/fenlie_dialog_two_notice"
+        android:textColor="@color/black"
+        android:textSize="16dp"></TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:text="@string/fenlie_dialog_two_content"
+        android:textColor="@color/black"
+        android:textSize="12dp"></TextView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/gray1"></View>
+
+    <TextView
+        android:id="@+id/fenlie_fail_two_dialog_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="20dp"
+        android:gravity="center"
+        android:text="@string/fenlie_dialog_two_sure"
+        android:textColor="@color/black"
+        android:textSize="16dp"></TextView>
+
+</LinearLayout>

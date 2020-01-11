@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/tools"
+    android:background="@color/appColorPrimary">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/fund_bg" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/img_setting"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/dimen_15dp"
+        android:visibility="gone"
+        android:layout_marginTop="@dimen/dimen_20dp"/>
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/img_head"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:visibility="gone"
+        android:background="@mipmap/icon_head_default"
+        fresco:roundAsCircle="true" />
+
+    <LinearLayout
+        android:id="@+id/lay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/img_head"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp">
+
+        <com.darknet.bvw.view.TypefaceTextView
+            android:id="@+id/msg_title_view"
+            app:typeface="@string/universal_text_typeface"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="sahdh.....sadsaah"
+            android:textColor="@color/white" />
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/imgQr"
+            android:layout_width="@dimen/dimen_20dp"
+            android:layout_height="@dimen/dimen_20dp"
+            android:layout_centerHorizontal="true"
+            android:visibility="gone"
+            android:background="@mipmap/icon_head_default" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layFund"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lay"
+        android:visibility="gone"
+        android:layout_centerHorizontal="true">
+
+        <com.darknet.bvw.view.TypefaceTextView
+            app:typeface="@string/universal_text_typeface"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="387542.35"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+        <com.darknet.bvw.view.TypefaceTextView
+            app:typeface="@string/universal_text_typeface"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="$"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/layHaveData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/lay"
+        android:background="@drawable/zc_main_bg"
+        android:alpha="0.8"
+        android:layout_marginLeft="@dimen/dimen_15dp"
+        android:layout_marginRight="@dimen/dimen_15dp"
+        >
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layFund"
+        >
+
+        <com.scwang.smartrefresh.header.MaterialHeader
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+        <com.scwang.smartrefresh.layout.footer.ClassicsFooter
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/layNoData"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+        >
+
+        <ImageView
+            android:id="@+id/msg_nodata_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/img_no_data" />
+
+        <com.darknet.bvw.view.TypefaceTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_below="@id/msg_nodata_layout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:text="@string/no_data"
+            android:textColor="@color/txtGray" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

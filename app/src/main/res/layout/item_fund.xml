@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimen_80dp"
+    xmlns:app="http://schemas.android.com/tools"
+    android:alpha="0.8"
+    android:background="#2f2a45"
+    app:ignore="NamespaceTypo">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/imgCoin"
+        android:layout_width="@dimen/dimen_40dp"
+        android:layout_height="@dimen/dimen_40dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/dimen_10dp"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:background="@mipmap/icon_head_default"
+        fresco:roundAsCircle="true" />
+
+    <com.darknet.bvw.view.TypefaceTextView
+        app:typeface="@string/universal_text_typeface"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/dimen_10dp"
+        android:layout_toRightOf="@+id/imgCoin"
+        android:text="Bitcoin"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+    <com.darknet.bvw.view.TypefaceTextView
+        app:typeface="@string/universal_text_typeface"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/dimen_10dp"
+        android:text="3345.00"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dimen_15dp"
+        android:textStyle="bold" />
+
+
+</RelativeLayout>

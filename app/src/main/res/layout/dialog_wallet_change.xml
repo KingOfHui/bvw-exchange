@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_round_line_white"
+    android:orientation="vertical">
+
+
+    <com.darknet.bvw.view.TypefaceTextView
+        app:typeface="@string/universal_text_typeface"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="@string/dialog_wallet_one"
+        android:textColor="@color/appColorPrimaryDark"
+        android:textSize="@dimen/dimen_15dp"/>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:background="@color/side_bar_pressed"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_50dp"
+        android:orientation="horizontal">
+
+        <com.darknet.bvw.view.TypefaceTextView
+            app:typeface="@string/universal_text_typeface"
+            android:id="@+id/common_cancel"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dimen_50dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/dialog_wallet_two"
+            android:textColor="@color/appColorPrimaryDark"
+            android:textSize="@dimen/dimen_15dp"/>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="@dimen/dimen_50dp"
+            android:background="@color/side_bar_pressed"></View>
+
+        <com.darknet.bvw.view.TypefaceTextView
+            app:typeface="@string/universal_text_typeface"
+            android:id="@+id/common_sure"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dimen_50dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/dialog_wallet_three"
+            android:textColor="@color/appColorPrimaryDark"
+            android:textSize="@dimen/dimen_15dp"/>
+    </LinearLayout>
+</LinearLayout>

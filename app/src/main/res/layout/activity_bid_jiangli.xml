@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appColorPrimary"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/fund_bg" />
+
+    <include layout="@layout/lay_head_back" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/jiangli_scroolview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/jiangli_header_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:background="@mipmap/fenlie_header_bg_img"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20dp">
+
+                        <TextView
+                            android:id="@+id/bid_jiangli_header_one"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:text="@string/jiangli_header_one"
+                            android:visibility="gone"
+                            android:textColor="#01FCDA"
+                            android:textSize="14dp"
+                            android:textStyle="bold"></TextView>
+
+                        <TextView
+                            android:id="@+id/bid_jiangli_header_two"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_centerInParent="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toRightOf="@id/bid_jiangli_header_one"
+                            android:textColor="#01FCDA"
+                            android:textSize="16dp"
+                            android:textStyle="bold"></TextView>
+
+                        <TextView
+                            android:id="@+id/bid_jiangli_header_three"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toRightOf="@id/bid_jiangli_header_two"
+                            android:text=""
+                            android:textColor="@color/white"
+                            android:textSize="12dp"
+                            android:textStyle="bold"></TextView>
+                    </RelativeLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp">
+
+                        <TextView
+                            android:id="@+id/bid_jiangli_header_four"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:text="@string/bid_jiangli_height"
+                            android:textColor="#01FCDA"
+                            android:textSize="14dp"
+                            android:textStyle="bold"></TextView>
+
+                        <TextView
+                            android:id="@+id/bid_jiangli_header_five"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toRightOf="@id/bid_jiangli_header_four"
+                            android:text="0"
+                            android:textColor="#01FCDA"
+                            android:textSize="14dp"
+                            android:textStyle="bold"></TextView>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/jiangli_midl_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/jiangli_header_layout"
+                    android:layout_marginTop="15dp"
+                    android:background="#37314D"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20dp"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/bid_jiangli_total_btc_num"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:textColor="#01FCDA"
+                                android:textSize="20dp"
+                                android:textStyle="bold"></TextView>
+
+                            <TextView
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:text="BTC"
+                                android:textColor="@color/white"
+                                android:textSize="14dp"></TextView>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/bid_jiangli_total_eth_num"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:textColor="#01FCDA"
+                                android:textSize="20dp"
+                                android:textStyle="bold"></TextView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:text="ETH"
+                                android:textColor="@color/white"
+                                android:textSize="14dp"></TextView>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/jiangli_midl_one"
+                                android:textColor="@color/white"
+                                android:textSize="18dp"></TextView>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/bid_jiangli_his_btc_num"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:textColor="#01FCDA"
+                                android:textSize="20dp"
+                                android:textStyle="bold"></TextView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:text="BTC"
+                                android:textColor="@color/white"
+                                android:textSize="14dp"></TextView>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/bid_jiangli_his_eth_num"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:textColor="#01FCDA"
+                                android:textSize="20dp"
+                                android:textStyle="bold"></TextView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:text="ETH"
+                                android:textColor="@color/white"
+                                android:textSize="14dp"></TextView>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/jiangli_midl_two"
+                                android:textColor="@color/white"
+                                android:textSize="18dp"></TextView>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/jiangli_list_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/jiangli_midl_layout"
+                    android:layout_marginTop="15dp"
+                    android:background="#37314D"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="20dp"
+                    android:paddingRight="20dp">
+
+                    <LinearLayout
+                        android:id="@+id/jiangli_top_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/jiangli_top_content_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TOP 30"
+                            android:textColor="#01FCDA"
+                            android:textSize="18dp"
+                            android:textStyle="bold"></TextView>
+
+                        <View
+                            android:id="@+id/jiangli_top_line_view"
+                            android:layout_width="30dp"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="10dp"
+                            android:background="#01FCDA"></View>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/jiangli_lucky_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="50dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/jiangli_lucky_content_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lucky 30"
+                            android:textColor="@color/white"
+                            android:textSize="18dp"
+                            android:textStyle="bold"></TextView>
+
+                        <View
+                            android:id="@+id/jiangli_lucky_line_view"
+                            android:layout_width="30dp"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="10dp"
+                            android:background="#01FCDA"
+                            android:visibility="gone"></View>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/jiangli_line_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_below="@id/jiangli_list_layout"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:background="#48435d"></View>
+
+                <LinearLayout
+                    android:id="@+id/jiangli_bom_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/jiangli_line_view"
+                    android:background="#37314D"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/jiangli_sign_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="10dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_marginLeft="10dp"
+                            android:text="@string/jiangli_bom_one"
+                            android:textColor="#01FCDA"
+                            android:textSize="12dp"></TextView>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.5"
+                            android:gravity="center"
+                            android:text="@string/jiangli_bom_two"
+                            android:textColor="#01FCDA"
+                            android:textSize="12dp"></TextView>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/jiangli_bom_three"
+                            android:textColor="#01FCDA"
+                            android:textSize="12dp"></TextView>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/jiangli_bom_four"
+                            android:textColor="#01FCDA"
+                            android:textSize="12dp"></TextView>
+                    </LinearLayout>
+
+                    <com.darknet.bvw.view.MyListView
+                        android:id="@+id/jiangli_listview"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/jiangli_sign_layout"
+                        android:divider="@null">
+
+                    </com.darknet.bvw.view.MyListView>
+
+                    <com.darknet.bvw.view.MyListView
+                        android:id="@+id/jiangli_lucky_listview"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/jiangli_sign_layout"
+                        android:divider="@null"
+                        android:visibility="gone">
+
+                    </com.darknet.bvw.view.MyListView>
+
+
+                    <LinearLayout
+                        android:id="@+id/bid_jiangli_no_list_data"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/img_no_data"></ImageView>
+
+                        <TextView
+                            android:id="@+id/no_data_sign_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="center"
+                            android:text="@string/bid_jiangli_no_data_sign"
+                            android:textColor="#8d86a5"
+                            android:textSize="12dp"></TextView>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:background="#37314D"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+
+                    <com.darknet.bvw.view.AutoRunnableRecyclerView
+                        android:id="@+id/recyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"></com.darknet.bvw.view.AutoRunnableRecyclerView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/bid_info_buy_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/jiangli_bom_layout"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="30dp"
+                    android:background="@drawable/bid_four_corner"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/jiangli_bid_state_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@mipmap/bid_buy_sign"
+                        android:padding="15dp"
+                        android:text="@string/bid_info_sub_content"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"></TextView>
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+        </FrameLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</FrameLayout>

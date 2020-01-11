@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1F1B2C"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/fund_bg" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_45dp">
+
+            <RelativeLayout
+                android:id="@+id/layBack"
+                android:layout_width="@dimen/dimen_45dp"
+                android:layout_height="@dimen/dimen_45dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="10dp">
+
+                <ImageView
+                    android:id="@+id/back_sign_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:src="@mipmap/img_back" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dimen_20dp"
+                android:text="@string/fenlie_order_header_title_sign"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_18dp"
+                android:textStyle="bold" />
+
+
+            <com.darknet.bvw.view.TypefaceTextView
+                android:id="@+id/title_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dimen_20dp"
+                android:layout_marginRight="20dp"
+                android:text="@string/fenlie_order_title"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                app:typeface="@string/universal_text_typeface" />
+
+        </RelativeLayout>
+
+        <ScrollView
+            android:id="@+id/fenlie_find_scrollview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#37314D"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
+
+                    <TextView
+                        android:id="@+id/find_fenlie_btc_view"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:text="@string/fenlie_order_header_left_sign"
+                        android:textColor="@color/white"
+                        android:textSize="14dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/find_fenlie_eth_view"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:paddingTop="8dp"
+                        android:background="@drawable/fen_lie_first_bg"
+                        android:paddingBottom="8dp"
+                        android:text="@string/fenlie_order_header_right_sign"
+                        android:textColor="@color/white"
+                        android:textSize="14dp"></TextView>
+                </LinearLayout>
+
+
+                <include
+                    android:id="@+id/fenlie_btc_layout"
+                    layout="@layout/find_fenlie_btc"></include>
+
+                <include
+                    android:id="@+id/fenlie_eth_layout"
+                    layout="@layout/find_fenlie_eth"
+                    android:visibility="gone"></include>
+
+
+                <!-- webview 演示web调用Java -->
+                <com.github.lzyzsd.jsbridge.BridgeWebView
+                    android:id="@+id/webView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"></com.github.lzyzsd.jsbridge.BridgeWebView>
+
+
+
+            </LinearLayout>
+
+        </ScrollView>
+    </LinearLayout>
+</FrameLayout>

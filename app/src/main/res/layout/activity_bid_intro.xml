@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1F1B2C">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/fund_bg" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="@dimen/dimen_15dp"
+        android:layout_marginRight="@dimen/dimen_15dp">
+
+        <ImageView
+            android:id="@+id/back_sign_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:src="@mipmap/img_back" />
+
+        <com.darknet.bvw.view.TypefaceTextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:text="@string/bid_info_title"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_18dp"
+            android:textStyle="bold"
+            app:typeface="@string/universal_text_typeface" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="70dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@mipmap/bid_content_header_bg"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp">
+
+                    <TextView
+                        android:id="@+id/bid_info_shenfen_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:drawableLeft="@mipmap/bid_header_one_sign"
+                        android:drawablePadding="6dp"
+                        android:gravity="center"
+                        android:text="@string/bid_info_sign"
+                        android:textColor="@color/white"
+                        android:textSize="16dp"
+                        android:textStyle="bold"></TextView>
+
+
+                    <TextView
+                        android:id="@+id/bid_info_shenfen_two_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:layout_toRightOf="@id/bid_info_shenfen_view"
+                        android:gravity="center|right"
+                        android:text="@string/bid_info_sign_intro"
+                        android:textColor="@color/white"
+                        android:textSize="14dp"></TextView>
+                </RelativeLayout>
+
+
+                <TextView
+                    android:id="@+id/bid_info_open_sign_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="30dp"
+                    android:gravity="center"
+                    android:text="@string/bid_info_open_sign"
+                    android:textColor="@color/white"
+                    android:textSize="14dp"></TextView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10"
+                        android:textColor="#01FCDA"
+                        android:textSize="16dp"></TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:text="BVW"
+                        android:textColor="#01FCDA"
+                        android:textSize="13dp"></TextView>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="-10dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/bid_two_corner"
+                android:gravity="center"
+                android:padding="15dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:src="@mipmap/bid_line_img"></ImageView>
+
+                <TextView
+                    android:id="@+id/bid_info_quanyi_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="@string/bid_info_quanyi"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:textStyle="bold"></TextView>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:src="@mipmap/bid_line_img"></ImageView>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="#37314D"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/bid_info_one"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableTop="@mipmap/bid_fenlie_one_img"
+                        android:drawablePadding="5dp"
+                        android:gravity="center"
+                        android:text="@string/bid_info_one"
+                        android:textColor="#FFFFFF"
+                        android:textSize="10dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/bid_info_two"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableTop="@mipmap/bid_chibi_two_img"
+                        android:drawablePadding="5dp"
+                        android:gravity="center"
+                        android:text="@string/bid_info_two"
+                        android:textColor="#FFFFFF"
+                        android:textSize="10dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/bid_info_three"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableTop="@mipmap/bid_time_three_img"
+                        android:drawablePadding="5dp"
+                        android:gravity="center"
+                        android:text="@string/bid_info_three"
+                        android:textColor="#FFFFFF"
+                        android:textSize="10dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/bid_info_four"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableTop="@mipmap/bid_qiandao_four_img"
+                        android:drawablePadding="5dp"
+                        android:gravity="center"
+                        android:text="@string/bid_info_four"
+                        android:textColor="#FFFFFF"
+                        android:textSize="10dp"></TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/bid_info_five"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableTop="@mipmap/bid_chaji_two_one_img"
+                        android:drawablePadding="5dp"
+                        android:gravity="center"
+                        android:text="@string/bid_info_five"
+                        android:textColor="#FFFFFF"
+                        android:textSize="10dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/bid_info_six"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableTop="@mipmap/bid_yaoqing_two_two_img"
+                        android:drawablePadding="5dp"
+                        android:gravity="center"
+                        android:text="@string/bid_info_six"
+                        android:textColor="#FFFFFF"
+                        android:textSize="10dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/bid_info_seven"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableTop="@mipmap/bid_zhenlie_two_three_img"
+                        android:drawablePadding="5dp"
+                        android:gravity="center"
+                        android:text="@string/bid_info_seven"
+                        android:textColor="#FFFFFF"
+                        android:textSize="10dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/bid_info_eight"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableTop="@mipmap/bid_guangao_two_four_img"
+                        android:drawablePadding="5dp"
+                        android:gravity="center"
+                        android:text="@string/bid_info_eight"
+                        android:textColor="#FFFFFF"
+                        android:textSize="10dp"></TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/bid_info_nine"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableTop="@mipmap/bid_chat_three_one_img"
+                        android:drawablePadding="5dp"
+                        android:gravity="center"
+                        android:text="@string/bid_info_nine"
+                        android:textColor="#FFFFFF"
+                        android:textSize="10dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/bid_info_ten"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableTop="@mipmap/bid_shejiao_three_two_img"
+                        android:drawablePadding="5dp"
+                        android:gravity="center"
+                        android:text="@string/bid_info_ten"
+                        android:textColor="#FFFFFF"
+                        android:textSize="10dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/bid_info_eleven"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableTop="@mipmap/bid_wakuang_three_three_img"
+                        android:drawablePadding="5dp"
+                        android:gravity="center"
+                        android:text="@string/bid_info_even"
+                        android:textColor="#FFFFFF"
+                        android:textSize="10dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/bid_info_tweleve"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableTop="@mipmap/bid_cunchu_three_four_img"
+                        android:drawablePadding="5dp"
+                        android:gravity="center"
+                        android:text="@string/bid_info_twleve"
+                        android:textColor="#FFFFFF"
+                        android:textSize="10dp"></TextView>
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/shense_bg"
+                    android:gravity="center"
+                    android:padding="15dp"
+                    android:text="@string/bid_info_is_what"
+                    android:textColor="@color/white"></TextView>
+
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="15dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <com.kk.taurus.playerbase.widget.BaseVideoView
+                        android:id="@+id/videoView"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp" />
+
+                    <FrameLayout
+                        android:id="@+id/bid_info_video_layout_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp">
+
+                        <ImageView
+                            android:id="@+id/bid_info_video_bg_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:scaleType="fitXY"
+                            android:src="@mipmap/play_video_cover_img"></ImageView>
+
+                        <ImageView
+                            android:id="@+id/bid_info_video_stop_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@mipmap/video_stop_btn_img"></ImageView>
+                    </FrameLayout>
+
+
+                    <ProgressBar
+                        android:id="@+id/bid_info_video_load"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:visibility="gone"
+                        ></ProgressBar>
+
+                </FrameLayout>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="20dp"
+                    android:textSize="12dp"
+                    android:gravity="center|left"
+                    android:lineSpacingExtra="5dp"
+                    android:text="@string/bid_info_intro_content"
+                    android:textColor="@color/white"></TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="#37314D"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/bid_info_example_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/bid_buy_example_img"></ImageView>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/bid_info_left_money"
+                    android:textColor="#01FCDA"
+                    android:textSize="13dp"></TextView>
+
+                <TextView
+                    android:id="@+id/bid_left_money_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="0 BVW"
+                    android:textColor="#01FCDA"
+                    android:textSize="13dp"></TextView>
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_gravity="bottom"
+        android:background="#1F1B2C"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/bid_info_buy_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/bid_four_corner"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/bid_info_buy_state_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/bid_buy_sign"
+                android:padding="15dp"
+                android:text="@string/bid_info_sub_content"
+                android:textColor="@color/black"
+                android:textSize="16dp"></TextView>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</FrameLayout>

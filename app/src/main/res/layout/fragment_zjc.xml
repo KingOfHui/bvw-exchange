@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appColorPrimary">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.darknet.bvw.view.TypefaceTextView
+            android:id="@+id/content_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="zjc"
+            android:textColor="@color/white"
+            android:visibility="gone"
+            app:typeface="@string/universal_text_typeface" />
+
+        <com.darknet.bvw.view.TypefaceTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimen_15dp"
+            android:text="@string/lead_in_zjc_notice"
+            android:textColor="@color/txtGray"
+            app:typeface="@string/universal_text_typeface" />
+
+        <EditText
+            android:id="@+id/import_zjc_content"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_110dp"
+            android:layout_marginLeft="@dimen/dimen_15dp"
+            android:layout_marginRight="@dimen/dimen_15dp"
+            android:background="@drawable/edit_background"
+            android:gravity="top"
+            android:hint="@string/lead_in_zjc_notice"
+            android:paddingLeft="@dimen/dimen_10dp"
+            android:paddingTop="@dimen/dimen_5dp"
+            android:paddingRight="@dimen/dimen_10dp"
+            android:paddingBottom="@dimen/dimen_5dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/txtGray"
+            android:textSize="14dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_15dp"
+            android:layout_marginTop="@dimen/dimen_30dp"
+            android:layout_marginRight="@dimen/dimen_15dp"
+            android:orientation="vertical">
+
+            <com.darknet.bvw.view.TypefaceTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lead_in_account_name"
+                android:textColor="@color/white"
+                app:typeface="@string/universal_text_typeface" />
+
+            <EditText
+                android:id="@+id/input_account_name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_40dp"
+                android:background="@null"
+                android:gravity="bottom"
+                android:hint="@string/lead_in_input_name"
+                android:paddingBottom="5dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/txtGray"
+                android:textSize="@dimen/dimen_13dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#575669" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_15dp"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:layout_marginRight="@dimen/dimen_15dp"
+            android:orientation="vertical">
+
+            <com.darknet.bvw.view.TypefaceTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lead_in_set_pwd"
+                android:textColor="@color/white"
+                app:typeface="@string/universal_text_typeface" />
+
+            <EditText
+                android:id="@+id/input_account_pwd"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_40dp"
+                android:background="@null"
+                android:gravity="bottom"
+                android:hint="@string/wallet_pwd_six"
+                android:inputType="textPassword"
+                android:paddingBottom="5dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/txtGray"
+                android:textSize="@dimen/dimen_13dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#575669" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_15dp"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:layout_marginRight="@dimen/dimen_15dp"
+            android:orientation="vertical">
+
+            <com.darknet.bvw.view.TypefaceTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lead_in_two_pwd"
+                android:textColor="@color/white"
+                app:typeface="@string/universal_text_typeface" />
+
+            <EditText
+                android:id="@+id/input_account_pwd_two"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_40dp"
+                android:background="@null"
+                android:gravity="bottom"
+                android:hint="@string/wallet_repeat_pwd_six"
+                android:inputType="textPassword"
+                android:paddingBottom="5dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/txtGray"
+                android:textSize="@dimen/dimen_13dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#575669" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/input_submit_view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_45dp"
+            android:layout_marginLeft="@dimen/dimen_15dp"
+            android:layout_marginTop="@dimen/dimen_80dp"
+            android:layout_marginRight="@dimen/dimen_15dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/btn_pressed"
+            android:text="@string/lead_in_begin_import"
+            android:textSize="@dimen/dimen_18dp"
+            android:textStyle="bold" />
+
+        <com.darknet.bvw.view.TypefaceTextView
+            android:id="@+id/zjc_lead_in_create_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_marginBottom="30dp"
+            android:text="@string/create_wallet_sign_content"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:typeface="@string/universal_text_typeface" />
+
+    </LinearLayout>
+
+
+</ScrollView>

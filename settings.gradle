@@ -1,0 +1,13 @@
+include ':app',
+        ':client',
+        ':push',
+        ':mars-core-release',
+        ':emojilibrary',
+        ':imagepicker',
+        ':avenginekit',
+        ':tool_update',
+        ':refresh',
+        ':tool_playerbase',
+        ':tool_lrecyclerview',
+        ':KLineChartLib'
+rootProject.name = 'bvw'

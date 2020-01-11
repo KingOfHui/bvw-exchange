@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/appColorPrimary"
+    android:orientation="vertical">
+
+    <include layout="@layout/lay_head_back" />
+
+    <com.darknet.bvw.view.TypefaceTextView
+        app:typeface="@string/universal_text_typeface"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_15dp"
+        android:layout_marginTop="@dimen/dimen_15dp"
+        android:text="@string/private_key_put_pwd"
+        android:textColor="@color/white" />
+
+    <EditText
+        android:id="@+id/editPassword"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_50dp"
+        android:layout_marginLeft="@dimen/dimen_15dp"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:layout_marginRight="@dimen/dimen_15dp"
+        android:paddingLeft="10dp"
+        android:inputType="textPassword"
+        android:background="@color/editGray" />
+
+    <com.darknet.bvw.view.TypefaceTextView
+        app:typeface="@string/universal_text_typeface"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_15dp"
+        android:layout_marginTop="@dimen/dimen_15dp"
+        android:text="@string/private_key_sign"
+        android:textColor="@color/white" />
+
+    <com.darknet.bvw.view.TypefaceTextView
+        app:typeface="@string/universal_text_typeface"
+        android:id="@+id/editPrivateKey"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_15dp"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:layout_marginRight="@dimen/dimen_15dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="25dp"
+        android:paddingBottom="25dp"
+        android:textColor="@color/white"
+        android:background="@color/editGray" />
+
+    <Button
+        android:id="@+id/checkout_privateKey"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_50dp"
+        android:layout_marginLeft="@dimen/dimen_15dp"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:layout_marginRight="@dimen/dimen_15dp"
+        android:background="@color/lightBlue"
+        android:text="@string/jiexi_private_key"
+        android:textColor="@color/appColorPrimary"
+        android:textStyle="bold" />
+
+    <com.darknet.bvw.view.TypefaceTextView
+        app:typeface="@string/universal_text_typeface"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:text="@string/private_key_jiexie_input"
+        android:textColor="@color/white" />
+
+    <com.darknet.bvw.view.TypefaceTextView
+        app:typeface="@string/universal_text_typeface"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:text="@string/private_key_notice"
+        android:textColor="@color/white" />
+</LinearLayout>

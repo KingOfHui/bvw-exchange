@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/tools"
+    app:ignore="NamespaceTypo">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_240dp"
+        android:layout_marginLeft="@dimen/dimen_5dp"
+        android:layout_marginRight="@dimen/dimen_5dp"
+        android:layout_marginTop="@dimen/dimen_5dp"
+        android:layout_marginBottom="@dimen/dimen_5dp"
+        android:background="@drawable/head_circle_gray">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/imgPhoto"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_140dp"
+            fresco:actualImageScaleType="centerCrop"
+            fresco:roundBottomLeft="false"
+            fresco:roundBottomRight="false"
+            fresco:roundTopLeft="true"
+            fresco:roundTopRight="true"
+            fresco:roundedCornerRadius="@dimen/dimen_15dp" />
+
+        <com.darknet.bvw.view.TypefaceTextView
+            app:typeface="@string/universal_text_typeface"
+            android:id="@+id/txtTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:paddingLeft="@dimen/dimen_5dp"
+            android:paddingRight="@dimen/dimen_5dp"
+            android:layout_below="@id/imgPhoto"
+            android:gravity="center_horizontal"
+            android:textSize="@dimen/dimen_13dp"
+            android:text="这里是笔记的标题这里是笔记的标题这里是笔记的标题"
+            android:textColor="@color/white" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/dimen_10dp"
+            android:layout_marginLeft="@dimen/dimen_5dp"
+            android:layout_marginRight="@dimen/dimen_5dp">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/imgHead"
+                android:background="@mipmap/icon_head_default"
+                android:layout_centerVertical="true"
+                android:layout_width="@dimen/dimen_30dp"
+                android:layout_height="@dimen/dimen_30dp"
+                android:layout_marginLeft="@dimen/dimen_5dp"
+                fresco:roundAsCircle="true" />
+            <com.darknet.bvw.view.TypefaceTextView
+                app:typeface="@string/universal_text_typeface"
+                android:id="@+id/txtName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/imgHead"
+                android:layout_centerVertical="true"
+                android:textColor="@color/txtGray"
+                android:layout_marginLeft="@dimen/dimen_5dp"
+                android:textSize="@dimen/dimen_10dp"
+                android:text="Abby芳芳"/>
+
+            <com.darknet.bvw.view.TypefaceTextView
+                app:typeface="@string/universal_text_typeface"
+                android:id="@+id/txtZanNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:textColor="@color/txtGray"
+                android:drawablePadding="@dimen/dimen_5dp"
+                android:layout_marginRight="@dimen/dimen_5dp"
+                android:drawableLeft="@mipmap/icon_little_heart"
+                android:text="2233"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

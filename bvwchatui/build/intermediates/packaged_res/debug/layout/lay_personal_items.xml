@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appColorPrimary"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/layImgHead"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:alpha="0.8"
+        android:background="#3A3254">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="头像"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/img_head"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="30dp"
+            android:background="@mipmap/icon_head_default"
+            fresco:roundAsCircle="true" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/colorLineGray" />
+
+
+    <RelativeLayout
+        android:id="@+id/layUsername"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:alpha="0.8"
+        android:background="#3A3254">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="用户名"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="30dp"
+            android:text="蜡笔小新"
+            android:textColor="@color/txtGray" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/colorLineGray" />
+
+    <RelativeLayout
+        android:id="@+id/layNickname"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:alpha="0.8"
+        android:background="#3A3254">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="昵称"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="30dp"
+            android:text="蜡笔小新"
+            android:textColor="@color/txtGray" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layQr"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginTop="10dp"
+        android:alpha="0.8"
+        android:background="#3A3254">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="二维码"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/colorLineGray" />
+
+    <RelativeLayout
+        android:id="@+id/laySignName"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:alpha="0.8"
+        android:background="#3A3254">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="签名"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="30dp"
+            android:text="天王盖地虎"
+            android:textColor="@color/txtGray" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/layGender"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginTop="10dp"
+        android:alpha="0.8"
+        android:background="#3A3254">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="性别"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="30dp"
+            android:text="男"
+            android:textColor="@color/txtGray" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/colorLineGray" />
+
+    <RelativeLayout
+        android:id="@+id/layBirthday"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:alpha="0.8"
+        android:background="#3A3254">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="生日"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="30dp"
+            android:text="2019-10-12"
+            android:textColor="@color/txtGray" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/colorLineGray" />
+
+    <RelativeLayout
+        android:id="@+id/layLocation"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:alpha="0.8"
+        android:background="#3A3254">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="地区"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="30dp"
+            android:text="中国上海"
+            android:textColor="@color/txtGray" />
+
+
+    </RelativeLayout>
+
+</LinearLayout>

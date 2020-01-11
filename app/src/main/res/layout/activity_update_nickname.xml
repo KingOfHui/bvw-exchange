@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appColorPrimary"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/fund_bg" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/lay_head_two" />
+
+
+        <EditText
+            android:id="@+id/update_nickname_content_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/zc_main_bg"
+            android:hint="@string/update_nickname_new_content"
+            android:paddingLeft="10dp"
+            android:paddingTop="@dimen/dimen_15dp"
+            android:paddingBottom="@dimen/dimen_15dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/gray"
+            android:textSize="12dp"></EditText>
+
+    </LinearLayout>
+
+</FrameLayout>

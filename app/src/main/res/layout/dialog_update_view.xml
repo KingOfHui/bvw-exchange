@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingBottom="30dp">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/update_header_img_bg"></ImageView>
+
+
+    <TextView
+        android:id="@+id/update_dialog_one_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="@dimen/dimen_15dp"
+        android:gravity="center"
+        android:text="@string/update_one_sign_content"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/update_dialog_two_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="left"
+        android:text="@string/update_two_sign_content"
+        android:textColor="@color/black"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/update_dialog_three_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:layout_marginRight="20dp"
+        android:gravity="left"
+        android:text="@string/update_three_sign_content"
+        android:textColor="@color/black"
+        android:textSize="12dp" />
+
+
+    <Button
+        android:id="@+id/update_dialog_one_click_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:background="#8236FF"
+        android:gravity="center"
+        android:text="@string/update_four_sign_content"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dimen_18dp"
+        android:textStyle="bold"></Button>
+
+
+    <TextView
+        android:id="@+id/update_dialog_two_click_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="@dimen/dimen_15dp"
+        android:gravity="center"
+        android:text="@string/update_five_sign_content"
+        android:textColor="@color/black"
+        android:textSize="12dp" />
+
+
+</LinearLayout>

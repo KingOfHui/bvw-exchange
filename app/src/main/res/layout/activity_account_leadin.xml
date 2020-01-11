@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appColorPrimary"
+    android:orientation="vertical">
+
+    <include layout="@layout/lay_head_back" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_15dp"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radioZjc"
+            android:layout_width="@dimen/dimen_80dp"
+            android:layout_height="@dimen/dimen_30dp"
+            android:background="@drawable/radio_selector"
+            android:button="@null"
+            android:checked="true"
+            android:drawablePadding="10dip"
+            android:gravity="center"
+            android:text="@string/lead_in_zjc_sign"
+            android:textColor="@drawable/radio_text_color_selector"></RadioButton>
+
+        <RadioButton
+            android:id="@+id/radioKeyStore"
+            android:layout_width="@dimen/dimen_80dp"
+            android:layout_height="@dimen/dimen_30dp"
+            android:layout_marginLeft="@dimen/dimen_15dp"
+            android:background="@drawable/radio_selector"
+            android:button="@null"
+            android:drawablePadding="10dip"
+            android:gravity="center"
+            android:text="KeyStore"
+            android:visibility="gone"
+            android:textColor="@drawable/radio_text_color_selector"></RadioButton>
+
+        <RadioButton
+            android:id="@+id/radioPrivateKey"
+            android:layout_width="@dimen/dimen_80dp"
+            android:layout_height="@dimen/dimen_30dp"
+            android:layout_marginLeft="@dimen/dimen_15dp"
+            android:background="@drawable/radio_selector"
+            android:button="@null"
+            android:drawablePadding="10dip"
+            android:gravity="center"
+            android:text="@string/lead_in_sy_sign"
+            android:textColor="@drawable/radio_text_color_selector"></RadioButton>
+    </RadioGroup>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </androidx.viewpager.widget.ViewPager>
+
+
+</LinearLayout>

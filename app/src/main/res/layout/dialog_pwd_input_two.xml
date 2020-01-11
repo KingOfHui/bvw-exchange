@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_round_line_white"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/close_dialog_two_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:padding="10dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/arrow_left_img"></ImageView>
+
+        <com.darknet.bvw.view.TypefaceTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/private_key_put_pwd"
+            android:textColor="@color/appColorPrimaryDark"
+            android:textSize="@dimen/dimen_18dp"
+            app:typeface="@string/universal_text_typeface" />
+    </RelativeLayout>
+
+
+    <EditText
+        android:id="@+id/common_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/bind_blue_bg"
+        android:inputType="textPassword"
+        android:padding="10dp"></EditText>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_50dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/wallet_select_create_view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/lightBlue"
+            android:text="@string/sure_sure"
+            android:textColor="@color/appColorPrimary"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</LinearLayout>

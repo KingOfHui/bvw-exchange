@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appColorPrimary">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/lay_head_back" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/fund_bg" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/dimen_80dp"
+                android:src="@mipmap/img_back_up" />
+
+            <com.darknet.bvw.view.TypefaceTextView
+                android:id="@+id/txt1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/img"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/dimen_15dp"
+                android:textStyle="bold"
+                android:text="@string/create_wallet_last_step"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_18dp"
+                app:typeface="@string/universal_text_typeface" />
+
+
+            <com.darknet.bvw.view.TypefaceTextView
+                android:id="@+id/text11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt1"
+                android:layout_marginLeft="@dimen/dimen_15dp"
+                android:layout_marginRight="@dimen/dimen_15dp"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                android:gravity="center"
+                android:text="@string/back_up_private_sign_view"
+                android:textColor="@color/txtGray"
+                android:textSize="@dimen/dimen_15dp" />
+
+            <com.darknet.bvw.view.TypefaceTextView
+                android:id="@id/txt3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text11"
+                android:layout_marginTop="@dimen/dimen_15dp"
+                android:layout_marginLeft="@dimen/dimen_15dp"
+                android:layout_marginRight="@dimen/dimen_15dp"
+                android:text="@string/public_key"
+                android:textStyle="bold"
+                android:textColor="@color/white" />
+
+            <com.darknet.bvw.view.TypefaceTextView
+                android:id="@+id/txtPublicKey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt3"
+                android:layout_marginLeft="@dimen/dimen_15dp"
+                android:layout_marginRight="@dimen/dimen_15dp"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                android:textColor="@color/txtGray"
+                android:textSize="@dimen/dimen_15dp" />
+
+            <TextView
+                android:id="@+id/editPrivateKey"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_120dp"
+                android:layout_below="@+id/txtPublicKey"
+                android:layout_marginLeft="@dimen/dimen_15dp"
+                android:layout_marginTop="@dimen/dimen_15dp"
+                android:layout_marginRight="@dimen/dimen_15dp"
+                android:background="@drawable/edit_background"
+                android:gravity="top"
+                android:padding="@dimen/dimen_5dp"
+                android:textColor="@color/white" />
+
+            <com.darknet.bvw.view.TypefaceTextView
+                android:id="@+id/txt2"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimen_40dp"
+                android:layout_below="@+id/editPrivateKey"
+                android:layout_marginLeft="@dimen/dimen_15dp"
+                android:layout_marginRight="@dimen/dimen_15dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="@string/back_up_private_txt"
+                android:textColor="@color/txtGray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt2"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btnBackUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_50dp"
+                    android:layout_marginLeft="@dimen/dimen_15dp"
+                    android:layout_marginRight="@dimen/dimen_15dp"
+                    android:background="@color/lightBlue"
+                    android:text="@string/direct_import_login"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btnCopy"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_50dp"
+                    android:layout_marginLeft="@dimen/dimen_15dp"
+                    android:layout_marginTop="@dimen/dimen_15dp"
+                    android:layout_marginRight="@dimen/dimen_15dp"
+                    android:background="@color/colorPurple"
+                    android:text="@string/copy"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </FrameLayout>
+</ScrollView>

@@ -1,0 +1,22 @@
+<resources>
+    <string name="listview_header_hint_normal">Pull down to refresh</string>
+    <string name="listview_header_hint_release">Refresh immediately</string>
+    <string name="listview_loading">Loading...</string>
+    <string name="nomore_loading">No more</string>
+    <string name="refreshing">Refreshing...</string>
+    <string name="refresh_done">Refresh complete</string>
+    <string name="listview_header_last_time">Last updated：</string>
+
+    <!--footer-->
+    <string name="list_footer_loading">Loading…</string>
+    <string name="list_footer_network_error">Click to reload</string>
+    <string name="list_footer_end">All loaded</string>
+
+    <string name="text_just">Just</string>
+    <string name="text_seconds_ago">Seconds ago</string>
+    <string name="text_minute_ago">Minutes ago</string>
+    <string name="text_hour_ago">An hour ago</string>
+    <string name="text_day_ago">Days ago</string>
+    <string name="text_month_ago">Months ago</string>
+    <string name="text_year_ago">Years ago</string>
+</resources>

@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appColorPrimary"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/layTitle"
+            layout="@layout/lay_head_back" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:id="@+id/trade_num_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_20dp"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="26dp"
+                android:textStyle="bold" />
+
+            <!--            <com.darknet.bvw.view.TypefaceTextView-->
+            <!--                android:id="@+id/trade_num_view"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_alignParentTop="true"-->
+            <!--                android:layout_gravity="center"-->
+            <!--                android:gravity="center"-->
+            <!--                android:layout_marginTop="@dimen/dimen_20dp"-->
+            <!--                android:textColor="@color/white"-->
+            <!--                android:textSize="24dp"-->
+            <!--                android:textStyle="bold"-->
+            <!--                app:typeface="@string/universal_text_typeface" />-->
+
+            <com.darknet.bvw.view.TypefaceTextView
+                android:id="@+id/trade_val_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/trade_num_view"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                app:typeface="@string/universal_text_typeface" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@id/trade_list_bottom_layout"
+                android:layout_below="@id/trade_val_view"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/zc_main_bg"
+                android:orientation="vertical">
+
+
+                <com.darknet.bvw.view.TypefaceTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:text="@string/trade_list_remark"
+                    android:textColor="@color/lightBlue"></com.darknet.bvw.view.TypefaceTextView>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:alpha="0.6"
+                    android:background="@color/gray3" />
+
+<!--                <ListView-->
+<!--                    android:id="@+id/trade_list_view"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:divider="@null"></ListView>-->
+
+
+                <com.github.jdsjlzx.recyclerview.LRecyclerView
+                    android:id="@+id/trade_list_view"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:divider="@null"
+                    android:descendantFocusability="blocksDescendants"
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:visibility="gone"
+                android:background="#181523"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/trade_cz_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableTop="@mipmap/trade_chongzhi_sign"
+                        android:drawablePadding="10dp"
+                        android:gravity="center"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="20dp"
+                        android:text="充值"
+                        android:textColor="#01FCDA"
+                        android:textSize="14dp"></TextView>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/trade_zz_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableTop="@mipmap/trade_zhuanzhang_sign"
+                        android:drawablePadding="10dp"
+                        android:gravity="center"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="20dp"
+                        android:text="转账"
+                        android:textColor="#01FCDA"
+                        android:textSize="14dp"></TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/trade_hz_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableTop="@mipmap/trade_huazhang_sign"
+                        android:drawablePadding="10dp"
+                        android:gravity="center"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="20dp"
+                        android:text="划账"
+                        android:textColor="#01FCDA"
+                        android:textSize="14dp"></TextView>
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/trade_list_bottom_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical"
+                >
+
+                <Button
+                    android:id="@+id/trade_zz_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@color/lightBlue"
+                    android:text="@string/trade_list_zhuanzhang"
+                    android:textColor="@color/appColorPrimary"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/trade_sk_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="@dimen/dimen_20dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="@dimen/dimen_20dp"
+                    android:background="@color/colorPurple"
+                    android:text="@string/trade_list_shoukuan"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/fund_bg" />
+
+</FrameLayout>

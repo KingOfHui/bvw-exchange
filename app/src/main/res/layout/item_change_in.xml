@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ProgressBar
+        android:id="@+id/progress01"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:max="100"
+        android:progress="0"
+        android:progressDrawable="@drawable/progress_vertical_style"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:paddingTop="1dp"
+        android:paddingBottom="1dp"
+        >
+
+        <TextView
+            android:id="@+id/item_change_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text=""
+            android:textColor="#FC6767"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/item_change_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:text=""
+            android:textColor="#FC6767"
+            android:textSize="11sp" />
+    </RelativeLayout>
+</FrameLayout>

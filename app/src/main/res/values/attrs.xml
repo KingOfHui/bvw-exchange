@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="BubbleImageView">
+        <attr name="bubble_arrowTop" format="dimension|reference" />
+        <attr name="bubble_arrowWidth" format="dimension|reference" />
+        <attr name="bubble_arrowHeight" format="dimension|reference" />
+        <attr name="bubble_arrowOffset" format="dimension|reference" />
+        <attr name="bubble_angle" format="dimension|reference" />
+        <attr name="bubble_arrowLocation" format="enum">
+            <enum name="left" value="0" />
+            <enum name="right" value="1" />
+        </attr>
+        <attr name="bubble_showText" format="boolean" />
+        <attr name="bubble_showShadow" format="boolean" />
+        <attr name="bubble_showArrow" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="OptionItemView">
+        <attr name="title" format="string" />
+        <attr name="title_size" format="dimension" />
+        <attr name="title_color" format="color" />
+        <attr name="badge_count" format="integer" />
+        <attr name="start_src" format="reference|color" />
+        <attr name="end_src" format="reference|color" />
+        <attr name="desc" format="string" />
+        <attr name="desc_size" format="dimension" />
+        <attr name="desc_color" format="color" />
+        <attr name="show_arrow_indicator" format="boolean" />
+        <attr name="divider_align_to_title" format="boolean" />
+    </declare-styleable>
+
+
+    <declare-styleable name="LoadingView">
+        <attr name="loadding_color" format="color" />
+        <attr name="ring_style" format="enum">
+            <enum name="square" value="0" />
+            <enum name="round" value="1" />
+        </attr>
+        <attr name="progress_style" format="enum">
+            <enum name="material" value="0" />
+            <enum name="linear" value="1" />
+        </attr>
+        <attr name="ring_width" format="dimension" />
+        <attr name="ring_radius" format="dimension" />
+    </declare-styleable>
+
+    <!--主题样式-->
+    <style name="dialog_pay_theme" parent="@android:style/Theme.Dialog">
+        <!--边框-->
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimAmount">0.4</item><!--弹框背景灰度-->
+    </style>
+
+    <!--动画方式-->
+    <style name="dialogOpenAnimation" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/dialog_payview_in</item>
+        <item name="android:windowExitAnimation">@anim/dialog_payview_out</item>
+    </style>
+</resources>

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginBottom="15dp"
+    android:background="#37314D"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/order_item_one"
+                android:textColor="#01FCDA"></TextView>
+
+            <TextView
+                android:id="@+id/dingdan_item_one"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BTC"
+                android:textColor="#01FCDA"></TextView>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/dingdan_list_item_sign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/green_bg"
+            android:paddingLeft="10dp"
+            android:paddingTop="2dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="2dp"
+            android:text="win"
+            android:textColor="@color/black"></TextView>
+
+
+        <TextView
+            android:id="@+id/dingdan_item_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="50dp"
+            android:layout_toLeftOf="@id/dingdan_list_item_sign"
+            android:text="112%"
+            android:textColor="#01FCDA"></TextView>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/common_line_color"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center|left"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/dingdan_middle_item_one"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1:20000"
+                android:textColor="@color/white"
+                android:textSize="18dp"></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/order_item_two"
+                android:textColor="@color/white"
+                android:textSize="12dp"></TextView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/dingdan_middle_item_two"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="14000"
+                android:textColor="@color/white"
+                android:textSize="18dp"></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/order_item_three"
+                android:textColor="@color/white"
+                android:textSize="12dp"></TextView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center|right"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/dingdan_middle_item_three"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.71343"
+                android:textColor="@color/white"
+                android:textSize="18dp"></TextView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/dingdan_middle_item_four"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/order_item_four"
+                    android:textColor="@color/white"
+                    android:textSize="12dp"></TextView>
+
+                <TextView
+                    android:id="@+id/dingdan_middle_item_four_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="12dp"></TextView>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/common_line_color"></View>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/dingdan_bom_item_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:gravity="center|left"
+            android:text="2019.12.04 12:00"
+            android:textColor="@color/white"
+            android:textSize="12dp"></TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center|left"
+            android:text="@string/list_item_order_sign"
+            android:textColor="@color/white"
+            android:textSize="12dp"></TextView>
+    </RelativeLayout>
+
+
+</LinearLayout>

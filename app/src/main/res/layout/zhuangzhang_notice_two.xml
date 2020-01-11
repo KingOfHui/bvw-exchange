@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/white_bg"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingTop="30dp">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/bid_dialog_select_view"></ImageView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:text="@string/zhuanzhang_notice_two"
+        android:textColor="@color/black"
+        android:textSize="12dp"></TextView>
+
+
+    <TextView
+        android:id="@+id/fenlie_fail_two_dialog_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginRight="35dp"
+        android:background="@drawable/empty_black"
+        android:gravity="center"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:text="@string/fenlie_dialog_two_sure"
+        android:textColor="@color/black"
+        android:layout_marginBottom="30dp"
+        android:textSize="16dp"></TextView>
+
+</LinearLayout>

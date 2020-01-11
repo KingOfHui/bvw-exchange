@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appColorPrimary"
+    android:orientation="vertical">
+
+    <include layout="@layout/lay_head_back" />
+
+    <com.darknet.bvw.view.TypefaceTextView
+        app:typeface="@string/universal_text_typeface"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_15dp"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:layout_marginRight="@dimen/dimen_15dp"
+        android:background="@color/editGray"
+        android:lineHeight="@dimen/dimen_25dp"
+        android:padding="@dimen/dimen_10dp"
+        android:text="@string/zjc_notice_sign"
+        android:textColor="@color/white" />
+
+    <com.darknet.bvw.view.TypefaceTextView
+        app:typeface="@string/universal_text_typeface"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginLeft="@dimen/dimen_15dp"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:layout_marginRight="@dimen/dimen_15dp"
+        android:background="@color/lightBlue"
+        android:gravity="center|left"
+        android:lineHeight="@dimen/dimen_25dp"
+        android:padding="@dimen/dimen_10dp"
+        android:text="@string/zjc_remeber_sign"
+        android:textColor="@color/appColorPrimary" />
+
+    <com.darknet.bvw.view.TypefaceTextView
+        app:typeface="@string/universal_text_typeface"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_15dp"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:text="@string/zjc_long_copy"
+        android:textColor="@color/txtGray" />
+
+
+    <com.darknet.bvw.view.TypefaceTextView
+        app:typeface="@string/universal_text_typeface"
+        android:id="@+id/walletCreateWords"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_15dp"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:layout_marginRight="@dimen/dimen_15dp"
+        android:background="@color/editGray"
+        android:lineHeight="@dimen/dimen_25dp"
+        android:padding="@dimen/dimen_10dp"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dimen_18dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnNext"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="@dimen/dimen_15dp"
+        android:layout_marginTop="@dimen/dimen_40dp"
+        android:layout_marginRight="@dimen/dimen_15dp"
+        android:background="@color/lightBlue"
+        android:text="@string/trade_next_step"
+        android:textColor="@color/appColorPrimary"
+        android:textSize="@dimen/dimen_18dp"
+        android:textStyle="bold" />
+
+</LinearLayout>

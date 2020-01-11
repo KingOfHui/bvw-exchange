@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimen_120dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/appColorPrimary"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/editSearch"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_40dp"
+        android:layout_marginLeft="@dimen/dimen_15dp"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:layout_marginRight="@dimen/dimen_15dp"
+        android:background="@drawable/edit_search"
+        android:hint="账户名/地址"
+        android:paddingLeft="@dimen/dimen_10dp"
+        android:paddingRight="@dimen/dimen_10dp"
+        android:textColorHint="@color/editGray"
+        android:textSize="14dp" />
+
+    <com.darknet.bvw.view.TypefaceTextView
+        app:typeface="@string/universal_text_typeface"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_15dp"
+        android:layout_marginTop="@dimen/dimen_30dp"
+        android:text="轻触账户进行切换"
+        android:textColor="@color/lightBlue" />
+
+</LinearLayout>

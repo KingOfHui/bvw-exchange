@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingTop="30dp"
+    android:paddingBottom="20dp">
+
+    <LinearLayout
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/run_circle_bg"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/run_dialog_content_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="30S"
+            android:textColor="#FF01FCDA"
+            android:textSize="16dp"></TextView>
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"
+        android:textSize="16dp"
+        android:text="分裂结果查询中..."
+        android:gravity="center"
+        >
+
+    </TextView>
+</LinearLayout>

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/tools"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appColorPrimary"
+    app:ignore="NamespaceTypo">
+
+    <include layout="@layout/lay_head_two" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/fund_bg" />
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/imgHead"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dimen_50dp"
+        android:background="@mipmap/icon_head_default"
+        fresco:roundAsCircle="true" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dimen_130dp">
+
+        <com.darknet.bvw.view.TypefaceTextView
+            android:id="@+id/txtMoney"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_20dp"
+            android:textStyle="bold"
+            app:typeface="@string/universal_text_typeface" />
+
+        <com.darknet.bvw.view.TypefaceTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_13dp"
+            android:textStyle="bold"
+            app:typeface="@string/universal_text_typeface" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/dimen_15dp"
+        android:layout_marginTop="@dimen/dimen_170dp"
+        android:layout_marginRight="@dimen/dimen_15dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/zc_main_bg"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/layWalletName"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:alpha="0.8"
+                >
+
+                <com.darknet.bvw.view.TypefaceTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dimen_10dp"
+                    android:text="@string/wallet_detail_name_sign"
+                    android:textColor="@color/white"
+                    app:typeface="@string/universal_text_typeface" />
+
+                <com.darknet.bvw.view.TypefaceTextView
+                    android:id="@+id/wallet_name_sign"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/dimen_10dp"
+                    android:drawableRight="@mipmap/icon_right"
+                    android:textColor="@color/txtGray"
+                    android:drawablePadding="5dp"
+                    app:typeface="@string/universal_text_typeface" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                android:layout_marginRight="@dimen/dimen_10dp"
+                android:background="@color/colorLineGray" />
+
+            <RelativeLayout
+                android:id="@+id/layWalletChangePassword"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:alpha="0.8"
+                >
+
+                <com.darknet.bvw.view.TypefaceTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dimen_10dp"
+                    android:text="@string/wallet_detail_update_pwd"
+                    android:textColor="@color/white"
+                    app:typeface="@string/universal_text_typeface" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/dimen_10dp"
+                    android:src="@mipmap/icon_right" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:background="@drawable/zc_main_bg"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/layExportPrivateKey"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:alpha="0.8"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dimen_10dp"
+                    android:text="@string/wallet_detail_export_store"
+                    android:textColor="@color/white" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/dimen_10dp"
+                    android:src="@mipmap/icon_right" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                android:layout_marginRight="@dimen/dimen_10dp"
+                android:visibility="gone"
+                android:background="@color/colorLineGray" />
+
+            <RelativeLayout
+                android:id="@+id/layExportKeystore"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:alpha="0.8"
+                android:visibility="gone"
+                android:background="#2f2a45">
+
+                <com.darknet.bvw.view.TypefaceTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dimen_10dp"
+                    android:text="@string/wallet_detail_export_keystore"
+                    android:textColor="@color/white"
+                    app:typeface="@string/universal_text_typeface" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/dimen_10dp"
+                    android:src="@mipmap/icon_right" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnDeleteWallet"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_50dp"
+            android:layout_marginLeft="@dimen/dimen_15dp"
+            android:layout_marginTop="@dimen/dimen_100dp"
+            android:layout_marginRight="@dimen/dimen_15dp"
+            android:background="@color/colorPurple"
+            android:text="@string/wallet_detail_del_wallet"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+
+</FrameLayout>

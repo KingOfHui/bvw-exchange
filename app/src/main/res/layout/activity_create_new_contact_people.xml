@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appColorPrimary"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/add_people_finish_view"
+        android:orientation="vertical">
+
+        <include layout="@layout/lay_head_back" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_15dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="@dimen/dimen_15dp"
+            android:background="@drawable/zc_main_bg"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_100dp"
+                android:visibility="gone">
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/imgHead"
+                    android:layout_width="@dimen/dimen_40dp"
+                    android:layout_height="@dimen/dimen_40dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dimen_10dp"
+                    android:layout_marginTop="@dimen/dimen_20dp"
+                    android:background="@mipmap/icon_head_default"
+                    fresco:roundAsCircle="true" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dimen_15dp"
+                    android:layout_toRightOf="@+id/imgHead"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/editXing"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_40dp"
+                        android:layout_marginTop="@dimen/dimen_10dp"
+                        android:background="@null"
+                        android:hint="名"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/txtGray"
+                        android:textSize="@dimen/dimen_15dp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="@color/colorLineGray" />
+
+                    <EditText
+                        android:id="@+id/editMing"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_40dp"
+                        android:layout_marginTop="@dimen/dimen_10dp"
+                        android:background="@null"
+                        android:hint="姓"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/txtGray"
+                        android:textSize="@dimen/dimen_15dp" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+            <EditText
+                android:id="@+id/editPhone"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_40dp"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:layout_marginRight="@dimen/dimen_10dp"
+                android:background="@null"
+                android:hint="手机号"
+                android:textColor="@color/white"
+                android:textColorHint="@color/txtGray"
+                android:textSize="@dimen/dimen_15dp"
+                android:visibility="gone" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                android:layout_marginRight="@dimen/dimen_10dp"
+                android:background="@color/colorLineGray"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/editEmail"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_40dp"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:layout_marginRight="@dimen/dimen_10dp"
+                android:background="@null"
+                android:hint="邮箱"
+                android:textColor="@color/white"
+                android:textColorHint="@color/txtGray"
+                android:textSize="@dimen/dimen_15dp"
+                android:visibility="gone" />
+
+
+            <EditText
+                android:id="@+id/editAddress"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_40dp"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:layout_marginRight="@dimen/dimen_10dp"
+                android:background="@null"
+                android:hint="@string/trade_to_wallet_address"
+                android:textColor="@color/white"
+                android:textColorHint="@color/txtGray"
+                android:textSize="@dimen/dimen_15dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                android:layout_marginRight="@dimen/dimen_10dp"
+                android:background="@color/colorLineGray" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                android:layout_marginRight="@dimen/dimen_10dp"
+                android:background="@color/colorLineGray"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/editRemark"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_40dp"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:layout_marginRight="@dimen/dimen_10dp"
+                android:background="@null"
+                android:hint="@string/add_contack_people_sign"
+                android:textColor="@color/white"
+                android:textColorHint="@color/txtGray"
+                android:textSize="@dimen/dimen_15dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                android:layout_marginRight="@dimen/dimen_10dp"
+                android:layout_marginBottom="@dimen/dimen_30dp"
+                android:background="@color/colorLineGray" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <com.darknet.bvw.view.TypefaceTextView
+        android:id="@+id/add_people_finish_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/green_bg"
+        android:gravity="center"
+        android:padding="15dp"
+        android:textSize="18dp"
+        android:text="@string/add_contact_complete"
+        android:textColor="@color/black" />
+
+
+</RelativeLayout>

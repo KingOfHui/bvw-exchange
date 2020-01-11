@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1F1B2C">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/fund_bg" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="@dimen/dimen_15dp"
+        android:layout_marginRight="@dimen/dimen_15dp">
+
+        <ImageView
+            android:id="@+id/back_sign_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:src="@mipmap/img_back" />
+
+        <com.darknet.bvw.view.TypefaceTextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:text="@string/bid_info_title"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_18dp"
+            android:textStyle="bold"
+            app:typeface="@string/universal_text_typeface" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="15dp">
+
+        <LinearLayout
+            android:id="@+id/bid_buy_num_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/bid_buy_price"
+                android:textColor="#01FCDA"
+                android:textSize="18dp"
+                android:textStyle="bold"></TextView>
+
+            <TextView
+                android:id="@+id/bid_buy_price_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="：10 BVW"
+                android:textColor="#01FCDA"
+                android:textSize="18dp"
+                android:textStyle="bold"></TextView>
+
+        </LinearLayout>
+
+
+        <View
+            android:id="@+id/bid_buy_line_view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/bid_buy_num_view"
+            android:layout_marginTop="20dp"
+            android:background="@color/gray"></View>
+
+
+        <TextView
+            android:id="@+id/bid_buy_sign_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/bid_buy_line_view"
+            android:layout_marginTop="30dp"
+            android:gravity="left"
+            android:text="@string/bid_buy_open_guide"
+            android:textColor="#01FCDA"
+            android:textSize="14dp"></TextView>
+
+
+        <TextView
+            android:id="@+id/bid_buy_sign_two_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/bid_buy_sign_view"
+            android:layout_marginTop="20dp"
+            android:gravity="left"
+            android:text="@string/bid_buy_intro"
+            android:textColor="@color/gray"
+            android:textSize="14dp"></TextView>
+
+        <EditText
+            android:id="@+id/bid_buy_ma_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/bid_buy_sign_two_view"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/shense_bg"
+            android:hint="@string/bid_buy_notice"
+            android:paddingLeft="10dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/gray"
+            android:textSize="14dp"></EditText>
+
+
+        <LinearLayout
+            android:id="@+id/bid_buy_left_val_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/bid_buy_sub_view"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="30dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/bid_info_left_money"
+                android:textColor="#01FCDA"
+                android:textSize="13dp"></TextView>
+
+            <TextView
+                android:id="@+id/bid_left_money_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text=":0 BVW"
+                android:textColor="#01FCDA"
+                android:textSize="13dp"></TextView>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/bid_buy_sub_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/bid_four_corner"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/bid_buy_sign"
+                android:padding="15dp"
+                android:text="@string/bid_info_sub_content"
+                android:textColor="@color/black"
+                android:textSize="16dp"></TextView>
+        </LinearLayout>
+
+        <!-- webview 演示web调用Java -->
+        <com.github.lzyzsd.jsbridge.BridgeWebView
+            android:id="@+id/webView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"></com.github.lzyzsd.jsbridge.BridgeWebView>
+
+
+    </RelativeLayout>
+</FrameLayout>

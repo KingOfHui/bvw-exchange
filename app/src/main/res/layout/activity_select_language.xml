@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appColorPrimary"
+    android:orientation="vertical">
+
+    <include layout="@layout/lay_head_back" />
+
+    <!--   <Button-->
+    <!--       android:id="@+id/language_chinese_view"-->
+    <!--       android:layout_width="match_parent"-->
+    <!--       android:layout_height="wrap_content"-->
+    <!--       android:textColor="@color/white"-->
+    <!--       android:gravity="center"-->
+    <!--       android:padding="10dp"-->
+    <!--       android:layout_marginTop="30dp"-->
+    <!--       android:layout_marginLeft="20dp"-->
+    <!--       android:layout_marginRight="20dp"-->
+    <!--       android:background="@color/lightBlue"-->
+    <!--       android:textSize="18dp"-->
+    <!--       android:text="@string/set_language_chinese"-->
+    <!--       ></Button>-->
+
+    <!--    <Button-->
+    <!--        android:id="@+id/language_english_view"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:textColor="@color/white"-->
+    <!--        android:layout_marginTop="20dp"-->
+    <!--        android:layout_marginLeft="20dp"-->
+    <!--        android:layout_marginRight="20dp"-->
+    <!--        android:background="@color/lightBlue"-->
+    <!--        android:textSize="18dp"-->
+    <!--        android:padding="10dp"-->
+    <!--        android:gravity="center"-->
+    <!--        android:text="@string/set_language_english"-->
+    <!--        ></Button>-->
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/fund_bg" />
+
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_150dp"
+        android:layout_marginLeft="@dimen/dimen_20dp"
+        android:layout_marginTop="@dimen/dimen_80dp"
+        android:layout_marginRight="@dimen/dimen_20dp">
+
+        <RadioButton
+            android:id="@+id/radioFollowSystem"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_50dp"
+            android:visibility="gone"
+            android:button="@drawable/selector_oval"
+            android:gravity="right|center_vertical"
+            android:text="@string/follow_the_system"
+            android:textColor="@color/white" />
+
+        <RadioButton
+            android:id="@+id/radioEnglish"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_50dp"
+            android:button="@drawable/selector_oval"
+            android:gravity="right|center_vertical"
+            android:text="@string/language_en"
+            android:textColor="@color/white" />
+
+        <RadioButton
+            android:id="@+id/radioChinese"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_50dp"
+            android:button="@drawable/selector_oval"
+            android:gravity="right|center_vertical"
+            android:text="@string/language_cn"
+            android:textColor="@color/white" />
+    </RadioGroup>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="@dimen/dimen_20dp"
+        android:layout_marginRight="@dimen/dimen_20dp"
+        android:layout_marginTop="@dimen/dimen_130dp"
+        android:background="@color/colorLineGray" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="@dimen/dimen_20dp"
+        android:layout_marginRight="@dimen/dimen_20dp"
+        android:layout_marginTop="@dimen/dimen_180dp"
+        android:background="@color/colorLineGray" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="@dimen/dimen_20dp"
+        android:layout_marginRight="@dimen/dimen_20dp"
+        android:layout_marginTop="@dimen/dimen_230dp"
+        android:visibility="gone"
+        android:background="@color/colorLineGray" />
+
+</FrameLayout>

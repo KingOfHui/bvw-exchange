@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appColorPrimary">
+
+
+    <include layout="@layout/lay_head_back" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/fund_bg" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dimen_80dp"
+            android:src="@mipmap/img_back_up" />
+
+        <com.darknet.bvw.view.TypefaceTextView
+            android:id="@+id/txt1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/dimen_15dp"
+            android:text="@string/create_wallet_last_step_two"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_18dp"
+            android:textStyle="bold"
+            app:typeface="@string/universal_text_typeface" />
+
+        <com.darknet.bvw.view.TypefaceTextView
+            android:id="@id/txt3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt1"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="@dimen/dimen_15dp"
+            android:layout_marginRight="45dp"
+            android:gravity="center|left"
+            android:lineSpacingExtra="10dp"
+            android:text="@string/create_wallet_last_notice_sign"
+            android:textColor="#FFFFFF"
+            />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="100dp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/next_view_btn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_50dp"
+                android:layout_marginLeft="@dimen/dimen_15dp"
+                android:layout_marginRight="@dimen/dimen_15dp"
+                android:background="@color/lightBlue"
+                android:text="@string/back_up_wallet_walletsign"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</FrameLayout>

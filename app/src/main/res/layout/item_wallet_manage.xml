@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimen_150dp"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools"
+    android:background="@color/appColorPrimary">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_140dp"
+        android:layout_centerVertical="true"
+        android:background="#2f2a45">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/imgHead"
+            android:layout_width="@dimen/dimen_50dp"
+            android:layout_height="@dimen/dimen_50dp"
+            android:background="@mipmap/icon_head_default"
+            android:layout_marginTop="@dimen/dimen_15dp"
+            android:layout_marginLeft="@dimen/dimen_10dp"
+            fresco:roundAsCircle="true"/>
+
+        <com.darknet.bvw.view.TypefaceTextView
+            app:typeface="@string/universal_text_typeface"
+            android:id="@+id/txtName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/imgHead"
+            android:textColor="@color/white"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:text="我命由我不由天"/>
+
+        <com.darknet.bvw.view.TypefaceTextView
+            app:typeface="@string/universal_text_typeface"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="sadkhsakdhksah****sajdlsa"
+            android:layout_below="@+id/txtName"
+            android:layout_toRightOf="@+id/imgHead"
+            android:textColor="@color/white"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/dimen_30dp"
+            android:layout_marginRight="@dimen/dimen_10dp"
+            android:src="@mipmap/icon_right"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/dimen_10dp"
+            android:layout_marginRight="@dimen/dimen_10dp"
+            android:background="@color/colorLineGray"/>
+
+
+
+        <com.darknet.bvw.view.TypefaceTextView
+            app:typeface="@string/universal_text_typeface"
+            android:id="@+id/txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="@dimen/dimen_10dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_13dp"
+            android:text="ETHER"
+            android:layout_marginBottom="@dimen/dimen_20dp"/>
+
+        <com.darknet.bvw.view.TypefaceTextView
+            app:typeface="@string/universal_text_typeface"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/txt"
+            android:textColor="@color/white"
+            android:layout_alignParentBottom="true"
+            android:textSize="@dimen/dimen_18dp"
+            android:textStyle="bold"
+            android:layout_marginBottom="@dimen/dimen_20dp"
+            android:text="204"/>
+    </RelativeLayout>
+
+
+</RelativeLayout>

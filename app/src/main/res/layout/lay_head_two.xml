@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimen_45dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <RelativeLayout
+        android:id="@+id/layBack"
+        android:layout_width="@dimen/dimen_45dp"
+        android:layout_height="@dimen/dimen_45dp"
+        android:layout_alignParentLeft="true">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/img_back" />
+    </RelativeLayout>
+
+    <com.darknet.bvw.view.TypefaceTextView
+        app:typeface="@string/universal_text_typeface"
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dimen_18dp" />
+
+    <Button
+        android:id="@+id/btnRight"
+        android:layout_width="60dp"
+        android:layout_height="@dimen/dimen_30dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/green_bg"
+        android:text="保存"
+        android:textSize="14dp"
+        android:layout_marginRight="@dimen/dimen_20dp"
+        android:textColor="@color/appColorPrimary" />
+
+</RelativeLayout>

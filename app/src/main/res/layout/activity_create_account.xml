@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/appColorPrimary">
+
+    <include layout="@layout/lay_head_back"/>
+
+    <com.darknet.bvw.view.TypefaceTextView
+        app:typeface="@string/universal_text_typeface"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_15dp"
+        android:layout_marginRight="@dimen/dimen_15dp"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:textColor="@color/white"
+        android:lineHeight="25dp"
+        android:text="密码将作为该账户的登录密码和交易密码，为了您的账户安全，我们建议您创建一个高强度的密码"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lay2"
+        android:layout_marginLeft="@dimen/dimen_15dp"
+        android:layout_marginRight="@dimen/dimen_15dp"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/editAccountName"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_45dp"
+            android:background="@null"
+            android:hint="账户名称"
+            android:lines="1"
+            android:textColor="@color/white"
+            android:textColorHint="@color/txtGray"
+            android:textSize="@dimen/dimen_13dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/txtGray" />
+
+        <EditText
+            android:id="@+id/editPassword"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_45dp"
+            android:background="@null"
+            android:hint="密码"
+            android:textColor="@color/white"
+            android:inputType="textPassword"
+            android:lines="1"
+            android:textColorHint="@color/txtGray"
+            android:textSize="13dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/txtGray" />
+
+        <EditText
+            android:id="@+id/editRepeatPassword"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_45dp"
+            android:background="@null"
+            android:hint="确认密码"
+            android:textColor="@color/white"
+            android:inputType="textPassword"
+            android:lines="1"
+            android:textColorHint="@color/txtGray"
+            android:textSize="@dimen/dimen_13dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/txtGray" />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnNext"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/dimen_15dp"
+        android:layout_marginRight="@dimen/dimen_15dp"
+        android:layout_marginBottom="@dimen/dimen_150dp"
+        android:layout_marginTop="@dimen/dimen_100dp"
+        android:background="@color/lightBlue"
+        android:text="下一步"
+        android:textStyle="bold" />
+
+</LinearLayout>

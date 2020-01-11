@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/tools"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appColorPrimary">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/fund_bg" />
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/img_head"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="@dimen/dimen_15dp"
+                android:layout_marginTop="@dimen/dimen_15dp"
+                android:background="@mipmap/icon_head_default"
+                fresco:roundAsCircle="true" />
+
+            <com.darknet.bvw.view.TypefaceTextView
+                android:id="@+id/mine_wallet_name"
+                app:typeface="@string/universal_text_typeface"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="@dimen/dimen_15dp"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:layout_toRightOf="@id/img_head"
+                android:textColor="@color/white" />
+
+            <ImageView
+                android:id="@+id/imgSetting"
+                android:layout_width="@dimen/dimen_20dp"
+                android:layout_height="@dimen/dimen_20dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="@dimen/dimen_40dp"
+                android:layout_marginRight="@dimen/dimen_15dp"
+                android:src="@mipmap/img_setting" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_below="@+id/img_head"
+                android:layout_marginLeft="@dimen/dimen_15dp"
+                android:layout_marginTop="@dimen/dimen_20dp"
+                android:layout_marginRight="@dimen/dimen_15dp"
+                android:background="@mipmap/mine_bg_view_sign">
+
+                <RelativeLayout
+                    android:id="@+id/layWallet"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/imgWallet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/dimen_40dp"
+                        android:src="@mipmap/img_wallet" />
+
+                    <com.darknet.bvw.view.TypefaceTextView
+                        app:typeface="@string/universal_text_typeface"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/imgWallet"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/dimen_10dp"
+                        android:text="@string/mine_manage_wallet"
+                        android:textColor="@color/lightBlue" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/layJyDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/imgJyDetail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/dimen_40dp"
+                        android:src="@mipmap/img_jy_detail" />
+
+                    <com.darknet.bvw.view.TypefaceTextView
+                        app:typeface="@string/universal_text_typeface"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/imgJyDetail"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/dimen_10dp"
+                        android:text="@string/mine_trade_list"
+                        android:textColor="@color/lightBlue" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <include
+            layout="@layout/lay_mine_items"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-50dp"
+            android:layout_marginLeft="@dimen/dimen_15dp"
+            android:layout_marginRight="@dimen/dimen_15dp" />
+
+
+        <LinearLayout
+            android:id="@+id/client_id"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:layout_height="@dimen/dimen_50dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                android:src="@mipmap/img_msg_center" />
+
+            <com.darknet.bvw.view.TypefaceTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                android:text="获取clientId"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:typeface="@string/universal_text_typeface" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

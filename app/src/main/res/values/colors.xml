@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <color name="colorPrimary">#3e64e4</color>
+    <color name="colorPrimaryDark">#3e64e4</color>
+    <color name="colorAccent">#7e7e7e</color>
+
+    <color name="white">#ffffff</color>
+    <color name="line">#D2D2D2</color>
+    <color name="gray">#7e7e7e</color>
+
+    <color name="gray0">#464646</color>
+    <color name="gray1">#7e7e7e</color>
+    <color name="gray2">#969696</color>
+    <color name="gray3">#c8969696</color>
+    <color name="gray4">#F5F5F5</color>
+    <color name="gray5">#EBEBEB</color>
+    <color name="gray7">#999999</color>
+    <color name="gray8">#D9D9D9</color>
+    <color name="gray10">#EBEFEF</color>
+
+    <color name="red6">#D54A47</color>
+    <color name="red7">#E64340</color>
+    <color name="red8">#FF3E3E</color>
+
+    <color name="green1">#45C01A</color>
+    <color name="green2">#A3DEA3</color>
+    <color name="green3">#1AAD19</color>
+
+    <color name="blue0">#576B95</color>
+
+    <color name="black0">#000000</color>
+
+
+    <color name="_575669">#575669</color>
+
+    <!--遮盖层颜色-->
+
+    <!--快速索引bar颜色-->
+    <color name="side_bar">#919091</color>
+    <color name="side_bar_pressed">#BFBFBF</color>
+
+
+    <color name="appColorPrimary">#1F1B2C</color>
+    <color name="appColorPrimaryDark">#171522</color>
+    <color name="lightBlue">#00fed4</color>
+    <color name="txtGray">#807e8c</color>
+    <color name="editGray">#36324b</color>
+    <color name="colorPurple">#8236FF</color>
+    <color name="colorLineGray">#575669</color>
+    <color name="colorNote">#393352</color>
+    <color name="colorRed">#D54A47</color>
+
+
+    <color name="lay_head_back">#807e8c</color>
+
+    <color name="_3A3254">#3A3254</color>
+
+
+    <color name="grayf9">#f9f9f9</color>
+    <color name="gray_gb">#dddddd</color>
+    <color name="grayc4">#c4c4c4</color>
+    <color name="graye3">#e3e7ee</color>
+    <color name="alipay">#00a5ff</color>
+    <color name="gray_e5">#e5e5e5</color>
+    <color name="black">#000000</color>
+
+    <color name="green">#91c556</color>
+    <color name="greenDeep">#91a111</color>
+    <color name="press">#e8e8e8</color>
+    <color name="controller_bg_dark">#66000000</color>
+    <color name="controller_bg_light">#00000000</color>
+    <color name="_333333">#333333</color>
+    <color name="_b0b0b0">#b0b0b0</color>
+    <color name="_f2f2f2">#f2f2f2</color>
+    <color name="_666666">#666666</color>
+    <color name="_ff6600">#ff6600</color>
+    <color name="_484848">#484848</color>
+    <color name="_d7d8d9">#d7d8d9</color>
+    <color name="_998e8e8e">#998e8e8e</color>
+
+    <color name="_72f8db">#72f8db</color>
+    <color name="_807e8c">#807e8c</color>
+    <color name="transparent">#77000000</color>
+    <color name="_01FCDA">#01FCDA</color>
+    <color name="_8236FF">#8236FF</color>
+
+    <color name="line_color">#8B8B90</color>
+
+    <!--Zxing相关-->
+    <color name="contents_text">#ff000000</color>
+    <color name="encode_view">#ffffffff</color>
+    <color name="possible_result_points">#c0ffbd21</color> <!-- Android standard ICS color -->
+    <color name="result_minor_text">#ffc0c0c0</color>
+    <color name="result_points">#c099cc00</color> <!-- Android standard ICS color -->
+    <color name="result_text">#ffffffff</color>
+    <color name="result_view">#b0000000</color>
+    <color name="status_text">#ffffffff</color>
+<!--    <color name="transparent">#00000000</color>-->
+    <color name="viewfinder_laser">#ffcc0000</color> <!-- Android standard ICS color -->
+    <color name="viewfinder_mask">#60000000</color>
+
+    <color name="common_line_color">#48435d</color>
+
+    <color name="_FFFC6767">#FFFC6767</color>
+
+</resources>

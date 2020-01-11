@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimen_140dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/appColorPrimary"
+    android:orientation="vertical">
+
+    <com.darknet.bvw.view.TypefaceTextView
+        app:typeface="@string/universal_text_typeface"
+        android:text="其他操作"
+        android:textColor="@color/lightBlue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_15dp"
+        android:layout_marginTop="@dimen/dimen_20dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_40dp"
+        android:layout_marginLeft="@dimen/dimen_15dp"
+        android:layout_marginRight="@dimen/dimen_15dp"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:text="导入账户"
+        android:textStyle="bold"
+        android:textColor="@color/appColorPrimary"
+        android:background="@color/lightBlue"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/lightBlue"
+        android:background="@null"
+        android:layout_marginRight="@dimen/dimen_15dp"
+        android:layout_gravity="right"
+        android:text="创建新账户"/>
+
+</LinearLayout>

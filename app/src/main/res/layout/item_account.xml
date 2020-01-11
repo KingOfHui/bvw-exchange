@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/tools"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/zc_main_bg"
+        android:alpha="0.8"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/dimen_10dp"
+            android:paddingTop="15dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="15dp">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/wallet_item_header_img"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginRight="10dp"
+                android:background="@mipmap/icon_head_default"
+                fresco:roundAsCircle="true" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/wallet_item_header_img"
+                android:layout_toRightOf="@id/wallet_item_header_img">
+
+                <com.darknet.bvw.view.TypefaceTextView
+                    android:id="@+id/wallet_item_nickname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    app:typeface="@string/universal_text_typeface" />
+
+                <com.darknet.bvw.view.TypefaceTextView
+                    android:id="@+id/txt_current_account"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@null"
+                    android:src="@mipmap/icon_right"
+                    android:text="@string/wallet_manage_sign"
+                    android:textColor="@color/lightBlue"
+                    app:typeface="@string/universal_text_typeface"
+                    android:visibility="gone"/>
+            </RelativeLayout>
+
+
+            <com.darknet.bvw.view.TypefaceTextView
+                android:id="@+id/wallet_item_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/wallet_item_header_img"
+                android:layout_toRightOf="@id/wallet_item_header_img"
+                android:textColor="@color/white"
+                android:textSize="12dp"
+                app:typeface="@string/universal_text_typeface" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_margin="10dp"
+            android:background="@color/gray1"
+            android:visibility="visible"></View>
+
+        <Button
+            android:id="@+id/btnManage"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dimen_40dp"
+            android:layout_gravity="right|center"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/item2"
+            android:gravity="center"
+            android:text="@string/manage"
+            android:textColor="@color/lightBlue"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:visibility="visible" />
+    </LinearLayout>
+</LinearLayout>

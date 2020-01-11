@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appColorPrimary"
+    android:orientation="vertical">
+
+    <include layout="@layout/lay_head_back" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_15dp"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:text="@string/zjc_sure_view"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dimen_18dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_15dp"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:text="@string/zjc_click_in_order"
+        android:textColor="@color/txtGray" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginLeft="@dimen/dimen_15dp"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:layout_marginRight="@dimen/dimen_15dp"
+        android:background="@color/editGray"
+        android:paddingLeft="@dimen/dimen_10dp"
+        android:paddingTop="@dimen/dimen_20dp"
+        android:paddingRight="@dimen/dimen_10dp"
+        android:paddingBottom="@dimen/dimen_20dp">
+
+        <EditText
+            android:id="@+id/check_zjc_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/editGray"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_20dp"
+            ></EditText>
+
+    </RelativeLayout>
+
+
+
+    <GridView
+        android:id="@+id/check_zjc_select_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/appColorPrimary"
+        android:verticalSpacing="@dimen/dimen_10dp"
+        android:horizontalSpacing="@dimen/dimen_10dp"
+        android:layout_marginLeft="@dimen/dimen_15dp"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:layout_marginRight="@dimen/dimen_15dp"
+        android:scrollbars="none"
+        android:numColumns="4"
+        ></GridView>
+
+
+
+    <Button
+        android:id="@+id/check_zjc_submit"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_45dp"
+        android:layout_marginLeft="@dimen/dimen_15dp"
+        android:layout_marginTop="@dimen/dimen_40dp"
+        android:layout_marginRight="@dimen/dimen_15dp"
+        android:background="@color/lightBlue"
+        android:text="@string/sure_sure"
+        android:textColor="@color/appColorPrimary"
+        android:textSize="@dimen/dimen_18dp"
+        android:textStyle="bold" />
+
+
+
+</LinearLayout>

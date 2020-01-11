@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appColorPrimary"
+    android:orientation="vertical">
+
+    <include layout="@layout/lay_head_back" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:text="确认你的助记词"
+        android:textColor="@color/white"
+        android:textSize="18dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:text="请按顺序点击助记词，以确保你的备份助记词正确"
+        android:textColor="@color/txtGray" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/editGray"
+        android:paddingLeft="10dp"
+        android:paddingTop="20dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="20dp">
+
+        <co.lujun.androidtagview.TagContainerLayout
+            android:id="@+id/tagcontainerLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:container_background_color="@color/editGray"
+            app:container_border_color="@color/editGray"
+            app:container_enable_drag="false"
+            app:horizontal_interval="8dp"
+            app:tag_background_color="@color/appColorPrimary"
+            app:tag_border_color="@color/appColorPrimary"
+            app:tag_clickable="true"
+            app:tag_corner_radius="0dp"
+            app:tag_text_color="@color/white"
+            app:tag_text_size="13dp"
+            app:tag_theme="none"
+            app:tag_vertical_padding="8dp"
+            app:vertical_interval="8dp" />
+    </RelativeLayout>
+
+
+    <co.lujun.androidtagview.TagContainerLayout
+        android:id="@+id/tagcontainerLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
+        app:container_background_color="@color/appColorPrimary"
+        app:container_border_color="@color/appColorPrimary"
+        app:container_enable_drag="false"
+        app:horizontal_interval="8dp"
+        app:tag_background_color="@color/editGray"
+        app:tag_border_color="@color/editGray"
+        app:tag_clickable="true"
+        app:tag_selectable="true"
+        app:tag_corner_radius="0dp"
+        app:tag_text_color="@color/white"
+        app:tag_text_size="13dp"
+        app:tag_theme="none"
+        app:tag_vertical_padding="8dp"
+        app:vertical_interval="8dp" />
+
+</LinearLayout>

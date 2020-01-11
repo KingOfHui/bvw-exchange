@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/appColorPrimary"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dimen_100dp"
+        android:src="@mipmap/img_big_logo" />
+
+    <com.darknet.bvw.view.TypefaceTextView
+        android:id="@+id/wallet_select_sign_content"
+        app:typeface="@string/universal_text_typeface"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/dimen_200dp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:text="@string/wallet_first_view"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/fund_bg" />
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/dimen_120dp"
+        android:background="@mipmap/fund_bg" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_marginTop="60dp"
+        android:layout_below="@id/wallet_select_sign_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/wallet_select_create_view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_50dp"
+            android:background="@color/lightBlue"
+            android:text="@string/wallet_create_title"
+            android:textColor="@color/appColorPrimary"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/wallet_select_import_view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_50dp"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:background="@color/colorPurple"
+            android:text="@string/loading_wallet_sign_two"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</RelativeLayout>

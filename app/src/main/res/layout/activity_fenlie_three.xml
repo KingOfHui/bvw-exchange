@@ -1,0 +1,757 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appColorPrimary"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/fund_bg" />
+
+    <include layout="@layout/lay_head_back" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/fenlie_header_bg_img"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/fenlie_state_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="20dp"
+                    android:gravity="center"
+                    android:textColor="#01FCDA"
+                    android:textSize="18dp"
+                    android:textStyle="bold"></TextView>
+
+
+                <LinearLayout
+                    android:id="@+id/fenlie_header_total_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/fenlie_header_total_money"
+                        android:textColor="@color/white"
+                        android:textSize="12dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/fenlie_header_total_money_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="12dp"></TextView>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/fenlie_header_two"
+                        android:textColor="@color/white"
+                        android:textSize="12dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/fenlie_header_one_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="12dp"></TextView>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="30dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fenlie_header_three"
+                        android:textColor="@color/white"
+                        android:textSize="12dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/fenlie_header_two_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:textSize="12dp"></TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fenlie_header_four"
+                        android:textColor="@color/white"
+                        android:textSize="14dp"
+                        android:visibility="gone"></TextView>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="#37314D"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="left|center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/fenlie_header_five"
+                            android:textColor="#01FCDA"
+                            android:textSize="16dp"></TextView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:gravity="right|center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="@string/fenlie_header_six"
+                            android:textColor="@color/white"
+                            android:textSize="12dp"></TextView>
+
+                        <TextView
+                            android:id="@+id/fenlie_middle_one_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:textColor="@color/white"
+                            android:textSize="12dp"></TextView>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginTop="15dp"
+                    android:background="#48435d"></View>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp">
+
+                    <!--                    <TextView-->
+                    <!--                        android:id="@+id/fenlie_middle_two_view"-->
+                    <!--                        android:layout_width="wrap_content"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_alignParentLeft="true"-->
+                    <!--                        android:layout_centerVertical="true"-->
+                    <!--                        android:gravity="left|bottom"-->
+                    <!--                        android:textColor="#01FCDA"-->
+                    <!--                        android:textSize="22dp"-->
+                    <!--                        android:textStyle="bold"></TextView>-->
+
+
+                    <TextView
+                        android:id="@+id/fenlie_middle_two_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:gravity="left|bottom"
+                        android:textColor="#01FCDA"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        />
+
+
+                    <TextView
+                        android:id="@+id/fenlie_middle_two_btc_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/fenlie_middle_two_view"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@id/fenlie_middle_two_view"
+                        android:text="BTC"
+                        android:textColor="@color/white"
+                        android:textSize="14dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/fenlie_middle_two_btc_yuedeng_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/fenlie_middle_two_btc_view"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@id/fenlie_middle_two_btc_view"
+                        android:text="≈"
+                        android:textColor="#01FCDA"
+                        android:textSize="20dp"
+                        android:textStyle="bold"></TextView>
+
+                    <!--                    <TextView-->
+                    <!--                        android:id="@+id/fenlie_middle_three_view"-->
+                    <!--                        android:layout_width="wrap_content"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_centerVertical="true"-->
+                    <!--                        android:layout_marginLeft="10dp"-->
+                    <!--                        android:layout_toRightOf="@id/fenlie_middle_two_btc_yuedeng_view"-->
+                    <!--                        android:textColor="#01FCDA"-->
+                    <!--                        android:textSize="22dp"-->
+                    <!--                        android:gravity="bottom"-->
+                    <!--                        android:textStyle="bold"></TextView>-->
+
+
+                    <TextView
+                        android:id="@+id/fenlie_middle_three_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@id/fenlie_middle_two_btc_yuedeng_view"
+                        android:gravity="bottom"
+                        android:textColor="#01FCDA"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        />
+
+
+                    <TextView
+                        android:id="@+id/fenlie_middle_three_eth_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/fenlie_middle_three_view"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@id/fenlie_middle_three_view"
+                        android:text="ETH"
+                        android:textColor="@color/white"
+                        android:textSize="14dp"></TextView>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/fenlie_header_seven"
+                    android:textColor="@color/white"
+                    android:textSize="12dp"></TextView>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginTop="15dp"
+                    android:background="#48435d"></View>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+                    <!--                    <TextView-->
+                    <!--                        android:id="@+id/fenlie_middle_four_view"-->
+                    <!--                        android:layout_width="wrap_content"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_alignParentLeft="true"-->
+                    <!--                        android:layout_centerVertical="true"-->
+                    <!--                        android:gravity="left|bottom"-->
+                    <!--                        android:textColor="#01FCDA"-->
+                    <!--                        android:textSize="22dp"-->
+                    <!--                        android:textStyle="bold"></TextView>-->
+
+                    <TextView
+                        android:id="@+id/fenlie_middle_four_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:gravity="left|bottom"
+                        android:textColor="#01FCDA"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        />
+
+
+                    <TextView
+                        android:id="@+id/fenlie_middle_four_btc_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/fenlie_middle_four_view"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@id/fenlie_middle_four_view"
+                        android:text="BTC"
+                        android:textColor="@color/white"
+                        android:textSize="14dp"></TextView>
+
+
+                    <TextView
+                        android:id="@+id/fenlie_middle_four_yuedeng_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/fenlie_middle_four_btc_view"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@id/fenlie_middle_four_btc_view"
+                        android:text="≈"
+                        android:textColor="#01FCDA"
+                        android:textSize="20dp"
+                        android:textStyle="bold"></TextView>
+
+
+                    <!--                    <TextView-->
+                    <!--                        android:id="@+id/fenlie_middle_five_view"-->
+                    <!--                        android:layout_width="wrap_content"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_centerVertical="true"-->
+                    <!--                        android:layout_marginLeft="10dp"-->
+                    <!--                        android:gravity="bottom"-->
+                    <!--                        android:layout_toRightOf="@id/fenlie_middle_four_yuedeng_view"-->
+                    <!--                        android:textColor="#01FCDA"-->
+                    <!--                        android:textSize="22dp"-->
+                    <!--                        android:textStyle="bold"></TextView>-->
+
+
+                    <TextView
+                        android:id="@+id/fenlie_middle_five_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@id/fenlie_middle_four_yuedeng_view"
+                        android:gravity="bottom"
+                        android:textColor="#01FCDA"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/fenlie_middle_five_view"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@id/fenlie_middle_five_view"
+                        android:text="ETH"
+                        android:textColor="@color/white"
+                        android:textSize="14dp"></TextView>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/fenlie_header_eight"
+                    android:textColor="@color/white"
+                    android:textSize="12dp"></TextView>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/white"
+                    android:visibility="gone"></View>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="#37314D"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/fenlie_header_nine"
+                        android:textColor="#01FCDA"
+                        android:textSize="16dp"></TextView>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="left|center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@mipmap/fenlie_icon_sign"
+                            android:drawablePadding="5dp"
+                            android:text="@string/fenlie_header_evelve"
+                            android:textColor="#01FCDA"
+                            android:textSize="12dp"></TextView>
+
+                        <TextView
+                            android:id="@+id/fenlie_middle_history_one_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#01FCDA"
+                            android:textSize="12dp"></TextView>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginTop="12dp"
+                    android:background="#48435d"></View>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
+                        android:text="@string/fenlie_header_twelev"
+                        android:textColor="@color/white"
+                        android:textSize="12dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/fenlie_middle_history_two_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:textSize="12dp"></TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="@color/white"
+                        android:text="≈"
+                        android:textSize="12dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/fenlie_middle_history_three_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="left"
+                        android:textColor="@color/white"
+                        android:textSize="12dp"></TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
+                        android:text="@string/fenlie_middle_one"
+                        android:textColor="@color/white"
+                        android:textSize="12dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/fenlie_middle_history_four_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="@color/white"
+                        android:textSize="12dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/fenlie_middle_history_five_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="invisible"
+                        android:gravity="left"
+                        android:textColor="@color/white"
+                        android:textSize="12dp"></TextView>
+                </LinearLayout>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="#37314D"
+                android:paddingLeft="20dp"
+                android:paddingTop="15dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="15dp">
+
+                <ImageView
+                    android:id="@+id/fenlie_three_sound_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/fenlie_sound_sign"></ImageView>
+
+                <com.sunfusheng.marqueeview.MarqueeView
+                    android:id="@+id/marqueeView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="30dp"
+                    android:layout_toRightOf="@id/fenlie_three_sound_view"
+                    app:mvAnimDuration="1000"
+                    app:mvDirection="bottom_to_top"
+                    app:mvInterval="3000"
+                    app:mvSingleLine="true"
+                    app:mvTextColor="@color/white"
+                    app:mvTextSize="14dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="30dp"
+                    android:layout_toRightOf="@id/fenlie_three_sound_view"
+                    android:gravity="left"
+                    android:text="C83140***748240"
+                    android:textColor="@color/white"
+                    android:textSize="12dp"
+                    android:visibility="gone"></TextView>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="30dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fenlie_middle_two"
+                        android:textColor="@color/white"
+                        android:textSize="12dp"></TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
+                        android:text="110%"
+                        android:textColor="@color/white"></TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fenlie_middle_three"
+                        android:textColor="@color/white"
+                        android:textSize="12dp"></TextView>
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="#37314D"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fenlie_middle_four"
+                        android:textColor="#01FCDA"
+                        android:textSize="16dp"></TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="left"
+                        android:text="（BTC ETH/BVW)"
+                        android:textColor="@color/white"
+                        android:textSize="12dp"></TextView>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#48435d"></View>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical">
+
+                    <com.darknet.bvw.view.HorProBar
+                        android:id="@+id/fenlie_baifenbi_one_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:pro_height="40dp" />
+
+                    <com.darknet.bvw.view.HorProBarThree
+                        android:id="@+id/fenlie_baifenbi_two_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-10dp"
+                        android:layout_marginRight="20dp"
+                        app:pro_height="40dp" />
+
+                    <com.darknet.bvw.view.HorProBarThree
+                        android:id="@+id/fenlie_baifenbi_three_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-10dp"
+                        android:layout_marginRight="40dp"
+                        app:pro_height="40dp" />
+
+                    <com.darknet.bvw.view.HorProBarThree
+                        android:id="@+id/fenlie_baifenbi_four_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-10dp"
+                        android:layout_marginRight="60dp"
+                        app:pro_height="40dp" />
+
+
+                    <com.darknet.bvw.view.HorProBarThree
+                        android:id="@+id/fenlie_baifenbi_five_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-10dp"
+                        android:layout_marginRight="80dp"
+                        app:pro_height="40dp" />
+
+                    <com.darknet.bvw.view.HorProBarThree
+                        android:id="@+id/fenlie_baifenbi_six_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-10dp"
+                        android:layout_marginRight="100dp"
+                        app:pro_height="40dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fenlie_middle_five"
+                    android:textColor="#01FCDA"
+                    android:textSize="14dp"></TextView>
+
+                <TextView
+                    android:id="@+id/fenlie_left_money_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="1BTC 10ETH"
+                    android:textColor="#01FCDA"
+                    android:textSize="14dp"></TextView>
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/fenlie_jump_two_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/green_bg"
+                android:gravity="center"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:text="@string/fenlie_liji_kaishi"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:textStyle="bold"></TextView>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</FrameLayout>

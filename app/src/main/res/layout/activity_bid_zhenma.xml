@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1F1B2C">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/fund_bg" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="@dimen/dimen_15dp"
+        android:layout_marginRight="@dimen/dimen_15dp">
+
+        <ImageView
+            android:id="@+id/back_sign_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:src="@mipmap/img_back" />
+
+        <com.darknet.bvw.view.TypefaceTextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_18dp"
+            android:textStyle="bold"
+            app:typeface="@string/universal_text_typeface" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="15dp">
+
+        <ImageView
+            android:id="@+id/zhenma_img_view"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            ></ImageView>
+
+
+        <TextView
+            android:id="@+id/zhenma_val_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/zhenma_img_view"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/shense_bg"
+            android:gravity="center"
+            android:padding="15dp"
+            android:textColor="#01FCDA"
+            android:textSize="16dp"></TextView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/zhenma_val_view"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/zhenma_copy_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/shense_bg"
+                android:text="@string/trade_detail_copyurl"
+                android:textColor="#01FCDA"
+                android:gravity="center"
+                android:layout_marginRight="5dp"
+                android:padding="10dp"
+                android:textSize="16dp"></TextView>
+
+            <TextView
+                android:id="@+id/zhenma_save_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/shense_bg"
+                android:gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/save_pic_local"
+                android:padding="10dp"
+                android:textColor="#01FCDA"
+                android:textSize="16dp"></TextView>
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</FrameLayout>

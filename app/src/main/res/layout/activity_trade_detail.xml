@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appColorPrimary">
+
+    <include layout="@layout/lay_head_back" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:alpha="0.3"
+        android:background="@mipmap/fund_bg" />
+
+    <RelativeLayout
+        android:id="@+id/lay"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_120dp"
+        android:layout_marginLeft="@dimen/dimen_15dp"
+        android:layout_marginTop="@dimen/dimen_60dp"
+        android:layout_marginRight="@dimen/dimen_15dp"
+        android:background="@mipmap/trade_detail_bg_img">
+
+        <ImageView
+            android:id="@+id/sign_img_succ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:src="@mipmap/img_gou" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sign_img_succ"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            >
+            <TextView
+                android:id="@+id/num_account_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="bottom"
+                android:textColor="@color/white"
+                android:layout_centerInParent="true"
+                android:textStyle="bold"
+                android:text="2324"
+                android:textSize="@dimen/dimen_25dp" />
+            <TextView
+                android:id="@+id/num_account_num_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/num_account_view"
+                android:gravity="bottom"
+                android:textColor="@color/white"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="7dp"
+                android:textStyle="bold"
+                android:text="ETC"
+                android:textSize="18dp" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/lay2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lay"
+        android:layout_marginLeft="@dimen/dimen_15dp"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:layout_marginRight="@dimen/dimen_15dp"
+        android:background="@drawable/zc_main_bg"
+        android:orientation="vertical"
+        android:padding="@dimen/dimen_10dp">
+
+<!--        <com.darknet.bvw.view.TypefaceTextView-->
+<!--            app:typeface="@string/universal_text_typeface"-->
+<!--            android:id="@+id/nickName"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/img_head"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:text="我是大雷"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="14dp"-->
+<!--            android:textStyle="bold" />-->
+
+        <com.darknet.bvw.view.TypefaceTextView
+            app:typeface="@string/universal_text_typeface"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:text="@string/trade_detail_fakuan"
+            android:textColor="@color/txtGray" />
+
+        <com.darknet.bvw.view.TypefaceTextView
+            app:typeface="@string/universal_text_typeface"
+            android:id="@+id/fakuan_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12dp"
+            android:textColor="@color/white" />
+
+        <com.darknet.bvw.view.TypefaceTextView
+            app:typeface="@string/universal_text_typeface"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:text="@string/trade_detail_shoukuan"
+            android:textColor="@color/txtGray" />
+
+        <com.darknet.bvw.view.TypefaceTextView
+            app:typeface="@string/universal_text_typeface"
+            android:id="@+id/shoukuan_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12dp"
+            android:textColor="@color/white" />
+
+        <com.darknet.bvw.view.TypefaceTextView
+            app:typeface="@string/universal_text_typeface"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:text="@string/trade_detail_kuangongfei"
+            android:textColor="@color/txtGray" />
+
+        <com.darknet.bvw.view.TypefaceTextView
+            app:typeface="@string/universal_text_typeface"
+            android:id="@+id/kuangongfei_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12dp"
+            android:textColor="@color/white" />
+
+        <com.darknet.bvw.view.TypefaceTextView
+            app:typeface="@string/universal_text_typeface"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/trade_detail_beizhu"
+            android:textColor="@color/txtGray" />
+
+        <com.darknet.bvw.view.TypefaceTextView
+            app:typeface="@string/universal_text_typeface"
+            android:id="@+id/beizhu_content_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12dp"
+            android:text="@string/trade_detail_no_data"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lay2"
+        android:layout_marginLeft="@dimen/dimen_15dp"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:layout_marginRight="@dimen/dimen_15dp"
+        android:background="@drawable/zc_main_bg"
+        android:padding="@dimen/dimen_10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@id/trade_code_img_layout">
+
+            <com.darknet.bvw.view.TypefaceTextView
+                app:typeface="@string/universal_text_typeface"
+                android:id="@+id/txt1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:text="@string/trade_detail_jiaoyihao"
+                android:textColor="@color/txtGray" />
+
+            <com.darknet.bvw.view.TypefaceTextView
+                app:typeface="@string/universal_text_typeface"
+                android:id="@+id/txtTradeNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt1"
+                android:textColor="@color/white"
+                android:textSize="12dp" />
+
+            <com.darknet.bvw.view.TypefaceTextView
+                app:typeface="@string/universal_text_typeface"
+                android:id="@+id/txt2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtTradeNo"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:text="@string/trade_detail_qukuai"
+                android:textColor="@color/txtGray" />
+
+            <com.darknet.bvw.view.TypefaceTextView
+                app:typeface="@string/universal_text_typeface"
+                android:id="@+id/txtQk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt2"
+                android:textSize="12dp"
+                android:textColor="@color/white" />
+
+            <com.darknet.bvw.view.TypefaceTextView
+                app:typeface="@string/universal_text_typeface"
+                android:id="@+id/txt3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtQk"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:text="@string/trade_detail_jiaoyitime"
+                android:textColor="@color/txtGray" />
+
+            <com.darknet.bvw.view.TypefaceTextView
+                app:typeface="@string/universal_text_typeface"
+                android:id="@+id/txtTradeTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt3"
+                android:textSize="12dp"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/trade_code_img_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/dimen_10dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imgQr"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:background="@color/white" />
+
+            <Button
+                android:id="@+id/get_url_view"
+                android:layout_width="80dp"
+                android:layout_height="@dimen/dimen_20dp"
+                android:layout_below="@id/imgQr"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:background="@color/appColorPrimary"
+                android:text="@string/trade_detail_copyurl"
+                android:textColor="@color/txtGray"
+                android:textSize="12dp" />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

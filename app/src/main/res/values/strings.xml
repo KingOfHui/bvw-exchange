@@ -1,0 +1,689 @@
+<resources>
+
+    <!--    <string name="complete">完成</string>-->
+    <!--    <string name="draft">[草稿]</string>-->
+    <!--    <string name="video">视频</string>-->
+    <!--    <string name="set_conversation_to_top">置顶聊天</string>-->
+    <!--    &lt;!&ndash;联系人&ndash;&gt;-->
+    <!--    <string name="new_friend">新的朋友</string>-->
+    <!--    <string name="group_cheat">群聊</string>-->
+    <!--    &lt;!&ndash;新的朋友&ndash;&gt;-->
+    <!--    <string name="add_friend">添加朋友</string>-->
+    <!--    <string name="no_recommend_friend">还没有推荐的朋友</string>-->
+    <!--    &lt;!&ndash;搜索用户&ndash;&gt;-->
+    <!--    <string name="user_no_found">该用户不存在</string>-->
+    <!--    <string name="search">搜索</string>-->
+    <!--    &lt;!&ndash;用户信息&ndash;&gt;-->
+    <!--    <string name="nickname_colon">昵称:%1$s</string>-->
+    <!--    <string name="set_alias_and_tag">设置备注和标签</string>-->
+    <!--    <string name="send_message">发消息</string>-->
+    <!--    <string name="add_to_contact">添加到通讯录</string>-->
+    <!--    <string name="change_my_name_tip">好名字可以让你的朋友 更容易记住你。</string>-->
+    <!--    &lt;!&ndash;修改备注&ndash;&gt;-->
+    <!--    <string name="alias">备注名</string>-->
+    <!--    <string name="alias_no_empty">备注名不能为空</string>-->
+    <!--    &lt;!&ndash;附言界面&ndash;&gt;-->
+    <!--    <string name="postscript_tip">你需要发送验证申请，等对方通过</string>-->
+    <!--    <string name="send">发送</string>-->
+    <!--    &lt;!&ndash;会话界面&ndash;&gt;-->
+    <!--    <string name="please_to_talk">按住 说话</string>-->
+    <!--    <string name="shot">拍摄</string>-->
+    <!--    <string name="location">位置</string>-->
+    <!--    <string name="file">文件</string>-->
+    <!--    <string name="voice_rec">手指上滑，取消发送</string>-->
+    <!--    <string name="voice_cancel">松开手指，取消发送</string>-->
+    <!--    <string name="voice_short">录音时间太短</string>-->
+    <!--    &lt;!&ndash;创建群&ndash;&gt;-->
+    <!--    <string name="create_group_success">创建群成功</string>-->
+    <!--    <string name="create_group_fail">创建群失败</string>-->
+    <!--    <string name="no_group_now">暂无群聊</string>-->
+    <!--    &lt;!&ndash;群信息&ndash;&gt;-->
+    <!--    <string name="group_name">群聊名称</string>-->
+    <!--    <string name="untitled">未命名</string>-->
+    <!--    <string name="group_announcement">群公告</string>-->
+    <!--    <string name="message_free">消息免打扰</string>-->
+    <!--    <string name="my_nickname_in_this_group">我在本群的昵称</string>-->
+    <!--    <string name="show_group_member_name">显示群成员昵称</string>-->
+    <!--    <string name="clear_chat_log">清空聊天记录</string>-->
+    <!--    <string name="delete_and_exit">删除并退出</string>-->
+    <!--    <string name="delete_and_dismiss">解散并删除</string>-->
+    <!--    <string name="add_member_success">添加群成员成功</string>-->
+    <!--    <string name="add_member_fail">添加群成员失败</string>-->
+    <!--    <string name="del_member_success">删除群成员成功</string>-->
+    <!--    <string name="del_member_fail">删除群成员失败</string>-->
+    <!--    &lt;!&ndash;我&ndash;&gt;-->
+    <!--    <string name="my_chat_account">账号:%1$s</string>-->
+    <!--    <string name="setting">设置</string>-->
+    <!--    &lt;!&ndash;设置&ndash;&gt;-->
+    <!--    <string name="new_message_remind">新消息提醒</string>-->
+    <!--    <string name="exit">退出</string>-->
+    <!--    &lt;!&ndash;关于&ndash;&gt;-->
+    <!--    <string name="app_name_in_about">野火即时通讯</string>-->
+    <!--    <string name="function_introduction">功能介绍</string>-->
+    <!--    <string name="complaint">投诉</string>-->
+    <!--    <string name="check_update">检查更新</string>-->
+    <!--    <string name="terms_of_use_and_privacy_policy">使用条款和隐私政策</string>-->
+    <!--&lt;!&ndash;    <string name="av_waiting">正在等待对方接受邀请.</string>&ndash;&gt;-->
+    <!--&lt;!&ndash;    <string name="av_audio_invite">邀请你进行语音通话</string>&ndash;&gt;-->
+    <!--&lt;!&ndash;    <string name="av_video_invite">邀请你进行视频通话</string>&ndash;&gt;-->
+    <!--    <string name="load_wallet_by_mnemonic_input_tip">请检查您的助记词</string>-->
+    <!--    <string name="load_wallet_already_exist">钱包已存在</string>-->
+    <!--    <string name="create_wallet_pwd_confirm_input_tips">密码不一致，请重新输入</string>-->
+    <!--    <string name="account_name_notice">账号不能为空</string>-->
+    <!--    <string name="loading_wallet_tip">导入钱包中…</string>-->
+    <!--    <string name="copy_bord_content">已复制剪切板</string>-->
+
+
+    <string name="app_name">BVW</string>
+    <string name="language_cn">简体中文</string>
+    <string name="language_en">ENGLISH</string>
+    <string name="pwd_check_login">登录</string>
+    <string name="pwd_check_chanage_account">切换账户</string>
+    <string name="pwd_check_title">密码验证</string>
+    <string name="copy_bord_content">已复制剪切板</string>
+
+    <string name="load_wallet_by_mnemonic_input_tip">请检查您的助记词</string>
+    <string name="load_wallet_already_exist">钱包已存在</string>
+    <string name="create_wallet_pwd_confirm_input_tips">密码不一致，请重新输入</string>
+    <string name="account_name_notice">账号不能为空</string>
+    <string name="pwd_check_wrong_pwd">密码错误</string>
+    <string name="pwd_check_input_pwd">请输入密码</string>
+
+    <string name="xmain_table_one">资产</string>
+    <string name="xmain_table_two">发现</string>
+<!--    <string name="xmain_table_three">消息</string>-->
+    <string name="xmain_table_three">交易</string>
+    <string name="xmain_table_four">我的</string>
+    <string name="xmain_table_shouye">首页</string>
+
+    <string name="mine_manage_wallet">管理钱包</string>
+    <string name="mine_trade_list">转账记录</string>
+
+    <string name="mine_msg_center">消息中心</string>
+    <string name="mine_contact_people">联系人</string>
+    <string name="mine_system_set">系统设置</string>
+    <string name="mine_help_center">帮助中心</string>
+    <string name="mine_about_us">关于我们</string>
+    <string name="mine_system_adress_peo">地址簿</string>
+
+
+    <string name="trade_list_remark">最近交易记录</string>
+    <string name="trade_list_zhuanzhang">转账</string>
+    <string name="trade_list_shoukuan">收款</string>
+    <string name="trade_list_title">转账记录</string>
+
+    <string name="history_weituo_title">历史委托</string>
+
+    <string name="trade_detail_title">交易记录</string>
+    <string name="trade_detail_no_data">暂无</string>
+    <string name="trade_detail_fakuan">发款方</string>
+    <string name="trade_detail_shoukuan">收款方</string>
+    <string name="trade_detail_kuangongfei">旷工费用</string>
+    <string name="trade_detail_beizhu">备注</string>
+    <string name="trade_detail_beizhu_two">请输入备注</string>
+    <string name="trade_detail_jiaoyihao">交易号</string>
+    <string name="trade_detail_qukuai">区块</string>
+    <string name="trade_detail_jiaoyitime">交易时间</string>
+    <string name="trade_detail_copyurl">复制</string>
+
+    <string name="account_manage_title">管理钱包</string>
+    <string name="account_manage_import_wallet">导入钱包</string>
+
+
+    <string name="wallet_detail_name">的钱包</string>
+    <string name="wallet_detail_name_sign">钱包名</string>
+    <string name="wallet_detail_update_pwd">修改密码</string>
+    <string name="wallet_detail_export_store">导出私钥</string>
+    <string name="wallet_detail_export_keystore">导出Keystore</string>
+    <string name="wallet_detail_del_wallet">删除钱包</string>
+
+    <string name="empty_pwd">密码值不能为空</string>
+    <string name="pwd_not_encough">密码太简单,不能低于六位数</string>
+    <string name="update_success">修改成功</string>
+    <string name="update">修改中</string>
+
+    <string name="private_key_put_pwd">请输入密码</string>
+    <string name="private_key_sign">私钥</string>
+    <string name="jiexi_private_key">解析私钥</string>
+    <string name="private_key_jiexie_input">请输入密码，点击 解析私钥 按钮</string>
+    <string name="private_key_notice">为保证安全，请尽量在断网的情况下进行此操作!</string>
+    <string name="wrong_pwd">密码错误</string>
+    <string name="long_click_copy_content">长按可复制文本</string>
+
+    <string name="export_key_title">导出Keystore</string>
+    <string name="export_key_share">系统分享</string>
+    <string name="share_txt">分享</string>
+
+    <string name="shoukuan_code">收款码</string>
+    <string name="shoukuan_copy_url">复制收款地址</string>
+
+    <string name="trade_sign_title">转账</string>
+    <string name="trade_no_money">当前账号暂无余额，无法进行转账</string>
+    <string name="trade_wrong_data">交易异常</string>
+    <string name="trade_success">转账成功</string>
+    <string name="trade_input_wallet_address">请输入钱包地址</string>
+    <string name="trade_input_wallet_num">请输入转账数量</string>
+    <string name="trade_to_wallet_address">收款人钱包地址</string>
+    <string name="trade_to_wallet_address_two">请输入地址</string>
+    <string name="trade_money_num">转账金额</string>
+    <string name="trade_money_num_two">请输入转账金额</string>
+    <string name="trade_select_corn">选择币种</string>
+    <string name="trade_next_step">下一步</string>
+
+    <string name="set_title">设置</string>
+    <string name="set_language">语言</string>
+    <string name="set_update_check">检查更新</string>
+    <string name="set_language_chinese">中文</string>
+    <string name="set_language_english">英文</string>
+    <string name="set_select_language">选择语言</string>
+    <string name="login_out">退出</string>
+
+    <string name="lead_in_title">导入账户</string>
+    <string name="lead_in_zjc_notice">请输入账户的助记词（12个英文单词），按空格隔开</string>
+    <string name="lead_in_account_name">钱包名字</string>
+    <string name="lead_in_input_name">请设置钱包名字</string>
+    <string name="lead_in_set_pwd">设置密码</string>
+    <string name="lead_in_sure_pwd">请输入密码</string>
+    <string name="lead_in_begin_import">开始导入</string>
+    <string name="lead_in_check_private_key">请检查您的私钥</string>
+    <string name="lead_in_copy_private_key">粘贴私钥（Private Key）至输入框内</string>
+    <string name="lead_in_two_pwd">确认密码</string>
+
+    <string name="zjc_title">你的钱包助记词</string>
+    <string name="zjc_notice_sign">强烈建议您将助记词抄写在纸上并保存在只有你知道的安全地方，任何人得到助记词都可以消费您的数字资产</string>
+    <string name="zjc_remeber_sign">助记词用于恢复你的钱包，丢失他们你将永远失去钱包</string>
+    <string name="zjc_long_copy">长按下方助记词，可复制到剪切板</string>
+    <string name="zjc_beifen_title">备份助记词</string>
+    <string name="zjc_check_fail">验证失败，请检查备份</string>
+    <string name="zjc_check_successs">校验成功</string>
+    <string name="zjc_sure_view">确认你的助记词</string>
+    <string name="zjc_click_in_order">请按顺序点击助记词，以确保你的备份助记词正确</string>
+    <string name="sure_sure">确定</string>
+    <string name="wallet_create_title">创建钱包</string>
+    <string name="wallet_create_xieyi">请阅读并同意隐私协议</string>
+    <string name="wallet_create_sign_name">请填写钱包名称</string>
+    <string name="wallet_create_sign_pwd">请填写钱包密码</string>
+    <string name="wallet_create_sign_repeat_pwd">请填写钱包重复密码</string>
+    <string name="wallet_create_sign_pwd_not">密码与重复密码不相同</string>
+    <string name="wallet_pwd_notice">密码用于保护私钥和交易授权，强度非常重要</string>
+    <string name="wallet_remember_notice">imtoken不存储密码，也无法帮您找回，请务必牢记</string>
+    <string name="wallet_name">钱包名称</string>
+    <string name="wallet_pwd">密码</string>
+    <string name="wallet_pwd_six">六位及以上密码</string>
+    <string name="wallet_repeat_pwd_six">重复六位及以上密码</string>
+    <string name="wallet_repeat_pwd">重复密码</string>
+    <string name="wallet_xieyi">我已经仔细阅读并同意</string>
+    <string name="wallet_xieyi_content">《服务及隐私条款》</string>
+    <string name="wallet_xieyi_content_two">服务及隐私条款</string>
+    <string name="load_data">加载中</string>
+    <string name="loading_wallet_tip">导入钱包中…</string>
+    <string name="loading_wallet_sign_two">导入钱包</string>
+    <string name="universal_text_typeface">PingFangRegular</string>
+
+    <string name="wallet_first_view">人类第一次尝试用一种永续的方式\n让人类科技进行自我复制繁殖</string>
+
+
+    <string name="create_aacoutn_view">创建账户</string>
+    <string name="about_us_title">关于我们</string>
+    <string name="about_us_content">   BVW是一个在公链分片片区引入POS单核HW共识算法，BID原子节点参与记账、开源的，混链点对点分布式网络节点的公有链项目。BVW除了提供一个高TPS结算、可编程智能合约平台的技术解决方案辅助DAPP落地以外，还利用分片节点创建了一个全球性的裂变生态网络。BVW是人类第一次模仿造物主去创造一种永续的智能合约-机器DNA，去构建一个全人类共同信任的生命体。BVW也是人类第一次尝试用一种永续的方式让人类科技进行自我复制繁殖。</string>
+    <string name="help_title">使用帮助</string>
+    <string name="del_wallet_fail">删除失败</string>
+    <string name="no_data">暂无相关数据</string>
+
+    <string name="msg_receive_sign">接收方:</string>
+
+    <string name="dialog_success_sign">已提交给矿工，确认中！</string>
+    <string name="dialog_fail_sign">转账失败</string>
+    <string name="update_compare_sign">当前已是最新版本</string>
+    <string name="trade_left_money_val">可用余额</string>
+    <string name="add_contact_complete">完成</string>
+    <string name="add_contact_remark_sign">备注内容不能超过十个字符</string>
+    <string name="add_contack_people_sign">备注</string>
+    <string name="add_contack_wrong_wallet_address">钱包地址不合法</string>
+    <string name="add_contack_address_success">恭喜你！新建完成</string>
+    <string name="add_contack_address_fail">新建失败</string>
+
+    <string name="add_contack_create_new_people_title">新建联系人</string>
+    <string name="add_contack__people_right">新建</string>
+    <string name="add_contack__people_title">联系人</string>
+
+    <string name="add_contack_people_item_name">未定义</string>
+
+
+    <string name="msg_center_list_title">消息中心</string>
+    <string name="trade_beizhu_notice">备注内容太长，不要超过30个字符</string>
+    <string name="language">语言</string>
+    <string name="follow_the_system">跟随系统</string>
+    <string name="create_wallet_sign_content">生成钱包</string>
+    <string name="manage">管理</string>
+
+    <string name="back_up_wallet_private_key">备份私钥</string>
+    <string name="back_up_wallet_walletsign">备份钱包</string>
+    <string name="view_backup_details_tutorial">查看备份详细教程</string>
+    <string name="create_wallet_last_step">最后一步：立即备份你的钱包私钥</string>
+    <string name="create_wallet_last_step_two">最后一步：立即备份你的钱包</string>
+
+    <string name="create_wallet_last_notice_sign">直接复制粘贴钱包私钥文件内容至输入框。或者通过生成私钥内容的二维码，扫描录入。</string>
+
+    <string name="public_key">公钥</string>
+    <string name="direct_import_login">直接导入登录</string>
+    <string name="copy">复制</string>
+    <string name="back_up_private_sign_view">请备份你的私钥</string>
+    <string name="back_up_private_txt">请抄录下来,或者存在某个地方，千万不要保存在网络上</string>
+
+    <string name="send_trade_state_ing">确认中</string>
+    <string name="send_trade_state_succ">转账成功</string>
+    <string name="send_trade_state_fail">转账失败</string>
+
+    <string name="send_trade_state_notice">转账通知:</string>
+    <string name="update_pwd_new_content">请输入新密码</string>
+    <string name="update_nickname_new_content">请输入新的钱包名</string>
+    <string name="update_wallet_name">修改钱包名称</string>
+
+    <string name="dialog_wallet_one">是否切换到当前钱包?</string>
+    <string name="dialog_wallet_two">取消</string>
+    <string name="dialog_wallet_three">确定</string>
+    <string name="dialog_wallet_four">请慎重，此操作无法撤销</string>
+    <string name="wallet_delete_sign">删除成功</string>
+
+    <string name="trade_money_to_much">当前转账金额大于余额</string>
+    <string name="trade_money_to_low">转账额度不能为零</string>
+
+    <string name="wallet_manage_sign">当前账户</string>
+    <string name="wallet_trade_after_notice">转账金额最多支持到小数点后六位</string>
+
+    <string name="wrong_private_key">私钥错误</string>
+    <string name="wrong_zjc_wrong">助记词错误</string>
+
+    <string name="find_fenlie">分裂</string>
+    <string name="find_fenlie_intro">多币种参与价值共识</string>
+    <string name="find_jiaoyi">交易所</string>
+    <string name="find_jiaoyi_info">去中心化交易所</string>
+    <string name="find_chat">聊天（文字、语音）</string>
+    <string name="find_chat_info">去中心化匿名交友</string>
+
+    <string name="find_guangao">广告</string>
+    <string name="find_guangao_info">场内、场外广告扩散</string>
+
+    <string name="find_fatie">匿名发帖</string>
+    <string name="find_fatie_info">匿名参与发帖和宣泄</string>
+
+    <string name="find_shop">商城</string>
+    <string name="find_shop_info">线上购物商城</string>
+    <string name="find_no_open">暂未开通，敬请期待</string>
+
+
+    <string name="bid_info_one">参与分裂</string>
+    <string name="bid_info_two">持币奖励</string>
+    <string name="bid_info_three">时间加成</string>
+    <string name="bid_info_four">签到奖励</string>
+    <string name="bid_info_five">差级奖励</string>
+    <string name="bid_info_six">邀请加成</string>
+    <string name="bid_info_seven">阵列奖励</string>
+    <string name="bid_info_eight">广告收益</string>
+    <string name="bid_info_nine">聊天</string>
+    <string name="bid_info_ten">社交身份</string>
+    <string name="bid_info_even">单核HW挖矿</string>
+    <string name="bid_info_twleve">存储挖矿</string>
+
+    <string name="bid_info_intro_content">BVW是一个在公链分片片区引入POS单核HW共识算法，BID原子节点参与记账、开源的，混链点对点分布式网络节点的公有链项目。BVW是人类第一次模仿造物主去创造一种永续的智能合约机器DNA，去构建一个全人类共同信任的生命体。
+\n\nBVW也是人类第一次尝试用一种永续的方式让人类科技进行自我复制繁殖。</string>
+
+
+    <string name="bid_info_sign">BID身份</string>
+    <string name="bid_info_sign_intro">成为BID即可享受各种收益</string>
+    <string name="bid_info_open_sign">开通价格</string>
+    <string name="bid_info_sub_content">立即开通BID身份</string>
+    <string name="bid_info_sub_content_two">您已经是BID身份</string>
+    <string name="bid_info_sub_content_three">链上确认中</string>
+    <string name="bid_info_left_money">我的余额</string>
+    <string name="bid_info_is_what">什么是 BVW ?</string>
+    <string name="bid_info_quanyi">BID权益</string>
+    <string name="bid_info_title">开通BID身份</string>
+
+    <string name="bid_buy_price">价格</string>
+    <string name="bid_buy_open_guide">开通指南</string>
+    <string name="bid_buy_intro">可通过推荐者的梯阵码或像阵码，付费10个BVW后，即可创建BID。</string>
+
+    <string name="bid_buy_notice">请输入梯阵码或像阵码</string>
+
+    <string name="bid_open_sucdess">恭喜您！成功开通BID身份</string>
+
+    <string name="fenlie_open_sucdess">提交成功</string>
+
+    <string name="bid_open_fail">支付失败</string>
+    <string name="bid_yue_zero">暂无余额</string>
+    <string name="bid_yue_not_encough">余额不足，暂无法支付</string>
+
+    <string name="find_bid_pop_one">梯阵</string>
+    <string name="find_bid_pop_two">像阵</string>
+    <string name="find_bid_pop_three">列队</string>
+    <string name="find_bid_pop_four">阵列</string>
+
+    <string name="find_bid_zhen_ma">梯阵码</string>
+    <string name="find_bid_xiang_ma">像阵码</string>
+
+    <string name="save_pic_local">保存至本地</string>
+    <string name="find_xiang_notice">您必须用梯阵码邀请一个BID用户 \n 才可开通像阵码</string>
+    <string name="find_invest_notice">很遗憾！您还没有邀请码</string>
+
+    <string name="lead_in_zjc_sign">助记词</string>
+    <string name="lead_in_sy_sign">私钥</string>
+
+
+    <string name="refresh_one_view">下拉刷新</string>
+    <string name="refresh_two_view">正在刷新</string>
+    <string name="refresh_three_view">松开刷新</string>
+
+    <string name="refresh_up_one_view">上拉加载</string>
+    <string name="refresh_up_two_view">正在载入...</string>
+    <string name="refresh_up_three_view">松开加载更多</string>
+
+    <string name="bid_leader_sign_val">您好，您是大领导人下属 !</string>
+    <string name="bid_leader_sign_two_val">大领导人 下属BID价格</string>
+    <string name="bid_leader_sign_three_val">支付   </string>
+
+    <string name="wallet_detail_name_two">我的钱包</string>
+    <string name="right_open_bid">立即开通BID</string>
+    <string name="xmain_table_find">发现</string>
+    <string name="update_newset_notice">您已经是最新版本</string>
+    <string name="update_version_num">更新：最新版本</string>
+
+    <string name="update_one_sign_content">检测到新版本，是否更新?</string>
+    <string name="update_two_sign_content">更新不会丢失账户，请放心使用。</string>
+    <string name="update_three_sign_content">如果您删除APP，删除前请备份所有账户私钥防止资金丢失。</string>
+    <string name="update_four_sign_content">立即更新</string>
+    <string name="update_five_sign_content">稍后在说</string>
+
+    <string name="fenlie_order_title">订单</string>
+
+    <string name="fenlie_order_guize_sign">规则说明</string>
+    <string name="fenlie_order_jishubiao_sign">奇数分裂表</string>
+    <string name="fenlie_order_input_money_sign">输入额度</string>
+    <string name="fenlie_order_input_min_btc_money_sign">请输入分裂额度，最低0.005BTC</string>
+    <string name="fenlie_order_input_min_eth_money_sign">请输入分裂额度，最低0.005ETH</string>
+    <string name="fenlie_order_split_sign">分裂数:</string>
+    <string name="fenlie_order_left_money_sign">我的余额:</string>
+    <string name="fenlie_order_canyu_fenlie_sign">参与分裂</string>
+
+    <string name="fenlie_order_split_sign_two">分裂后4小时到账！</string>
+
+
+    <string name="fenlie_order_header_left_sign">BTC分裂</string>
+    <string name="fenlie_order_header_right_sign">ETH分裂</string>
+    <string name="fenlie_order_header_title_sign">分裂</string>
+    <string name="fenlie_order_fenlie_bili_sign">分裂比例</string>
+
+    <string name="fenlie_order_fenlie_biao_sign">奇数分配表</string>
+
+    <string name="bid_jiangli_title_sign">BID奖励榜</string>
+
+    <string name="fenlie_liji_kaishi">立即参与分裂</string>
+    <string name="fenlie_huazhang_submit">划账</string>
+
+
+    <string name="fenlie_header_one">阶段：第3开发阶段</string>
+    <string name="fenlie_header_one_one">阶段：第</string>
+    <string name="fenlie_header_one_one_one">开发阶段</string>
+
+    <string name="fenlie_header_two">开启高度：</string>
+    <string name="fenlie_header_three">分裂比例：</string>
+    <string name="fenlie_header_four">区块</string>
+
+    <string name="fenlie_header_five">本开发阶段</string>
+    <string name="fenlie_header_six">总剩余：</string>
+    <string name="fenlie_header_seven">本阶段区块总额度</string>
+    <string name="fenlie_header_eight">本阶段剩余额度</string>
+    <string name="fenlie_header_nine">历史累计</string>
+    <string name="fenlie_header_ten">历史累计</string>
+    <string name="fenlie_header_evelve">已销毁：</string>
+    <string name="fenlie_header_twelev">累计阶段累计资金</string>
+
+    <string name="fenlie_middle_one">总分裂BVW</string>
+    <string name="fenlie_middle_two">分裂</string>
+    <string name="fenlie_middle_three">成功</string>
+    <string name="fenlie_middle_four">分裂详情</string>
+    <string name="fenlie_middle_five">我的余额：</string>
+
+
+    <string name="zhenlie_title_val">阵列</string>
+    <string name="zhenlie_title_left">我的昨日阵列算力</string>
+    <string name="zhenlie_title_right">昨日阵列加成</string>
+
+    <string name="order_item_one">分裂类型：</string>
+    <string name="order_item_two">分裂比例</string>
+    <string name="order_item_three">获得BVW</string>
+    <string name="order_item_four">总资金</string>
+
+    <string name="zhenlie_left_val">梯阵</string>
+    <string name="zhenlie_right_val">像阵</string>
+
+    <string name="fenlie_fail_one">共获得</string>
+    <string name="fenlie_fail_two">返回矿池</string>
+    <string name="fenlie_fail_three">销毁</string>
+    <string name="fenlie_fail_four">交易号</string>
+    <string name="fenlie_fail_five">区块</string>
+    <string name="fenlie_fail_six">交易时间</string>
+    <string name="fenlie_fail_seven">复制URL</string>
+
+
+
+    <string name="trade_dialog_select_one">主链资产</string>
+    <string name="trade_dialog_select_two">BRC20 资产</string>
+
+    <string name="qr_erweima_code_one">请向您的</string>
+    <string name="qr_erweima_code_one_one">公链地址充值(请谨慎填写， 防止资产丢失）</string>
+
+    <string name="qr_erweima_code_two">请向您的 </string>
+    <string name="qr_erweima_code_two_two"> BRC20地址充值（请谨慎填写， 防止资产丢失）</string>
+
+
+    <string name="qr_erweima_title_one">USDT 收款码（BVW）</string>
+    <string name="qr_erweima_title_two">USDT 收款码（Ethereum）</string>
+
+    <string name="qr_erweima_title_three">收款码（BRC20）</string>
+
+    <string name="gonglian_sign">公链</string>
+
+
+
+    <string name="trade_account_one_title">BTC转账(BRC20)</string>
+    <string name="trade_account_two_title">BTC转账(Bitcoin)</string>
+
+    <string name="trade_account_one_header">请填写对方BVW公链，BRC20 </string>
+    <string name="trade_account_one_one_header"> 地址，（请谨慎填写， 防止资产丢失）</string>
+
+    <string name="trade_account_two_header">请填写对方的</string>
+    <string name="trade_account_two_two_header">公链地址，（请谨慎填写，防止资产丢失）</string>
+
+    <string name="the_market">行情</string>
+    <string name="the_exchange">交易</string>
+    <string name="the_amount">资产</string>
+
+
+    <string name="stop_txt_one">BVW起源于全球开发者社区。致力于用最先进的区块链技术，为区块链应用落地带来新的思维和实践启发，BVW的任何运营和技术均代表着一种技术社会实验，请谨慎参与。由于目前世界上主要国家对数字货币交易和区块链项目的态度政策尚不明确，BVW将严格遵守世界各国对数字资产方面的相关法律，作出以下声明。</string>
+    <string name="stop_txt_two"> BVW将不向以下国家和地区：美国、中国大陆、中国香港地区、朝鲜、古巴、伊朗、孟加拉国、马来西亚、叙利亚、玻利维亚，等用户提供使用。</string>
+    <string name="stop_txt_three">BVW属于完全去中心化应用，无法有效进行KYC认证审核，运行期间，以上国家用户，请自觉删除和退出。</string>
+
+
+    <string name="fenlie_btc_midle_one">例如：A用户参与分裂后即可获得交易记录hash:</string>
+    <string name="fenlie_btc_midle_two">根据每笔分裂的交易hash最后一位数字是偶数还是奇数， 智能合约来判断是进入左叉和右叉，无论是进入左叉和右 叉，均可以释放90%的BVW，其他22%，如果回滚成功， 即可获得22%的全部奖励，如果回滚失败，则根据智能合 约进入回滚表。</string>
+
+    <string name="first_totoal_money">我的总资产（$）</string>
+    <string name="first_suanli_sign">当前算力</string>
+    <string name="first_title_mark">行星</string>
+    <string name="first_qiandao_mark">签到</string>
+
+    <string name="qiandao_one_sign">签到任务</string>
+    <string name="qiandao_two_sign">我的昨日签到：</string>
+    <string name="qiandao_three_sign">签到</string>
+
+    <string name="suanli_wakuang_header_one">当前算力：</string>
+    <string name="suanli_wakuang_header_two">算力占比：</string>
+    <string name="suanli_wakuang_header_three">历史总算力：</string>
+    <string name="suanli_wakuang_header_four">总产出：</string>
+
+    <string name="suanli_wakuang_mid_one">算力列表</string>
+    <string name="suanli_wakuang_mid_two">更多</string>
+
+    <string name="suanli_wakuang_bom_one">算力分布</string>
+    <string name="suanli_wakuang_bom_two">持币算力</string>
+    <string name="suanli_wakuang_bom_three">持币时间加成</string>
+    <string name="suanli_wakuang_bom_four">签到算力</string>
+    <string name="suanli_wakuang_bom_five">级差算力</string>
+    <string name="suanli_wakuang_bom_six">邀请算力</string>
+    <string name="suanli_wakuang_bom_seven">阵列算力</string>
+
+    <string name="suanli_wakuang_bb_one">总算力：</string>
+    <string name="suanli_wakuang_bb_two">日总产出：</string>
+
+    <string name="suanli_wakuang_title">算力挖矿</string>
+    <string name="suanli_wakuang_list_title">算力分布列表</string>
+
+    <string name="fenlie_num_sign">请输入分裂数</string>
+
+
+
+    <string name="jiangli_header_one">本开发阶段：</string>
+    <string name="jiangli_header_two">我的名次：</string>
+
+    <string name="jiangli_midl_one">本阶级总资金</string>
+    <string name="jiangli_midl_two">历史总奖励</string>
+
+    <string name="jiangli_bom_one">名次</string>
+    <string name="jiangli_bom_two">奖励人</string>
+    <string name="jiangli_bom_three">奖金</string>
+    <string name="jiangli_bom_four">比例</string>
+
+    <string name="list_item_order_sign">到账时间：分裂4小时后</string>
+
+    <string name="run_dialog_content_sign">分裂结果查询中...</string>
+
+
+    <string name="fenlie_dialog_two_notice">提示</string>
+    <string name="fenlie_dialog_two_content">暂未查询到分裂结果，请点击右上角订单，手动刷新的订单获取分裂结果</string>
+    <string name="fenlie_dialog_two_sure">我知道了</string>
+
+    <string name="stop_notice_sign">禁止声明</string>
+    <string name="zhuanzhang_notice_two">您的持币低于200个后，您将 无法得到你下属的算力统计、 您的上级也将无法得到您和 您下属的算力统计。</string>
+
+    <string name="scan_view_notice_sign">扫一扫</string>
+
+    <string name="viewfinderview_status_text1">将二维码/条码放入取景框内</string>
+    <string name="viewfinderview_status_text2">即可自动扫描</string>
+
+    <string name="button_ok">OK</string>
+    <string name="msg_camera_framework_bug">Sorry, the Android camera encountered a problem. You may need to restart the device.</string>
+
+    <string name="scan_quanxian_notice">你拒绝了权限申请，可能无法打开相机扫码哟！</string>
+
+    <string name="please_iput_money_btc">请输入分裂金额，最低0.05BTC!</string>
+    <string name="please_iput_money_eth">请输入分裂金额，最低3ETH!</string>
+
+
+    <string name="k_high_line">高</string>
+    <string name="k_low_line">低</string>
+    <string name="k_day_line">24h</string>
+
+    <string name="k_time_one">分时</string>
+    <string name="k_time_two">15分</string>
+    <string name="k_time_three">1小时</string>
+    <string name="k_time_four">4小时</string>
+    <string name="k_time_five">日线</string>
+    <string name="k_time_six">更多</string>
+
+    <string name="k_buy_sign">买入</string>
+    <string name="k_scall_sign">卖出</string>
+
+    <string name="k_shendu_sign">深度</string>
+    <string name="k_chengjiao_sign">成交</string>
+
+    <string name="shendu_maipan_sign">买盘</string>
+    <string name="shendu_shuliang_sign">数量</string>
+    <string name="shendu_jiage_sign">价格</string>
+    <string name="shendu_maichu_sign">卖盘</string>
+
+    <string name="trade_market_name">名称</string>
+    <string name="trade_market_price">价格</string>
+    <string name="trade_market_zf">涨幅</string>
+    <string name="trade_market_zx">自选</string>
+    <string name="trade_market_zfb">涨幅榜</string>
+
+    <string name="amount_money_use">可用余额</string>
+    <string name="amount_money_dongjie">冻结金额</string>
+    <string name="amount_money_usdt">折算USDT</string>
+
+    <string name="trade_trade_num">数量</string>
+    <string name="trade_trade_price">价格</string>
+    <string name="trade_trade_num_cvc">数量</string>
+    <string name="trade_trade_canuse_num">可用余额：</string>
+    <string name="trade_trade_totalnum">总量</string>
+    <string name="trade_trade_totalfee">费用</string>
+    <string name="trade_trade_buy">买入</string>
+    <string name="trade_trade_sell" >卖出</string>
+    <string name="trade_trade_weituo">当前委托</string>
+    <string name="trade_trade_more">全部</string>
+
+    <string name="trade_trade_item_price">价格</string>
+    <string name="trade_trade_item_num">数量</string>
+    <string name="trade_trade_item_total">总额</string>
+    <string name="trade_trade_item_cancel">取消</string>
+
+
+    <string name="weituo_item_price">价格</string>
+    <string name="weituo_item_num">数量</string>
+    <string name="weituo_item_total_num">总额</string>
+    <string name="weituo_item_finish">完成</string>
+
+
+    <string name="hz_notice_sign">只有将资产划转到对应账户才可进行交易，账户间的划转不收取手续费，每笔矿费0.001BVW</string>
+
+    <string name="hz_top_sign">划转</string>
+    <string name="hz_top_from">从</string>
+    <string name="hz_jiaoyi_suo_sign">交易所资产</string>
+    <string name="hz_top_to">到</string>
+    <string name="hz_myqianbao_sign">我的钱包</string>
+    <string name="hz_money_num_sign">划转数量</string>
+    <string name="hz_input_num_sign">请输入划转数量</string>
+    <string name="hz_input_all_sign">全部</string>
+    <string name="hz_jiaoyisuo_left_money">交易所资产可用余额：</string>
+    <string name="hz_jiaoyisuo_left_money_two">我的钱包可用余额：</string>
+
+
+    <string name="zz_select_dialog_btc_one">BTC公链资产</string>
+    <string name="zz_select_dialog_eth_one">Ethereum公链资产</string>
+    <string name="zz_select_dialog_usdt_one">Ethereum公链资产</string>
+
+    <string name="zz_select_dialog_bvw_two">BVW公链资产</string>
+
+    <string name="bid_jiangli_height">区块高度：</string>
+
+    <string name="bid_jiangli_no_data_sign">本阶段未开启暂无排行榜信息</string>
+
+    <string name="trade_no_open_sign">交易暂未开通，敬请期待！</string>
+
+    <string name="bid_jiangli_no_data_top_sign">本阶段未开启暂无TOP榜信息。</string>
+    <string name="bid_jiangli_no_data_lucky_sign">本阶段未开启暂无Lucky榜信息。</string>
+
+    <string name="bvw_shoukuan_ma">BVW公链地址</string>
+
+    <string name="sign_success_notice">您今日已经签到！</string>
+
+    <string name="sign_success_to_notice">您已经签到成功，请关注明日签到受益！</string>
+
+    <string name="fenlie_header_total_money">本阶段总额度：</string>
+
+    <string name="trade_no_order_sign">暂无订单记录</string>
+
+    <string name="trade_num_trade_sign">请输入交易数量</string>
+
+    <string name="cancel_order_success_sign">当前订单取消成功</string>
+
+
+    <string name="bibi_pop_left_viwe">币币</string>
+
+    <string name="notice_add_money_type">矿费太低，请充值BVW矿费</string>
+
+<!--    <string name="hz_input_num_sign">请输入划账数量</string>-->
+
+</resources>

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appColorPrimary"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/fund_bg" />
+
+    <com.handmark.pulltorefresh.library.PullToRefreshScrollView xmlns:ptr="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/pull_refresh_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        ptr:ptrAnimationStyle="flip"
+        ptr:ptrMode="both">
+
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/tools"
+            xmlns:fresco="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <ImageView
+                android:id="@+id/zc_set_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="@dimen/dimen_20dp"
+                android:layout_marginRight="@dimen/dimen_15dp"
+                android:src="@mipmap/img_setting"
+                android:visibility="gone" />
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/img_head"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/dimen_20dp"
+                android:background="@mipmap/icon_head_default"
+                fresco:roundAsCircle="true" />
+
+            <LinearLayout
+                android:id="@+id/zc_jump_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/img_head"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/zc_suanli_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:textColor="@color/txtGray"
+                    android:textSize="16dp"
+                    android:text="算力挖矿"
+                    />
+
+                <TextView
+                    android:id="@+id/zc_address_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:textColor="@color/txtGray"
+                    android:textSize="16dp"
+                    android:text="奖励棒"
+                    />
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/imgQr"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@mipmap/erweima_sign" />
+
+<!--                <com.darknet.bvw.view.TypefaceTextView-->
+<!--                    android:id="@+id/zc_address_view"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginRight="5dp"-->
+<!--                    android:textColor="@color/txtGray"-->
+<!--                    android:textSize="16dp"-->
+<!--                    app:typeface="@string/universal_text_typeface" />-->
+
+<!--                <com.facebook.drawee.view.SimpleDraweeView-->
+<!--                    android:id="@+id/imgQr"-->
+<!--                    android:layout_width="14dp"-->
+<!--                    android:layout_height="14dp"-->
+<!--                    android:layout_centerHorizontal="true"-->
+<!--                    android:background="@mipmap/erweima_sign" />-->
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layFund"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/zc_jump_layout"
+                android:layout_centerHorizontal="true">
+
+
+<!--                <com.darknet.bvw.view.TypefaceTextView-->
+<!--                    android:id="@+id/total_money_type_view_zn"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginRight="5dp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="14dp"-->
+<!--                    app:typeface="@string/universal_text_typeface" />-->
+
+                <TextView
+                    android:id="@+id/total_money_type_view_zn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:textColor="@color/white"
+                    />
+
+                <com.darknet.bvw.view.TypefaceTextView
+                    android:id="@+id/total_money_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="25dp"
+                    android:textStyle="bold"
+                    app:typeface="@string/universal_text_typeface" />
+
+
+
+                <com.darknet.bvw.view.TypefaceTextView
+                    android:id="@+id/total_money_type_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/white"
+                    app:typeface="@string/universal_text_typeface" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layFund"
+                android:layout_centerHorizontal="true"
+                android:alpha="0.8"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/zc_main_bg">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+            </LinearLayout>
+
+
+            <!--            <com.scwang.smartrefresh.layout.SmartRefreshLayout-->
+            <!--                android:id="@+id/refreshLayout"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_below="@+id/layFund"-->
+            <!--                android:layout_marginLeft="@dimen/dimen_15dp"-->
+            <!--                android:layout_marginTop="10dp"-->
+            <!--                android:layout_marginRight="@dimen/dimen_15dp"-->
+            <!--                android:alpha="0.9"-->
+            <!--                android:background="@drawable/zc_main_bg">-->
+
+            <!--                <com.scwang.smartrefresh.header.MaterialHeader-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:visibility="gone" />-->
+
+
+            <!--                <androidx.recyclerview.widget.RecyclerView-->
+            <!--                    android:id="@+id/rv"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content" />-->
+
+
+            <!--                <com.scwang.smartrefresh.layout.footer.ClassicsFooter-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:visibility="gone" />-->
+
+            <!--            </com.scwang.smartrefresh.layout.SmartRefreshLayout>-->
+
+
+        </RelativeLayout>
+
+    </com.handmark.pulltorefresh.library.PullToRefreshScrollView>
+</FrameLayout>
+

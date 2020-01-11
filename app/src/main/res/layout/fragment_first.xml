@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ptr="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appColorPrimary"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:background="@mipmap/first_bg_img" />
+
+
+    <com.handmark.pulltorefresh.library.PullToRefreshScrollView
+        android:id="@+id/pull_refresh_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        ptr:ptrAnimationStyle="flip"
+        ptr:ptrMode="both">
+
+
+        <com.darknet.bvw.view.CustomScrollview
+            android:id="@+id/first_scrollview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <LinearLayout
+                    android:id="@+id/first_header_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp">
+
+                        <TextView
+                            android:id="@+id/first_name_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_centerVertical="true"
+                            android:gravity="center"
+                            android:text="name"
+                            android:textColor="@color/white"
+                            android:textSize="14dp"></TextView>
+
+                        <TextView
+                            android:id="@+id/first_title_mark"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="5dp"
+                            android:layout_toRightOf="@id/first_name_view"
+                            android:background="@mipmap/first_header_name"
+                            android:gravity="center"
+                            android:text="@string/first_title_mark"
+                            android:textColor="@color/black"
+                            android:textSize="10dp"></TextView>
+
+                        <LinearLayout
+                            android:id="@+id/first_qiandao_layout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="-2dp"
+                            android:background="@drawable/qiandao_bg_two"
+                            android:gravity="center"
+                            android:paddingLeft="6dp"
+                            android:paddingTop="6dp"
+                            android:paddingBottom="6dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="10dp"
+                                android:drawableLeft="@mipmap/first_header_qiandao"
+                                android:drawablePadding="5dp"
+                                android:gravity="center"
+                                android:text="@string/first_qiandao_mark"
+                                android:textColor="@color/white"
+                                android:textSize="12dp"></TextView>
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/zc_suanli_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:background="@drawable/first_bg_txt_bg"
+                            android:orientation="horizontal"
+                            android:paddingLeft="10dp"
+                            android:paddingTop="5dp"
+                            android:paddingRight="10dp"
+                            android:paddingBottom="5dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/first_suanli_sign"
+                                android:textColor="@color/white"
+                                android:textSize="10dp"></TextView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="62KH/S"
+                                android:textColor="#FF01FCDA"
+                                android:textSize="10dp"
+                                android:visibility="gone"></TextView>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/zc_address_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/first_bg_txt_bg"
+                            android:orientation="horizontal"
+                            android:paddingLeft="10dp"
+                            android:paddingTop="5dp"
+                            android:paddingRight="10dp"
+                            android:paddingBottom="5dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="TOP/Lucky："
+                                android:textColor="@color/white"
+                                android:textSize="10dp"></TextView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="30"
+                                android:textColor="#FF01FCDA"
+                                android:textSize="10dp"></TextView>
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="140dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@mipmap/first_middle_pic_bg"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingLeft="30dp">
+
+                        <TextView
+                            android:id="@+id/total_money_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="434233.5"
+                            android:textColor="#FF01FCDA"
+                            android:textSize="20dp"
+                            android:textStyle="bold"></TextView>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/first_totoal_money"
+                            android:textColor="#FF01FCDA"
+                            android:textSize="16dp"></TextView>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/first_zc_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/first_header_layout"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="10dp"
+                    android:orientation="vertical">
+
+                </LinearLayout>
+
+                <com.darknet.bvw.view.MyListView
+                    android:id="@+id/rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/first_header_layout"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:visibility="gone"
+                    android:layout_marginRight="10dp" />
+
+
+                <!--            <LinearLayout-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:layout_below="@+id/first_header_layout"-->
+                <!--                android:layout_centerHorizontal="true"-->
+                <!--                android:layout_marginLeft="10dp"-->
+                <!--                android:layout_marginTop="20dp"-->
+                <!--                android:layout_marginRight="10dp"-->
+                <!--                android:alpha="0.8"-->
+                <!--                android:background="@drawable/zc_main_bg">-->
+
+                <!--               -->
+
+                <!--            </LinearLayout>-->
+
+
+            </RelativeLayout>
+        </com.darknet.bvw.view.CustomScrollview>
+    </com.handmark.pulltorefresh.library.PullToRefreshScrollView>
+
+</FrameLayout>
+

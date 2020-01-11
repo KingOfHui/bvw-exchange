@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/appColorPrimary"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/layTitle"
+        layout="@layout/lay_head_back" />
+
+    <LinearLayout
+        android:id="@+id/lay_content_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layTitle"
+        android:layout_marginLeft="@dimen/dimen_15dp"
+        android:gravity="center"
+        android:layout_marginRight="@dimen/dimen_15dp">
+
+        <View
+            android:layout_width="7dp"
+            android:layout_height="7dp"
+            android:background="@drawable/circle_bg_view"
+            ></View>
+
+        <com.darknet.bvw.view.TypefaceTextView
+            app:typeface="@string/universal_text_typeface"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="@string/wallet_pwd_notice"
+            android:textColor="@color/txtGray" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lay2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lay_content_view"
+        android:layout_marginLeft="@dimen/dimen_15dp"
+        android:gravity="center"
+        android:layout_marginRight="@dimen/dimen_15dp">
+
+        <View
+            android:layout_width="7dp"
+            android:layout_height="7dp"
+            android:background="@drawable/circle_bg_view"
+            ></View>
+
+        <com.darknet.bvw.view.TypefaceTextView
+            app:typeface="@string/universal_text_typeface"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="@string/wallet_remember_notice"
+            android:textColor="@color/txtGray" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lay2"
+        android:layout_marginLeft="@dimen/dimen_15dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/editWalletName"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@null"
+            android:hint="@string/wallet_name"
+            android:lines="1"
+            android:gravity="bottom"
+            android:paddingBottom="5dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/txtGray"
+            android:textSize="13dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:alpha="0.6"
+            android:background="#32555A" />
+
+        <EditText
+            android:id="@+id/editWalletPassword"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@null"
+            android:hint="@string/wallet_pwd_six"
+            android:inputType="textPassword"
+            android:textColor="@color/white"
+            android:gravity="bottom"
+            android:paddingBottom="5dp"
+            android:lines="1"
+            android:textColorHint="@color/txtGray"
+            android:textSize="13dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:alpha="0.6"
+            android:background="#32555A" />
+
+        <EditText
+            android:id="@+id/editRepeatPassword"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@null"
+            android:textColor="@color/white"
+            android:hint="@string/wallet_repeat_pwd_six"
+            android:inputType="textPassword"
+            android:lines="1"
+            android:gravity="bottom"
+            android:paddingBottom="5dp"
+            android:textColorHint="@color/txtGray"
+            android:textSize="13dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:alpha="0.6"
+            android:background="#32555A" />
+
+        <EditText
+            android:id="@+id/editPasswordInfo"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@null"
+            android:hint="密码提示信息(可不填)"
+            android:lines="1"
+            android:visibility="gone"
+            android:textColorHint="@color/txtGray"
+            android:textSize="13dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:visibility="gone"
+            android:background="@color/txtGray" />
+
+        <LinearLayout
+            android:id="@+id/layCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10dp">
+
+            <CheckBox
+                android:id="@+id/checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/selector_oval"
+                android:paddingLeft="@dimen/dimen_10dp"
+                android:text="@string/wallet_xieyi"
+                android:textColor="@color/txtGray"
+                android:textSize="13dp" />
+
+            <com.darknet.bvw.view.TypefaceTextView
+                android:id="@+id/txtXy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/wallet_xieyi_content"
+                android:textColor="@color/lightBlue"
+                android:textSize="13dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnNext"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_50dp"
+        android:layout_above="@id/wallet_select_import_view"
+        android:layout_marginLeft="@dimen/dimen_15dp"
+        android:layout_marginRight="@dimen/dimen_15dp"
+        android:background="@color/lightBlue"
+        android:text="@string/trade_next_step"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/wallet_select_import_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/loading_wallet_sign_two"
+        android:gravity="center"
+        android:padding="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="120dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="@dimen/dimen_15dp"
+        android:layout_marginRight="@dimen/dimen_15dp"
+        android:textColor="@color/gray1"
+        android:textStyle="bold" />
+
+
+</RelativeLayout>

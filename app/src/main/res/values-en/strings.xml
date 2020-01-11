@@ -1,0 +1,890 @@
+<!--<resources>-->
+<!--    <string name="app_name">BVW</string>-->
+<!--    <string name="language_cn">CHINESE</string>-->
+<!--    <string name="language_en">ENGLISH</string>-->
+<!--    <string name="pwd_check_login">LOGIN</string>-->
+<!--    <string name="pwd_check_chanage_account">Switching accounts</string>-->
+<!--    <string name="pwd_check_title">Password verification</string>-->
+<!--    <string name="copy_bord_content">Clipboard copied</string>-->
+<!--    <string name="loading_wallet_tip"> Import into Wallet </string>-->
+<!--    <string name="loading_wallet_sign_two">Import into Wallet</string>-->
+
+<!--    <string name="load_wallet_by_mnemonic_input_tip">Please check your mnemonics</string>-->
+<!--    <string name="load_wallet_already_exist"> Wallet already exists </string>-->
+<!--    <string name="create_wallet_pwd_confirm_input_tips"> Password is inconsistent, please re-enter </string>-->
+<!--    <string name="account_name_notice"> Account number cannot be empty </string>-->
+<!--    <string name="pwd_check_wrong_pwd"> Password error </string>-->
+<!--    <string name="pwd_check_input_pwd"> Please input a password </string>-->
+
+<!--    <string name="xmain_table_one">Assets</string>-->
+<!--    <string name="xmain_table_two">News</string>-->
+<!--    <string name="xmain_table_three">My</string>-->
+
+<!--    <string name="mine_manage_wallet">Management Wallet</string>-->
+<!--    <string name="mine_trade_list">Transaction record</string>-->
+
+<!--    <string name="mine_msg_center">Message center</string>-->
+<!--    <string name="mine_contact_people">Contacts</string>-->
+<!--    <string name="mine_system_set">System setup</string>-->
+<!--    <string name="mine_help_center">Help center</string>-->
+<!--    <string name="mine_about_us">About us</string>-->
+
+<!--    <string name="trade_list_remark">Recent transactions</string>-->
+<!--    <string name="trade_list_zhuanzhang">Transfer</string>-->
+<!--    <string name="trade_list_shoukuan">Receipt</string>-->
+<!--    <string name="trade_list_title">Transfer record</string>-->
+
+<!--    <string name="trade_detail_title">Transaction record </string>-->
+<!--    <string name="trade_detail_no_data">No time </string>-->
+<!--    <string name="trade_detail_fakuan">Issuing party </string>-->
+<!--    <string name="trade_detail_shoukuan">Receiving party </string>-->
+<!--    <string name="trade_detail_kuangongfei">Absenteeism expenses </string>-->
+<!--    <string name="trade_detail_beizhu">Remarks</string>-->
+<!--    <string name="trade_detail_jiaoyihao">Transaction number </string>-->
+<!--    <string name="trade_detail_qukuai">Block</string>-->
+<!--    <string name="trade_detail_jiaoyitime">Transaction time </string>-->
+<!--    <string name="trade_detail_copyurl">Copy</string>-->
+
+
+<!--    <string name="account_manage_import_wallet">Import Wallet </string>-->
+
+<!--    <string name="wallet_detail_name">Wallet</string>-->
+<!--    <string name="wallet_detail_name_sign">Wallet name</string>-->
+<!--    <string name="wallet_detail_update_pwd">Change password</string>-->
+<!--    <string name="wallet_detail_export_store">Export private key </string>-->
+<!--    <string name="wallet_detail_export_keystore">Export Keystore</string>-->
+<!--    <string name="wallet_detail_del_wallet">Delete wallet </string>-->
+
+<!--    <string name="empty_pwd">Password value cannot be empty </string>-->
+<!--    <string name="pwd_not_encough">The password is too simple to be less than six digits </string>-->
+<!--    <string name="update_success">Modified success </string>-->
+<!--    <string name="update">Amendment </string>-->
+
+<!--    <string name="private_key_put_pwd">Please input a password </string>-->
+<!--    <string name="private_key_sign">Private key </string>-->
+<!--    <string name="jiexi_private_key">Resolve private key </string>-->
+<!--    <string name="private_key_jiexie_input">Rlease enter the password and click the resolve private key button </string>-->
+<!--    <string name="private_key_notice">In order to ensure safety, please try to do this operation when the network is disconnected! </string>-->
+<!--    <string name="wrong_pwd">Password error </string>-->
+<!--    <string name="long_click_copy_content">Long press to copy text </string>-->
+
+<!--    <string name="export_key_share">System share </string>-->
+<!--    <string name="export_key_title">Export Keystore</string>-->
+<!--    <string name="share_txt">Share</string>-->
+
+<!--    <string name="shoukuan_code">Payment code </string>-->
+<!--    <string name="shoukuan_copy_url">Copy collection address </string>-->
+
+<!--    <string name="trade_sign_title">Transfer accounts </string>-->
+<!--    <string name="trade_no_money">There is no balance in the current account, unable to transfer </string>-->
+<!--    <string name="trade_wrong_data">Transaction exception </string>-->
+<!--    <string name="trade_success">Successful transfer </string>-->
+<!--    <string name="trade_input_wallet_address">Please enter wallet address </string>-->
+<!--    <string name="trade_input_wallet_num">Please enter the transfer quantity </string>-->
+<!--    <string name="trade_to_wallet_address">Address of wallet </string>-->
+<!--    <string name="trade_money_num">Transfer amount </string>-->
+<!--    <string name="trade_select_corn">Choose currencies </string>-->
+<!--    <string name="trade_next_step">Next step </string>-->
+
+
+<!--    <string name="set_title">Set up </string>-->
+<!--    <string name="set_language">Language</string>-->
+<!--    <string name="set_update_check">Check update </string>-->
+<!--    <string name="set_language_chinese">Chinese</string>-->
+<!--    <string name="set_language_english">English </string>-->
+<!--    <string name="set_select_language">Choice language </string>-->
+<!--    <string name="login_out">Sign out </string>-->
+
+
+<!--    <string name="lead_in_title">Import account </string>-->
+<!--    <string name="lead_in_zjc_notice">Please enter the mnemonic words (12 English words) of the account, separated by spaces </string>-->
+<!--    <string name="lead_in_account_name">Account name</string>-->
+<!--    <string name="lead_in_input_name">Please enter account name </string>-->
+<!--    <string name="lead_in_set_pwd">Set password </string>-->
+<!--    <string name="lead_in_sure_pwd">Please input a password </string>-->
+<!--    <string name="lead_in_begin_import">Start importing </string>-->
+<!--    <string name="lead_in_check_private_key">Please check your private key </string>-->
+<!--    <string name="lead_in_copy_private_key"> Paste the private key into the input box </string>-->
+<!--    <string name="lead_in_two_pwd">Confirm password </string>-->
+
+<!--    <string name="zjc_title">Your wallet mnemonics </string>-->
+<!--    <string name="zjc_notice_sign"> It is highly recommended that you copy the mnemonic words on paper and keep them in a safe place only you know. Anyone who gets the mnemonic words can consume your digital assets </string>-->
+<!--    <string name="zjc_remeber_sign"> Mnemonics are used to recover your wallet. If you lose them, you will lose your wallet forever </string>-->
+<!--    <string name="zjc_long_copy"> Long press the mnemonic below to copy to the clipboard </string>-->
+<!--    <string name="zjc_beifen_title"> Backup mnemonics </string>-->
+<!--    <string name="zjc_check_fail"> Validation failed, please check the backup </string>-->
+<!--    <string name="zjc_check_successs"> Check success </string>-->
+<!--    <string name="zjc_sure_view"> Confirm your mnemonic </string>-->
+<!--    <string name="zjc_click_in_order"> Please click mnemonics in order to make sure your backup mnemonics are correct </string>-->
+<!--    <string name="sure_sure">Confirm</string>-->
+<!--    <string name="wallet_create_title"> Create Wallet </string>-->
+<!--    <string name="wallet_create_xieyi"> Please read and agree to the privacy agreement </string>-->
+<!--    <string name="wallet_create_sign_name"> Please fill in the wallet name </string>-->
+<!--    <string name="wallet_create_sign_pwd"> Please fill in the wallet code </string>-->
+<!--    <string name="wallet_create_sign_repeat_pwd"> Please fill in the wallet and repeat the password </string>-->
+<!--    <string name="wallet_create_sign_pwd_not"> The password is not the same as the duplicate password </string>-->
+<!--    <string name="wallet_pwd_notice"> Password is used to protect private key and transaction authorization, and strength is very important </string>-->
+<!--    <string name="wallet_remember_notice"> The imtoken does not store the password or help you retrieve it. Please remember </string>-->
+<!--    <string name="wallet_name"> Wallet name </string>-->
+<!--    <string name="wallet_pwd">Password</string>-->
+<!--    <string name="wallet_repeat_pwd"> Repeat password </string>-->
+<!--    <string name="wallet_xieyi"> I have read it carefully and agree </string>-->
+<!--    <string name="wallet_xieyi_content">《 Service and privacy terms 》</string>-->
+
+<!--    <string name="wallet_first_view"> The is the first time humans try to use a sustainable way to make the human technology replicate independently. </string>-->
+<!--    <string name="create_aacoutn_view"> Create account </string>-->
+<!--    <string name="about_us_title">About us </string>-->
+<!--    <string name="about_us_content">Bvw is a public chain project that introduces POS single core HW consensus algorithm in the public chain partition area, and the bid atomic node participates in bookkeeping and open-source, mixed chain point-to-point distributed network node. In addition to providing a technical solution of high TPS settlement and programmable smart contract platform to assist DAPP landing, bvw has also created a global fission ecological network by using fragment nodes. Bvw is the first time for human beings to imitate the creator to create a kind of sustainable intelligent contract - machine DNA, to build a life body of common trust for all mankind. Bvw is also the first time that human beings have tried to reproduce themselves in a sustainable way-->
+<!--</string>-->
+<!--    <string name="load_data">Loading</string>-->
+<!--    <string name="universal_text_typeface">PingFangRegular</string>-->
+<!--    <string name="help_title">Use help</string>-->
+<!--    <string name="del_wallet_fail">Delete failed </string>-->
+<!--    <string name="account_manage_title">Management Wallet</string>-->
+
+<!--    <string name="wallet_pwd_six">Six digit password </string>-->
+<!--    <string name="wallet_repeat_pwd_six">Repeat the six digit password </string>-->
+<!--    <string name="msg_receive_sign">Receiver:</string>-->
+
+<!--    <string name="dialog_success_sign">Submitted to miner, confirming!</string>-->
+<!--    <string name="dialog_fail_sign">Transfer failure</string>-->
+<!--    <string name="update_compare_sign">Current latest version</string>-->
+
+<!--    <string name="no_data">No data available</string>-->
+<!--    <string name="trade_left_money_val">Available balance</string>-->
+<!--    <string name="trade_to_wallet_address_two">Please enter the address </string>-->
+<!--    <string name="trade_money_num_two">Please enter the transfer amount </string>-->
+<!--    <string name="trade_detail_beizhu_two">Please enter comments </string>-->
+<!--    <string name="add_contact_complete">Finish</string>-->
+<!--    <string name="add_contact_remark_sign">Note content cannot exceed ten characters </string>-->
+<!--    <string name="add_contack_people_sign">Remark</string>-->
+<!--    <string name="add_contack_wrong_wallet_address">Illegal wallet address </string>-->
+
+<!--    <string name="add_contack_address_success"> Congratulations! New completed </string>-->
+<!--    <string name="add_contack_address_fail">Create failure </string>-->
+<!--    <string name="add_contack_create_new_people_title"> New contact </string>-->
+
+<!--    <string name="add_contack__people_right">Create</string>-->
+<!--    <string name="add_contack__people_title">Contact people</string>-->
+<!--    <string name="add_contack_people_item_name">Undefined</string>-->
+<!--    <string name="msg_center_list_title">Message center</string>-->
+
+<!--    <string name="trade_beizhu_notice">Note content is too long, no more than 30 characters</string>-->
+<!--    <string name="mine_system_adress_peo">Address book</string>-->
+
+<!--    <string name="language">Language</string>-->
+<!--    <string name="follow_the_system">Following system</string>-->
+<!--    <string name="create_wallet_sign_content">Generate Wallet</string>-->
+<!--    <string name="manage">manage</string>-->
+
+<!--    <string name="back_up_wallet_private_key">Back Up Private Key</string>-->
+<!--    <string name="view_backup_details_tutorial">View Backup details tutorial</string>-->
+<!--    <string name="create_wallet_last_step">Last step: back up your wallet now</string>-->
+<!--    <string name="public_key">Public Key</string>-->
+<!--    <string name="direct_import_login">Direct import login</string>-->
+<!--    <string name="copy">Copy</string>-->
+
+<!--    <string name="create_wallet_last_step_two">Last step: back up your wallet now</string>-->
+<!--    <string name="create_wallet_last_notice_sign">Copy and paste the contents of wallet private key file directly to the input box. Or scan and input the QR code of the private key content.</string>-->
+
+<!--    <string name="back_up_wallet_walletsign">Backup Wallet</string>-->
+
+<!--    <string name="back_up_private_sign_view">Please back up your private key</string>-->
+<!--    <string name="back_up_private_txt">Please copy it, or save it in some place. Do not save it on the Internet</string>-->
+
+<!--    <string name="send_trade_state_ing">Transfering</string>-->
+<!--    <string name="send_trade_state_succ">Successful</string>-->
+<!--    <string name="send_trade_state_fail">Failure</string>-->
+
+<!--    <string name="send_trade_state_notice">Transfer:</string>-->
+
+<!--</resources>-->
+
+
+<resources>
+
+    <!--    <string name="complete">complete</string>-->
+    <!--    <string name="draft">[draft]</string>-->
+    <!--    <string name="video">video</string>-->
+    <!--    <string name="set_conversation_to_top">set conversation to top</string>-->
+    <!--    &lt;!&ndash;contact&ndash;&gt;-->
+    <!--    <string name="new_friend">new friend</string>-->
+    <!--    <string name="group_cheat">group chat </string>-->
+    <!--    &lt;!&ndash;new friend&ndash;&gt;-->
+    <!--    <string name="add_friend">add friend</string>-->
+    <!--    <string name="no_recommend_friend">No recommend friend</string>-->
+    <!--    &lt;!&ndash;search user&ndash;&gt;-->
+    <!--    <string name="user_no_found">user no found</string>-->
+    <!--    <string name="search">search</string>-->
+    <!--    &lt;!&ndash;user information&ndash;&gt;-->
+    <!--    <string name="nickname_colon">nickname colon:%1$s</string>-->
+    <!--    <string name="set_alias_and_tag">set alias and tag</string>-->
+    <!--    <string name="send_message">send message</string>-->
+    <!--    <string name="add_to_contact">add to contact</string>-->
+    <!--    <string name="change_my_name_tip">Good names make it easier for your friends to remember you.</string>-->
+    <!--    &lt;!&ndash;modify remarks&ndash;&gt;-->
+    <!--    <string name="alias">remarks</string>-->
+    <!--    <string name="alias_no_empty">remarks no empty</string>-->
+    <!--    &lt;!&ndash;postscript interface&ndash;&gt;-->
+    <!--    <string name="postscript_tip">You need to send a verification request and wait for the receiving party to pass</string>-->
+    <!--    <string name="send">send</string>-->
+    <!--    &lt;!&ndash;session interface&ndash;&gt;-->
+    <!--    <string name="please_to_talk">hold and talk</string>-->
+    <!--    <string name="shot">shot</string>-->
+    <!--    <string name="location">location</string>-->
+    <!--    <string name="file">file</string>-->
+    <!--    <string name="voice_rec">Slide your finger up and cancel sending.</string>-->
+    <!--    <string name="voice_cancel">Release your finger and cancel sending.</string>-->
+    <!--    <string name="voice_short">Recording time is too short.</string>-->
+    <!--    &lt;!&ndash;create group&ndash;&gt;-->
+    <!--    <string name="create_group_success">create group success</string>-->
+    <!--    <string name="create_group_fail">create group fail</string>-->
+    <!--    <string name="no_group_now">no group now</string>-->
+    <!--    &lt;!&ndash;groap information&ndash;&gt;-->
+    <!--    <string name="group_name">group name</string>-->
+    <!--    <string name="untitled">untitled</string>-->
+    <!--    <string name="group_announcement">group announcement</string>-->
+    <!--    <string name="message_free">message free </string>-->
+    <!--    <string name="my_nickname_in_this_group">my nickname in this group</string>-->
+    <!--    <string name="show_group_member_name">show group member name</string>-->
+    <!--    <string name="clear_chat_log">clear chat log</string>-->
+    <!--    <string name="delete_and_exit">delete and exit</string>-->
+    <!--    <string name="delete_and_dismiss">delete and dismiss </string>-->
+    <!--    <string name="add_member_success">add member success</string>-->
+    <!--    <string name="add_member_fail">add member fail </string>-->
+    <!--    <string name="del_member_success">delete member success </string>-->
+    <!--    <string name="del_member_fail">delete member fail</string>-->
+    <!--    &lt;!&ndash;I&ndash;&gt;-->
+    <!--    <string name="my_chat_account">account number :%1$s</string>-->
+    <!--    <string name="setting">setting</string>-->
+    <!--    &lt;!&ndash;setting&ndash;&gt;-->
+    <!--    <string name="new_message_remind">new message remind </string>-->
+    <!--    <string name="exit">exit </string>-->
+    <!--    &lt;!&ndash;about &ndash;&gt;-->
+    <!--    <string name="app_name_in_about">-</string>-->
+    <!--    <string name="function_introduction">function introduction </string>-->
+    <!--    <string name="complaint">complaint </string>-->
+    <!--    <string name="check_update">check update </string>-->
+    <!--    <string name="terms_of_use_and_privacy_policy">terms of use and privacy policy </string>-->
+    <!--&lt;!&ndash;    <string name="av_waiting">Waiting for the other party to receive the invitation..</string>&ndash;&gt;-->
+    <!--&lt;!&ndash;    <string name="av_audio_invite">Invite you to make a voice call.</string>&ndash;&gt;-->
+    <!--&lt;!&ndash;    <string name="av_video_invite">Invite you to make a video call.</string>&ndash;&gt;-->
+    <!--    <string name="load_wallet_by_mnemonic_input_tip">Please check your mnemonic.</string>-->
+    <!--    <string name="load_wallet_already_exist">Load wallet already exist.</string>-->
+    <!--    <string name="create_wallet_pwd_confirm_input_tips">The passwords are inconsistent, please re-enter. </string>-->
+    <!--    <string name="account_name_notice">Account cannot be empty. </string>-->
+    <!--    <string name="loading_wallet_tip">import into wallet …</string>-->
+    <!--    <string name="copy_bord_content">has been copied to the clipboard</string>-->
+
+
+    <string name="app_name">BVW</string>
+    <string name="language_cn">Simplified Chinese</string>
+    <string name="language_en">ENGLISH</string>
+    <string name="pwd_check_login">Launch</string>
+    <string name="pwd_check_chanage_account">Switch account</string>
+    <string name="pwd_check_title">Password Validation</string>
+    <string name="copy_bord_content">Has been copied to the clipboard</string>
+
+    <string name="load_wallet_by_mnemonic_input_tip">Please check your mnemonic.</string>
+    <string name="load_wallet_already_exist">Load wallet already exist.</string>
+    <string name="create_wallet_pwd_confirm_input_tips">The passwords are inconsistent, please re-enter. </string>
+    <string name="account_name_notice">Account cannot be empty.</string>
+    <string name="pwd_check_wrong_pwd">wrong password  </string>
+    <string name="pwd_check_input_pwd">Please enter your password</string>
+
+    <string name="xmain_table_one">Asset</string>
+    <string name="xmain_table_two">Find</string>
+    <!--    <string name="xmain_table_three">Message</string>-->
+    <string name="xmain_table_three">Trade</string>
+    <string name="xmain_table_four">Mine</string>
+    <string name="xmain_table_shouye">Home</string>
+
+    <string name="mine_manage_wallet">Management Wallet</string>
+    <string name="mine_trade_list">Transfer Record</string>
+
+    <string name="mine_msg_center">Message Center</string>
+    <string name="mine_contact_people">Contact </string>
+    <string name="mine_system_set">System Settings </string>
+    <string name="mine_help_center">Help Center</string>
+    <string name="mine_about_us">About Us</string>
+    <string name="mine_system_adress_peo">Address book</string>
+
+
+    <string name="trade_list_remark">Recent transaction history</string>
+    <string name="trade_list_zhuanzhang">Transfer</string>
+    <string name="trade_list_shoukuan">Receipt</string>
+    <string name="trade_list_title">Transfer record</string>
+
+    <string name="trade_detail_title">Transaction Record</string>
+    <string name="trade_detail_no_data">No</string>
+    <string name="trade_detail_fakuan">Sending party</string>
+    <string name="trade_detail_shoukuan">Beneficiary</string>
+    <string name="trade_detail_kuangongfei">Completion cost</string>
+    <string name="trade_detail_beizhu">Remarks</string>
+    <string name="trade_detail_beizhu_two">Please enter a note</string>
+    <string name="trade_detail_jiaoyihao">Transaction number</string>
+    <string name="trade_detail_qukuai">Block</string>
+    <string name="trade_detail_jiaoyitime">Transaction hour</string>
+    <string name="trade_detail_copyurl">Copy</string>
+
+    <string name="account_manage_title">Management Wallet</string>
+    <string name="account_manage_import_wallet">Import Wallet</string>
+
+
+    <string name="wallet_detail_name"> wallet</string>
+    <string name="wallet_detail_name_sign">Wallet name</string>
+    <string name="wallet_detail_update_pwd">Change password</string>
+    <string name="wallet_detail_export_store">Export private key</string>
+    <string name="wallet_detail_export_keystore">Export Keystore</string>
+    <string name="wallet_detail_del_wallet">Delete wallet</string>
+
+    <string name="empty_pwd">Password value cannot be empty.</string>
+    <string name="pwd_not_encough">The password is too simple to be lower than six digits</string>
+    <string name="update_success">Modify success</string>
+    <string name="update">Revised</string>
+
+    <string name="private_key_put_pwd">Please enter your password</string>
+    <string name="private_key_sign">Private key</string>
+    <string name="jiexi_private_key">Analysis the private key</string>
+    <string name="private_key_jiexie_input">Please enter your password and click the Resolve Private Key button</string>
+    <string name="private_key_notice">For security reasons, please try to do this in case of network disconnection.</string>
+    <string name="wrong_pwd">Wrong password</string>
+    <string name="long_click_copy_content">Long press to copy text</string>
+
+    <string name="export_key_title">Export Keystore</string>
+    <string name="export_key_share">System sharing</string>
+    <string name="share_txt">Share</string>
+
+    <string name="shoukuan_code">Collection Code</string>
+    <string name="shoukuan_copy_url">Copy payment address</string>
+
+    <string name="trade_sign_title">Transfer</string>
+    <string name="trade_no_money">The current account has no balance and cannot be transferred.</string>
+    <string name="trade_wrong_data">Trading exception</string>
+    <string name="trade_success">Transfer success</string>
+    <string name="trade_input_wallet_address">Please enter the wallet address</string>
+    <string name="trade_input_wallet_num">Please enter the transfer amount</string>
+    <string name="trade_to_wallet_address">Payee wallet address</string>
+    <string name="trade_to_wallet_address_two">Please enter the address</string>
+    <string name="trade_money_num">Transfer amount</string>
+    <string name="trade_money_num_two">Please enter the transfer amount</string>
+    <string name="trade_select_corn">Select currency</string>
+    <string name="trade_next_step">Next</string>
+
+    <string name="bvw_shoukuan_ma">Bvw public link address</string>
+
+
+    <string name="set_title">Setting</string>
+    <string name="set_language">Language</string>
+    <string name="set_update_check">Check for updates</string>
+    <string name="set_language_chinese">中文</string>
+    <string name="set_language_english">English</string>
+    <string name="set_select_language">Choose language</string>
+    <string name="login_out">Exit</string>
+
+    <string name="lead_in_title">Import Account</string>
+    <string name="lead_in_zjc_notice">Please enter the mnemonic of the account (12 English words), separated by blanks.</string>
+    <string name="lead_in_account_name">Wallet name</string>
+    <string name="lead_in_input_name">Please enter an wallet name</string>
+    <string name="lead_in_set_pwd">Set password</string>
+    <string name="lead_in_sure_pwd">Please enter your password</string>
+    <string name="lead_in_begin_import">Start importing</string>
+    <string name="lead_in_check_private_key">Please check your private key.</string>
+    <string name="lead_in_copy_private_key">Paste the private key (Private Key) into the input box</string>
+    <string name="lead_in_two_pwd">Confirm password</string>
+
+    <string name="zjc_title">Your wallet mnemonic</string>
+    <string name="zjc_notice_sign">It is highly recommended that you set down the mnemonics on paper and keep them in a safe place that only you know. Anyone who gets a mnemonic can consume your digital assets.</string>
+    <string name="zjc_remeber_sign">Mnemonics are used to recover your wallet, losing them you will lose your wallet forever</string>
+    <string name="zjc_long_copy">Long press down the mnemonic, which can be copied to the clipboard</string>
+    <string name="zjc_beifen_title">Backup mnemonic</string>
+    <string name="zjc_check_fail">Verification failed, please check backup</string>
+    <string name="zjc_check_successs">Verify success</string>
+    <string name="zjc_sure_view">Confirm your mnemonic</string>
+    <string name="zjc_click_in_order">Please click on the mnemonic in order to ensure that your backup mnemonics are correct.</string>
+    <string name="sure_sure">Confirm</string>
+    <string name="wallet_create_title">Create a Wallet</string>
+    <string name="wallet_create_xieyi">Please read and agree to the privacy agreement.</string>
+    <string name="wallet_create_sign_name">Please fill in the wallet name.</string>
+    <string name="wallet_create_sign_pwd">Please fill in the wallet password</string>
+    <string name="wallet_create_sign_repeat_pwd">Please fill in the wallet duplicate password.</string>
+    <string name="wallet_create_sign_pwd_not">Password is not the same as duplicate password.</string>
+    <string name="wallet_pwd_notice">Password is used to protect private keys and transaction authorization, strength is very important.</string>
+    <string name="wallet_remember_notice">Do not store passwords, you can not get them back, so keep in mind.</string>
+    <string name="wallet_name">Wallet name</string>
+    <string name="wallet_pwd">Password</string>
+    <string name="wallet_pwd_six">Six or more passwords</string>
+    <string name="wallet_repeat_pwd_six">Repeat six or more passwords</string>
+    <string name="wallet_repeat_pwd">Repeat password</string>
+    <string name="wallet_xieyi">I have read carefully and agreed</string>
+    <string name="wallet_xieyi_content">《Service and Privacy Terms》</string>
+    <string name="wallet_xieyi_content_two">Service and Privacy Terms</string>
+    <string name="load_data">Loading</string>
+    <string name="loading_wallet_tip">Import into wallet…</string>
+    <string name="loading_wallet_sign_two">Import Wallet</string>
+    <string name="universal_text_typeface">PingFangRegular</string>
+
+    <string name="wallet_first_view">Humans try to make human science and technology self-replicate and breed in a sustainable way for the first time.</string>
+
+
+    <string name="create_aacoutn_view">Create Account</string>
+    <string name="about_us_title">About us</string>
+    <string name="about_us_content">   BVW is a public-chain project that introduces POS single-core HW consensus algorithm in the public-chain segmentation area, BID atomic node participates in accounting, open source, and mixed-chain point-to-point distributed network nodes. In addition to providing a high-TPS settlement, programmable smart contract platform technology solution to assist DAPP landing, BVW also created a global fission ecological network using fragmentation nodes. BVW is the first time humans have imitated the Creator to create a sustainable intelligent contract-machine DNA to build a living body that is shared by all human beings. BVW is also the first time humans have tried to make human technology self-replicate and propagate in a sustainable way.</string>
+    <string name="help_title">Using help</string>
+    <string name="del_wallet_fail">Filed to delete</string>
+    <string name="no_data">No transfer record</string>
+
+    <string name="msg_receive_sign">Receiver:</string>
+
+    <string name="dialog_success_sign">Submitted to the miner, confirmed!！</string>
+    <string name="dialog_fail_sign">Transfer failed</string>
+    <string name="update_compare_sign">Currently the latest version</string>
+    <string name="trade_left_money_val">Available balance</string>
+    <string name="add_contact_complete">Done</string>
+    <string name="add_contact_remark_sign">Remarks can not exceed ten characters.</string>
+    <string name="add_contack_people_sign">Remarks</string>
+    <string name="add_contack_wrong_wallet_address">Wallet address is illegal.</string>
+    <string name="add_contack_address_success">Congratulations! New completion.</string>
+    <string name="add_contack_address_fail">New failed</string>
+
+    <string name="add_contack_create_new_people_title">New contact</string>
+    <string name="add_contack__people_right">New</string>
+    <string name="add_contack__people_title">Contact</string>
+
+    <string name="add_contack_people_item_name">Undefined</string>
+
+
+    <string name="msg_center_list_title">Message Center</string>
+    <string name="trade_beizhu_notice">Remarks are too long, no more than 30 characters</string>
+    <string name="language">Language</string>
+    <string name="follow_the_system">Follow system</string>
+    <string name="create_wallet_sign_content">Generate Wallet</string>
+    <string name="manage">Manage</string>
+
+    <string name="back_up_wallet_private_key">Backup private key</string>
+    <string name="back_up_wallet_walletsign">Backup wallet</string>
+    <string name="view_backup_details_tutorial">Check backup detailed tutorial</string>
+    <string name="create_wallet_last_step">The last step: back up your wallet private key immediately.</string>
+    <string name="create_wallet_last_step_two">The last step: back up your wallet immediately.</string>
+
+    <string name="create_wallet_last_notice_sign">Copy and paste the contents of the wallet private key file directly into the input box. Or scan the entry by generating a QR code of the private key content.</string>
+
+    <string name="public_key">Public key</string>
+    <string name="direct_import_login">Direct import login</string>
+    <string name="copy">Copy</string>
+    <string name="back_up_private_sign_view">Please backup your private key.</string>
+    <string name="back_up_private_txt">Please copy it, or exist somewhere, do not save it on the web.</string>
+
+    <string name="send_trade_state_ing">Confirmation</string>
+    <!--    <string name="send_trade_state_succ">transfer success</string>-->
+    <string name="send_trade_state_succ">Successful</string>
+    <string name="send_trade_state_fail">Transfer failed</string>
+
+    <!--    <string name="send_trade_state_notice">transfer notice:</string>-->
+    <string name="send_trade_state_notice">Transfer:</string>
+    <string name="update_pwd_new_content">Please input new password</string>
+    <string name="update_nickname_new_content">Please enter a new wallet name</string>
+    <string name="update_wallet_name">Update wallet name</string>
+
+    <string name="dialog_wallet_one">Switch to current wallet or not?</string>
+    <string name="dialog_wallet_two">Cancel</string>
+    <string name="dialog_wallet_three">Confirm</string>
+    <string name="wallet_delete_sign">Delete successful</string>
+    <string name="dialog_wallet_four">Please be careful, this operation cannot be undone</string>
+    <string name="trade_money_to_much">The current transfer amount is greater than the balance</string>
+    <string name="trade_money_to_low">Transfer limit cannot be zero</string>
+    <string name="wallet_manage_sign">Current account</string>
+
+    <string name="wallet_trade_after_notice">Transfer amount can be up to six decimal places</string>
+
+    <string name="wrong_private_key">Private key error</string>
+    <string name="wrong_zjc_wrong">Mnemonic errors</string>
+    <string name="xmain_table_find">FIND</string>
+
+
+    <string name="find_fenlie">Split</string>
+    <string name="find_fenlie_intro">BTC ETH participates in Split</string>
+    <string name="find_jiaoyi">Exchange</string>
+    <string name="find_jiaoyi_info">Dex</string>
+    <string name="find_chat">Chat,text and voice</string>
+    <string name="find_chat_info">D anonymous dating</string>
+
+    <string name="find_guangao">AD</string>
+    <string name="find_guangao_info">Advertising spread</string>
+
+    <string name="find_fatie">Anonymous Article</string>
+    <string name="find_fatie_info">Post and vent</string>
+
+    <string name="find_shop">Mall</string>
+    <string name="find_shop_info">Online shopping mall</string>
+    <string name="find_no_open">Not yet open, so stay tuned</string>
+
+
+    <string name="bid_info_one">Participation in division</string>
+    <string name="bid_info_two">Currency holding reward</string>
+    <string name="bid_info_three">Temporal summation</string>
+    <string name="bid_info_four">Sign in reward</string>
+    <string name="bid_info_five">Level reward</string>
+    <string name="bid_info_six">Invitation bonus</string>
+    <string name="bid_info_seven">Array rewards</string>
+    <string name="bid_info_eight">Advertising revenue</string>
+    <string name="bid_info_nine">BVW chat</string>
+    <string name="bid_info_ten">Social identity</string>
+    <string name="bid_info_even">Single-core HW mining</string>
+    <string name="bid_info_twleve">Storage mining</string>
+
+
+    <string name="bid_info_intro_content">BVW is a public chain project that introduces a POS single-core HW consensus algorithm in the public chain shard area. BID atomic nodes participate in bookkeeping, open source, and mixed chain point-to-point distributed network nodes. BVW is the first time that human beings have imitated the creator to create a sustainable smart contract machine DNA, and to build a life body that all humans trust.
+\nBVW is also the first time that human beings have attempted to allow human technology to reproduce itself in a sustainable way.</string>
+
+    <string name="bid_info_sign">BID identity</string>
+    <string name="bid_info_sign_intro">Become a BID and enjoy various benefits</string>
+    <string name="bid_info_open_sign">Opening price</string>
+    <string name="bid_info_sub_content">Activate BID identity immediately</string>
+    <string name="bid_info_sub_content_two">You are already BID</string>
+    <string name="bid_info_sub_content_three">On-chain confirmation</string>
+    <string name="bid_info_left_money">Balance</string>
+
+    <string name="bid_info_is_what">What is BVW ?</string>
+    <string name="bid_info_quanyi">BID equity</string>
+    <string name="bid_info_title">Activate BID identity</string>
+
+    <string name="bid_buy_price">Price</string>
+
+    <string name="bid_buy_open_guide">Launch Guide</string>
+    <string name="bid_buy_intro">The BID can be created after paying 10 BVW through the recommender is ladder code or like matrix code.</string>
+
+    <string name="bid_buy_notice">Please enter ladder matrix code or like matrix code</string>
+
+    <string name="bid_open_sucdess">Congratulations! Successfully opened BID identity</string>
+    <string name="bid_open_fail">Payment failed</string>
+    <string name="bid_yue_zero">No balance yet</string>
+    <string name="bid_yue_not_encough">Insufficient balance to pay temporarily</string>
+
+    <string name="find_bid_pop_one">Stairway array</string>
+    <string name="find_bid_pop_two">Illusion array</string>
+    <string name="find_bid_pop_three">Line Up</string>
+    <string name="find_bid_pop_four">Array</string>
+
+    <string name="find_bid_zhen_ma">Ladder Array Code</string>
+    <string name="find_bid_xiang_ma">Array Code</string>
+
+    <string name="save_pic_local">Save to local</string>
+    <string name="find_xiang_notice">You must invite a BID user with a ladder matrix code to activate a matrix code</string>
+    <string name="find_invest_notice">Unfortunately! You have no invitation code</string>
+
+    <string name="lead_in_zjc_sign">Mnemonic</string>
+    <string name="lead_in_sy_sign">Private key</string>
+
+    <string name="refresh_one_view">Pull down to refresh</string>
+    <string name="refresh_two_view">Refreshing</string>
+    <string name="refresh_three_view">Release refresh</string>
+
+    <string name="refresh_up_one_view">Pull-up loading</string>
+    <string name="refresh_up_two_view">Loading...</string>
+    <string name="refresh_up_three_view">Release to load more</string>
+
+
+    <string name="bid_leader_sign_val">Hello, you are a subordinate of the big leader!</string>
+    <string name="bid_leader_sign_two_val">Big Leader BID Price</string>
+    <string name="bid_leader_sign_three_val">Pay </string>
+
+    <string name="right_open_bid">Activate BID now</string>
+    <string name="wallet_detail_name_two">My Wallet</string>
+
+    <string name="update_newset_notice">You are already up to date</string>
+    <string name="update_version_num">Update: latest version</string>
+
+    <string name="update_one_sign_content">New version detected, update?</string>
+    <string name="update_two_sign_content">Update will not lose your account, please feel free to use.</string>
+    <string name="update_three_sign_content">If you delete the app, please back up all account private keys before deleting Prevent loss of funds.</string>
+    <string name="update_four_sign_content">Update immediately</string>
+    <string name="update_five_sign_content">Later on</string>
+
+    <string name="fenlie_order_title">Order</string>
+    <string name="fenlie_order_guize_sign">Rule description</string>
+    <string name="fenlie_order_jishubiao_sign">Odd split table</string>
+    <string name="fenlie_order_input_money_sign">Input quota</string>
+
+    <string name="fenlie_order_input_min_btc_money_sign">Please enter split limit, minimum 0.005BTC</string>
+    <string name="fenlie_order_input_min_eth_money_sign">Please enter split limit, minimum 0.005ETH</string>
+    <string name="fenlie_order_split_sign">Splitting number:</string>
+    <string name="fenlie_order_left_money_sign">My balance:</string>
+    <string name="fenlie_order_canyu_fenlie_sign">Participation in Division</string>
+
+    <string name="fenlie_order_header_left_sign">BTC Split</string>
+    <string name="fenlie_order_header_right_sign">ETH Split</string>
+    <string name="fenlie_order_header_title_sign">Split</string>
+    <string name="fenlie_order_fenlie_bili_sign">Split ratio</string>
+
+    <string name="fenlie_order_fenlie_biao_sign">Odd distribution table</string>
+    <string name="bid_jiangli_title_sign">BID Awards List</string>
+    <string name="fenlie_liji_kaishi">Take part in the split now</string>
+
+    <string name="fenlie_huazhang_submit">Transfer</string>
+
+
+    <string name="fenlie_header_one">Phase 3 development</string>
+    <string name="fenlie_header_one_one">Phase</string>
+    <string name="fenlie_header_one_one_one">development</string>
+
+
+    <string name="fenlie_header_two">Opening height:</string>
+    <string name="fenlie_header_three">Split ratio:</string>
+    <string name="fenlie_header_four">block</string>
+
+    <string name="fenlie_header_five">This development stage</string>
+    <string name="fenlie_header_six">Total surplus: </string>
+    <string name="fenlie_header_seven">Total amount of blocks in this stage</string>
+    <string name="fenlie_header_eight">Remaining quota in this stage</string>
+    <string name="fenlie_header_nine">Historical accumulation</string>
+    <string name="fenlie_header_ten">Historical accumulation</string>
+    <string name="fenlie_header_evelve">Destroyed: </string>
+    <string name="fenlie_header_twelev">Cumulative Money</string>
+
+    <string name="fenlie_middle_one">Total division BVW</string>
+    <string name="fenlie_middle_two">Split</string>
+    <string name="fenlie_middle_three">Success</string>
+    <string name="fenlie_middle_four">Details of division</string>
+    <string name="fenlie_middle_five">My balance: </string>
+
+    <string name="zhenlie_title_val">Array</string>
+    <string name="zhenlie_title_left">My yesterday is calculation</string>
+    <string name="zhenlie_title_right">Yesterday is array bonus</string>
+
+
+    <string name="order_item_one">Split type:</string>
+    <string name="order_item_two">Split ratio</string>
+    <string name="order_item_three">Get BVW</string>
+    <string name="order_item_four">Total funds</string>
+
+    <string name="zhenlie_left_val">Echelons</string>
+    <string name="zhenlie_right_val">Image array</string>
+
+
+    <string name="fenlie_fail_one">Co acquisition</string>
+    <string name="fenlie_fail_two">Return to ore pond</string>
+    <string name="fenlie_fail_three">Destruction</string>
+    <string name="fenlie_fail_four">Transaction number</string>
+    <string name="fenlie_fail_five">Block</string>
+    <string name="fenlie_fail_six">Transaction time</string>
+    <string name="fenlie_fail_seven">Copy URL</string>
+
+    <string name="trade_dialog_select_one">Main chain assets</string>
+    <string name="trade_dialog_select_two">BRC20 assets</string>
+
+    <string name="qr_erweima_code_one">Please recharge to your </string>
+    <string name="qr_erweima_code_one_one"> address (please fill in carefully to prevent asset loss)</string>
+
+
+    <string name="qr_erweima_code_two">Please recharge your </string>
+    <string name="qr_erweima_code_two_two"> BRC20 address (please fill in carefully to prevent asset loss)</string>
+
+
+    <string name="qr_erweima_title_three">Collection code (BRC20)</string>
+
+    <string name="gonglian_sign">Public chain</string>
+
+
+    <string name="qr_erweima_title_one">Usdt collection code (BVW)</string>
+    <string name="qr_erweima_title_two">Usdt collection code (Ethereum)</string>
+
+
+    <string name="trade_account_one_title">BTC transfer (brc20)</string>
+    <string name="trade_account_two_title">BTC transfer (bitcoin)</string>
+
+    <string name="trade_account_one_header">Please fill in the address of BVW public chain and brc20 </string>
+    <string name="trade_account_one_one_header"> of the other party (please fill in carefully to prevent asset loss)</string>
+
+
+    <string name="trade_account_two_header">Please fill in the </string>
+    <string name="trade_account_two_two_header"> public chain address of the other party (please fill in carefully to prevent asset loss)</string>
+
+
+    <string name="the_market">Quotation</string>
+    <string name="the_exchange">Trade</string>
+    <string name="the_amount">Assets</string>
+
+    <string name="stop_txt_one">Bvw originated from the global developer community. We are committed to using the most advanced blockchain technology to bring new thinking and practical inspiration to the application of blockchain. Any operation and technology of bvw represents a kind of social experiment of technology. Please participate carefully. As the attitude and policies of the world is major countries on digital currency transactions and blockchain projects are not clear, bvw will strictly abide by the relevant laws of the world on digital assets and make the following statement. </string>
+    <string name="stop_txt_two">Bvw will not provide use to the following countries and regions: the United States, mainland China, Hong Kong, North Korea, Cuba, Iran, Bangladesh, Malaysia, Syria, Bolivia, etc.</string>
+    <string name="stop_txt_three"> Bvw is a completely decentralized application, unable to effectively conduct KYC certification audit. During the operation period, users in the above countries should consciously delete and exit.</string>
+
+
+    <string name="fenlie_btc_midle_one">For example: a user can obtain transaction hash after participating in splitting: </string>
+    <string name="fenlie_btc_midle_two">According to the last digit of the hash of each split transaction is even or odd, The Intelligent Contract Protocol determines it is entering the left forks or right forks. Whether it is entering the left or right fork, 90% of BVW can be seted free, The other 22% If the rollback succeeds, it can earn the total 22% reward. If the rollback fails, the Intelligent Contract Protocol enters the rollback table.</string>
+
+
+    <string name="first_totoal_money">My total assets ($)</string>
+    <string name="first_suanli_sign">Current calculation force</string>
+    <string name="first_title_mark">Planet</string>
+    <string name="first_qiandao_mark">Sign in</string>
+
+    <string name="qiandao_one_sign">Check-in task</string>
+    <string name="qiandao_two_sign">My sign in yesterday:</string>
+    <string name="qiandao_three_sign">Sign in</string>
+
+
+    <string name="suanli_wakuang_header_one">Current calculation force:</string>
+    <string name="suanli_wakuang_header_two">Calculation force proportion:</string>
+    <string name="suanli_wakuang_header_three">Historical power:</string>
+    <string name="suanli_wakuang_header_four">Total output:</string>
+
+    <string name="suanli_wakuang_mid_one">Calculation list</string>
+    <string name="suanli_wakuang_mid_two">More</string>
+
+    <string name="suanli_wakuang_bom_one">Force distribution</string>
+    <string name="suanli_wakuang_bom_two">Monetary strength</string>
+    <string name="suanli_wakuang_bom_three">Holding time bonus</string>
+    <string name="suanli_wakuang_bom_four">Check-in calculation</string>
+    <string name="suanli_wakuang_bom_five">Differential calculation</string>
+    <string name="suanli_wakuang_bom_six">Inviting calculation</string>
+    <string name="suanli_wakuang_bom_seven">Array calculation</string>
+
+    <string name="suanli_wakuang_bb_one">Total strength:</string>
+    <string name="suanli_wakuang_bb_two">Total daily output:</string>
+
+    <string name="suanli_wakuang_title">Computerized mining</string>
+    <string name="suanli_wakuang_list_title">Calculation force distribution list</string>
+
+    <string name="fenlie_num_sign">Please enter the number of splits</string>
+
+    <string name="fenlie_open_sucdess">Success</string>
+
+
+    <string name="jiangli_header_one">This development phase:</string>
+    <string name="jiangli_header_two">My ranking:</string>
+
+    <string name="jiangli_midl_one">Total capital of our class</string>
+    <string name="jiangli_midl_two">Total rewards in history</string>
+
+    <string name="jiangli_bom_one">Ranking</string>
+    <string name="jiangli_bom_two">Reward person</string>
+    <string name="jiangli_bom_three">Bonus</string>
+    <string name="jiangli_bom_four">Proportion</string>
+
+
+    <string name="list_item_order_sign">Time of receipt: 4 hours after splitting</string>
+    <string name="run_dialog_content_sign">Splitting result query</string>
+
+    <string name="fenlie_dialog_two_notice">Tips</string>
+    <string name="fenlie_dialog_two_content">No split result has been found yet. Please click the order in the upper right corner to manually refresh the order to obtain the split result</string>
+    <string name="fenlie_dialog_two_sure">I got it</string>
+
+
+    <string name="stop_notice_sign">Prohibition</string>
+    <string name="zhuanzhang_notice_two">If you hold less than 200 coins, you will not be able to get the calculation statistics of your subordinates, and your superiors will not be able to get the calculation statistics of you and your subordinates.</string>
+    <string name="scan_view_notice_sign">Scan</string>
+
+    <string name="viewfinderview_status_text1">Place QR code / barcode in viewfinder</string>
+    <string name="viewfinderview_status_text2">Can scan automatically</string>
+
+    <string name="button_ok">OK</string>
+    <string name="msg_camera_framework_bug">Sorry, the Android camera encountered a problem. You may need to restart the device.</string>
+
+    <string name="scan_quanxian_notice">You have rejected the permission application. You may not be able to open the camera to scan the code!</string>
+
+
+    <string name="please_iput_money_btc">Please input split amount, minimum 0.05btc!</string>
+    <string name="please_iput_money_eth">Please input split amount, minimum 3eth!</string>
+
+
+
+    <string name="fenlie_order_split_sign_two">4 hours after split!</string>
+
+
+    <string name="k_high_line">High</string>
+    <string name="k_low_line">Low</string>
+    <string name="k_day_line">24h</string>
+
+    <string name="k_time_one">Time sharing</string>
+    <string name="k_time_two">15Minute</string>
+    <string name="k_time_three">1Hour</string>
+    <string name="k_time_four">4Hour</string>
+    <string name="k_time_five">Daily line</string>
+    <string name="k_time_six">More</string>
+
+    <string name="k_buy_sign">Buy</string>
+    <string name="k_scall_sign">Sell</string>
+
+    <string name="k_shendu_sign">Depth</string>
+    <string name="k_chengjiao_sign">Deal</string>
+
+    <string name="shendu_maipan_sign">Bid</string>
+    <string name="shendu_shuliang_sign">Number</string>
+    <string name="shendu_jiage_sign">Price</string>
+    <string name="shendu_maichu_sign">Selling</string>
+
+    <string name="trade_market_name">Name</string>
+    <string name="trade_market_price">Price</string>
+    <string name="trade_market_zf">Gain</string>
+    <string name="trade_market_zx">Optional</string>
+    <string name="trade_market_zfb">Increase list</string>
+
+    <string name="amount_money_use">Available balance</string>
+    <string name="amount_money_dongjie">Freezing amount</string>
+    <string name="amount_money_usdt">Conversion USDT</string>
+
+    <string name="trade_trade_num">Number</string>
+    <string name="trade_trade_price">Price</string>
+    <string name="trade_trade_num_cvc">Number</string>
+    <string name="trade_trade_canuse_num">Balance:</string>
+    <string name="trade_trade_totalnum">Total</string>
+    <string name="trade_trade_totalfee">Cost</string>
+    <string name="trade_trade_buy">Buy</string>
+    <string name="trade_trade_sell" >Sell</string>
+    <string name="trade_trade_weituo">Current delegation</string>
+    <string name="trade_trade_more">All</string>
+
+    <string name="trade_trade_item_price">Price</string>
+    <string name="trade_trade_item_num">Number</string>
+    <string name="trade_trade_item_total">Total</string>
+    <string name="trade_trade_item_cancel">Cancel</string>
+
+
+    <string name="weituo_item_price">Price</string>
+    <string name="weituo_item_num">Number</string>
+    <string name="weituo_item_total_num">Total</string>
+    <string name="weituo_item_finish">Complete</string>
+
+    <string name="hz_notice_sign">Only transfer the assets to the corresponding account can the transaction be carried out. There is no service charge for transfer between accounts. Each mineral fee is 0.001bvw</string>
+
+    <string name="hz_top_sign">Transfer</string>
+    <string name="hz_top_from">From</string>
+    <string name="hz_jiaoyi_suo_sign">Exchange assets</string>
+    <string name="hz_top_to">To</string>
+    <string name="hz_myqianbao_sign">My wallet</string>
+    <string name="hz_money_num_sign">Quantity transferred</string>
+    <string name="hz_input_num_sign">Please enter transfer quantity</string>
+    <string name="hz_input_all_sign">All</string>
+    <string name="hz_jiaoyisuo_left_money">Wallet Available:</string>
+    <string name="hz_jiaoyisuo_left_money_two">My wallet available:</string>
+
+    <string name="zz_select_dialog_btc_one">BTC public chain assets</string>
+    <string name="zz_select_dialog_eth_one">Ethereum public chain assets</string>
+    <string name="zz_select_dialog_usdt_one">Ethereum public chain assets</string>
+    <string name="zz_select_dialog_bvw_two">BVW public chain assets</string>
+
+    <string name="bid_jiangli_height">Block height:</string>
+    <string name="bid_jiangli_no_data_sign">No leaderboard information is available at this stage</string>
+    <string name="trade_no_open_sign">The transaction has not been opened yet, please wait!</string>
+
+
+    <string name="bid_jiangli_no_data_top_sign">There is no top list information at this stage.</string>
+    <string name="bid_jiangli_no_data_lucky_sign">No lucky list information is available at this stage.</string>
+
+    <string name="sign_success_notice">You have signed in today!</string>
+
+    <string name="sign_success_to_notice">You have signed in successfully, please pay attention to the benefits of tomorrow is sign in!</string>
+
+    <string name="fenlie_header_total_money">Total quota in this stage:</string>
+    <string name="history_weituo_title">Historical delegate</string>
+
+    <string name="trade_no_order_sign">No order record yet</string>
+    <string name="trade_num_trade_sign">Please enter the number of transactions</string>
+
+    <string name="cancel_order_success_sign">Current order cancelled successfully</string>
+
+    <string name="bibi_pop_left_viwe">Exchange</string>
+    <string name="notice_add_money_type">The fee for absenteeism is too low. Please recharge the bvw fee for absenteeism</string>
+
+</resources>
