@@ -1379,6 +1379,13 @@ public class TradingFragment extends Fragment {
         String msg = "" + System.currentTimeMillis();
         String signVal = BitcoinjKit.signMessageBy58(msg, privateKey);
 
+        try {
+            showLoading();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
 
         OkGo.<String>get(ConfigNetWork.JAVA_API_URL + UrlPath.CANCEL_WEITUO_URL + "/" + itemsBean.getId())
                 .tag(getActivity())
@@ -1415,6 +1422,12 @@ public class TradingFragment extends Fragment {
                     @Override
                     public void onFinish() {
                         super.onFinish();
+                        try {
+                            hideLoading();
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+
                     }
                 });
 
