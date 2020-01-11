@@ -65,7 +65,7 @@ public class KlineActivity extends BaseActivity implements View.OnClickListener 
     private void initViewPager() {
         ViewPager viewPager = findViewById(R.id.viewPager);
         //搜索广告
-        MyFragmentPagerAdapter adapter = new MyFragmentPagerAdapter(getSupportFragmentManager(), this);
+        MyFragmentPagerAdapter adapter = new MyFragmentPagerAdapter(getSupportFragmentManager(), this,"");
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(2);
         //TabLayout

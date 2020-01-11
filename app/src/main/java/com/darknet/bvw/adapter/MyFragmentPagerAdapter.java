@@ -16,19 +16,22 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
 
     public int COUNT;
     private Context context;
+    private String markIdVal;
 
-    public MyFragmentPagerAdapter(FragmentManager fm, Context context) {
+    public MyFragmentPagerAdapter(FragmentManager fm, Context context,String markId) {
         super(fm);
         this.context = context;
         titles = new String[]{context.getResources().getString(R.string.k_shendu_sign), context.getResources().getString(R.string.k_chengjiao_sign)};//,"简介"
         COUNT = titles.length;
+        this.markIdVal = markId;
     }
 
     @Override
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return DepthFragment.newInstance();
+                DepthFragment depthFragment =DepthFragment.newInstance(markIdVal);
+                return depthFragment;
             case 1:
                 return DealFragment.newInstance();
             case 2:

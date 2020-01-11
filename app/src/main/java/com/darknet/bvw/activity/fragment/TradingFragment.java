@@ -24,7 +24,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.darknet.bvw.R;
-import com.darknet.bvw.activity.KlineActivity;
+import com.darknet.bvw.activity.KlineTwoActivity;
 import com.darknet.bvw.activity.WeiTuoListActivity;
 import com.darknet.bvw.adapter.CurrentOrderAdapter;
 import com.darknet.bvw.adapter.InAdapter;
@@ -150,6 +150,8 @@ public class TradingFragment extends Fragment {
     private int isCollection;
 
     private String usdRateVal;
+
+    private ImageView kLineImgView;
 
 
     @SuppressLint("HandlerLeak")
@@ -555,6 +557,19 @@ public class TradingFragment extends Fragment {
 
         menuFragmentLayout = view.findViewById(R.id.fragment_exchange_menu_layout);
 
+        kLineImgView = view.findViewById(R.id.fragment_exchange_menu_iv);
+
+
+        kLineImgView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent kLineIntent = new Intent(getActivity(),KlineActivity.class);
+
+                Intent kLineIntent = new Intent(getActivity(), KlineTwoActivity.class);
+                kLineIntent.putExtra("markid",marketId);
+                startActivity(kLineIntent);
+            }
+        });
 
         view.findViewById(R.id.fragment_exchange_subtraction_iv).setOnClickListener(v -> {
             //todo 减法

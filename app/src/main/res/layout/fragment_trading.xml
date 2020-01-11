@@ -82,7 +82,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:padding="10dp"
-                android:visibility="gone"
                 android:src="@mipmap/img_exchange_bill" />
         </LinearLayout>
 

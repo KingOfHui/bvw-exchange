@@ -109,14 +109,20 @@ public class PopwindowsLeftFragment extends DialogFragment {
     public void onStart() {
         super.onStart();
 
-        Dialog dialog = getDialog();
-        if (dialog != null) {
-            DisplayMetrics dm = new DisplayMetrics();
-            getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
+        try {
+            Dialog dialog = getDialog();
+            if (dialog != null) {
+                DisplayMetrics dm = new DisplayMetrics();
+                getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
 
-            dialog.getWindow().setLayout(((dm.widthPixels / 3) * 2), ViewGroup.LayoutParams.MATCH_PARENT);
+                dialog.getWindow().setLayout(((dm.widthPixels / 3) * 2), ViewGroup.LayoutParams.MATCH_PARENT);
+            }
+            getDialog().getWindow().setBackgroundDrawable(null);
+        }catch (Exception e){
+            e.printStackTrace();
         }
-        getDialog().getWindow().setBackgroundDrawable(null);
+
+
 
     }
 
@@ -163,32 +169,38 @@ public class PopwindowsLeftFragment extends DialogFragment {
         mAdapter.notifyDataSetChanged();
 
 
-        mCoinsAdapter = new TokenCoinsAdapter(getActivity(), mStringList);
-        mHorizontalListView.setAdapter(mCoinsAdapter);
+        try {
+            mCoinsAdapter = new TokenCoinsAdapter(getActivity(), mStringList);
+            mHorizontalListView.setAdapter(mCoinsAdapter);
 
 
-        mHorizontalListView.setOnItemClickListener((AdapterView<?> parent, View v, int position, long id) -> {
-            choseCoin = mStringList.get(position).getCoins();
-            for (int i = 0; i < mStringList.size(); i++) {
-                if (i == position) {
-                    mStringList.get(i).setColor(Color.BLACK);
-                } else {
-                    mStringList.get(i).setColor(Color.GRAY);
+            mHorizontalListView.setOnItemClickListener((AdapterView<?> parent, View v, int position, long id) -> {
+                choseCoin = mStringList.get(position).getCoins();
+                for (int i = 0; i < mStringList.size(); i++) {
+                    if (i == position) {
+                        mStringList.get(i).setColor(Color.BLACK);
+                    } else {
+                        mStringList.get(i).setColor(Color.GRAY);
+                    }
                 }
-            }
-            mCoinsAdapter.notifyDataSetChanged();
-            getCoinsList();
-        });
+                mCoinsAdapter.notifyDataSetChanged();
+                getCoinsList();
+            });
 
-        mListView.setOnItemClickListener((AdapterView<?> parent, View v, int position, long id) -> {
+            mListView.setOnItemClickListener((AdapterView<?> parent, View v, int position, long id) -> {
 
-            try {
-                mCoinsListener.onChose(mList.get(position).getBase_token_symbol() + "-" + mList.get(position).getQuote_token_symbol(), mList.get(position).getThumb().getCloseStr(), mList.get(position).getThumb().getClose(), mList.get(position).isIs_favor_market(), mList.get(position).getThumb().getUsdRate());
+                try {
+                    mCoinsListener.onChose(mList.get(position).getBase_token_symbol() + "-" + mList.get(position).getQuote_token_symbol(), mList.get(position).getThumb().getCloseStr(), mList.get(position).getThumb().getClose(), mList.get(position).isIs_favor_market(), mList.get(position).getThumb().getUsdRate());
 
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
 
         getTokenList();
         return view;
@@ -210,20 +222,25 @@ public class PopwindowsLeftFragment extends DialogFragment {
                     @Override
                     public void onSuccess(Response<String> response) {
                         if (response.body() != null) {
-                            Gson gson = new Gson();
-                            TokenCoinResponse coinResponse = gson.fromJson(response.body(), TokenCoinResponse.class);
-                            mStringList.clear();
-                            if (coinResponse.getCode() == 0) {
-                                for (int i = 0; i < coinResponse.getData().size(); i++) {
-                                    if (i == 0) {
-                                        mStringList.add(new LeftBean(coinResponse.getData().get(i), Color.BLACK));
-                                    } else {
-                                        mStringList.add(new LeftBean(coinResponse.getData().get(i), Color.GRAY));
+
+                            try {
+                                Gson gson = new Gson();
+                                TokenCoinResponse coinResponse = gson.fromJson(response.body(), TokenCoinResponse.class);
+                                mStringList.clear();
+                                if (coinResponse.getCode() == 0) {
+                                    for (int i = 0; i < coinResponse.getData().size(); i++) {
+                                        if (i == 0) {
+                                            mStringList.add(new LeftBean(coinResponse.getData().get(i), Color.BLACK));
+                                        } else {
+                                            mStringList.add(new LeftBean(coinResponse.getData().get(i), Color.GRAY));
+                                        }
                                     }
+                                    mCoinsAdapter.notifyDataSetChanged();
+                                    choseCoin = coinResponse.getData().get(0);
+                                    getCoinsList();
                                 }
-                                mCoinsAdapter.notifyDataSetChanged();
-                                choseCoin = coinResponse.getData().get(0);
-                                getCoinsList();
+                            }catch (Exception e){
+                                e.printStackTrace();
                             }
                         }
                     }
@@ -251,19 +268,27 @@ public class PopwindowsLeftFragment extends DialogFragment {
                     @Override
                     public void onSuccess(Response<String> response) {
                         if (response.body() != null) {
-                            Gson gson = new Gson();
-                            CoinsModel model = gson.fromJson(response.body(), CoinsModel.class);
-                            mList.clear();
-                            mAdapter.setList(mList);
-                            mAdapter.notifyDataSetChanged();
-                            Log.e("TAG", "getCoinsList: " + choseCoin);
-                            for (CoinsModel.DataBean datum : model.getData()) {
-                                if (datum.getQuote_token_symbol().equals(choseCoin)) {
-                                    mList.add(datum);
+
+                            try {
+                                Gson gson = new Gson();
+                                CoinsModel model = gson.fromJson(response.body(), CoinsModel.class);
+                                mList.clear();
+                                mAdapter.setList(mList);
+                                mAdapter.notifyDataSetChanged();
+                                Log.e("TAG", "getCoinsList: " + choseCoin);
+                                for (CoinsModel.DataBean datum : model.getData()) {
+                                    if (datum.getQuote_token_symbol().equals(choseCoin)) {
+                                        mList.add(datum);
+                                    }
                                 }
+                                mAdapter.setList(mList);
+                                mAdapter.notifyDataSetChanged();
+                            }catch (Exception e){
+                                e.printStackTrace();
                             }
-                            mAdapter.setList(mList);
-                            mAdapter.notifyDataSetChanged();
+
+
+
                         }
 //                        hideLoading();
                     }
@@ -274,22 +299,29 @@ public class PopwindowsLeftFragment extends DialogFragment {
      * 点击非输入框区域时，自动收起键盘
      */
     private void initSoftInputListener() {
-        getDialog().getWindow().getDecorView()
-                .setOnTouchListener(new View.OnTouchListener() {
-                    @Override
-                    public boolean onTouch(View view, MotionEvent event) {
-                        InputMethodManager manager = (InputMethodManager) getActivity()
-                                .getSystemService(Context.INPUT_METHOD_SERVICE);
-                        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                            if (getDialog().getCurrentFocus() != null
-                                    && getDialog().getCurrentFocus().getWindowToken() != null) {
-                                manager.hideSoftInputFromWindow(
-                                        getDialog().getCurrentFocus().getWindowToken(),
-                                        InputMethodManager.HIDE_NOT_ALWAYS);
+
+        try {
+            getDialog().getWindow().getDecorView()
+                    .setOnTouchListener(new View.OnTouchListener() {
+                        @Override
+                        public boolean onTouch(View view, MotionEvent event) {
+                            InputMethodManager manager = (InputMethodManager) getActivity()
+                                    .getSystemService(Context.INPUT_METHOD_SERVICE);
+                            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                                if (getDialog().getCurrentFocus() != null
+                                        && getDialog().getCurrentFocus().getWindowToken() != null) {
+                                    manager.hideSoftInputFromWindow(
+                                            getDialog().getCurrentFocus().getWindowToken(),
+                                            InputMethodManager.HIDE_NOT_ALWAYS);
+                                }
                             }
+                            return false;
                         }
-                        return false;
-                    }
-                });
+                    });
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
     }
 }

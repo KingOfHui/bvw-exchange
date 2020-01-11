@@ -238,6 +238,10 @@
             android:screenOrientation="portrait" />
 
         <activity
+            android:name=".activity.KlineTwoActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name=".activity.AccountManageActivity"
             android:screenOrientation="portrait" />
 
