@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:max="100"
         android:progress="0"
-        android:progressDrawable="@drawable/progress_vertical_style"
+        android:progressDrawable="@drawable/progress_vertical_style_red"
         />
 
     <RelativeLayout
