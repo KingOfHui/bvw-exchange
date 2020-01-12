@@ -180,7 +180,7 @@ public class ZhenLieActivity extends BaseActivity {
             String rightResult = numberFormat.format((float) rightCount / (float) totalCount * 100);
 
             if (leftCount == 0) {
-                progressBarOne.setProgress(Integer.parseInt("10"));
+                progressBarOne.setProgress(Integer.parseInt("30"));
             } else {
                 progressBarOne.setProgress(Integer.parseInt(leftResult));
             }
@@ -191,7 +191,7 @@ public class ZhenLieActivity extends BaseActivity {
 
 
             if (rightCount == 0) {
-                progressBarTwo.setProgress(Integer.parseInt("10"));
+                progressBarTwo.setProgress(Integer.parseInt("30"));
             } else {
                 progressBarTwo.setProgress(Integer.parseInt(rightResult));
             }
