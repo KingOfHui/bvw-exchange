@@ -1,6 +1,7 @@
 package com.darknet.bvw.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -22,9 +23,15 @@ import java.util.List;
  **/
 public class OutDepthAdapter extends BAdapter<DepthResponse.DataBean.BidsBean> {
 
+    private Context context;
+
+    private BigDecimal bigFenMuVal;
+
+//    private BigDecimal tempCountVal=new BigDecimal(0);
 
     public OutDepthAdapter(Context context, List<DepthResponse.DataBean.BidsBean> list) {
         super(context, list);
+        this.context = context;
     }
 
     @Override
@@ -32,7 +39,8 @@ public class OutDepthAdapter extends BAdapter<DepthResponse.DataBean.BidsBean> {
         return R.layout.item_change_depth_out;
     }
 
-    public void setMoreData(List<DepthResponse.DataBean.BidsBean> list) {
+    public void setMoreData(List<DepthResponse.DataBean.BidsBean> list, BigDecimal bigVal) {
+        this.bigFenMuVal = bigVal;
         getList().clear();
         getList().addAll(list);
         notifyDataSetChanged();
@@ -44,27 +52,42 @@ public class OutDepthAdapter extends BAdapter<DepthResponse.DataBean.BidsBean> {
         TextView mPrice = view.findViewById(R.id.item_change_out_price);
         TextView mAmount = view.findViewById(R.id.item_change_out_amount);
         TextView mPostion = view.findViewById(R.id.item_change_position_price);
-        mPostion.setText((position+1) + "");
+
+        ProgressBar mPro = view.findViewById(R.id.progress02);
+
+        mPostion.setText((position + 1) + "");
 //        mPrice.setText(bean.getAmount());
 
 
-        if(bean.getAmount().contains("-")){
+        if (bean.getAmount().contains("-")) {
             mPrice.setText(bean.getAmount());
-        }else {
+        } else {
             mPrice.setText(new BigDecimal(bean.getAmount()).stripTrailingZeros().setScale(5, BigDecimal.ROUND_DOWN).toPlainString());
         }
 
 
-        if(bean.getPrice().contains("-")){
+        if (bean.getPrice().contains("-")) {
             mAmount.setText(bean.getPrice());
-        }else {
+        } else {
             mAmount.setText(new BigDecimal(bean.getPrice()).stripTrailingZeros().setScale(5, BigDecimal.ROUND_DOWN).toPlainString());
         }
 
+        String percentVal = ArithmeticUtils.divide(bean.getCurrentCount(),bigFenMuVal.toPlainString(),6);
+
+        String lastVal = ArithmeticUtils.multiply(percentVal,"100",0);
 
 
+        if (Integer.valueOf(lastVal) > 100) {
+            mPro.setProgress(100);
+        } else {
 
+            if(ArithmeticUtils.compare(lastVal,"1")){
 
+                mPro.setProgress(Integer.valueOf(lastVal));
+            }else {
+                mPro.setProgress(Integer.valueOf(1));
+            }
+        }
 
 //        String amount = ArithmeticUtils.divide(bean.getAmount(), "1000", 1);
 //        if (Double.valueOf(amount) > 1) {
@@ -73,7 +96,7 @@ public class OutDepthAdapter extends BAdapter<DepthResponse.DataBean.BidsBean> {
 //            mAmount.setText(ArithmeticUtils.divide(bean.getAmount(), "1", 1));
 //        }
 
-//        ProgressBar mPro = view.findViewById(R.id.progress02);
+//
 //        if (Integer.valueOf(bean.getPrecent()) > 100) {
 //            mPro.setProgress(100);
 //        } else {

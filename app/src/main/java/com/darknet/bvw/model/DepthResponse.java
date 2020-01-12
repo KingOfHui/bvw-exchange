@@ -99,6 +99,15 @@ public class DepthResponse {
             private String price;
             private String total;
             private String precent;
+            private String currentCount;
+
+            public String getCurrentCount() {
+                return currentCount;
+            }
+
+            public void setCurrentCount(String currentCount) {
+                this.currentCount = currentCount;
+            }
 
             public String getTotal() {
                 return total;
@@ -143,6 +152,15 @@ public class DepthResponse {
             private String price;
             private String total;
             private String precent;
+            private String currentCount;
+
+            public String getCurrentCount() {
+                return currentCount;
+            }
+
+            public void setCurrentCount(String currentCount) {
+                this.currentCount = currentCount;
+            }
 
             public String getTotal() {
                 return total;

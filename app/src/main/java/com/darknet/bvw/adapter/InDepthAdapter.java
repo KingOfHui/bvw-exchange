@@ -23,8 +23,13 @@ import java.util.List;
 public class InDepthAdapter extends BAdapter<DepthResponse.DataBean.AsksBean> {
 
 
+    private Context context;
+
+    private BigDecimal bigFenMuVal;
+
     public InDepthAdapter(Context context, List<DepthResponse.DataBean.AsksBean> list) {
         super(context, list);
+        this.context = context;
     }
 
     @Override
@@ -32,7 +37,8 @@ public class InDepthAdapter extends BAdapter<DepthResponse.DataBean.AsksBean> {
         return R.layout.item_change_depth_in;
     }
 
-    public void setData(List<DepthResponse.DataBean.AsksBean> list){
+    public void setData(List<DepthResponse.DataBean.AsksBean> list,BigDecimal bigVal){
+        this.bigFenMuVal = bigVal;
         getList().clear();
         getList().addAll(list);
         notifyDataSetChanged();
@@ -46,17 +52,6 @@ public class InDepthAdapter extends BAdapter<DepthResponse.DataBean.AsksBean> {
         TextView mPrice = view.findViewById(R.id.item_change_price);
         TextView mPosition = view.findViewById(R.id.item_change_position);
         mPosition.setText((position+1) + "");
-//        String amount = ArithmeticUtils.divide(bean.getAmount(), "1000", 2);
-//        if (Double.valueOf(amount) > 1) {
-//            mAmount.setText(amount + " k");
-//        } else {
-//            mAmount.setText(ArithmeticUtils.divide(bean.getAmount(), "1", 1));
-//        }
-
-//        mAmount.setText(bean.getAmount());
-
-//        mPrice.setText(bean.getPrice());
-
 
         if(bean.getAmount().contains("-")){
             mAmount.setText(bean.getAmount());
@@ -70,6 +65,22 @@ public class InDepthAdapter extends BAdapter<DepthResponse.DataBean.AsksBean> {
         }else {
             mPrice.setText(new BigDecimal(bean.getPrice()).stripTrailingZeros().setScale(5, BigDecimal.ROUND_DOWN).toPlainString());
         }
+
+        String percentVal = ArithmeticUtils.divide(bean.getCurrentCount(),bigFenMuVal.toPlainString(),6);
+        String lastVal = ArithmeticUtils.multiply(percentVal,"100",0);
+        if (Integer.valueOf(lastVal) > 100) {
+            mPro.setProgress(100);
+        } else {
+
+            if(ArithmeticUtils.compare(lastVal,"1")){
+
+                mPro.setProgress(Integer.valueOf(lastVal));
+            }else {
+                mPro.setProgress(Integer.valueOf(1));
+            }
+        }
+
+
 
 //        if (Integer.valueOf(bean.getPrecent()) > 100) {
 //            mPro.setProgress(100);

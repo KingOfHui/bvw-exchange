@@ -46,7 +46,6 @@ public class KlineTwoActivity extends BaseActivity implements View.OnClickListen
 //
 //    private TextView moreView;
 
-
     // 0 为分时，1为15分钟，2为1小时，3为4小时，4为日线
 //    private int type;
 

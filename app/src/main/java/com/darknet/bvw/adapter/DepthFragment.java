@@ -31,6 +31,7 @@ import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 
+import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -112,10 +113,9 @@ public class DepthFragment extends Fragment {
             biTypeView.setText(marketId.split("-")[0]);
             priceTypeView.setText(marketId.split("-")[1]);
             biTypeTwoView.setText(marketId.split("-")[0]);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
 
 
     }
@@ -220,39 +220,89 @@ public class DepthFragment extends Fragment {
                 });
     }
 
+
+    private String maiRuTotalVal = "0";
+    private String maiChuTotalVal = "0";
+
+    private String bigFenMu = "0";
+
+
     public void setDepData(DepthResponse.DataBean data) {
 
         List<DepthResponse.DataBean.AsksBean> listAsk = data.getAsks();
 
         List<DepthResponse.DataBean.BidsBean> listBid = data.getBids();
 
-        if(listAsk.size() > listBid.size()){
+//        if(data.getBids().size() > 50){
+//            listBid = data.getBids().subList(0,50);
+//        }
+//
+//        if(listAsk.size() > 50){
+//            listAsk = data.getAsks().subList(0,50);
+//        }
+
+
+        String tempCountVal = "0";
+
+        for (int i = 0; i < listBid.size(); i++) {
+            DepthResponse.DataBean.BidsBean tempBid = listBid.get(i);
+            maiRuTotalVal = ArithmeticUtils.plusTwo(tempBid.getAmount(), maiRuTotalVal);
+
+            tempCountVal = ArithmeticUtils.plus(tempBid.getAmount(), tempCountVal).toPlainString();
+            tempBid.setCurrentCount(tempCountVal);
+            Log.e("mairuTotal22", "tempCountVal=" + tempCountVal);
+        }
+
+
+        Log.e("mairuTotal22", "tempCountVal=" + maiRuTotalVal);
+
+        tempCountVal = "0";
+
+        for (int i = 0; i < listAsk.size(); i++) {
+            DepthResponse.DataBean.AsksBean asksBean = listAsk.get(i);
+            maiChuTotalVal = ArithmeticUtils.plusTwo(asksBean.getAmount(), maiChuTotalVal);
+
+            tempCountVal = ArithmeticUtils.plus(asksBean.getAmount(), tempCountVal).toPlainString();
+            asksBean.setCurrentCount(tempCountVal);
+        }
+
+        Log.e("mairuTotal", "maiChuTotalVal=" + maiChuTotalVal);
+
+        if (ArithmeticUtils.compare(maiRuTotalVal, maiChuTotalVal)) {
+            bigFenMu = maiRuTotalVal;
+        } else {
+            bigFenMu = maiChuTotalVal;
+        }
+
+        Log.e("mairuTotal", "bigFenMu=" + bigFenMu);
+
+
+        if (listAsk.size() > listBid.size()) {
             int countSize = listAsk.size() - listBid.size();
-            for (int i=0;i<countSize;i++){
-                DepthResponse.DataBean.BidsBean  bidsBean = new DepthResponse.DataBean.BidsBean();
+            for (int i = 0; i < countSize; i++) {
+                DepthResponse.DataBean.BidsBean bidsBean = new DepthResponse.DataBean.BidsBean();
                 bidsBean.setPrice("--");
                 bidsBean.setAmount("--");
+                bidsBean.setCurrentCount("0");
                 listBid.add(bidsBean);
             }
         }
 
-        if(listBid.size() > listAsk.size()){
+        if (listBid.size() > listAsk.size()) {
             int countSize = listBid.size() - listAsk.size();
-            for (int i=0;i<countSize;i++){
-                DepthResponse.DataBean.AsksBean  asksBean = new DepthResponse.DataBean.AsksBean();
+            for (int i = 0; i < countSize; i++) {
+                DepthResponse.DataBean.AsksBean asksBean = new DepthResponse.DataBean.AsksBean();
                 asksBean.setPrice("--");
                 asksBean.setAmount("--");
+                asksBean.setCurrentCount("0");
                 listAsk.add(asksBean);
             }
         }
 
 
+        mInAdapter.setData(listAsk, new BigDecimal(bigFenMu).stripTrailingZeros().setScale(0, BigDecimal.ROUND_DOWN));
 
-        mInAdapter.setData(listAsk);
-
-
-
-        mOutAdapter.setMoreData(listBid);
+        mOutAdapter.setMoreData(listBid, new BigDecimal(bigFenMu).stripTrailingZeros().setScale(0, BigDecimal.ROUND_DOWN));
     }
 
 
