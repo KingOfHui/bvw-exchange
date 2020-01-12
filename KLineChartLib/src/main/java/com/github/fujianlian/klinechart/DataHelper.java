@@ -270,7 +270,7 @@ public class DataHelper {
         calculateVolumeMA(dataList);
     }
 
-    private static void calculateVolumeMA(List<KLineEntity> entries) {
+    public static void calculateVolumeMA(List<KLineEntity> entries) {
         float volumeMa5 = 0;
         float volumeMa10 = 0;
 

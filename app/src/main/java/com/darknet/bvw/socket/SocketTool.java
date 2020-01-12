@@ -3,6 +3,7 @@ package com.darknet.bvw.socket;
 import android.util.Log;
 
 import com.darknet.bvw.model.KlineItemBean;
+import com.darknet.bvw.model.event.KLineEvent;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -30,14 +31,13 @@ public class SocketTool {
     public void init() {
         mStompClient = Stomp.over(Stomp.ConnectionProvider.OKHTTP, "wss://ws-test.bvw.im/websocket");
         resetSubscriptions();
-        connectStomp();
     }
 
     public void disconnectStomp() {
         mStompClient.disconnect();
     }
 
-    public void connectStomp() {
+    public void connectStomp(String coinSymbol) {
 
         mStompClient.withClientHeartbeat(1000).withServerHeartbeat(1000);
 
@@ -79,8 +79,32 @@ public class SocketTool {
                     Log.e(TAG, "Error on subscribe topic", throwable);
                 });
 
-        compositeDisposable.add(dispTopic);
 
+        //K线订阅
+        Disposable dispTopic1 = mStompClient.topic("/topic/market/kline/" + coinSymbol)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(topicMessage -> {
+                    //{"marketId":"BVW-USDT","openPrice":0.44,"highestPrice":0.44,"lowestPrice":0.44,"closePrice":0.44,"time":1578502620000,"period":"1min","count":0,"volume":0,"turnover":0}
+                    Log.d(TAG, "Received--K线订阅 " + topicMessage.getPayload());
+                    KLineEvent kLineEvent = new GsonBuilder().create().fromJson(topicMessage.getPayload(), KLineEvent.class);
+                    EventBus.getDefault().post(kLineEvent);
+                }, throwable -> {
+                    Log.e(TAG, "Error on subscribe topic", throwable);
+                });
+
+        //盘口订阅
+        Disposable tradeDispTopic = mStompClient.topic("/topic/market/trade-plate/" + coinSymbol)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(topicMessage -> {
+                    Log.d(TAG, "Received--盘口订阅 " + topicMessage.getPayload());
+                }, throwable -> {
+                    Log.e(TAG, "Error on subscribe topic", throwable);
+                });
+        compositeDisposable.add(tradeDispTopic);
+        compositeDisposable.add(dispTopic);
+        compositeDisposable.add(dispTopic1);
         mStompClient.connect();
     }
 

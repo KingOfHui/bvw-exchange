@@ -67,4 +67,12 @@ public class KLineChartAdapter extends BaseKLineChartAdapter {
         datas.clear();
         notifyDataSetChanged();
     }
+
+    /**
+     * 向尾部添加数据
+     */
+    public void addOneData(KLineEntity kLineEntity) {
+        datas.add(kLineEntity);
+    }
+
 }

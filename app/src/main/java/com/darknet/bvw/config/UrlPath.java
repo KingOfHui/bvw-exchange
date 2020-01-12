@@ -85,7 +85,11 @@ public class UrlPath {
 
     public static String DEAL_LIST_URL = "xchain-api/exchange/trade/list"; //交易列表
 
+    public static String KLINE_ALL_DATA_URL = "xchain-api/exchange/kline/";// 获取K线历史数据
 
+    public static String SYMBOL_TICKER_URL = "xchain-api/exchange/ticker";
+
+    public static String BVW_USDT_URL = "xchain-api/exchange/market/detail/BVW-USDT";
 
 
 

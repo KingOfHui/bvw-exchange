@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -14,170 +14,499 @@
         android:background="@mipmap/fund_bg" />
 
     <RelativeLayout
+        android:id="@+id/klines_title"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:layout_marginRight="5dp">
 
-        <RelativeLayout
-            android:id="@+id/klines_title"
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/kiline_back_iv"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="@dimen/dimen_20dp"
-            android:layout_marginRight="5dp">
+            android:padding="10dp"
+            android:src="@mipmap/img_back" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dimen_20dp"
+            android:layout_toRightOf="@+id/kiline_back_iv"
+            android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/kiline_back_iv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:src="@mipmap/img_back" />
+                android:layout_gravity="center"
+                android:layout_marginRight="@dimen/dimen_10dp"
+                android:src="@mipmap/img_exchange_menu" />
 
-            <LinearLayout
+            <com.darknet.bvw.view.TypefaceTextView
+                android:id="@+id/kline_count_coin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="@dimen/dimen_20dp"
-                android:layout_toRightOf="@+id/kiline_back_iv"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginRight="@dimen/dimen_10dp"
-                    android:src="@mipmap/img_exchange_menu" />
-
-                <com.darknet.bvw.view.TypefaceTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="BVW"
-                    android:textColor="#ffffffff"
-                    android:textSize="18sp"
-                    app:typeface="PingFangBold" />
-
-                <com.darknet.bvw.view.TypefaceTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="/"
-                    android:textColor="#ffffffff"
-                    android:textSize="18sp"
-                    app:typeface="PingFangBold" />
-
-
-                <com.darknet.bvw.view.TypefaceTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="USDT"
-                    android:textColor="#ffffffff"
-                    android:textSize="18sp"
-                    app:typeface="PingFangBold" />
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:text="BVW"
+                android:textColor="#ffffffff"
+                android:textSize="18sp"
+                app:typeface="PingFangBold" />
 
-                <ImageView
-                    android:id="@+id/fragment_exchange_star_iv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:padding="10dp"
-                    android:src="@mipmap/img_exchange_star"
-                    />
-
-            </LinearLayout>
+            <com.darknet.bvw.view.TypefaceTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="/"
+                android:textColor="#ffffffff"
+                android:textSize="18sp"
+                app:typeface="PingFangBold" />
 
 
-        </RelativeLayout>
+            <com.darknet.bvw.view.TypefaceTextView
+                android:id="@+id/kline_price_coin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="USDT"
+                android:textColor="#ffffffff"
+                android:textSize="18sp"
+                app:typeface="PingFangBold" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/fragment_exchange_star_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:src="@mipmap/img_exchange_star" />
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+    <com.darknet.bvw.view.CustomScrollview
+        android:id="@+id/custom_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/klines_title">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/klines_title"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:orientation="vertical">
 
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tablayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:tabIndicatorColor="#01FCDA"
-                app:tabIndicatorFullWidth="true"
-                app:tabSelectedTextColor="#01FCDA"
-                app:tabTextAppearance="@style/TabLayoutTextStyle"
-                app:tabTextColor="@color/gray1" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/common_line_color" />
+                android:background="#48435d" />
 
-
-            <com.darknet.bvw.view.MyViewPager
-                android:id="@+id/viewPager"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="100dp" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="@dimen/dimen_10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/kline_usd_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="--"
+                        android:textColor="#ff01fcda"
+                        android:textSize="32sp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/kline_rmb_price"
+                            android:layout_width="79dp"
+                            android:layout_height="17dp"
+                            android:text="≈4966.10CNY"
+                            android:textColor="#ffffffff"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/kline_change"
+                            android:layout_width="40dp"
+                            android:layout_height="15dp"
+                            android:text="+0.93%"
+                            android:textColor="#ff01fcda"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="15dp"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="@dimen/dimen_100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:text="@string/k_high_line"
+                            android:textColor="#ffffffff"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/kline_high"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:text="7200.00"
+                            android:textColor="#ffffffff"
+                            android:textSize="12sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="@dimen/dimen_100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/dimen_10dp"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:text="@string/k_low_line"
+                            android:textColor="#ffffffff"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/kline_low"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:text="7003.00"
+                            android:textColor="#ffffffff"
+                            android:textSize="12sp" />
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:layout_width="@dimen/dimen_100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/dimen_10dp"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:text="@string/k_day_line"
+                            android:textColor="#ffffffff"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/kline_24h"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:text="32940"
+                            android:textColor="#ffffffff"
+                            android:textSize="12sp" />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="6">
+
+
+                <LinearLayout
+                    android:id="@+id/kline_fen_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/fenText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="15dp"
+                        android:layout_weight="1"
+                        android:gravity="center|left"
+                        android:text="@string/k_time_one"
+                        android:textColor="#01FCDA"
+                        android:textSize="12dp" />
+
+                    <View
+                        android:id="@+id/kline_fen_line"
+                        android:layout_width="20dp"
+                        android:layout_height="2dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:background="#01FCDA"></View>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/kline_fenText15_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/fenText15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="15dp"
+                        android:layout_weight="1"
+                        android:gravity="center|left"
+                        android:text="@string/k_time_two"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="12dp" />
+
+                    <View
+                        android:id="@+id/kline_fenText15_line"
+                        android:layout_width="20dp"
+                        android:layout_height="2dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:background="#01FCDA"
+                        android:visibility="gone"></View>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/kline_fenText60_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/fenText60"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="15dp"
+                        android:layout_weight="1"
+                        android:gravity="center|left"
+                        android:text="@string/k_time_three"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="12dp" />
+
+                    <View
+                        android:id="@+id/kline_fenText60_line"
+                        android:layout_width="20dp"
+                        android:layout_height="2dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:background="#01FCDA"
+                        android:visibility="gone"></View>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/kline_fenText4hour_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/fenText4hour"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="15dp"
+                        android:layout_weight="1"
+                        android:gravity="center|left"
+                        android:text="@string/k_time_four"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="12dp" />
+
+                    <View
+                        android:id="@+id/kline_fenText4hour_line"
+                        android:layout_width="20dp"
+                        android:layout_height="2dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:background="#01FCDA"
+                        android:visibility="gone"></View>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/kline_fenTextday_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/fenTextday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="15dp"
+                        android:layout_weight="1"
+                        android:gravity="center|left"
+                        android:text="@string/k_time_five"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="12dp" />
+
+                    <View
+                        android:id="@+id/kline_fenTextday_line"
+                        android:layout_width="20dp"
+                        android:layout_height="2dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:background="#01FCDA"
+                        android:visibility="gone"></View>
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/fenTextmore"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/k_time_six"
+                    android:visibility="invisible"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="12dp" />
+
+
+            </LinearLayout>
+
+
+            <com.github.fujianlian.klinechart.KLineChartView
+                android:id="@+id/kLineChartView"
+                android:layout_width="match_parent"
+                android:layout_height="400dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="600dp"
+                android:orientation="vertical">
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tablayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tabIndicatorColor="#01FCDA"
+                    app:tabIndicatorFullWidth="true"
+                    app:tabSelectedTextColor="#01FCDA"
+                    app:tabTextAppearance="@style/TabLayoutTextStyle"
+                    app:tabTextColor="@color/gray1" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/gray1" />
+
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/viewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="100dp" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
+    </com.darknet.bvw.view.CustomScrollview>
 
-        <LinearLayout
-            android:id="@+id/deal_bottom_ll"
-            android:layout_width="match_parent"
+    <LinearLayout
+        android:id="@+id/deal_bottom_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="false"
+        android:layout_alignParentBottom="true"
+        android:background="#37314D"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="20dp"
+        android:weightSum="2">
+
+        <TextView
+            android:id="@+id/kline_two_buy_view"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="false"
-            android:layout_alignParentBottom="true"
-            android:background="#37314D"
-            android:orientation="horizontal"
-            android:paddingTop="10dp"
-            android:paddingBottom="20dp"
-            android:weightSum="2">
+            android:layout_marginLeft="@dimen/dimen_10dp"
+            android:layout_marginRight="@dimen/dimen_10dp"
+            android:layout_marginBottom="@dimen/dimen_10dp"
+            android:layout_weight="1"
+            android:background="#01FCDA"
+            android:gravity="center"
+            android:paddingTop="@dimen/dimen_10dp"
+            android:paddingBottom="@dimen/dimen_10dp"
+            android:text="@string/k_buy_sign"
+            android:textColor="#ff000000"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/kline_two_buy_view"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dimen_10dp"
-                android:layout_marginRight="@dimen/dimen_10dp"
-                android:layout_marginBottom="@dimen/dimen_10dp"
-                android:layout_weight="1"
-                android:background="#01FCDA"
-                android:gravity="center"
-                android:paddingTop="@dimen/dimen_10dp"
-                android:paddingBottom="@dimen/dimen_10dp"
-                android:text="@string/k_buy_sign"
-                android:textColor="#ff000000"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+        <TextView
+            android:id="@+id/kline_two_sell_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_10dp"
+            android:layout_marginRight="@dimen/dimen_10dp"
+            android:layout_marginBottom="@dimen/dimen_10dp"
+            android:layout_weight="1"
+            android:background="#FC6767"
+            android:gravity="center"
+            android:paddingTop="@dimen/dimen_10dp"
+            android:paddingBottom="@dimen/dimen_10dp"
+            android:text="@string/k_scall_sign"
+            android:textColor="#ffffffff"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/kline_two_sell_view"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dimen_10dp"
-                android:layout_marginRight="@dimen/dimen_10dp"
-                android:layout_marginBottom="@dimen/dimen_10dp"
-                android:layout_weight="1"
-                android:background="#FC6767"
-                android:gravity="center"
-                android:paddingTop="@dimen/dimen_10dp"
-                android:paddingBottom="@dimen/dimen_10dp"
-                android:text="@string/k_scall_sign"
-                android:textColor="#ffffffff"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+    </LinearLayout>
 
-        </LinearLayout>
-    </RelativeLayout>
-
-</FrameLayout>
+</RelativeLayout>
