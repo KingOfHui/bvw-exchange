@@ -9,6 +9,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:orientation="vertical">
 
         <LinearLayout
@@ -36,14 +38,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dimen_5dp"
-                    android:layout_marginRight="@dimen/dimen_5dp"
                     android:text="@string/shendu_shuliang_sign"
                     android:textColor="#ffffffff"
                     android:textSize="10sp" />
 
 
                 <TextView
+                    android:id="@+id/depth_bi_type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="(BVW)"
@@ -69,6 +70,7 @@
 
 
                 <TextView
+                    android:id="@+id/depth_price_type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="(USDT)"
@@ -94,10 +96,9 @@
 
 
                 <TextView
+                    android:id="@+id/depth_bi_type_two"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dimen_5dp"
-                    android:layout_marginRight="@dimen/dimen_5dp"
                     android:text="(TT)"
                     android:textColor="#ffffffff"
                     android:textSize="10sp" />

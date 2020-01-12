@@ -32,6 +32,7 @@ import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 
+import cn.jpush.android.api.JPushInterface;
 import okhttp3.OkHttpClient;
 
 public class MyApp extends Application {
@@ -83,10 +84,10 @@ public class MyApp extends Application {
         PlayerLibrary.init(this);
         //初始化激光
         //初始化视频播放
-//        JPushInterface.setDebugMode(true);
-//        JPushInterface.init(this);
+        JPushInterface.setDebugMode(true);
+        JPushInterface.init(this);
 //
-//        jiguangId = JPushInterface.getRegistrationID(this);
+        jiguangId = JPushInterface.getRegistrationID(this);
 
         SharedPreferencesUtil.getInstance(this, "bvw");
         //---------------国际化------
@@ -149,7 +150,7 @@ public class MyApp extends Application {
         HttpHeaders headers = new HttpHeaders();
         headers.put("Accept-Encoding", "gzip");    //header不支持中文，不允许有特殊字符
         headers.put("Content-Type", "text/xml");
-//        headers.put("clientId", jiguangId);
+        headers.put("clientId", jiguangId);
         headers.put("clientOs", "android");
 
 

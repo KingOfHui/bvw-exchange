@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -61,6 +62,10 @@ public class DepthFragment extends Fragment {
 
     private static String marketId;
 
+    private TextView biTypeView;
+    private TextView biTypeTwoView;
+    private TextView priceTypeView;
+
 
     public static DepthFragment newInstance(String market) {
         DepthFragment fragment = new DepthFragment();
@@ -93,10 +98,26 @@ public class DepthFragment extends Fragment {
         depth_out_lv = view.findViewById(R.id.depth_out_lv);
         depth_in_lv = view.findViewById(R.id.depth_in_lv);
 
+        biTypeView = view.findViewById(R.id.depth_bi_type);
+        biTypeTwoView = view.findViewById(R.id.depth_bi_type_two);
+        priceTypeView = view.findViewById(R.id.depth_price_type);
+
         mInAdapter = new InDepthAdapter(getActivity(), mInList);
         depth_in_lv.setAdapter(mInAdapter);
         mOutAdapter = new OutDepthAdapter(getActivity(), mOutList);
         depth_out_lv.setAdapter(mOutAdapter);
+
+
+        try {
+            biTypeView.setText(marketId.split("-")[0]);
+            priceTypeView.setText(marketId.split("-")[1]);
+            biTypeTwoView.setText(marketId.split("-")[0]);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+
     }
 
 

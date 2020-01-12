@@ -81,6 +81,8 @@ public class UrlPath {
     public static String ADD_ZIXUAN_URL = "xchain-api/exchange/favor/add/"; //添加自选
     public static String DEL_ZIXUAN_URL = "xchain-api/exchange/favor/delete/"; //删除自选
 
+    public static String DEAL_LIST_URL = "xchain-api/exchange/trade/list"; //交易列表
+
 
 
 

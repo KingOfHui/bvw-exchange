@@ -1,32 +1,31 @@
 package com.darknet.bvw.activity;
 
-import android.graphics.Color;
 import android.view.View;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.viewpager.widget.ViewPager;
 
 import com.darknet.bvw.R;
 import com.darknet.bvw.adapter.MyFragmentPagerAdapter;
-import com.darknet.bvw.model.KlineItemBean;
-import com.darknet.bvw.socket.SocketTool;
-import com.github.fujianlian.klinechart.DataHelper;
-import com.github.fujianlian.klinechart.KLineChartAdapter;
-import com.github.fujianlian.klinechart.KLineChartView;
-import com.github.fujianlian.klinechart.KLineEntity;
-import com.github.fujianlian.klinechart.formatter.DateFormatter;
+import com.darknet.bvw.config.ConfigNetWork;
+import com.darknet.bvw.config.UrlPath;
+import com.darknet.bvw.db.Entity.ETHWalletModel;
+import com.darknet.bvw.db.WalletDaoUtils;
+import com.darknet.bvw.model.event.KLineEvent;
+import com.darknet.bvw.model.response.BaseResponse;
+import com.darknet.bvw.util.UserSPHelper;
+import com.darknet.bvw.util.bitcoinj.BitcoinjKit;
 import com.google.android.material.tabs.TabLayout;
+import com.google.gson.Gson;
+import com.lzy.okgo.OkGo;
+import com.lzy.okgo.callback.StringCallback;
+import com.lzy.okgo.model.Response;
 
 import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class KlineTwoActivity extends BaseActivity implements View.OnClickListener {
-
 
 
 //    private LinearLayout fenText15Layout;
@@ -48,16 +47,24 @@ public class KlineTwoActivity extends BaseActivity implements View.OnClickListen
 //    private TextView moreView;
 
 
-
     // 0 为分时，1为15分钟，2为1小时，3为4小时，4为日线
 //    private int type;
 
     private String markID;
 
+    private ImageView startImg;
+
+    //0 未搜出，1收藏
+    private int isCollection;
+
+    private TextView buyView;
+    private TextView sellView;
+
+
     private void initViewPager() {
         ViewPager viewPager = findViewById(R.id.viewPager);
         //搜索广告
-        MyFragmentPagerAdapter adapter = new MyFragmentPagerAdapter(getSupportFragmentManager(), this,markID);
+        MyFragmentPagerAdapter adapter = new MyFragmentPagerAdapter(getSupportFragmentManager(), this, markID);
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(2);
         //TabLayout
@@ -73,7 +80,22 @@ public class KlineTwoActivity extends BaseActivity implements View.OnClickListen
     public void initView() {
 //        EventBus.getDefault().register(this);
 
+        isCollection = getIntent().getIntExtra("shoucang", 0);
+
         markID = getIntent().getStringExtra("markid");
+
+        startImg = (ImageView) this.findViewById(R.id.fragment_exchange_star_iv);
+
+        buyView = (TextView) this.findViewById(R.id.kline_two_buy_view);
+        sellView = (TextView) this.findViewById(R.id.kline_two_sell_view);
+
+
+        if (isCollection == 0) {
+            startImg.setImageResource(R.mipmap.img_exchange_star);
+        } else {
+            startImg.setImageResource(R.mipmap.shoucang_select_img);
+        }
+
 
 //        type = 0;
 //
@@ -129,6 +151,41 @@ public class KlineTwoActivity extends BaseActivity implements View.OnClickListen
 //        socketTool = new SocketTool();
 //        socketTool.init();
 
+        startImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (isCollection == 1) {
+                    cancelZiXuan();
+                } else {
+                    addZiXuan();
+                }
+            }
+        });
+
+
+        buyView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                KLineEvent kLineEvent = new KLineEvent();
+                kLineEvent.setType(0);
+                EventBus.getDefault().post(kLineEvent);
+                finish();
+            }
+        });
+
+
+        sellView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                KLineEvent kLineEvent = new KLineEvent();
+                kLineEvent.setType(1);
+                EventBus.getDefault().post(kLineEvent);
+                finish();
+            }
+        });
+
     }
 
     @Override
@@ -161,7 +218,6 @@ public class KlineTwoActivity extends BaseActivity implements View.OnClickListen
 //        mKLineChartView.hideSelectData();
 //        mKLineChartView.setMainDrawLine(false);
 //    }
-
 
 
     @Override
@@ -257,5 +313,77 @@ public class KlineTwoActivity extends BaseActivity implements View.OnClickListen
 //            fenTextdayLineView.setVisibility(View.VISIBLE);
 //        }
 //    }
+
+
+    /**
+     * 删除自选
+     */
+    private void cancelZiXuan() {
+        ETHWalletModel walletModel = WalletDaoUtils.getCurrent();
+
+        String privateKey = walletModel.getPrivateKey();
+        String addressVals = walletModel.getAddress();
+
+        String msg = "" + System.currentTimeMillis();
+        String signVal = BitcoinjKit.signMessageBy58(msg, privateKey);
+
+        OkGo.<String>get(ConfigNetWork.JAVA_API_URL + UrlPath.DEL_ZIXUAN_URL + markID)
+                .tag(KlineTwoActivity.this)
+                .headers("Chain-Authentication", addressVals + "#" + msg + "#" + signVal)
+                .execute(new StringCallback() {
+                    @Override
+                    public void onSuccess(Response<String> response) {
+                        if (response.body() != null) {
+                            try {
+                                Gson gson = new Gson();
+                                BaseResponse depth = gson.fromJson(response.body(), BaseResponse.class);
+                                if (depth != null && depth.getCode() == 0) {
+                                    Toast.makeText(KlineTwoActivity.this, depth.getMsg(), Toast.LENGTH_SHORT).show();
+                                    startImg.setImageResource(R.mipmap.img_exchange_star);
+                                    isCollection = 0;
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                });
+    }
+
+
+    /**
+     * 添加自选
+     */
+    private void addZiXuan() {
+        ETHWalletModel walletModel = WalletDaoUtils.getCurrent();
+        String privateKey = walletModel.getPrivateKey();
+        String addressVals = walletModel.getAddress();
+
+        String msg = "" + System.currentTimeMillis();
+        String signVal = BitcoinjKit.signMessageBy58(msg, privateKey);
+
+        OkGo.<String>get(ConfigNetWork.JAVA_API_URL + UrlPath.ADD_ZIXUAN_URL + markID)
+                .tag(KlineTwoActivity.this)
+                .headers("Chain-Authentication", addressVals + "#" + msg + "#" + signVal)
+                .execute(new StringCallback() {
+                    @Override
+                    public void onSuccess(Response<String> response) {
+                        if (response.body() != null) {
+                            try {
+                                Gson gson = new Gson();
+                                BaseResponse depth = gson.fromJson(response.body(), BaseResponse.class);
+                                if (depth != null && depth.getCode() == 0) {
+                                    Toast.makeText(KlineTwoActivity.this, depth.getMsg(), Toast.LENGTH_SHORT).show();
+                                    startImg.setImageResource(R.mipmap.shoucang_select_img);
+                                    isCollection = 1;
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                });
+    }
+
 
 }

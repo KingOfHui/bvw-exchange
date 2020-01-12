@@ -19,9 +19,13 @@ import com.darknet.bvw.R;
  **/
 public class IncludeFragment extends Fragment {
 
-    public static IncludeFragment newInstance() {
+
+    private static String markId;
+
+    public static IncludeFragment newInstance(String val) {
 
         IncludeFragment fragment = new IncludeFragment();
+        markId = val;
         return fragment;
     }
 
@@ -29,7 +33,7 @@ public class IncludeFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_include,container,false);
+        View view = inflater.inflate(R.layout.fragment_include, container, false);
         return view;
     }
 }

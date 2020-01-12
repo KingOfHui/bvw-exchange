@@ -40,6 +40,7 @@ import com.darknet.bvw.model.CurrentOrderModel;
 import com.darknet.bvw.model.DepthResponse;
 import com.darknet.bvw.model.RequestEntity;
 import com.darknet.bvw.model.TokenCoinResponse;
+import com.darknet.bvw.model.event.KLineEvent;
 import com.darknet.bvw.model.event.RefreshThreeEvent;
 import com.darknet.bvw.model.event.RefreshTwoEvent;
 import com.darknet.bvw.model.request.CurrentWeiTuoRequest;
@@ -124,7 +125,8 @@ public class TradingFragment extends Fragment {
     private TextView m100PresentTv;
 
     private boolean isPrice = true;//第一次进入页面
-    private String marketId = "BTC-USDT";//交易对
+    //    private String marketId = "BTC-USDT";//交易对
+    private String marketId;//交易对
 
     private LinearLayout noWeiTuoDataLayout;
 
@@ -205,7 +207,7 @@ public class TradingFragment extends Fragment {
                 isPrice = false;
                 if (buyOrsell.equals("buy")) {
                     if (askSize > 0) {
-                        mPriceEt.setText(depth.getData().getAsks().get(askSize-1).getPrice());
+                        mPriceEt.setText(depth.getData().getAsks().get(askSize - 1).getPrice());
                     } else {
                         mPriceEt.setText("0");
                     }
@@ -363,7 +365,23 @@ public class TradingFragment extends Fragment {
         super.onResume();
         //当前委托
         getCurrentWeiTuo();
+        checkShouCang();
         Log.e("xxxxxxxx", ".....lazyLoad...do...moneyFragment....");
+    }
+
+
+    private void checkShouCang() {
+
+        try {
+            if (isCollection == 0) {
+                addZixuanView.setImageResource(R.mipmap.img_exchange_star);
+            } else {
+                addZixuanView.setImageResource(R.mipmap.shoucang_select_img);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
 
@@ -565,9 +583,13 @@ public class TradingFragment extends Fragment {
             public void onClick(View v) {
 //                Intent kLineIntent = new Intent(getActivity(),KlineActivity.class);
 
-                Intent kLineIntent = new Intent(getActivity(), KlineTwoActivity.class);
-                kLineIntent.putExtra("markid",marketId);
-                startActivity(kLineIntent);
+                if (marketId != null) {
+                    Intent kLineIntent = new Intent(getActivity(), KlineTwoActivity.class);
+                    kLineIntent.putExtra("markid", marketId);
+                    kLineIntent.putExtra("shoucang", isCollection);
+                    startActivity(kLineIntent);
+                }
+
             }
         });
 
@@ -735,9 +757,6 @@ public class TradingFragment extends Fragment {
         });
 
 
-
-
-
         view.findViewById(R.id.fragment_exchange_menu_layout).setOnClickListener(v -> {
             PopwindowsLeftFragment fragment = new PopwindowsLeftFragment();
 
@@ -799,9 +818,13 @@ public class TradingFragment extends Fragment {
         });
 
         weiTuoAllView.setOnClickListener(v -> {
-            Intent hisToryAll = new Intent(getActivity(), WeiTuoListActivity.class);
-            hisToryAll.putExtra("markid", marketId);
-            startActivity(hisToryAll);
+
+            if (marketId != null) {
+                Intent hisToryAll = new Intent(getActivity(), WeiTuoListActivity.class);
+                hisToryAll.putExtra("markid", marketId);
+                startActivity(hisToryAll);
+            }
+
         });
 
 
@@ -891,28 +914,33 @@ public class TradingFragment extends Fragment {
      * 根据输入的数量 去更新费用字段
      */
     private void setTotalValues(String priceViewVal, String numViewVal) {
-        try {
-            String baskSymble = marketId.split("-")[1];
-            int setScan = 8;
-            if (!TextUtils.isEmpty(priceViewVal) && !TextUtils.isEmpty(numViewVal)) {
-                if (baskSymble.equals("USDT")) {
-                    setScan = 3;
-                } else if (baskSymble.equals("BVW")) {
-                    setScan = 2;
-                } else if (baskSymble.equals("BTC")) {
-                    setScan = 8;
-                } else if (baskSymble.equals("ETH")) {
-                    setScan = 4;
+
+        if (marketId != null) {
+            try {
+                String baskSymble = marketId.split("-")[1];
+                int setScan = 8;
+                if (!TextUtils.isEmpty(priceViewVal) && !TextUtils.isEmpty(numViewVal)) {
+                    if (baskSymble.equals("USDT")) {
+                        setScan = 3;
+                    } else if (baskSymble.equals("BVW")) {
+                        setScan = 2;
+                    } else if (baskSymble.equals("BTC")) {
+                        setScan = 8;
+                    } else if (baskSymble.equals("ETH")) {
+                        setScan = 4;
+                    }
+                    totalMoneyView.setText(ArithmeticUtils.multiply(priceViewVal, numViewVal)
+                            .setScale(setScan, RoundingMode.HALF_UP).stripTrailingZeros().toPlainString());
+                } else {
+                    totalMoneyView.setText("0");
                 }
-                totalMoneyView.setText(ArithmeticUtils.multiply(priceViewVal, numViewVal)
-                        .setScale(setScan, RoundingMode.HALF_UP).stripTrailingZeros().toPlainString());
-            } else {
-                totalMoneyView.setText("0");
+                totalMoneyTypeView.setText(marketId.split("-")[1]);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-            totalMoneyTypeView.setText(marketId.split("-")[1]);
-        } catch (Exception e) {
-            e.printStackTrace();
         }
+
+
     }
 
     /**
@@ -1157,16 +1185,19 @@ public class TradingFragment extends Fragment {
 //            Intent suanLiIntent = new Intent(activity, SuanLiWaKuangActivity.class);
 //            startActivity(suanLiIntent);
         } else if (stateVal == 1) {
-            //已开通
-            String amount = mCountNumETv.getText().toString();
-            String marketId = mCoinsType.getText().toString() + "-" + mCoinsUsdtType.getText().toString();
-            String buyPrice = mPriceEt.getText().toString();
-            if (!TextUtils.isEmpty(amount)) {
-                showLoading();
-                sendBuyRequest(amount, marketId, buyPrice, buyOrsell, "limit");
-            } else {
-                //todo 数量不能为空
-                Toast.makeText(getActivity(), getString(R.string.trade_num_trade_sign), Toast.LENGTH_SHORT).show();
+
+            if (marketId != null) {
+                //已开通
+                String amount = mCountNumETv.getText().toString();
+                String marketId = mCoinsType.getText().toString() + "-" + mCoinsUsdtType.getText().toString();
+                String buyPrice = mPriceEt.getText().toString();
+                if (!TextUtils.isEmpty(amount)) {
+                    showLoading();
+                    sendBuyRequest(amount, marketId, buyPrice, buyOrsell, "limit");
+                } else {
+                    //todo 数量不能为空
+                    Toast.makeText(getActivity(), getString(R.string.trade_num_trade_sign), Toast.LENGTH_SHORT).show();
+                }
             }
         } else if (stateVal == 2) {
             //开通中
@@ -1396,10 +1427,9 @@ public class TradingFragment extends Fragment {
 
         try {
             showLoading();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
 
 
         OkGo.<String>get(ConfigNetWork.JAVA_API_URL + UrlPath.CANCEL_WEITUO_URL + "/" + itemsBean.getId())
@@ -1424,7 +1454,7 @@ public class TradingFragment extends Fragment {
 //                                            Toast.makeText(getActivity(),response.getMsg(),Toast.LENGTH_SHORT).show();
 //                                            new CancelOrderDialogView().showTips(getActivity(), response.getMsg());
                                         }
-                                        Toast.makeText(getActivity(),response.getMsg(),Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getActivity(), response.getMsg(), Toast.LENGTH_SHORT).show();
 
                                     }
                                 } catch (Exception e) {
@@ -1439,7 +1469,7 @@ public class TradingFragment extends Fragment {
                         super.onFinish();
                         try {
                             hideLoading();
-                        }catch (Exception e){
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
 
@@ -1455,6 +1485,18 @@ public class TradingFragment extends Fragment {
         getTokenList();
         //当前委托
 //        getCurrentWeiTuo();
+    }
+
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void receiveAddress(KLineEvent kLineEvent) {
+
+        if (kLineEvent.getType() == 0) {
+            changeMaiRu();
+        } else {
+            changeMaichu();
+        }
+
     }
 
 

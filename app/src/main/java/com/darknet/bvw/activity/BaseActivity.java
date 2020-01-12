@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.darknet.bvw.view.CustomDialog;
 
+import cn.jpush.android.api.JPushInterface;
+
 import static com.darknet.bvw.util.language.LocalManageUtil.getSystemLocale;
 
 public abstract class BaseActivity extends AppCompatActivity {
@@ -114,8 +116,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 
 
     public String getClientId() {
-//        String jiguangId = JPushInterface.getRegistrationID(this);
-        String jiguangId = "0000";
+        String jiguangId = JPushInterface.getRegistrationID(this);
+//        String jiguangId = "0000";
         return jiguangId;
     }
 

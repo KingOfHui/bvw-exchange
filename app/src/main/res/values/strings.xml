@@ -686,4 +686,9 @@
 
 <!--    <string name="hz_input_num_sign">请输入划账数量</string>-->
 
+    <string name="deal_type_sell_sign">卖</string>
+    <string name="deal_type_buy_sign">买</string>
+
+
+
 </resources>

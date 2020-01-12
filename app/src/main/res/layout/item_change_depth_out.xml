@@ -20,10 +20,11 @@
 
         <TextView
             android:id="@+id/item_change_position_price"
-            android:layout_width="wrap_content"
+            android:layout_width="20dp"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:text="1"
+            android:gravity="center"
             android:textColor="@color/gray1"
             android:textSize="11sp" />
 
@@ -31,9 +32,10 @@
             android:id="@+id/item_change_out_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dimen_10dp"
+            android:layout_marginLeft="5dp"
             android:layout_toRightOf="@+id/item_change_position_price"
             android:text="323"
+            android:gravity="left"
             android:textColor="@color/white"
             android:textSize="11sp" />
 

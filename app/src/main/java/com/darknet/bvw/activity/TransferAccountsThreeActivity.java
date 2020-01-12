@@ -628,7 +628,7 @@ public class TransferAccountsThreeActivity extends BaseActivity implements View.
                                         } else {
 
                                             try {
-                                                new FailDialogView().showTips(TransferAccountsThreeActivity.this, getString(R.string.dialog_fail_sign));
+                                                new FailDialogView().showTips(TransferAccountsThreeActivity.this, response.getMsg());
                                                 btnNext.setEnabled(true);
 //                                                dismissDialog();
 

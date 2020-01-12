@@ -143,13 +143,15 @@ public class TransferAccountsTwoActivity extends BaseActivity implements View.On
         userMoneyView = findViewById(R.id.trade_use_money_view);
 
         signContentView = findViewById(R.id.brc_sign_content_view);
-        signContentView.setText(getResources().getString(R.string.trade_account_two_header)+moneyType+getResources().getString(R.string.trade_account_two_two_header));
+//        signContentView.setText(getResources().getString(R.string.trade_account_two_header)+moneyType+getResources().getString(R.string.trade_account_two_two_header));
+        signContentView.setText(getResources().getString(R.string.trade_account_two_header)+"Ethereum"+getResources().getString(R.string.trade_account_two_two_header));
 
         userMoneyView.setText(moneyTypeVal + " " + getString(R.string.trade_left_money_val) + ":" + leftVal);
 
 //        title.setText(moneyTypeVal + " " + getString(R.string.trade_sign_title));
 //        title.setText(getString(R.string.trade_account_two_title));
-        title.setText(moneyType+" "+getString(R.string.trade_list_zhuanzhang)+" ("+moneyType+")");
+//        title.setText(moneyType+" "+getString(R.string.trade_list_zhuanzhang)+" ("+moneyType+")");
+        title.setText(moneyType+" "+getString(R.string.trade_list_zhuanzhang)+" (ERC20)");
 
         layBack.setOnClickListener(this);
         btnNext.setOnClickListener(this);
@@ -610,7 +612,7 @@ public class TransferAccountsTwoActivity extends BaseActivity implements View.On
                                         } else {
 
                                             try {
-                                                new FailDialogView().showTips(TransferAccountsTwoActivity.this, getString(R.string.dialog_fail_sign));
+                                                new FailDialogView().showTips(TransferAccountsTwoActivity.this, response.getMsg());
                                                 btnNext.setEnabled(true);
 //                                                dismissDialog();
 

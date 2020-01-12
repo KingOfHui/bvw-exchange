@@ -562,7 +562,7 @@ public class HuaZhangActivity extends BaseActivity implements View.OnClickListen
                                         } else {
 
                                             try {
-                                                new HuaZhangFailDialogView().showTips(HuaZhangActivity.this, getString(R.string.dialog_fail_sign));
+                                                new HuaZhangFailDialogView().showTips(HuaZhangActivity.this, response.getMsg());
                                                 hzSubmitView.setEnabled(true);
 //                                                dismissDialog();
 
@@ -1008,7 +1008,6 @@ public class HuaZhangActivity extends BaseActivity implements View.OnClickListen
                                     LeftMoneyResponse response = gson.fromJson(backVal, LeftMoneyResponse.class);
                                     if (response != null && response.getCode() == 0 && response.getData() != null && response.getData().size() > 0) {
                                         getLeftMoney(response.getData());
-
                                     }
                                 } catch (Exception e) {
                                     e.printStackTrace();

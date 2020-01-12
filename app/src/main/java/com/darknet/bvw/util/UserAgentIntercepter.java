@@ -7,6 +7,7 @@ import com.darknet.bvw.util.language.SPUtil;
 
 import java.io.IOException;
 
+import cn.jpush.android.api.JPushInterface;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -22,8 +23,8 @@ public class UserAgentIntercepter implements Interceptor {
     @Override
     public Response intercept(Chain chain) throws IOException {
 
-//        String jiguangId = JPushInterface.getRegistrationID(context);
-        String jiguangId = "00000";
+        String jiguangId = JPushInterface.getRegistrationID(context);
+//        String jiguangId = "00000";
 
         Log.e("jiguang","jiguang="+jiguangId);
 

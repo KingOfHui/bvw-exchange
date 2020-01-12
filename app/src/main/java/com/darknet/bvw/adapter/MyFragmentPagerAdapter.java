@@ -33,9 +33,12 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
                 DepthFragment depthFragment =DepthFragment.newInstance(markIdVal);
                 return depthFragment;
             case 1:
-                return DealFragment.newInstance();
+                DealFragment depthFragmentTwo =DealFragment.newInstance(markIdVal);
+                return depthFragmentTwo;
+//                return DealFragment.newInstance();
             case 2:
-                return IncludeFragment.newInstance();
+                IncludeFragment includeFragment = IncludeFragment.newInstance(markIdVal);
+                return includeFragment;
         }
         return null;
     }
