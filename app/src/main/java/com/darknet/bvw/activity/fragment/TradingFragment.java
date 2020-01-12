@@ -1538,7 +1538,14 @@ public class TradingFragment extends Fragment {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void receiveAddress(RefreshTwoEvent refreshEvent) {
         getAccount();
-        getTokenList();
+
+        if(marketId != null){
+
+        }else {
+            getTokenList();
+        }
+
+
         //当前委托
 //        getCurrentWeiTuo();
     }
