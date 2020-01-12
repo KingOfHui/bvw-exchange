@@ -189,7 +189,7 @@ public class TradingFragment extends Fragment {
     }
 
     /**
-     * 深度数据
+     * 7深度数据
      *
      * @param depth
      */
@@ -220,6 +220,42 @@ public class TradingFragment extends Fragment {
                 }
                 hideLoading();
             }
+
+
+            String maiRuTotalVal = "0";
+            String maiChuTotalVal = "0";
+
+            String bigFenMu = "0";
+
+            String tempCountVal = "0";
+
+
+            for (int i = 0; i < depth.getData().getBids().size(); i++) {
+                DepthResponse.DataBean.BidsBean tempBid = depth.getData().getBids().get(i);
+                maiRuTotalVal = ArithmeticUtils.plusTwo(tempBid.getAmount(), maiRuTotalVal);
+
+                tempCountVal = ArithmeticUtils.plus(tempBid.getAmount(), tempCountVal).toPlainString();
+                tempBid.setCurrentCount(tempCountVal);
+                Log.e("mairuTotal22", "tempCountVal=" + tempCountVal);
+            }
+
+            tempCountVal = "0";
+
+            for (int i = 0; i < depth.getData().getAsks().size(); i++) {
+                DepthResponse.DataBean.AsksBean asksBean = depth.getData().getAsks().get(i);
+                maiChuTotalVal = ArithmeticUtils.plusTwo(asksBean.getAmount(), maiChuTotalVal);
+
+                tempCountVal = ArithmeticUtils.plus(asksBean.getAmount(), tempCountVal).toPlainString();
+                asksBean.setCurrentCount(tempCountVal);
+            }
+
+
+            if (ArithmeticUtils.compare(maiRuTotalVal, maiChuTotalVal)) {
+                bigFenMu = maiRuTotalVal;
+            } else {
+                bigFenMu = maiChuTotalVal;
+            }
+
 
             //ask
             for (int i = 0; i < askSize; i++) {
@@ -257,33 +293,40 @@ public class TradingFragment extends Fragment {
             }
 
 
-            try {
-                for (int i = 0; i < askSize; i++) {
-                    String askP = ArithmeticUtils.multiply(ArithmeticUtils.divide(depth.getData().getAsks().get(i).getTotal(), base, 5), "100").setScale(0, RoundingMode.UP).toPlainString();
-                    depth.getData().getAsks().get(i).setPrecent(askP);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+//            try {
+//                for (int i = 0; i < askSize; i++) {
+//                    String askP = ArithmeticUtils.multiply(ArithmeticUtils.divide(depth.getData().getAsks().get(i).getTotal(), base, 5), "100").setScale(0, RoundingMode.UP).toPlainString();
+//                    depth.getData().getAsks().get(i).setPrecent(askP);
+//                }
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
 
 
             if (depth.getData().getAsks() == null || depth.getData().getAsks().size() == 0) {
                 for (int i = 0; i < 7; i++) {
-                    depth.getData().getAsks().add(new DepthResponse.DataBean.AsksBean());
+
+                    DepthResponse.DataBean.AsksBean askBeanTemp = new DepthResponse.DataBean.AsksBean();
+                    askBeanTemp.setCurrentCount("0");
+
+                    depth.getData().getAsks().add(askBeanTemp);
                 }
                 mInList.addAll(depth.getData().getAsks());
                 mInAdapter.notifyDataSetChanged();
             } else {
-                Collections.reverse(depth.getData().getAsks());
+//                Collections.reverse(depth.getData().getAsks());
                 if (askSize < 7) {
                     for (int i = 0; i < (7 - askSize); i++) {
-                        depth.getData().getAsks().add(new DepthResponse.DataBean.AsksBean());
+                        DepthResponse.DataBean.AsksBean asksBeanTemp = new DepthResponse.DataBean.AsksBean();
+                        asksBeanTemp.setCurrentCount("0");
+                        depth.getData().getAsks().add(asksBeanTemp);
                     }
                 }
                 for (int i = 0; i < 7; i++) {
                     mInList.add(depth.getData().getAsks().get(i));
                 }
                 Collections.reverse(mInList);
+                mInAdapter.setFenMu(new BigDecimal(bigFenMu).stripTrailingZeros().setScale(6, BigDecimal.ROUND_DOWN));
                 mInAdapter.notifyDataSetChanged();
             }
 
@@ -307,32 +350,39 @@ public class TradingFragment extends Fragment {
                 }
             }
 
-            Log.e(TAG, "getDepthDatas: " + binbase);
-            try {
-                for (int i = 0; i < bidsSize; i++) {
-                    String bidP = ArithmeticUtils.multiply(ArithmeticUtils.divide(depth.getData().getBids().get(i).getTotal(), binbase, 5), "100").setScale(0, RoundingMode.UP).toPlainString();
-                    depth.getData().getBids().get(i).setPrecent(bidP);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+//            Log.e(TAG, "getDepthDatas: " + binbase);
+
+//            try {
+//                for (int i = 0; i < bidsSize; i++) {
+//                    String bidP = ArithmeticUtils.multiply(ArithmeticUtils.divide(depth.getData().getBids().get(i).getTotal(), binbase, 5), "100").setScale(0, RoundingMode.UP).toPlainString();
+//                    depth.getData().getBids().get(i).setPrecent(bidP);
+//                }
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
 
 
             if (depth.getData().getBids() == null || depth.getData().getBids().size() == 0) {
                 for (int i = 0; i < 7; i++) {
-                    depth.getData().getBids().add(new DepthResponse.DataBean.BidsBean());
+                    DepthResponse.DataBean.BidsBean tempBidsBean = new DepthResponse.DataBean.BidsBean();
+                    tempBidsBean.setCurrentCount("0");
+                    depth.getData().getBids().add(tempBidsBean);
                 }
                 mOutList.addAll(depth.getData().getBids());
                 mOutAdapter.notifyDataSetChanged();
             } else {
                 if (bidsSize < 7) {
                     for (int i = 0; i < (7 - bidsSize); i++) {
-                        depth.getData().getBids().add(new DepthResponse.DataBean.BidsBean());
+                        DepthResponse.DataBean.BidsBean tempBidsBean = new DepthResponse.DataBean.BidsBean();
+                        tempBidsBean.setCurrentCount("0");
+                        depth.getData().getBids().add(tempBidsBean);
                     }
                 }
                 for (int i = 0; i < 7; i++) {
                     mOutList.add(depth.getData().getBids().get(i));
                 }
+
+                mOutAdapter.setFenMu(new BigDecimal(bigFenMu).stripTrailingZeros().setScale(6, BigDecimal.ROUND_DOWN));
 //                mOutList.addAll(depth.getData().getBids());
                 mOutAdapter.notifyDataSetChanged();
             }
@@ -1274,6 +1324,10 @@ public class TradingFragment extends Fragment {
     //网络请求数据
     private void initData() {
 
+//        if (marketId == null) {
+//            return;
+//        }
+
         ETHWalletModel walletModel = WalletDaoUtils.getCurrent();
 
         String privateKey = walletModel.getPrivateKey();
@@ -1289,7 +1343,9 @@ public class TradingFragment extends Fragment {
 
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonVal);
 
-        OkGo.<String>post(ConfigNetWork.JAVA_API_URL + UrlPath.TRADE_DEPTH_URL + marketId)
+
+//        OkGo.<String>post(ConfigNetWork.JAVA_API_URL + UrlPath.TRADE_DEPTH_URL + marketId)
+        OkGo.<String>post(ConfigNetWork.JAVA_API_URL + UrlPath.TRADE_DEPTH_TWO_URL + marketId + "/7")
                 .tag(getActivity())
                 .headers("Chain-Authentication", addressVals + "#" + msg + "#" + signVal)
                 .upRequestBody(requestBody)

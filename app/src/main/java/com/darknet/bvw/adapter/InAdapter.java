@@ -22,6 +22,15 @@ public class InAdapter extends BAdapter<DepthResponse.DataBean.AsksBean> {
 //        return getList().size() <= 7 ? getList().size() : 7;
 //    }
 
+    private BigDecimal bigFenMuVal;
+
+
+    public void setFenMu(BigDecimal muVal){
+        this.bigFenMuVal = muVal;
+    }
+
+
+
     public InAdapter(Context context, List<DepthResponse.DataBean.AsksBean> list) {
         super(context, list);
     }
@@ -53,18 +62,49 @@ public class InAdapter extends BAdapter<DepthResponse.DataBean.AsksBean> {
         } else {
             mAmount.setText("-");
         }
-        if (!TextUtils.isEmpty(bean.getPrice())) {
-           try {
-               if (Integer.valueOf(bean.getPrecent()) > 100) {
-                   mPro.setProgress(100);
-               } else {
-                   mPro.setProgress(Integer.valueOf(bean.getPrecent()));
-               }
-           }catch (Exception e){
 
-           }
-        } else {
-            mPro.setProgress(0);
+
+        try {
+
+            if(bean.getCurrentCount() != null && bigFenMuVal != null){
+                String percentVal = ArithmeticUtils.divide(bean.getCurrentCount(),bigFenMuVal.toPlainString(),6);
+                String lastVal = ArithmeticUtils.multiply(percentVal,"100",0);
+                if (Integer.valueOf(lastVal) > 100) {
+                    mPro.setProgress(100);
+                } else {
+
+                    if(ArithmeticUtils.compare(lastVal,"1")){
+
+                        mPro.setProgress(Integer.valueOf(lastVal));
+                    }else {
+                        mPro.setProgress(Integer.valueOf(0));
+                    }
+                }
+            }else {
+                mPro.setProgress(Integer.valueOf(0));
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
         }
+
+
+
+
+
+//        if (!TextUtils.isEmpty(bean.getPrice())) {
+//           try {
+//               if (Integer.valueOf(bean.getPrecent()) > 100) {
+//                   mPro.setProgress(100);
+//               } else {
+//                   mPro.setProgress(Integer.valueOf(bean.getPrecent()));
+//               }
+//           }catch (Exception e){
+//
+//           }
+//        } else {
+//            mPro.setProgress(0);
+//        }
+
     }
 }

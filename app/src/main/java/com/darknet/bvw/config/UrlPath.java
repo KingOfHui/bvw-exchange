@@ -54,6 +54,8 @@ public class UrlPath {
 
     public static String TRADE_DEPTH_URL = "xchain-api/exchange/orderBook/";// 深度
 
+    public static String TRADE_DEPTH_TWO_URL = "xchain-api/exchange/orderBook2/";// 深度2
+
     public static String CREATE_ORDER_URL = "xchain-api/exchange/order/create";//创建订单
 
     public static String GET_ACCOUNT_LIST_URL = "xchain-api/exchange/account/list";//资产列表

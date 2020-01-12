@@ -21,6 +21,12 @@ public class OutAdapter extends BAdapter<DepthResponse.DataBean.BidsBean> {
 //        return getList().size() <= 7 ? getList().size() : 7;
 //    }
 
+    private BigDecimal bigFenMuVal;
+
+    public void setFenMu(BigDecimal muVal) {
+        this.bigFenMuVal = muVal;
+    }
+
     public OutAdapter(Context context, List<DepthResponse.DataBean.BidsBean> list) {
         super(context, list);
     }
@@ -41,7 +47,7 @@ public class OutAdapter extends BAdapter<DepthResponse.DataBean.BidsBean> {
         if (!TextUtils.isEmpty(bean.getPrice())) {
             mPrice.setText(new BigDecimal(bean.getPrice()).setScale(5, RoundingMode.HALF_EVEN).toPlainString());
         } else {
-            mPrice.setText("-");
+            mPrice.setText("--");
         }
         if (!TextUtils.isEmpty(bean.getAmount())) {
             String amount = ArithmeticUtils.divide(bean.getAmount(), "1000", 1);
@@ -51,23 +57,50 @@ public class OutAdapter extends BAdapter<DepthResponse.DataBean.BidsBean> {
                 mAmount.setText(ArithmeticUtils.divide(bean.getAmount(), "1", 1));
             }
         } else {
-            mAmount.setText("-");
+            mAmount.setText("--");
         }
 
-        if (!TextUtils.isEmpty(bean.getPrecent())) {
-            try {
-                if (Integer.valueOf(bean.getPrecent()) > 100) {
+
+        try {
+
+            if (bean.getCurrentCount() != null && bigFenMuVal != null) {
+                String percentVal = ArithmeticUtils.divide(bean.getCurrentCount(), bigFenMuVal.toPlainString(), 6);
+                String lastVal = ArithmeticUtils.multiply(percentVal, "100", 0);
+                if (Integer.valueOf(lastVal) > 100) {
                     mPro.setProgress(100);
                 } else {
-                    mPro.setProgress(Integer.valueOf(bean.getPrecent()));
-                }
 
-            } catch (Exception e) {
-                e.printStackTrace();
+                    if (ArithmeticUtils.compare(lastVal, "1")) {
+
+                        mPro.setProgress(Integer.valueOf(lastVal));
+                    } else {
+                        mPro.setProgress(Integer.valueOf(0));
+                    }
+                }
+            } else {
+                mPro.setProgress(Integer.valueOf(0));
             }
-        } else {
-            mPro.setProgress(0);
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
+
+//        if (!TextUtils.isEmpty(bean.getPrecent())) {
+//            try {
+//                if (Integer.valueOf(bean.getPrecent()) > 100) {
+//                    mPro.setProgress(100);
+//                } else {
+//                    mPro.setProgress(Integer.valueOf(bean.getPrecent()));
+//                }
+//
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        } else {
+//            mPro.setProgress(0);
+//        }
 
 
     }

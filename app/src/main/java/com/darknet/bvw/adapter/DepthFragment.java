@@ -185,7 +185,7 @@ public class DepthFragment extends Fragment {
 
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonVal);
 
-        OkGo.<String>post(ConfigNetWork.JAVA_API_URL + UrlPath.TRADE_DEPTH_URL + marketId)
+        OkGo.<String>post(ConfigNetWork.JAVA_API_URL + UrlPath.TRADE_DEPTH_TWO_URL + marketId+"/50")
                 .tag(getActivity())
                 .headers("Chain-Authentication", addressVals + "#" + msg + "#" + signVal)
                 .upRequestBody(requestBody)
@@ -229,6 +229,11 @@ public class DepthFragment extends Fragment {
 
     public void setDepData(DepthResponse.DataBean data) {
 
+
+        if(data.getBids().size() == 0 && data.getAsks().size() == 0){
+            return;
+        }
+
         List<DepthResponse.DataBean.AsksBean> listAsk = data.getAsks();
 
         List<DepthResponse.DataBean.BidsBean> listBid = data.getBids();
@@ -250,11 +255,11 @@ public class DepthFragment extends Fragment {
 
             tempCountVal = ArithmeticUtils.plus(tempBid.getAmount(), tempCountVal).toPlainString();
             tempBid.setCurrentCount(tempCountVal);
-            Log.e("mairuTotal22", "tempCountVal=" + tempCountVal);
+//            Log.e("mairuTotal22", "tempCountVal=" + tempCountVal);
         }
 
 
-        Log.e("mairuTotal22", "tempCountVal=" + maiRuTotalVal);
+//        Log.e("mairuTotal22", "tempCountVal=" + maiRuTotalVal);
 
         tempCountVal = "0";
 
@@ -266,7 +271,7 @@ public class DepthFragment extends Fragment {
             asksBean.setCurrentCount(tempCountVal);
         }
 
-        Log.e("mairuTotal", "maiChuTotalVal=" + maiChuTotalVal);
+//        Log.e("mairuTotal", "maiChuTotalVal=" + maiChuTotalVal);
 
         if (ArithmeticUtils.compare(maiRuTotalVal, maiChuTotalVal)) {
             bigFenMu = maiRuTotalVal;
@@ -300,9 +305,9 @@ public class DepthFragment extends Fragment {
         }
 
 
-        mInAdapter.setData(listAsk, new BigDecimal(bigFenMu).stripTrailingZeros().setScale(0, BigDecimal.ROUND_DOWN));
+        mInAdapter.setData(listAsk, new BigDecimal(bigFenMu).stripTrailingZeros().setScale(6, BigDecimal.ROUND_DOWN));
 
-        mOutAdapter.setMoreData(listBid, new BigDecimal(bigFenMu).stripTrailingZeros().setScale(0, BigDecimal.ROUND_DOWN));
+        mOutAdapter.setMoreData(listBid, new BigDecimal(bigFenMu).stripTrailingZeros().setScale(6, BigDecimal.ROUND_DOWN));
     }
 
 
