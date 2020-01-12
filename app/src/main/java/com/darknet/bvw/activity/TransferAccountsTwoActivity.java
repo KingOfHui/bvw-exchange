@@ -869,21 +869,21 @@ public class TransferAccountsTwoActivity extends BaseActivity implements View.On
 
 
         //发送完请求，结束当前页面
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-//                syncSleepData();
-                //关闭当前页面
-                EventBus.getDefault().post(new TradeSuccessEvent());
-                //通知主页面，跳转消息记录
-//                EventBus.getDefault().post(new PushEvent());
-
-                Intent tradeIntent = new Intent(TransferAccountsTwoActivity.this, MessageCenterActivity.class);
-                startActivity(tradeIntent);
-
-                finish();
-            }
-        }, 1100);
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+////                syncSleepData();
+//                //关闭当前页面
+//                EventBus.getDefault().post(new TradeSuccessEvent());
+//                //通知主页面，跳转消息记录
+////                EventBus.getDefault().post(new PushEvent());
+//
+//                Intent tradeIntent = new Intent(TransferAccountsTwoActivity.this, MessageCenterActivity.class);
+//                startActivity(tradeIntent);
+//
+//                finish();
+//            }
+//        }, 1100);
 
 
     }
