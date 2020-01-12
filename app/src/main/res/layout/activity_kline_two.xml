@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FF37314D"
+    android:background="#37314D"
     android:orientation="vertical"
     tools:context=".activity.KlineActivity">
 
@@ -136,6 +136,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="--"
+                        android:textStyle="bold"
                         android:textColor="#ff01fcda"
                         android:textSize="32sp" />
 
@@ -173,7 +174,7 @@
                     android:orientation="vertical">
 
                     <RelativeLayout
-                        android:layout_width="@dimen/dimen_100dp"
+                        android:layout_width="@dimen/dimen_70dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:gravity="center">
@@ -191,13 +192,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
-                            android:text="7200.00"
+                            android:text="--"
                             android:textColor="#ffffffff"
                             android:textSize="12sp" />
                     </RelativeLayout>
 
                     <RelativeLayout
-                        android:layout_width="@dimen/dimen_100dp"
+                        android:layout_width="@dimen/dimen_70dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="@dimen/dimen_10dp"
@@ -216,14 +217,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
-                            android:text="7003.00"
+                            android:text="--"
                             android:textColor="#ffffffff"
                             android:textSize="12sp" />
                     </RelativeLayout>
 
 
                     <RelativeLayout
-                        android:layout_width="@dimen/dimen_100dp"
+                        android:layout_width="@dimen/dimen_70dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="@dimen/dimen_10dp"
@@ -242,7 +243,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
-                            android:text="32940"
+                            android:text="--"
                             android:textColor="#ffffffff"
                             android:textSize="12sp" />
                     </RelativeLayout>

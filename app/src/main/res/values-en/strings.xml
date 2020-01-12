@@ -796,11 +796,11 @@
     <string name="k_low_line">Low</string>
     <string name="k_day_line">24h</string>
 
-    <string name="k_time_one">Time sharing</string>
-    <string name="k_time_two">15Minute</string>
-    <string name="k_time_three">1Hour</string>
-    <string name="k_time_four">4Hour</string>
-    <string name="k_time_five">Daily line</string>
+    <string name="k_time_one">Time</string>
+    <string name="k_time_two">15min</string>
+    <string name="k_time_three">1hour</string>
+    <string name="k_time_four">4hour</string>
+    <string name="k_time_five">daily</string>
     <string name="k_time_six">More</string>
 
     <string name="k_buy_sign">Buy</string>

@@ -148,6 +148,7 @@ public abstract class BaseKLineChartView extends ScrollAndScaleView {
     private Rect mChildRect;
 
     private float mLineWidth;
+    private int mColumnSpace;
 
     public BaseKLineChartView(Context context) {
         super(context);
@@ -190,6 +191,12 @@ public abstract class BaseKLineChartView extends ScrollAndScaleView {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
+        //列宽度
+        mColumnSpace = 200;
+        //右边移动最大设置一个列宽度
+        setOverScrollRange(mColumnSpace);
+        //初始化默认滚动设置一个列宽度
+        setScrollX((int) -mOverScrollRange);
         this.mWidth = w;
         displayHeight = h - mTopPadding - mBottomPadding;
         initRect();

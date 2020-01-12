@@ -1,5 +1,7 @@
 package com.darknet.bvw.model;
 
+import java.text.DecimalFormat;
+
 public class CoinThumb {
     private String change;
     private String chg;
@@ -107,8 +109,9 @@ public class CoinThumb {
         return usdRate;
     }
 
-    public void setUsdRate(String usdRate) {
-        this.usdRate = usdRate;
+    public void setUsdRate(double usdRate) {
+        DecimalFormat decimalFormat=new DecimalFormat("0.00");
+        this.usdRate = decimalFormat.format(usdRate);
     }
 
     public String getVolume() {
