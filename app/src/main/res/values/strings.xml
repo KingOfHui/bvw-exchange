@@ -688,7 +688,10 @@
 
     <string name="deal_type_sell_sign">卖</string>
     <string name="deal_type_buy_sign">买</string>
-
+    <string name="find_kuangji">硬件矿机</string>
+    <string name="find_kuangji_intro">专链强算力芯片\n128天回本</string>
+    <string name="find_jijin">矿场基金</string>
+    <string name="find_jijin_intro">阿联酋矿场\n云算力基金</string>
 
 
 </resources>
