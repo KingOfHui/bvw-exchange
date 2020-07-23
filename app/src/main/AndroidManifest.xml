@@ -770,6 +770,7 @@
             android:name=".receiver.TTestActivity"
             android:exported="false"
             android:screenOrientation="portrait"></activity>
+        <activity android:name=".activity.ImageActivity" />
 
         <receiver
             android:name="com.darknet.bvw.receiver.PushReceiver"

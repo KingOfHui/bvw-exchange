@@ -43,19 +43,18 @@ public class MyApp extends Application {
 
     private DaoSession daoSession;
 
-    public DaoSession getDaoSession() {
-        return daoSession;
+    public static MyApp getInstance() {
+        return sInstance;
     }
 
-
-
-    public static MyApp getsInstance() {
-        return sInstance;
+    public DaoSession getDaoSession() {
+        return daoSession;
     }
 
     //----------------------------国际化配置--------------
     @Override
     protected void attachBaseContext(Context base) {
+        sInstance = this;
         //第一次进入app时保存系统选择语言(为了选择随系统语言时使用，如果不保存，切换语言后就拿不到了）
         LocalManageUtil.saveSystemCurrentLanguage(base);
         super.attachBaseContext(MultiLanguage.setLocal(base));
@@ -77,7 +76,6 @@ public class MyApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        sInstance = this;
 
         Fresco.initialize(this);
         //初始化库

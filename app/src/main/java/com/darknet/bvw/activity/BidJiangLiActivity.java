@@ -592,8 +592,6 @@ public class BidJiangLiActivity extends BaseActivity implements View.OnClickList
 
     private void setStateData(FenLieFirstResponse.FenLieFirstData fenLieFirstData) {
 
-
-
         if (fenLieSendModel.getStatus() == 1) {
 
             mingciName.setText(fenLieFirstData.getHeight());

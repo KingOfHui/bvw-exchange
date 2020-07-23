@@ -890,9 +890,9 @@
     <string name="deal_type_sell_sign">Sell</string>
     <string name="deal_type_buy_sign">Buy</string>
 
-    <string name="find_kuangji">硬件矿机</string>
-    <string name="find_kuangji_intro">专链强算力芯片\n128天回本</string>
-    <string name="find_jijin">矿场基金</string>
-    <string name="find_jijin_intro">阿联酋矿场\n云算力基金</string>
+    <string name="find_kuangji">Hardware miner</string>
+    <string name="find_kuangji_intro">Special chain powerful computing chip 128 day return</string>
+    <string name="find_jijin">Mine fund</string>
+    <string name="find_jijin_intro">UAE mines Cloud computing power fund</string>
 
 </resources>

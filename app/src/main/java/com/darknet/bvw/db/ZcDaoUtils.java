@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ZcDaoUtils {
 
-    public static ZcMoneyModelDao zcMoneyModelDao = MyApp.getsInstance().getDaoSession().getZcMoneyModelDao();
+    public static ZcMoneyModelDao zcMoneyModelDao = MyApp.getInstance().getDaoSession().getZcMoneyModelDao();
 
 
     //插入数据

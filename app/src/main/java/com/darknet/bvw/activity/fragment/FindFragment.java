@@ -23,12 +23,14 @@ import com.darknet.bvw.activity.BidIntroActivity;
 import com.darknet.bvw.activity.BidZhenMaActivity;
 import com.darknet.bvw.activity.BidZhenMaTwoActivity;
 import com.darknet.bvw.activity.FenLieThreeActivity;
+import com.darknet.bvw.activity.ImageActivity;
 import com.darknet.bvw.activity.ZhenLieActivity;
 import com.darknet.bvw.config.ConfigNetWork;
 import com.darknet.bvw.config.UrlPath;
 import com.darknet.bvw.db.Entity.ETHWalletModel;
 import com.darknet.bvw.db.WalletDaoUtils;
 import com.darknet.bvw.model.response.BidStateResponse;
+import com.darknet.bvw.util.Language;
 import com.darknet.bvw.util.UserSPHelper;
 import com.darknet.bvw.util.bitcoinj.BitcoinjKit;
 import com.darknet.bvw.util.language.SPUtil;
@@ -207,16 +209,14 @@ public class FindFragment extends Fragment implements View.OnClickListener {
                 getPublicAddress();
                 break;
             case R.id.find_one_layout:
-                //分裂
-                if (isOpenSign == 1) {
-                    //开通了bid
-                    Intent fenlieIntent =  new Intent(activity, FenLieThreeActivity.class);
-                    startActivity(fenlieIntent);
-                } else {
-                    //没有开通bid
-//                    Intent fenlieIntent =  new Intent(activity, FenLieThreeActivity.class);
-//                    startActivity(fenlieIntent);
-                    new BidDialogView().showTips(activity, getString(R.string.find_invest_notice));
+                //硬件矿机
+                switch (Language.readFromConfig()){
+                    case CHINA:
+                        ImageActivity.start(getContext(), R.mipmap.img_bif_cn);
+                        break;
+                    case ENGLISH:
+                        ImageActivity.start(getContext(), R.mipmap.img_bif_en);
+                        break;
                 }
 
 
