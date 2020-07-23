@@ -219,8 +219,10 @@ dependencies {
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
 
     //激光
-    implementation files('libs/jcore-android-2.2.8-google_play.jar')
-    implementation files('libs/jpush-android-3.5.4-google_play.jar')
+//    implementation files('libs/jcore-android-2.2.8-google_play.jar')
+    implementation files('libs/jcore-android-2.2.4.jar')
+    implementation files('libs/jpush-android-3.4.1.jar')
+//    implementation files('libs/jpush-android-3.5.4-google_play.jar')
 
     implementation 'me.jessyan:autosize:1.2.0'
 }
