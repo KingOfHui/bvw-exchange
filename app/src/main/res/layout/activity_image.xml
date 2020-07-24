@@ -6,7 +6,8 @@
     android:layout_height="match_parent">
     <ImageView
         android:id="@+id/iv_image"
-        android:scaleType="fitCenter"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/img_bif_cn"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
     <ImageView
