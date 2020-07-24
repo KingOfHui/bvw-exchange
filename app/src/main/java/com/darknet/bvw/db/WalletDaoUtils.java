@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WalletDaoUtils {
-    public static ETHWalletModelDao ethWalletDao = MyApp.getsInstance().getDaoSession().getETHWalletModelDao();
+    public static ETHWalletModelDao ethWalletDao = MyApp.getInstance().getDaoSession().getETHWalletModelDao();
 
     /**
      * 插入新创建钱包

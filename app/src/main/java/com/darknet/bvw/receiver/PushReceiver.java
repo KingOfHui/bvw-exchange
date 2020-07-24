@@ -18,8 +18,6 @@ import com.darknet.bvw.activity.XchainMainThreeActivity;
 import com.darknet.bvw.model.PushModel;
 import com.google.gson.Gson;
 
-import org.greenrobot.eventbus.EventBus;
-
 import cn.jpush.android.api.JPushInterface;
 
 public class PushReceiver extends BroadcastReceiver {
@@ -286,11 +284,11 @@ public class PushReceiver extends BroadcastReceiver {
         }
 
         if (mNotificationManager == null) {
-            mNotificationManager = (NotificationManager) MyApp.getsInstance().getSystemService(Context.NOTIFICATION_SERVICE);
+            mNotificationManager = (NotificationManager) MyApp.getInstance().getSystemService(Context.NOTIFICATION_SERVICE);
 //			ExampleApplication.sp.putInt(KEY_NOTIFICATION_ID, NOTIFICATION_ID);
         }
 
-        mBuilder = new NotificationCompat.Builder(MyApp.getsInstance())
+        mBuilder = new NotificationCompat.Builder(MyApp.getInstance())
                 .setSmallIcon(R.mipmap.logo_icon)
                 .setContentTitle("BVW")
                 .setAutoCancel(true)
@@ -305,10 +303,10 @@ public class PushReceiver extends BroadcastReceiver {
 //                | Notification.DEFAULT_LIGHTS;  // 设置为铃声、震动、呼吸灯闪烁都要
 //        JPushInterface.setPushNotificationBuilder(1, builder);
 
-        Intent intent = new Intent(MyApp.getsInstance(), PushJumpActivity.class);
+        Intent intent = new Intent(MyApp.getInstance(), PushJumpActivity.class);
         intent.putExtra("key_notify", msgContent);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        mBuilder.setContentIntent(PendingIntent.getActivity(MyApp.getsInstance(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT));
+        mBuilder.setContentIntent(PendingIntent.getActivity(MyApp.getInstance(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT));
 
 //		int temp = ExampleApplication.sp.getInt(KEY_NOTIFICATION_ID);
         int temp = 1000;
