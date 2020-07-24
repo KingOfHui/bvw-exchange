@@ -1,8 +1,0 @@
-<resources>
-    <string name="app_name">KLineChartLib</string>
-    <string name="high">高:</string>
-    <string name="low">低:</string>
-    <string name="open">开:</string>
-    <string name="close">收:</string>
-
-</resources>

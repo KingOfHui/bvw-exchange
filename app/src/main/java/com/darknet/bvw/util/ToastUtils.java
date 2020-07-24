@@ -7,7 +7,7 @@ import com.darknet.bvw.MyApp;
 
 public class ToastUtils {
     private static Toast mToast;
-    private static Context context = MyApp.getInstance();
+    private static Context context = MyApp.getsInstance();
 
     /********************** 非连续弹出的Toast ***********************/
     public static void showSingleToast(int resId) { //R.string.**

@@ -31,7 +31,7 @@ public class ShareAnimationPlayer {
     private DataSource mDataSource;
 
     private ShareAnimationPlayer(){
-        mAppContext = MyApp.getInstance();
+        mAppContext = MyApp.getsInstance();
         mRelationAssist = new RelationAssist(mAppContext);
         mRelationAssist.setEventAssistHandler(mInternalEventAssistHandler);
         mOnPlayerEventListeners = new ArrayList<>();

@@ -30,7 +30,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         setContentView(getLayoutId());
         ButterKnife.bind(this);
         AtyContainer.getInstance().addActivity(this);
-        mAppContext = MyApp.getInstance();
+        mAppContext = MyApp.getsInstance();
         initView();
         initDatas();
     }

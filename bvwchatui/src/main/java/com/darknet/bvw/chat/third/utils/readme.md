@@ -1,1 +1,0 @@
-这个包的代码，拷贝自：[LQRWeChat](https://github.com/GitLqr/LQRWeChat)

@@ -49,7 +49,7 @@ public class MyApp extends Application {
     }
 
 
-    public static MyApp getInstance() {
+    public static MyApp getsInstance() {
         return sInstance;
     }
 

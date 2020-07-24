@@ -8,7 +8,7 @@ import java.util.List;
 
 public class TotalMoneyUtils {
 
-    public static ZcTotalMoneyModelDao zcMoneyModelDao = MyApp.getInstance().getDaoSession().getZcTotalMoneyModelDao();
+    public static ZcTotalMoneyModelDao zcMoneyModelDao = MyApp.getsInstance().getDaoSession().getZcTotalMoneyModelDao();
 
     public static void insertZcModel(ZcTotalMoneyModel totalMoneyModel) {
         zcMoneyModelDao.insert(totalMoneyModel);

@@ -82,7 +82,7 @@ public class SharedPreferencesUtil {
         } catch (Exception e) {
             result = false;
             e.printStackTrace();
-            Toast.makeText(MyApp.getInstance(),e.getMessage(),Toast.LENGTH_SHORT).show();
+            Toast.makeText(MyApp.getsInstance(),e.getMessage(),Toast.LENGTH_SHORT).show();
         }
         editor.apply();
         return result;
