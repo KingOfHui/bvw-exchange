@@ -8,7 +8,13 @@ import com.darknet.bvw.util.language.SPUtil;
  */
 public enum Language {
 
-	CHINA,ENGLISH;
+	CHINA("CN"), ENGLISH("EN");
+
+	Language(String name) {
+		this.name = name;
+	}
+
+	public String name;
 
 	public static Language readFromConfig(){
 		int language = SPUtil.getInstance(MyApp.getInstance()).getSelectLanguage();

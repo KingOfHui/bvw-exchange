@@ -1,6 +1,7 @@
 package com.darknet.bvw.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.inputmethod.InputMethodManager;
 
@@ -119,6 +120,16 @@ public abstract class BaseActivity extends AppCompatActivity {
         String jiguangId = JPushInterface.getRegistrationID(this);
 //        String jiguangId = "0000";
         return jiguangId;
+    }
+
+    public final void restart(){
+        restart(this, getClass());
+    }
+
+    public static void restart(Context context, Class clazz){
+        Intent intent = new Intent(context, clazz);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
     }
 
 
