@@ -1,17 +1,26 @@
 package com.darknet.bvw.activity;
 
+import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.cq.library.utils.member.ActivityResult;
+import com.cq.library.utils.member.IntentHelper;
 import com.darknet.bvw.R;
 import com.darknet.bvw.util.SharedPreferencesUtil;
 import com.darknet.bvw.util.language.LocalManageUtil;
 
+import androidx.fragment.app.FragmentActivity;
+
 public class SelectLanguageActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener {
 
+    public static void start(FragmentActivity context, ActivityResult result) {
+        Intent starter = new Intent(context, SelectLanguageActivity.class);
+        IntentHelper.startActivityForResult(context, starter, result);
+    }
 
     private RelativeLayout backView;
     private TextView titleView;
@@ -83,7 +92,7 @@ public class SelectLanguageActivity extends BaseActivity implements RadioGroup.O
 
     private void selectLanguage(int select) {
         LocalManageUtil.saveSelectLanguage(this, select);
-        XchainMainThreeActivity.reStart(this);
+        setResult(RESULT_OK, new Intent());
     }
 
     @Override

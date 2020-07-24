@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import androidx.fragment.app.FragmentActivity;
 
+import com.cq.library.utils.member.ActivityResult;
 import com.darknet.bvw.R;
 import com.darknet.bvw.config.ConfigNetWork;
 import com.darknet.bvw.config.UrlPath;
@@ -106,6 +107,8 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                 finish();
                 break;
             case R.id.layLanguage:
+                SelectLanguageActivity.start(SettingActivity.this
+                        , (resultCode, result) -> XchainMainThreeActivity.reStart(SettingActivity.this));
                 Intent languageIntent = new Intent(SettingActivity.this, SelectLanguageActivity.class);
                 startActivity(languageIntent);
                 break;

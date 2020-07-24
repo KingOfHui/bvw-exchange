@@ -6,11 +6,11 @@ import android.content.pm.PackageManager;
 import android.view.View;
 import android.widget.Button;
 
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
+import com.cq.library.utils.member.ActivityResult;
 import com.darknet.bvw.R;
 import com.darknet.bvw.model.event.CloseViewEvent;
+import com.darknet.bvw.util.Language;
+import com.darknet.bvw.view.TypefaceTextView;
 import com.google.gson.Gson;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
@@ -20,6 +20,9 @@ import com.lzy.okgo.model.Response;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 /**
  * 主页选择钱包的方式
@@ -32,6 +35,7 @@ public class WalletSelectActivity extends BaseActivity implements View.OnClickLi
     private Button importView;
 
     private static final int REQUEST_WRITE_STORAGE = 112;
+	private TypefaceTextView mTvLanguage;
 
 
     @Override
@@ -89,10 +93,14 @@ public class WalletSelectActivity extends BaseActivity implements View.OnClickLi
 
         createView = (Button) this.findViewById(R.id.wallet_select_create_view);
         importView = (Button) this.findViewById(R.id.wallet_select_import_view);
+		mTvLanguage = findViewById(R.id.tv_language);
 
+		mTvLanguage.setText(Language.readFromConfig().name);
         createView.setOnClickListener(this);
         importView.setOnClickListener(this);
-
+		mTvLanguage.setOnClickListener(v ->
+				SelectLanguageActivity.start(WalletSelectActivity.this,
+						(resultCode, result) -> WalletSelectActivity.this.restart()));
     }
 
 

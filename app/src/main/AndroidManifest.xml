@@ -824,9 +824,10 @@
                     android:name=".receiver.PushJumpActivity"
                     android:exported="false"
                     android:screenOrientation="portrait"></activity>
+        <activity android:name=".activity.ImageActivity" />
 
 
-                <receiver
+        <receiver
                     android:name="com.darknet.bvw.receiver.PushReceiver"
                     android:enabled="true"
                     android:exported="false">

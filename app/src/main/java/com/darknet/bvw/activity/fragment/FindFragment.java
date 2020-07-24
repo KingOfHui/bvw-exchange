@@ -20,6 +20,7 @@ import com.darknet.bvw.activity.BidZhenMaActivity;
 import com.darknet.bvw.activity.BidZhenMaTwoActivity;
 import com.darknet.bvw.activity.CommunityLeaderAct;
 import com.darknet.bvw.activity.FenLieThreeActivity;
+import com.darknet.bvw.activity.ImageActivity;
 import com.darknet.bvw.activity.ZhenLieActivity;
 import com.darknet.bvw.activity.ZhiNengWebActivity;
 import com.darknet.bvw.common.BaseResponse;
@@ -28,6 +29,8 @@ import com.darknet.bvw.config.UrlPath;
 import com.darknet.bvw.db.Entity.ETHWalletModel;
 import com.darknet.bvw.db.WalletDaoUtils;
 import com.darknet.bvw.model.response.BidStateResponse;
+import com.darknet.bvw.util.Language;
+import com.darknet.bvw.util.UserSPHelper;
 import com.darknet.bvw.util.bitcoinj.BitcoinjKit;
 import com.darknet.bvw.util.language.SPUtil;
 import com.darknet.bvw.view.BidDialogView;
@@ -62,7 +65,6 @@ public class FindFragment extends Fragment implements View.OnClickListener {
     private LinearLayout fiveLayout;
     private LinearLayout sixLayout;
 
-    private LinearLayout zhinengLayout;
 
 //    private BaseActivity baseActivity;
 
@@ -76,7 +78,6 @@ public class FindFragment extends Fragment implements View.OnClickListener {
     //是否开通bid
     private int isOpenSign = 0;
 
-    private ImageView ivCommunityLeader;
     /**
      * 是否是毁灭者
      */
@@ -143,39 +144,31 @@ public class FindFragment extends Fragment implements View.OnClickListener {
         fourLayout = view.findViewById(R.id.find_four_layout);
         fiveLayout = view.findViewById(R.id.find_five_layout);
         sixLayout = view.findViewById(R.id.find_six_layout);
-        ivCommunityLeader = view.findViewById(R.id.iv_community_leader);
-        zhinengLayout = view.findViewById(R.id.find_zhineng_layout);
 
         int lanType = SPUtil.getInstance(activity).getSelectLanguage();
         if (lanType == 1) {
             bidView.setImageResource(R.mipmap.find_item_big_sign);
             modelView.setImageResource(R.mipmap.find_item_model_sign);
-            ivCommunityLeader.setBackgroundResource(R.mipmap.fuhuozhe);
         } else if (lanType == 0) {
             bidView.setImageResource(R.mipmap.find_item_big_sign_en);
             modelView.setImageResource(R.mipmap.find_item_model_sign_en);
-            ivCommunityLeader.setBackgroundResource(R.mipmap.fuhuozhe_en);
         } else {
             try {
                 String language = getStystemLanguage();
                 if ("zh".equals(language)) {
                     bidView.setImageResource(R.mipmap.find_item_big_sign);
                     modelView.setImageResource(R.mipmap.find_item_model_sign);
-                    ivCommunityLeader.setBackgroundResource(R.mipmap.fuhuozhe);
                 } else if ("en".equals(language)) {
                     bidView.setImageResource(R.mipmap.find_item_big_sign_en);
                     modelView.setImageResource(R.mipmap.find_item_model_sign_en);
-                    ivCommunityLeader.setBackgroundResource(R.mipmap.fuhuozhe_en);
                 } else {
                     bidView.setImageResource(R.mipmap.find_item_big_sign_en);
                     modelView.setImageResource(R.mipmap.find_item_model_sign_en);
-                    ivCommunityLeader.setBackgroundResource(R.mipmap.fuhuozhe_en);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
                 bidView.setImageResource(R.mipmap.find_item_big_sign_en);
                 modelView.setImageResource(R.mipmap.find_item_model_sign_en);
-                ivCommunityLeader.setBackgroundResource(R.mipmap.fuhuozhe_en);
             }
         }
         bidView.setOnClickListener(this);
@@ -188,8 +181,6 @@ public class FindFragment extends Fragment implements View.OnClickListener {
         fiveLayout.setOnClickListener(this);
         sixLayout.setOnClickListener(this);
         modelView.setOnClickListener(this);
-        ivCommunityLeader.setOnClickListener(this);
-        zhinengLayout.setOnClickListener(this);
     }
 
     @Override
@@ -205,16 +196,14 @@ public class FindFragment extends Fragment implements View.OnClickListener {
                 showPopWindow();
                 break;
             case R.id.find_one_layout:
-                //分裂
-                if (isOpenSign == 1) {
-                    //开通了bid
-                    Intent fenlieIntent = new Intent(activity, FenLieThreeActivity.class);
-                    startActivity(fenlieIntent);
-                } else {
-                    //没有开通bid
-//                    Intent fenlieIntent =  new Intent(activity, FenLieThreeActivity.class);
-//                    startActivity(fenlieIntent);
-                    new BidDialogView().showTips(activity, getString(R.string.find_invest_notice));
+                //硬件矿机
+                switch (Language.readFromConfig()){
+                    case CHINA:
+                        ImageActivity.start(getContext(), R.mipmap.img_bif_cn);
+                        break;
+                    case ENGLISH:
+                        ImageActivity.start(getContext(), R.mipmap.img_bif_en);
+                        break;
                 }
 
 
@@ -229,11 +218,6 @@ public class FindFragment extends Fragment implements View.OnClickListener {
 
 
 //                Toast.makeText(activity, getString(R.string.find_no_open), Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.find_zhineng_layout:
-//                Toast.makeText(activity, getString(R.string.find_no_open), Toast.LENGTH_SHORT).show();
-                Intent zhinengIntent = new Intent(activity, ZhiNengWebActivity.class);
-                startActivity(zhinengIntent);
                 break;
             case R.id.find_two_layout:
                 Toast.makeText(activity, getString(R.string.find_no_open), Toast.LENGTH_SHORT).show();
@@ -252,9 +236,6 @@ public class FindFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.find_bid_model_view:
                 Toast.makeText(activity, getString(R.string.find_no_open), Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.iv_community_leader:
-                CommunityLeaderAct.startAct(activity);
                 break;
         }
     }
