@@ -110,11 +110,11 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public final void restart(){
         restart(this, getClass());
+        finish();
     }
 
     public static void restart(Context context, Class clazz){
         Intent intent = new Intent(context, clazz);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }
 }

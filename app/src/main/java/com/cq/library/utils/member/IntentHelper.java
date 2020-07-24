@@ -29,7 +29,7 @@ public class IntentHelper {
 
 	public static void init(int inAnim, int outAnim){
 		IntentHelper.inAnim = inAnim;
-		IntentHelper.inAnim = outAnim;
+		IntentHelper.outAnim = outAnim;
 	}
 
 	public static void startActivityForResult(@NonNull final FragmentActivity activity
