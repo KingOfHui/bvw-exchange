@@ -53,7 +53,7 @@
             android:layout_marginLeft="20dp"
             android:layout_toRightOf="@id/weituo_item_one"
             android:text="2019.07.18 20:31:00"
-            android:textColor="@color/white"
+            android:textColor="@color/gray1"
             android:textSize="12dp" />
 
         <TextView
@@ -70,7 +70,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="0.2dp"
-        android:background="@color/gray1" />
+        android:background="@color/common_line_color" />
 
     <LinearLayout
         android:layout_width="match_parent"

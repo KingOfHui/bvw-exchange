@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
 
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -41,7 +41,7 @@ dependencies {
     implementation 'com.huawei.android.hms:push:2.5.3.305'
     implementation 'com.huawei.android.hms:base:2.5.3.305'
 
-    implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation project(':client')
     implementation 'com.meizu.flyme.internet:push-internal:3.4.2@aar'
 

@@ -1,56 +1,36 @@
 package com.darknet.bvw.activity;
 
+import android.app.Application;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.inputmethod.InputMethodManager;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import com.darknet.bvw.MyApp;
 import com.darknet.bvw.view.CustomDialog;
 
+import androidx.appcompat.app.AppCompatActivity;
+import butterknife.ButterKnife;
 import cn.jpush.android.api.JPushInterface;
 
 import static com.darknet.bvw.util.language.LocalManageUtil.getSystemLocale;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
+    protected String TAG = this.getClass().getSimpleName();
 
-    protected Context mContext;
+    protected Application mAppContext;
+
     private CustomDialog dialog;//进度条
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(TAG, "onCreate");
         setContentView(getLayoutId());
+        ButterKnife.bind(this);
         AtyContainer.getInstance().addActivity(this);
-
-//        mContext = this;
-//        ImmersionBar.with(this).init();
-//        unbinder = ButterKnife.bind(this);
-//
-//        mCommonToolbar = ButterKnife.findById(this, R.id.common_toolbar);
-//        if (mCommonToolbar != null) {
-//            ImmersionBar.with(this)
-//                    .titleBar(mCommonToolbar, false)
-//                    .transparentStatusBar()
-//                    .statusBarDarkFont(true, 1f)
-//                    .navigationBarColor(R.color.white)
-//                    .init();
-//            initToolBar();
-//            setSupportActionBar(mCommonToolbar);
-//        }
-//        LinearLayout llyBack = (LinearLayout) findViewById(R.id.lly_back);
-//        if (llyBack != null) {
-//            llyBack.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    finish();
-//                }
-//            });
-//        }
-//        initDatas();
-//        configViews();
+        mAppContext = MyApp.getInstance();
         initView();
         initDatas();
     }
@@ -79,11 +59,15 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     public void hideDialog() {
-        if (dialog != null)
+        if (dialog != null) {
             dialog.hide();
+        }
     }
 
     public void showDialog(String progressTip) {
+        if (isFinishing()) {
+            return;
+        }
         getDialog().show();
         if (progressTip != null) {
             getDialog().setTvProgress(progressTip);
@@ -120,16 +104,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         String jiguangId = JPushInterface.getRegistrationID(this);
 //        String jiguangId = "0000";
         return jiguangId;
-    }
-
-    public final void restart(){
-        restart(this, getClass());
-    }
-
-    public static void restart(Context context, Class clazz){
-        Intent intent = new Intent(context, clazz);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        context.startActivity(intent);
     }
 
 

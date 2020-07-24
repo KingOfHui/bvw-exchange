@@ -180,29 +180,42 @@ public class ZhenLieActivity extends BaseActivity {
             String rightResult = numberFormat.format((float) rightCount / (float) totalCount * 100);
 
             if (leftCount == 0) {
-                progressBarOne.setProgress(Integer.parseInt("30"));
+                progressBarOne.setProgress(Integer.parseInt("40"));
             } else {
-                progressBarOne.setProgress(Integer.parseInt(leftResult));
+
+                if(Integer.parseInt(leftResult) < 30){
+                    progressBarOne.setProgress(25);
+                }else {
+                    progressBarOne.setProgress(Integer.parseInt(leftResult));
+                }
             }
 
 
             progressBarOne.setFirstText(getResources().getString(R.string.zhenlie_left_val), 35, Color.BLACK);
             progressBarOne.setSecondText(zhenLieData.getLeftTreeCount(), 55, Color.BLACK);
+            progressBarOne.setThirdText(zhenLieData.getLeftBidShowPower()+"KH",35,Color.BLACK);
 
 
             if (rightCount == 0) {
-                progressBarTwo.setProgress(Integer.parseInt("30"));
+                progressBarTwo.setProgress(Integer.parseInt("40"));
             } else {
-                progressBarTwo.setProgress(Integer.parseInt(rightResult));
+
+                if(Integer.parseInt(rightResult) < 30){
+                    progressBarTwo.setProgress(25);
+                }else {
+                    progressBarTwo.setProgress(Integer.parseInt(rightResult));
+                }
+
             }
 
             progressBarTwo.setFirstText(getResources().getString(R.string.zhenlie_right_val), 35, Color.WHITE);
             progressBarTwo.setSecondText(zhenLieData.getRightTreeCount(), 55, Color.WHITE);
+            progressBarTwo.setThirdText(zhenLieData.getRightBidShowPower()+"KH", 35, Color.WHITE);
 
 
             try {
                 String rightJiaCheng = numberFormat.format(Float.parseFloat(zhenLieData.getBidRate().toString()) * 100);
-                zhenLieLeftView.setText(zhenLieData.getBidPower());
+                zhenLieLeftView.setText(zhenLieData.getBidShowPower().toPlainString());
                 zhenLieRightView.setText(rightJiaCheng + "%");
             }catch (Exception e){
                 e.printStackTrace();
@@ -215,15 +228,16 @@ public class ZhenLieActivity extends BaseActivity {
         } catch (Exception e) {
             e.printStackTrace();
 
-            progressBarOne.setProgress(Integer.parseInt("10"));
+            progressBarOne.setProgress(Integer.parseInt("40"));
             progressBarOne.setFirstText(getResources().getString(R.string.zhenlie_left_val), 35, Color.BLACK);
             progressBarOne.setSecondText(zhenLieData.getLeftTreeCount(), 65, Color.BLACK);
 
             progressBarOne.invalidate();
 
-            progressBarTwo.setProgress(Integer.parseInt("10"));
+            progressBarTwo.setProgress(Integer.parseInt("40"));
             progressBarTwo.setFirstText(getResources().getString(R.string.zhenlie_right_val), 35, Color.WHITE);
             progressBarTwo.setSecondText(zhenLieData.getRightTreeCount(), 65, Color.WHITE);
+            progressBarTwo.setThirdText(zhenLieData.getRightBidShowPower()+"KH", 55, Color.WHITE);
 
             progressBarTwo.invalidate();
 

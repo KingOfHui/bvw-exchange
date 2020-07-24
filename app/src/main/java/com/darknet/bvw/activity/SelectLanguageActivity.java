@@ -1,26 +1,17 @@
 package com.darknet.bvw.activity;
 
-import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.cq.library.utils.member.ActivityResult;
-import com.cq.library.utils.member.IntentHelper;
 import com.darknet.bvw.R;
 import com.darknet.bvw.util.SharedPreferencesUtil;
 import com.darknet.bvw.util.language.LocalManageUtil;
 
-import androidx.fragment.app.FragmentActivity;
-
 public class SelectLanguageActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener {
 
-    public static void start(FragmentActivity context, ActivityResult result) {
-        Intent starter = new Intent(context, SelectLanguageActivity.class);
-        IntentHelper.startActivityForResult(context, starter, result);
-    }
 
     private RelativeLayout backView;
     private TextView titleView;
@@ -92,7 +83,7 @@ public class SelectLanguageActivity extends BaseActivity implements RadioGroup.O
 
     private void selectLanguage(int select) {
         LocalManageUtil.saveSelectLanguage(this, select);
-        setResult(RESULT_OK, new Intent());
+        XchainMainThreeActivity.reStart(this);
     }
 
     @Override
@@ -112,15 +103,15 @@ public class SelectLanguageActivity extends BaseActivity implements RadioGroup.O
 //                        selectLanguage(1);
 //                    }
 
-                    selectLanguage(2);
+                    selectLanguage(0);
                     SharedPreferencesUtil.putData("select", "0");
                     break;
                 case R.id.radioEnglish:
-                    selectLanguage(1);
+                    selectLanguage(0);
                     SharedPreferencesUtil.putData("select", "1");
                     break;
                 case R.id.radioChinese:
-                    selectLanguage(0);
+                    selectLanguage(1);
                     SharedPreferencesUtil.putData("select", "2");
                     break;
             }

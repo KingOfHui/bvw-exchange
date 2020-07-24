@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.darknet.bvw.R;
+import com.darknet.bvw.db.Entity.ETHWalletModel;
+import com.darknet.bvw.db.WalletDaoUtils;
 import com.darknet.bvw.model.response.TradeListResponse;
 
 import java.text.SimpleDateFormat;
@@ -136,7 +138,15 @@ public class MessageCenterAdapter extends RecyclerView.Adapter<RecyclerView.View
                         break;
                     case "confirm":
 //                    ((MsgViewHolder) holder).txtZzStatus.setText("转账成功");
-                        ((MsgViewHolder) holder).txtZzStatus.setText(context.getResources().getString(R.string.send_trade_state_succ));
+
+                        ETHWalletModel walletModel = WalletDaoUtils.getCurrent();
+                        String addressVals = walletModel.getAddress();
+
+                        if(tradeListModel.getTo_address().equals(addressVals)){
+                            ((MsgViewHolder) holder).txtZzStatus.setText(context.getResources().getString(R.string.send_trade_state_succ_two));
+                        }else {
+                            ((MsgViewHolder) holder).txtZzStatus.setText(context.getResources().getString(R.string.send_trade_state_succ));
+                        }
 
                         ((MsgViewHolder) holder).txtZzStatus.setTextColor(context.getColor(R.color.lightBlue));
                         break;

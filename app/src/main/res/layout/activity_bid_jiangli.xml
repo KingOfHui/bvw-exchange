@@ -98,6 +98,7 @@
                             android:text="@string/bid_jiangli_height"
                             android:textColor="#01FCDA"
                             android:textSize="14dp"
+                            android:visibility="gone"
                             android:textStyle="bold"></TextView>
 
                         <TextView
@@ -107,7 +108,6 @@
                             android:layout_centerVertical="true"
                             android:layout_marginLeft="10dp"
                             android:layout_toRightOf="@id/bid_jiangli_header_four"
-                            android:text="0"
                             android:textColor="#01FCDA"
                             android:textSize="14dp"
                             android:textStyle="bold"></TextView>
@@ -127,7 +127,10 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_margin="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginRight="10dp"
                         android:layout_weight="1"
                         android:gravity="left"
                         android:orientation="vertical">
@@ -191,7 +194,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/jiangli_midl_one"
                                 android:textColor="@color/white"
-                                android:textSize="18dp"></TextView>
+                                android:textSize="16dp"></TextView>
                         </LinearLayout>
 
                     </LinearLayout>
@@ -199,8 +202,10 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_margin="20dp"
-                        android:layout_weight="1"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_weight="1.2"
                         android:orientation="vertical">
 
                         <LinearLayout
@@ -261,7 +266,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/jiangli_midl_two"
                                 android:textColor="@color/white"
-                                android:textSize="18dp"></TextView>
+                                android:textSize="16dp"></TextView>
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -431,7 +436,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:layout_marginBottom="10dp"
+                            android:layout_marginBottom="30dp"
                             android:gravity="center"
                             android:text="@string/bid_jiangli_no_data_sign"
                             android:textColor="#8d86a5"

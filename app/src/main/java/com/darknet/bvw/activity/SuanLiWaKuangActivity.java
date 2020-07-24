@@ -13,12 +13,16 @@ import com.darknet.bvw.config.UrlPath;
 import com.darknet.bvw.db.Entity.ETHWalletModel;
 import com.darknet.bvw.db.WalletDaoUtils;
 import com.darknet.bvw.model.response.SuanLiResponse;
+import com.darknet.bvw.util.ArithmeticUtils;
 import com.darknet.bvw.util.TimeUtil;
 import com.darknet.bvw.util.bitcoinj.BitcoinjKit;
 import com.google.gson.Gson;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
+import java.text.DecimalFormat;
+
+import java.math.BigDecimal;
 
 public class SuanLiWaKuangActivity extends BaseActivity {
 
@@ -53,12 +57,10 @@ public class SuanLiWaKuangActivity extends BaseActivity {
         backView = (RelativeLayout) this.findViewById(R.id.layBack);
         titleView = (TextView) this.findViewById(R.id.title);
 
-
         headerOneView = (TextView) this.findViewById(R.id.suanli_one_view);
         headerTwoView = (TextView) this.findViewById(R.id.suanli_two_view);
         headerThreeView = (TextView) this.findViewById(R.id.suanli_three_view);
         headerFourView = (TextView) this.findViewById(R.id.suanli_four_view);
-
 
         itemOneView = (TextView) this.findViewById(R.id.suanli_item_one_view);
         itemTwoView = (TextView) this.findViewById(R.id.suanli_item_two_view);
@@ -75,7 +77,7 @@ public class SuanLiWaKuangActivity extends BaseActivity {
         firstLayout = (LinearLayout)this.findViewById(R.id.sunli_first_item_layout);
 
 
-        itemTimeView.setText(TimeUtil.getYesDay());
+        itemTimeView.setText(TimeUtil.getYesDay()+" ");
 
         suanliListView = (RelativeLayout) this.findViewById(R.id.suanli_midle_layout);
 
@@ -165,18 +167,28 @@ public class SuanLiWaKuangActivity extends BaseActivity {
 
     private void setSunLiData(SuanLiResponse.SunLiData sunLiData) {
 
-        headerOneView.setText(sunLiData.getPower().stripTrailingZeros().toPlainString()+"kH/S");
-        headerTwoView.setText(sunLiData.getPowerRate().stripTrailingZeros().toPlainString()+"%");
-        headerThreeView.setText(sunLiData.getSumPower().stripTrailingZeros().toPlainString()+"kH/S");
-        headerFourView.setText(sunLiData.getSumBonus().stripTrailingZeros().toPlainString()+"BVW");
+        try {
+
+            headerOneView.setText(sunLiData.getPower().stripTrailingZeros().toPlainString()+"kH/S");
+//        headerTwoView.setText(sunLiData.getPowerRate().stripTrailingZeros().toPlainString()+"%");
+
+            headerTwoView.setText(ArithmeticUtils.multiply(sunLiData.getPowerRate().toPlainString(),"100").stripTrailingZeros().setScale(2, BigDecimal.ROUND_DOWN).toPlainString()+"%");
+
+
+            headerThreeView.setText(sunLiData.getSumPower().stripTrailingZeros().toPlainString()+"kH/S");
+            headerFourView.setText(sunLiData.getSumBonus().stripTrailingZeros().toPlainString()+"BVW");
 
 //        totalOneView.setText(sunLiData.getSumPower());
 //        totalTwoView.setText(sunLiData.getSumBonus());
 
-        if(sunLiData.getPowerHistoryList() != null && sunLiData.getPowerHistoryList().size() > 0){
-            firstLayout.setVisibility(View.VISIBLE);
-            setItemVal(sunLiData.getPowerHistoryList().get(0));
+            if(sunLiData.getPowerHistoryList() != null && sunLiData.getPowerHistoryList().size() > 0){
+                firstLayout.setVisibility(View.VISIBLE);
+                setItemVal(sunLiData.getPowerHistoryList().get(0));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
+
 //        else {
 //            firstLayout.setVisibility(View.GONE);
 //        }
@@ -184,7 +196,7 @@ public class SuanLiWaKuangActivity extends BaseActivity {
     }
 
     private void setItemVal(SuanLiResponse.SunLiItemModel sunLiItemModel){
-        itemTimeView.setText(sunLiItemModel.getDate());
+        itemTimeView.setText(sunLiItemModel.getDate()+" ");
         itemOneView.setText(sunLiItemModel.getHoldPower().stripTrailingZeros().toPlainString()+"kH/S");
         itemTwoView.setText(sunLiItemModel.getAdditionTimePower().stripTrailingZeros().toPlainString()+"kH/S");
         itemThreeView.setText(sunLiItemModel.getSignPower().stripTrailingZeros().toPlainString()+"kH/S");

@@ -74,6 +74,7 @@ public class XchainMainThreeActivity extends BaseActivity implements View.OnClic
 
     @Override
     public void initView() {
+        EventBus.getDefault().register(this);
 
         fristLayout = this.findViewById(R.id.main_first_layout);
         firstImg = this.findViewById(R.id.main_first_img);
@@ -156,7 +157,7 @@ public class XchainMainThreeActivity extends BaseActivity implements View.OnClic
         fourLayout.setOnClickListener(this);
 
 
-        EventBus.getDefault().register(this);
+
 
         //发送关闭事件
         EventBus.getDefault().post(new CloseViewEvent());
@@ -506,8 +507,6 @@ public class XchainMainThreeActivity extends BaseActivity implements View.OnClic
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void receiveAddress(PushEvent nameEvent) {
 //        viewPager.setCurrentItem(2);
-
-
 
     }
 

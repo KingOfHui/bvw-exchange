@@ -9,5 +9,6 @@ include ':app',
         ':refresh',
         ':tool_playerbase',
         ':tool_lrecyclerview',
-        ':KLineChartLib'
+        ":KLineLib",
+        ':commonlib'
 rootProject.name = 'bvw'

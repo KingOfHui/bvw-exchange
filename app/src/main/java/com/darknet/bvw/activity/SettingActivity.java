@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -17,7 +18,6 @@ import android.widget.Toast;
 
 import androidx.fragment.app.FragmentActivity;
 
-import com.cq.library.utils.member.ActivityResult;
 import com.darknet.bvw.R;
 import com.darknet.bvw.config.ConfigNetWork;
 import com.darknet.bvw.config.UrlPath;
@@ -106,8 +106,6 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                 finish();
                 break;
             case R.id.layLanguage:
-                SelectLanguageActivity.start(SettingActivity.this
-                        , (resultCode, result) -> XchainMainThreeActivity.reStart(SettingActivity.this));
                 Intent languageIntent = new Intent(SettingActivity.this, SelectLanguageActivity.class);
                 startActivity(languageIntent);
                 break;
@@ -121,7 +119,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                 showDialog();
                 break;
             case R.id.btnExit:
-                AtyContainer.getInstance().finishAllActivity();
+//                AtyContainer.getInstance().finishAllActivity();
                 Intent welIntent = new Intent(SettingActivity.this, WelcomeActivity.class);
                 startActivity(welIntent);
                 break;
@@ -220,6 +218,9 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
         jumpUrl = updateData.getUrl_address();
 
         int curversioncode = getCurVersionCode(SettingActivity.this);
+
+        Log.e("versioncode","curversioncode="+curversioncode);
+
         if (curversioncode < Integer.parseInt(updateData.getVersion_code())) {
 //            updateApkDialog(response.getData());
             versionView.setText(getString(R.string.update_version_num)+" "+updateData.getVersion());

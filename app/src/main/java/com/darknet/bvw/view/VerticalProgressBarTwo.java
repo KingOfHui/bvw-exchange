@@ -42,6 +42,7 @@ public class VerticalProgressBarTwo extends View {
     private RectF mRectF;
 
     private String mFirstText = "梯度";
+    private String mSecondText = "";
 
     private Context contexttt;
 
@@ -54,7 +55,7 @@ public class VerticalProgressBarTwo extends View {
     private int mTextHeight;
 
     public VerticalProgressBarTwo(Context context, AttributeSet attrs,
-                                    int defStyleAttr) {
+                                  int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         contexttt = context;
         init();
@@ -162,11 +163,21 @@ public class VerticalProgressBarTwo extends View {
     public void setSecondText(String secondText, int secondTextSize, int secondColor) {
         mSpannableStringBuilder.append(secondText);
         mSpannableStringBuilder.setSpan(new AbsoluteSizeSpan(secondTextSize), mFirstText.length(), mFirstText.length() + secondText.length()+1, SPAN_EXCLUSIVE_EXCLUSIVE);
-        mSpannableStringBuilder.setSpan(new ForegroundColorSpan(secondColor), mFirstText.length(), mFirstText.length() + secondText.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
+        mSpannableStringBuilder.setSpan(new ForegroundColorSpan(secondColor), mFirstText.length(), mFirstText.length() + secondText.length()+1, SPAN_EXCLUSIVE_EXCLUSIVE);
+        Paint.FontMetrics fontMetrics = mTextPaint.getFontMetrics();
+        mTextHeight = (int) ((fontMetrics.descent - fontMetrics.ascent) * 2f);
+        mSecondText = mFirstText +secondText;
+        postInvalidate();
+    }
+    public void setThirdText(String thirdText, int thirdTextSize, int thirdColor) {
+        mSpannableStringBuilder.append("\n").append(thirdText);
+        mSpannableStringBuilder.setSpan(new AbsoluteSizeSpan(thirdTextSize), mSecondText.length()+1, mSecondText.length() + thirdText.length()+2, SPAN_EXCLUSIVE_EXCLUSIVE);
+        mSpannableStringBuilder.setSpan(new ForegroundColorSpan(thirdColor), mSecondText.length()+1, mSecondText.length() + thirdText.length()+2, SPAN_EXCLUSIVE_EXCLUSIVE);
         Paint.FontMetrics fontMetrics = mTextPaint.getFontMetrics();
         mTextHeight = (int) ((fontMetrics.descent - fontMetrics.ascent) * 2f);
         postInvalidate();
     }
+
 
     public void setMax(int maxProgress) {
         this.max = maxProgress;

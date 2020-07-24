@@ -30,6 +30,7 @@ public class CustomDialog extends Dialog {
 
     public static CustomDialog instance(Context context) {
         CustomDialog dialog = new CustomDialog(context, R.style.loading_dialog);
+        dialog.setCanceledOnTouchOutside(true);
         View v = dialog.inflateView(context);
         dialog.setContentView(v,
                 new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,

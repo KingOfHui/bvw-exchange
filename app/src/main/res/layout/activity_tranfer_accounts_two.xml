@@ -171,12 +171,42 @@
         <!--        android:textColor="@color/txtGray"-->
         <!--        android:textSize="@dimen/dimen_13dp" />-->
 
+
+
+
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:layout_marginLeft="@dimen/dimen_15dp"
             android:layout_marginRight="@dimen/dimen_15dp"
             android:background="@color/txtGray" />
+
+
+    <LinearLayout
+        android:id="@+id/left_mongy_notice_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title_layout"
+        android:background="#37314D"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+        <com.darknet.bvw.view.TypefaceTextView
+            android:id="@+id/left_mongy_notice_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_15dp"
+
+            android:drawableLeft="@mipmap/notice_left_money_img"
+            android:drawablePadding="6dp"
+            android:gravity="left"
+            android:textColor="#01FCDA"
+            android:textSize="13dp"
+            app:typeface="@string/universal_text_typeface" />
+
+    </LinearLayout>
 
         <com.darknet.bvw.view.TypefaceTextView
             android:layout_width="wrap_content"

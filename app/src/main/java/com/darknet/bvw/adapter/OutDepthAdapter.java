@@ -59,17 +59,20 @@ public class OutDepthAdapter extends BAdapter<DepthResponse.DataBean.BidsBean> {
 //        mPrice.setText(bean.getAmount());
 
 
-        if (bean.getAmount().contains("-")) {
+        if (bean.getAmount().contains("--")) {
             mPrice.setText(bean.getAmount());
         } else {
-            mPrice.setText(new BigDecimal(bean.getAmount()).stripTrailingZeros().setScale(5, BigDecimal.ROUND_DOWN).toPlainString());
+//            Log.e("deapthval","bean.getAmount()2="+bean.getAmount());
+            mPrice.setText(new BigDecimal(bean.getAmount()).setScale(5, BigDecimal.ROUND_DOWN).toPlainString());
+//            mPrice.setText(new BigDecimal(bean.getAmount()).stripTrailingZeros().setScale(5, BigDecimal.ROUND_DOWN).toPlainString());
         }
 
 
         if (bean.getPrice().contains("-")) {
             mAmount.setText(bean.getPrice());
         } else {
-            mAmount.setText(new BigDecimal(bean.getPrice()).stripTrailingZeros().setScale(5, BigDecimal.ROUND_DOWN).toPlainString());
+            mAmount.setText(new BigDecimal(bean.getPrice()).setScale(5, BigDecimal.ROUND_DOWN).toPlainString());
+//            mAmount.setText(new BigDecimal(bean.getPrice()).stripTrailingZeros().setScale(5, BigDecimal.ROUND_DOWN).toPlainString());
         }
 
         String percentVal = ArithmeticUtils.divide(bean.getCurrentCount(),bigFenMuVal.toPlainString(),6);

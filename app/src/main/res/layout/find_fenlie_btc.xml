@@ -195,7 +195,7 @@
             android:numeric="decimal"
             android:textColor="@color/white"
             android:hint="@string/please_iput_money_btc"
-            android:textColorHint="@color/white"
+            android:textColorHint="@color/gray"
             android:textSize="12dp"></EditText>
 
         <LinearLayout

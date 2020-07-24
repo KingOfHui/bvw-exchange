@@ -51,14 +51,24 @@ public class MyQrTwoActivity extends BaseActivity implements View.OnClickListene
         copyAddress = findViewById(R.id.qr_copy_address);
 
         erweimaView = findViewById(R.id.erwema_sign_viwe);
-        zhulianUnder= findViewById(R.id.erwema_main_line_view);
+        zhulianUnder = findViewById(R.id.erwema_main_line_view);
 
 //        title.setText(getString(R.string.qr_erweima_title_one));
-        title.setText(moneyType + " " + getString(R.string.shoukuan_code) + " (" + moneyType+")");
 
-        erweimaView.setText(getResources().getString(R.string.qr_erweima_code_one)+moneyType+getResources().getString(R.string.qr_erweima_code_one_one));
 
-        zhulianUnder.setText(moneyType+getResources().getString(R.string.gonglian_sign));
+        if (moneyType.equalsIgnoreCase("usdt")) {
+            title.setText(moneyType + " " + getString(R.string.shoukuan_code) + " (ERC20)");
+            erweimaView.setText(getResources().getString(R.string.qr_erweima_code_one) + "Ethereum ERC20 USDT" + getResources().getString(R.string.gonglian_sign) + moneyType + getResources().getString(R.string.qr_erweima_code_one_one));
+            zhulianUnder.setText("Ethereum " + "ERC20 " + moneyType);
+        } else {
+            title.setText(moneyType + " " + getString(R.string.shoukuan_code) + " (" + moneyType + getResources().getString(R.string.gonglian_sign) + ")");
+            erweimaView.setText(getResources().getString(R.string.qr_erweima_code_one) + moneyType + getResources().getString(R.string.gonglian_sign) + getResources().getString(R.string.qr_erweima_code_one_one));
+            zhulianUnder.setText(moneyType + getResources().getString(R.string.gonglian_sign));
+        }
+
+//
+//
+
         layBack.setOnClickListener(this);
 
         copyAddress.setOnClickListener(new View.OnClickListener() {

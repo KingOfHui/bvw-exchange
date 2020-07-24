@@ -97,7 +97,7 @@
     <color name="result_text">#ffffffff</color>
     <color name="result_view">#b0000000</color>
     <color name="status_text">#ffffffff</color>
-<!--    <color name="transparent">#00000000</color>-->
+    <!--    <color name="transparent">#00000000</color>-->
     <color name="viewfinder_laser">#ffcc0000</color> <!-- Android standard ICS color -->
     <color name="viewfinder_mask">#60000000</color>
 
@@ -106,6 +106,14 @@
     <color name="_FFFC6767">#FFFC6767</color>
 
     <color name="_FC6767">#FC6767</color>
+    <color name="color_0da88b">#0da88b</color>
+    <color name="color_332c4c">#332c4c</color>
+    <color name="color_01FCDA">#01FCDA</color>
+    <color name="color_8B8B90">#8B8B90</color>
+    <color name="color_000000">#000000</color>
+    <color name="transparent1">#00000000</color>
+    <color name="color_FC6767">#FC6767</color>
+    <color name="color_37314D">#37314D</color>
 
-
+    <color name="_FF01FCDA">#FF01FCDA</color>
 </resources>

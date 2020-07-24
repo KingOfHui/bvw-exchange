@@ -3,12 +3,17 @@ package com.darknet.bvw.model;
 import java.util.List;
 
 public class KLineDataModel {
+
     private long time;
     private float open;
     private float high;
     private float low;
     private float close;
     private float volume;
+
+    public KLineDataModel() {
+
+    }
 
     //[1578498300000,0,0,0,0,0]  时间 开 高 低 收 量
     public KLineDataModel(List<String> data) {

@@ -86,6 +86,7 @@
                 android:layout_marginLeft="@dimen/dimen_15dp"
                 android:background="@null"
                 android:hint="@string/trade_to_wallet_address_two"
+                android:singleLine="true"
                 android:textColor="@color/white"
                 android:textColorHint="@color/txtGray"
                 android:textSize="@dimen/dimen_13dp" />
@@ -194,7 +195,7 @@
             android:layout_marginLeft="@dimen/dimen_15dp"
             android:layout_marginRight="@dimen/dimen_15dp"
             android:background="@null"
-            android:hint="@string/trade_detail_beizhu_two"
+            android:hint="@string/trade_detail_bvw_remark"
             android:textColor="@color/white"
             android:textColorHint="@color/txtGray"
             android:textSize="@dimen/dimen_13dp" />

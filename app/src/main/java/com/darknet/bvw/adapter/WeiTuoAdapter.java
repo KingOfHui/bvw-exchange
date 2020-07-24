@@ -14,6 +14,7 @@ import com.darknet.bvw.R;
 import com.darknet.bvw.model.response.TradeListResponse;
 import com.darknet.bvw.model.response.WeiTuoHisResponse;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,41 +61,61 @@ public class WeiTuoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
             try {
                 if (weiHisModel.getMarket_id() != null) {
-                    ((MsgViewHolder) holder).moneyTypeView.setText(weiHisModel.getMarket_id().split("-")[0]);
-                    ((MsgViewHolder) holder).priceTypeOneView.setText(weiHisModel.getMarket_id().split("-")[1]);
-                    ((MsgViewHolder) holder).priceTypeTwoView.setText(weiHisModel.getMarket_id().split("-")[1]);
-                    ((MsgViewHolder) holder).priceTypeThreeView.setText(weiHisModel.getMarket_id().split("-")[1]);
+                    ((MsgViewHolder) holder).moneyTypeView.setText(" " + weiHisModel.getMarket_id().split("-")[0]);
+                    ((MsgViewHolder) holder).priceTypeOneView.setText(" " + weiHisModel.getMarket_id().split("-")[1]);
+                    ((MsgViewHolder) holder).priceTypeTwoView.setText(" " + weiHisModel.getMarket_id().split("-")[0]);
+                    ((MsgViewHolder) holder).priceTypeThreeView.setText(" " + weiHisModel.getMarket_id().split("-")[1]);
                 } else {
-                    ((MsgViewHolder) holder).moneyTypeView.setText("BVW");
-                    ((MsgViewHolder) holder).priceTypeOneView.setText("USDT");
-                    ((MsgViewHolder) holder).priceTypeTwoView.setText("USDT");
-                    ((MsgViewHolder) holder).priceTypeThreeView.setText("USDT");
+                    ((MsgViewHolder) holder).moneyTypeView.setText(" " + "BVW");
+                    ((MsgViewHolder) holder).priceTypeOneView.setText(" " + "USDT");
+                    ((MsgViewHolder) holder).priceTypeTwoView.setText(" " + "USDT");
+                    ((MsgViewHolder) holder).priceTypeThreeView.setText(" " + "USDT");
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-                ((MsgViewHolder) holder).moneyTypeView.setText("BVW");
+                ((MsgViewHolder) holder).moneyTypeView.setText(" " + "BVW");
             }
 
 
             if (weiHisModel.getStatus().equalsIgnoreCase("pending")) {
-                ((MsgViewHolder) holder).weituoStateView.setText("完成中");
+                ((MsgViewHolder) holder).weituoStateView.setText(context.getString(R.string.completion));
                 ((MsgViewHolder) holder).weituoStateView.setTextColor(context.getResources().getColor(R.color._01FCDA));
             } else if (weiHisModel.getStatus().equalsIgnoreCase("partial_filled")) {
-                ((MsgViewHolder) holder).weituoStateView.setText("部分完成");
+                ((MsgViewHolder) holder).weituoStateView.setText(context.getString(R.string.partially_completed));
                 ((MsgViewHolder) holder).weituoStateView.setTextColor(context.getResources().getColor(R.color._01FCDA));
             } else if (weiHisModel.getStatus().equalsIgnoreCase("canceled")) {
-                ((MsgViewHolder) holder).weituoStateView.setText("已取消");
+                ((MsgViewHolder) holder).weituoStateView.setText(context.getString(R.string.cancel));
                 ((MsgViewHolder) holder).weituoStateView.setTextColor(context.getResources().getColor(R.color.red7));
             } else if (weiHisModel.getStatus().equalsIgnoreCase("full_filled")) {
-                ((MsgViewHolder) holder).weituoStateView.setText("已完成");
+                ((MsgViewHolder) holder).weituoStateView.setText(context.getString(R.string.completed));
                 ((MsgViewHolder) holder).weituoStateView.setTextColor(context.getResources().getColor(R.color._01FCDA));
             }
 
             ((MsgViewHolder) holder).createTimeView.setText(weiHisModel.getCreated_at());
 
             ((MsgViewHolder) holder).moneyNumView.setText(weiHisModel.getPrice().stripTrailingZeros().toPlainString());
-            ((MsgViewHolder) holder).numView.setText(weiHisModel.getConfirmed_amount().stripTrailingZeros().toPlainString());
-            ((MsgViewHolder) holder).totalMoneyView.setText(weiHisModel.getTurnover().stripTrailingZeros().toPlainString());
+
+
+            try {
+                if (weiHisModel.getConfirmed_amount().compareTo(BigDecimal.ZERO) == 0) {
+                    ((MsgViewHolder) holder).numView.setText("0");
+                } else {
+                    ((MsgViewHolder) holder).numView.setText(weiHisModel.getConfirmed_amount().stripTrailingZeros().toPlainString());
+                }
+
+
+                if (weiHisModel.getTurnover().compareTo(BigDecimal.ZERO) == 0) {
+                    ((MsgViewHolder) holder).totalMoneyView.setText("0");
+                } else {
+                    ((MsgViewHolder) holder).totalMoneyView.setText(weiHisModel.getTurnover().setScale(3, BigDecimal.ROUND_DOWN).stripTrailingZeros().toPlainString());
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+
+
+
 
 
 //            TradeListResponse.TradeListModel tradeListModel = listVal.get(position);

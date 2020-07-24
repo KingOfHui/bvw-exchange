@@ -96,7 +96,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/order_item_two"
                 android:textColor="@color/white"
-                android:textSize="12dp"></TextView>
+                android:textSize="10dp"></TextView>
 
         </LinearLayout>
 
@@ -120,7 +120,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/order_item_three"
                 android:textColor="@color/white"
-                android:textSize="12dp"></TextView>
+                android:textSize="10dp"></TextView>
 
         </LinearLayout>
 
@@ -151,7 +151,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/order_item_four"
                     android:textColor="@color/white"
-                    android:textSize="12dp"></TextView>
+                    android:textSize="10dp"></TextView>
 
                 <TextView
                     android:id="@+id/dingdan_middle_item_four_type"
@@ -186,7 +186,7 @@
             android:gravity="center|left"
             android:text="2019.12.04 12:00"
             android:textColor="@color/white"
-            android:textSize="12dp"></TextView>
+            android:textSize="10dp"></TextView>
 
         <TextView
             android:layout_width="wrap_content"
@@ -196,7 +196,7 @@
             android:gravity="center|left"
             android:text="@string/list_item_order_sign"
             android:textColor="@color/white"
-            android:textSize="12dp"></TextView>
+            android:textSize="10dp"></TextView>
     </RelativeLayout>
 
 

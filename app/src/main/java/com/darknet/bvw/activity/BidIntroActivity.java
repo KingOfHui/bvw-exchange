@@ -124,11 +124,11 @@ public class BidIntroActivity extends BaseActivity implements OnPlayerEventListe
         getLeftMoneyRequest();
 
         int lanType = SPUtil.getInstance(BidIntroActivity.this).getSelectLanguage();
-        if (lanType == 0) {
+        if (lanType == 1) {
             exampleView.setImageResource(R.mipmap.bid_buy_example_img);
-        } else if (lanType == 1) {
+        } else if (lanType == 0) {
             exampleView.setImageResource(R.mipmap.bid_buy_example_img_en);
-        } else if (lanType == 2) {
+        } else {
             try {
                 String language = getStystemLanguage();
                 if ("zh".equals(language)) {
@@ -423,7 +423,7 @@ public class BidIntroActivity extends BaseActivity implements OnPlayerEventListe
 //            dataSource.setTitle(titleVal);
 
             int type = SPUtil.getInstance(BidIntroActivity.this).getSelectLanguage();
-            if (type == 0) {
+            if (type == 1) {
 //                videoView.setDataSource(new DataSource("https://bvw.im/assets/docs/Video_B.mp4"));
                 videoView.setDataSource(new DataSource("https://btcx-sh.oss-cn-shanghai.aliyuncs.com/btcx.prod/Video_B.mp4"));
             } else {

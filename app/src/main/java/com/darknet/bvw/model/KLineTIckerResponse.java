@@ -180,4 +180,5 @@ public class KLineTIckerResponse {
             this.volume = volume;
         }
     }
+
 }

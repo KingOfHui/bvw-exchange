@@ -5,7 +5,7 @@
     android:layout_marginLeft="10dp"
     android:layout_marginTop="10dp"
     android:layout_marginRight="10dp"
-    android:background="#D937314D"
+    android:background="#D928223D"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -36,7 +36,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="#48435d" />
+        android:background="@color/common_line_color" />
 
     <LinearLayout
         android:layout_width="match_parent"

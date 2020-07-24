@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.darknet.bvw.R;
+import com.darknet.bvw.config.ConfigNetWork;
 import com.darknet.bvw.db.Entity.ETHWalletModel;
 import com.darknet.bvw.db.WalletDaoUtils;
 import com.darknet.bvw.model.DuiLieToastModel;
@@ -92,15 +93,23 @@ public class WebLieDuiActivity extends BaseActivity {
         });
 
         if(type == 0){
-            webView.loadUrl("file:///android_asset/index.html#/tree?side=left");
+//            webView.loadUrl("file:///android_asset/index.html#/tree?side=left");
+            webView.loadUrl(ConfigNetWork.WEB_URL+"#/tree?side=left");
         }else {
-            webView.loadUrl("file:///android_asset/index.html#/tree?side=right");
+//            webView.loadUrl("file:///android_asset/index.html#/tree?side=right");
+            webView.loadUrl(ConfigNetWork.WEB_URL+"#/tree?side=right");
         }
 
         webView.registerHandler("showLoading", new BridgeHandler() {
             @Override
             public void handler(String data, CallBackFunction function) {
-                showDialog(getString(R.string.load_data));
+
+                try {
+                    showDialog(getString(R.string.load_data));
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
 //                function.onCallBack("submitFromWeb exe, response data from Java");
             }
         });
@@ -162,10 +171,10 @@ public class WebLieDuiActivity extends BaseActivity {
 
                         int lanType = SPUtil.getInstance(WebLieDuiActivity.this).getSelectLanguage();
 
-                        if (lanType == 1) {
+                        if (lanType == 0) {
                             //英文
                             sendData.put("lang", "en");
-                        } else if (lanType == 0) {
+                        } else if (lanType == 1) {
                             //中文
                             sendData.put("lang", "cn");
                         } else {
@@ -186,13 +195,11 @@ public class WebLieDuiActivity extends BaseActivity {
                         String headerVal = gson.toJson(sendData);
 
 //                JSONObject allJson = new JSONObject();
-
 //                try {
 //                    allJson.put("SYS_HEAD", sendData);
 //                } catch (JSONException e) {
 //                    e.printStackTrace();
 //                }
-//
 ////                JSONObject jsonObject = new JSONObject(createHeaderModel);
 //                GsonBuilder builder = new GsonBuilder();
 //                Gson gson = builder.create();
@@ -214,10 +221,10 @@ public class WebLieDuiActivity extends BaseActivity {
                         LanguageModel model = new LanguageModel();
 
 
-                        if (lanType == 1) {
+                        if (lanType == 0) {
                             //英文
                             model.setLang("en");
-                        } else if (lanType == 0) {
+                        } else if (lanType == 1) {
                             //中文
                             model.setLang("cn");
                         } else {

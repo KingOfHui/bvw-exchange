@@ -90,7 +90,7 @@ public class FenLieOrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             //分裂比例 如 start_bvw = end_bvw 就取 start_bvw 如果不相等就展示区间 start_bvw ~ end_bvw
             ((FenLieViewHolder) holder).itemMiddleOneView.setText("1：" + new BigDecimal(flOrderItemModel.getStart_bvw()).stripTrailingZeros().setScale(0, BigDecimal.ROUND_DOWN).toPlainString());
 
-            ((FenLieViewHolder) holder).itemMiddleThreeView.setText(flOrderItemModel.getOrder_amount().stripTrailingZeros().setScale(1, BigDecimal.ROUND_DOWN).toPlainString()+"");
+            ((FenLieViewHolder) holder).itemMiddleThreeView.setText(flOrderItemModel.getSymbol_amount().stripTrailingZeros().setScale(1, BigDecimal.ROUND_DOWN).toPlainString()+"");
 
             ((FenLieViewHolder) holder).itemMiddleTwoView.setText(flOrderItemModel.getBack_bvw().stripTrailingZeros().setScale(0, BigDecimal.ROUND_DOWN).toPlainString()+"");
             ((FenLieViewHolder) holder).itemMiddleFourType.setText("（"+flOrderItemModel.getSymbol()+"）");

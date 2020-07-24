@@ -2,6 +2,7 @@ package com.darknet.bvw.adapter;
 
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -48,20 +49,31 @@ public class InAdapter extends BAdapter<DepthResponse.DataBean.AsksBean> {
         TextView mPrice = view.findViewById(R.id.item_change_price);
 
         if (!TextUtils.isEmpty(bean.getPrice())) {
-            mPrice.setText(new BigDecimal(bean.getPrice()).setScale(5, RoundingMode.HALF_EVEN).toPlainString());
+            mPrice.setText(new BigDecimal(bean.getPrice()).setScale(5, BigDecimal.ROUND_DOWN).toPlainString());
         } else {
             mPrice.setText("-");
         }
-        if (!TextUtils.isEmpty(bean.getAmount())) {
-            String amount = ArithmeticUtils.divide(bean.getAmount(), "1000", 2);
-            if (Double.valueOf(amount) > 1) {
-                mAmount.setText(amount + " k");
+
+        try {
+            if (!TextUtils.isEmpty(bean.getAmount())) {
+                String amount = ArithmeticUtils.divide(bean.getAmount(), "1000", 2);
+                if (Double.valueOf(amount) > 1) {
+                    mAmount.setText(amount + " k");
+                } else {
+//                mAmount.setText(ArithmeticUtils.divide(bean.getAmount(), "1", 5));
+
+                    Log.e("deapthval","bean.getAmount()="+bean.getAmount());
+
+                    mAmount.setText(new BigDecimal(bean.getAmount()).setScale(5, BigDecimal.ROUND_DOWN).toPlainString());
+                }
             } else {
-                mAmount.setText(ArithmeticUtils.divide(bean.getAmount(), "1", 1));
+                mAmount.setText("-");
             }
-        } else {
-            mAmount.setText("-");
+        }catch (Exception e){
+            e.printStackTrace();
         }
+
+
 
 
         try {

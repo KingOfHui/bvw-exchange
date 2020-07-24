@@ -29,7 +29,7 @@ public class SPUtil {
     }
 
     public int getSelectLanguage() {
-        return mSharedPreferences.getInt(TAG_LANGUAGE, 1);
+        return mSharedPreferences.getInt(TAG_LANGUAGE, 0);
     }
 
 

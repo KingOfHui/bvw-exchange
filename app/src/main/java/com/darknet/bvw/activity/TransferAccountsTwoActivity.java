@@ -15,6 +15,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.Switch;
@@ -39,13 +40,15 @@ import com.darknet.bvw.model.response.CreateTradeResponse.JsonRootBean;
 import com.darknet.bvw.model.response.CreateTradeResponse.SendTx;
 import com.darknet.bvw.model.response.CreateTradeResponse.TransactionRAW;
 import com.darknet.bvw.model.response.CreateTradeResponse.Unspent;
+import com.darknet.bvw.model.response.DayLeftMoneyResponse;
 import com.darknet.bvw.model.response.PublicAddressResponse;
 import com.darknet.bvw.model.response.SendTradeResponse;
+import com.darknet.bvw.util.DecimalInputTextWatcher;
 import com.darknet.bvw.util.ToastUtils;
 import com.darknet.bvw.util.bitcoinj.BitcoinjKit;
 import com.darknet.bvw.view.BottomDialogView;
 import com.darknet.bvw.view.CustomProgressDialog;
-import com.darknet.bvw.view.FailDialogView;
+import com.darknet.bvw.view.FailZZDialogView;
 import com.darknet.bvw.view.SuccessDialogView;
 import com.darknet.bvw.view.TypefaceTextView;
 import com.darknet.bvw.zxing.android.CaptureActivity;
@@ -109,6 +112,9 @@ public class TransferAccountsTwoActivity extends BaseActivity implements View.On
 
     private TextView signContentView;
 
+    private TextView leftMoneyNoticeView;
+
+    private LinearLayout moneyNoticeLayout;
 
     @Override
     public void initView() {
@@ -129,6 +135,9 @@ public class TransferAccountsTwoActivity extends BaseActivity implements View.On
         editRemark = findViewById(R.id.editRemark);
         backSignImg.setImageResource(R.mipmap.close_trade_img);
 
+        leftMoneyNoticeView = findViewById(R.id.left_mongy_notice_view);
+       moneyNoticeLayout = findViewById(R.id.left_mongy_notice_layout);
+
 //        monyType = findViewById(R.id.select_money_type);
         webView = (BridgeWebView) findViewById(R.id.webView);
 
@@ -143,15 +152,33 @@ public class TransferAccountsTwoActivity extends BaseActivity implements View.On
         userMoneyView = findViewById(R.id.trade_use_money_view);
 
         signContentView = findViewById(R.id.brc_sign_content_view);
-//        signContentView.setText(getResources().getString(R.string.trade_account_two_header)+moneyType+getResources().getString(R.string.trade_account_two_two_header));
-        signContentView.setText(getResources().getString(R.string.trade_account_two_header)+"Ethereum"+getResources().getString(R.string.trade_account_two_two_header));
+
+        if (moneyType.equalsIgnoreCase("usdt")) {
+            title.setText(moneyType+" "+getString(R.string.trade_list_zhuanzhang)+" (ERC20)");
+            signContentView.setText(getResources().getString(R.string.trade_account_two_header) + "Ethereum ERC20 USDT" + getResources().getString(R.string.trade_account_two_two_header_three));
+        } else {
+            title.setText(moneyType + " " + getString(R.string.trade_list_zhuanzhang) + " (" + moneyType +getResources().getString(R.string.gonglian_sign)+ ")");
+            signContentView.setText(getResources().getString(R.string.trade_account_two_header) + moneyType + getResources().getString(R.string.trade_account_two_two_header));
+        }
+
+
+        //输入总长度15位，小数2位
+        editZzMoney.addTextChangedListener(new DecimalInputTextWatcher(editZzMoney, 20, 6));
 
         userMoneyView.setText(moneyTypeVal + " " + getString(R.string.trade_left_money_val) + ":" + leftVal);
 
+
+        if(!moneyType.equalsIgnoreCase("USDT")){
+            moneyNoticeLayout.setVisibility(View.GONE);
+        }
+
+
+//        if(moneyType.equalsIgnoreCase("usd"))
+
 //        title.setText(moneyTypeVal + " " + getString(R.string.trade_sign_title));
 //        title.setText(getString(R.string.trade_account_two_title));
-//        title.setText(moneyType+" "+getString(R.string.trade_list_zhuanzhang)+" ("+moneyType+")");
-        title.setText(moneyType+" "+getString(R.string.trade_list_zhuanzhang)+" (ERC20)");
+
+//
 
         layBack.setOnClickListener(this);
         btnNext.setOnClickListener(this);
@@ -187,6 +214,7 @@ public class TransferAccountsTwoActivity extends BaseActivity implements View.On
     @Override
     public void initDatas() {
         getPublicAddress();
+        getMoneyLeftData();
     }
 
     @Override
@@ -228,7 +256,7 @@ public class TransferAccountsTwoActivity extends BaseActivity implements View.On
     /**
      * 跳转到扫码界面扫码
      */
-    private void goScan(){
+    private void goScan() {
         Intent intent = new Intent(TransferAccountsTwoActivity.this, CaptureActivity.class);
         startActivityForResult(intent, REQUEST_CODE_SCAN);
     }
@@ -607,12 +635,12 @@ public class TransferAccountsTwoActivity extends BaseActivity implements View.On
                                     Gson gson = new Gson();
                                     JsonRootBean response = gson.fromJson(backVal, JsonRootBean.class);
                                     if (response != null) {
-                                        if (response.getData() != null) {
+                                        if (response.getData() != null && response.getCode() == 0) {
                                             getSignValThree(response.getData(), walletModel.getPrivateKey());
                                         } else {
 
                                             try {
-                                                new FailDialogView().showTips(TransferAccountsTwoActivity.this, response.getMsg());
+                                                new FailZZDialogView().showTips(TransferAccountsTwoActivity.this, response.getMsg());
                                                 btnNext.setEnabled(true);
 //                                                dismissDialog();
 
@@ -627,7 +655,7 @@ public class TransferAccountsTwoActivity extends BaseActivity implements View.On
                                     } else {
 //                                        Toast.makeText(TransferAccountsActivity.this, getString(R.string.trade_wrong_data), Toast.LENGTH_SHORT).show();
                                         try {
-                                            new FailDialogView().showTips(TransferAccountsTwoActivity.this, getString(R.string.dialog_fail_sign));
+                                            new FailZZDialogView().showTips(TransferAccountsTwoActivity.this, getString(R.string.dialog_fail_sign));
                                             btnNext.setEnabled(true);
 //                                            dismissDialog();
                                             if (!((Activity) TransferAccountsTwoActivity.this).isFinishing() && !((Activity) TransferAccountsTwoActivity.this).isDestroyed()) {
@@ -647,7 +675,7 @@ public class TransferAccountsTwoActivity extends BaseActivity implements View.On
                                         if (!((Activity) TransferAccountsTwoActivity.this).isFinishing() && !((Activity) TransferAccountsTwoActivity.this).isDestroyed()) {
                                             mDialog.dismiss();
                                         }
-                                        new FailDialogView().showTips(TransferAccountsTwoActivity.this, getString(R.string.dialog_fail_sign));
+                                        new FailZZDialogView().showTips(TransferAccountsTwoActivity.this, getString(R.string.dialog_fail_sign));
                                         btnNext.setEnabled(true);
                                     } catch (Exception es) {
                                         es.printStackTrace();
@@ -667,7 +695,7 @@ public class TransferAccountsTwoActivity extends BaseActivity implements View.On
                             if (!((Activity) TransferAccountsTwoActivity.this).isFinishing() && !((Activity) TransferAccountsTwoActivity.this).isDestroyed()) {
                                 mDialog.dismiss();
                             }
-                            new FailDialogView().showTips(TransferAccountsTwoActivity.this, getString(R.string.dialog_fail_sign));
+                            new FailZZDialogView().showTips(TransferAccountsTwoActivity.this, getString(R.string.dialog_fail_sign));
                             btnNext.setEnabled(true);
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -716,7 +744,7 @@ public class TransferAccountsTwoActivity extends BaseActivity implements View.On
 //                    dismissDialog();
 
                     try {
-                        new FailDialogView().showTips(TransferAccountsTwoActivity.this, getString(R.string.dialog_fail_sign));
+                        new FailZZDialogView().showTips(TransferAccountsTwoActivity.this, getString(R.string.dialog_fail_sign));
                         btnNext.setEnabled(true);
 //                        dismissDialog();
                         if (!((Activity) TransferAccountsTwoActivity.this).isFinishing() && !((Activity) TransferAccountsTwoActivity.this).isDestroyed()) {
@@ -731,7 +759,8 @@ public class TransferAccountsTwoActivity extends BaseActivity implements View.On
             }
         });
 
-        webView.loadUrl("file:///android_asset/index.html");
+//        webView.loadUrl("file:///android_asset/index.html");
+        webView.loadUrl(ConfigNetWork.WEB_URL);
     }
 
 
@@ -742,7 +771,6 @@ public class TransferAccountsTwoActivity extends BaseActivity implements View.On
         ETHWalletModel walletModel = WalletDaoUtils.getCurrent();
         String msg = "" + System.currentTimeMillis();
         String headerSign = BitcoinjKit.signMessageBy58(msg, walletModel.getPrivateKey());
-
 
 
 //        String msg = "" + System.currentTimeMillis();
@@ -806,17 +834,20 @@ public class TransferAccountsTwoActivity extends BaseActivity implements View.On
 
                                     } else {
 
-                                        EventBus.getDefault().post(new TradeSuccessEvent());
+//                                        EventBus.getDefault().post(new TradeSuccessEvent());
+//
+////                                        EventBus.getDefault().post(new PushEvent());
+//
+//                                        Toast.makeText(TransferAccountsTwoActivity.this, response.getMsg(), Toast.LENGTH_SHORT).show();
+//
+//                                        finish();
 
-//                                        EventBus.getDefault().post(new PushEvent());
+                                        new FailZZDialogView().showTips(TransferAccountsTwoActivity.this, response.getMsg());
 
-                                        Toast.makeText(TransferAccountsTwoActivity.this, response.getMsg(), Toast.LENGTH_SHORT).show();
-
-                                        finish();
                                     }
                                 } catch (Exception e) {
                                     try {
-                                        new FailDialogView().showTips(TransferAccountsTwoActivity.this, getString(R.string.dialog_fail_sign));
+                                        new FailZZDialogView().showTips(TransferAccountsTwoActivity.this, getString(R.string.dialog_fail_sign));
 //                                        EventBus.getDefault().post(new PushEvent());
 //                                        finish();
                                     } catch (Exception es) {
@@ -826,7 +857,7 @@ public class TransferAccountsTwoActivity extends BaseActivity implements View.On
                                 }
                             } else {
                                 try {
-                                    new FailDialogView().showTips(TransferAccountsTwoActivity.this, getString(R.string.dialog_fail_sign));
+                                    new FailZZDialogView().showTips(TransferAccountsTwoActivity.this, getString(R.string.dialog_fail_sign));
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
@@ -841,7 +872,7 @@ public class TransferAccountsTwoActivity extends BaseActivity implements View.On
                         super.onError(response);
 
                         try {
-                            new FailDialogView().showTips(TransferAccountsTwoActivity.this, getString(R.string.dialog_fail_sign));
+                            new FailZZDialogView().showTips(TransferAccountsTwoActivity.this, getString(R.string.dialog_fail_sign));
 //                            dismissDialog();
                             if (!((Activity) TransferAccountsTwoActivity.this).isFinishing() && !((Activity) TransferAccountsTwoActivity.this).isDestroyed()) {
                                 mDialog.dismiss();
@@ -885,6 +916,69 @@ public class TransferAccountsTwoActivity extends BaseActivity implements View.On
 //            }
 //        }, 1100);
 
+
+    }
+
+
+
+    //用户每日提币剩余额度
+    private void getMoneyLeftData() {
+
+        ETHWalletModel walletModel = WalletDaoUtils.getCurrent();
+
+        String privateKey = walletModel.getPrivateKey();
+        String addressVals = walletModel.getAddress();
+
+        String msg = "" + System.currentTimeMillis();
+        String signVal = BitcoinjKit.signMessageBy58(msg, privateKey);
+
+//        showDialog(getString(R.string.load_data));
+
+        OkGo.<String>get(ConfigNetWork.JAVA_API_URL + UrlPath.MONEY_LEFT_URL)
+                .tag(TransferAccountsTwoActivity.this)
+                .headers("Chain-Authentication", addressVals + "#" + msg + "#" + signVal)
+                .execute(new StringCallback() {
+                    @Override
+                    public void onSuccess(Response<String> backresponse) {
+                        if (backresponse != null) {
+                            String backVal = backresponse.body();
+                            if (backVal != null) {
+                                Gson gson = new Gson();
+                                try {
+                                    DayLeftMoneyResponse response = gson.fromJson(backVal, DayLeftMoneyResponse.class);
+                                    if (response != null && response.getCode() == 0) {
+                                        if (response.getData() != null) {
+                                            setLeftMoneyVal(response.getData());
+                                        }
+                                    }else {
+                                        leftMoneyNoticeView.setVisibility(View.GONE);
+                                        moneyNoticeLayout.setVisibility(View.GONE);
+                                    }
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        super.onFinish();
+//                        dismissDialog();
+                    }
+                });
+
+
+    }
+
+
+    private void setLeftMoneyVal(DayLeftMoneyResponse.DayLeftMoneyModel dayLeftMoneyModel){
+        if(!TextUtils.isEmpty(dayLeftMoneyModel.getMsg())){
+            leftMoneyNoticeView.setText(dayLeftMoneyModel.getMsg());
+        }else {
+            leftMoneyNoticeView.setVisibility(View.GONE);
+            moneyNoticeLayout.setVisibility(View.GONE);
+        }
 
     }
 

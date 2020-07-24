@@ -1,6 +1,7 @@
 package com.darknet.bvw.model.event;
 
 public class KLineEvent {
+
     //{"marketId":"BVW-USDT","openPrice":0.44,"highestPrice":0.44,"lowestPrice":0.44,"closePrice":0.44
     // ,"time":1578502620000,"period":"1min","count":0,"volume":0,"turnover":0}
     private String marketId;
@@ -13,16 +14,7 @@ public class KLineEvent {
     private float count;
     private float volume;
     private float turnover;
-    //0买入，1卖出
-    private int type;
 
-    public int getType() {
-        return type;
-    }
-
-    public void setType(int type) {
-        this.type = type;
-    }
     public String getMarketId() {
         return marketId;
     }
@@ -101,5 +93,22 @@ public class KLineEvent {
 
     public void setTurnover(float turnover) {
         this.turnover = turnover;
+    }
+
+    @Override
+    public String toString() {
+        return "KLineEvent{" +
+                "marketId='" + marketId + '\'' +
+                ", openPrice=" + openPrice +
+                ", highestPrice=" + highestPrice +
+                ", lowestPrice=" + lowestPrice +
+                ", closePrice=" + closePrice +
+                ", time=" + time +
+                ", period='" + period + '\'' +
+                ", count=" + count +
+                ", volume=" + volume +
+                ", turnover=" + turnover +
+
+                '}';
     }
 }

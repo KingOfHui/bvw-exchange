@@ -10,7 +10,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,8 +24,10 @@ import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.darknet.bvw.R;
 import com.darknet.bvw.activity.BidJiangLiActivity;
+import com.darknet.bvw.activity.NoticeActivity;
 import com.darknet.bvw.activity.SuanLiWaKuangActivity;
 import com.darknet.bvw.activity.TradeListActivity;
+import com.darknet.bvw.activity.YuBiBaoDetailActivity;
 import com.darknet.bvw.config.ConfigNetWork;
 import com.darknet.bvw.config.UrlPath;
 import com.darknet.bvw.db.Entity.ETHWalletModel;
@@ -36,9 +40,14 @@ import com.darknet.bvw.model.MoneyModel;
 import com.darknet.bvw.model.response.BaseResponse;
 import com.darknet.bvw.model.response.BidStateResponse;
 import com.darknet.bvw.model.response.LeftMoneyResponse;
+import com.darknet.bvw.model.response.NoticeResponse;
+import com.darknet.bvw.util.HandleTimeUtil;
+import com.darknet.bvw.util.TimeUtil;
 import com.darknet.bvw.util.bitcoinj.BitcoinjKit;
+import com.darknet.bvw.util.language.SPUtil;
 import com.darknet.bvw.view.BidDialogView;
 import com.darknet.bvw.view.QianDaoDialog;
+import com.darknet.bvw.view.QianDaoSuccessDialogView;
 import com.darknet.bvw.view.TypefaceTextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.Gson;
@@ -49,6 +58,7 @@ import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -109,6 +119,13 @@ public class FirstFragment extends Fragment {
 
     private LinearLayout biContentLayout;
 
+    private TextView noticeContentView;
+
+
+    private RelativeLayout noticeLayout;
+    private TextView noticeTimeView;
+
+    private ImageView yubiBaoView;
 
     @Override
     public void onAttach(Context context) {
@@ -151,6 +168,7 @@ public class FirstFragment extends Fragment {
             Log.e("xxxxxxxx", ".....lazyLoad...do...moneyFragment....");
 
             initData();
+            getNoticeContent();
             //获取签到数据
 //            getQianDaoData();
 //            setAddressVal();
@@ -236,6 +254,11 @@ public class FirstFragment extends Fragment {
 
         biContentLayout = (LinearLayout) view.findViewById(R.id.first_zc_content);
 
+        noticeContentView = (TextView) view.findViewById(R.id.first_notice_content_view);
+        noticeLayout = (RelativeLayout) view.findViewById(R.id.first_notice_content_layout);
+        noticeTimeView = (TextView) view.findViewById(R.id.first_notice_content_time_view);
+
+        yubiBaoView = (ImageView) view.findViewById(R.id.fist_yubibao_view);
 
 //        mAdapter = new ZcAdapterTwo(activity);
 //        listView.setAdapter(mAdapter);
@@ -245,6 +268,14 @@ public class FirstFragment extends Fragment {
             nameView.setText(allWallets.getName());
         } catch (Exception e) {
             e.printStackTrace();
+        }
+
+
+        int lanType = SPUtil.getInstance(activity).getSelectLanguage();
+        if (lanType == 1) {
+            yubiBaoView.setImageResource(R.mipmap.yubi_bao_sign);
+        } else {
+            yubiBaoView.setImageResource(R.mipmap.yubi_bao_sign_en);
         }
 
 
@@ -295,6 +326,16 @@ public class FirstFragment extends Fragment {
                 startActivity(suanLiIntent);
             }
         });
+
+
+        yubiBaoView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getBidStateTwoData();
+
+            }
+        });
+
 
 //        jumpLayout.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -350,6 +391,80 @@ public class FirstFragment extends Fragment {
             }
         });
 
+    }
+
+
+
+    //获取bid状态
+    private void getBidStateTwoData() {
+
+        ETHWalletModel walletModel = WalletDaoUtils.getCurrent();
+
+        String privateKey = walletModel.getPrivateKey();
+        String addressVals = walletModel.getAddress();
+
+        String msg = "" + System.currentTimeMillis();
+        String signVal = BitcoinjKit.signMessageBy58(msg, privateKey);
+
+//        showDialog(getString(R.string.load_data));
+
+        OkGo.<String>get(ConfigNetWork.JAVA_API_URL + UrlPath.FIND_BID_STATE_URL)
+                .tag(activity)
+                .headers("Chain-Authentication", addressVals + "#" + msg + "#" + signVal)
+                .execute(new StringCallback() {
+                    @Override
+                    public void onSuccess(Response<String> backresponse) {
+                        if (backresponse != null) {
+                            String backVal = backresponse.body();
+                            if (backVal != null) {
+                                Gson gson = new Gson();
+                                try {
+                                    BidStateResponse response = gson.fromJson(backVal, BidStateResponse.class);
+                                    if (response != null && response.getCode() == 0) {
+                                        if (response.getData() != null) {
+                                            setYbStateVal(response.getData().getStatus());
+                                        }
+                                    }
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        super.onFinish();
+//                        dismissDialog();
+                    }
+                });
+    }
+
+
+    private void setYbStateVal(int stateVal) {
+        if (stateVal == 0) {
+            //未开通
+//            qianDaoDialog.dissDia();
+            new BidDialogView().showTips(activity, getString(R.string.find_invest_notice));
+
+//            Intent suanLiIntent = new Intent(activity, SuanLiWaKuangActivity.class);
+//            startActivity(suanLiIntent);
+        } else if (stateVal == 1) {
+            //已开通
+            Intent yubiIntent = new Intent(activity, YuBiBaoDetailActivity.class);
+
+            startActivity(yubiIntent);
+
+
+//            Toast.makeText(activity, activity.getString(R.string.find_no_open), Toast.LENGTH_SHORT).show();
+//            Intent suanLiIntent = new Intent(activity, SuanLiWaKuangActivity.class);
+//            startActivity(suanLiIntent);
+        } else if (stateVal == 2) {
+            Toast.makeText(activity, activity.getString(R.string.find_no_open), Toast.LENGTH_SHORT).show();
+            //开通中
+//            Intent suanLiIntent = new Intent(activity, SuanLiWaKuangActivity.class);
+//            startActivity(suanLiIntent);
+        }
     }
 
 
@@ -534,6 +649,72 @@ public class FirstFragment extends Fragment {
     }
 
 
+    //获取公告内容
+    private void getNoticeContent() {
+        ETHWalletModel walletModel = WalletDaoUtils.getCurrent();
+        String privateKey = walletModel.getPrivateKey();
+        String addressVals = walletModel.getAddress();
+        String msg = "" + System.currentTimeMillis();
+        String signVal = BitcoinjKit.signMessageBy58(msg, privateKey);
+
+//        showDialog(getString(R.string.load_data));
+
+        OkGo.<String>get(ConfigNetWork.JAVA_API_URL + UrlPath.NOTICE_CONTENT_URL)
+                .tag(activity)
+                .headers("Chain-Authentication", addressVals + "#" + msg + "#" + signVal)
+                .execute(new StringCallback() {
+                    @Override
+                    public void onSuccess(Response<String> backresponse) {
+                        if (backresponse != null) {
+                            String backVal = backresponse.body();
+//                            Log.e("backVal", "backVal=" + backVal);
+                            if (backVal != null) {
+                                Gson gson = new Gson();
+                                NoticeResponse response = gson.fromJson(backVal, NoticeResponse.class);
+                                if (response != null && response.getCode() == 0 && response.getData() != null) {
+//                                    Log.e("noticeresponse", "backVal=" + response.toString());
+                                    setNoticeVal(response.getData());
+                                }
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onError(Response<String> response) {
+                        super.onError(response);
+
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        super.onFinish();
+                    }
+                });
+    }
+
+
+    private void setNoticeVal(NoticeResponse.NoticeData noticeData) {
+        noticeLayout.setVisibility(View.VISIBLE);
+        noticeContentView.setText(noticeData.getTitle());
+
+        try {
+            noticeTimeView.setText(TimeUtil.getYHDVal(noticeData.getCreate_at()));
+        } catch (Exception e) {
+            noticeTimeView.setText("");
+        }
+
+
+        noticeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent noticeIntent = new Intent(getActivity(), NoticeActivity.class);
+                noticeIntent.putExtra("model", (Serializable) noticeData);
+                startActivity(noticeIntent);
+            }
+        });
+    }
+
+
     private void getQianDaoData() {
         ETHWalletModel walletModel = WalletDaoUtils.getCurrent();
         String privateKey = walletModel.getPrivateKey();
@@ -555,9 +736,27 @@ public class FirstFragment extends Fragment {
                             if (backVal != null) {
                                 Gson gson = new Gson();
                                 BaseResponse response = gson.fromJson(backVal, BaseResponse.class);
-                                if (response != null && response.getCode() ==0) {
-                                    Toast.makeText(activity,activity.getResources().getString(R.string.sign_success_to_notice),Toast.LENGTH_SHORT).show();
+                                if (response != null && response.getCode() == 0) {
+//                                    Toast.makeText(activity,activity.getResources().getString(R.string.sign_success_to_notice),Toast.LENGTH_SHORT).show();
+//                                    new QianDaoSuccessDialogView().showTips(activity, getResources().getString(R.string.sign_success_to_notice));
+
                                     qianDaoDialog.dissDia();
+
+                                    String timeVal = HandleTimeUtil.backTimeVal(activity);
+
+                                    String noticeContent;
+
+                                    int lanType = SPUtil.getInstance(activity).getSelectLanguage();
+                                    if (lanType == 1) {
+                                        //中文
+                                        noticeContent = timeVal + "您已经签到成功，请关注明日的签到收益！";
+                                    } else {
+                                        //英文
+                                        noticeContent = "You have successfully signed in " + timeVal + " Please pay attention to tomorrow is sign in income!";
+                                    }
+
+                                    new QianDaoSuccessDialogView().showTips(activity, noticeContent);
+
                                 }
                             }
                         }
@@ -1065,6 +1264,7 @@ public class FirstFragment extends Fragment {
             //已开通
             getQianDaoData();
 
+
 //            Toast.makeText(activity, activity.getString(R.string.find_no_open), Toast.LENGTH_SHORT).show();
 //            Intent suanLiIntent = new Intent(activity, SuanLiWaKuangActivity.class);
 //            startActivity(suanLiIntent);
@@ -1139,11 +1339,6 @@ public class FirstFragment extends Fragment {
 //            startActivity(suanLiIntent);
         }
     }
-
-
-
-
-
 
 
 }

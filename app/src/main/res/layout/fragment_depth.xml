@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/transparent"
+    android:fillViewport="true"
     android:orientation="vertical">
 
 
@@ -26,7 +27,6 @@
                 android:layout_weight="1"
                 android:gravity="left"
                 android:orientation="horizontal">
-
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -120,19 +120,37 @@
             android:orientation="horizontal"
             android:weightSum="2">
 
+<!--            <LinearLayout-->
+<!--                android:id="@+id/depth_out_left_layout"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="1"-->
+<!--                android:orientation="vertical"-->
+<!--                />-->
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/depth_out_right_layout"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="1"-->
+<!--                android:orientation="vertical"-->
+<!--                />-->
+
             <com.darknet.bvw.view.MyListView
                 android:id="@+id/depth_out_lv"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:divider="@null"
-                android:layout_weight="1" />
+                />
 
             <com.darknet.bvw.view.MyListView
                 android:id="@+id/depth_in_lv"
                 android:layout_width="0dp"
-                android:divider="@null"
                 android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:divider="@null"
+                />
 
         </LinearLayout>
 

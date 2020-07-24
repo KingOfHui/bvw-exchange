@@ -2,9 +2,7 @@ package com.darknet.bvw.util;
 
 import android.content.Context;
 import android.util.Log;
-
 import com.darknet.bvw.util.language.SPUtil;
-
 import java.io.IOException;
 
 import cn.jpush.android.api.JPushInterface;
@@ -26,15 +24,13 @@ public class UserAgentIntercepter implements Interceptor {
         String jiguangId = JPushInterface.getRegistrationID(context);
 //        String jiguangId = "00000";
 
-        Log.e("jiguang","jiguang="+jiguangId);
+//        Log.e("jiguang","jiguang="+jiguangId);
 
         int lanType = SPUtil.getInstance(context).getSelectLanguage();
 
-        Log.e("jiguang","language="+lanType);
+//        Log.e("jiguang","language="+lanType);
 
-       if(lanType == 0){
-
-
+       if(lanType == 1){
             //中文
            Request request = chain.request().newBuilder()
                    .addHeader("clientId", jiguangId)

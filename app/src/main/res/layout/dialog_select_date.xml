@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:background="@mipmap/dialog_bg9"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="@dimen/dimen_20dp"
+        android:paddingBottom="@dimen/dimen_20dp"
+        android:text="@string/near_14"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="#8B8B90" />
+
+    <TextView
+        android:id="@+id/tv_30"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="@dimen/dimen_20dp"
+        android:paddingBottom="@dimen/dimen_20dp"
+        android:text="@string/near_30"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="#8B8B90" />
+
+    <TextView
+        android:id="@+id/tv_45"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="@dimen/dimen_20dp"
+        android:paddingBottom="@dimen/dimen_20dp"
+        android:text="@string/near_45"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="#8B8B90" />
+
+    <TextView
+        android:id="@+id/tv_60"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="@dimen/dimen_20dp"
+        android:paddingBottom="@dimen/dimen_20dp"
+        android:text="@string/near_60"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+</LinearLayout>

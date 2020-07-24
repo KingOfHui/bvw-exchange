@@ -130,6 +130,26 @@ public class WalletDaoUtils {
     }
 
 
+
+    /**
+     * 以私钥检查钱包是否存在
+     *
+     * @return true if repeat
+     */
+    public static boolean checkRepeatByPrivateKey(String privateKey) {
+        List<ETHWalletModel> ethWallets = loadAll();
+        for (ETHWalletModel ethWallet : ethWallets) {
+            if (TextUtils.isEmpty(ethWallet.getPrivateKey())) {
+                continue;
+            }
+            if (TextUtils.equals(ethWallet.getPrivateKey().trim(), privateKey.trim())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
     /**
      * 根据钱包名，查找钱包信息
      *

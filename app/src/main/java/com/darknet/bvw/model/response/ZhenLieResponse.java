@@ -43,6 +43,34 @@ public class ZhenLieResponse extends BaseResponse {
         private String additionTimePower;
         private String bidPower;
         private BigDecimal bidRate;
+        private BigDecimal leftBidShowPower;
+        private BigDecimal rightBidShowPower;
+        private BigDecimal bidShowPower;
+
+
+        public BigDecimal getLeftBidShowPower() {
+            return leftBidShowPower;
+        }
+
+        public void setLeftBidShowPower(BigDecimal leftBidShowPower) {
+            this.leftBidShowPower = leftBidShowPower;
+        }
+
+        public BigDecimal getRightBidShowPower() {
+            return rightBidShowPower;
+        }
+
+        public void setRightBidShowPower(BigDecimal rightBidShowPower) {
+            this.rightBidShowPower = rightBidShowPower;
+        }
+
+        public BigDecimal getBidShowPower() {
+            return bidShowPower;
+        }
+
+        public void setBidShowPower(BigDecimal bidShowPower) {
+            this.bidShowPower = bidShowPower;
+        }
 
         public BigDecimal getBidRate() {
             return bidRate;

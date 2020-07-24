@@ -29,7 +29,7 @@ public class PasswordCheckActivity extends BaseActivity implements View.OnClickL
     private RelativeLayout layBack;
     private TypefaceTextView title, txtAccount, txtWalletName, txtPassword;
     private EditText editPassword;
-    private Button btnLogin, btnChange;
+    private TextView btnLogin, btnChange;
 
     private String name;
     private String pwd;
@@ -66,14 +66,14 @@ public class PasswordCheckActivity extends BaseActivity implements View.OnClickL
 //        SpannableStringBuilder spannable = new SpannableStringBuilder(name);
 
         int languageSign = SPUtil.getInstance(PasswordCheckActivity.this).getSelectLanguage();
-        if (languageSign == 0) {
+        if (languageSign == 1) {
 //            txtAccount.setText("请输入,钱包名叫: ");
 //            txtWalletName.setText(name);
 //            txtPassword.setText(" 的密码");
 
             pwdWalletNameView.setText("请输入,钱包名叫: " + name + " 的密码");
 
-        } else if (languageSign == 1) {
+        } else if (languageSign == 0) {
 
             pwdWalletNameView.setText("Please input, wallet name " + name + " security password");
 
@@ -83,7 +83,6 @@ public class PasswordCheckActivity extends BaseActivity implements View.OnClickL
         } else {
             pwdWalletNameView.setText("Please input, wallet name " + name + " security password");
         }
-
 
 
 //        else if (languageSign == 2) {
@@ -152,10 +151,19 @@ public class PasswordCheckActivity extends BaseActivity implements View.OnClickL
                 hintKeyBoard();
                 if (inputPwd != null && inputPwd.trim().length() != 0) {
                     if (pwd.equals(inputPwd)) {
-                        AtyContainer.getInstance().finishAllActivity();
+
+                        showDialog(getString(R.string.load_data));
+
+//                        AtyContainer.getInstance().finishAllActivity();
+                        
+
                         Intent mainIntent = new Intent(PasswordCheckActivity.this, XchainMainThreeActivity.class);
                         startActivity(mainIntent);
+
+                        dismissDialog();
+
                         finish();
+
                     } else {
                         Toast.makeText(PasswordCheckActivity.this, getResources().getString(R.string.pwd_check_wrong_pwd), Toast.LENGTH_SHORT).show();
 

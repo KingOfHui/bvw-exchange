@@ -97,100 +97,165 @@
                     </RelativeLayout>
 
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
+                    <RelativeLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:orientation="vertical">
+                        android:layout_marginTop="20dp">
 
                         <LinearLayout
-                            android:id="@+id/zc_suanli_view"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="20dp"
-                            android:background="@drawable/first_bg_txt_bg"
-                            android:orientation="horizontal"
-                            android:paddingLeft="10dp"
-                            android:paddingTop="5dp"
-                            android:paddingRight="10dp"
-                            android:paddingBottom="5dp">
+                            android:layout_alignParentLeft="true"
+                            android:orientation="vertical">
 
-                            <TextView
+                            <LinearLayout
+                                android:id="@+id/zc_suanli_view"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/first_suanli_sign"
-                                android:textColor="@color/white"
+                                android:layout_marginLeft="20dp"
+                                android:background="@drawable/first_bg_txt_bg"
+                                android:orientation="horizontal"
+                                android:paddingLeft="10dp"
+                                android:paddingTop="5dp"
+                                android:paddingRight="10dp"
+                                android:paddingBottom="5dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/first_suanli_sign"
+                                    android:textColor="@color/white"
+                                    android:textSize="10dp"></TextView>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="62KH/S"
+                                    android:textColor="#FF01FCDA"
+                                    android:textSize="10dp"
+                                    android:visibility="gone"></TextView>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/zc_address_view"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/first_bg_txt_bg"
+                                android:orientation="horizontal"
+                                android:paddingLeft="10dp"
+                                android:paddingTop="5dp"
+                                android:paddingRight="10dp"
+                                android:paddingBottom="5dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="TOP/Lucky："
+                                    android:textColor="@color/white"
+                                    android:textSize="10dp"></TextView>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="30"
+                                    android:textColor="#FF01FCDA"
+                                    android:textSize="10dp"></TextView>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <ImageView
+                            android:id="@+id/fist_yubibao_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="20dp"
+                            android:padding="10dp"
+                            android:src="@mipmap/yubi_bao_sign"></ImageView>
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="140dp"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:id="@+id/first_notice_content_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:alpha="0.7"
+                            android:background="@drawable/black_four_corner"
+                            android:visibility="gone">
+
+                            <ImageView
+                                android:id="@+id/first_notice_img_sign"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="5dp"
+                                android:src="@mipmap/notice_img_sign"></ImageView>
+
+                            <TextView
+                                android:id="@+id/first_notice_content_view"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="10dp"
+                                android:layout_toRightOf="@id/first_notice_img_sign"
+                                android:gravity="center"
+                                android:textColor="#FF01FCDA"
                                 android:textSize="10dp"></TextView>
 
                             <TextView
+                                android:id="@+id/first_notice_content_time_view"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="62KH/S"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="10dp"
                                 android:textColor="#FF01FCDA"
-                                android:textSize="10dp"
-                                android:visibility="gone"></TextView>
-                        </LinearLayout>
+                                android:textSize="10dp"></TextView>
+                        </RelativeLayout>
+
 
                         <LinearLayout
-                            android:id="@+id/zc_address_view"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="20dp"
                             android:layout_marginTop="10dp"
-                            android:background="@drawable/first_bg_txt_bg"
-                            android:orientation="horizontal"
-                            android:paddingLeft="10dp"
-                            android:paddingTop="5dp"
-                            android:paddingRight="10dp"
-                            android:paddingBottom="5dp">
+                            android:layout_marginRight="20dp"
+                            android:background="@mipmap/first_middle_pic_bg"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:paddingLeft="30dp">
 
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:id="@+id/total_money_view"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="TOP/Lucky："
-                                android:textColor="@color/white"
-                                android:textSize="10dp"></TextView>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="30"
+                                android:text="434233.5"
                                 android:textColor="#FF01FCDA"
-                                android:textSize="10dp"></TextView>
+                                android:textSize="30dp"
+                                android:textStyle="bold"></TextView>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/first_totoal_money"
+                                android:textColor="#FF01FCDA"
+                                android:textSize="16dp"></TextView>
+
                         </LinearLayout>
-                    </LinearLayout>
-
-
-                    <LinearLayout
-
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="140dp"
-                        android:layout_marginRight="20dp"
-                        android:background="@mipmap/first_middle_pic_bg"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:paddingLeft="30dp">
-
-                        <TextView
-                            android:id="@+id/total_money_view"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="434233.5"
-                            android:textColor="#FF01FCDA"
-                            android:textSize="20dp"
-                            android:textStyle="bold"></TextView>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/first_totoal_money"
-                            android:textColor="#FF01FCDA"
-                            android:textSize="16dp"></TextView>
 
                     </LinearLayout>
-
                 </LinearLayout>
 
 
@@ -213,8 +278,8 @@
                     android:layout_below="@id/first_header_layout"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="20dp"
-                    android:visibility="gone"
-                    android:layout_marginRight="10dp" />
+                    android:layout_marginRight="10dp"
+                    android:visibility="gone" />
 
 
                 <!--            <LinearLayout-->

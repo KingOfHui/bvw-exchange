@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:layout_marginTop="@dimen/dimen_20dp"
+    android:layout_marginRight="5dp"
+    android:gravity="center_vertical">
+
+    <ImageButton
+        android:id="@+id/kiline_back_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent1"
+        android:padding="10dp"
+        android:src="@mipmap/img_back" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/kiline_back_iv"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="@dimen/dimen_10dp"
+            android:src="@mipmap/img_exchange_menu" />
+
+        <com.darknet.bvw.view.TypefaceTextView
+            android:id="@+id/kline_count_coin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="BVW"
+            android:textColor="#ffffffff"
+            android:textSize="18sp"
+            app:typeface="PingFangBold" />
+
+        <com.darknet.bvw.view.TypefaceTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="/"
+            android:textColor="#ffffffff"
+            android:textSize="18sp"
+            app:typeface="PingFangBold" />
+
+
+        <com.darknet.bvw.view.TypefaceTextView
+            android:id="@+id/kline_price_coin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="USDT"
+            android:textColor="#ffffffff"
+            android:textSize="18sp"
+            app:typeface="PingFangBold" />
+    </LinearLayout>
+
+
+    <ImageButton
+        android:id="@+id/ib_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent1"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:src="@mipmap/img_exchange_star" />
+</LinearLayout>

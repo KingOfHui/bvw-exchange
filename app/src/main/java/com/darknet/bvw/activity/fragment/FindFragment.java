@@ -14,33 +14,34 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import com.darknet.bvw.R;
 import com.darknet.bvw.activity.BidIntroActivity;
 import com.darknet.bvw.activity.BidZhenMaActivity;
 import com.darknet.bvw.activity.BidZhenMaTwoActivity;
+import com.darknet.bvw.activity.CommunityLeaderAct;
 import com.darknet.bvw.activity.FenLieThreeActivity;
-import com.darknet.bvw.activity.ImageActivity;
 import com.darknet.bvw.activity.ZhenLieActivity;
+import com.darknet.bvw.activity.ZhiNengWebActivity;
+import com.darknet.bvw.common.BaseResponse;
 import com.darknet.bvw.config.ConfigNetWork;
 import com.darknet.bvw.config.UrlPath;
 import com.darknet.bvw.db.Entity.ETHWalletModel;
 import com.darknet.bvw.db.WalletDaoUtils;
 import com.darknet.bvw.model.response.BidStateResponse;
-import com.darknet.bvw.util.Language;
-import com.darknet.bvw.util.UserSPHelper;
 import com.darknet.bvw.util.bitcoinj.BitcoinjKit;
 import com.darknet.bvw.util.language.SPUtil;
 import com.darknet.bvw.view.BidDialogView;
 import com.darknet.bvw.view.BidTwoDialogView;
 import com.darknet.bvw.view.ZhenPopWindow;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import static com.darknet.bvw.util.language.LocalManageUtil.getSystemLocale;
 
@@ -61,6 +62,8 @@ public class FindFragment extends Fragment implements View.OnClickListener {
     private LinearLayout fiveLayout;
     private LinearLayout sixLayout;
 
+    private LinearLayout zhinengLayout;
+
 //    private BaseActivity baseActivity;
 
     //该页面是否准备完毕
@@ -73,6 +76,11 @@ public class FindFragment extends Fragment implements View.OnClickListener {
     //是否开通bid
     private int isOpenSign = 0;
 
+    private ImageView ivCommunityLeader;
+    /**
+     * 是否是毁灭者
+     */
+    private boolean isLeader;
 
     @Override
     public void onAttach(Context context) {
@@ -115,10 +123,8 @@ public class FindFragment extends Fragment implements View.OnClickListener {
     //懒加载
     private void lazyLoad() {
         if (getUserVisibleHint() && isPrepared) {
-
             Log.e("xxxxxxxx", ".....lazyLoad...do...FindFragment....");
-
-            getPublicAddressTwo();
+            isLeader();
         }
     }
 
@@ -137,51 +143,41 @@ public class FindFragment extends Fragment implements View.OnClickListener {
         fourLayout = view.findViewById(R.id.find_four_layout);
         fiveLayout = view.findViewById(R.id.find_five_layout);
         sixLayout = view.findViewById(R.id.find_six_layout);
-
+        ivCommunityLeader = view.findViewById(R.id.iv_community_leader);
+        zhinengLayout = view.findViewById(R.id.find_zhineng_layout);
 
         int lanType = SPUtil.getInstance(activity).getSelectLanguage();
-        if (lanType == 0) {
+        if (lanType == 1) {
             bidView.setImageResource(R.mipmap.find_item_big_sign);
             modelView.setImageResource(R.mipmap.find_item_model_sign);
-        } else if (lanType == 1) {
+            ivCommunityLeader.setBackgroundResource(R.mipmap.fuhuozhe);
+        } else if (lanType == 0) {
             bidView.setImageResource(R.mipmap.find_item_big_sign_en);
             modelView.setImageResource(R.mipmap.find_item_model_sign_en);
-        } else if (lanType == 2) {
+            ivCommunityLeader.setBackgroundResource(R.mipmap.fuhuozhe_en);
+        } else {
             try {
                 String language = getStystemLanguage();
                 if ("zh".equals(language)) {
                     bidView.setImageResource(R.mipmap.find_item_big_sign);
                     modelView.setImageResource(R.mipmap.find_item_model_sign);
+                    ivCommunityLeader.setBackgroundResource(R.mipmap.fuhuozhe);
                 } else if ("en".equals(language)) {
                     bidView.setImageResource(R.mipmap.find_item_big_sign_en);
                     modelView.setImageResource(R.mipmap.find_item_model_sign_en);
+                    ivCommunityLeader.setBackgroundResource(R.mipmap.fuhuozhe_en);
                 } else {
                     bidView.setImageResource(R.mipmap.find_item_big_sign_en);
                     modelView.setImageResource(R.mipmap.find_item_model_sign_en);
+                    ivCommunityLeader.setBackgroundResource(R.mipmap.fuhuozhe_en);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
                 bidView.setImageResource(R.mipmap.find_item_big_sign_en);
                 modelView.setImageResource(R.mipmap.find_item_model_sign_en);
+                ivCommunityLeader.setBackgroundResource(R.mipmap.fuhuozhe_en);
             }
         }
-
-
-        String vipType = (String) UserSPHelper.get(activity, "viplever", "0");
-
-        if (vipType.equals("1")) {
-            leaderSignView.setVisibility(View.VISIBLE);
-            imgSettingTwo.setVisibility(View.GONE);
-            if (lanType == 0) {
-                leaderSignView.setImageResource(R.mipmap.bid_leader_sign);
-            } else {
-                leaderSignView.setImageResource(R.mipmap.bid_leader_sign_en);
-            }
-        } else {
-            leaderSignView.setVisibility(View.GONE);
-        }
-
-
         bidView.setOnClickListener(this);
         imgSetting.setOnClickListener(this);
 
@@ -192,8 +188,8 @@ public class FindFragment extends Fragment implements View.OnClickListener {
         fiveLayout.setOnClickListener(this);
         sixLayout.setOnClickListener(this);
         modelView.setOnClickListener(this);
-
-//        getPublicAddressTwo();
+        ivCommunityLeader.setOnClickListener(this);
+        zhinengLayout.setOnClickListener(this);
     }
 
     @Override
@@ -206,19 +202,20 @@ public class FindFragment extends Fragment implements View.OnClickListener {
             case R.id.imgSetting:
 //                showPopWindow();
 //                showPop();
-                getPublicAddress();
+                showPopWindow();
                 break;
             case R.id.find_one_layout:
-                //硬件矿机
-                switch (Language.readFromConfig()){
-                    case CHINA:
-                        ImageActivity.start(getContext(), R.mipmap.img_bif_cn);
-                        break;
-                    case ENGLISH:
-                        ImageActivity.start(getContext(), R.mipmap.img_bif_en);
-                        break;
+                //分裂
+                if (isOpenSign == 1) {
+                    //开通了bid
+                    Intent fenlieIntent = new Intent(activity, FenLieThreeActivity.class);
+                    startActivity(fenlieIntent);
+                } else {
+                    //没有开通bid
+//                    Intent fenlieIntent =  new Intent(activity, FenLieThreeActivity.class);
+//                    startActivity(fenlieIntent);
+                    new BidDialogView().showTips(activity, getString(R.string.find_invest_notice));
                 }
-
 
 
 //                if (isOpenSign == 1) {
@@ -231,9 +228,12 @@ public class FindFragment extends Fragment implements View.OnClickListener {
 //                }
 
 
-
-
 //                Toast.makeText(activity, getString(R.string.find_no_open), Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.find_zhineng_layout:
+//                Toast.makeText(activity, getString(R.string.find_no_open), Toast.LENGTH_SHORT).show();
+                Intent zhinengIntent = new Intent(activity, ZhiNengWebActivity.class);
+                startActivity(zhinengIntent);
                 break;
             case R.id.find_two_layout:
                 Toast.makeText(activity, getString(R.string.find_no_open), Toast.LENGTH_SHORT).show();
@@ -252,6 +252,9 @@ public class FindFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.find_bid_model_view:
                 Toast.makeText(activity, getString(R.string.find_no_open), Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.iv_community_leader:
+                CommunityLeaderAct.startAct(activity);
                 break;
         }
     }
@@ -373,12 +376,15 @@ public class FindFragment extends Fragment implements View.OnClickListener {
             //未开通
             stateLidType = 0;
             stateRidType = 0;
-//            imgSettingTwo.setImageResource(R.mipmap.bid_noopen_state_sign_img);
             changeNoOpenState();
 
+        } else if (bidStateModel.getStatus() == 2) {
+            isOpenSign = 0;
+            //未开通
+            stateLidType = 0;
+            stateRidType = 0;
+            changeOpeningState();
         } else if (bidStateModel.getStatus() == 1) {
-//            imgSettingTwo.setImageResource(R.mipmap.bid_open_state_sign_img);
-
             isOpenSign = 1;
 
             changeOpenState();
@@ -397,51 +403,47 @@ public class FindFragment extends Fragment implements View.OnClickListener {
             }
         }
 
-//        showPopWindow();
     }
 
 
     private void changeOpenState() {
-
-        String vipType = (String) UserSPHelper.get(activity, "viplever", "0");
-
-        if (vipType.equals("1")) {
-            leaderSignView.setVisibility(View.VISIBLE);
-            imgSettingTwo.setVisibility(View.GONE);
-            int lanType = SPUtil.getInstance(activity).getSelectLanguage();
-            if (lanType == 0) {
-                leaderSignView.setImageResource(R.mipmap.bid_leader_sign);
-            } else {
-                leaderSignView.setImageResource(R.mipmap.bid_leader_sign_en);
-            }
-
+        if (isLeader) {
+            return;
+        }
+        imgSettingTwo.setVisibility(View.VISIBLE);
+        int type = SPUtil.getInstance(activity).getSelectLanguage();
+        if (type == 1) {
+            imgSettingTwo.setImageResource(R.mipmap.bid_open_state_sign_img);
         } else {
-            int type = SPUtil.getInstance(activity).getSelectLanguage();
-            imgSettingTwo.setVisibility(View.VISIBLE);
-            leaderSignView.setVisibility(View.GONE);
-            if (type == 0) {
-                imgSettingTwo.setImageResource(R.mipmap.bid_open_state_sign_img);
-            } else {
-                imgSettingTwo.setImageResource(R.mipmap.bid_open_state_sign_img_en);
-            }
+            imgSettingTwo.setImageResource(R.mipmap.bid_open_state_sign_img_en);
+        }
+    }
+
+
+    private void changeOpeningState() {
+        if (isLeader) {
+            return;
+        }
+        imgSettingTwo.setVisibility(View.VISIBLE);
+        int type = SPUtil.getInstance(activity).getSelectLanguage();
+        if (type == 1) {
+            imgSettingTwo.setImageResource(R.mipmap.bid_opening_state_sign_img);
+        } else {
+            imgSettingTwo.setImageResource(R.mipmap.bid_opening_state_sign_img_en);
         }
     }
 
 
     private void changeNoOpenState() {
-        String vipType = (String) UserSPHelper.get(activity, "viplever", "0");
-
-        if (vipType.equals("1")) {
-
+        if (isLeader) {
+            return;
+        }
+        imgSettingTwo.setVisibility(View.VISIBLE);
+        int type = SPUtil.getInstance(activity).getSelectLanguage();
+        if (type == 1) {
+            imgSettingTwo.setImageResource(R.mipmap.bid_noopen_state_sign_img);
         } else {
-            int type = SPUtil.getInstance(activity).getSelectLanguage();
-            imgSettingTwo.setVisibility(View.VISIBLE);
-            leaderSignView.setVisibility(View.GONE);
-            if (type == 0) {
-                imgSettingTwo.setImageResource(R.mipmap.bid_noopen_state_sign_img);
-            } else {
-                imgSettingTwo.setImageResource(R.mipmap.bid_noopen_state_sign_img_en);
-            }
+            imgSettingTwo.setImageResource(R.mipmap.bid_noopen_state_sign_img_en);
         }
     }
 
@@ -459,10 +461,8 @@ public class FindFragment extends Fragment implements View.OnClickListener {
             //未开通
             stateLidType = 0;
             stateRidType = 0;
-//            imgSettingTwo.setImageResource(R.mipmap.bid_noopen_state_sign_img);
             changeNoOpenState();
         } else if (bidStateModel.getStatus() == 1) {
-//            imgSettingTwo.setImageResource(R.mipmap.bid_open_state_sign_img);
             changeOpenState();
             //已开通
             if (bidStateModel.getLid() != null && bidStateModel.getLid().trim().length() > 0) {
@@ -478,8 +478,6 @@ public class FindFragment extends Fragment implements View.OnClickListener {
                 stateRidType = 4;
             }
         }
-
-        showPopWindow();
     }
 
 
@@ -587,5 +585,54 @@ public class FindFragment extends Fragment implements View.OnClickListener {
         return language;
     }
 
+    /**
+     * 是否是领导
+     */
+    private void isLeader() {
+        ETHWalletModel walletModel = WalletDaoUtils.getCurrent();
+        String privateKey = walletModel.getPrivateKey();
+        String addressVals = walletModel.getAddress();
+        String msg = "" + System.currentTimeMillis();
+        String signVal = BitcoinjKit.signMessageBy58(msg, privateKey);
+
+        OkGo.<String>get(ConfigNetWork.JAVA_API_URL + UrlPath.BVW_STATE_URL)
+                .tag(this)
+                .headers("Chain-Authentication", addressVals + "#" + msg + "#" + signVal)
+                .execute(new StringCallback() {
+                    @Override
+                    public void onSuccess(Response<String> backresponse) {
+                        Log.d("FindFragment", ConfigNetWork.JAVA_API_URL + UrlPath.BVW_STATE_URL + ":" + backresponse.body());
+                        try {
+                            Gson gson = new Gson();
+                            BaseResponse<String> response = gson.fromJson(backresponse.body(), new TypeToken<BaseResponse<String>>() {
+                            }.getType());
+                            if (response.getCode() == 0) {
+                                String data = response.getData();
+                                if ("true".equals(data)) {
+                                    isLeader = true;
+                                    leaderSignView.setVisibility(View.VISIBLE);
+                                    imgSettingTwo.setVisibility(View.GONE);
+                                    int lanType = SPUtil.getInstance(activity).getSelectLanguage();
+                                    if (lanType == 1) {
+                                        leaderSignView.setImageResource(R.mipmap.resurrection_cn);
+                                    } else {
+                                        leaderSignView.setImageResource(R.mipmap.resurrection);
+                                    }
+                                } else {
+                                    isLeader = false;
+                                    leaderSignView.setVisibility(View.GONE);
+                                }
+                                getPublicAddressTwo();
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Response<String> response) {
+                    }
+                });
+    }
 
 }

@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:ptr="http://schemas.android.com/tools"
+    android:background="#28223D"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/bg" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <include layout="@layout/lay_head_back" />
+
+        <com.handmark.pulltorefresh.library.PullToRefreshScrollView
+            android:id="@+id/pull_refresh_scrollview"
+            ptr:ptrAnimationStyle="flip"
+            ptr:ptrMode="both"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:scrollbars="none">
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/scrollView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/mine_award_count"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tv_award"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" 0 USDT"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/dimen_20dp"
+                        android:paddingRight="@dimen/dimen_20dp">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="116dp"
+                            android:layout_weight="1"
+                            android:background="@mipmap/com_leader_bg1"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="@dimen/dimen_20dp">
+
+                            <TextView
+                                android:id="@+id/tv_release_award"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:textColor="@color/_01FCDA"
+                                android:textSize="25sp" />
+
+                            <TextView
+                                android:id="@+id/tv_usdt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="(USDT)"
+                                android:textColor="@color/white"
+                                android:textSize="12sp" />
+
+                            <com.darknet.bvw.view.CenterTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/mine_award"
+                                android:textColor="@color/white"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="116dp"
+                            android:layout_marginLeft="11dp"
+                            android:layout_weight="1"
+                            android:background="@mipmap/com_leader_bg1"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="@dimen/dimen_20dp">
+
+                            <TextView
+                                android:id="@+id/tv_withdraw"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:textColor="@color/_01FCDA"
+                                android:textSize="25sp" />
+
+                            <com.darknet.bvw.view.CenterTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:gravity="center"
+                                android:text="@string/mine_underling_fund"
+                                android:textColor="@color/white"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_30dp"
+                        android:orientation="horizontal"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="@string/mine_performance_desc"
+                            android:textColor="@color/_01FCDA"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/tv_dialog"
+                            android:layout_width="wrap_content"
+                            android:layout_height="27dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:background="@drawable/bg_stroken_1_radius_16"
+                            android:drawableRight="@mipmap/down_arrow"
+                            android:drawablePadding="5dp"
+                            android:gravity="center"
+                            android:paddingLeft="12dp"
+                            android:paddingRight="12dp"
+                            android:text="@string/near_14"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="20dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_release_ratio"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="20dp"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+                    <com.darknet.bvw.commonlib.widget.ProgressLayout
+                        android:id="@+id/progressLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:emptyContentTextColor="@color/grey"
+                        app:emptyContentTextSize="14sp"
+                        app:errorButtonTextColor="@color/teal"
+                        app:errorButtonTextSize="14sp"
+                        app:errorContentTextColor="@color/grey"
+                        app:errorContentTextSize="14sp"
+                        app:errorImageHeight="200dp"
+                        app:errorImageWidth="200dp"
+                        app:loadingProgressBarColor="@color/teal"
+                        app:loadingProgressBarRadius="200dp"
+                        app:loadingProgressBarSpinWidth="10dp">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/dimen_20dp"
+                            android:layout_marginRight="@dimen/dimen_20dp"
+                            android:orientation="vertical" />
+                    </com.darknet.bvw.commonlib.widget.ProgressLayout>
+
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+        </com.handmark.pulltorefresh.library.PullToRefreshScrollView>
+
+        <TextView
+            android:id="@+id/tv_day_60"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:textColor="@color/_01FCDA"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:text="@string/to_the_account"
+            android:textColor="@color/_01FCDA"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_apply"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="26dp"
+            android:background="@drawable/bg_color_ff01fcda_radius_2"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</RelativeLayout>

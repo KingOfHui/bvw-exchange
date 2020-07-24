@@ -1,6 +1,7 @@
 package com.darknet.bvw.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -53,17 +54,30 @@ public class InDepthAdapter extends BAdapter<DepthResponse.DataBean.AsksBean> {
         TextView mPosition = view.findViewById(R.id.item_change_position);
         mPosition.setText((position+1) + "");
 
-        if(bean.getAmount().contains("-")){
+
+//        Log.e("deapthval","bean.getAmount()1111="+bean.getAmount());
+
+        if(bean.getAmount().contains("--")){
             mAmount.setText(bean.getAmount());
         }else {
-            mAmount.setText(new BigDecimal(bean.getAmount()).stripTrailingZeros().setScale(5, BigDecimal.ROUND_DOWN).toPlainString());
+
+//            Log.e("deapthval","bean.getAmount()1="+bean.getAmount());
+
+//            BigDecimal bd2 = new BigDecimal(bean.getAmount());
+//            mAmount.setText(bd2.setScale(5, BigDecimal.ROUND_HALF_UP).toPlainString()+"2222");
+
+            mAmount.setText(new BigDecimal(bean.getAmount()).setScale(5, BigDecimal.ROUND_DOWN).toPlainString());
+
+//            mAmount.setText(new BigDecimal(bean.getAmount()).stripTrailingZeros().setScale(5, BigDecimal.ROUND_DOWN).toPlainString());
         }
 
 
         if(bean.getPrice().contains("-")){
             mPrice.setText(bean.getPrice());
         }else {
-            mPrice.setText(new BigDecimal(bean.getPrice()).stripTrailingZeros().setScale(5, BigDecimal.ROUND_DOWN).toPlainString());
+            mPrice.setText(new BigDecimal(bean.getPrice()).setScale(5, BigDecimal.ROUND_DOWN).toPlainString());
+
+//            mPrice.setText(new BigDecimal(bean.getPrice()).stripTrailingZeros().setScale(5, BigDecimal.ROUND_DOWN).toPlainString());
         }
 
         String percentVal = ArithmeticUtils.divide(bean.getCurrentCount(),bigFenMuVal.toPlainString(),6);

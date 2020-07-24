@@ -2,7 +2,7 @@
 
     <!-- 圆角 -->
     <corners
-        android:radius="5dp" /><!-- 设置圆角半径 -->
+        android:radius="3dp" /><!-- 设置圆角半径 -->
 
     <solid android:color="#01FCDA" /><!-- 填充的颜色 -->
 

@@ -69,7 +69,7 @@ public class ZjcFragment extends Fragment {
 
         submitView = (Button) view.findViewById(R.id.input_submit_view);
 
-        createWalletView = (TextView)view.findViewById(R.id.zjc_lead_in_create_view);
+        createWalletView = (TextView) view.findViewById(R.id.zjc_lead_in_create_view);
 
 
         submitView.setOnClickListener(new View.OnClickListener() {
@@ -117,8 +117,16 @@ public class ZjcFragment extends Fragment {
 
         BtcDo btcDo = BtcWalletUtils.findWalletByZjc(zjcVal);
 
-        if(btcDo == null){
+        if (btcDo == null) {
             Toast.makeText(getActivity(), getString(R.string.wrong_zjc_wrong), Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+
+        boolean checkVal = WalletDaoUtils.checkRepeatByPrivateKey(btcDo.getPrivateKey());
+
+        if (checkVal) {
+            Toast.makeText(getActivity(), getString(R.string.repeat_wallet_val), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -150,7 +158,6 @@ public class ZjcFragment extends Fragment {
 //        (BaseActivity)
 
 
-
     }
 
 
@@ -169,7 +176,7 @@ public class ZjcFragment extends Fragment {
         else if (TextUtils.isEmpty(name)) {
             ToastUtils.showToast(R.string.account_name_notice);
             return false;
-        }else if(TextUtils.isEmpty(walletPwd) || walletPwd.length() < 6){
+        } else if (TextUtils.isEmpty(walletPwd) || walletPwd.length() < 6) {
             ToastUtils.showToast(R.string.wallet_pwd_six);
             return false;
         }

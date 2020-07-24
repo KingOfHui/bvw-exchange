@@ -56,6 +56,15 @@ public class FenLieOrderResponse extends BaseResponse {
         private String back_rate;
         private String back_pool_rate;
         private String burn_rate;
+        private BigDecimal symbol_amount;
+
+        public BigDecimal getSymbol_amount() {
+            return symbol_amount;
+        }
+
+        public void setSymbol_amount(BigDecimal symbol_amount) {
+            this.symbol_amount = symbol_amount;
+        }
 
         public String getId() {
             return id;

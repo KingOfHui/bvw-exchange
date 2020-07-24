@@ -37,9 +37,9 @@ public class FindFenLieBiaoActivity extends BaseActivity {
 
 
         int lanType = SPUtil.getInstance(FindFenLieBiaoActivity.this).getSelectLanguage();
-        if (lanType == 0) {
+        if (lanType == 1) {
             fenlieBiaoImg.setImageResource(R.mipmap.jishubiao_bg_img);
-        } else if (lanType == 1) {
+        } else if (lanType == 0) {
             fenlieBiaoImg.setImageResource(R.mipmap.jishubiao_bg_img_en);
         } else {
             fenlieBiaoImg.setImageResource(R.mipmap.jishubiao_bg_img_en);

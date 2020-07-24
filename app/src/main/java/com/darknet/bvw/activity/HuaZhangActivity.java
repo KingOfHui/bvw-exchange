@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -37,16 +38,18 @@ import com.darknet.bvw.model.response.CreateTradeResponse.JsonRootBean;
 import com.darknet.bvw.model.response.CreateTradeResponse.SendTx;
 import com.darknet.bvw.model.response.CreateTradeResponse.TransactionRAW;
 import com.darknet.bvw.model.response.CreateTradeResponse.Unspent;
+import com.darknet.bvw.model.response.DayLeftMoneyResponse;
+import com.darknet.bvw.model.response.HZLeftMoneyResponse;
 import com.darknet.bvw.model.response.LeftMoneyResponse;
 import com.darknet.bvw.model.response.PublicAddressResponse;
 import com.darknet.bvw.model.response.SendTradeResponse;
 import com.darknet.bvw.util.ArithmeticUtils;
+import com.darknet.bvw.util.DecimalInputTextWatcher;
 import com.darknet.bvw.util.bitcoinj.BitcoinjKit;
 import com.darknet.bvw.view.BottomDialogView;
 import com.darknet.bvw.view.CustomProgressDialog;
 import com.darknet.bvw.view.HuaZhangFailDialogView;
 import com.darknet.bvw.view.HuaZhangSuccessDialogView;
-import com.darknet.bvw.view.SuccessDialogView;
 import com.github.lzyzsd.jsbridge.BridgeWebView;
 import com.github.lzyzsd.jsbridge.CallBackFunction;
 import com.google.gson.Gson;
@@ -109,6 +112,8 @@ public class HuaZhangActivity extends BaseActivity implements View.OnClickListen
 
     private TextView leftMoneyNoticeView;
 
+    private TextView leftMoneySignNotice;
+
     @Override
     public void initView() {
 
@@ -139,6 +144,8 @@ public class HuaZhangActivity extends BaseActivity implements View.OnClickListen
 
         allinView = findViewById(R.id.huazhang_input_all_txt);
 
+        leftMoneySignNotice = findViewById(R.id.jiaoyisuo_leftmoney_notice_view);
+
         webView = findViewById(R.id.webView);
 //        showLeftMoney();
         getLeftMoneyRequest();
@@ -163,6 +170,18 @@ public class HuaZhangActivity extends BaseActivity implements View.OnClickListen
 
 //        leftMoneyView.setText(zcModel.getBalance().stripTrailingZeros().toPlainString() + zcModel.getSymbol());
 
+
+        if (zcModel.getSymbol() != null) {
+            if (zcModel.getSymbol().equalsIgnoreCase("BVW")) {
+                hzNumView.addTextChangedListener(new DecimalInputTextWatcher(hzNumView, 20, 2));
+            } else if (zcModel.getSymbol().equalsIgnoreCase("BTC")) {
+                hzNumView.addTextChangedListener(new DecimalInputTextWatcher(hzNumView, 20, 6));
+            } else if (zcModel.getSymbol().equalsIgnoreCase("ETH")) {
+                hzNumView.addTextChangedListener(new DecimalInputTextWatcher(hzNumView, 20, 4));
+            } else if (zcModel.getSymbol().equalsIgnoreCase("USDT")) {
+                hzNumView.addTextChangedListener(new DecimalInputTextWatcher(hzNumView, 20, 3));
+            }
+        }
 
 
         allinView.setOnClickListener(new View.OnClickListener() {
@@ -217,6 +236,7 @@ public class HuaZhangActivity extends BaseActivity implements View.OnClickListen
     @Override
     public void initDatas() {
         getPublicAddress();
+        getMoneyLeftData();
 
     }
 
@@ -224,6 +244,67 @@ public class HuaZhangActivity extends BaseActivity implements View.OnClickListen
     public void configViews() {
 
     }
+
+
+
+    //用户每日划转剩余额度
+    private void getMoneyLeftData() {
+
+        ETHWalletModel walletModel = WalletDaoUtils.getCurrent();
+
+        String privateKey = walletModel.getPrivateKey();
+        String addressVals = walletModel.getAddress();
+
+        String msg = "" + System.currentTimeMillis();
+        String signVal = BitcoinjKit.signMessageBy58(msg, privateKey);
+
+//        showDialog(getString(R.string.load_data));
+
+        OkGo.<String>get(ConfigNetWork.JAVA_API_URL + UrlPath.MONEY_HUAZHANG_LEFT_URL)
+                .tag(HuaZhangActivity.this)
+                .headers("Chain-Authentication", addressVals + "#" + msg + "#" + signVal)
+                .execute(new StringCallback() {
+                    @Override
+                    public void onSuccess(Response<String> backresponse) {
+                        if (backresponse != null) {
+                            String backVal = backresponse.body();
+                            if (backVal != null) {
+                                Gson gson = new Gson();
+                                try {
+                                    HZLeftMoneyResponse response = gson.fromJson(backVal, HZLeftMoneyResponse.class);
+                                    if (response != null && response.getCode() == 0) {
+                                        if (response.getData() != null) {
+                                            setLeftMoneyVal(response.getData());
+                                        }
+                                    }else {
+                                        leftMoneySignNotice.setVisibility(View.GONE);
+                                    }
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        super.onFinish();
+//                        dismissDialog();
+                    }
+                });
+
+    }
+
+
+    private void setLeftMoneyVal(HZLeftMoneyResponse.HzLeftMoneyModel hzLeftMoneyModel){
+        if(!TextUtils.isEmpty(hzLeftMoneyModel.getMsg())){
+            leftMoneySignNotice.setText(hzLeftMoneyModel.getMsg());
+        }else {
+            leftMoneySignNotice.setVisibility(View.GONE);
+        }
+    }
+
+
 
 
     @Override
@@ -286,8 +367,16 @@ public class HuaZhangActivity extends BaseActivity implements View.OnClickListen
 
                 if (type == 0) {
                     type = 1;
+
+                    if(zcModel.getSymbol().equalsIgnoreCase("BVW")){
+                        leftMoneySignNotice.setVisibility(View.VISIBLE);
+                    }else {
+                        leftMoneySignNotice.setVisibility(View.GONE);
+                    }
+
                 } else {
                     type = 0;
+                    leftMoneySignNotice.setVisibility(View.GONE);
                 }
                 changeHzType();
                 break;
@@ -681,7 +770,8 @@ public class HuaZhangActivity extends BaseActivity implements View.OnClickListen
             }
         });
 
-        webView.loadUrl("file:///android_asset/index.html");
+//        webView.loadUrl("file:///android_asset/index.html");
+        webView.loadUrl(ConfigNetWork.WEB_URL);
     }
 
 
@@ -860,6 +950,7 @@ public class HuaZhangActivity extends BaseActivity implements View.OnClickListen
 
             leftMoneyNoticeView.setText(getResources().getString(R.string.hz_jiaoyisuo_left_money));
 
+            leftMoneySignNotice.setVisibility(View.GONE);
         } else {
             hzFromSign.setText(getResources().getString(R.string.hz_myqianbao_sign));
             hzToSign.setText(getResources().getString(R.string.hz_jiaoyi_suo_sign));
@@ -867,6 +958,13 @@ public class HuaZhangActivity extends BaseActivity implements View.OnClickListen
             hzToAddress.setText(sbPub.toString());
             leftMoneyView.setText(qianbaoLeftMoney + zcModel.getSymbol());
             leftMoneyNoticeView.setText(getResources().getString(R.string.hz_jiaoyisuo_left_money_two));
+
+            if(zcModel.getSymbol().equalsIgnoreCase("BVW")){
+                leftMoneySignNotice.setVisibility(View.VISIBLE);
+            }else {
+                leftMoneySignNotice.setVisibility(View.GONE);
+            }
+
         }
 
 
@@ -894,6 +992,7 @@ public class HuaZhangActivity extends BaseActivity implements View.OnClickListen
                     public void onSuccess(Response<String> backresponse) {
                         if (backresponse != null) {
                             String backVal = backresponse.body();
+                            Log.d(TAG, "response:" + backVal);
                             if (backVal != null) {
                                 Gson gson = new Gson();
                                 try {

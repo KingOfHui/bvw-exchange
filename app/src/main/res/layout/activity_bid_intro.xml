@@ -89,7 +89,7 @@
                         android:gravity="center|right"
                         android:text="@string/bid_info_sign_intro"
                         android:textColor="@color/white"
-                        android:textSize="14dp"></TextView>
+                        android:textSize="12dp"></TextView>
                 </RelativeLayout>
 
 

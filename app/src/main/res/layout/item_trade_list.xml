@@ -68,7 +68,6 @@
         android:layout_marginTop="5dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:alpha="0.6"
-        android:background="@color/gray3" />
+        android:background="@color/common_line_color" />
 
 </LinearLayout>

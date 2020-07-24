@@ -8,8 +8,7 @@
         android:id="@+id/welcom_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@mipmap/welcome_default_big_img_cn"></ImageView>
+        android:scaleType="centerCrop" />
 
 
     <TextView
@@ -24,7 +23,7 @@
         android:paddingTop="8dp"
         android:paddingRight="13dp"
         android:paddingBottom="8dp"
-        android:textSize="12dp"
-        android:textColor="@color/black"></TextView>
+        android:textColor="@color/black"
+        android:textSize="12dp" />
 
 </RelativeLayout>

@@ -18,7 +18,6 @@
     <!--    <dimen name="min_custom_keyboard_size">110dp</dimen>-->
     <!--    <dimen name="min_custom_keyboard_top_margin">170dp</dimen>-->
 
-
     <dimen name="dimen_5dp">5dp</dimen>
     <dimen name="dimen_10dp">10dp</dimen>
     <dimen name="dimen_13dp">13dp</dimen>

@@ -1,6 +1,7 @@
 package com.darknet.bvw.activity.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,11 +12,8 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import com.darknet.bvw.R;
+import com.darknet.bvw.activity.KlineActivity;
 import com.darknet.bvw.adapter.MarketAdapter;
 import com.darknet.bvw.adapter.MarketZfAdapter;
 import com.darknet.bvw.config.ConfigNetWork;
@@ -23,10 +21,12 @@ import com.darknet.bvw.config.UrlPath;
 import com.darknet.bvw.db.Entity.ETHWalletModel;
 import com.darknet.bvw.db.WalletDaoUtils;
 import com.darknet.bvw.model.MarketModel;
-import com.darknet.bvw.model.event.PushEvent;
 import com.darknet.bvw.model.event.RefreshEvent;
+import com.darknet.bvw.model.event.TwoFourEvent;
 import com.darknet.bvw.model.response.TradeZfResponse;
 import com.darknet.bvw.model.response.TradeZxResponse;
+import com.darknet.bvw.service.WorkManagerService;
+import com.darknet.bvw.util.AppUtil;
 import com.darknet.bvw.util.GlideImageLoader;
 import com.darknet.bvw.util.bitcoinj.BitcoinjKit;
 import com.darknet.bvw.util.language.SPUtil;
@@ -44,6 +44,10 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 public class MarketFragment extends Fragment implements View.OnClickListener {
 
     private Banner bannerLayout;
@@ -56,7 +60,7 @@ public class MarketFragment extends Fragment implements View.OnClickListener {
 
     private List<MarketModel> mList = new ArrayList<>();
 
-    private List<TradeZfResponse.ZfModel> zfList = new ArrayList<>();
+    private List<TradeZxResponse.ZxDataModel> zfList = new ArrayList<>();
 
     private TextView zxContentView;
     private View zxLineView;
@@ -128,7 +132,7 @@ public class MarketFragment extends Fragment implements View.OnClickListener {
 
         int lanType = SPUtil.getInstance(activity).getSelectLanguage();
 
-        if (lanType == 0) {
+        if (lanType == 1) {
             //中文
             urls.add(R.mipmap.hq_banner_one);
             urls.add(R.mipmap.hq_banner_two);
@@ -138,7 +142,6 @@ public class MarketFragment extends Fragment implements View.OnClickListener {
             urls.add(R.mipmap.hq_banner_two_en);
             urls.add(R.mipmap.hq_banner_three_en);
         }
-
 
         bannerLayout.setBannerAnimation(Transformer.Default);
         bannerLayout.setImages(urls);
@@ -173,7 +176,12 @@ public class MarketFragment extends Fragment implements View.OnClickListener {
         zxLayout.setOnClickListener(this);
         zfLayout.setOnClickListener(this);
 
-
+//        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//
+//            }
+//        });
 
     }
 
@@ -242,7 +250,7 @@ public class MarketFragment extends Fragment implements View.OnClickListener {
                                 try {
                                     TradeZxResponse response = gson.fromJson(backVal, TradeZxResponse.class);
                                     if (response != null && response.getCode() == 0) {
-                                        if (response.getData() != null) {
+                                        if (response.getData() != null && response.getData().size() > 0) {
                                             setZxData(response.getData());
                                         } else {
 //                                            Toast.makeText(activity, response.getMsg(), Toast.LENGTH_SHORT).show();
@@ -297,7 +305,8 @@ public class MarketFragment extends Fragment implements View.OnClickListener {
                                     Gson gson = new Gson();
                                     TradeZfResponse response = gson.fromJson(backVal, TradeZfResponse.class);
 //                                    Log.e("backVal","backVal="+response.toString());
-                                    if (response != null && response.getCode() == 0 && response.getData() != null && response.getCode() == 0 && response.getData().getChangeRank() != null && response.getData().getChangeRank().size() > 0) {
+                                    if (response != null && response.getCode() == 0 && response.getData() != null && response.getCode() == 0 && response.getData().getChangeRank() != null
+                                            && response.getData().getChangeRank().size() > 0) {
                                         setZfData(response.getData().getChangeRank());
                                     } else {
                                     }
@@ -328,22 +337,61 @@ public class MarketFragment extends Fragment implements View.OnClickListener {
         zfListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                TradeZfResponse.ZfModel  zfModel = (TradeZfResponse.ZfModel)parent.getItemAtPosition(position);
+                if (AppUtil.isFastClick()) {
+                    return;
+                }
+                TradeZfResponse.ZfModel zfModel = (TradeZfResponse.ZfModel) parent.getItemAtPosition(position);
+                checkIsCollection(zfModel);
             }
         });
 
     }
 
 
+    private void checkIsCollection(TradeZfResponse.ZfModel zfModel) {
+
+        try {
+            int tmpCollection = 0;
+
+            for (int i = 0; i < zfList.size(); i++) {
+                TradeZxResponse.ZxDataModel tempZxDataModel = zfList.get(i);
+                if (tempZxDataModel.getMarket_id().equalsIgnoreCase(zfModel.getMarketId())) {
+                    tmpCollection = 1;
+                }
+            }
+            Bundle data = new Bundle();
+            data.putString(WorkManagerService.EXTRA_DATA, zfModel.getMarketId());
+            WorkManagerService.startService(activity, data);
+            Intent kLineIntent = new Intent(getActivity(), KlineActivity.class);
+            kLineIntent.putExtra("markid", zfModel.getMarketId());
+            kLineIntent.putExtra("shoucang", tmpCollection);
+            startActivity(kLineIntent);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
     private void setZxData(List<TradeZxResponse.ZxDataModel> list) {
+        zfList.addAll(list);
         mAdapter = new MarketAdapter(getActivity(), list);
         mListView.setAdapter(mAdapter);
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                TradeZxResponse.ZxDataModel zxDataModel = (TradeZxResponse.ZxDataModel)parent.getItemAtPosition(position);
 
+
+                TradeZxResponse.ZxDataModel zxDataModel = (TradeZxResponse.ZxDataModel) parent.getItemAtPosition(position);
+                Bundle data = new Bundle();
+                data.putString(WorkManagerService.EXTRA_DATA, zxDataModel.getMarket_id());
+                WorkManagerService.startService(activity, data);
+
+                Intent kLineIntent = new Intent(getActivity(), KlineActivity.class);
+                kLineIntent.putExtra("markid", zxDataModel.getMarket_id());
+                kLineIntent.putExtra("shoucang", 1);
+                startActivity(kLineIntent);
             }
         });
     }
@@ -358,6 +406,13 @@ public class MarketFragment extends Fragment implements View.OnClickListener {
     }
 
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void receiveTwoFourEvent(TwoFourEvent twoFourEvent) {
+//        viewPager.setCurrentItem(2);
+//        getZxData();
+        getZFBData();
+
+    }
 
 
     @Override

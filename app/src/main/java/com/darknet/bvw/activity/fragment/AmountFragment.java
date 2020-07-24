@@ -193,7 +193,7 @@ public class AmountFragment extends Fragment implements AmountTwoAdapter.OnItemC
                                 try {
                                     ExchangeZcResponse response = gson.fromJson(backVal, ExchangeZcResponse.class);
                                     if (response != null && response.getCode() == 0) {
-                                        if (response.getData() != null) {
+                                        if (response.getData() != null && response.getData().size() > 0) {
                                             setVal(response.getData());
                                         } else {
 //                                            Toast.makeText(activity, response.getMsg(), Toast.LENGTH_SHORT).show();

@@ -237,10 +237,10 @@ public class FindFenLieActivity extends BaseActivity implements View.OnClickList
 
 
         int lanType = SPUtil.getInstance(FindFenLieActivity.this).getSelectLanguage();
-        if (lanType == 0) {
+        if (lanType == 1) {
             btcguizeImg.setImageResource(R.mipmap.fenlie_notice_img);
             ethguizeImg.setImageResource(R.mipmap.fenlie_notice_img);
-        } else if (lanType == 1) {
+        } else if (lanType == 0) {
             btcguizeImg.setImageResource(R.mipmap.fenlie_notice_img_en);
             ethguizeImg.setImageResource(R.mipmap.fenlie_notice_img_en);
         } else {
@@ -707,7 +707,8 @@ public class FindFenLieActivity extends BaseActivity implements View.OnClickList
             }
         });
 
-        webView.loadUrl("file:///android_asset/index.html");
+//        webView.loadUrl("file:///android_asset/index.html");
+        webView.loadUrl(ConfigNetWork.WEB_URL);
     }
 
     //发送交易
@@ -994,7 +995,8 @@ public class FindFenLieActivity extends BaseActivity implements View.OnClickList
             }
         });
 
-        webView.loadUrl("file:///android_asset/index.html");
+//        webView.loadUrl("file:///android_asset/index.html");
+        webView.loadUrl(ConfigNetWork.WEB_URL);
     }
 
     //发送交易

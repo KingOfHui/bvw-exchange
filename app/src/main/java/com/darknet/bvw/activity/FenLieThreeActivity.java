@@ -22,6 +22,7 @@ import com.darknet.bvw.model.response.LeftMoneyResponse;
 import com.darknet.bvw.util.bitcoinj.BitcoinjKit;
 import com.darknet.bvw.util.language.SPUtil;
 import com.darknet.bvw.view.HorProBar;
+import com.darknet.bvw.view.HorProBarFour;
 import com.darknet.bvw.view.HorProBarThree;
 import com.google.gson.Gson;
 import com.lzy.okgo.OkGo;
@@ -61,7 +62,7 @@ public class FenLieThreeActivity extends BaseActivity {
 
     private TextView leftMoneyView;
 
-    private HorProBar horProBarOne;
+    private HorProBarFour horProBarOne;
     private HorProBarThree horProBarTWo;
     private HorProBarThree horProBarThree;
     private HorProBarThree horProBarFour;
@@ -122,7 +123,7 @@ public class FenLieThreeActivity extends BaseActivity {
 
 //
 
-        horProBarOne = (HorProBar) this.findViewById(R.id.fenlie_baifenbi_one_view);
+        horProBarOne = (HorProBarFour) this.findViewById(R.id.fenlie_baifenbi_one_view);
         horProBarOne.setNeedDrawProgressText(true);
         horProBarTWo = (HorProBarThree) this.findViewById(R.id.fenlie_baifenbi_two_view);
         horProBarThree = (HorProBarThree) this.findViewById(R.id.fenlie_baifenbi_three_view);
@@ -400,7 +401,7 @@ public class FenLieThreeActivity extends BaseActivity {
 
         setHeaderData(fenLieData);
 
-        middleOneView.setText(fenLieData.getBvw().stripTrailingZeros().setScale(0, BigDecimal.ROUND_DOWN).toPlainString() + "BVW");
+        middleOneView.setText(fenLieData.getBvw_left().stripTrailingZeros().setScale(0, BigDecimal.ROUND_DOWN).toPlainString() + "BVW");
 
 //        System.out.println(new BigDecimal(0.293432).setScale(1, BigDecimal.ROUND_DOWN).doubleValue());// 0.2
 //
@@ -438,33 +439,33 @@ public class FenLieThreeActivity extends BaseActivity {
                 headerOneView.setText(fenLieData.getHeight());
                 headerTwoView.setText(fenLieData.getStage_scale());
                 int lanType = SPUtil.getInstance(this).getSelectLanguage();
-                if (lanType == 1) {
+                if (lanType == 0) {
                     //英文
                     stateView.setText(fenLieData.getStage_name_en());
-                } else if (lanType == 0) {
+                } else if (lanType == 1) {
                     //中文
                     stateView.setText(fenLieData.getStage_name());
                 } else {
                     stateView.setText(fenLieData.getStage_name_en());
                 }
-                headerTotalLayout.setVisibility(View.VISIBLE);
+                headerTotalLayout.setVisibility(View.GONE);
                 headerTotalMoenyView.setText(fenLieData.getBvw().stripTrailingZeros().setScale(0, BigDecimal.ROUND_DOWN).toPlainString() + "BVW");
             } else {
                 headerOneView.setText(fenLieData.getNext_stage_height());
                 headerTwoView.setText(fenLieData.getNext_stage_scale());
                 int lanType = SPUtil.getInstance(this).getSelectLanguage();
 //                headerTotalLayout.setVisibility(View.GONE);
-                if (lanType == 1) {
+                if (lanType == 0) {
                     //英文
                     stateView.setText(fenLieData.getNext_stage_tip_en());
-                } else if (lanType == 0) {
+                } else if (lanType == 1) {
                     //中文
                     stateView.setText(fenLieData.getNext_stage_tip_cn());
                 } else {
                     stateView.setText(fenLieData.getNext_stage_tip_en());
                 }
 
-                headerTotalLayout.setVisibility(View.VISIBLE);
+                headerTotalLayout.setVisibility(View.GONE);
                 headerTotalMoenyView.setText(fenLieData.getBvw().stripTrailingZeros().setScale(0, BigDecimal.ROUND_DOWN).toPlainString() + "BVW");
 
             }
@@ -541,8 +542,9 @@ public class FenLieThreeActivity extends BaseActivity {
 
 
         float oneFloat = Float.valueOf(result);
+//        oneFloat = 0;
         if (oneFloat == 0) {
-            horProBarOne.setExcetionTime(1);
+//            horProBarOne.setExcetionTime(1);
             horProBarOne.setCurrentProgress(0);
 
         } else {
@@ -583,7 +585,6 @@ public class FenLieThreeActivity extends BaseActivity {
         horProBarSix.setLastText(sixModel.getBvw().stripTrailingZeros().setScale(0, BigDecimal.ROUND_DOWN).toPlainString() + "BVW");
 
     }
-
 
 
     private void getLeftMoneyRequest() {
@@ -646,7 +647,7 @@ public class FenLieThreeActivity extends BaseActivity {
 //                            leftMoneyView.setText("  " + zcMoneyModel.getValue_qty() + " BVW");
                             btcLeftVal = zcMoneyModel.getValue_qty();
                         }
-                    }else if(zcMoneyModel.getName().equalsIgnoreCase("ETH")){
+                    } else if (zcMoneyModel.getName().equalsIgnoreCase("ETH")) {
                         if (TextUtils.isEmpty(zcMoneyModel.getValue_qty()) || zcMoneyModel.getValue_qty().equals("0") || zcMoneyModel.getValue_qty().equals("0.000000")) {
 //                            leftMoneyView.setText("  0 BVW");
                             ethLeftVal = "0";

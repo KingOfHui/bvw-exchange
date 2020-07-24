@@ -1,7 +1,6 @@
 package com.darknet.bvw.adapter;
 
 import android.os.Bundle;
-import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,34 +8,33 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
-import com.darknet.bvw.DataRequest20;
 import com.darknet.bvw.R;
 import com.darknet.bvw.config.ConfigNetWork;
 import com.darknet.bvw.config.UrlPath;
 import com.darknet.bvw.db.Entity.ETHWalletModel;
 import com.darknet.bvw.db.WalletDaoUtils;
-import com.darknet.bvw.model.ChangeDepthResponse;
 import com.darknet.bvw.model.DepthResponse;
 import com.darknet.bvw.model.RequestEntity;
+import com.darknet.bvw.model.event.TradePanKouEvent;
 import com.darknet.bvw.util.ArithmeticUtils;
 import com.darknet.bvw.util.bitcoinj.BitcoinjKit;
-import com.darknet.bvw.view.MyListView;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 
@@ -54,7 +52,7 @@ public class DepthFragment extends Fragment {
 
     //卖
     private InDepthAdapter mInAdapter;
-    //买
+//    买
     private OutDepthAdapter mOutAdapter;
 
     private List<DepthResponse.DataBean.AsksBean> mInList = new ArrayList<>();
@@ -66,6 +64,9 @@ public class DepthFragment extends Fragment {
     private TextView biTypeView;
     private TextView biTypeTwoView;
     private TextView priceTypeView;
+
+//    private LinearLayout leftContentView;
+//    private LinearLayout rightContentView;
 
 
     public static DepthFragment newInstance(String market) {
@@ -84,6 +85,7 @@ public class DepthFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_depth, container, false);
+        EventBus.getDefault().register(this);
         initView(view);
 //        initData();
         return view;
@@ -103,6 +105,9 @@ public class DepthFragment extends Fragment {
         biTypeTwoView = view.findViewById(R.id.depth_bi_type_two);
         priceTypeView = view.findViewById(R.id.depth_price_type);
 
+//        leftContentView = view.findViewById(R.id.depth_out_left_layout);
+//        rightContentView = view.findViewById(R.id.depth_out_right_layout);
+
         mInAdapter = new InDepthAdapter(getActivity(), mInList);
         depth_in_lv.setAdapter(mInAdapter);
         mOutAdapter = new OutDepthAdapter(getActivity(), mOutList);
@@ -110,61 +115,16 @@ public class DepthFragment extends Fragment {
 
 
         try {
-            biTypeView.setText(marketId.split("-")[0]);
-            priceTypeView.setText(marketId.split("-")[1]);
-            biTypeTwoView.setText(marketId.split("-")[0]);
+            biTypeView.setText("("+marketId.split("-")[0]+")");
+            priceTypeView.setText("("+marketId.split("-")[1]+")");
+            biTypeTwoView.setText("("+marketId.split("-")[0]+")");
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-
     }
 
 
-//    private void initData() {
-//        ChangeDepthResponse dataBean = DataRequest20.getALL(getActivity());
-//        String base = "0";
-//        mInList.clear();
-//        mOutList.clear();
-//
-//        for (int i = 0; i < 20; i++) {
-//            if (i == 0) {
-//                dataBean.getAsks().get(i).setTotal(dataBean.getAsks().get(i).getAmount());
-//                dataBean.getBids().get(i).setTotal(dataBean.getBids().get(i).getAmount());
-//            } else {
-//                String askBuy = ArithmeticUtils.plus(dataBean.getAsks().get(i).getAmount(),
-//                        dataBean.getAsks().get(i - 1).getTotal())
-//                        .setScale(0, RoundingMode.UP)
-//                        .stripTrailingZeros().toPlainString();
-//                dataBean.getAsks().get(i).setTotal(askBuy);
-//                String bidSell = ArithmeticUtils.plus(dataBean.getBids().get(i).getAmount(),
-//                        dataBean.getBids().get(i - 1).getTotal()).setScale(0, RoundingMode.UP)
-//                        .stripTrailingZeros().toPlainString();
-//                dataBean.getBids().get(i).setTotal(bidSell);
-//            }
-//        }
-//        if (!ArithmeticUtils.compare(base, dataBean.getAsks().get(4).getTotal())) {
-//            base = dataBean.getAsks().get(19).getTotal();
-//        }
-//        if (!ArithmeticUtils.compare(base, dataBean.getBids().get(4).getTotal())) {
-//            base = dataBean.getBids().get(19).getTotal();
-//        }
-//        for (int i = 0; i < 20; i++) {
-//            String askP = ArithmeticUtils.multiply(ArithmeticUtils.divide(dataBean.getAsks().get(i).getTotal(), base, 5), "100").setScale(0, RoundingMode.UP).toPlainString();
-//            dataBean.getAsks().get(i).setPrecent(askP);
-//            String bidP = ArithmeticUtils.multiply(ArithmeticUtils.divide(dataBean.getBids().get(i).getTotal(), base, 5), "100").setScale(0, RoundingMode.UP).toPlainString();
-//            dataBean.getBids().get(i).setPrecent(bidP);
-//        }
-//
-//        mInList.addAll(dataBean.getAsks());
-//        Collections.reverse(mInList);
-//        mOutList.addAll(dataBean.getBids());
-//
-//        mOutAdapter.notifyDataSetChanged();
-//        mInAdapter.notifyDataSetChanged();
-//
-//
-//    }
 
 
     //网络请求数据
@@ -185,7 +145,7 @@ public class DepthFragment extends Fragment {
 
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonVal);
 
-        OkGo.<String>post(ConfigNetWork.JAVA_API_URL + UrlPath.TRADE_DEPTH_TWO_URL + marketId+"/50")
+        OkGo.<String>post(ConfigNetWork.JAVA_API_URL + UrlPath.TRADE_DEPTH_TWO_URL + marketId + "/50")
                 .tag(getActivity())
                 .headers("Chain-Authentication", addressVals + "#" + msg + "#" + signVal)
                 .upRequestBody(requestBody)
@@ -229,8 +189,11 @@ public class DepthFragment extends Fragment {
 
     public void setDepData(DepthResponse.DataBean data) {
 
+        maiRuTotalVal = "0";
+        maiChuTotalVal = "0";
+        bigFenMu = "0";
 
-        if(data.getBids().size() == 0 && data.getAsks().size() == 0){
+        if (data.getBids().size() == 0 && data.getAsks().size() == 0) {
             return;
         }
 
@@ -238,14 +201,9 @@ public class DepthFragment extends Fragment {
 
         List<DepthResponse.DataBean.BidsBean> listBid = data.getBids();
 
-//        if(data.getBids().size() > 50){
-//            listBid = data.getBids().subList(0,50);
-//        }
-//
-//        if(listAsk.size() > 50){
-//            listAsk = data.getAsks().subList(0,50);
-//        }
 
+
+        Log.e("depthLine", "listAsk=" + listAsk.size() + ";listBid=" + listBid.size());
 
         String tempCountVal = "0";
 
@@ -271,6 +229,7 @@ public class DepthFragment extends Fragment {
             asksBean.setCurrentCount(tempCountVal);
         }
 
+//        Log.e("mairuTotal", "maiRuTotalVal=" + maiRuTotalVal);
 //        Log.e("mairuTotal", "maiChuTotalVal=" + maiChuTotalVal);
 
         if (ArithmeticUtils.compare(maiRuTotalVal, maiChuTotalVal)) {
@@ -279,7 +238,7 @@ public class DepthFragment extends Fragment {
             bigFenMu = maiChuTotalVal;
         }
 
-        Log.e("mairuTotal", "bigFenMu=" + bigFenMu);
+//        Log.e("mairuTotal", "bigFenMu=" + bigFenMu);
 
 
         if (listAsk.size() > listBid.size()) {
@@ -305,10 +264,146 @@ public class DepthFragment extends Fragment {
         }
 
 
+//        Log.e("depthLine", "listAsk2=" + listAsk.size() + ";listBid2=" + listBid.size());
         mInAdapter.setData(listAsk, new BigDecimal(bigFenMu).stripTrailingZeros().setScale(6, BigDecimal.ROUND_DOWN));
-
         mOutAdapter.setMoreData(listBid, new BigDecimal(bigFenMu).stripTrailingZeros().setScale(6, BigDecimal.ROUND_DOWN));
+
+
+//        setLeftContent(listBid, new BigDecimal(bigFenMu).stripTrailingZeros().setScale(6, BigDecimal.ROUND_DOWN));
+//        setRightContent(listAsk, new BigDecimal(bigFenMu).stripTrailingZeros().setScale(6, BigDecimal.ROUND_DOWN));
+
+
     }
+
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void receiveWeiTuo(TradePanKouEvent tradePanKouEvent) {
+
+        initDataDeapData();
+
+//        initData();
+
+//        getCurrentWeiTuo();
+
+//        if (kLineEvent.getType() == 0) {
+//            changeMaiRu();
+//        } else {
+//            changeMaichu();
+//        }
+
+    }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
+
+
+    //    private void setLeftContent(List<DepthResponse.DataBean.BidsBean> listBid, BigDecimal bigVal) {
+//        leftContentView.removeAllViews();
+//
+//        for (int i = 0; i < listBid.size(); i++) {
+//
+//            View leftView = LayoutInflater.from(getActivity()).inflate(R.layout.item_change_depth_out, null);
+//            DepthResponse.DataBean.BidsBean bean = listBid.get(i);
+//            TextView mPrice = leftView.findViewById(R.id.item_change_out_price);
+//            TextView mAmount = leftView.findViewById(R.id.item_change_out_amount);
+//            TextView mPostion = leftView.findViewById(R.id.item_change_position_price);
+//
+//            ProgressBar mPro = leftView.findViewById(R.id.progress02);
+//
+//            mPostion.setText((i + 1) + "");
+////        mPrice.setText(bean.getAmount());
+//
+//
+//            if (bean.getAmount().contains("-")) {
+//                mPrice.setText(bean.getAmount());
+//            } else {
+//                mPrice.setText(new BigDecimal(bean.getAmount()).stripTrailingZeros().setScale(5, BigDecimal.ROUND_DOWN).toPlainString());
+//            }
+//
+//
+//            if (bean.getPrice().contains("-")) {
+//                mAmount.setText(bean.getPrice());
+//            } else {
+//                mAmount.setText(new BigDecimal(bean.getPrice()).stripTrailingZeros().setScale(5, BigDecimal.ROUND_DOWN).toPlainString());
+//            }
+//
+//            String percentVal = ArithmeticUtils.divide(bean.getCurrentCount(), bigVal.toPlainString(), 6);
+//
+//            String lastVal = ArithmeticUtils.multiply(percentVal, "100", 0);
+//
+//
+//            if (Integer.valueOf(lastVal) > 100) {
+//                mPro.setProgress(100);
+//            } else {
+//
+//                if (ArithmeticUtils.compare(lastVal, "1")) {
+//
+//                    mPro.setProgress(Integer.valueOf(lastVal));
+//                } else {
+//                    mPro.setProgress(Integer.valueOf(1));
+//                }
+//            }
+//
+////            DepthResponse.DataBean.BidsBean tempBidBean = listBid.get(i);
+//
+//            Log.e("depthLine", "bids=" + i);
+//
+//            leftContentView.addView(leftView);
+//        }
+//
+//    }
+//
+//    private void setRightContent(List<DepthResponse.DataBean.AsksBean> listAsk, BigDecimal bigVal) {
+//        rightContentView.removeAllViews();
+//
+//        for (int i = 0; i < listAsk.size(); i++) {
+//
+//            View rightView = LayoutInflater.from(getActivity()).inflate(R.layout.item_change_depth_in, null);
+//
+//            DepthResponse.DataBean.AsksBean bean = listAsk.get(i);
+//            ProgressBar mPro = rightView.findViewById(R.id.progress01);
+//            TextView mAmount = rightView.findViewById(R.id.item_change_amount);
+//            TextView mPrice = rightView.findViewById(R.id.item_change_price);
+//            TextView mPosition = rightView.findViewById(R.id.item_change_position);
+//            mPosition.setText((i + 1) + "");
+//
+//            if (bean.getAmount().contains("-")) {
+//                mAmount.setText(bean.getAmount());
+//            } else {
+//                mAmount.setText(new BigDecimal(bean.getAmount()).stripTrailingZeros().setScale(5, BigDecimal.ROUND_DOWN).toPlainString());
+//            }
+//
+//
+//            if (bean.getPrice().contains("-")) {
+//                mPrice.setText(bean.getPrice());
+//            } else {
+//                mPrice.setText(new BigDecimal(bean.getPrice()).stripTrailingZeros().setScale(5, BigDecimal.ROUND_DOWN).toPlainString());
+//            }
+//
+//            String percentVal = ArithmeticUtils.divide(bean.getCurrentCount(), bigVal.toPlainString(), 6);
+//            String lastVal = ArithmeticUtils.multiply(percentVal, "100", 0);
+//            if (Integer.valueOf(lastVal) > 100) {
+//                mPro.setProgress(100);
+//            } else {
+//
+//                if (ArithmeticUtils.compare(lastVal, "1")) {
+//
+//                    mPro.setProgress(Integer.valueOf(lastVal));
+//                } else {
+//                    mPro.setProgress(Integer.valueOf(1));
+//                }
+//            }
+//
+//            Log.e("depthLine", "ask=" + i);
+//            rightContentView.addView(rightView);
+//        }
+//
+//
+//    }
 
 
 }

@@ -134,7 +134,7 @@ public class QianDaoDialog {
                                         } else {
 
                                         }
-                                        signPowView.setText(response.getData().getSignPower().stripTrailingZeros().toPlainString());
+                                        signPowView.setText(response.getData().getSignPower().stripTrailingZeros().toPlainString()+"KH/S");
                                     }
                                 } catch (Exception e) {
                                     e.printStackTrace();

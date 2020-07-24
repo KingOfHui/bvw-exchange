@@ -23,7 +23,6 @@
             android:layout_width="20dp"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:text="1"
             android:gravity="center"
             android:textColor="@color/gray1"
             android:textSize="11sp" />
@@ -34,7 +33,6 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_toRightOf="@+id/item_change_position_price"
-            android:text="323"
             android:gravity="left"
             android:textColor="@color/white"
             android:textSize="11sp" />
@@ -45,7 +43,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="5dp"
-            android:text="8999"
             android:textColor="#01FCDA"
             android:textSize="11sp" />
     </RelativeLayout>

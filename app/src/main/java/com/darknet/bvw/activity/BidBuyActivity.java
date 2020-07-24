@@ -25,6 +25,7 @@ import com.darknet.bvw.model.response.CreateTradeResponse.JsonRootBean;
 import com.darknet.bvw.model.response.CreateTradeResponse.SendTx;
 import com.darknet.bvw.model.response.CreateTradeResponse.TransactionRAW;
 import com.darknet.bvw.model.response.CreateTradeResponse.Unspent;
+import com.darknet.bvw.model.response.LeftMoneyResponse;
 import com.darknet.bvw.model.response.PublicAddressResponse;
 import com.darknet.bvw.model.response.SendTradeResponse;
 import com.darknet.bvw.util.bitcoinj.BitcoinjKit;
@@ -66,6 +67,8 @@ public class BidBuyActivity extends BaseActivity {
     private TextView leftView;
 
     private TextView priceNumView;
+
+    private String leftMoneyVal = "0";
 
     @Override
     public void initView() {
@@ -280,7 +283,7 @@ public class BidBuyActivity extends BaseActivity {
 
     @Override
     public void initDatas() {
-
+        getLeftMoneyRequest();
     }
 
     @Override
@@ -435,7 +438,8 @@ public class BidBuyActivity extends BaseActivity {
             }
         });
 
-        webView.loadUrl("file:///android_asset/index.html");
+//        webView.loadUrl("file:///android_asset/index.html");
+        webView.loadUrl(ConfigNetWork.WEB_URL);
     }
 
 
@@ -608,6 +612,75 @@ public class BidBuyActivity extends BaseActivity {
         finish();
     }
 
+
+
+    private void getLeftMoneyRequest() {
+        ETHWalletModel walletModel = WalletDaoUtils.getCurrent();
+        String privateKey = walletModel.getPrivateKey();
+        String addressVals = walletModel.getAddress();
+        String msg = "" + System.currentTimeMillis();
+        String signVal = BitcoinjKit.signMessageBy58(msg, privateKey);
+
+        showDialog(getString(R.string.load_data));
+
+        OkGo.<String>get(ConfigNetWork.JAVA_API_URL + UrlPath.CHECK_MONEY_URL)
+                .tag(BidBuyActivity.this)
+                .headers("Chain-Authentication", addressVals + "#" + msg + "#" + signVal)
+                .execute(new StringCallback() {
+                    @Override
+                    public void onSuccess(Response<String> backresponse) {
+                        if (backresponse != null) {
+                            String backVal = backresponse.body();
+                            if (backVal != null) {
+                                try {
+                                    Gson gson = new Gson();
+                                    LeftMoneyResponse response = gson.fromJson(backVal, LeftMoneyResponse.class);
+                                    if (response != null && response.getCode() == 0 && response.getData() != null && response.getData().size() > 0) {
+                                        getLeftMoney(response.getData());
+                                    }
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onError(Response<String> response) {
+                        super.onError(response);
+
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        super.onFinish();
+                        dismissDialog();
+                    }
+                });
+    }
+
+
+    private void getLeftMoney(List<LeftMoneyResponse.LeftMoneyModel> allMoney) {
+//        List<ZcMoneyModel> allMoney = ZcDaoUtils.getAllZcData();
+        if (allMoney != null && allMoney.size() > 0) {
+            for (int i = 0; i < allMoney.size(); i++) {
+                LeftMoneyResponse.LeftMoneyModel zcMoneyModel = allMoney.get(i);
+                if (!TextUtils.isEmpty(zcMoneyModel.getName())) {
+                    if (zcMoneyModel.getName().equalsIgnoreCase("BVW")) {
+                        if (TextUtils.isEmpty(zcMoneyModel.getValue_qty()) || zcMoneyModel.getValue_qty().equals("0") || zcMoneyModel.getValue_qty().equals("0.000000")) {
+                            leftMoneyVal = "0";
+                        } else {
+                            leftMoneyVal = zcMoneyModel.getValue_qty();
+                        }
+                    }
+                }
+            }
+        }
+
+        leftView.setText(":" + leftMoneyVal + " BVW");
+
+    }
 
 
 //    publicAddressVal

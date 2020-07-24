@@ -89,7 +89,27 @@ public class UrlPath {
 
     public static String SYMBOL_TICKER_URL = "xchain-api/exchange/ticker";
 
-    public static String BVW_USDT_URL = "xchain-api/exchange/market/detail/BVW-USDT";
+    public static String BVW_USDT_URL = "xchain-api/exchange/market/detail/";
+    /**
+     * 我的业绩聚合接口
+     */
+    public static String BVW_PERFORMANCE_URL = "xchain-api/leaderPlan/performance";
+    /**
+     * 是否是社区领导用户
+     */
+    public static String BVW_STATE_URL = "xchain-api/leaderPlan/state";
+
+
+    public static String NOTICE_CONTENT_URL = "xchain-api/announcement/getTop"; //签到接口
+
+    public static String ADD_IN_YUBI_URL = "xchain-api/bvwInvest/apply"; //加入余币宝
+
+    public static String YUBIBAO_LIST_URL = "xchain-api/bvwInvest/applyList"; //余币宝申请列表
+
+
+    public static String MONEY_LEFT_URL = "xchain-api/user/dayWithdrawLimit"; //用户每日提币剩余额度
+
+    public static String MONEY_HUAZHANG_LEFT_URL = "xchain-api/user/dayHzLimit"; //用户每日划转剩余额度
 
 
 

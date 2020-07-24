@@ -82,8 +82,7 @@
                     android:layout_height="0.5dp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15dp"
-                    android:alpha="0.6"
-                    android:background="@color/gray3" />
+                    android:background="@color/common_line_color" />
 
 <!--                <ListView-->
 <!--                    android:id="@+id/trade_list_view"-->
@@ -188,19 +187,20 @@
                 android:orientation="vertical"
                 >
 
-                <Button
+                <TextView
                     android:id="@+id/trade_zz_view"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dimen_50dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:background="@color/lightBlue"
+                    android:background="@drawable/green_bg"
+                    android:gravity="center"
                     android:text="@string/trade_list_zhuanzhang"
                     android:textColor="@color/appColorPrimary"
                     android:textSize="18dp"
-                    android:textStyle="bold" />
+                    />
 
-                <Button
+                <TextView
                     android:id="@+id/trade_sk_view"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dimen_50dp"
@@ -208,11 +208,12 @@
                     android:layout_marginTop="@dimen/dimen_20dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="@dimen/dimen_20dp"
-                    android:background="@color/colorPurple"
+                    android:gravity="center"
+                    android:background="@drawable/zs_bg"
                     android:text="@string/trade_list_shoukuan"
                     android:textColor="@color/white"
                     android:textSize="18dp"
-                    android:textStyle="bold" />
+                    />
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>

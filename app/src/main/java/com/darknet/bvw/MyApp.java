@@ -1,6 +1,5 @@
 package com.darknet.bvw;
 
-import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
 import android.content.pm.PackageInfo;
@@ -8,9 +7,11 @@ import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.darknet.bvw.config.ConfigNetWork;
 import com.darknet.bvw.db.Entity.DaoMaster;
 import com.darknet.bvw.db.Entity.DaoSession;
 import com.darknet.bvw.db.MyDBHelper;
+import com.darknet.bvw.util.EnvironmentUtil;
 import com.darknet.bvw.util.SharedPreferencesUtil;
 import com.darknet.bvw.util.UserAgentIntercepter;
 import com.darknet.bvw.util.language.LocalManageUtil;
@@ -43,18 +44,18 @@ public class MyApp extends Application {
 
     private DaoSession daoSession;
 
-    public static MyApp getInstance() {
-        return sInstance;
-    }
-
     public DaoSession getDaoSession() {
         return daoSession;
+    }
+
+
+    public static MyApp getInstance() {
+        return sInstance;
     }
 
     //----------------------------国际化配置--------------
     @Override
     protected void attachBaseContext(Context base) {
-        sInstance = this;
         //第一次进入app时保存系统选择语言(为了选择随系统语言时使用，如果不保存，切换语言后就拿不到了）
         LocalManageUtil.saveSystemCurrentLanguage(base);
         super.attachBaseContext(MultiLanguage.setLocal(base));
@@ -76,18 +77,34 @@ public class MyApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        sInstance = this;
+        initMultiLanguage();
+        if (EnvironmentUtil.isMainProcess(this)) {
+            initImageLoader();
+            //初始化库
+            PlayerLibrary.init(this);
 
-        Fresco.initialize(this);
-        //初始化库
-        PlayerLibrary.init(this);
-        //初始化激光
-        //初始化视频播放
-        JPushInterface.setDebugMode(true);
-        JPushInterface.init(this);
-//
-        jiguangId = JPushInterface.getRegistrationID(this);
+            initJpush();
 
-        SharedPreferencesUtil.getInstance(this, "bvw");
+            SharedPreferencesUtil.getInstance(this, "bvw");
+
+            //初始化本地web地址
+            ConfigNetWork.initWebWork();
+
+            // bugly，务必替换为你自己的!!!
+            CrashReport.initCrashReport(getApplicationContext(), BuildConfig.BuglyId, false);
+            //初始化数据库
+            initDb();
+            //网络初始化
+            initOkGo();
+        }
+
+    }
+
+    /**
+     * 初始化国际化
+     */
+    private void initMultiLanguage() {
         //---------------国际化------
         MultiLanguage.init(new LanguageLocalListener() {
             @Override
@@ -98,31 +115,21 @@ public class MyApp extends Application {
         });
         MultiLanguage.setApplicationLanguage(this);
         //----------------国际化结束------------
+    }
 
+    /**
+     * 初始化极光
+     */
+    private void initJpush() {
+        JPushInterface.setDebugMode(true);
+        JPushInterface.init(this);
 
-        // bugly，务必替换为你自己的!!!
-        CrashReport.initCrashReport(getApplicationContext(), BuildConfig.BuglyId, false);
+        jiguangId = JPushInterface.getRegistrationID(this);
+//        jiguangId = "000000";
+    }
 
-
-        //初始化数据库
-        initDb();
-        //网络初始化
-        initOkGo();
-
-
-        //野火
-//        Config.validateConfig();
-
-        // bugly，务必替换为你自己的!!!
-//        CrashReport.initCrashReport(getApplicationContext(), BuildConfig.BuglyId, false);
-//        // 只在主进程初始化
-//        if (getCurProcessName(this).equals(BuildConfig.APPLICATION_ID)) {
-//            wfcUIKit = new WfcUIKit();
-//            wfcUIKit.init(this);
-//            PushService.init(this, BuildConfig.APPLICATION_ID);
-//            MessageViewHolderManager.getInstance().registerMessageViewHolder(LocationMessageContentViewHolder.class);
-//            setupWFCDirs();
-//        }
+    private void initImageLoader() {
+        Fresco.initialize(this);
     }
 
 
@@ -131,10 +138,9 @@ public class MyApp extends Application {
         //创建数据库表
 //        DaoMaster.DevOpenHelper mHelper = new DaoMaster.DevOpenHelper(this, "wallet", null);
 
-        MyDBHelper myDBHelper = new MyDBHelper(this,"wallet",null);
+        MyDBHelper myDBHelper = new MyDBHelper(this, "wallet", null);
         SQLiteDatabase db = myDBHelper.getWritableDatabase();
         daoSession = new DaoMaster(db).newSession();
-
 
 
     }
@@ -163,9 +169,6 @@ public class MyApp extends Application {
 //        }else {
 //            headers.put("lang", "en");
 //        }
-
-
-
 
 
         String sysversion = getSystemVersion();
@@ -260,72 +263,6 @@ public class MyApp extends Application {
 //                .addCommonParams(params);                       //全局公共参数
     }
 
-//    private void setupWFCDirs() {
-//        File file = new File(Config.VIDEO_SAVE_DIR);
-//        if (!file.exists()) {
-//            file.mkdirs();
-//        }
-//        file = new File(Config.AUDIO_SAVE_DIR);
-//        if (!file.exists()) {
-//            file.mkdirs();
-//        }
-//        file = new File(Config.FILE_SAVE_DIR);
-//        if (!file.exists()) {
-//            file.mkdirs();
-//        }
-//        file = new File(Config.PHOTO_SAVE_DIR);
-//        if (!file.exists()) {
-//            file.mkdirs();
-//        }
-//    }
-
-    public static String getCurProcessName(Context context) {
-
-        int pid = android.os.Process.myPid();
-
-        ActivityManager activityManager = (ActivityManager) context
-                .getSystemService(Context.ACTIVITY_SERVICE);
-
-        for (ActivityManager.RunningAppProcessInfo appProcess : activityManager
-                .getRunningAppProcesses()) {
-
-            if (appProcess.pid == pid) {
-                return appProcess.processName;
-            }
-        }
-        return null;
-    }
-
-
-    //野火------------
-//    private void setupWFCDirs() {
-//        File file = new File(Config.VIDEO_SAVE_DIR);
-//        if (!file.exists()) {
-//            file.mkdirs();
-//        }
-//        file = new File(Config.AUDIO_SAVE_DIR);
-//        if (!file.exists()) {
-//            file.mkdirs();
-//        }
-//        file = new File(Config.FILE_SAVE_DIR);
-//        if (!file.exists()) {
-//            file.mkdirs();
-//        }
-//        file = new File(Config.PHOTO_SAVE_DIR);
-//        if (!file.exists()) {
-//            file.mkdirs();
-//        }
-//    }
-
-    private String getSystemModel() {
-        try {
-            return android.os.Build.MODEL;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "获取失败";
-        }
-    }
-
     public static String getSystemVersion() {
         try {
             return android.os.Build.VERSION.RELEASE;
@@ -346,5 +283,4 @@ public class MyApp extends Application {
     }
 
 
-    //------------------野火
 }

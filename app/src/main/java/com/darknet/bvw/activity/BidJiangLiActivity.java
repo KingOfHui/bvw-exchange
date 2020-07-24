@@ -450,7 +450,7 @@ public class BidJiangLiActivity extends BaseActivity implements View.OnClickList
                                 try {
                                     TopResponse response = gson.fromJson(backVal, TopResponse.class);
                                     if (response != null && response.getCode() == 0) {
-                                        if (response.getData() != null) {
+                                        if (response.getData() != null && response.getData().size() > 0) {
                                             noListData.setVisibility(View.GONE);
                                             setTopData(response.getData());
 
@@ -498,7 +498,7 @@ public class BidJiangLiActivity extends BaseActivity implements View.OnClickList
                                 try {
                                     LuckResponse response = gson.fromJson(backVal, LuckResponse.class);
                                     if (response != null && response.getCode() == 0) {
-                                        if (response.getData() != null) {
+                                        if (response.getData() != null && response.getData().size() > 0) {
                                             noListData.setVisibility(View.GONE);
                                             setLuckyData(response.getData());
                                         } else {
@@ -592,15 +592,16 @@ public class BidJiangLiActivity extends BaseActivity implements View.OnClickList
 
     private void setStateData(FenLieFirstResponse.FenLieFirstData fenLieFirstData) {
 
+
         if (fenLieSendModel.getStatus() == 1) {
 
             mingciName.setText(fenLieFirstData.getHeight());
 
             int lanType = SPUtil.getInstance(this).getSelectLanguage();
-            if (lanType == 1) {
+            if (lanType == 0) {
                 //英文
                 stateName.setText(fenLieFirstData.getStage_name_en());
-            } else if (lanType == 0) {
+            } else if (lanType == 1) {
                 //中文
                 stateName.setText(fenLieFirstData.getStage_name());
             } else {
@@ -610,17 +611,16 @@ public class BidJiangLiActivity extends BaseActivity implements View.OnClickList
             mingciName.setText(fenLieFirstData.getNext_stage_height());
 
             int lanType = SPUtil.getInstance(this).getSelectLanguage();
-            if (lanType == 1) {
+            if (lanType == 0) {
                 //英文
                 stateName.setText(fenLieFirstData.getNext_stage_tip_en());
-            } else if (lanType == 0) {
+            } else if (lanType == 1) {
                 //中文
                 stateName.setText(fenLieFirstData.getNext_stage_tip_cn());
             } else {
                 stateName.setText(fenLieFirstData.getNext_stage_tip_en());
             }
         }
-
 
 
 //        int lanType = SPUtil.getInstance(this).getSelectLanguage();

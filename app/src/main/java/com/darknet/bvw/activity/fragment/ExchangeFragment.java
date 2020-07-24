@@ -15,30 +15,50 @@ import androidx.fragment.app.Fragment;
 
 import com.darknet.bvw.R;
 import com.darknet.bvw.model.Event;
+import com.darknet.bvw.model.event.KLineTradeEvent;
 import com.darknet.bvw.model.event.RefreshEvent;
 import com.darknet.bvw.model.event.RefreshThreeEvent;
 import com.darknet.bvw.model.event.RefreshTwoEvent;
+import com.darknet.bvw.model.event.SellAndBuyEvent;
 import com.darknet.bvw.model.event.TradeEvent;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.Collection;
 
 public class ExchangeFragment extends Fragment implements View.OnClickListener {
 
     private TextView mMarketTv;
+
     private TextView mExchageTv;
+
     private TextView mAmountTv;
 
     private Typeface mType01;
+
     private Typeface mType02;
 
     private LinearLayout mLinearLayout;
 
     private MarketFragment mMarketFragment;
+
     private TradingFragment mTradingFragment;
+
     private AmountFragment mAmountFragment;
 
+
+    @Override
+    public void onDestroy() {
+        EventBus.getDefault().unregister(this);
+        super.onDestroy();
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void SellAndBuyEvent(SellAndBuyEvent event) {
+        showTradeFragment();
+    }
 
     @Nullable
     @Override
@@ -47,8 +67,7 @@ public class ExchangeFragment extends Fragment implements View.OnClickListener {
         initView(view);
         initTypeface();
         initFragment();
-
-
+        EventBus.getDefault().register(this);
 
         return view;
     }
@@ -65,7 +84,7 @@ public class ExchangeFragment extends Fragment implements View.OnClickListener {
                 .show(mTradingFragment)
                 .hide(mMarketFragment)
                 .hide(mAmountFragment)
-                .commit();
+                .commitAllowingStateLoss();
 
     }
 
@@ -102,7 +121,11 @@ public class ExchangeFragment extends Fragment implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.fragment_exchange_market_tv:
                 changeOneColor();
-                getChildFragmentManager().beginTransaction().show(mMarketFragment).hide(mAmountFragment).hide(mTradingFragment).commit();
+                getChildFragmentManager().beginTransaction()
+                        .show(mMarketFragment)
+                        .hide(mAmountFragment)
+                        .hide(mTradingFragment)
+                        .commitAllowingStateLoss();
 
                 TradeEvent tradeEvent = new TradeEvent();
                 tradeEvent.setType(0);
@@ -114,20 +137,15 @@ public class ExchangeFragment extends Fragment implements View.OnClickListener {
 
                 break;
             case R.id.fragment_exchange_exchange_tv:
-                changeTwoColor();
-                getChildFragmentManager().beginTransaction().show(mTradingFragment).hide(mAmountFragment).hide(mMarketFragment).commit();
-
-                TradeEvent tradeEvent1 = new TradeEvent();
-                tradeEvent1.setType(1);
-                EventBus.getDefault().post(tradeEvent1);
-
-                EventBus.getDefault().post(new RefreshTwoEvent());
-
-                Log.e("fragemtn", ".........change...two..do..........");
+                showTradeFragment();
                 break;
             case R.id.fragment_exchange_amount_tv:
                 changeThreeColor();
-                getChildFragmentManager().beginTransaction().show(mAmountFragment).hide(mMarketFragment).hide(mTradingFragment).commit();
+                getChildFragmentManager().beginTransaction()
+                        .show(mAmountFragment)
+                        .hide(mMarketFragment)
+                        .hide(mTradingFragment)
+                        .commitAllowingStateLoss();
 
                 TradeEvent tradeEvent2 = new TradeEvent();
                 tradeEvent2.setType(0);
@@ -138,6 +156,26 @@ public class ExchangeFragment extends Fragment implements View.OnClickListener {
                 Log.e("fragemtn", ".........change..three...do..........");
                 break;
         }
+    }
+
+    /**
+     * 显示交易模块
+     */
+    private void showTradeFragment() {
+        changeTwoColor();
+        getChildFragmentManager().beginTransaction()
+                .show(mTradingFragment)
+                .hide(mAmountFragment)
+                .hide(mMarketFragment)
+                .commitAllowingStateLoss();
+
+        TradeEvent tradeEvent1 = new TradeEvent();
+        tradeEvent1.setType(1);
+        EventBus.getDefault().post(tradeEvent1);
+
+        EventBus.getDefault().post(new RefreshTwoEvent());
+
+        Log.e("fragemtn", ".........change...two..do..........");
     }
 
     private void changeOneColor() {

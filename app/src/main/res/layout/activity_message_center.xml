@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/dimen_10dp"
-                android:text="@string/no_data"
+                android:text="@string/no_data_two"
                 android:textColor="@color/txtGray" />
 
         </LinearLayout>

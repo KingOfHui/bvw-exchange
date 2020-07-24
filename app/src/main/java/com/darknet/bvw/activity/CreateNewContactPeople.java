@@ -15,6 +15,7 @@ import com.darknet.bvw.model.request.AddContackPeopleRequest;
 import com.darknet.bvw.model.response.BaseResponse;
 import com.darknet.bvw.util.bitcoinj.BitcoinjKit;
 import com.darknet.bvw.view.FailDialogView;
+import com.darknet.bvw.view.SuccessContactDialogView;
 import com.darknet.bvw.view.SuccessDialogView;
 import com.darknet.bvw.view.TypefaceTextView;
 import com.google.gson.Gson;
@@ -134,7 +135,8 @@ public class CreateNewContactPeople extends BaseActivity implements View.OnClick
                                     Gson gson = new Gson();
                                     BaseResponse response = gson.fromJson(backVal, BaseResponse.class);
                                     if (response != null && response.getCode() == 0) {
-                                        new SuccessDialogView().showTips(CreateNewContactPeople.this, getString(R.string.add_contack_address_success));
+                                        new SuccessContactDialogView().showTips(CreateNewContactPeople.this, getString(R.string.add_contack_address_success));
+
                                     } else {
                                         new FailDialogView().showTips(CreateNewContactPeople.this, getString(R.string.add_contack_address_fail));
                                     }

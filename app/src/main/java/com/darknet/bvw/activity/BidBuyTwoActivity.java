@@ -335,7 +335,8 @@ public class BidBuyTwoActivity extends BaseActivity {
             }
         });
 
-        webView.loadUrl("file:///android_asset/index.html");
+//        webView.loadUrl("file:///android_asset/index.html");
+        webView.loadUrl(ConfigNetWork.WEB_URL);
     }
 
 

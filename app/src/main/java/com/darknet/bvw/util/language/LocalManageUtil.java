@@ -23,9 +23,9 @@ public class LocalManageUtil {
 
     public static String getSelectLanguage(Context context) {
         switch (SPUtil.getInstance(context).getSelectLanguage()) {
-            case 0:
-                return context.getString(R.string.language_cn);
             case 1:
+                return context.getString(R.string.language_cn);
+            case 0:
                 return context.getString(R.string.language_en);
             default:
                 return context.getString(R.string.language_cn);
@@ -41,9 +41,9 @@ public class LocalManageUtil {
     public static Locale getSetLanguageLocale(Context context) {
 
         switch (SPUtil.getInstance(context).getSelectLanguage()) {
-            case 0:
-                return Locale.CHINA;
             case 1:
+                return Locale.CHINA;
+            case 0:
                 return Locale.ENGLISH;
             case 2:
                 return getSystemLocale(context);

@@ -17,6 +17,7 @@ import com.darknet.bvw.config.UrlPath;
 import com.darknet.bvw.db.Entity.ETHWalletModel;
 import com.darknet.bvw.db.WalletDaoUtils;
 import com.darknet.bvw.model.DealModel;
+import com.darknet.bvw.model.event.TradeDetailEvent;
 import com.darknet.bvw.model.request.DealRequest;
 import com.darknet.bvw.model.request.TradeListRequest;
 import com.darknet.bvw.model.response.JiaoYiResponse;
@@ -28,6 +29,10 @@ import com.google.gson.GsonBuilder;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,6 +67,7 @@ public class DealFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_deal, container, false);
+        EventBus.getDefault().register(this);
         initView(view);
         return view;
     }
@@ -79,8 +85,8 @@ public class DealFragment extends Fragment {
 
 
         if (markId != null) {
-            priceTypeView.setText(markId.split("-")[1]);
-            biTypeView.setText(markId.split("-")[0]);
+            priceTypeView.setText("("+markId.split("-")[1]+")");
+            biTypeView.setText("("+markId.split("-")[0]+")");
         }
 
         mDealAdapter = new DealAdapter(getActivity(), mList);
@@ -154,4 +160,15 @@ public class DealFragment extends Fragment {
     }
 
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void refreshChengjiao(TradeDetailEvent event) {
+        //刷新成交
+        getDealData();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
 }

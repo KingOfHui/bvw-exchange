@@ -50,6 +50,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:gravity="center"
+                    android:visibility="gone"
                     android:orientation="horizontal">
 
                     <TextView
@@ -82,6 +83,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="@string/fenlie_header_two"
+                        android:visibility="gone"
                         android:textColor="@color/white"
                         android:textSize="12dp"></TextView>
 
@@ -90,6 +92,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
+                        android:gravity="center"
                         android:textSize="12dp"></TextView>
 
                 </LinearLayout>
@@ -108,6 +111,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/fenlie_header_three"
                         android:textColor="@color/white"
+                        android:visibility="gone"
                         android:textSize="12dp"></TextView>
 
                     <TextView
@@ -657,7 +661,7 @@
                     android:layout_marginTop="10dp"
                     android:orientation="vertical">
 
-                    <com.darknet.bvw.view.HorProBar
+                    <com.darknet.bvw.view.HorProBarFour
                         android:id="@+id/fenlie_baifenbi_one_view"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

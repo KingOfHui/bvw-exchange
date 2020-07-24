@@ -3,6 +3,7 @@ package com.darknet.bvw.model;
 import java.util.List;
 
 public class kLineHisResponse {
+
     //{"code":0,"msg":"success","data":[[1578498300000,0,0,0,0,0]],"success":true}
     private int code;
     private String msg;

@@ -70,7 +70,7 @@ public class PopwindowsLeftFragment extends DialogFragment {
     }
 
     public interface OnChoseCoinsListener {
-        void onChose(String coinsSyblm, String closeStr, String close, boolean iscollectino, String usdRateeee);
+        void onChose(String coinsSyblm, String closeStr, String close, boolean iscollectino, String usdRateeee, CoinsModel.DataBean dataBean);
     }
 
 
@@ -190,7 +190,7 @@ public class PopwindowsLeftFragment extends DialogFragment {
             mListView.setOnItemClickListener((AdapterView<?> parent, View v, int position, long id) -> {
 
                 try {
-                    mCoinsListener.onChose(mList.get(position).getBase_token_symbol() + "-" + mList.get(position).getQuote_token_symbol(), mList.get(position).getThumb().getCloseStr(), mList.get(position).getThumb().getClose(), mList.get(position).isIs_favor_market(), mList.get(position).getThumb().getUsdRate());
+                    mCoinsListener.onChose(mList.get(position).getBase_token_symbol() + "-" + mList.get(position).getQuote_token_symbol(), mList.get(position).getThumb().getCloseStr(), mList.get(position).getThumb().getClose(), mList.get(position).isIs_favor_market(), mList.get(position).getThumb().getUsdRate(), mList.get(position));
 
                 } catch (Exception e) {
                     e.printStackTrace();

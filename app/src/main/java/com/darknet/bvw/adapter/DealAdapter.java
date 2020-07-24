@@ -61,7 +61,7 @@ public class DealAdapter extends BAdapter<JiaoYiResponse.JiaoYiModel> {
             statusView.setTextColor(context.getResources().getColor(R.color._01FCDA));
         }
 
-        priceView.setText(jiaoYiModel.getPrice().toPlainString());
+        priceView.setText(jiaoYiModel.getPrice().stripTrailingZeros().toPlainString());
 
         showView.setText(jiaoYiModel.getAmount().stripTrailingZeros().setScale(1, BigDecimal.ROUND_DOWN).toPlainString());
 

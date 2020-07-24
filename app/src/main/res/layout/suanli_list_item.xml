@@ -31,6 +31,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="算"
+                android:textColor="#01FCDA"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:visibility="invisible"></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="@string/suanli_wakuang_bom_one"
                 android:textColor="#01FCDA"
                 android:textSize="18dp"
@@ -41,7 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:layout_marginTop="15dp"
-            android:background="#FF8B8B90"></View>
+            android:background="@color/common_line_color"></View>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -193,7 +202,7 @@
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:layout_marginTop="15dp"
-            android:background="#FF8B8B90"></View>
+            android:background="@color/common_line_color"></View>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -226,8 +235,8 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginTop="5dp"
+                android:layout_weight="1"
                 android:gravity="left"
                 android:orientation="horizontal">
 

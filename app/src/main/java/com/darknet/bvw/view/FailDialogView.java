@@ -24,16 +24,16 @@ public class FailDialogView {
         @Override
         public boolean handleMessage(Message msg) {
             if (msg.what == CHECK_ECG_DATA) {
-                EventBus.getDefault().post(new TradeSuccessEvent());
+//                EventBus.getDefault().post(new TradeSuccessEvent());
 //                EventBus.getDefault().post(new PushEvent());
 
-                Intent tradeIntent = new Intent(context, MessageCenterActivity.class);
-                context.startActivity(tradeIntent);
+//                Intent tradeIntent = new Intent(context, MessageCenterActivity.class);
+//                context.startActivity(tradeIntent);
 
                 if (!((Activity) context).isFinishing() && !((Activity) context).isDestroyed()) {
                     ad.dismiss();
                 }
-                ((BaseActivity) context).finish();
+//                ((BaseActivity) context).finish();
                 return true;
             }
             return false;

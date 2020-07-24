@@ -20,7 +20,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="0.5dp"
         android:layout_marginTop="@dimen/dimen_20dp"
         android:background="@color/side_bar_pressed"></View>
 
@@ -41,7 +41,7 @@
             android:textSize="@dimen/dimen_15dp"/>
 
         <View
-            android:layout_width="1dp"
+            android:layout_width="0.5dp"
             android:layout_height="@dimen/dimen_50dp"
             android:background="@color/side_bar_pressed"></View>
 

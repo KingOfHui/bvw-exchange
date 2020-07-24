@@ -67,7 +67,6 @@ public class PrivateKeyFragment extends Fragment {
                 if (checkVal) {
                     getWallet(keyVal);
                 }
-
             }
         });
 
@@ -94,6 +93,14 @@ public class PrivateKeyFragment extends Fragment {
             return;
         }
 
+
+        boolean checkVal = WalletDaoUtils.checkRepeatByPrivateKey(btcDo.getPrivateKey());
+
+        if(checkVal){
+            Toast.makeText(getActivity(), getString(R.string.repeat_wallet_val), Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         String walletNameVal = walletName.getText().toString();
         String pwdVal = pwdContent.getText().toString();
 
@@ -105,6 +112,8 @@ public class PrivateKeyFragment extends Fragment {
         walletModel.setPublicKey(btcDo.getPublicKey());
         walletModel.setName(walletNameVal);
         walletModel.setPassword(pwdVal);
+
+
 
         //加入新钱包
         WalletDaoUtils.insertNewWallet(walletModel);

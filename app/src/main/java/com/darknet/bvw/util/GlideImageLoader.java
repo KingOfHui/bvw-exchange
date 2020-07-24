@@ -4,6 +4,9 @@ import android.content.Context;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
+import com.darknet.bvw.view.RoundImageView;
 import com.youth.banner.loader.ImageLoader;
 
 public class GlideImageLoader extends ImageLoader {
@@ -14,5 +17,10 @@ public class GlideImageLoader extends ImageLoader {
                 .load(path)
                 .fitCenter()
                 .into(imageView);
+    }
+
+    @Override
+    public ImageView createImageView(Context context) {
+        return new RoundImageView(context);
     }
 }

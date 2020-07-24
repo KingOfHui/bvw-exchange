@@ -23,9 +23,10 @@
         app:typeface="@string/universal_text_typeface"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dimen_15dp"
-        android:layout_marginRight="@dimen/dimen_15dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_marginTop="@dimen/dimen_10dp"
+        android:gravity="center"
         android:textColor="@color/black"
         android:lineHeight="25dp"
         />

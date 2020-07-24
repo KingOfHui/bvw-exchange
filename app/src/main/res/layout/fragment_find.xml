@@ -54,7 +54,6 @@
                     android:layout_centerVertical="true"
                     android:layout_marginRight="5dp"
                     android:layout_toLeftOf="@id/imgSetting"
-                    android:src="@mipmap/bid_noopen_state_sign_img"
                     android:visibility="gone" />
 
 
@@ -65,7 +64,6 @@
                     android:layout_centerVertical="true"
                     android:layout_marginRight="8dp"
                     android:layout_toLeftOf="@id/imgSetting_two"
-                    android:src="@mipmap/bid_leader_sign"
                     android:visibility="gone" />
 
             </RelativeLayout>
@@ -97,7 +95,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
-                            android:src="@mipmap/find_item_kuangji_img"></ImageView>
+                            android:src="@mipmap/find_item_fenlie_img"></ImageView>
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -111,56 +109,7 @@
                                 android:layout_centerVertical="true"
                                 android:layout_marginLeft="@dimen/dimen_15dp"
                                 android:gravity="center|left"
-                                android:text="@string/find_kuangji"
-                                android:textColor="@color/white"
-                                android:textSize="14dp"
-                                android:textStyle="bold"
-                                app:typeface="@string/universal_text_typeface" />
-
-                            <com.darknet.bvw.view.TypefaceTextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginLeft="@dimen/dimen_15dp"
-                                android:gravity="center|left"
-                                android:text="@string/find_kuangji_intro"
-                                android:textColor="@color/gray3"
-                                android:textSize="11dp"
-                                app:typeface="@string/universal_text_typeface" />
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/find_two_layout"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_weight="1"
-                        android:background="@mipmap/find_item_bg_img"
-                        android:gravity="center|left"
-                        android:orientation="horizontal"
-                        android:visibility="visible">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:src="@mipmap/find_item_jijin_img"></ImageView>
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:gravity="left|center"
-                            android:orientation="vertical">
-
-                            <com.darknet.bvw.view.TypefaceTextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginLeft="@dimen/dimen_15dp"
-                                android:gravity="center|left"
-                                android:text="@string/find_jijin"
+                                android:text="@string/find_fenlie"
                                 android:textColor="@color/white"
                                 android:textSize="15dp"
                                 android:textStyle="bold"
@@ -172,9 +121,109 @@
                                 android:layout_centerVertical="true"
                                 android:layout_marginLeft="@dimen/dimen_15dp"
                                 android:gravity="center|left"
-                                android:text="@string/find_jijin_intro"
+                                android:text="@string/find_fenlie_intro"
                                 android:textColor="@color/gray3"
-                                android:textSize="11dp"
+                                android:textSize="12dp"
+                                app:typeface="@string/universal_text_typeface" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/find_zhineng_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:background="@mipmap/find_item_bg_img"
+                        android:gravity="center|left"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:src="@mipmap/find_item_zhineng_img"></ImageView>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="left|center"
+                            android:orientation="vertical">
+
+                            <com.darknet.bvw.view.TypefaceTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="@dimen/dimen_15dp"
+                                android:gravity="center|left"
+                                android:paddingRight="30dp"
+                                android:text="@string/find_zhineng_content"
+                                android:textColor="@color/white"
+                                android:textSize="15dp"
+                                android:textStyle="bold"
+                                app:typeface="@string/universal_text_typeface" />
+
+
+                            <com.darknet.bvw.view.TypefaceTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="@dimen/dimen_15dp"
+                                android:gravity="center|left"
+                                android:text="@string/find_zhineng_info"
+                                android:textColor="@color/gray3"
+                                android:textSize="12dp"
+                                app:typeface="@string/universal_text_typeface" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/find_two_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:background="@mipmap/find_item_bg_img"
+                        android:gravity="center|left"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:src="@mipmap/find_item_jiaoyi_suo_img"></ImageView>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="left|center"
+                            android:orientation="vertical">
+
+                            <com.darknet.bvw.view.TypefaceTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="@dimen/dimen_15dp"
+                                android:gravity="center|left"
+                                android:text="@string/find_jiaoyi"
+                                android:textColor="@color/white"
+                                android:textSize="15dp"
+                                android:textStyle="bold"
+                                app:typeface="@string/universal_text_typeface" />
+
+                            <com.darknet.bvw.view.TypefaceTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="@dimen/dimen_15dp"
+                                android:gravity="center|left"
+                                android:text="@string/find_jiaoyi_info"
+                                android:textColor="@color/gray3"
+                                android:textSize="12dp"
                                 app:typeface="@string/universal_text_typeface" />
                         </LinearLayout>
 
@@ -217,9 +266,9 @@
                                 android:layout_centerVertical="true"
                                 android:layout_marginLeft="@dimen/dimen_15dp"
                                 android:gravity="center|left"
+                                android:paddingRight="30dp"
                                 android:text="@string/find_chat"
                                 android:textColor="@color/white"
-                                android:paddingRight="30dp"
                                 android:textSize="15dp"
                                 android:textStyle="bold"
                                 app:typeface="@string/universal_text_typeface" />
@@ -239,11 +288,12 @@
 
                     </LinearLayout>
 
+
                     <LinearLayout
                         android:id="@+id/find_four_layout"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
                         android:layout_weight="1"
                         android:background="@mipmap/find_item_bg_img"
                         android:gravity="center|left"
@@ -286,6 +336,7 @@
                         </LinearLayout>
 
                     </LinearLayout>
+
 
                 </LinearLayout>
 
@@ -344,11 +395,12 @@
 
                     </LinearLayout>
 
+
                     <LinearLayout
                         android:id="@+id/find_six_layout"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
                         android:layout_weight="1"
                         android:background="@mipmap/find_item_bg_img"
                         android:gravity="center|left"
@@ -392,6 +444,56 @@
 
                     </LinearLayout>
 
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:background="@mipmap/find_item_bg_img"
+                        android:gravity="center|left"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:src="@mipmap/find_item_shop"></ImageView>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="left|center"
+                            android:orientation="vertical">
+
+                            <com.darknet.bvw.view.TypefaceTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="@dimen/dimen_15dp"
+                                android:gravity="center|left"
+                                android:text="@string/find_shop"
+                                android:textColor="@color/white"
+                                android:textSize="15dp"
+                                android:textStyle="bold"
+                                app:typeface="@string/universal_text_typeface" />
+
+                            <com.darknet.bvw.view.TypefaceTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="@dimen/dimen_15dp"
+                                android:gravity="center|left"
+                                android:text="@string/find_shop_info"
+                                android:textColor="@color/gray3"
+                                android:textSize="12dp"
+                                app:typeface="@string/universal_text_typeface" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
                 </LinearLayout>
 
             </LinearLayout>
@@ -407,6 +509,15 @@
                 android:scaleType="fitXY"
                 android:src="@mipmap/find_item_big_sign"></ImageView>
 
+            <ImageView
+                android:id="@+id/iv_community_leader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="20dp"
+                android:scaleType="fitXY"
+                android:visibility="visible" />
 
             <ImageView
                 android:id="@+id/find_bid_model_view"

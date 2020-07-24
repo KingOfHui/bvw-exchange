@@ -47,7 +47,7 @@ public class SuanLiListItemAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         if (holder instanceof FenLieViewHolder) {
             SuanLiResponse.SunLiItemModel tradeListModel = listVal.get(position);
 
-            ((FenLieViewHolder) holder).timeView.setText(tradeListModel.getDate());
+            ((FenLieViewHolder) holder).timeView.setText(tradeListModel.getDate()+" ");
             ((FenLieViewHolder) holder).oneView.setText(tradeListModel.getHoldPower().stripTrailingZeros().toPlainString()+"kH/S");
             ((FenLieViewHolder) holder).twoView.setText(tradeListModel.getAdditionTimePower().stripTrailingZeros().toPlainString()+"kH/S");
             ((FenLieViewHolder) holder).threeView.setText(tradeListModel.getSignPower().stripTrailingZeros().toPlainString()+"kH/S");

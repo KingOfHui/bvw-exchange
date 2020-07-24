@@ -39,11 +39,12 @@ import com.darknet.bvw.model.response.CreateTradeResponse.SendTx;
 import com.darknet.bvw.model.response.CreateTradeResponse.TransactionRAW;
 import com.darknet.bvw.model.response.CreateTradeResponse.Unspent;
 import com.darknet.bvw.model.response.SendTradeResponse;
+import com.darknet.bvw.util.DecimalInputTextWatcher;
 import com.darknet.bvw.util.ToastUtils;
 import com.darknet.bvw.util.bitcoinj.BitcoinjKit;
 import com.darknet.bvw.view.BottomDialogView;
 import com.darknet.bvw.view.CustomProgressDialog;
-import com.darknet.bvw.view.FailDialogView;
+import com.darknet.bvw.view.FailZZDialogView;
 import com.darknet.bvw.view.SuccessDialogView;
 import com.darknet.bvw.view.TypefaceTextView;
 import com.darknet.bvw.view.ZhuanZhangNoticeDialog;
@@ -136,9 +137,13 @@ public class TransferAccountsThreeActivity extends BaseActivity implements View.
         userMoneyView = findViewById(R.id.trade_use_money_view);
 
 
+//输入总长度15位，小数2位
+        editZzMoney.addTextChangedListener(new DecimalInputTextWatcher(editZzMoney, 20, 6));
+
+
         userMoneyView.setText(moneyTypeVal + " " + getString(R.string.trade_left_money_val) + ":" + leftVal);
 
-        title.setText(moneyTypeVal +" "+ getString(R.string.trade_sign_title));
+        title.setText(moneyTypeVal + " " + getString(R.string.trade_sign_title));
 //        title.setText(getString(R.string.trade_account_one_title));
 
         layBack.setOnClickListener(this);
@@ -243,7 +248,7 @@ public class TransferAccountsThreeActivity extends BaseActivity implements View.
     /**
      * 跳转到扫码界面扫码
      */
-    private void goScan(){
+    private void goScan() {
         Intent intent = new Intent(TransferAccountsThreeActivity.this, CaptureActivity.class);
         startActivityForResult(intent, REQUEST_CODE_SCAN);
     }
@@ -277,7 +282,6 @@ public class TransferAccountsThreeActivity extends BaseActivity implements View.
             }
         }
     }
-
 
 
     private void sendTo() {
@@ -623,12 +627,12 @@ public class TransferAccountsThreeActivity extends BaseActivity implements View.
                                     Gson gson = new Gson();
                                     JsonRootBean response = gson.fromJson(backVal, JsonRootBean.class);
                                     if (response != null) {
-                                        if (response.getData() != null) {
+                                        if (response.getData() != null && response.getCode() == 0) {
                                             getSignValThree(response.getData(), walletModel.getPrivateKey());
                                         } else {
 
                                             try {
-                                                new FailDialogView().showTips(TransferAccountsThreeActivity.this, response.getMsg());
+                                                new FailZZDialogView().showTips(TransferAccountsThreeActivity.this, response.getMsg());
                                                 btnNext.setEnabled(true);
 //                                                dismissDialog();
 
@@ -643,7 +647,7 @@ public class TransferAccountsThreeActivity extends BaseActivity implements View.
                                     } else {
 //                                        Toast.makeText(TransferAccountsActivity.this, getString(R.string.trade_wrong_data), Toast.LENGTH_SHORT).show();
                                         try {
-                                            new FailDialogView().showTips(TransferAccountsThreeActivity.this, getString(R.string.dialog_fail_sign));
+                                            new FailZZDialogView().showTips(TransferAccountsThreeActivity.this, getString(R.string.dialog_fail_sign));
                                             btnNext.setEnabled(true);
 //                                            dismissDialog();
                                             if (!((Activity) TransferAccountsThreeActivity.this).isFinishing() && !((Activity) TransferAccountsThreeActivity.this).isDestroyed()) {
@@ -663,7 +667,7 @@ public class TransferAccountsThreeActivity extends BaseActivity implements View.
                                         if (!((Activity) TransferAccountsThreeActivity.this).isFinishing() && !((Activity) TransferAccountsThreeActivity.this).isDestroyed()) {
                                             mDialog.dismiss();
                                         }
-                                        new FailDialogView().showTips(TransferAccountsThreeActivity.this, getString(R.string.dialog_fail_sign));
+                                        new FailZZDialogView().showTips(TransferAccountsThreeActivity.this, getString(R.string.dialog_fail_sign));
                                         btnNext.setEnabled(true);
                                     } catch (Exception es) {
                                         es.printStackTrace();
@@ -683,7 +687,7 @@ public class TransferAccountsThreeActivity extends BaseActivity implements View.
                             if (!((Activity) TransferAccountsThreeActivity.this).isFinishing() && !((Activity) TransferAccountsThreeActivity.this).isDestroyed()) {
                                 mDialog.dismiss();
                             }
-                            new FailDialogView().showTips(TransferAccountsThreeActivity.this, getString(R.string.dialog_fail_sign));
+                            new FailZZDialogView().showTips(TransferAccountsThreeActivity.this, getString(R.string.dialog_fail_sign));
                             btnNext.setEnabled(true);
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -732,7 +736,7 @@ public class TransferAccountsThreeActivity extends BaseActivity implements View.
 //                    dismissDialog();
 
                     try {
-                        new FailDialogView().showTips(TransferAccountsThreeActivity.this, getString(R.string.dialog_fail_sign));
+                        new FailZZDialogView().showTips(TransferAccountsThreeActivity.this, getString(R.string.dialog_fail_sign));
                         btnNext.setEnabled(true);
 //                        dismissDialog();
                         if (!((Activity) TransferAccountsThreeActivity.this).isFinishing() && !((Activity) TransferAccountsThreeActivity.this).isDestroyed()) {
@@ -747,7 +751,8 @@ public class TransferAccountsThreeActivity extends BaseActivity implements View.
             }
         });
 
-        webView.loadUrl("file:///android_asset/index.html");
+//        webView.loadUrl("file:///android_asset/index.html");
+        webView.loadUrl(ConfigNetWork.WEB_URL);
     }
 
 
@@ -812,20 +817,21 @@ public class TransferAccountsThreeActivity extends BaseActivity implements View.
 
                                     } else {
 
-                                        EventBus.getDefault().post(new TradeSuccessEvent());
-
-//                                        EventBus.getDefault().post(new PushEvent());
-
-                                        Intent tradeIntent = new Intent(TransferAccountsThreeActivity.this, MessageCenterActivity.class);
-                                        startActivity(tradeIntent);
-
-                                        Toast.makeText(TransferAccountsThreeActivity.this, response.getMsg(), Toast.LENGTH_SHORT).show();
-
-                                        finish();
+//                                        EventBus.getDefault().post(new TradeSuccessEvent());
+//
+////                                        EventBus.getDefault().post(new PushEvent());
+//
+//                                        Intent tradeIntent = new Intent(TransferAccountsThreeActivity.this, MessageCenterActivity.class);
+//                                        startActivity(tradeIntent);
+//
+//                                        Toast.makeText(TransferAccountsThreeActivity.this, response.getMsg(), Toast.LENGTH_SHORT).show();
+//
+//                                        finish();
+                                        new FailZZDialogView().showTips(TransferAccountsThreeActivity.this,response.getMsg());
                                     }
                                 } catch (Exception e) {
                                     try {
-                                        new FailDialogView().showTips(TransferAccountsThreeActivity.this, getString(R.string.dialog_fail_sign));
+                                        new FailZZDialogView().showTips(TransferAccountsThreeActivity.this, getString(R.string.dialog_fail_sign));
 //                                        EventBus.getDefault().post(new PushEvent());
 //                                        finish();
                                     } catch (Exception es) {
@@ -835,7 +841,7 @@ public class TransferAccountsThreeActivity extends BaseActivity implements View.
                                 }
                             } else {
                                 try {
-                                    new FailDialogView().showTips(TransferAccountsThreeActivity.this, getString(R.string.dialog_fail_sign));
+                                    new FailZZDialogView().showTips(TransferAccountsThreeActivity.this, getString(R.string.dialog_fail_sign));
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
@@ -850,7 +856,7 @@ public class TransferAccountsThreeActivity extends BaseActivity implements View.
                         super.onError(response);
 
                         try {
-                            new FailDialogView().showTips(TransferAccountsThreeActivity.this, getString(R.string.dialog_fail_sign));
+                            new FailZZDialogView().showTips(TransferAccountsThreeActivity.this, getString(R.string.dialog_fail_sign));
 //                            dismissDialog();
                             if (!((Activity) TransferAccountsThreeActivity.this).isFinishing() && !((Activity) TransferAccountsThreeActivity.this).isDestroyed()) {
                                 mDialog.dismiss();

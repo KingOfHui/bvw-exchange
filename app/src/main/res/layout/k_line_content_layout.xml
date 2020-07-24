@@ -1,0 +1,130 @@
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginTop="15dp"
+    android:layout_marginBottom="@dimen/dimen_10dp"
+    android:visibility="visible"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/kline_usd_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="--"
+            android:textColor="#ff01fcda"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/kline_rmb_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ffffffff"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/kline_change"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:textColor="#ff01fcda"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        tools:ignore="MissingConstraints">
+
+
+        <com.darknet.bvw.view.TypefaceTextView
+            android:id="@+id/tv_high_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/k_high_line"
+            android:textColor="#ffffffff"
+            android:textSize="12sp"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
+        <com.darknet.bvw.view.TypefaceTextView
+            android:id="@+id/kline_high"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_40dp"
+            android:text="--"
+            android:textColor="#ffffffff"
+            android:textSize="12sp"
+            app:layout_constraintLeft_toRightOf="@id/tv_high_desc"
+            app:layout_constraintRight_toRightOf="parent" />
+
+
+        <com.darknet.bvw.view.TypefaceTextView
+            android:id="@+id/tv_low_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:text="@string/k_low_line"
+            android:textColor="#ffffffff"
+            android:textSize="12sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_high_desc" />
+
+        <com.darknet.bvw.view.TypefaceTextView
+            android:id="@+id/kline_low"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_40dp"
+            android:layout_marginTop="10dp"
+            android:text="--"
+            android:textColor="#ffffffff"
+            android:textSize="12sp"
+            app:layout_constraintLeft_toRightOf="@id/tv_low_desc"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/kline_high" />
+
+
+        <com.darknet.bvw.view.TypefaceTextView
+            android:id="@+id/tv_24_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/k_day_line"
+            android:textColor="#ffffffff"
+            android:textSize="12sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_low_desc" />
+
+        <com.darknet.bvw.view.TypefaceTextView
+            android:id="@+id/kline_24h"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_40dp"
+            android:layout_marginTop="10dp"
+            android:text="--"
+            android:textColor="#ffffffff"
+            android:textSize="12sp"
+            app:layout_constraintLeft_toRightOf="@id/tv_24_desc"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/kline_low" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>

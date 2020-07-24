@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,7 +25,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.darknet.bvw.R;
-import com.darknet.bvw.activity.KlineTwoActivity;
+import com.darknet.bvw.activity.KlineActivity;
 import com.darknet.bvw.activity.WeiTuoListActivity;
 import com.darknet.bvw.adapter.CurrentOrderAdapter;
 import com.darknet.bvw.adapter.InAdapter;
@@ -40,23 +41,29 @@ import com.darknet.bvw.model.CurrentOrderModel;
 import com.darknet.bvw.model.DepthResponse;
 import com.darknet.bvw.model.RequestEntity;
 import com.darknet.bvw.model.TokenCoinResponse;
-import com.darknet.bvw.model.event.KLineEvent;
-import com.darknet.bvw.model.event.RefreshThreeEvent;
 import com.darknet.bvw.model.event.RefreshTwoEvent;
+import com.darknet.bvw.model.event.SellAndBuyEvent;
+import com.darknet.bvw.model.event.TradeDetailEvent;
+import com.darknet.bvw.model.event.TradePanKouEvent;
 import com.darknet.bvw.model.request.CurrentWeiTuoRequest;
 import com.darknet.bvw.model.response.BaseResponse;
 import com.darknet.bvw.model.response.BidStateResponse;
+import com.darknet.bvw.service.WorkManagerService;
+import com.darknet.bvw.util.AppUtil;
 import com.darknet.bvw.util.ArithmeticUtils;
+import com.darknet.bvw.util.DecimalInputTextWatcher;
 import com.darknet.bvw.util.NumberEnum;
 import com.darknet.bvw.util.UserSPHelper;
 import com.darknet.bvw.util.bitcoinj.BitcoinjKit;
 import com.darknet.bvw.view.BidDialogView;
-import com.darknet.bvw.view.CancelOrderDialogView;
 import com.darknet.bvw.view.DialogLoadding;
 import com.darknet.bvw.view.MyListView;
 import com.darknet.bvw.view.TypefaceTextView;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.handmark.pulltorefresh.library.ILoadingLayout;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
@@ -125,7 +132,15 @@ public class TradingFragment extends Fragment {
     private TextView m100PresentTv;
 
     private boolean isPrice = true;//第一次进入页面
+    private boolean isMenuPrice = true;//是否进行菜单选项选择
+
+    private String defaultMairu = "0";
+    private String defaultMaiChu = "0";
+
+
     //    private String marketId = "BTC-USDT";//交易对
+
+
     private String marketId;//交易对
 
     private LinearLayout noWeiTuoDataLayout;
@@ -155,6 +170,12 @@ public class TradingFragment extends Fragment {
 
     private ImageView kLineImgView;
 
+    PullToRefreshScrollView pullToRefreshScrollView;
+
+
+    private String xiaoshuPriceLimit;
+    private String xiaoshuNumLimit;
+
 
     @SuppressLint("HandlerLeak")
     public class LooperHandler extends Handler {
@@ -175,9 +196,12 @@ public class TradingFragment extends Fragment {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    mHandler.sendMessageDelayed(message, 3 * 1000);
+
+                    //取消轮询
+//                    Message message = Message.obtain();
+//                    message.what = 1;
+//                    mHandler.sendMessageDelayed(message, 6 * 1000);
+
                     break;
                 case 1:
                     //todo 深度数据循环
@@ -187,6 +211,11 @@ public class TradingFragment extends Fragment {
             }
         }
     }
+
+
+    private String defaultMairuVal;
+    private String defaultMaichuVal;
+
 
     /**
      * 7深度数据
@@ -203,22 +232,58 @@ public class TradingFragment extends Fragment {
             int askSize = depth.getData().getAsks().size();
             int bidsSize = depth.getData().getBids().size();
 
-            if (isPrice) {
-                isPrice = false;
-                if (buyOrsell.equals("buy")) {
-                    if (askSize > 0) {
-                        mPriceEt.setText(depth.getData().getAsks().get(askSize - 1).getPrice());
+
+            if (askSize > 0) {
+                defaultMairuVal = depth.getData().getAsks().get(0).getPrice();
+            } else {
+                defaultMairuVal = "0";
+            }
+
+            if (bidsSize > 0) {
+                defaultMaichuVal = depth.getData().getBids().get(0).getPrice();
+            } else {
+                defaultMaichuVal = "0";
+            }
+
+
+            if (askSize > 0 || bidsSize > 0) {
+                if (isPrice) {
+                    isPrice = false;
+
+                    if (buyOrsell.equals("buy")) {
+                        if (askSize > 0) {
+//                        mPriceEt.setText(depth.getData().getAsks().get(askSize - 1).getPrice());
+                            mPriceEt.setText(depth.getData().getAsks().get(0).getPrice());
+                        } else {
+                            mPriceEt.setText("0");
+                        }
+
+//                        Log.e("xxxxxxxxxxxx","mPriceEt="+mPriceEt.getText().toString());
+
                     } else {
-                        mPriceEt.setText("0");
+                        if (bidsSize > 0) {
+//                        defaultMaiChu = depth.getData().getBids().get(0).getPrice();
+
+                            mPriceEt.setText(depth.getData().getBids().get(0).getPrice());
+                        } else {
+                            mPriceEt.setText("0");
+                        }
+
+//                        Log.e("xxxxxxxxxxxx","mPriceEt="+mPriceEt.getText().toString());
                     }
-                } else {
-                    if (bidsSize > 0) {
-                        mPriceEt.setText(depth.getData().getBids().get(0).getPrice());
-                    } else {
-                        mPriceEt.setText("0");
-                    }
+//                hideLoading();
                 }
-                hideLoading();
+            }
+
+
+            mPriceEt.setSelection(mPriceEt.getText().length());
+
+            if (askSize > 0) {
+                defaultMairu = depth.getData().getAsks().get(0).getPrice();
+            }
+
+            if (bidsSize > 0) {
+                defaultMaiChu = depth.getData().getBids().get(0).getPrice();
             }
 
 
@@ -236,7 +301,7 @@ public class TradingFragment extends Fragment {
 
                 tempCountVal = ArithmeticUtils.plus(tempBid.getAmount(), tempCountVal).toPlainString();
                 tempBid.setCurrentCount(tempCountVal);
-                Log.e("mairuTotal22", "tempCountVal=" + tempCountVal);
+//                Log.e("mairuTotal22", "tempCountVal=" + tempCountVal);
             }
 
             tempCountVal = "0";
@@ -391,30 +456,80 @@ public class TradingFragment extends Fragment {
         }
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void SellAndBuyEvent(SellAndBuyEvent event) {
+        if (event == null) {
+            return;
+        }
+        if (event.getType()==SellAndBuyEvent.BUY){
+            changeMaiRu();
+        }else {
+            changeMaichu();
+        }
+    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_trading, container, false);
-
-        EventBus.getDefault().register(this);
         initView(view);
         initAdapter();
-        initData();
-
-        getAccount();
         getTokenList();
+        getAccount();
         //当前委托
         getCurrentWeiTuo();
+        EventBus.getDefault().register(this);
 
         return view;
     }
+
+
+    private void intRefreshScrollView() {
+        //1.设置模式
+        pullToRefreshScrollView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
+        pullToRefreshScrollView.setScrollingWhileRefreshingEnabled(false);
+        pullToRefreshScrollView.setPullToRefreshOverScrollEnabled(false);
+
+
+        //2.通过调用getLoadingLayoutProxy方法，设置下拉刷新状况布局中显示的文字 ，第一个参数为true,代表下拉刷新
+        ILoadingLayout headLables = pullToRefreshScrollView.getLoadingLayoutProxy(true, false);
+        headLables.setPullLabel(getString(R.string.refresh_one_view));
+        headLables.setRefreshingLabel(getString(R.string.refresh_two_view));
+        headLables.setReleaseLabel(getString(R.string.refresh_three_view));
+
+
+        //3.设置监听事件
+        pullToRefreshScrollView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ScrollView>() {
+            @Override
+            public void onPullDownToRefresh(PullToRefreshBase<ScrollView> refreshView) {
+                getAccount();
+
+                if (marketId != null) {
+
+                } else {
+                    getTokenList();
+                }
+
+                getCurrentWeiTuo();
+                checkShouCang();
+
+            }
+
+            @Override
+            public void onPullUpToRefresh(PullToRefreshBase<ScrollView> refreshView) {
+//                addToBottom()//请求网络数据，并更新listview组件
+//                refreshComplete();//数据加载完成后，关闭header,footer
+            }
+        });
+
+    }
+
 
     @Override
     public void onResume() {
         super.onResume();
         //当前委托
-        getCurrentWeiTuo();
+//        getCurrentWeiTuo();
         checkShouCang();
         Log.e("xxxxxxxx", ".....lazyLoad...do...moneyFragment....");
     }
@@ -500,7 +615,9 @@ public class TradingFragment extends Fragment {
                                     if (choseCoin != null) {
                                         if (datum.getQuote_token_symbol().equals(choseCoin)) {
                                             panKouRight = datum;
+
                                             setPanKouSignData();
+                                            setInputLimit();
                                             break;
                                         }
                                     }
@@ -514,14 +631,44 @@ public class TradingFragment extends Fragment {
     }
 
 
+    private void setInputLimit() {
+        if (panKouRight != null) {
+
+            try {
+                xiaoshuPriceLimit = panKouRight.getPrice_decimals();
+                xiaoshuNumLimit = panKouRight.getAmount_decimals();
+
+                mPriceEt.addTextChangedListener(new DecimalInputTextWatcher(mPriceEt, 20, Integer.parseInt(xiaoshuPriceLimit)));
+                mCountNumETv.addTextChangedListener(new DecimalInputTextWatcher(mCountNumETv, 20, Integer.parseInt(xiaoshuNumLimit)));
+            } catch (Exception e) {
+                e.printStackTrace();
+                mPriceEt.addTextChangedListener(new DecimalInputTextWatcher(mPriceEt, 20, 5));
+                mCountNumETv.addTextChangedListener(new DecimalInputTextWatcher(mCountNumETv, 20, 5));
+            }
+        }
+    }
+
+
     private void setPanKouSignData() {
 
         try {
             if (panKouRight != null) {
                 isPrice = true;
                 marketId = panKouRight.getBase_token_symbol() + "-" + panKouRight.getQuote_token_symbol();
+
+                //通知socket订阅
+                Bundle data = new Bundle();
+                data.putString(WorkManagerService.EXTRA_DATA, marketId);
+                WorkManagerService.startService(getActivity(), data);
+
+                initData();
+
                 lastPriceView.setText(panKouRight.getThumb().getCloseStr());
-                yueDengyuPriceView.setText("" + panKouRight.getThumb().getClose());
+//                yueDengyuPriceView.setText("" + panKouRight.getThumb().getCloseStr());
+
+                yueDengyuPriceView.setText(ArithmeticUtils.multiply(panKouRight.getThumb().getUsdRate(), panKouRight.getThumb().getCloseStr()).stripTrailingZeros().toPlainString());
+
+
                 inputNumMoneyTypeView.setText(panKouRight.getBase_token_symbol());
                 mCoinsType.setText(panKouRight.getBase_token_symbol());
                 mCoinsUsdtType.setText(panKouRight.getQuote_token_symbol());
@@ -538,8 +685,8 @@ public class TradingFragment extends Fragment {
                 }
 
                 if (marketId != null) {
-                    shenduPriceType.setText(marketId.split("-")[1]);
-                    shenduNumType.setText(marketId.split("-")[0]);
+                    shenduPriceType.setText("(" + marketId.split("-")[1] + ")");
+                    shenduNumType.setText("(" + marketId.split("-")[0] + ")");
                 }
 
                 getCurrentWeiTuo();
@@ -598,6 +745,8 @@ public class TradingFragment extends Fragment {
         weiTuoAllView = view.findViewById(R.id.jiaoyi_all_weituo_history);
         mPirceUsdtTv = view.findViewById(R.id.change_cny_price_tv);
 
+        pullToRefreshScrollView = (PullToRefreshScrollView) view.findViewById(R.id.pull_refresh_scrollview);
+
         mCanUseCoinsCountTv = view.findViewById(R.id.idt_eth_amount_can_use_tv);
         mCanUseCoinsCountTvType = view.findViewById(R.id.idt_eth_amount_can_use_tv_type);
 
@@ -632,9 +781,14 @@ public class TradingFragment extends Fragment {
             @Override
             public void onClick(View v) {
 //                Intent kLineIntent = new Intent(getActivity(),KlineActivity.class);
-
+                if (AppUtil.isFastClick()) {
+                    return;
+                }
                 if (marketId != null) {
-                    Intent kLineIntent = new Intent(getActivity(), KlineTwoActivity.class);
+                    Bundle data = new Bundle();
+                    data.putString(WorkManagerService.EXTRA_DATA, marketId);
+                    WorkManagerService.startService(getActivity(), data);
+                    Intent kLineIntent = new Intent(getActivity(), KlineActivity.class);
                     kLineIntent.putExtra("markid", marketId);
                     kLineIntent.putExtra("shoucang", isCollection);
                     startActivity(kLineIntent);
@@ -726,105 +880,158 @@ public class TradingFragment extends Fragment {
         m25PresentTv.setOnClickListener(v -> {
             String price = mPriceEt.getText().toString().trim();
             String total = mCanUseCoinsCountTv.getText().toString();
-            if (buyOrsell.equals("buy")) {
-                if (!TextUtils.isEmpty(price) && Double.valueOf(price) != 0) {
-                    String count = ArithmeticUtils.multiply(ArithmeticUtils.divide(total, price, 8), "0.25").setScale(2, RoundingMode.HALF_EVEN).toPlainString();
-                    mCountNumETv.setText(count);
+
+            try {
+                if (buyOrsell.equals("buy")) {
+                    if (!TextUtils.isEmpty(price) && Double.valueOf(price) != 0) {
+                        String count = ArithmeticUtils.multiply(ArithmeticUtils.divide(total, price, 8), "0.25").setScale(Integer.parseInt(xiaoshuNumLimit), BigDecimal.ROUND_DOWN).toPlainString();
+                        mCountNumETv.setText(count);
+//                    mCountNumETv.addTextChangedListener(new DecimalInputTextWatcher(mCountNumETv, 20, Integer.parseInt(xiaoshuNumLimit)));
+                        mCountNumETv.setSelection(mCountNumETv.getText().length());
+                    } else {
+                        mCountNumETv.setText("0");
+                        mCountNumETv.setSelection(mCountNumETv.getText().length());
+                    }
                 } else {
-                    mCountNumETv.setText("0");
+                    if (!TextUtils.isEmpty(price) && Double.valueOf(price) != 0) {
+                        String count = ArithmeticUtils.multiply(total, "0.25").setScale(Integer.parseInt(xiaoshuNumLimit), BigDecimal.ROUND_DOWN).toPlainString();
+                        mCountNumETv.setText(count);
+                        mCountNumETv.setSelection(mCountNumETv.getText().length());
+                    } else {
+                        mCountNumETv.setText("0");
+                        mCountNumETv.setSelection(mCountNumETv.getText().length());
+                    }
                 }
-            } else {
-                if (!TextUtils.isEmpty(price) && Double.valueOf(price) != 0) {
-                    String count = ArithmeticUtils.multiply(total, "0.25").setScale(2, RoundingMode.HALF_EVEN).toPlainString();
-                    mCountNumETv.setText(count);
-                } else {
-                    mCountNumETv.setText("0");
-                }
+                changePresentBackGroudResource(R.id.change_precent_25);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
 
-            changePresentBackGroudResource(R.id.change_precent_25);
         });
         m50PresentTv.setOnClickListener(v -> {
             String price = mPriceEt.getText().toString().trim();
             String total = mCanUseCoinsCountTv.getText().toString();
-            if (buyOrsell.equals("buy")) {
-                if (!TextUtils.isEmpty(price) && Double.valueOf(price) != 0) {
-                    String count = ArithmeticUtils.multiply(ArithmeticUtils.divide(total, price, 8), "0.5").setScale(2, RoundingMode.HALF_EVEN).toPlainString();
-                    mCountNumETv.setText(count);
+
+            try {
+                if (buyOrsell.equals("buy")) {
+                    if (!TextUtils.isEmpty(price) && Double.valueOf(price) != 0) {
+                        String count = ArithmeticUtils.multiply(ArithmeticUtils.divide(total, price, 8), "0.5").setScale(Integer.parseInt(xiaoshuNumLimit), BigDecimal.ROUND_DOWN).toPlainString();
+                        mCountNumETv.setText(count);
+                        mCountNumETv.setSelection(mCountNumETv.getText().length());
+                    } else {
+                        mCountNumETv.setText("0");
+                        mCountNumETv.setSelection(mCountNumETv.getText().length());
+                    }
                 } else {
-                    mCountNumETv.setText("0");
+                    if (!TextUtils.isEmpty(price) && Double.valueOf(price) != 0) {
+                        String count = ArithmeticUtils.multiply(total, "0.5").setScale(Integer.parseInt(xiaoshuNumLimit), BigDecimal.ROUND_DOWN).toPlainString();
+                        mCountNumETv.setText(count);
+                        mCountNumETv.setSelection(mCountNumETv.getText().length());
+                    } else {
+                        mCountNumETv.setText("0");
+                        mCountNumETv.setSelection(mCountNumETv.getText().length());
+                    }
                 }
-            } else {
-                if (!TextUtils.isEmpty(price) && Double.valueOf(price) != 0) {
-                    String count = ArithmeticUtils.multiply(total, "0.5").setScale(2, RoundingMode.HALF_EVEN).toPlainString();
-                    mCountNumETv.setText(count);
-                } else {
-                    mCountNumETv.setText("0");
-                }
+                changePresentBackGroudResource(R.id.change_precent_50);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
 
-            changePresentBackGroudResource(R.id.change_precent_50);
+
         });
         m75PresentTv.setOnClickListener(v -> {
             String price = mPriceEt.getText().toString().trim();
             String total = mCanUseCoinsCountTv.getText().toString();
-            if (buyOrsell.equals("buy")) {
-                if (!TextUtils.isEmpty(price) && Double.valueOf(price) != 0) {
-                    String count = ArithmeticUtils.multiply(ArithmeticUtils.divide(total, price, 8), "0.75").setScale(2, RoundingMode.HALF_EVEN).toPlainString();
-                    mCountNumETv.setText(count);
+
+            try {
+                if (buyOrsell.equals("buy")) {
+                    if (!TextUtils.isEmpty(price) && Double.valueOf(price) != 0) {
+                        String count = ArithmeticUtils.multiply(ArithmeticUtils.divide(total, price, 8), "0.75").setScale(Integer.parseInt(xiaoshuNumLimit), BigDecimal.ROUND_DOWN).toPlainString();
+                        mCountNumETv.setText(count);
+                        mCountNumETv.setSelection(mCountNumETv.getText().length());
+                    } else {
+                        mCountNumETv.setText("0");
+                        mCountNumETv.setSelection(mCountNumETv.getText().length());
+                    }
                 } else {
-                    mCountNumETv.setText("0");
+                    if (!TextUtils.isEmpty(price) && Double.valueOf(price) != 0) {
+                        String count = ArithmeticUtils.multiply(total, "0.75").setScale(Integer.parseInt(xiaoshuNumLimit), BigDecimal.ROUND_DOWN).toPlainString();
+                        mCountNumETv.setText(count);
+                        mCountNumETv.setSelection(mCountNumETv.getText().length());
+                    } else {
+                        mCountNumETv.setText("0");
+                        mCountNumETv.setSelection(mCountNumETv.getText().length());
+                    }
                 }
-            } else {
-                if (!TextUtils.isEmpty(price) && Double.valueOf(price) != 0) {
-                    String count = ArithmeticUtils.multiply(total, "0.75").setScale(2, RoundingMode.HALF_EVEN).toPlainString();
-                    mCountNumETv.setText(count);
-                } else {
-                    mCountNumETv.setText("0");
-                }
+                changePresentBackGroudResource(R.id.change_precent_75);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-            changePresentBackGroudResource(R.id.change_precent_75);
+
         });
         m100PresentTv.setOnClickListener(v -> {
             String price = mPriceEt.getText().toString().trim();
             String total = mCanUseCoinsCountTv.getText().toString();
-            if (buyOrsell.equals("buy")) {
-                if (!TextUtils.isEmpty(price) && Double.valueOf(price) != 0) {
-                    String count = ArithmeticUtils.multiply(ArithmeticUtils.divide(total, price, 8), "1").setScale(2, RoundingMode.HALF_EVEN).toPlainString();
-                    mCountNumETv.setText(count);
+
+            try {
+                if (buyOrsell.equals("buy")) {
+                    if (!TextUtils.isEmpty(price) && Double.valueOf(price) != 0) {
+                        String count = ArithmeticUtils.multiply(ArithmeticUtils.divide(total, price, 8), "1").setScale(Integer.parseInt(xiaoshuNumLimit), BigDecimal.ROUND_DOWN).toPlainString();
+                        mCountNumETv.setText(count);
+                        mCountNumETv.setSelection(mCountNumETv.getText().length());
+                    } else {
+                        mCountNumETv.setText("0");
+                        mCountNumETv.setSelection(mCountNumETv.getText().length());
+                    }
                 } else {
-                    mCountNumETv.setText("0");
+                    if (!TextUtils.isEmpty(price) && Double.valueOf(price) != 0) {
+                        String count = ArithmeticUtils.multiply(total, "1").setScale(Integer.parseInt(xiaoshuNumLimit), BigDecimal.ROUND_DOWN).toPlainString();
+                        mCountNumETv.setText(count);
+                        mCountNumETv.setSelection(mCountNumETv.getText().length());
+                    } else {
+                        mCountNumETv.setText("0");
+                        mCountNumETv.setSelection(mCountNumETv.getText().length());
+                    }
                 }
-            } else {
-                if (!TextUtils.isEmpty(price) && Double.valueOf(price) != 0) {
-                    String count = ArithmeticUtils.multiply(total, "1").setScale(2, RoundingMode.HALF_EVEN).toPlainString();
-                    mCountNumETv.setText(count);
-                } else {
-                    mCountNumETv.setText("0");
-                }
+                changePresentBackGroudResource(R.id.change_precent_100);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-            changePresentBackGroudResource(R.id.change_precent_100);
+
         });
 
 
         view.findViewById(R.id.fragment_exchange_menu_layout).setOnClickListener(v -> {
             PopwindowsLeftFragment fragment = new PopwindowsLeftFragment();
 
-            fragment.setCoinsListener((String coinsSyblm, String closeStr, String close, boolean isSel, String usdRa) -> {
+            fragment.setCoinsListener((String coinsSyblm, String closeStr, String close, boolean isSel, String usdRa, CoinsModel.DataBean dataBean) -> {
 
                 try {
+                    panKouRight = dataBean;
+
+                    setInputLimit();
+
                     marketId = coinsSyblm;
+
+                    //通知socket订阅
+                    Bundle data = new Bundle();
+                    data.putString(WorkManagerService.EXTRA_DATA, marketId);
+                    WorkManagerService.startService(getActivity(), data);
+
                     //todo 刷新整个页面
                     mCoinsType.setText(marketId.split("-")[0]);
                     mCoinsUsdtType.setText(marketId.split("-")[1]);
 
-                    shenduPriceType.setText(marketId.split("-")[1]);
-                    shenduNumType.setText(marketId.split("-")[0]);
+                    shenduPriceType.setText("(" + marketId.split("-")[1] + ")");
+                    shenduNumType.setText("(" + marketId.split("-")[0] + ")");
 
                     inputNumMoneyTypeView.setText(marketId.split("-")[0]);
 
                     lastPriceView.setText(closeStr);
-                    yueDengyuPriceView.setText("" + close);
+
+                    yueDengyuPriceView.setText(ArithmeticUtils.multiply(usdRa, closeStr).stripTrailingZeros().toPlainString());
+
+//                    yueDengyuPriceView.setText("" + closeStr*usdRa);
 
                     if (isSel) {
                         isCollection = 1;
@@ -836,16 +1043,22 @@ public class TradingFragment extends Fragment {
 
                     usdRateVal = usdRa;
 
+                    isMenuPrice = true;
+
                     isPrice = true;
                     mPriceEt.setText("0");
+                    mPriceEt.setSelection(mPriceEt.getText().length());
                     mCountNumETv.setText("0");
+                    mCountNumETv.setSelection(mCountNumETv.getText().length());
                     totalMoneyView.setText("0");
                     mPirceUsdtTv.setText("0");
 //                    showLoading();
+                    initData();
                     getAccount();
                     getCurrentWeiTuo();
                     initPresentBackGroudResource();
 
+                    mHandler.sendEmptyMessage(1);
                     fragment.dismiss();
                     setRateViewContent();
                 } catch (Exception e) {
@@ -943,16 +1156,22 @@ public class TradingFragment extends Fragment {
             }
         });
 
+        intRefreshScrollView();
+
     }
 
 
     private void setRateViewContent() {
+
 
         try {
             String currentPriceVal = mPriceEt.getText().toString();
             if (currentPriceVal == null || currentPriceVal.trim().length() == 0 || usdRateVal == null || usdRateVal.trim().length() == 0) {
                 mPirceUsdtTv.setText("0");
             } else {
+
+//                Log.e("aaaaaaaaaaaaa","usdRateVal="+usdRateVal+";currentPriceVal="+currentPriceVal+";total="+ArithmeticUtils.multiply(usdRateVal, currentPriceVal).stripTrailingZeros().toPlainString());
+
                 mPirceUsdtTv.setText(ArithmeticUtils.multiply(usdRateVal, currentPriceVal).stripTrailingZeros().toPlainString());
             }
         } catch (Exception e) {
@@ -980,7 +1199,7 @@ public class TradingFragment extends Fragment {
                         setScan = 4;
                     }
                     totalMoneyView.setText(ArithmeticUtils.multiply(priceViewVal, numViewVal)
-                            .setScale(setScan, RoundingMode.HALF_UP).stripTrailingZeros().toPlainString());
+                            .setScale(setScan, BigDecimal.ROUND_DOWN).stripTrailingZeros().toPlainString());
                 } else {
                     totalMoneyView.setText("0");
                 }
@@ -1017,7 +1236,7 @@ public class TradingFragment extends Fragment {
                                 BaseResponse depth = gson.fromJson(response.body(), BaseResponse.class);
                                 if (depth != null && depth.getCode() == 0) {
                                     UserSPHelper.setParam(getActivity(), "shoucang", 0);
-                                    Toast.makeText(getActivity(), depth.getMsg(), Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(getActivity(), depth.getMsg(), Toast.LENGTH_SHORT).show();
                                     addZixuanView.setImageResource(R.mipmap.img_exchange_star);
                                     isCollection = 0;
                                 }
@@ -1063,7 +1282,7 @@ public class TradingFragment extends Fragment {
                                 BaseResponse depth = gson.fromJson(response.body(), BaseResponse.class);
                                 if (depth != null && depth.getCode() == 0) {
                                     UserSPHelper.setParam(getActivity(), "shoucang", 1);
-                                    Toast.makeText(getActivity(), depth.getMsg(), Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(getActivity(), depth.getMsg(), Toast.LENGTH_SHORT).show();
                                     addZixuanView.setImageResource(R.mipmap.shoucang_select_img);
                                     isCollection = 1;
                                 }
@@ -1109,7 +1328,7 @@ public class TradingFragment extends Fragment {
                     @Override
                     public void onSuccess(Response<String> response) {
                         if (response.body() != null) {
-                            Log.e(TAG, "Account: " + response.body());
+//                            Log.e(TAG, "Account: " + response.body());
                             Gson gson = new Gson();
                             AccountResponse mAccount = gson.fromJson(response.body(), AccountResponse.class);
                             if (mAccount != null && mAccount.getCode() == 0) {
@@ -1132,13 +1351,23 @@ public class TradingFragment extends Fragment {
                                                 mCanUseCoinsCountTv.setText(dataBean.getBalance().stripTrailingZeros().setScale(3, BigDecimal.ROUND_DOWN).toPlainString());
                                                 mCanUseCoinsCountTvType.setText(marketId.split("-")[0]);
                                             }
-                                            mPriceEt.setText(dataBean.getPrice().stripTrailingZeros().toPlainString());
-                                            mPirceUsdtTv.setText(dataBean.getValue_usd().toPlainString());
+//                                            mPriceEt.setText(dataBean.getPrice().stripTrailingZeros().toPlainString());
+//                                            mPirceUsdtTv.setText(dataBean.getValue_usd().toPlainString());
                                             break;
                                         }
                                     }
                                 }
                             }
+                        }
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        super.onFinish();
+                        try {
+                            pullToRefreshScrollView.onRefreshComplete();//数据加载完成后，关闭header,
+                        } catch (Exception e) {
+                            e.printStackTrace();
                         }
                     }
                 });
@@ -1151,15 +1380,26 @@ public class TradingFragment extends Fragment {
         maichuContentView.setTextColor(getResources().getColor(R.color.white));
         maichuContentView.setTextSize(15);
         mairuLine.setVisibility(View.VISIBLE);
-        maichuLine.setVisibility(View.GONE);
+        maichuLine.setVisibility(View.INVISIBLE);
         //todo 买入
         buyOrsell = "buy";
         mBtnBuyOrSell.setText(getString(R.string.trade_trade_buy));
         mBtnBuyOrSell.setBackgroundResource(R.color._01FCDA);
         mBtnBuyOrSell.setTextColor(getResources().getColor(R.color.black));
-        isPrice = true;
+
+//        isPrice = true;
+
+        mPriceEt.setText(defaultMairuVal);
+//        mPriceEt.setText(defaultMairu);
+        mPriceEt.setSelection(mPriceEt.getText().length());
+
+        mCountNumETv.setText("0");
+        mCountNumETv.setSelection(mCountNumETv.getText().length());
+
         initPresentBackGroudResource();
         getAccount();
+
+
     }
 
     private void changeMaichu() {
@@ -1167,14 +1407,23 @@ public class TradingFragment extends Fragment {
         maichuContentView.setTextColor(getResources().getColor(R.color._72f8db));
         mairuContentView.setTextColor(getResources().getColor(R.color.white));
         mairuContentView.setTextSize(15);
-        mairuLine.setVisibility(View.GONE);
+        mairuLine.setVisibility(View.INVISIBLE);
         maichuLine.setVisibility(View.VISIBLE);
         //todo 卖出
         buyOrsell = "sell";
         mBtnBuyOrSell.setText(getString(R.string.trade_trade_sell));
         mBtnBuyOrSell.setBackgroundResource(R.color._FFFC6767);
         mBtnBuyOrSell.setTextColor(getResources().getColor(R.color.white));
-        isPrice = true;
+
+//        isPrice = true;
+
+//        mPriceEt.setText(defaultMaiChu);
+        mPriceEt.setText(defaultMaichuVal);
+        mPriceEt.setSelection(mPriceEt.getText().length());
+
+        mCountNumETv.setText("0");
+        mCountNumETv.setSelection(mCountNumETv.getText().length());
+
         initPresentBackGroudResource();
         getAccount();
 
@@ -1356,9 +1605,9 @@ public class TradingFragment extends Fragment {
 //                        Log.e("TAG", "onSuccess: " + response.body());
                         if (response.body() != null) {
                             Gson gson = new Gson();
-                            DepthResponse depth = gson.fromJson(response.body(), DepthResponse.class);
-
                             try {
+                                DepthResponse depth = gson.fromJson(response.body(), DepthResponse.class);
+
                                 Message msg = Message.obtain();
                                 msg.what = 0;
                                 msg.obj = depth;
@@ -1539,9 +1788,9 @@ public class TradingFragment extends Fragment {
     public void receiveAddress(RefreshTwoEvent refreshEvent) {
         getAccount();
 
-        if(marketId != null){
+        if (marketId != null) {
 
-        }else {
+        } else {
             getTokenList();
         }
 
@@ -1551,16 +1800,58 @@ public class TradingFragment extends Fragment {
     }
 
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void receiveAddress(KLineEvent kLineEvent) {
+//    @Subscribe(threadMode = ThreadMode.MAIN)
+//    public void pandKouEvent(TradePanKouEvent event) {
+//        initData();
+//    }
 
-        if (kLineEvent.getType() == 0) {
-            changeMaiRu();
-        } else {
-            changeMaichu();
-        }
+
+//    @Subscribe(threadMode = ThreadMode.MAIN)
+//    public void receiveAddress(KLineEvent kLineEvent) {
+//
+//        Log.e("SocketTool", "....trade...receive....");
+//
+////        if (kLineEvent.getType() == 0) {
+////            changeMaiRu();
+////        } else {
+////            changeMaichu();
+////        }
+//
+//    }
+
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void receiveAddress(TradePanKouEvent panKouEvent) {
+
+        Log.e("SocketTool", "...pankou.trade...receive....");
+
+        initData();
+
+
+//        if (kLineEvent.getType() == 0) {
+//            changeMaiRu();
+//        } else {
+//            changeMaichu();
+//        }
 
     }
 
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void receiveWeiTuo(TradeDetailEvent tradeDetailEvent) {
+
+        Log.e("SocketTool", "...pankou.trade...receive....");
+
+//        initData();
+
+        getCurrentWeiTuo();
+
+//        if (kLineEvent.getType() == 0) {
+//            changeMaiRu();
+//        } else {
+//            changeMaichu();
+//        }
+
+    }
 
 }

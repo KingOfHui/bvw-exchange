@@ -45,20 +45,28 @@ public class OutAdapter extends BAdapter<DepthResponse.DataBean.BidsBean> {
 
 
         if (!TextUtils.isEmpty(bean.getPrice())) {
-            mPrice.setText(new BigDecimal(bean.getPrice()).setScale(5, RoundingMode.HALF_EVEN).toPlainString());
+            mPrice.setText(new BigDecimal(bean.getPrice()).setScale(5, BigDecimal.ROUND_DOWN).toPlainString());
         } else {
             mPrice.setText("--");
         }
-        if (!TextUtils.isEmpty(bean.getAmount())) {
-            String amount = ArithmeticUtils.divide(bean.getAmount(), "1000", 1);
-            if (Double.valueOf(amount) > 1) {
-                mAmount.setText(amount + " k");
+
+
+        try {
+            if (!TextUtils.isEmpty(bean.getAmount())) {
+                String amount = ArithmeticUtils.divide(bean.getAmount(), "1000", 1);
+                if (Double.valueOf(amount) > 1) {
+                    mAmount.setText(amount + " k");
+                } else {
+//                mAmount.setText(ArithmeticUtils.divide(bean.getAmount(), "1", 5));
+                    mAmount.setText(new BigDecimal(bean.getAmount()).setScale(5, BigDecimal.ROUND_DOWN).toPlainString());
+                }
             } else {
-                mAmount.setText(ArithmeticUtils.divide(bean.getAmount(), "1", 1));
+                mAmount.setText("--");
             }
-        } else {
-            mAmount.setText("--");
+        }catch (Exception e){
+            e.printStackTrace();
         }
+
 
 
         try {

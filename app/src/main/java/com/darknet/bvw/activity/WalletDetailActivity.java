@@ -152,7 +152,7 @@ public class WalletDetailActivity extends BaseActivity implements View.OnClickLi
                                 if (contentVal.equals(walletModel.getPassword())) {
                                     List<ETHWalletModel> allWallet = WalletDaoUtils.loadAll();
                                     if (allWallet.size() == 1) {
-                                        AtyContainer.getInstance().finishAllActivity();
+//                                        AtyContainer.getInstance().finishAllActivity();
                                         WalletDaoUtils.deleteWallet(walletModel);
                                         Intent mangeIntent = new Intent(WalletDetailActivity.this, WalletSelectActivity.class);
                                         startActivity(mangeIntent);

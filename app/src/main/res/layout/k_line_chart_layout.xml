@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <com.darknet.bvw.view.KLineMenuView
+        android:id="@+id/kLineMenuView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.8dp"
+        android:background="#1AFFFFFF" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.github.fujianlian.klinechart.KLineChartView
+            android:id="@+id/kLineChartView"
+            android:layout_width="match_parent"
+            android:layout_height="400dp" />
+
+        <LinearLayout
+            android:id="@+id/ll_period_layout"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/shape_stroken_1_solid_37314d"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_1_min"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/k_time_1"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tv_5_min"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/k_time_5"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tv_10_min"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/k_time_10"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tv_30_min"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/k_time_30"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

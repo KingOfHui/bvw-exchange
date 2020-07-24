@@ -49,8 +49,8 @@ public class TradeListActivity extends BaseActivity implements TradeListTwoAdapt
     private RelativeLayout layBack;
     private TypefaceTextView title;
     private LRecyclerView contentList;
-    private Button zzView;
-    private Button skView;
+    private TextView zzView;
+    private TextView skView;
     private TradeListTwoAdapter tradeListAdapter;
     private String moneyType;
     private String leftVal;
@@ -338,8 +338,6 @@ public class TradeListActivity extends BaseActivity implements TradeListTwoAdapt
                         startActivity(zIntent);
                     }
                 }.show();
-
-
             }
         });
 
