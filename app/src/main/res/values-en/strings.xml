@@ -231,17 +231,17 @@
     <string name="find_fenlie_intro">BTC ETH participates in Split</string>
     <string name="find_jiaoyi">Exchange</string>
     <string name="find_jiaoyi_info">Dex</string>
-    <string name="find_chat">Chat,text and voice</string>
+    <string name="find_chat">Decentralized anonymous social networking</string>
     <string name="find_chat_info">D anonymous dating</string>
 
     <string name="find_guangao">A D sandbox</string>
-    <string name="find_guangao_info">Advertising spread</string>
+    <string name="find_guangao_info">Advertising diffusion in and out of the field</string>
 
-    <string name="find_fatie">Anonymous Article</string>
-    <string name="find_fatie_info">Post and vent</string>
+    <string name="find_fatie">A M space</string>
+    <string name="find_fatie_info">Anonymous posting and venting</string>
 
     <string name="find_shop">Shopping mall</string>
-    <string name="find_shop_info">Online shopping mall</string>
+    <string name="find_shop_info">Cross border payment and settlement</string>
     <string name="find_no_open">Not yet open, so stay tuned</string>
 
 
@@ -826,7 +826,7 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="find_zhineng_content">Intelligent</string>
 
     <string name="trade_detail_bvw_remark">Please enter comments. If you are a smart engine user, please enter the user name (required).</string>
-    <string name="find_kuangji">Hardware miner</string>
+    <string name="find_kuangji">H W Mine</string>
     <string name="find_kuangji_intro">Special chain powerful computing chip 128 day return</string>
     <string name="find_jijin">Mine fund</string>
     <string name="find_jijin_intro">UAE mines Cloud computing power fund</string>

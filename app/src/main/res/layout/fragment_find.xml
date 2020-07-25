@@ -124,6 +124,7 @@
                                 android:layout_marginLeft="@dimen/dimen_15dp"
                                 android:gravity="center|left"
                                 android:text="@string/find_kuangji_intro"
+                                android:layout_marginTop="2dp"
                                 android:textColor="@color/gray3"
                                 android:textSize="11dp"
                                 app:typeface="@string/universal_text_typeface" />
@@ -174,6 +175,7 @@
                                 android:gravity="center|left"
                                 android:text="@string/find_jijin_intro"
                                 android:textColor="@color/gray3"
+                                android:layout_marginTop="2dp"
                                 android:textSize="11dp"
                                 app:typeface="@string/universal_text_typeface" />
                         </LinearLayout>
@@ -233,6 +235,7 @@
                                 android:gravity="center|left"
                                 android:text="@string/find_game_info"
                                 android:textColor="@color/gray3"
+                                android:layout_marginTop="2dp"
                                 android:textSize="12dp"
                                 app:typeface="@string/universal_text_typeface" />
                         </LinearLayout>
@@ -281,6 +284,7 @@
                                 android:gravity="center|left"
                                 android:text="@string/find_video_info"
                                 android:textColor="@color/gray3"
+                                android:layout_marginTop="2dp"
                                 android:textSize="12dp"
                                 app:typeface="@string/universal_text_typeface" />
                         </LinearLayout>
@@ -339,6 +343,7 @@
                                 android:gravity="center|left"
                                 android:text="@string/find_chat_info"
                                 android:textColor="@color/gray3"
+                                android:layout_marginTop="2dp"
                                 android:textSize="12dp"
                                 app:typeface="@string/universal_text_typeface" />
                         </LinearLayout>
@@ -387,6 +392,7 @@
                                 android:gravity="center|left"
                                 android:text="@string/find_shop_info"
                                 android:textColor="@color/gray3"
+                                android:layout_marginTop="2dp"
                                 android:textSize="12dp"
                                 app:typeface="@string/universal_text_typeface" />
                         </LinearLayout>
@@ -443,6 +449,7 @@
                                 android:gravity="center|left"
                                 android:text="@string/find_guangao_info"
                                 android:textColor="@color/gray3"
+                                android:layout_marginTop="2dp"
                                 android:textSize="12dp"
                                 app:typeface="@string/universal_text_typeface" />
                         </LinearLayout>
@@ -491,6 +498,7 @@
                                 android:gravity="center|left"
                                 android:text="@string/find_fatie_info"
                                 android:textColor="@color/gray3"
+                                android:layout_marginTop="2dp"
                                 android:textSize="12dp"
                                 app:typeface="@string/universal_text_typeface" />
                         </LinearLayout>

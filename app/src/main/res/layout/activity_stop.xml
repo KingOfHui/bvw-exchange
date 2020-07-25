@@ -53,7 +53,7 @@
                     android:lineSpacingExtra="2dp"
                     android:text="@string/stop_txt_one"
                     android:textColor="@color/white"
-                    android:textSize="10dp"
+                    android:textSize="12sp"
                     app:typeface="@string/universal_text_typeface" />
 
                 <com.darknet.bvw.view.TypefaceTextView
@@ -66,7 +66,7 @@
                     android:lineSpacingExtra="2dp"
                     android:text="@string/stop_txt_two"
                     android:textColor="@color/white"
-                    android:textSize="10dp"
+                    android:textSize="12sp"
                     app:typeface="@string/universal_text_typeface" />
 
                 <com.darknet.bvw.view.TypefaceTextView
@@ -79,7 +79,7 @@
                     android:lineSpacingExtra="2dp"
                     android:text="@string/stop_txt_three"
                     android:textColor="@color/white"
-                    android:textSize="10dp"
+                    android:textSize="12sp"
                     app:typeface="@string/universal_text_typeface" />
 
                 <TextView
