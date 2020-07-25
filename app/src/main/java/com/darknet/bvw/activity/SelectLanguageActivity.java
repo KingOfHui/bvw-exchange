@@ -93,6 +93,7 @@ public class SelectLanguageActivity extends BaseActivity implements RadioGroup.O
     private void selectLanguage(int select) {
         LocalManageUtil.saveSelectLanguage(this, select);
         setResult(RESULT_OK, new Intent());
+        finish();
     }
 
     @Override

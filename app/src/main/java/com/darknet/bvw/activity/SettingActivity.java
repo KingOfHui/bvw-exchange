@@ -108,9 +108,11 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                 break;
             case R.id.layLanguage:
                 SelectLanguageActivity.start(SettingActivity.this
-                        , (resultCode, result) -> XchainMainThreeActivity.reStart(SettingActivity.this));
-                Intent languageIntent = new Intent(SettingActivity.this, SelectLanguageActivity.class);
-                startActivity(languageIntent);
+                        , (resultCode, result) -> {
+                            if(resultCode == RESULT_OK) {
+                                XchainMainThreeActivity.reStart(SettingActivity.this);
+                            }
+                        });
                 break;
             case R.id.layOrderExpire:
                 break;

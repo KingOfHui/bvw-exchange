@@ -312,13 +312,13 @@
     <string name="find_zhineng_content">智能引擎</string>
 
 
-    <string name="find_guangao">广告</string>
+    <string name="find_guangao">广告沙盒</string>
     <string name="find_guangao_info">场内、场外广告扩散</string>
 
     <string name="find_fatie">匿名发帖</string>
     <string name="find_fatie_info">匿名参与发帖和宣泄</string>
 
-    <string name="find_shop">商城</string>
+    <string name="find_shop">跨境商城</string>
     <string name="find_shop_info">线上购物商城</string>
     <string name="find_no_open">暂未开通，敬请期待</string>
 
@@ -866,4 +866,8 @@
 
     <string name="yb_header_two_two">交易所购买，分裂获得的BVW
 </string>
+    <string name="find_game">游戏</string>
+    <string name="find_game_info">休闲、策略手游</string>
+    <string name="find_video">短视频社交</string>
+    <string name="find_video_info">Decentralized\nTikTok</string>
 </resources>
