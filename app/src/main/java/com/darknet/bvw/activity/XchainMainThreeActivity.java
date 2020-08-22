@@ -64,9 +64,9 @@ public class XchainMainThreeActivity extends BaseActivity implements View.OnClic
     List<Fragment> fragmentList = new ArrayList<>();
 
 
-    private LinearLayout fristLayout, secLayout, thirdLayout, fourLayout;
-    private ImageView firstImg, secImg, thirdImg, fourImg;
-    private TextView firstTxt, secTxt, thirdTxt, fourTxt;
+    private LinearLayout fristLayout, secLayout, /*thirdLayout,*/ fourLayout;
+    private ImageView firstImg, secImg, /*thirdImg,*/ fourImg;
+    private TextView firstTxt, secTxt, /*thirdTxt,*/ fourTxt;
     private ViewPager viewPager;
 
     private LinearLayout bomLayout;
@@ -84,9 +84,9 @@ public class XchainMainThreeActivity extends BaseActivity implements View.OnClic
         secImg = this.findViewById(R.id.main_second_img);
         secTxt = this.findViewById(R.id.main_second_txt);
 
-        thirdLayout = this.findViewById(R.id.main_third_layout);
-        thirdImg = this.findViewById(R.id.main_third_img);
-        thirdTxt = this.findViewById(R.id.main_third_txt);
+//        thirdLayout = this.findViewById(R.id.main_third_layout);
+//        thirdImg = this.findViewById(R.id.main_third_img);
+//        thirdTxt = this.findViewById(R.id.main_third_txt);
 
         fourLayout = this.findViewById(R.id.main_four_layout);
         fourImg = this.findViewById(R.id.main_four_img);
@@ -100,16 +100,16 @@ public class XchainMainThreeActivity extends BaseActivity implements View.OnClic
         FirstFragment moneyFragment = new FirstFragment();
         Fragment findFragment = new FindFragment();
 //        Fragment academicFragment = new MsgFragment();
-        Fragment academicFragment = new ExchangeFragment();
+//        Fragment academicFragment = new ExchangeFragment();
         Fragment mineFragment = new MineFragment();
 
 //        fragmentList.add(homeFragment);
         fragmentList.add(moneyFragment);
         fragmentList.add(findFragment);
-        fragmentList.add(academicFragment);
+//        fragmentList.add(academicFragment);
         fragmentList.add(mineFragment);
 
-        viewPager.setOffscreenPageLimit(4);
+        viewPager.setOffscreenPageLimit(3);
 
         viewPager.setAdapter(new SmartFragmentStatePagerAdapter(getSupportFragmentManager()) {
             @Override
@@ -153,7 +153,7 @@ public class XchainMainThreeActivity extends BaseActivity implements View.OnClic
 
         fristLayout.setOnClickListener(this);
         secLayout.setOnClickListener(this);
-        thirdLayout.setOnClickListener(this);
+//        thirdLayout.setOnClickListener(this);
         fourLayout.setOnClickListener(this);
 
 
@@ -392,13 +392,13 @@ public class XchainMainThreeActivity extends BaseActivity implements View.OnClic
         viewPager.setCurrentItem(0);
         firstImg.setImageResource(R.mipmap.img_home_pressed);
         secImg.setImageResource(R.mipmap.img_fill_unpressed);
-        thirdImg.setImageResource(R.mipmap.home_trade_normal);
+//        thirdImg.setImageResource(R.mipmap.home_trade_normal);
         fourImg.setImageResource(R.mipmap.img_mine_unpressed);
 
 
         firstTxt.setTextColor(getResources().getColor(R.color._72f8db));
         secTxt.setTextColor(getResources().getColor(R.color._807e8c));
-        thirdTxt.setTextColor(getResources().getColor(R.color._807e8c));
+//        thirdTxt.setTextColor(getResources().getColor(R.color._807e8c));
         fourTxt.setTextColor(getResources().getColor(R.color._807e8c));
     }
 
@@ -406,39 +406,39 @@ public class XchainMainThreeActivity extends BaseActivity implements View.OnClic
         viewPager.setCurrentItem(1);
         firstImg.setImageResource(R.mipmap.img_home_unpressed);
         secImg.setImageResource(R.mipmap.img_fill);
-        thirdImg.setImageResource(R.mipmap.home_trade_normal);
+//        thirdImg.setImageResource(R.mipmap.home_trade_normal);
         fourImg.setImageResource(R.mipmap.img_mine_unpressed);
 
         firstTxt.setTextColor(getResources().getColor(R.color._807e8c));
         secTxt.setTextColor(getResources().getColor(R.color._72f8db));
-        thirdTxt.setTextColor(getResources().getColor(R.color._807e8c));
+//        thirdTxt.setTextColor(getResources().getColor(R.color._807e8c));
         fourTxt.setTextColor(getResources().getColor(R.color._807e8c));
     }
 
-    private void tableThird() {
+/*    private void tableThird() {
         viewPager.setCurrentItem(2);
         firstImg.setImageResource(R.mipmap.img_home_unpressed);
         secImg.setImageResource(R.mipmap.img_fill_unpressed);
-        thirdImg.setImageResource(R.mipmap.home_trade_press);
+//        thirdImg.setImageResource(R.mipmap.home_trade_press);
         fourImg.setImageResource(R.mipmap.img_mine_unpressed);
 
         firstTxt.setTextColor(getResources().getColor(R.color._807e8c));
         secTxt.setTextColor(getResources().getColor(R.color._807e8c));
-        thirdTxt.setTextColor(getResources().getColor(R.color._72f8db));
+//        thirdTxt.setTextColor(getResources().getColor(R.color._72f8db));
         fourTxt.setTextColor(getResources().getColor(R.color._807e8c));
-    }
+    }*/
 
 
     private void tableFour() {
-        viewPager.setCurrentItem(3);
+        viewPager.setCurrentItem(2);
         firstImg.setImageResource(R.mipmap.img_home_unpressed);
         secImg.setImageResource(R.mipmap.img_fill_unpressed);
-        thirdImg.setImageResource(R.mipmap.home_trade_normal);
+//        thirdImg.setImageResource(R.mipmap.home_trade_normal);
         fourImg.setImageResource(R.mipmap.img_mine_pressed);
 
         firstTxt.setTextColor(getResources().getColor(R.color._807e8c));
         secTxt.setTextColor(getResources().getColor(R.color._807e8c));
-        thirdTxt.setTextColor(getResources().getColor(R.color._807e8c));
+//        thirdTxt.setTextColor(getResources().getColor(R.color._807e8c));
         fourTxt.setTextColor(getResources().getColor(R.color._72f8db));
     }
 
@@ -452,9 +452,9 @@ public class XchainMainThreeActivity extends BaseActivity implements View.OnClic
             case R.id.main_second_layout:
                 tableSec();
                 break;
-            case R.id.main_third_layout:
-                tableThird();
-                break;
+//            case R.id.main_third_layout:
+//                tableThird();
+//                break;
             case R.id.main_four_layout:
                 tableFour();
                 break;
@@ -477,9 +477,9 @@ public class XchainMainThreeActivity extends BaseActivity implements View.OnClic
                 tableSec();
                 break;
             case 2:
-                tableThird();
-                break;
-            case 3:
+//                tableThird();
+//                break;
+//            case 3:
                 tableFour();
                 break;
         }

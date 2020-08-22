@@ -107,6 +107,7 @@
 
     <string name="lead_in_title">Import Account</string>
     <string name="lead_in_zjc_notice">Please enter the mnemonic of the account (12 English words), separated by blanks.</string>
+    <string name="lead_in_zjc_notice_2">Mnemonic words (separated by spaces)</string>
     <string name="lead_in_account_name">Wallet name</string>
     <string name="lead_in_input_name">Please enter an wallet name</string>
     <string name="lead_in_set_pwd">Set password</string>

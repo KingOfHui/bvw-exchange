@@ -24,8 +24,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/dimen_15dp"
-            android:text="@string/lead_in_zjc_notice"
-            android:textColor="@color/txtGray"
+            android:text="@string/lead_in_zjc_notice_2"
+            android:textColor="@color/white"
             app:typeface="@string/universal_text_typeface" />
 
         <EditText

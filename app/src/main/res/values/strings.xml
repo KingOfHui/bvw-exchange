@@ -182,6 +182,7 @@
 
     <string name="lead_in_title">导入账户</string>
     <string name="lead_in_zjc_notice">请输入账户的助记词（12个英文单词），按空格隔开</string>
+    <string name="lead_in_zjc_notice_2">助记单词(使用空格分隔)</string>
     <string name="lead_in_account_name">钱包名字</string>
     <string name="lead_in_input_name">请设置钱包名字</string>
     <string name="lead_in_set_pwd">设置密码</string>
