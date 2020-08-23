@@ -181,8 +181,9 @@
     <string name="login_out">退出</string>
 
     <string name="lead_in_title">导入账户</string>
+    <string name="lead_into_wallet">导入钱包</string>
     <string name="lead_in_zjc_notice">请输入账户的助记词（12个英文单词），按空格隔开</string>
-    <string name="lead_in_zjc_notice_2">助记单词(使用空格分隔)</string>
+    <string name="lead_in_zjc_notice_2">助记单词 (使用空格分隔)</string>
     <string name="lead_in_account_name">钱包名字</string>
     <string name="lead_in_input_name">请设置钱包名字</string>
     <string name="lead_in_set_pwd">设置密码</string>
@@ -215,13 +216,14 @@
     <string name="wallet_pwd_six">六位及以上密码</string>
     <string name="wallet_repeat_pwd_six">重复六位及以上密码</string>
     <string name="wallet_repeat_pwd">重复密码</string>
-    <string name="wallet_xieyi">我已经仔细阅读并同意</string>
+    <string name="wallet_xieyi"> 我已经仔细阅读并同意</string>
     <string name="wallet_xieyi_content">《服务及隐私条款》</string>
     <string name="wallet_xieyi_content_two">服务及隐私条款</string>
     <string name="load_data">加载中</string>
     <string name="loading_wallet_tip">导入钱包中…</string>
     <string name="loading_wallet_sign_two">导入钱包</string>
     <string name="universal_text_typeface">PingFangRegular</string>
+    <string name="universal_text_typeface_bold">PingFangBold</string>
 
     <string name="wallet_first_view">人类第一次尝试用一种永续的方式\n让人类科技进行自我复制繁殖</string>
 
@@ -871,4 +873,6 @@
     <string name="find_game_info">休闲、策略手游</string>
     <string name="find_video">短视频社交</string>
     <string name="find_video_info">Decentralized\nTikTok</string>
+    <string name="zjc_tip">助记词用于恢复钱包或者重置钱包密码，将它准确的抄写到纸上，并存放在只有你知道的安全的地方。</string>
+    <string name="zjc_title_tip">抄写下你的钱包助记词</string>
 </resources>

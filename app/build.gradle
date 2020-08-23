@@ -220,6 +220,7 @@ dependencies {
     implementation files('libs/jpush-android-3.5.4-google_play.jar')
 
     implementation 'me.jessyan:autosize:1.2.0'
+    implementation 'com.qmuiteam:qmui:2.0.0-alpha10'
 }
 
 multiLanguages {

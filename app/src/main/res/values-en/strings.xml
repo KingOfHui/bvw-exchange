@@ -106,6 +106,7 @@
     <string name="login_out">Exit</string>
 
     <string name="lead_in_title">Import Account</string>
+    <string name="lead_into_wallet">Import Wallet</string>
     <string name="lead_in_zjc_notice">Please enter the mnemonic of the account (12 English words), separated by blanks.</string>
     <string name="lead_in_zjc_notice_2">Mnemonic words (separated by spaces)</string>
     <string name="lead_in_account_name">Wallet name</string>
@@ -835,5 +836,7 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="find_game_info">Leisure and strategic mobile travel</string>
     <string name="find_video">Short video</string>
     <string name="find_video_info">Decentralized\nTikTok</string>
+    <string name="zjc_tip">Mnemonic for recovery purse or wallet password reset, it accurately transcribed to paper, and kept only you know a safe place.</string>
+    <string name="zjc_title_tip">Your wallet Mnemonic copied down</string>
 
 </resources>

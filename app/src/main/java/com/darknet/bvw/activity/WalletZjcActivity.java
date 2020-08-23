@@ -4,7 +4,9 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -16,6 +18,7 @@ import com.darknet.bvw.model.event.CloseViewEvent;
 import com.darknet.bvw.util.TipHelper;
 import com.darknet.bvw.view.TypefaceTextView;
 import com.darknet.bvw.wallet.BtcWalletUtils;
+import com.qmuiteam.qmui.widget.QMUIFloatLayout;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -36,6 +39,7 @@ public class WalletZjcActivity extends BaseActivity implements View.OnClickListe
     private TypefaceTextView title;
     private Button btnNext;
     private TypefaceTextView createWords;
+    private QMUIFloatLayout mWordsContent;
 
     //助记词
     private TextView wordsContentView;
@@ -66,8 +70,9 @@ public class WalletZjcActivity extends BaseActivity implements View.OnClickListe
         btnNext = findViewById(R.id.btnNext);
         createWords = findViewById(R.id.walletCreateWords);
         wordsContentView = findViewById(R.id.walletCreateWords);
+        mWordsContent = findViewById(R.id.qfl_content);
 
-        title.setText(getString(R.string.zjc_title));
+        title.setText(getString(R.string.zjc_beifen_title));
 
 
 //        if (pathArray.length <= 1) {
@@ -98,15 +103,19 @@ public class WalletZjcActivity extends BaseActivity implements View.OnClickListe
         mnemonic = btcDo.getListZjc();
 
         StringBuffer wordsContent = new StringBuffer();
+        mWordsContent.removeAllViews();
         for (int i = 0; i < mnemonic.size(); i++) {
             String tempWord = mnemonic.get(i);
-            if (i == (mnemonic.size() - 1)) {
+            /*if (i == (mnemonic.size() - 1)) {
 //                Log.e("wallet", "种子:" + tempWord);
                 wordsContent.append(tempWord);
             } else {
                 wordsContent.append(tempWord + " ");
-            }
-
+            }*/
+            View view = View.inflate(this,R.layout.view_typeface_text_view, null);;
+            TextView tv = view.findViewById(R.id.walletCreateWords);
+            tv.setText(tempWord);
+            mWordsContent.addView(view);
         }
 
 //        Log.e("wallet", "助记词:" + wordsContent.toString());
@@ -116,7 +125,7 @@ public class WalletZjcActivity extends BaseActivity implements View.OnClickListe
 //        wordsContentView.setOnTouchListener();
 
 
-        wordsContentView.setOnLongClickListener(new View.OnLongClickListener() {
+        mWordsContent.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
 
@@ -142,7 +151,7 @@ public class WalletZjcActivity extends BaseActivity implements View.OnClickListe
 
     @Override
     public int getLayoutId() {
-        return R.layout.activity_wallet_zjc;
+        return R.layout.activity_wallet_zjc_v2;
     }
 
     @Override

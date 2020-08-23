@@ -45,7 +45,7 @@ public class ZjcFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_zjc, container, false);
+        View view = inflater.inflate(R.layout.fragment_zjc_v2, container, false);
         // 获取文本控件
         textView = view.findViewById(R.id.content_text);
 

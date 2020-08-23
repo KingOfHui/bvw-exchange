@@ -49,7 +49,7 @@ public class LeadInAccountActivity extends BaseActivity implements RadioGroup.On
         radioGroup = findViewById(R.id.radioGroup);
         layBack = findViewById(R.id.layBack);
         title = findViewById(R.id.title);
-        title.setText(getString(R.string.lead_in_title));
+        title.setText(getString(R.string.lead_into_wallet));
         initFragment();
         adapter = new AccountViewPager(getSupportFragmentManager(), this, list);
         viewPager.setAdapter(adapter);
