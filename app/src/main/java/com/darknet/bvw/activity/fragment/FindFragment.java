@@ -137,7 +137,7 @@ public class FindFragment extends Fragment implements View.OnClickListener {
 		bidView = view.findViewById(R.id.find_bid_view);
 		modelView = view.findViewById(R.id.find_bid_model_view);
 		oneLayout = view.findViewById(R.id.find_one_layout);
-		twoLayout = view.findViewById(R.id.find_two_layout);
+//		twoLayout = view.findViewById(R.id.find_two_layout);
 		threeLayout = view.findViewById(R.id.find_three_layout);
 		fourLayout = view.findViewById(R.id.find_four_layout);
 		fiveLayout = view.findViewById(R.id.find_five_layout);
@@ -175,7 +175,7 @@ public class FindFragment extends Fragment implements View.OnClickListener {
 		imgSetting.setOnClickListener(this);
 
 		oneLayout.setOnClickListener(this);
-		twoLayout.setOnClickListener(this);
+//		twoLayout.setOnClickListener(this);
 		threeLayout.setOnClickListener(this);
 		fourLayout.setOnClickListener(this);
 		fiveLayout.setOnClickListener(this);
@@ -221,9 +221,9 @@ public class FindFragment extends Fragment implements View.OnClickListener {
 
 //                Toast.makeText(activity, getString(R.string.find_no_open), Toast.LENGTH_SHORT).show();
 				break;
-			case R.id.find_two_layout:
+			/*case R.id.find_two_layout:
 				Toast.makeText(activity, getString(R.string.find_no_open), Toast.LENGTH_SHORT).show();
-				break;
+				break;*/
 			case R.id.find_three_layout:
 				Toast.makeText(activity, getString(R.string.find_no_open), Toast.LENGTH_SHORT).show();
 				break;
