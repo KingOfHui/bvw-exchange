@@ -56,7 +56,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_50dp"
             android:visibility="gone"
-            android:button="@drawable/selector_oval"
+            android:button="@drawable/selector_check_box_selected"
             android:gravity="right|center_vertical"
             android:text="@string/follow_the_system"
             android:textColor="@color/white" />
@@ -65,7 +65,7 @@
             android:id="@+id/radioEnglish"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_50dp"
-            android:button="@drawable/selector_oval"
+            android:button="@drawable/selector_check_box_selected"
             android:gravity="right|center_vertical"
             android:text="@string/language_en"
             android:textColor="@color/white" />
@@ -74,7 +74,7 @@
             android:id="@+id/radioChinese"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_50dp"
-            android:button="@drawable/selector_oval"
+            android:button="@drawable/selector_check_box_selected"
             android:gravity="right|center_vertical"
             android:text="@string/language_cn"
             android:textColor="@color/white" />
