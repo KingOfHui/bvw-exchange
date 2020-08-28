@@ -288,7 +288,7 @@
     <string name="bid_yue_zero">No balance yet</string>
     <string name="bid_yue_not_encough">Insufficient balance to pay temporarily</string>
 
-    <string name="find_bid_pop_one">Stairway A</string>
+    <string name="find_bid_pop_one">Invitation Code</string>
     <string name="find_bid_pop_two">Illusion A</string>
     <string name="find_bid_pop_three">Line Up</string>
     <string name="find_bid_pop_four">Array</string>

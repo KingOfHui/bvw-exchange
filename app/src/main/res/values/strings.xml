@@ -368,7 +368,7 @@
     <string name="bid_yue_zero">暂无余额</string>
     <string name="bid_yue_not_encough">余额不足，暂无法支付</string>
 
-    <string name="find_bid_pop_one">梯阵</string>
+    <string name="find_bid_pop_one">邀请码</string>
     <string name="find_bid_pop_two">像阵</string>
     <string name="find_bid_pop_three">列队</string>
     <string name="find_bid_pop_four">阵列</string>

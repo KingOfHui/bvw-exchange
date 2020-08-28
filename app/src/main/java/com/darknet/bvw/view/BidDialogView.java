@@ -3,13 +3,16 @@ package com.darknet.bvw.view;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.darknet.bvw.R;
 import com.darknet.bvw.activity.BidIntroActivity;
+import com.darknet.bvw.util.EnvironmentUtil;
 
 public class BidDialogView {
     public void showTips(final Context context,String contnetVal) {
@@ -21,7 +24,15 @@ public class BidDialogView {
         ad.setContentView(R.layout.bid_dialog_view);
         ad.setCanceledOnTouchOutside(true);
         //在弹框上显示软键盘，注意此行需要放到setContentView下面
-        ad.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+        Window window = ad.getWindow();
+        if (window!=null) {
+            window.clearFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+            WindowManager.LayoutParams params = window.getAttributes();
+            params.gravity = Gravity.CENTER;
+            params.width = EnvironmentUtil.getScreenWidth(context) * 6 / 7;
+            window.setAttributes(params);
+//            window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        }
 
         TextView contentView = (TextView) ad.findViewById(R.id.dialog_fail_view);
         LinearLayout bidLayout = (LinearLayout)ad.findViewById(R.id.bid_dialog_sure_layout);

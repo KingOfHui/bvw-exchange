@@ -4,7 +4,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginRight="20dp"
-    android:background="@mipmap/pop_select_bg"
+    android:background="@drawable/pop_select_bg3"
     android:gravity="center|left"
     android:orientation="vertical"
     app:ignore="NamespaceTypo">
@@ -12,17 +12,17 @@
     <LinearLayout
         android:id="@+id/tizhen_layout"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
         android:layout_marginLeft="20dp"
-        android:gravity="bottom"
+        android:layout_marginRight="20dp"
+        android:layout_gravity="center"
         android:orientation="vertical">
 
         <com.darknet.bvw.view.TypefaceTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center"
-            android:layout_marginBottom="15dp"
             android:drawableLeft="@mipmap/tizhen_sign_img"
             android:drawablePadding="20dp"
             android:gravity="center"
@@ -35,11 +35,13 @@
 
 
     <View
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="0.3dp"
         android:background="@color/gray3"></View>
 
     <LinearLayout
+        android:visibility="gone"
         android:id="@+id/xiangzhen_layout"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
@@ -66,11 +68,13 @@
 
 
     <View
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="0.3dp"
         android:background="@color/gray3"></View>
 
     <LinearLayout
+        android:visibility="gone"
         android:id="@+id/liezhen_layout"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
