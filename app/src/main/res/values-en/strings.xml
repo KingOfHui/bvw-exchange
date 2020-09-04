@@ -256,6 +256,7 @@
     <string name="bid_info_seven">Array rewards</string>
     <string name="bid_info_eight">Advertising revenue</string>
     <string name="bid_info_nine">BVW chat</string>
+    <string name="bid_info_nine2">BVW chat</string>
     <string name="bid_info_ten">Social identity</string>
     <string name="bid_info_even">Single-core HW mining</string>
     <string name="bid_info_twleve">Storage mining</string>

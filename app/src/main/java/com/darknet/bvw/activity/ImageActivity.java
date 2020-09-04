@@ -2,9 +2,15 @@ package com.darknet.bvw.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
+import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.darknet.bvw.R;
+import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 
 import androidx.annotation.DrawableRes;
 
@@ -20,6 +26,19 @@ public class ImageActivity extends BaseActivity {
 	    Intent starter = new Intent(context, ImageActivity.class);
 	    starter.putExtra("image", image);
 	    context.startActivity(starter);
+	}
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		QMUIStatusBarHelper.isFullScreen(this);
+		if (Build.VERSION.SDK_INT >= 21) {
+			getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+			getWindow().setStatusBarColor(Color.parseColor("#000000"));
+		}
+//		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//				WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		super.onCreate(savedInstanceState);
 	}
 
 	@Override

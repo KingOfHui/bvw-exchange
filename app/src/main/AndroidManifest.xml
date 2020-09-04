@@ -824,8 +824,8 @@
                     android:name=".receiver.PushJumpActivity"
                     android:exported="false"
                     android:screenOrientation="portrait"></activity>
+<!--            android:theme="@style/AppTheme.FullScreen"-->
         <activity
-            android:theme="@style/AppTheme.FullScreen"
             android:name=".activity.ImageActivity" />
 
 

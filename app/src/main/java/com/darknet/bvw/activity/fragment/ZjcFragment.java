@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.darknet.bvw.R;
+import com.darknet.bvw.activity.PrivacyPolicyActivity;
 import com.darknet.bvw.activity.StopActivity;
 import com.darknet.bvw.activity.WalletCreateActivity;
 import com.darknet.bvw.db.Entity.ETHWalletModel;
@@ -71,6 +72,13 @@ public class ZjcFragment extends Fragment {
 
         createWalletView = (TextView) view.findViewById(R.id.zjc_lead_in_create_view);
 
+        view.findViewById(R.id.tv_fuwu).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(requireContext(), PrivacyPolicyActivity.class));
+
+            }
+        });
 
         submitView.setOnClickListener(new View.OnClickListener() {
             @Override
