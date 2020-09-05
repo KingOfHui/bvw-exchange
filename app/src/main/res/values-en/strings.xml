@@ -828,7 +828,7 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="find_zhineng_info">Daily interest 0.5% unlocked principal in and out</string>
     <string name="find_zhineng_content">Intelligent</string>
 
-    <string name="trade_detail_bvw_remark">Please enter comments. If you are a smart engine user, please enter the user name (required).</string>
+    <string name="trade_detail_bvw_remark">Please enter comments</string>
     <string name="find_kuangji">H W Mine</string>
     <string name="find_kuangji_intro">Special chain powerful computing chip 128 day return</string>
     <string name="find_jijin">Mine fund</string>

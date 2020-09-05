@@ -126,7 +126,7 @@
     <string name="trade_detail_jiaoyitime">交易时间</string>
     <string name="trade_detail_copyurl">复制</string>
 
-    <string name="trade_detail_bvw_remark">请输入备注内容，如果是智能引擎用户，请输入用户名（必填）。</string>
+    <string name="trade_detail_bvw_remark">请输入备注内容</string>
 
     <string name="account_manage_title">管理钱包</string>
     <string name="account_manage_import_wallet">导入钱包</string>
