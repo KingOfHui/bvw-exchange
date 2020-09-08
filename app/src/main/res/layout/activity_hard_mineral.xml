@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <include
+        android:id="@+id/layout_title"
+        layout="@layout/lay_head_back" />
+
+    <ImageView
+        android:id="@+id/iv_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/hq_banner_one"
+        app:layout_constraintTop_toBottomOf="@id/layout_title" />
+
+    <LinearLayout
+        android:id="@+id/ll_mine_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_15dp"
+        android:background="#272436"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/iv_image">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.darknet.bvw.view.TypefaceTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="我的矿机状态"
+                android:textColor="#01FCDA" />
+
+            <com.darknet.bvw.view.TypefaceTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/erweima_scan_view"
+                android:gravity="center_vertical"
+                android:text="收益记录"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+        <View style="@style/Line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <com.darknet.bvw.view.TypefaceTextView
+                    android:id="@+id/tv_average_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.00"
+                    android:textColor="@color/white" />
+
+                <com.darknet.bvw.view.TypefaceTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_average_count"
+                    android:text="24小时平均算力"
+                    android:textColor="@color/white" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <com.darknet.bvw.view.TypefaceTextView
+                    android:id="@+id/tv_before_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.00"
+                    android:textColor="@color/white" />
+
+                <com.darknet.bvw.view.TypefaceTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_before_count"
+                    android:text="过去24小时收益"
+                    android:textColor="@color/white" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <com.darknet.bvw.view.TypefaceTextView
+                    android:id="@+id/tv_btc_income"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.00004"
+                    android:textColor="@color/white" />
+
+                <com.darknet.bvw.view.TypefaceTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_btc_income"
+                    android:text="今日BTC挖矿收益"
+                    android:textColor="@color/white" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <com.darknet.bvw.view.TypefaceTextView
+                    android:id="@+id/tv_btw_income"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="400.00"
+                    android:textColor="@color/white" />
+
+                <com.darknet.bvw.view.TypefaceTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_btw_income"
+                    android:text="今日BTW挖矿收益"
+                    android:textColor="@color/white" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <View style="@style/Line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <com.darknet.bvw.view.TypefaceTextView
+                    android:id="@+id/tv_total_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.00004"
+                    android:textColor="@color/white" />
+
+                <com.darknet.bvw.view.TypefaceTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_total_count"
+                    android:text="总矿机数量"
+                    android:textColor="@color/white" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <com.darknet.bvw.view.TypefaceTextView
+                    android:id="@+id/tv_work_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="400.00"
+                    android:textColor="@color/white" />
+
+                <com.darknet.bvw.view.TypefaceTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_work_count"
+                    android:text="挖矿中的数量"
+                    android:textColor="@color/white" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_15dp"
+        android:background="#272436"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/ll_mine_status">
+
+        <com.darknet.bvw.view.TypefaceTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="我的矿机"
+            android:textColor="@color/white" />
+
+        <View style="@style/Line" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_mineral"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
