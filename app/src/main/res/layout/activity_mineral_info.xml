@@ -13,5 +13,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/layout_title" />
-    <
+    <com.darknet.bvw.view.TypefaceTextView
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_mineral_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BITWorld-901T"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
