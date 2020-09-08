@@ -50,6 +50,9 @@ public class TypefaceTextView extends AppCompatTextView {
             case "systemDefault":
                 setTypeface(Typeface.DEFAULT);
                 break;
+            default:
+                typeface = Typeface.createFromAsset(context.getAssets(), "font/PingFangRegular.ttf");
+                setTypeface(typeface);
         }
         if (typedArray != null) {
             typedArray.recycle();

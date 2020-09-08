@@ -36,18 +36,18 @@ public abstract class BaseActivity extends AppCompatActivity {
         initDatas();
     }
 
-    public abstract void initView();
-
     public abstract int getLayoutId();
 
-    public abstract void initToolBar();
+    public abstract void initView();
+
+    public void initToolBar(){};
 
     public abstract void initDatas();
 
     /**
      * 对各种控件进行设置、适配、填充数据
      */
-    public abstract void configViews();
+    public void configViews(){};
 
 
     // dialog
