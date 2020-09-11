@@ -58,4 +58,11 @@
         <item name="android:windowEnterAnimation">@anim/dialog_payview_in</item>
         <item name="android:windowExitAnimation">@anim/dialog_payview_out</item>
     </style>
+
+    <declare-styleable name="HorizontalLineView">
+        <attr name="left_text" format="string" />
+        <attr name="right_text" format="string" />
+        <attr name="right_image" format="reference" />
+        <attr name="img_visible" format="boolean"/>
+    </declare-styleable>
 </resources>

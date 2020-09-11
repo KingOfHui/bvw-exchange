@@ -13,11 +13,172 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/layout_title" />
-    <com.darknet.bvw.view.TypefaceTextView
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_mineral_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="BITWorld-901T"/>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_mine_info"
+        app:layout_constraintTop_toBottomOf="@id/iv_mineral_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.darknet.bvw.view.TypefaceTextView
+            android:id="@+id/tv_mineral_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:text="BITWorld-90T"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <com.darknet.bvw.view.TypefaceTextView
+            android:id="@+id/tv_mine_desc1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:text="BTW专业矿机"
+            app:layout_constraintLeft_toRightOf="@id/tv_mineral_name"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.darknet.bvw.view.TypefaceTextView
+            android:id="@+id/tv_mine_desc2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:text="专业芯片"
+            app:layout_constraintLeft_toRightOf="@id/tv_mine_desc1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.darknet.bvw.view.TypefaceTextView
+            android:id="@+id/tv_mine_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1430USDT"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_mineral_name" />
+
+        <View
+            android:id="@+id/view1"
+            style="@style/Line"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_mine_money" />
+
+        <com.darknet.bvw.view.TypefaceTextView
+            android:id="@+id/tv_mine_desc_weight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/erweima_scan_view"
+            android:text="重量：9kg"
+            app:layout_constraintTop_toBottomOf="@id/view1" />
+
+        <com.darknet.bvw.view.TypefaceTextView
+            android:id="@+id/tv_mine_power"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/erweima_scan_view"
+            android:text="算力：90TH/S     功率：2500-3000W"
+            app:layout_constraintTop_toBottomOf="@id/tv_mine_desc_weight" />
+
+        <com.darknet.bvw.view.TypefaceTextView
+            android:id="@+id/tv_mine_currency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/erweima_scan_view"
+            android:text="挖矿币种：BTC、BTW"
+            app:layout_constraintTop_toBottomOf="@id/tv_mine_power" />
+
+        <com.darknet.bvw.view.TypefaceTextView
+            android:id="@+id/tv_mine_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/erweima_scan_view"
+            android:text="挖矿时间：3年"
+            app:layout_constraintTop_toBottomOf="@id/tv_mine_currency" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_mine_status"
+        app:layout_constraintTop_toBottomOf="@id/cl_mine_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.darknet.bvw.view.TypefaceTextView
+            android:id="@+id/tv_btw_info"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="全网BTW信息"/>
+
+        <View style="@style/Line"
+            app:layout_constraintLeft_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_btw_info"
+            android:id="@+id/view2"/>
+
+        <com.darknet.bvw.view.HorizontalLineView
+            android:id="@+id/lv_whole_hashrate"
+            app:layout_constraintTop_toBottomOf="@id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:left_text="全网算力"
+            app:right_text="100.23EH/s"/>
+        <com.darknet.bvw.view.HorizontalLineView
+            android:id="@+id/lv_daily_earnings"
+            app:layout_constraintTop_toBottomOf="@id/lv_whole_hashrate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:left_text="每T日收益"
+            app:right_text="333434usdt"/>
+        <com.darknet.bvw.view.HorizontalLineView
+            android:id="@+id/lv_next_difficulty"
+            app:layout_constraintTop_toBottomOf="@id/lv_daily_earnings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:left_text="预计下次难度"
+            app:right_text="17.03t(+2%)"/>
+        <com.darknet.bvw.view.HorizontalLineView
+            android:id="@+id/lv_to_time"
+            app:layout_constraintTop_toBottomOf="@id/lv_next_difficulty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:left_text="距离调整时间"
+            app:right_text="23小时"/>
+        <com.darknet.bvw.view.HorizontalLineView
+            android:id="@+id/lv_whole_mineral_count"
+            app:layout_constraintTop_toBottomOf="@id/lv_to_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:left_text="全网矿机数量"
+            app:right_text="2000个"/>
+        <com.darknet.bvw.view.HorizontalLineView
+            android:id="@+id/lv_market_price"
+            app:layout_constraintTop_toBottomOf="@id/lv_whole_mineral_count"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:left_text="币价"
+            app:right_text="btc$80000   btw$0.1"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_pool_info"
+        app:layout_constraintTop_toBottomOf="@id/cl_mine_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.darknet.bvw.view.TypefaceTextView
+            android:id="@+id/tv_pool_info"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="全网BTW信息"/>
+
+        <View style="@style/Line"
+            app:layout_constraintLeft_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_pool_info"
+            android:id="@+id/view3"/>
+        <com.darknet.bvw.view.HorizontalLineView
+            android:id="@+id/lv_pool_hashrate"
+            app:layout_constraintTop_toBottomOf="@id/view3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:left_text="全网算力"
+            app:right_text="100.23EH/s"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
