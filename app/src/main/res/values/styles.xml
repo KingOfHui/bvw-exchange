@@ -115,6 +115,11 @@
         <item name="android:layout_height">0.5dp</item>
         <item name="android:background">@color/line</item>
     </style>
+    <style name="Line_4E4A5E">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:background">#4E4A5E</item>
+    </style>
 
     <!--选项条目样式-->
     <style name="OptionItem">

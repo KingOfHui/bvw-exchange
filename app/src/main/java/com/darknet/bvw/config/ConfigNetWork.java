@@ -8,6 +8,7 @@ public class ConfigNetWork {
      * 请求Root
      */
     public static String JAVA_API_URL = BuildConfig.JAVA_API_URL;
+    public static String JAVA_API_URL_T = BuildConfig.JAVA_API_URL_T;
     public static String JAVA_SOCKET_URL = BuildConfig.JAVA_SOCKET_URL;
 
     public static String WEB_URL;

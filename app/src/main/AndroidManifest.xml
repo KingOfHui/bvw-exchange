@@ -827,6 +827,11 @@
 <!--            android:theme="@style/AppTheme.FullScreen"-->
         <activity
             android:name=".activity.ImageActivity" />
+        <activity android:name=".activity.MineralInfoActivity" >
+        </activity>
+        <activity android:name=".activity.HardwareMineralActivity" >
+
+        </activity>
 
 
         <receiver

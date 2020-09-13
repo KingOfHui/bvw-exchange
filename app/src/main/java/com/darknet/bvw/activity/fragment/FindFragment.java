@@ -18,6 +18,7 @@ import com.darknet.bvw.R;
 import com.darknet.bvw.activity.BidIntroActivity;
 import com.darknet.bvw.activity.BidZhenMaActivity;
 import com.darknet.bvw.activity.BidZhenMaTwoActivity;
+import com.darknet.bvw.activity.HardwareMineralActivity;
 import com.darknet.bvw.activity.ImageActivity;
 import com.darknet.bvw.activity.ZhenLieActivity;
 import com.darknet.bvw.common.BaseResponse;
@@ -199,14 +200,15 @@ public class FindFragment extends Fragment implements View.OnClickListener {
 				break;
 			case R.id.find_one_layout:
 				//硬件矿机
-				switch (Language.readFromConfig()) {
+				/*switch (Language.readFromConfig()) {
 					case CHINA:
 						ImageActivity.start(getContext(), R.mipmap.img_bif_cn);
 						break;
 					case ENGLISH:
 						ImageActivity.start(getContext(), R.mipmap.img_bif_en);
 						break;
-				}
+				}*/
+				startActivity(new Intent(activity, HardwareMineralActivity.class));
 
 
 //                if (isOpenSign == 1) {

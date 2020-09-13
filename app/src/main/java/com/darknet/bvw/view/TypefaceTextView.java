@@ -40,11 +40,11 @@ public class TypefaceTextView extends AppCompatTextView {
                 setTypeface(typeface);
                 break;
             case "DINProBold":
-                typeface = Typeface.createFromAsset(context.getAssets(), "font/DINPro-Bold.otf");
+                typeface = Typeface.createFromAsset(context.getAssets(), "prod/DINPro-Bold_0507875918.otf");
                 setTypeface(typeface);
                 break;
             case "DINProRegular":
-                typeface = Typeface.createFromAsset(context.getAssets(), "DINPro-Regular.otf");
+                typeface = Typeface.createFromAsset(context.getAssets(), "prod/DINPro-Regular_86fda98796.otf");
                 setTypeface(typeface);
                 break;
             case "systemDefault":
