@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="data"
+            type="com.darknet.bvw.model.response.InviteDataResponse.LowerLevel1ListBean.ItemsBean" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_15dp"
+        android:layout_marginRight="@dimen/dimen_15dp"
+        android:background="#272436"
+        android:paddingTop="@dimen/dimen_15dp"
+        android:paddingBottom="@dimen/dimen_15dp">
+
+        <com.darknet.bvw.view.TypefaceTextView
+            android:id="@+id/typefaceTextView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/_01FCDA"
+            app:layout_constraintEnd_toStartOf="@+id/typefaceTextView"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@{data.address}"
+            tools:text="被邀请人" />
+
+        <com.darknet.bvw.view.TypefaceTextView
+            android:id="@+id/typefaceTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/_01FCDA"
+            app:layout_constraintEnd_toStartOf="@+id/typefaceTextView3"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/typefaceTextView2"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteY="0dp"
+            android:text="@{String.valueOf(data.bonus)}"
+            tools:text="日产" />
+
+        <com.darknet.bvw.view.TypefaceTextView
+            android:id="@+id/typefaceTextView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/_01FCDA"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/typefaceTextView"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteY="0dp"
+            android:text="@{data.create_time}"
+            tools:text="邀请时间" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

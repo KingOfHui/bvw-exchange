@@ -55,6 +55,7 @@ public class HardwareMineralActivity extends BaseBindingActivity<ActivityHardMin
         mBinding.layoutTitle.backSignView.setOnClickListener((view -> finish()));
         mBinding.layoutTitle.title.setText("矿机");
         mBinding.layoutTitle.titleRight.setText("我的邀请");
+        mBinding.layoutTitle.titleRight.setOnClickListener(view -> MyInviteActivity.startSelf(HardwareMineralActivity.this));
         mBinding.layoutTitle.titleRight.setVisibility(View.VISIBLE);
         mBinding.layoutTitle.titleRight.setTextColor(Color.parseColor("#01FCDA"));
         MyAdapter adapter = new MyAdapter();
