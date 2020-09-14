@@ -1,5 +1,6 @@
 package com.darknet.bvw.model.response;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class MineralListResponse {
@@ -58,7 +59,7 @@ public class MineralListResponse {
         this.items = items;
     }
 
-    public static class ItemsBean {
+    public static class ItemsBean implements Serializable {
         /**
          * create_at :
          * f2pool_account :

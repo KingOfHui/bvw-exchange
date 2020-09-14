@@ -839,5 +839,9 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="find_video_info">Decentralized\nTikTok</string>
     <string name="zjc_tip">Mnemonic for recovery purse or wallet password reset, it accurately transcribed to paper, and kept only you know a safe place.</string>
     <string name="zjc_title_tip">Your wallet Mnemonic copied down</string>
+    <string name="btw">BTW专业矿机</string>
+    <string name="professional_chip">专业芯片</string>
+    <string name="not_pledged">未抵押</string>
+    <string name="DINProRegular">DINProRegular</string>
 
 </resources>

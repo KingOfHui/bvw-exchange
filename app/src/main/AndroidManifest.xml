@@ -832,6 +832,7 @@
         <activity android:name=".activity.HardwareMineralActivity" >
 
         </activity>
+        <activity android:name=".activity.MyInviteActivity" />
 
 
         <receiver

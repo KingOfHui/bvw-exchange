@@ -12,12 +12,11 @@ import androidx.core.content.ContextCompat;
 import androidx.databinding.library.baseAdapters.BR;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.darknet.bvw.R;
-import com.darknet.bvw.base.BaseBindQuickAdapter;
-import com.darknet.bvw.base.BaseBindingViewHolder;
-import com.darknet.bvw.base.BaseDataBindViewHolder;
 import com.darknet.bvw.base.BaseDataBindingAdapter;
 import com.darknet.bvw.databinding.ActivityHardMineralBinding;
 import com.darknet.bvw.databinding.ItemMineralBinding;
@@ -26,6 +25,8 @@ import com.darknet.bvw.model.response.MineralStatusResponse;
 import com.darknet.bvw.util.NoUnderlineClickSpan;
 import com.darknet.bvw.util.SpanHelper;
 import com.darknet.bvw.viewmodel.MineralViewModel;
+
+import java.util.List;
 
 /**
  * @ClassName HardwareMineralActivity
@@ -56,28 +57,16 @@ public class HardwareMineralActivity extends BaseBindingActivity<ActivityHardMin
         mBinding.layoutTitle.titleRight.setText("我的邀请");
         mBinding.layoutTitle.titleRight.setVisibility(View.VISIBLE);
         mBinding.layoutTitle.titleRight.setTextColor(Color.parseColor("#01FCDA"));
-//        mViewModel.getMineralStatusResponseLiveData().observe(this, new Observer<MineralStatusResponse>() {
-//            @Override
-//            public void onChanged(MineralStatusResponse response) {
-//                mBinding.tvAverageCount.setText(getSpanString(response.getPower_24_hour_avg()," H/S"));
-//                mBinding.tvBeforeCount.setText(getSpanString(response.getPower_24_hour_usd_bonus()," USDT"));
-//                mBinding.tvBtcIncome.setText(getSpanString(response.getToday_btc_bonus()," BTC"));
-//                mBinding.tvBtwIncome.setText(getSpanString(response.getToday_btw_bonus()," BTW"));
-//                mBinding.tvTotalCount.setText(String.valueOf(response.getMiner_count()));
-//                mBinding.tvWorkCount.setText(String.valueOf(response.getMiner_working_count()));
-//            }
-//        });
-       /* mViewModel.isEmptyLive.observe(this, aBoolean -> {
-            if (aBoolean != null && aBoolean) {
-                mBinding.progressLayout.showEmpty(ContextCompat.getDrawable(mAppContext, R.drawable.icon_empty_cn),"您暂未添加矿机");
-            } else {
-                mBinding.progressLayout.showContent();
-            }
-        });*/
         MyAdapter adapter = new MyAdapter();
         mViewModel.getMineralListLive().observe(this, new Observer<MineralListResponse>() {
             @Override
             public void onChanged(MineralListResponse mineralListResponse) {
+                for (int i = 0; i < 10; i++) {
+                    MineralListResponse.ItemsBean bean = new MineralListResponse.ItemsBean();
+                    bean.setPay_symbol("BTW/BTC" + i);
+                    bean.setPower_btc_1_hour("123---" + i);
+                    mineralListResponse.getItems().add(bean);
+                }
                 if (mineralListResponse.getItems() != null && !mineralListResponse.getItems().isEmpty()) {
                     adapter.setNewData(mineralListResponse.getItems());
                 } else {
@@ -88,6 +77,13 @@ public class HardwareMineralActivity extends BaseBindingActivity<ActivityHardMin
 
         mBinding.rvMineral.setAdapter(adapter);
         mBinding.rvMineral.setLayoutManager(new LinearLayoutManager(this));
+        DividerItemDecoration decoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+        mBinding.rvMineral.addItemDecoration(decoration);
+        adapter.setOnItemClickListener((adapter1, view, position) -> {
+            List<MineralListResponse.ItemsBean> data = adapter.getData();
+            MineralListResponse.ItemsBean itemsBean = data.get(position);
+            MineralInfoActivity.startSelf(this,itemsBean);
+        });
     }
 
     private SpannableStringBuilder getSpanString(String s, String symbol) {

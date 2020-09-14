@@ -129,7 +129,7 @@
                                     android:text="@{vm.getSpanString(vm.mineralStatusResponseLiveData.power_24_hour_usd_bonus,` USDT`)}"
                                     android:textColor="@color/_01FCDA"
                                     android:textSize="28sp"
-                                    app:typeface="DINProRegular"
+                                    app:typeface="@string/DINProRegular"
                                     tools:text="0.00" />
 
                                 <com.darknet.bvw.view.TypefaceTextView
@@ -265,6 +265,7 @@
                         android:orientation="vertical"
                         android:paddingLeft="@dimen/dimen_15dp"
                         android:paddingRight="@dimen/dimen_15dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/ll_mine_status">
 
                         <com.darknet.bvw.view.TypefaceTextView
@@ -284,7 +285,6 @@
                             android:id="@+id/progressLayout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:padding="@dimen/dimen_15dp"
                             app:emptyContentTextColor="#A4A4AB"
                             app:emptyContentTextSize="14sp"
                             app:emptyImageHeight="@dimen/dimen_100dp"

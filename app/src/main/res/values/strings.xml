@@ -876,4 +876,8 @@
     <string name="find_video_info">Decentralized\nTikTok</string>
     <string name="zjc_tip">助记词用于恢复钱包或者重置钱包密码，将它准确的抄写到纸上，并存放在只有你知道的安全的地方。</string>
     <string name="zjc_title_tip">抄写下你的钱包助记词</string>
+    <string name="btw">BTW专业矿机</string>
+    <string name="professional_chip">专业芯片</string>
+    <string name="not_pledged">未抵押</string>
+    <string name="DINProRegular">DINProRegular</string>
 </resources>

@@ -8,6 +8,9 @@
         <variable
             name="vm"
             type="com.darknet.bvw.viewmodel.MineralViewModel" />
+        <variable
+            name="info"
+            type="com.darknet.bvw.model.response.MineralListResponse.ItemsBean" />
     </data>
 
     <androidx.core.widget.NestedScrollView

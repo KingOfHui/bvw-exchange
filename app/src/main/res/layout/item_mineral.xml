@@ -13,21 +13,39 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <ImageView
             android:id="@+id/iv_mineral"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_width="@dimen/dimen_60dp"
-            android:layout_height="@dimen/dimen_60dp"
-            android:layout_margin="@dimen/dimen_15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="77dp"
+            android:layout_height="77dp"
+            android:padding="@dimen/dimen_15dp"
+            android:background="#181523"
+            android:layout_marginTop="@dimen/dimen_15dp"
+            android:layout_marginBottom="@dimen/dimen_15dp"
             android:src="@mipmap/ic_launcher"/>
-            
+
+        <com.darknet.bvw.view.TypefaceTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/not_pledged"
+            android:textColor="#181523"
+            android:paddingLeft="@dimen/dimen_5dp"
+            android:paddingRight="@dimen/dimen_5dp"
+            android:textSize="9sp"
+            app:layout_constraintTop_toTopOf="@id/iv_mineral"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:background="@drawable/shape_mineral_label"/>
         <com.darknet.bvw.view.TypefaceTextView
             android:id="@+id/tv_mineral_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/dimen_15dp"
+            android:textColor="@color/white"
             tools:text= "156446156"
+            android:text="BITWorld-90T"
             android:layout_marginTop="@dimen/dp_4"
             android:layout_marginStart="@dimen/dimen_15dp"
             app:layout_constraintLeft_toRightOf="@id/iv_mineral"
@@ -41,8 +59,14 @@
             app:layout_constraintBottom_toBottomOf="@id/iv_mineral"
             app:layout_constraintLeft_toRightOf="@id/iv_mineral"
             android:textSize="@dimen/dimen_10dp"
+            android:textColor="@color/_01FCDA"
+            android:text="@string/btw"
+            android:background="#181523"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
             android:layout_marginStart="@dimen/dimen_15dp"
-            tools:text="fjslfjdsl"
             />
         <com.darknet.bvw.view.TypefaceTextView
             android:id="@+id/tv_mineral_label2"
@@ -53,7 +77,13 @@
             app:layout_constraintBottom_toBottomOf="@id/iv_mineral"
             app:layout_constraintLeft_toRightOf="@id/tv_mineral_label1"
             android:layout_marginStart="@dimen/dimen_15dp"
-            tools:text="fjslfjdsl"
+            android:background="#181523"
+            android:textColor="@color/_01FCDA"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:text="@string/professional_chip"
             />
         <com.darknet.bvw.view.TypefaceTextView
             android:id="@+id/tv_mineral_whole_hashrate"
@@ -65,6 +95,9 @@
             android:textSize="9dp"
             android:layout_marginBottom="@dimen/dp_4"
             tools:text="fjslfjdsl"
+            android:text="@{`算力：`+vm.power+`TH/S`}"
+            android:textColor="@color/white"
+            android:alpha="0.7"
             />
         <com.darknet.bvw.view.TypefaceTextView
             android:id="@+id/tv_mineral_currency"
@@ -75,7 +108,10 @@
             android:textSize="9dp"
             app:layout_constraintLeft_toRightOf="@id/tv_mineral_whole_hashrate"
             tools:text="fjslfjdsl"
+            android:text="@{`挖矿币种：`+vm.pay_symbol}"
             android:layout_marginBottom="@dimen/dp_4"
+            android:textColor="@color/white"
+            android:alpha="0.7"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
