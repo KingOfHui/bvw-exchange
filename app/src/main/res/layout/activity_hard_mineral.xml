@@ -101,7 +101,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/dimen_15dp"
-                                    android:text="@{vm.mineralStatusResponseLiveData.power_24_hour_avg}"
+                                    android:text="@{vm.getSpanString(vm.mineralStatusResponseLiveData.power_24_hour_avg,` H/S`)}"
                                     android:textColor="@color/_01FCDA"
                                     android:textSize="28sp"
                                     app:typeface="DINProRegular"
@@ -126,7 +126,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/dimen_15dp"
-                                    android:text="@{vm.mineralStatusResponseLiveData.power_24_hour_usd_bonus}"
+                                    android:text="@{vm.getSpanString(vm.mineralStatusResponseLiveData.power_24_hour_usd_bonus,` USDT`)}"
                                     android:textColor="@color/_01FCDA"
                                     android:textSize="28sp"
                                     app:typeface="DINProRegular"
@@ -156,7 +156,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/dimen_15dp"
-                                    android:text="@{vm.mineralStatusResponseLiveData.today_btc_bonus}"
+                                    android:text="@{vm.getSpanString(vm.mineralStatusResponseLiveData.today_btc_bonus,` BTC`)}"
                                     android:textColor="@color/_01FCDA"
                                     android:textSize="28sp"
                                     app:typeface="DINProRegular"
@@ -181,7 +181,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/dimen_15dp"
-                                    android:text="@{vm.mineralStatusResponseLiveData.today_btw_bonus}"
+                                    android:text="@{vm.getSpanString(vm.mineralStatusResponseLiveData.today_btw_bonus,` BTW`)}"
                                     android:textColor="@color/_01FCDA"
                                     android:textSize="28sp"
                                     app:typeface="DINProRegular"
@@ -294,15 +294,16 @@
                                 android:id="@+id/rv_mineral"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:nestedScrollingEnabled="false"
                                 android:orientation="vertical" />
                         </com.darknet.bvw.commonlib.widget.ProgressLayout>
                     </LinearLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.core.widget.NestedScrollView>
 
-            <com.scwang.smartrefresh.layout.footer.ClassicsFooter
+            <!--<com.scwang.smartrefresh.layout.footer.ClassicsFooter
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content" />-->
 
         </com.scwang.smartrefresh.layout.SmartRefreshLayout>
     </LinearLayout>

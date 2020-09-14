@@ -1,6 +1,8 @@
 package com.darknet.bvw.viewmodel;
 
 import android.app.Application;
+import android.graphics.Color;
+import android.text.SpannableStringBuilder;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -17,12 +19,18 @@ import com.darknet.bvw.db.WalletDaoUtils;
 import com.darknet.bvw.model.response.MineralListResponse;
 import com.darknet.bvw.model.response.MineralStatusResponse;
 import com.darknet.bvw.model.response.SuanLiResponse;
+import com.darknet.bvw.util.SpanHelper;
 import com.darknet.bvw.util.bitcoinj.BitcoinjKit;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
+
+import java.util.HashMap;
+
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 
 public class MineralViewModel extends AndroidViewModel {
 
@@ -105,11 +113,19 @@ public class MineralViewModel extends AndroidViewModel {
         String addressVals = walletModel.getAddress();
         String msg = "" + System.currentTimeMillis();
         String signVal = BitcoinjKit.signMessageBy58(msg, privateKey);
-        OkGo.<String>get(ConfigNetWork.JAVA_API_URL_T + UrlPath.GET_MINERAL_LIST)
+        MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+
+        Gson gson = new Gson();
+        HashMap<String, Integer> map = new HashMap<>();
+        map.put("limit", 20);
+        map.put("page", 0);
+        RequestBody requestBody = RequestBody.create(JSON, gson.toJson(map));
+        OkGo.<String>post(ConfigNetWork.JAVA_API_URL_T + UrlPath.GET_MINERAL_LIST)
                 .tag(MineralViewModel.this)
                 .headers("Chain-Authentication", addressVals + "#" + msg + "#" + signVal)
-                .params("limit",1000)
-                .params("page",0)
+                .upRequestBody(requestBody)
+//                .params("limit",1000)
+//                .params("page",0)
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(Response<String> backresponse) {
@@ -142,5 +158,16 @@ public class MineralViewModel extends AndroidViewModel {
                         Log.e("dhdhdh", "onError: " + response.getException().toString());
                     }
                 });
+    }
+
+    public SpannableStringBuilder getSpanString(String s, String symbol) {
+        return SpanHelper.start()
+                .next(s)
+                .setTextColor(Color.parseColor("#01FCDA"))
+                .setTextSize(28)
+                .next(symbol)
+                .setTextSize(15)
+                .setTextColor(Color.WHITE)
+                .get();
     }
 }
