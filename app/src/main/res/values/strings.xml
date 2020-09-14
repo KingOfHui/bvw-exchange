@@ -230,7 +230,7 @@
 
     <string name="create_aacoutn_view">创建账户</string>
     <string name="about_us_title">关于我们</string>
-    <string name="about_us_content">   BVW是一个在公链分片片区引入POS单核HW共识算法，BID原子节点参与记账、开源的，混链点对点分布式网络节点的公有链项目。BVW除了提供一个高TPS结算、可编程智能合约平台的技术解决方案辅助DAPP落地以外，还利用分片节点创建了一个全球性的裂变生态网络。BVW是人类第一次模仿造物主去创造一种永续的智能合约-机器DNA，去构建一个全人类共同信任的生命体。BVW也是人类第一次尝试用一种永续的方式让人类科技进行自我复制繁殖。</string>
+    <string name="about_us_content">   BTW是一个在公链分片片区引入POS单核HW共识算法，BID原子节点参与记账、开源的，混链点对点分布式网络节点的公有链项目。BTW除了提供一个高TPS结算、可编程智能合约平台的技术解决方案辅助DAPP落地以外，还利用分片节点创建了一个全球性的裂变生态网络。BTW是人类第一次模仿造物主去创造一种永续的智能合约-机器DNA，去构建一个全人类共同信任的生命体。BTW也是人类第一次尝试用一种永续的方式让人类科技进行自我复制繁殖。</string>
     <string name="help_title">使用帮助</string>
     <string name="del_wallet_fail">删除失败</string>
     <string name="no_data">暂无相关数据</string>
@@ -514,9 +514,9 @@
     <string name="the_amount">资产</string>
 
 
-    <string name="stop_txt_one">BVW起源于全球开发者社区。致力于用最先进的区块链技术，为区块链应用落地带来新的思维和实践启发，BVW的任何运营和技术均代表着一种技术社会实验，请谨慎参与。由于目前世界上主要国家对数字货币交易和区块链项目的态度政策尚不明确，BVW将严格遵守世界各国对数字资产方面的相关法律，作出以下声明。</string>
-    <string name="stop_txt_two"> BVW将不向以下国家和地区：美国、中国大陆、中国香港地区、朝鲜、古巴、伊朗、孟加拉国、马来西亚、叙利亚、玻利维亚，等用户提供使用。</string>
-    <string name="stop_txt_three">BVW属于完全去中心化应用，无法有效进行KYC认证审核，运行期间，以上国家用户，请自觉删除和退出。</string>
+    <string name="stop_txt_one">BTW起源于全球开发者社区。致力于用最先进的区块链技术，为区块链应用落地带来新的思维和实践启发，BTW的任何运营和技术均代表着一种技术社会实验，请谨慎参与。由于目前世界上主要国家对数字货币交易和区块链项目的态度政策尚不明确，BTW将严格遵守世界各国对数字资产方面的相关法律，作出以下声明。</string>
+    <string name="stop_txt_two"> BTW将不向以下国家和地区：美国、中国大陆、中国香港地区、朝鲜、古巴、伊朗、孟加拉国、马来西亚、叙利亚、玻利维亚，等用户提供使用。</string>
+    <string name="stop_txt_three">BTW属于完全去中心化应用，无法有效进行KYC认证审核，运行期间，以上国家用户，请自觉删除和退出。</string>
 
 
     <string name="fenlie_btc_midle_one">例如：A用户参与分裂后即可获得交易记录hash:</string>
