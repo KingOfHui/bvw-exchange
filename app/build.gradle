@@ -24,8 +24,8 @@ android {
         applicationId "com.darknet.bvw"
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 20200905
-        versionName "1.6.0"
+        versionCode 20200915
+        versionName "1.6.1"
         multiDexEnabled true
         javaCompileOptions {
             annotationProcessorOptions {

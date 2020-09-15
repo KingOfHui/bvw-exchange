@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <string name="app_name">BVW</string>
+    <string name="app_name">BTW</string>
     <string name="language_cn">Simplified Chinese</string>
     <string name="language_en">ENGLISH</string>
     <string name="pwd_check_login">Login</string>
@@ -154,7 +154,7 @@
 
     <string name="create_aacoutn_view">Create Account</string>
     <string name="about_us_title">About us</string>
-    <string name="about_us_content">   BVW is a public-chain project that introduces POS single-core HW consensus algorithm in the public-chain segmentation area, BID atomic node participates in accounting, open source, and mixed-chain point-to-point distributed network nodes. In addition to providing a high-TPS settlement, programmable smart contract platform technology solution to assist DAPP landing, BVW also created a global fission ecological network using fragmentation nodes. BVW is the first time humans have imitated the Creator to create a sustainable intelligent contract-machine DNA to build a living body that is shared by all human beings. BVW is also the first time humans have tried to make human technology self-replicate and propagate in a sustainable way.</string>
+    <string name="about_us_content">   BTW is a public-chain project that introduces POS single-core HW consensus algorithm in the public-chain segmentation area, BID atomic node participates in accounting, open source, and mixed-chain point-to-point distributed network nodes. In addition to providing a high-TPS settlement, programmable smart contract platform technology solution to assist DAPP landing, BVW also created a global fission ecological network using fragmentation nodes. BTW is the first time humans have imitated the Creator to create a sustainable intelligent contract-machine DNA to build a living body that is shared by all human beings. BTW is also the first time humans have tried to make human technology self-replicate and propagate in a sustainable way.</string>
     <string name="help_title">Using help</string>
     <string name="del_wallet_fail">Filed to delete</string>
     <string name="no_data">No transfer record</string>
@@ -433,9 +433,9 @@
     <string name="the_exchange">Trade</string>
     <string name="the_amount">Assets</string>
 
-    <string name="stop_txt_one">Bvw originated from the global developer community. We are committed to using the most advanced blockchain technology to bring new thinking and practical inspiration to the application of blockchain. Any operation and technology of BVW represents a kind of social experiment of technology. Please participate carefully. As the attitude and policies of the world is major countries on digital currency transactions and blockchain projects are not clear, BVW will strictly abide by the relevant laws of the world on digital assets and make the following statement. </string>
-    <string name="stop_txt_two">Bvw will not provide use to the following countries and regions: the United States, mainland China, Hong Kong, North Korea, Cuba, Iran, Bangladesh, Malaysia, Syria, Bolivia, etc.</string>
-    <string name="stop_txt_three"> Bvw is a completely decentralized application, unable to effectively conduct KYC certification audit. During the operation period, users in the above countries should consciously delete and exit.</string>
+    <string name="stop_txt_one">BTW originated from the global developer community. We are committed to using the most advanced blockchain technology to bring new thinking and practical inspiration to the application of blockchain. Any operation and technology of BTW represents a kind of social experiment of technology. Please participate carefully. As the attitude and policies of the world is major countries on digital currency transactions and blockchain projects are not clear, BTW will strictly abide by the relevant laws of the world on digital assets and make the following statement. </string>
+    <string name="stop_txt_two">BTW will not provide use to the following countries and regions: the United States, mainland China, Hong Kong, North Korea, Cuba, Iran, Bangladesh, Malaysia, Syria, Bolivia, etc.</string>
+    <string name="stop_txt_three"> BTW is a completely decentralized application, unable to effectively conduct KYC certification audit. During the operation period, users in the above countries should consciously delete and exit.</string>
 
 
     <string name="fenlie_btc_midle_one">For example: a user can obtain transaction hash after participating in splitting: </string>
@@ -636,7 +636,7 @@
     <string name="repeat_wallet_val">Wallet already exists</string>
 
     <string name="trade_account_two_two_header_three">Address, (please fill in carefully to prevent loss of assets)</string>
-    <string name="app_version_name">BVW%s</string>
+    <string name="app_version_name">BTW%s</string>
 
     <string name="title_com_leader_help">Resurrector plan</string>
     <string name="help">Help</string>
