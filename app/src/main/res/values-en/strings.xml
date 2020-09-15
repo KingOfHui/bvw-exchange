@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <string name="app_name">BVW</string>
+    <string name="app_name">BTW</string>
     <string name="language_cn">Simplified Chinese</string>
     <string name="language_en">ENGLISH</string>
     <string name="pwd_check_login">Login</string>

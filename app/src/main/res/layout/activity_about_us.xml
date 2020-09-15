@@ -18,18 +18,18 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/dimen_100dp"
+                android:layout_height="@dimen/dimen_100dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="50dp"
-                android:src="@mipmap/about_us_sign"></ImageView>
+                android:src="@mipmap/logo_icon"></ImageView>
 
             <com.darknet.bvw.view.TypefaceTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
-                android:text="BVW"
+                android:text="BTW"
                 android:textColor="@color/white"
                 android:textSize="14dp"
                 app:typeface="@string/universal_text_typeface" />
