@@ -636,7 +636,7 @@
     <string name="repeat_wallet_val">Wallet already exists</string>
 
     <string name="trade_account_two_two_header_three">Address, (please fill in carefully to prevent loss of assets)</string>
-    <string name="app_version_name">BVW%s</string>
+    <string name="app_version_name">BTW%s</string>
 
     <string name="title_com_leader_help">Resurrector plan</string>
     <string name="help">Help</string>

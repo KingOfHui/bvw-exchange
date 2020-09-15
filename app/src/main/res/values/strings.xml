@@ -716,7 +716,7 @@
     <string name="deal_price_sign">价格</string>
     <string name="deal_num_sign">数量</string>
     <!--    <string name="code_img_gonglian">公链</string>-->
-    <string name="app_version_name">BVW%s</string>
+    <string name="app_version_name">BTW%s</string>
     <string name="mine_award">昨日释放矿池奖金</string>
     <string name="mine_underling_fund">历史结算奖金</string>
     <string name="mine_performance_desc">我的每日业绩</string>
