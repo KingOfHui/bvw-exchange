@@ -37,6 +37,7 @@ public class MineralViewModel extends AndroidViewModel {
     private MutableLiveData<MineralStatusResponse> mMineralStatusResponseLiveData;
     private MutableLiveData<MineralListResponse> mMineralListLive;
     public MutableLiveData<Boolean> isEmptyLive = new MutableLiveData<>();
+    public MutableLiveData<Boolean> dismissLoadingLive = new MutableLiveData<>();
 
     public MutableLiveData<MineralStatusResponse> getMineralStatusResponseLiveData() {
         if (mMineralStatusResponseLiveData == null) {
@@ -71,6 +72,7 @@ public class MineralViewModel extends AndroidViewModel {
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(Response<String> backresponse) {
+                        dismissLoadingLive.setValue(true);
                         if (backresponse != null) {
                             String backVal = backresponse.body();
                             Log.e("dhdhdh", "onSuccess: " + backVal);

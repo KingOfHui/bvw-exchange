@@ -856,5 +856,9 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="my_mineral">我的矿机</string>
     <string name="mineral_weight">重量：%skg</string>
     <string name="mineral_power">算力：%sTH/S   功率：%sW</string>
+    <string name="my_invite">我的邀请</string>
+    <string name="mineral">矿机</string>
+    <string name="mineral_pool">矿池</string>
+    <string name="mineral_list_no_data">您暂未添加矿机</string>
 
 </resources>

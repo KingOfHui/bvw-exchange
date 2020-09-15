@@ -31,10 +31,11 @@ public class MineralInfoActivity extends BaseBindingActivity<ActivityMineralInfo
 
     @Override
     public void initView() {
-        mBinding.layoutTitle.title.setText("矿机");
-        mBinding.layoutTitle.titleRight.setText("矿池");
+        mBinding.layoutTitle.title.setText(getString(R.string.mineral));
+        mBinding.layoutTitle.titleRight.setText(getString(R.string.mineral_pool));
         mBinding.layoutTitle.titleRight.setVisibility(View.VISIBLE);
         mBinding.layoutTitle.titleRight.setTextColor(Color.parseColor("#01FCDA"));
+        mBinding.layoutTitle.titleRight.setOnClickListener(v->AddMineralActivity.startSelf(this));
     }
 
     @Override

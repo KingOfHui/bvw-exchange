@@ -33,7 +33,7 @@ public class MyInviteActivity extends BaseBindingActivity<ActivityMyInviteBindin
     public void initView() {
         InviteViewModel viewModel = new ViewModelProvider(this, new ViewModelProvider.AndroidViewModelFactory(getApplication())).get(InviteViewModel.class);
         mBinding.setLifecycleOwner(this);
-        mBinding.titleLayout.title.setText("我的邀请");
+        mBinding.titleLayout.title.setText(getString(R.string.my_invite));
         mBinding.rvInviteList.setLayoutManager(new LinearLayoutManager(this));
         InviteAdapter adapter = new InviteAdapter();
         mBinding.rvInviteList.setAdapter(adapter);

@@ -22,6 +22,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+                <!--bind:rightText = "@string/mineral_pool"
+                bind:rightVisible = "@{true}"-->
             <include
                 android:id="@+id/layout_title"
                 layout="@layout/lay_head_back_binding" />
@@ -39,6 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/dimen_15dp"
+                android:paddingBottom="@dimen/dimen_15dp"
                 app:layout_constraintTop_toBottomOf="@id/iv_mineral_image">
 
                 <com.darknet.bvw.view.TypefaceTextView
@@ -306,6 +309,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/dimen_15dp"
+                android:paddingBottom="@dimen/dimen_15dp"
+
                 app:layout_constraintTop_toBottomOf="@id/ll_mine_status">
 
                 <com.darknet.bvw.view.TypefaceTextView
@@ -388,6 +393,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/dimen_15dp"
+                android:paddingBottom="@dimen/dimen_15dp"
                 app:layout_constraintTop_toBottomOf="@id/cl_mine_status">
 
                 <com.darknet.bvw.view.TypefaceTextView
@@ -459,6 +465,7 @@
                 android:layout_margin="@dimen/dimen_15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/dimen_15dp"
                 app:layout_constraintTop_toBottomOf="@id/cl_pool_info">
 
                 <com.darknet.bvw.view.TypefaceTextView

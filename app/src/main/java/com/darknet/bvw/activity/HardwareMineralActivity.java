@@ -10,7 +10,6 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
-import androidx.databinding.library.baseAdapters.BR;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -54,8 +53,8 @@ public class HardwareMineralActivity extends BaseBindingActivity<ActivityHardMin
         mBinding.setVm(mViewModel);
         mBinding.setLifecycleOwner(this);
         mBinding.layoutTitle.backSignView.setOnClickListener((view -> finish()));
-        mBinding.layoutTitle.title.setText("矿机");
-        mBinding.layoutTitle.titleRight.setText("我的邀请");
+        mBinding.layoutTitle.title.setText(getString(R.string.mineral));
+        mBinding.layoutTitle.titleRight.setText(getString(R.string.my_invite));
         mBinding.layoutTitle.titleRight.setOnClickListener(view -> MyInviteActivity.startSelf(HardwareMineralActivity.this));
         mBinding.layoutTitle.titleRight.setVisibility(View.VISIBLE);
         mBinding.layoutTitle.titleRight.setTextColor(Color.parseColor("#01FCDA"));
@@ -73,8 +72,13 @@ public class HardwareMineralActivity extends BaseBindingActivity<ActivityHardMin
                 if (mineralListResponse.getItems() != null && !mineralListResponse.getItems().isEmpty()) {
                     adapter.setNewData(mineralListResponse.getItems());
                 } else {
-                    mBinding.progressLayout.showEmpty(ContextCompat.getDrawable(mAppContext, R.mipmap.img_no_data), "您暂未添加矿机");
+                    mBinding.progressLayout.showEmpty(ContextCompat.getDrawable(mAppContext, R.mipmap.img_no_data), getString(R.string.mineral_list_no_data));
                 }
+            }
+        });
+        mViewModel.dismissLoadingLive.observe(this, aBoolean -> {
+            if (aBoolean) {
+                dismissDialog();
             }
         });
 
@@ -93,6 +97,7 @@ public class HardwareMineralActivity extends BaseBindingActivity<ActivityHardMin
 
     @Override
     public void initDatas() {
+        showDialog(getString(R.string.loading));
         mViewModel.getMineralStatus();
         mViewModel.getMineralList();
     }

@@ -99,7 +99,7 @@ android {
     productFlavors {
     }
 
-    dataBinding{
+    dataBinding {
         enabled true
     }
 }
@@ -236,3 +236,4 @@ multiLanguages {
 //greendao {
 //    schemaVersion 1
 //}
+

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#181523"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/layout_title"
+            layout="@layout/lay_head_back_binding"
+            bind:titleName="@string/mineral" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#272436"
+                android:layout_margin="@dimen/dimen_15dp"
+                android:paddingBottom="@dimen/dimen_20dp"
+                tools:context=".activity.AddMineralActivity">
+
+                <com.darknet.bvw.view.TypefaceTextView
+                    android:id="@+id/tv1"
+                    android:layout_marginLeft="@dimen/dimen_15dp"
+                    android:layout_marginTop="@dimen/dimen_20dp"                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="添加矿机"
+                    android:textSize="15sp"
+                    android:textColor="@color/_01FCDA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <View style="@style/Line_4E4A5E"
+                    android:id="@+id/line"
+                    app:layout_constraintTop_toBottomOf="@id/tv1"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:layout_margin="@dimen/dimen_15dp"/>
+
+                <com.darknet.bvw.view.TypefaceTextView
+                    android:id="@+id/tv2"
+                    android:layout_margin="@dimen/dimen_15dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/line"
+                    android:text="1、托管用户，请联系社区；"
+                    android:textSize="15sp"
+                    android:textColor="@color/_01FCDA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <com.darknet.bvw.view.TypefaceTextView
+                    android:id="@+id/tv3"
+                    android:layout_marginLeft="@dimen/dimen_15dp"
+                    android:layout_marginTop="@dimen/dimen_30dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv2"
+                    android:text="2、非托管用户（购买矿机后，矿机寄到家）"
+                    android:textSize="15sp"
+                    android:textColor="@color/_01FCDA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <com.darknet.bvw.view.TypefaceTextView
+                    android:id="@+id/tv4"
+                    android:layout_margin="@dimen/dimen_15dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv3"
+                    android:text="2.1、连接局域网"
+                    android:textSize="13sp"
+                    android:textColor="@color/_01FCDA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <com.darknet.bvw.view.TypefaceTextView
+                    android:id="@+id/tv5"
+                    android:layout_margin="@dimen/dimen_15dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv4"
+                    android:text="矿机组装、开机、联网，电脑连接矿机所在的局域网，查找矿机IP，电脑浏览器中登陆矿机后台。"
+                    android:textSize="12sp"
+                    android:textColor="#BEBDC3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <com.darknet.bvw.view.TypefaceTextView
+                    android:id="@+id/tv6"
+                    android:layout_marginLeft="@dimen/dimen_15dp"
+                    android:layout_marginTop="@dimen/dimen_30dp"                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv5"
+                    android:text="2.2、矿机配置"
+                    android:textSize="13sp"
+                    android:textColor="@color/_01FCDA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <com.darknet.bvw.view.TypefaceTextView
+                    android:id="@+id/tv7"
+                    android:layout_margin="@dimen/dimen_15dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv6"
+                    android:text="挖矿地址和矿工设置请参照下方示例。"
+                    android:textSize="12sp"
+                    android:textColor="#BEBDC3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <com.darknet.bvw.view.TypefaceTextView
+                    android:id="@+id/tv8"
+                    android:layout_marginLeft="@dimen/dimen_15dp"
+                    android:layout_marginTop="@dimen/dimen_30dp"                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv7"
+                    android:text="2.3、完成"
+                    android:textSize="13sp"
+                    android:textColor="@color/_01FCDA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <com.darknet.bvw.view.TypefaceTextView
+                    android:id="@+id/tv9"
+                    android:layout_margin="@dimen/dimen_15dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv8"
+                    android:text="保存设置等待矿机显示算力，矿机将在1分钟左右自动添加至您BTW矿机账户的矿工页面。"
+                    android:textSize="12sp"
+                    android:textColor="#BEBDC3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <com.darknet.bvw.view.TypefaceTextView
+                    android:id="@+id/tv10"
+                    android:layout_marginLeft="@dimen/dimen_15dp"
+                    android:layout_marginTop="@dimen/dimen_25dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv9"
+                    android:text="URL1:"
+                    android:textSize="13sp"
+                    android:textColor="@color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <com.darknet.bvw.view.TypefaceTextView
+                    android:id="@+id/tv11"
+                    android:layout_marginLeft="@dimen/dimen_15dp"
+                    android:layout_marginTop="@dimen/dimen_25dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv10"
+                    android:text="URL2:"
+                    android:textSize="13sp"
+                    android:textColor="@color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <com.darknet.bvw.view.TypefaceTextView
+                    android:id="@+id/tv12"
+                    android:layout_marginLeft="@dimen/dimen_15dp"
+                    android:layout_marginTop="@dimen/dimen_25dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv11"
+                    android:text="URL3:"
+                    android:textSize="13sp"
+                    android:textColor="@color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</layout>
