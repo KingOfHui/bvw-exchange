@@ -70,7 +70,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="我的矿机状态"
+                                android:text="@string/my_mineral_status"
                                 android:textColor="#01FCDA"
                                 android:textSize="15sp" />
 
@@ -80,7 +80,7 @@
                                 android:drawableLeft="@mipmap/erweima_scan_view"
                                 android:drawablePadding="@dimen/dimen_15dp"
                                 android:gravity="center_vertical"
-                                android:text="收益记录"
+                                android:text="@string/income_record"
                                 android:textColor="@color/white" />
                         </LinearLayout>
 
@@ -111,7 +111,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_below="@id/tv_average_count"
-                                    android:text="24小时平均算力"
+                                    android:text="@string/average_hashrate_24"
                                     android:textColor="#BEBDC3" />
 
                             </RelativeLayout>
@@ -136,7 +136,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_below="@id/tv_before_count"
-                                    android:text="过去24小时收益"
+                                    android:text="@string/income_before_24h"
                                     android:textColor="#BEBDC3" />
                             </RelativeLayout>
                         </LinearLayout>
@@ -166,7 +166,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_below="@id/tv_btc_income"
-                                    android:text="今日BTC挖矿收益"
+                                    android:text="@string/income_today_btc"
                                     android:textColor="#BEBDC3" />
 
                             </RelativeLayout>
@@ -191,7 +191,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_below="@id/tv_btw_income"
-                                    android:text="今日BTW挖矿收益"
+                                    android:text="@string/income_today_btw"
                                     android:textColor="#BEBDC3" />
                             </RelativeLayout>
                         </LinearLayout>
@@ -226,7 +226,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_below="@id/tv_total_count"
-                                    android:text="总矿机数量"
+                                    android:text="@string/mineral_total_num"
                                     android:textColor="@color/white" />
 
                             </RelativeLayout>
@@ -250,7 +250,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_below="@id/tv_work_count"
-                                    android:text="挖矿中的矿机"
+                                    android:text="@string/working_mineral"
                                     android:textColor="@color/white" />
                             </RelativeLayout>
                         </LinearLayout>
@@ -272,7 +272,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/dimen_15dp"
-                            android:text="我的矿机"
+                            android:text="@string/my_mineral"
                             android:textColor="@color/_01FCDA"
                             android:textSize="15sp" />
 

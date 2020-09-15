@@ -2,6 +2,7 @@ package com.darknet.bvw.activity;
 
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.text.SpannableStringBuilder;
 import android.view.View;
@@ -66,6 +67,7 @@ public class HardwareMineralActivity extends BaseBindingActivity<ActivityHardMin
                     MineralListResponse.ItemsBean bean = new MineralListResponse.ItemsBean();
                     bean.setPay_symbol("BTW/BTC" + i);
                     bean.setPower_btc_1_hour("123---" + i);
+                    bean.setPower(i);
                     mineralListResponse.getItems().add(bean);
                 }
                 if (mineralListResponse.getItems() != null && !mineralListResponse.getItems().isEmpty()) {
@@ -79,23 +81,14 @@ public class HardwareMineralActivity extends BaseBindingActivity<ActivityHardMin
         mBinding.rvMineral.setAdapter(adapter);
         mBinding.rvMineral.setLayoutManager(new LinearLayoutManager(this));
         DividerItemDecoration decoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+        decoration.setDrawable(new ColorDrawable(ContextCompat.getColor(this,R.color.line_4E4A5E)));
         mBinding.rvMineral.addItemDecoration(decoration);
         adapter.setOnItemClickListener((adapter1, view, position) -> {
             List<MineralListResponse.ItemsBean> data = adapter.getData();
             MineralListResponse.ItemsBean itemsBean = data.get(position);
             MineralInfoActivity.startSelf(this,itemsBean);
         });
-    }
-
-    private SpannableStringBuilder getSpanString(String s, String symbol) {
-        return SpanHelper.start()
-                .next(s)
-                .setTextColor(Color.parseColor("#01FCDA"))
-                .setTextSize(28)
-                .next(symbol)
-                .setTextSize(15)
-                .setTextColor(Color.WHITE)
-                .get();
+        mBinding.executePendingBindings();
     }
 
     @Override

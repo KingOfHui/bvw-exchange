@@ -33,15 +33,14 @@
 
         <com.darknet.bvw.view.TypefaceTextView
             android:id="@+id/typefaceTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="20dp"
+            android:layout_height="15dp"
+            android:text="@{String.valueOf(data.bonus)+`BTW`}"
             android:textColor="@color/_01FCDA"
             app:layout_constraintEnd_toStartOf="@+id/typefaceTextView3"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/typefaceTextView2"
             app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteY="0dp"
-            android:text="@{String.valueOf(data.bonus)}"
             tools:text="日产" />
 
         <com.darknet.bvw.view.TypefaceTextView

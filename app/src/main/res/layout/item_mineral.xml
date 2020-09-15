@@ -95,7 +95,7 @@
             android:textSize="9dp"
             android:layout_marginBottom="@dimen/dp_4"
             tools:text="fjslfjdsl"
-            android:text="@{`算力：`+vm.power+`TH/S`}"
+            android:text="@{@string/mineral_hashrate(vm.power)}"
             android:textColor="@color/white"
             android:alpha="0.7"
             />
@@ -108,7 +108,7 @@
             android:textSize="9dp"
             app:layout_constraintLeft_toRightOf="@id/tv_mineral_whole_hashrate"
             tools:text="fjslfjdsl"
-            android:text="@{`挖矿币种：`+vm.pay_symbol}"
+            android:text="@{@string/mineral_currency(vm.pay_symbol)}"
             android:layout_marginBottom="@dimen/dp_4"
             android:textColor="@color/white"
             android:alpha="0.7"

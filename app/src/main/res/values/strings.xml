@@ -880,4 +880,17 @@
     <string name="professional_chip">专业芯片</string>
     <string name="not_pledged">未抵押</string>
     <string name="DINProRegular">DINProRegular</string>
+    <string name="mineral_hashrate">算力:%sTH/S</string>
+    <string name="mineral_currency">挖矿币种:%s</string>
+    <string name="my_mineral_status">我的矿机状态</string>
+    <string name="income_record">收益记录</string>
+    <string name="average_hashrate_24">24小时平均算力</string>
+    <string name="income_before_24h">过去24小时收益</string>
+    <string name="income_today_btc">今日BTC挖矿收益</string>
+    <string name="income_today_btw">今日BTW挖矿收益</string>
+    <string name="mineral_total_num">总矿机数量</string>
+    <string name="working_mineral">挖矿中的矿机</string>
+    <string name="my_mineral">我的矿机</string>
+    <string name="mineral_weight">重量：%skg</string>
+    <string name="mineral_power">算力：%sTH/S   功率：%sW</string>
 </resources>
