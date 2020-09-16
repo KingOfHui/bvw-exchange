@@ -62,13 +62,13 @@ public class HardwareMineralActivity extends BaseBindingActivity<ActivityHardMin
         mViewModel.getMineralListLive().observe(this, new Observer<MineralListResponse>() {
             @Override
             public void onChanged(MineralListResponse mineralListResponse) {
-                for (int i = 0; i < 10; i++) {
+                /*for (int i = 0; i < 10; i++) {
                     MineralListResponse.ItemsBean bean = new MineralListResponse.ItemsBean();
                     bean.setPay_symbol("BTW/BTC" + i);
                     bean.setPower_btc_1_hour("123---" + i);
                     bean.setPower(i);
                     mineralListResponse.getItems().add(bean);
-                }
+                }*/
                 if (mineralListResponse.getItems() != null && !mineralListResponse.getItems().isEmpty()) {
                     adapter.setNewData(mineralListResponse.getItems());
                 } else {

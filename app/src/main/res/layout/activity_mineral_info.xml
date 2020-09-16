@@ -106,7 +106,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@mipmap/erweima_scan_view"
-                    android:text="@{@string/mineral_weight(`9kg`)}"
+                    android:text="@{@string/mineral_weight(info.minerInfo.base_weight)}"
                     android:textColor="@color/white"
                     android:textSize="13sp"
                     android:layout_margin="@dimen/dimen_15dp"
@@ -118,7 +118,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@mipmap/erweima_scan_view"
-                    android:text="@{@string/mineral_power(`100`,`2500-3000`)}"
+                    android:text="@{@string/mineral_power(info.minerInfo.pool_power,info.minerInfo.base_electricity)}"
                     android:textColor="@color/white"
                     android:textSize="13sp"
                     android:layout_margin="@dimen/dimen_15dp"
@@ -130,7 +130,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@mipmap/erweima_scan_view"
-                    android:text="挖矿币种：BTC、BTW"
+                    android:text="@{@string/mineral_currency(info.minerInfo.base_out_symbol)}"
                     android:textColor="@color/white"
                     android:textSize="13sp"
                     android:layout_margin="@dimen/dimen_15dp"
@@ -142,7 +142,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@mipmap/erweima_scan_view"
-                    android:text="挖矿时间：3年"
+                    android:text="@{@string/mineral_time(info.minerInfo.base_years)}"
                     android:textSize="13sp"
                     android:layout_margin="@dimen/dimen_15dp"
                     android:drawablePadding="@dimen/dimen_10dp"
@@ -168,7 +168,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="我的矿机状态"
+                        android:text="@string/my_mineral_status"
                         android:textSize="13sp"
                         android:layout_margin="@dimen/dimen_15dp"
                         android:textColor="#01FCDA" />
@@ -178,7 +178,7 @@
                         android:layout_height="wrap_content"
                         android:drawableLeft="@mipmap/erweima_scan_view"
                         android:gravity="center_vertical"
-                        android:text="收益记录"
+                        android:text="@string/income_record"
                         android:textSize="13sp"
                         android:layout_margin="@dimen/dimen_15dp"
                         android:drawablePadding="@dimen/dimen_10dp"
@@ -201,7 +201,7 @@
                             android:id="@+id/tv_average_count"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0.00"
+                            android:text="@{vm.getSpanString(vm.mineralStatusResponseLiveData.power_24_hour_avg,` H/S`), default = `0`}"
                             android:layout_marginLeft="@dimen/dimen_15dp"
                             android:layout_marginTop="@dimen/dimen_15dp"
                             android:textColor="@color/white" />
@@ -210,7 +210,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/tv_average_count"
-                            android:text="24小时平均算力"
+                            android:text="@string/average_hashrate_24"
                             android:textSize="12sp"
                             android:layout_margin="@dimen/dimen_15dp"
                             android:drawablePadding="@dimen/dimen_10dp"
@@ -227,7 +227,7 @@
                             android:id="@+id/tv_before_count"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0.00"
+                            android:text="@{vm.getSpanString(vm.mineralStatusResponseLiveData.power_24_hour_usd_bonus,` USDT`), default = `0`}"
                             android:layout_marginLeft="@dimen/dimen_15dp"
                             android:layout_marginTop="@dimen/dimen_15dp"
 
@@ -237,7 +237,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/tv_before_count"
-                            android:text="过去24小时收益"
+                            android:text="@string/income_before_24h"
                             android:textSize="12sp"
                             android:layout_margin="@dimen/dimen_15dp"
                             android:drawablePadding="@dimen/dimen_10dp"
@@ -259,7 +259,7 @@
                             android:id="@+id/tv_btc_income"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0.00004"
+                            android:text="@{vm.getSpanString(vm.mineralStatusResponseLiveData.today_btc_bonus,` BTC`), default = `0`}"
                             android:layout_marginLeft="@dimen/dimen_15dp"
                             android:layout_marginTop="@dimen/dimen_15dp"
                             android:textColor="@color/white" />
@@ -268,7 +268,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/tv_btc_income"
-                            android:text="今日BTC挖矿收益"
+                            android:text="@string/income_today_btc"
                             android:textSize="12sp"
                             android:layout_margin="@dimen/dimen_15dp"
                             android:drawablePadding="@dimen/dimen_10dp"
@@ -285,7 +285,7 @@
                             android:id="@+id/tv_btw_income"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="400.00"
+                            android:text="@{vm.getSpanString(vm.mineralStatusResponseLiveData.today_btw_bonus,` BTW`), default = `0`}"
                             android:layout_marginLeft="@dimen/dimen_15dp"
                             android:layout_marginTop="@dimen/dimen_15dp"
                             android:textColor="@color/white" />
@@ -294,7 +294,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/tv_btw_income"
-                            android:text="今日BTW挖矿收益"
+                            android:text="@string/income_today_btw"
                             android:textSize="12sp"
                             android:layout_margin="@dimen/dimen_15dp"
                             android:drawablePadding="@dimen/dimen_10dp"
@@ -335,55 +335,55 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@id/view2"
-                    app:left_text="全网算力"
+                    app:left_text="@string/net_power"
                     android:textSize="12sp"
                     android:layout_margin="@dimen/dimen_15dp"
-                    app:right_text="100.23EH/s" />
+                    app:right_text="@{@string/net_power_num(info.minerInfo.net_power)}" />
 
                 <com.darknet.bvw.view.HorizontalLineView
                     android:id="@+id/lv_daily_earnings"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@id/lv_whole_hashrate"
-                    app:left_text="每T日收益"
+                    app:left_text="@string/net_day_bonus_tip"
                     android:layout_margin="@dimen/dimen_15dp"
-                    app:right_text="333434usdt" />
+                    app:right_text="@{@string/net_day_bonus(info.minerInfo.net_day_bonus)}" />
 
                 <com.darknet.bvw.view.HorizontalLineView
                     android:id="@+id/lv_next_difficulty"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@id/lv_daily_earnings"
-                    app:left_text="预计下次难度"
+                    app:left_text="@string/net_next_hard_tip"
                     android:layout_margin="@dimen/dimen_15dp"
-                    app:right_text="17.03t(+2%)" />
+                    app:right_text="@{info.minerInfo.net_next_hard}" />
 
                 <com.darknet.bvw.view.HorizontalLineView
                     android:id="@+id/lv_to_time"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@id/lv_next_difficulty"
-                    app:left_text="距离调整时间"
+                    app:left_text="@string/net_make_time_tip"
                     android:layout_margin="@dimen/dimen_15dp"
-                    app:right_text="23小时" />
+                    app:right_text="@{@string/net_make_time(info.minerInfo.net_make_time)}" />
 
                 <com.darknet.bvw.view.HorizontalLineView
                     android:id="@+id/lv_whole_mineral_count"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@id/lv_to_time"
-                    app:left_text="全网矿机数量"
+                    app:left_text="@string/net_miner_count_tip"
                     android:layout_margin="@dimen/dimen_15dp"
-                    app:right_text="2000个" />
+                    app:right_text="@{@string/net_miner_count(info.minerInfo.net_miner_count)}" />
 
                 <com.darknet.bvw.view.HorizontalLineView
                     android:id="@+id/lv_market_price"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@id/lv_whole_mineral_count"
-                    app:left_text="币价"
+                    app:left_text="@string/bit_price_tip"
                     android:layout_margin="@dimen/dimen_15dp"
-                    app:right_text="btc$80000   btw$0.1" />
+                    app:right_text="@{@string/bit_price(info.minerInfo.net_btc_price,info.minerInfo.net_btw_price)}" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -400,7 +400,7 @@
                     android:id="@+id/tv_pool_info"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="全网BTW信息"
+                    android:text="@string/mineral_pool_info_tip"
                     android:layout_margin="@dimen/dimen_15dp"
                     android:textSize="15sp"
                     android:textColor="@color/color_01FCDA"
@@ -418,17 +418,17 @@
                     android:layout_margin="@dimen/dimen_15dp"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@id/view3"
-                    app:left_text="矿池算力"
-                    app:right_text="100.23EH/s" />
+                    app:left_text="@string/mineral_pool_hashrate_tip"
+                    app:right_text="@{@string/pool_power(info.minerInfo.pool_power)}" />
 
                 <com.darknet.bvw.view.HorizontalLineView
                     android:id="@+id/lv_pool_pay_time"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@id/lv_pool_hashrate"
-                    app:left_text="支付时间"
+                    app:left_text="@string/pool_pay_time_tip"
                     android:layout_margin="@dimen/dimen_15dp"
-                    app:right_text="每日一次" />
+                    app:right_text="@{info.minerInfo.pool_pay_time}" />
 
                 <com.darknet.bvw.view.HorizontalLineView
                     android:id="@+id/lv_pool_area_us"
@@ -436,9 +436,9 @@
                     android:layout_height="wrap_content"
                     app:img_visible="true"
                     app:layout_constraintTop_toBottomOf="@id/lv_pool_pay_time"
-                    app:left_text="美国区"
+                    app:left_text="@string/pool_us_tip"
                     android:layout_margin="@dimen/dimen_15dp"
-                    app:right_text="sdsdsdsdsdsdsds" />
+                    app:right_text="@{info.minerInfo.pool_us}" />
 
                 <com.darknet.bvw.view.HorizontalLineView
                     android:id="@+id/lv_pool_area_china"
@@ -446,17 +446,17 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@id/lv_pool_area_us"
                     android:layout_margin="@dimen/dimen_15dp"
-                    app:left_text="中国区"
-                    app:right_text="sdsdsdsdsdsdsds" />
+                    app:left_text="@string/pool_zh_tip"
+                    app:right_text="@{info.minerInfo.pool_zh}" />
 
                 <com.darknet.bvw.view.HorizontalLineView
                     android:id="@+id/lv_pool_area_european"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@id/lv_pool_area_china"
-                    app:left_text="欧洲区"
+                    app:left_text="@string/pool_eu_tip"
                     android:layout_margin="@dimen/dimen_15dp"
-                    app:right_text="sdsdsdsdsdsdsds" />
+                    app:right_text="@{info.minerInfo.pool_eu}" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -499,6 +499,7 @@
                     android:layout_height="wrap_content"
                     android:background="#333040"
                     android:hint="请输入账户"
+                    android:textSize="12sp"
                     android:layout_margin="@dimen/dimen_15dp"
                     android:textColor="#88FFFFFF"
                     android:textColorHint="#88FFFFFF"
@@ -519,6 +520,7 @@
                     android:layout_height="wrap_content"
                     android:background="#333040"
                     android:hint="请输入密码"
+                    android:textSize="12sp"
                     android:textColor="#88FFFFFF"
                     android:textColorHint="#88FFFFFF"
                     android:layout_margin="@dimen/dimen_15dp"
@@ -539,6 +541,7 @@
                     android:layout_height="wrap_content"
                     android:background="#333040"
                     android:hint="fjsdlfjsl"
+                    android:textSize="12sp"
                     android:textColor="#88FFFFFF"
                     android:textColorHint="#88FFFFFF"
                     android:layout_margin="@dimen/dimen_15dp"
@@ -547,10 +550,13 @@
 
             <com.google.android.material.button.MaterialButton
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:backgroundTint="@color/color_01FCDA"
                 android:text="立即质押360000BTW开机"
+                android:textSize="@dimen/sp_16"
                 android:layout_margin="@dimen/dimen_15dp"
+                android:textStyle="bold"
+                android:textColor="#000"
                 android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"

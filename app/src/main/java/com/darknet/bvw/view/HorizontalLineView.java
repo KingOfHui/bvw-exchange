@@ -19,6 +19,9 @@ import com.darknet.bvw.R;
  * @Date 2020/9/8 0008 19:44
  */
 public class HorizontalLineView extends LinearLayout {
+
+    private TextView mTvRight;
+
     public HorizontalLineView(Context context) {
         this(context,null);
     }
@@ -35,7 +38,7 @@ public class HorizontalLineView extends LinearLayout {
     private void init(Context context, AttributeSet attrs) {
         View view = View.inflate(context, R.layout.view_horizontal_line, this);
         TextView tvLeft = view.findViewById(R.id.tv_left);
-        TextView tvRight = view.findViewById(R.id.tv_right);
+        mTvRight = view.findViewById(R.id.tv_right);
         ImageView ivRight = view.findViewById(R.id.iv_right);
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.HorizontalLineView);
         String leftText = ta.getString(R.styleable.HorizontalLineView_left_text);
@@ -43,9 +46,15 @@ public class HorizontalLineView extends LinearLayout {
         int rightImageRes = ta.getResourceId(R.styleable.HorizontalLineView_right_image, R.mipmap.contacts_press);
         boolean visible = ta.getBoolean(R.styleable.HorizontalLineView_img_visible, false);
         tvLeft.setText(leftText);
-        tvRight.setText(rightText);
+        mTvRight.setText(rightText);
         ivRight.setVisibility(visible ? VISIBLE : GONE);
         ivRight.setImageResource(rightImageRes);
         ta.recycle();
+    }
+
+    public void setRightText(String rightText) {
+        if (mTvRight != null) {
+            mTvRight.setText(rightText);
+        }
     }
 }
