@@ -20,7 +20,7 @@ import java.io.Serializable;
 public class MineralInfoActivity extends BaseBindingActivity<ActivityMineralInfoBinding> {
     public static void startSelf(Context context, MineralListResponse.ItemsBean itemsBean) {
         Intent intent = new Intent(context, MineralInfoActivity.class);
-        intent.putExtra("imteInfo", itemsBean);
+        intent.putExtra("itemInfo", itemsBean);
         context.startActivity(intent);
     }
 
@@ -36,6 +36,7 @@ public class MineralInfoActivity extends BaseBindingActivity<ActivityMineralInfo
         mBinding.layoutTitle.titleRight.setVisibility(View.VISIBLE);
         mBinding.layoutTitle.titleRight.setTextColor(Color.parseColor("#01FCDA"));
         mBinding.layoutTitle.titleRight.setOnClickListener(v->AddMineralActivity.startSelf(this));
+        mBinding.setLifecycleOwner(this);
     }
 
     @Override
