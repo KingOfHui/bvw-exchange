@@ -60,7 +60,7 @@ public class MineralListResponse implements Serializable {
         this.items = items;
     }
 
-    public static class ItemsBean {
+    public static class ItemsBean implements Serializable{
         /**
          * create_at :
          * f2pool_account :
@@ -235,7 +235,7 @@ public class MineralListResponse implements Serializable {
             this.user_id = user_id;
         }
 
-        public static class MinerInfoBean {
+        public static class MinerInfoBean implements Serializable{
             /**
              * base_electricity :
              * base_name :
