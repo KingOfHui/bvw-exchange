@@ -23,14 +23,14 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mActivity = getActivity();
-        View view = LayoutInflater.from(mActivity).inflate(getLayoutId(), container);
-        initView();
+        View view = LayoutInflater.from(mActivity).inflate(getLayoutId(), null);
+        initView(view);
         initEvent();
         initDatas();
         return view;
     }
 
-    public abstract void initView();
+    public abstract void initView(View view);
 
     public abstract int getLayoutId();
 

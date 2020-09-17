@@ -168,6 +168,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:emptyContentTextColor="#A4A4AB"
+                    android:layout_marginLeft="@dimen/dimen_15dp"
+                    android:layout_marginRight="@dimen/dimen_15dp"
                     app:emptyContentTextSize="14sp"
                     android:background="#272436"
                     android:paddingBottom="@dimen/dimen_15dp"

@@ -4,8 +4,10 @@ import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 import androidx.databinding.library.baseAdapters.BR;
 
+import java.io.Serializable;
 
-public class MineralStatusResponse  extends BaseObservable {
+
+public class MineralStatusResponse  extends BaseObservable implements Serializable {
 
     /**
      * miner_count : 0

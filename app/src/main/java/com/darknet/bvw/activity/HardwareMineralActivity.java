@@ -90,8 +90,9 @@ public class HardwareMineralActivity extends BaseBindingActivity<ActivityHardMin
         adapter.setOnItemClickListener((adapter1, view, position) -> {
             List<MineralListResponse.ItemsBean> data = adapter.getData();
             MineralListResponse.ItemsBean itemsBean = data.get(position);
-            MineralInfoActivity.startSelf(this,itemsBean);
+            MineralInfoActivity.startSelf(this,itemsBean, mViewModel.getMineralStatusResponseLiveData().getValue());
         });
+        mBinding.tvIncomeRecord.setOnClickListener(view -> IncomeRecordActivity.startSelf(this));
         mBinding.executePendingBindings();
     }
 

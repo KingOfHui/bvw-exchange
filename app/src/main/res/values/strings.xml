@@ -927,4 +927,7 @@
     <string name="tip_invitee">被邀请人</string>
     <string name="tip_daily_capacity">日产</string>
     <string name="tip_invite_time">邀请时间</string>
+    <string name="mineral_income">挖矿收益</string>
+    <string name="tuijian_income">推荐收益</string>
+    <string name="da_kuang_gong_jiang_li">大矿工奖励</string>
 </resources>

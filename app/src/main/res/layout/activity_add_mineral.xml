@@ -148,27 +148,69 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
                 <com.darknet.bvw.view.TypefaceTextView
+                    android:id="@+id/et_url_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dimen_15dp"
+                    android:background="#333040"
+                    android:padding="7dp"
+                    android:drawablePadding="7dp"
+                    android:text="@{}"
+                    android:textColor="#88FFFFFF"
+                    android:textColorHint="#88FFFFFF"
+                    android:textSize="12sp"
+                    app:layout_constraintTop_toBottomOf="@id/tv10" />
+
+                <com.darknet.bvw.view.TypefaceTextView
                     android:id="@+id/tv11"
                     android:layout_marginLeft="@dimen/dimen_15dp"
                     android:layout_marginTop="@dimen/dimen_25dp"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv10"
+                    app:layout_constraintTop_toBottomOf="@id/et_url_1"
                     android:text="URL2:"
                     android:textSize="13sp"
                     android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
                 <com.darknet.bvw.view.TypefaceTextView
+                    android:id="@+id/et_url_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dimen_15dp"
+                    android:background="#333040"
+                    android:padding="7dp"
+                    android:drawablePadding="7dp"
+                    android:text="@{}"
+                    android:textColor="#88FFFFFF"
+                    android:textColorHint="#88FFFFFF"
+                    android:textSize="12sp"
+                    app:layout_constraintTop_toBottomOf="@id/tv11" />
+
+                <com.darknet.bvw.view.TypefaceTextView
                     android:id="@+id/tv12"
                     android:layout_marginLeft="@dimen/dimen_15dp"
                     android:layout_marginTop="@dimen/dimen_25dp"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv11"
+                    app:layout_constraintTop_toBottomOf="@id/et_url_2"
                     android:text="URL3:"
                     android:textSize="13sp"
                     android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
+                <com.darknet.bvw.view.TypefaceTextView
+                    android:id="@+id/et_url_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dimen_15dp"
+                    android:background="#333040"
+                    android:padding="7dp"
+                    android:drawablePadding="7dp"
+                    android:text="@{}"
+                    android:textColor="#88FFFFFF"
+                    android:textColorHint="#88FFFFFF"
+                    android:textSize="12sp"
+                    app:layout_constraintTop_toBottomOf="@id/tv12" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
     </LinearLayout>

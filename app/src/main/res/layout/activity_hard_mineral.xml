@@ -75,6 +75,7 @@
                                 android:textSize="15sp" />
 
                             <com.darknet.bvw.view.TypefaceTextView
+                                android:id="@+id/tv_income_record"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:drawableLeft="@mipmap/erweima_scan_view"

@@ -241,4 +241,9 @@
         <attr name="android:fadingEdgeLength" />
     </declare-styleable>
 
+    <style name="IncomeRecordTabLayoutText" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">16sp</item>
+    </style>
+<!--        <item name="android:textStyle">bold</item>-->
+
 </resources>

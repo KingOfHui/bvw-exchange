@@ -13,4 +13,11 @@ public class ViewAdapter {
             lineView.setRightText(rightText);
         }
     }
+
+    @BindingAdapter(value = {"onRightClick"}, requireAll = false)
+    public static void setOnRightClick(HorizontalLineView lineView, boolean isClick) {
+        if (isClick) {
+            lineView.setRightImgClick();
+        }
+    }
 }

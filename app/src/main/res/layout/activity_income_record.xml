@@ -1,57 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
 
-    <include
-        android:id="@+id/layout_title"
-        layout="@layout/lay_head_back" />
+    </data>
 
-    <LinearLayout
-        android:id="@+id/ll_income"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="#181523"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/layout_title">
+        android:layout_height="match_parent">
 
-        <com.darknet.bvw.view.TypefaceTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="历史总收益" />
 
-        <View style="@style/Line" />
+        <include
+            android:id="@+id/layout_title"
+            layout="@layout/lay_head_back_binding" />
 
         <LinearLayout
+            android:id="@+id/ll_income"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:background="#272436"
+            android:layout_margin="@dimen/dimen_15dp"
+            app:layout_constraintTop_toBottomOf="@id/layout_title">
 
             <com.darknet.bvw.view.TypefaceTextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="28BTW" />
+                android:layout_marginLeft="@dimen/dimen_15dp"
+                android:layout_marginTop="@dimen/dimen_25dp"
+                android:textSize="15sp"
+                android:textColor="@color/_01FCDA"
+                android:text="历史总收益" />
 
-            <com.darknet.bvw.view.TypefaceTextView
-                android:layout_width="wrap_content"
+            <View style="@style/Line_4E4A5E"
+                android:layout_margin="@dimen/dimen_15dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="8.1BTC" />
+                android:layout_marginLeft="@dimen/dimen_15dp"
+                android:layout_marginTop="@dimen/dimen_20dp"
+                android:orientation="horizontal"
+                android:layout_marginBottom="@dimen/dimen_25dp">
+
+                <com.darknet.bvw.view.TypefaceTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/_01FCDA"
+                    android:textSize="28sp"
+                    android:layout_weight="1"
+                    android:text="28BTW" />
+
+                <com.darknet.bvw.view.TypefaceTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/_01FCDA"
+                    android:textSize="28sp"
+                    android:layout_weight="1"
+                    android:text="8.1BTC" />
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tab_income"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/ll_income" />
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_income"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_15dp"
+            app:tabGravity="fill"
+            app:tabMaxWidth="0dp"
+            app:tabIndicator="@drawable/i2_tab_indicator"
+            app:tabIndicatorColor="@color/_01FCDA"
+            app:tabIndicatorFullWidth="false"
+            app:tabTextColor="#C7C7C7"
+            app:tabSelectedTextColor="@color/_01FCDA"
+            app:tabTextAppearance="@style/IncomeRecordTabLayoutText"
+            app:tabIndicatorHeight="2dp"
+            app:tabMode="auto"
+            app:layout_constraintTop_toBottomOf="@id/ll_income" />
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/vp_income"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tab_income" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.viewpager.widget.ViewPager
+            android:layout_marginTop="@dimen/dimen_15dp"
+            android:id="@+id/vp_income"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="@dimen/dimen_15dp"
+            android:layout_marginRight="@dimen/dimen_15dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tab_income" />
+       <!-- <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp_income"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tab_income" />-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
