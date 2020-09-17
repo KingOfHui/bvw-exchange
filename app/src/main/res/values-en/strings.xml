@@ -879,5 +879,16 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="pool_us_tip">美国区</string>
     <string name="pool_zh_tip">中国区</string>
     <string name="pool_eu_tip">欧洲区</string>
+    <string name="account_info">账户信息</string>
+    <string name="bonus_address">收益地址</string>
+    <string name="mineral_pwd">矿机密码</string>
+    <string name="mineral_no">矿机编号</string>
+    <string name="my_invite_no_data">当前没有邀请的人</string>
+    <string name="total_person_no">总人数</string>
+    <string name="first_join_person_no">直接加入人数</string>
+    <string name="second_join_person_no">间接加入人数</string>
+    <string name="tip_invitee">被邀请人</string>
+    <string name="tip_daily_capacity">日产</string>
+    <string name="tip_invite_time">邀请时间</string>
 
 </resources>

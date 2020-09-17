@@ -265,6 +265,7 @@
                         android:orientation="vertical"
                         android:paddingLeft="@dimen/dimen_15dp"
                         android:paddingRight="@dimen/dimen_15dp"
+                        android:paddingBottom="@dimen/dimen_15dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/ll_mine_status">
 
@@ -286,9 +287,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             app:emptyContentTextColor="#A4A4AB"
-                            app:emptyContentTextSize="14sp"
-                            app:emptyImageHeight="@dimen/dimen_100dp"
-                            app:emptyImageWidth="@dimen/dimen_120dp">
+                            app:emptyContentTextSize="14sp">
 
                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/rv_mineral"

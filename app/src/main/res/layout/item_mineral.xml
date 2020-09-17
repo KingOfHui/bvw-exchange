@@ -45,7 +45,7 @@
             android:textSize="@dimen/dimen_15dp"
             android:textColor="@color/white"
             tools:text= "156446156"
-            android:text="BITWorld-90T"
+            android:text="@{vm.minerInfo.base_name}"
             android:layout_marginTop="@dimen/dp_4"
             android:layout_marginStart="@dimen/dimen_15dp"
             app:layout_constraintLeft_toRightOf="@id/iv_mineral"

@@ -31,6 +31,7 @@ public class MineralInfoActivity extends BaseBindingActivity<ActivityMineralInfo
 
     @Override
     public void initView() {
+        mBinding.layoutTitle.layBack.setOnClickListener(v -> finish());
         mBinding.layoutTitle.title.setText(getString(R.string.mineral));
         mBinding.layoutTitle.titleRight.setText(getString(R.string.mineral_pool));
         mBinding.layoutTitle.titleRight.setVisibility(View.VISIBLE);

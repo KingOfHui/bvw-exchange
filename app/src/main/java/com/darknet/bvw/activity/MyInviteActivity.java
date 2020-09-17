@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.print.PrintJob;
 
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,6 +16,8 @@ import com.darknet.bvw.databinding.ActivityMyInviteBinding;
 import com.darknet.bvw.databinding.ItemMyInviteBinding;
 import com.darknet.bvw.model.response.InviteDataResponse;
 import com.darknet.bvw.viewmodel.InviteViewModel;
+
+import java.util.List;
 
 /**
  * @author DH
@@ -33,6 +36,7 @@ public class MyInviteActivity extends BaseBindingActivity<ActivityMyInviteBindin
     public void initView() {
         InviteViewModel viewModel = new ViewModelProvider(this, new ViewModelProvider.AndroidViewModelFactory(getApplication())).get(InviteViewModel.class);
         mBinding.setLifecycleOwner(this);
+        mBinding.titleLayout.layBack.setOnClickListener((v) -> finish());
         mBinding.titleLayout.title.setText(getString(R.string.my_invite));
         mBinding.rvInviteList.setLayoutManager(new LinearLayoutManager(this));
         InviteAdapter adapter = new InviteAdapter();
@@ -42,7 +46,16 @@ public class MyInviteActivity extends BaseBindingActivity<ActivityMyInviteBindin
             @Override
             public void onChanged(InviteDataResponse inviteDataResponse) {
                 mBinding.setData(inviteDataResponse);
-                adapter.setNewData(inviteDataResponse.getLowerLevel1List().getItems());
+                InviteDataResponse.LowerLevel1ListBean lowerLevel1List = inviteDataResponse.getLowerLevel1List();
+                if (lowerLevel1List!=null) {
+                    List<InviteDataResponse.LowerLevel1ListBean.ItemsBean> items = lowerLevel1List.getItems();
+                    if (items != null && items.size() > 0) {
+                        adapter.setNewData(items);
+                    }
+                    return;
+                }
+                mBinding.progressLayout.showEmpty(ContextCompat.getDrawable(mAppContext, R.mipmap.img_no_data), getString(R.string.my_invite_no_data));
+
             }
         });
     }

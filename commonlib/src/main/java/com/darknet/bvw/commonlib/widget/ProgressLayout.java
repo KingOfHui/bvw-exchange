@@ -16,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.darknet.bvw.commonlib.R;
+import com.darknet.bvw.commonlib.util.ResourceUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -99,7 +100,7 @@ public class ProgressLayout extends RelativeLayout {
         // Get default dimensions
         loadingStateProgressBarRadius = (int) res.getDimension(R.dimen.progressbar_radius);
         loadingStateProgressBarSpinWidth = (int) res.getDimension(R.dimen.spin_width);
-        emptyStateImageWidth = emptyStateImageHeight = errorStateImageWidth = errorStateImageHeight
+        errorStateImageWidth = errorStateImageHeight
                 = (int) res.getDimension(R.dimen.image_size);
         emptyStateContentTextSize = errorStateContentTextSize = errorStateButtonTextSize
                 = (int) res.getDimension(R.dimen.font_size);
@@ -111,8 +112,9 @@ public class ProgressLayout extends RelativeLayout {
         loadingStateProgressBarColor = typedArray.getColor(R.styleable.ProgressLayout_loadingProgressBarColor, Color.TRANSPARENT);
 
         // Empty state attrs
-        emptyStateImageWidth = (int) (typedArray.getDimension(R.styleable.ProgressLayout_emptyImageWidth, emptyStateImageWidth) / scaleRatio);
-        emptyStateImageHeight = (int) (typedArray.getDimension(R.styleable.ProgressLayout_emptyImageHeight, emptyStateImageHeight) / scaleRatio);
+        int defValue = ResourceUtils.getScreenWidth(getContext()) / 2;
+        emptyStateImageWidth = (int) (typedArray.getDimension(R.styleable.ProgressLayout_emptyImageWidth, defValue) );
+        emptyStateImageHeight = (int) (typedArray.getDimension(R.styleable.ProgressLayout_emptyImageHeight, defValue - ResourceUtils.dp2px(getContext(),70)));
         emptyStateContentTextSize = (int) (typedArray.getDimension(R.styleable.ProgressLayout_emptyContentTextSize, emptyStateContentTextSize) / scaleRatio);
         emptyStateContentTextColor = typedArray.getColor(R.styleable.ProgressLayout_emptyContentTextColor, ContextCompat.getColor(getContext(), R.color.grey));
         emptyStateBackgroundColor = typedArray.getColor(R.styleable.ProgressLayout_emptyBackgroundColor, Color.TRANSPARENT);
@@ -335,8 +337,8 @@ public class ProgressLayout extends RelativeLayout {
             emptyStateContentTextView = (TextView) view.findViewById(R.id.emptyStateContentTextView);
 
             //Set empty state image width and height
-//            emptyStateImageView.getLayoutParams().width = emptyStateImageWidth;
-//            emptyStateImageView.getLayoutParams().height = emptyStateImageHeight;
+            emptyStateImageView.getLayoutParams().width = emptyStateImageWidth;
+            emptyStateImageView.getLayoutParams().height = emptyStateImageHeight;
 //            emptyStateImageView.requestLayout();
 
             emptyStateContentTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, emptyStateContentTextSize);

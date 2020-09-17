@@ -22,6 +22,7 @@ public class AddMineralActivity extends BaseBindingActivity<ActivityAddMineralBi
 
     @Override
     public void initView() {
+        mBinding.layoutTitle.layBack.setOnClickListener(v -> finish());
         mBinding.layoutTitle.title.setText(getString(R.string.mineral));
     }
 
