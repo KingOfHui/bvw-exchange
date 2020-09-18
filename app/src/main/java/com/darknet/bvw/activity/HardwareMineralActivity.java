@@ -69,7 +69,7 @@ public class HardwareMineralActivity extends BaseBindingActivity<ActivityHardMin
                     bean.setPower(i);
                     mineralListResponse.getItems().add(bean);
                 }*/
-                if (mineralListResponse.getItems() != null && !mineralListResponse.getItems().isEmpty()) {
+                if (mineralListResponse !=null && mineralListResponse.getItems() != null && !mineralListResponse.getItems().isEmpty()) {
                     adapter.setNewData(mineralListResponse.getItems());
                 } else {
                     mBinding.progressLayout.showEmpty(ContextCompat.getDrawable(mAppContext, R.mipmap.img_no_data), getString(R.string.mineral_list_no_data));

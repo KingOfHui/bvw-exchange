@@ -45,14 +45,16 @@ public class MyInviteActivity extends BaseBindingActivity<ActivityMyInviteBindin
         viewModel.getInviteDataLive().observe(this, new Observer<InviteDataResponse>() {
             @Override
             public void onChanged(InviteDataResponse inviteDataResponse) {
-                mBinding.setData(inviteDataResponse);
-                InviteDataResponse.LowerLevel1ListBean lowerLevel1List = inviteDataResponse.getLowerLevel1List();
-                if (lowerLevel1List!=null) {
-                    List<InviteDataResponse.LowerLevel1ListBean.ItemsBean> items = lowerLevel1List.getItems();
-                    if (items != null && items.size() > 0) {
-                        adapter.setNewData(items);
+                if (inviteDataResponse!=null) {
+                    mBinding.setData(inviteDataResponse);
+                    InviteDataResponse.LowerLevel1ListBean lowerLevel1List = inviteDataResponse.getLowerLevel1List();
+                    if (lowerLevel1List != null) {
+                        List<InviteDataResponse.LowerLevel1ListBean.ItemsBean> items = lowerLevel1List.getItems();
+                        if (items != null && items.size() > 0) {
+                            adapter.setNewData(items);
+                        }
+                        return;
                     }
-                    return;
                 }
                 mBinding.progressLayout.showEmpty(ContextCompat.getDrawable(mAppContext, R.mipmap.img_no_data), getString(R.string.my_invite_no_data));
 

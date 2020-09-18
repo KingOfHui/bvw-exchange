@@ -8,19 +8,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.darknet.bvw.R;
-import com.darknet.bvw.base.BaseDataBindingAdapter;
 import com.darknet.bvw.common.BaseFragment;
 import com.darknet.bvw.model.MineralBonusListResponse;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class IncomeRecordFragment extends BaseFragment {
+public class IncomeRecordFragment2 extends BaseFragment {
 
-    private MyAdapter mAdapter;
-
-    public static IncomeRecordFragment newInstance(boolean b) {
-        return new IncomeRecordFragment();
+    public static IncomeRecordFragment2 newInstance(boolean b) {
+        return new IncomeRecordFragment2();
     }
 
     @Override
@@ -32,8 +29,13 @@ public class IncomeRecordFragment extends BaseFragment {
     public void initView(View view) {
         RecyclerView rv = view.findViewById(R.id.rv_income_record);
         rv.setLayoutManager(new LinearLayoutManager(requireContext()));
-        mAdapter = new MyAdapter();
-        rv.setAdapter(mAdapter);
+        MyAdapter adapter = new MyAdapter();
+        rv.setAdapter(adapter);
+        ArrayList<String> list = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            list.add("position" + i);
+        }
+        adapter.setNewData(list);
     }
 
 
@@ -48,19 +50,18 @@ public class IncomeRecordFragment extends BaseFragment {
     }
 
     public void setList(List<MineralBonusListResponse.ItemsBean> itemsBeans) {
-        mAdapter.setNewData(itemsBeans);
+
     }
 
-    private static class MyAdapter extends BaseQuickAdapter<MineralBonusListResponse.ItemsBean, BaseViewHolder> {
+    private static class MyAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
 
         public MyAdapter() {
             super(R.layout.item_income_record_first);
         }
 
         @Override
-        protected void convert(BaseViewHolder helper, MineralBonusListResponse.ItemsBean item) {
-            helper.setText(R.id.tv_time, item.getCreate_at());
-            helper.setText(R.id.tv_bonus, String.valueOf(item.getBonus_big_node()));
+        protected void convert(BaseViewHolder helper, String item) {
+
         }
     }
 }

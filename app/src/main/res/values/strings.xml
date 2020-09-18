@@ -930,4 +930,8 @@
     <string name="mineral_income">挖矿收益</string>
     <string name="tuijian_income">推荐收益</string>
     <string name="da_kuang_gong_jiang_li">大矿工奖励</string>
+    <string name="wei_zhi_ya">未质押</string>
+    <string name="wa_kuang_zhong">挖矿中</string>
+    <string name="gu_zhang_zhong">故障中</string>
+    <string name="fix_after_48h">(48小时修复)</string>
 </resources>

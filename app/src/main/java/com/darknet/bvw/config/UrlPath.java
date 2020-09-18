@@ -116,4 +116,5 @@ public class UrlPath {
     public static final String GET_MINERAL_BONUS_LIST = "api/v1/miner/bonusList";//获取矿机收益列表
     public static final String GET_USER_INVITE_DATA = "api/v1/user/inviteData";//获取我的邀请信息和邀请人列表
 
+    public static final String GET_MINERAL_PAY_ADDRESS = "api/v1/dictByKey/MINER_PAY_BTW";
 }

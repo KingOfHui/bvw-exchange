@@ -51,7 +51,7 @@ public class InviteViewModel extends AndroidViewModel {
         map.put("limit", 20);
         map.put("page", 0);
         RequestBody requestBody = RequestBody.create(JSON, gson.toJson(map));
-        OkGo.<String>post(ConfigNetWork.JAVA_API_URL_T + UrlPath.GET_USER_INVITE_DATA)
+        OkGo.<String>post(ConfigNetWork.JAVA_API_URL + UrlPath.GET_USER_INVITE_DATA)
                 .tag(InviteViewModel.this)
                 .headers("Chain-Authentication", addressVals + "#" + msg + "#" + signVal)
                 .upRequestBody(requestBody)
@@ -84,6 +84,7 @@ public class InviteViewModel extends AndroidViewModel {
                     @Override
                     public void onError(Response<String> response) {
                         super.onError(response);
+                        getInviteDataLive().setValue(null);
                         isEmptyLive.setValue(true);
                         Log.e("dhdhdh", "onError: " + response.getException().toString());
                     }

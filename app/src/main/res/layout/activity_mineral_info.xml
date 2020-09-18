@@ -6,6 +6,7 @@
 
     <data>
 
+        <import type="android.view.View"/>
         <variable
             name="vm"
             type="com.darknet.bvw.viewmodel.MineralViewModel" />
@@ -13,6 +14,8 @@
         <variable
             name="info"
             type="com.darknet.bvw.model.response.MineralListResponse.ItemsBean" />
+        <import
+            type="com.darknet.bvw.bindingadapter.MyInverseMethod" />
     </data>
 
 
@@ -37,14 +40,47 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+<!--                    android:text="@={MyInverseMethod.toText(tv_mineral_status,info.pay_state)}"-->
+                <com.darknet.bvw.view.TypefaceTextView
+                    android:id="@+id/tv_mineral_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:visibility="@{info.state!=2?View.VISIBLE:View.INVISIBLE}"
+                    android:text="@{info.pay_state == 2?@string/wa_kuang_zhong:@string/wei_zhi_ya}"
+                    android:textColor="@color/black"
+                    android:background="@drawable/shape_bg_mineral_status"
+                    android:paddingLeft="@dimen/dimen_10dp"
+                    android:gravity="center"
+                    android:paddingBottom="3dp"
+                    android:paddingTop="3dp"
+                    android:paddingRight="@dimen/dimen_15dp"
+                    android:layout_marginTop="@dimen/dimen_10dp"
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <ImageView
                     android:id="@+id/iv_mineral_image"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/hq_banner_one"
-                    android:layout_marginTop="@dimen/dimen_25dp"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_mineral_status" />
+
+                <com.darknet.bvw.view.TypefaceTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:text="@{vm.getStatusText()}"
+                    android:visibility="@{info.state == 2?View.VISIBLE:View.INVISIBLE}"
+                    android:textColor="@color/black"
+                    android:background="@drawable/shape_bg_mineral_status"
+                    android:paddingLeft="@dimen/dimen_10dp"
+                    android:paddingBottom="3dp"
+                    android:paddingTop="3dp"
+                    android:gravity="center"
+                    android:backgroundTint="#E34040"
+                    android:paddingRight="@dimen/dimen_15dp"
+                    android:layout_marginTop="@dimen/dimen_10dp"
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/cl_mine_info"
@@ -88,8 +124,8 @@
                         android:id="@+id/tv_mine_desc2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/dimen_15dp"
                         android:background="#181523"
+                        android:layout_marginLeft="3dp"
                         android:paddingTop="2dp"
                         android:paddingBottom="3dp"
                         android:paddingLeft="7dp"
@@ -110,6 +146,7 @@
                         android:text="@{info.minerInfo.base_pay_usdt+`USDT`}"
                         android:textColor="@color/color_01FCDA"
                         android:textSize="25sp"
+                        app:typeface="@string/DINProRegular"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_mineral_name" />
 
@@ -594,6 +631,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_to_pledge"
                     android:layout_width="0dp"
                     android:layout_height="60dp"
                     android:layout_margin="@dimen/dimen_15dp"
@@ -609,5 +647,12 @@
                     app:layout_constraintTop_toBottomOf="@id/cl_account_info" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
+        <!-- webview 演示web调用Java -->
+        <com.github.lzyzsd.jsbridge.BridgeWebView
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/webView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
