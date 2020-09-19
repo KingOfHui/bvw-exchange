@@ -19,6 +19,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintRight_toLeftOf="@id/iv_right"
         android:layout_marginRight="7dp"
+        app:typeface="@string/DINProRegular"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView

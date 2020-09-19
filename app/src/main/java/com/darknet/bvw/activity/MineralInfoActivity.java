@@ -88,7 +88,6 @@ public class MineralInfoActivity extends BaseBindingActivity<ActivityMineralInfo
         mBinding.layoutTitle.titleRight.setText(getString(R.string.mineral_pool));
         mBinding.layoutTitle.titleRight.setVisibility(View.VISIBLE);
         mBinding.layoutTitle.titleRight.setTextColor(Color.parseColor("#01FCDA"));
-        mBinding.layoutTitle.titleRight.setOnClickListener(v->AddMineralActivity.startSelf(this));
         mBinding.setLifecycleOwner(this);
         btnNext = mBinding.btnToPledge;
         webView = mBinding.webView;
@@ -102,6 +101,7 @@ public class MineralInfoActivity extends BaseBindingActivity<ActivityMineralInfo
         MineralListResponse.ItemsBean itemInfo = (MineralListResponse.ItemsBean) intent.getSerializableExtra("itemInfo");
         MineralStatusResponse statusInfo = (MineralStatusResponse) intent.getSerializableExtra("statusInfo");
         mBinding.setInfo(itemInfo);
+        mBinding.layoutTitle.titleRight.setOnClickListener(v->AddMineralActivity.startSelf(this,itemInfo.getMinerInfo()));
         mViewModel.getMineralStatusResponseLiveData().setValue(statusInfo);
         mViewModel.address.observe(this, new Observer<String>() {
             @Override
@@ -109,6 +109,7 @@ public class MineralInfoActivity extends BaseBindingActivity<ActivityMineralInfo
                 payDialog(s);
             }
         });
+        mBinding.tvIncomeRecord.setOnClickListener(view -> IncomeRecordActivity.startSelf(this));
     }
 
     private void payDialog(String address) {
@@ -179,7 +180,7 @@ public class MineralInfoActivity extends BaseBindingActivity<ActivityMineralInfo
         showDialog("");
 
 
-        OkGo.<String>post(ConfigNetWork.JAVA_API_URL + UrlPath.CREATE_TRADE_URL)
+        OkGo.<String>post(ConfigNetWork.JAVA_API_URL + UrlPath.CTEATE_RAW_TX)
                 .tag(MineralInfoActivity.this)
                 .upRequestBody(requestBody)
                 .headers("Chain-Authentication", walletModel.getAddress() + "#" + msg + "#" + signVal)
@@ -349,7 +350,7 @@ public class MineralInfoActivity extends BaseBindingActivity<ActivityMineralInfo
 
         RequestBody requestBody = RequestBody.create(JSON, jsonVal);
 
-        OkGo.<String>post(ConfigNetWork.JAVA_API_URL + UrlPath.SEND_TRADE_URL)
+        OkGo.<String>post(ConfigNetWork.JAVA_API_URL + UrlPath.SEND_RAW_TX)
                 .tag(MineralInfoActivity.this)
                 .upRequestBody(requestBody)
                 .headers("Chain-Authentication", walletModel.getAddress() + "#" + msg + "#" + headerSign)
@@ -376,24 +377,11 @@ public class MineralInfoActivity extends BaseBindingActivity<ActivityMineralInfo
 
                                     } else {
 
-//                                        EventBus.getDefault().post(new TradeSuccessEvent());
-//
-////                                        EventBus.getDefault().post(new PushEvent());
-//
-//                                        Intent tradeIntent = new Intent(TransferAccountsActivity.this, MessageCenterActivity.class);
-//                                        startActivity(tradeIntent);
-//
-//                                        Toast.makeText(TransferAccountsActivity.this, response.getMsg(), Toast.LENGTH_SHORT).show();
-//
-//                                        finish();
-
                                         new FailZZDialogView().showTips(MineralInfoActivity.this, response.getMsg());
                                     }
                                 } catch (Exception e) {
                                     try {
                                         new FailZZDialogView().showTips(MineralInfoActivity.this, getString(R.string.dialog_fail_sign));
-//                                        EventBus.getDefault().post(new PushEvent());
-//                                        finish();
                                     } catch (Exception es) {
                                         es.printStackTrace();
                                     }
@@ -405,8 +393,6 @@ public class MineralInfoActivity extends BaseBindingActivity<ActivityMineralInfo
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
-
-//                                Toast.makeText(TransferAccountsActivity.this, getString(R.string.trade_wrong_data), Toast.LENGTH_SHORT).show();
                             }
                         }
                     }
@@ -417,9 +403,7 @@ public class MineralInfoActivity extends BaseBindingActivity<ActivityMineralInfo
 
                         try {
                             new FailZZDialogView().showTips(MineralInfoActivity.this, getString(R.string.dialog_fail_sign));
-//                            dismissDialog();
                             if (!((Activity) MineralInfoActivity.this).isFinishing() && !((Activity) MineralInfoActivity.this).isDestroyed()) {
-//                                mDialog.dismiss();
                                 dismissDialog();
                             }
                         } catch (Exception e) {
@@ -431,9 +415,7 @@ public class MineralInfoActivity extends BaseBindingActivity<ActivityMineralInfo
                     public void onFinish() {
                         super.onFinish();
                         try {
-//                            dismissDialog();
                             if (!((Activity) MineralInfoActivity.this).isFinishing() && !((Activity) MineralInfoActivity.this).isDestroyed()) {
-//                                mDialog.dismiss();
                                 dismissDialog();
                             }
                             btnNext.setEnabled(true);

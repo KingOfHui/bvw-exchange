@@ -50,7 +50,7 @@ public class HorizontalLineView extends LinearLayout {
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.HorizontalLineView);
         String leftText = ta.getString(R.styleable.HorizontalLineView_left_text);
         String rightText = ta.getString(R.styleable.HorizontalLineView_right_text);
-        int rightImageRes = ta.getResourceId(R.styleable.HorizontalLineView_right_image, R.mipmap.contacts_press);
+        int rightImageRes = ta.getResourceId(R.styleable.HorizontalLineView_right_image, R.mipmap.icon_copy);
         boolean visible = ta.getBoolean(R.styleable.HorizontalLineView_img_visible, false);
         mTvLeft.setText(leftText);
         mTvRight.setText(rightText);

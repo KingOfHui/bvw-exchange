@@ -892,14 +892,14 @@
     <string name="working_mineral">挖矿中的矿机</string>
     <string name="my_mineral">我的矿机</string>
     <string name="mineral_weight">重量：%skg</string>
-    <string name="mineral_power">算力：%sTH/S   功率：%sW</string>
+    <string name="mineral_power">算力：%s   功率：%sW</string>
     <string name="my_invite">我的邀请</string>
     <string name="mineral">矿机</string>
     <string name="mineral_pool">矿池</string>
     <string name="mineral_list_no_data">您暂未添加矿机</string>
     <string name="mineral_time">挖矿时间：%s年</string>
     <string name="net_power">全网算力</string>
-    <string name="net_power_num">%sEH/s</string>
+    <string name="net_power_num">%s</string>
     <string name="net_day_bonus_tip">每T日收益</string>
     <string name="net_day_bonus">%sUSDT</string>
     <string name="net_next_hard_tip">预计下次难度</string>
@@ -908,10 +908,10 @@
     <string name="net_miner_count_tip">全网矿机数量</string>
     <string name="net_miner_count">%s个</string>
     <string name="bit_price_tip">币价</string>
-    <string name="bit_price">btc$%s btw$%s</string>
+    <string name="bit_price">btc$%s   btw$%s</string>
     <string name="mineral_pool_info_tip">矿池信息</string>
     <string name="mineral_pool_hashrate_tip">矿池算力</string>
-    <string name="pool_power">%sEH/s</string>
+    <string name="pool_power">%s</string>
     <string name="pool_pay_time_tip">支付时间</string>
     <string name="pool_us_tip">美国区</string>
     <string name="pool_zh_tip">中国区</string>
@@ -931,7 +931,15 @@
     <string name="tuijian_income">推荐收益</string>
     <string name="da_kuang_gong_jiang_li">大矿工奖励</string>
     <string name="wei_zhi_ya">未质押</string>
+    <string name="already_pledge">已质押</string>
     <string name="wa_kuang_zhong">挖矿中</string>
     <string name="gu_zhang_zhong">故障中</string>
     <string name="fix_after_48h">(48小时修复)</string>
+    <string name="record_no_data">暂无收益记录</string>
+    <string name="mineral_pledge_info">质押信息</string>
+    <string name="mineral_pledge_num">质押数量</string>
+    <string name="no_pledge_rules">解仓规则</string>
+    <string name="pledge_status">质押状态</string>
+    <string name="net_btw_info">全网BTW信息</string>
+    <string name="to_date_info">到期后 日1%</string>
 </resources>

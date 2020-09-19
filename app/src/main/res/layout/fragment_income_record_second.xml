@@ -22,7 +22,16 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="收益"
+                android:text="被邀请人"
+                android:textColor="@color/_01FCDA"
+                android:textSize="13sp" />
+
+            <com.darknet.bvw.view.TypefaceTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="推荐收益"
                 android:textColor="@color/_01FCDA"
                 android:textSize="13sp" />
 

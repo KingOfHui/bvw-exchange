@@ -5,7 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="model"
+            type="com.darknet.bvw.model.response.MineralListResponse.ItemsBean.MinerInfoBean" />
     </data>
 
     <LinearLayout
@@ -155,12 +157,22 @@
                     android:background="#333040"
                     android:padding="7dp"
                     android:drawablePadding="7dp"
-                    android:text="@{}"
+                    android:text="@{model.url_1}"
                     android:textColor="#88FFFFFF"
                     android:textColorHint="#88FFFFFF"
                     android:textSize="12sp"
                     app:layout_constraintTop_toBottomOf="@id/tv10" />
 
+                <ImageView
+                    android:id="@+id/iv_copy_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/icon_copy"
+                    app:layout_constraintRight_toRightOf="@id/et_url_1"
+                    app:layout_constraintTop_toTopOf="@id/et_url_1"
+                    app:layout_constraintBottom_toBottomOf="@id/et_url_1"
+                    android:layout_marginRight="@dimen/dp_10"
+                    />
                 <com.darknet.bvw.view.TypefaceTextView
                     android:id="@+id/tv11"
                     android:layout_marginLeft="@dimen/dimen_15dp"
@@ -180,12 +192,21 @@
                     android:background="#333040"
                     android:padding="7dp"
                     android:drawablePadding="7dp"
-                    android:text="@{}"
+                    android:text="@{model.url_2}"
                     android:textColor="#88FFFFFF"
                     android:textColorHint="#88FFFFFF"
                     android:textSize="12sp"
                     app:layout_constraintTop_toBottomOf="@id/tv11" />
-
+                <ImageView
+                    android:id="@+id/iv_copy_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/icon_copy"
+                    app:layout_constraintRight_toRightOf="@id/et_url_2"
+                    app:layout_constraintTop_toTopOf="@id/et_url_2"
+                    app:layout_constraintBottom_toBottomOf="@id/et_url_2"
+                    android:layout_marginRight="@dimen/dp_10"
+                    />
                 <com.darknet.bvw.view.TypefaceTextView
                     android:id="@+id/tv12"
                     android:layout_marginLeft="@dimen/dimen_15dp"
@@ -205,12 +226,22 @@
                     android:background="#333040"
                     android:padding="7dp"
                     android:drawablePadding="7dp"
-                    android:text="@{}"
+                    android:text="@{model.url_3}"
                     android:textColor="#88FFFFFF"
                     android:textColorHint="#88FFFFFF"
                     android:textSize="12sp"
                     app:layout_constraintTop_toBottomOf="@id/tv12" />
 
+                <ImageView
+                    android:id="@+id/iv_copy_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/icon_copy"
+                    app:layout_constraintRight_toRightOf="@id/et_url_3"
+                    app:layout_constraintTop_toTopOf="@id/et_url_3"
+                    app:layout_constraintBottom_toBottomOf="@id/et_url_3"
+                    android:layout_marginRight="@dimen/dp_10"
+                    />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
     </LinearLayout>
