@@ -66,12 +66,13 @@ public class MineralInfoActivity extends BaseBindingActivity<ActivityMineralInfo
     MineralViewModel mViewModel;
     Button btnNext;
     BridgeWebView webView;
+    private MineralListResponse.ItemsBean mItemInfo;
 
-    public static void startSelf(Context context, MineralListResponse.ItemsBean itemsBean, MineralStatusResponse value) {
+    public static void startSelfForResult(Activity context, MineralListResponse.ItemsBean itemsBean, MineralStatusResponse value, int requestCode) {
         Intent intent = new Intent(context, MineralInfoActivity.class);
         intent.putExtra("itemInfo", itemsBean);
         intent.putExtra("statusInfo", value);
-        context.startActivity(intent);
+        context.startActivityForResult(intent, requestCode);
     }
 
     @Override
@@ -98,10 +99,10 @@ public class MineralInfoActivity extends BaseBindingActivity<ActivityMineralInfo
     @Override
     public void initDatas() {
         Intent intent = getIntent();
-        MineralListResponse.ItemsBean itemInfo = (MineralListResponse.ItemsBean) intent.getSerializableExtra("itemInfo");
+        mItemInfo = (MineralListResponse.ItemsBean) intent.getSerializableExtra("itemInfo");
         MineralStatusResponse statusInfo = (MineralStatusResponse) intent.getSerializableExtra("statusInfo");
-        mBinding.setInfo(itemInfo);
-        mBinding.layoutTitle.titleRight.setOnClickListener(v->AddMineralActivity.startSelf(this,itemInfo.getMinerInfo()));
+        mBinding.setInfo(mItemInfo);
+        mBinding.layoutTitle.titleRight.setOnClickListener(v->AddMineralActivity.startSelf(this, mItemInfo.getMinerInfo()));
         mViewModel.getMineralStatusResponseLiveData().setValue(statusInfo);
         mViewModel.address.observe(this, new Observer<String>() {
             @Override
@@ -110,6 +111,7 @@ public class MineralInfoActivity extends BaseBindingActivity<ActivityMineralInfo
             }
         });
         mBinding.tvIncomeRecord.setOnClickListener(view -> IncomeRecordActivity.startSelf(this));
+        mBinding.tvMineralStatus.setText(mItemInfo.getState()==2?getString(R.string.gu_zhang_zhong):mItemInfo.getState() ==1?getString(R.string.wa_kuang_zhong):getString(R.string.wei_kai_ji));
     }
 
     private void payDialog(String address) {
@@ -147,7 +149,7 @@ public class MineralInfoActivity extends BaseBindingActivity<ActivityMineralInfo
                     if (contentVal.equals(walletModel.getPassword())) {
                         hintKeyBoard();
                         bottomDialog.dismiss();
-                        createTrade("360000",address,"BTW");
+                        createTrade(String.valueOf(mItemInfo.getPay_amount()),address,"BTW");
 
                     } else {
                         Toast.makeText(MineralInfoActivity.this, getString(R.string.wrong_pwd), Toast.LENGTH_SHORT).show();
@@ -335,12 +337,13 @@ public class MineralInfoActivity extends BaseBindingActivity<ActivityMineralInfo
 //        String signValss = BitcoinjKit.signMessageBy58(msg, priVal);
 
         SendTradeRequest sendTradeRequest = new SendTradeRequest();
-        sendTradeRequest.setAmount("360000");
+        sendTradeRequest.setAmount(String.valueOf(mItemInfo.getPay_amount()));
         sendTradeRequest.setRaw(signVal);
         sendTradeRequest.setSymbol("BTW");
         sendTradeRequest.setTo_address(mViewModel.address.getValue());
-        sendTradeRequest.setType(0);
+        sendTradeRequest.setType(13);
         sendTradeRequest.setDemo("质押矿机");
+        sendTradeRequest.setMiner_id(mItemInfo.getId());
 
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
@@ -367,13 +370,13 @@ public class MineralInfoActivity extends BaseBindingActivity<ActivityMineralInfo
                                     if (response != null && response.getCode() == 0) {
                                     Toast.makeText(MineralInfoActivity.this, getString(R.string.trade_success), Toast.LENGTH_SHORT).show();
                                         //刷新状态
-                                        EventBus.getDefault().post(new TradeSuccessEvent());
-
                                         try {
                                             new SuccessDialogView().showTips(MineralInfoActivity.this, getString(R.string.dialog_success_sign));
                                         } catch (Exception e) {
                                             e.printStackTrace();
                                         }
+                                        setResult(RESULT_OK);
+                                        finish();
 
                                     } else {
 

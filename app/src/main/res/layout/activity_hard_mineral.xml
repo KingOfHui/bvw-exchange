@@ -23,6 +23,7 @@
             layout="@layout/lay_head_back_binding" />
 
         <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/refreshLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintTop_toBottomOf="@id/layout_title">
@@ -93,7 +94,7 @@
                             android:orientation="horizontal">
 
                             <RelativeLayout
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1">
 
@@ -118,7 +119,7 @@
                             </RelativeLayout>
 
                             <RelativeLayout
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1">
 
@@ -148,7 +149,7 @@
                             android:orientation="horizontal">
 
                             <RelativeLayout
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1">
 
@@ -173,7 +174,7 @@
                             </RelativeLayout>
 
                             <RelativeLayout
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1">
 

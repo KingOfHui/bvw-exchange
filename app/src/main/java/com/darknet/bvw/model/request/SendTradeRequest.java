@@ -9,7 +9,15 @@ public class SendTradeRequest {
     private String raw;
     private String withdraw_address;
     private String demo;
+    private int miner_id;
 
+    public int getMiner_id() {
+        return miner_id;
+    }
+
+    public void setMiner_id(int miner_id) {
+        this.miner_id = miner_id;
+    }
 
     private String referer_code;
 

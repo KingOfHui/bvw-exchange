@@ -931,6 +931,7 @@
     <string name="tuijian_income">推荐收益</string>
     <string name="da_kuang_gong_jiang_li">大矿工奖励</string>
     <string name="wei_zhi_ya">未质押</string>
+    <string name="wei_kai_ji">未开机</string>
     <string name="already_pledge">已质押</string>
     <string name="wa_kuang_zhong">挖矿中</string>
     <string name="gu_zhang_zhong">故障中</string>
@@ -942,4 +943,16 @@
     <string name="pledge_status">质押状态</string>
     <string name="net_btw_info">全网BTW信息</string>
     <string name="to_date_info">到期后 日1%</string>
+    <string name="history_total_income">历史总收益</string>
+    <string name="btn_pledge_to_start">立即质押%sBTW开机</string>
+    <string name="add_mineral">添加矿机</string>
+    <string name="add_mineral_tip1">1、托管用户，请联系社区；</string>
+    <string name="add_mineral_tip2">2、非托管用户（购买矿机后，矿机寄到家）</string>
+    <string name="add_mineral_tip3">2.1、连接局域网</string>
+    <string name="add_mineral_tip4">矿机组装、开机、联网，电脑连接矿机所在的局域网，查找矿机IP，电脑浏览器中登陆矿机后台。</string>
+    <string name="add_mineral_tip5">2.2、矿机配置</string>
+    <string name="add_mineral_tip6">挖矿地址和矿工设置请参照下方示例。</string>
+    <string name="add_mineral_tip7">2.3、完成</string>
+    <string name="add_mineral_tip8">保存设置等待矿机显示算力，矿机将在1分钟左右自动添加至您BTW矿机账户的矿工页面。</string>
+    <string name="in_the_chain">抵押上链中</string>
 </resources>

@@ -47,7 +47,6 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintLeft_toLeftOf="parent"
                     android:visibility="@{info.state!=2?View.VISIBLE:View.INVISIBLE}"
-                    android:text="@{info.pay_state == 2?@string/wa_kuang_zhong:@string/wei_zhi_ya}"
                     android:textColor="@color/black"
                     android:background="@drawable/shape_bg_mineral_status"
                     android:paddingLeft="@dimen/dimen_10dp"
@@ -256,7 +255,7 @@
                         android:orientation="horizontal">
 
                         <RelativeLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1">
 
@@ -282,7 +281,7 @@
                         </RelativeLayout>
 
                         <RelativeLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1">
 
@@ -314,7 +313,7 @@
                         android:orientation="horizontal">
 
                         <RelativeLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1">
 
@@ -340,7 +339,7 @@
                         </RelativeLayout>
 
                         <RelativeLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1">
 
@@ -640,7 +639,7 @@
                     android:layout_height="60dp"
                     android:layout_margin="@dimen/dimen_15dp"
                     android:backgroundTint="@color/color_01FCDA"
-                    android:text="立即质押360000BTW开机"
+                    android:text="@{@string/btn_pledge_to_start(info.pay_amount)}"
                     android:textColor="#000"
                     android:textSize="@dimen/sp_16"
                     android:textStyle="bold"
@@ -686,7 +685,7 @@
                         android:layout_margin="@dimen/dimen_15dp"
                         app:layout_constraintTop_toBottomOf="@id/view5"
                         app:left_text="@string/pledge_status"
-                        app:right_text="@{info.state == 2 ?@string/already_pledge:@string/wei_zhi_ya}" />
+                        app:right_text="@{info.pay_state == 2 ?@string/already_pledge:info.pay_state ==1?@string/in_the_chain:@string/wei_zhi_ya}" />
                     <com.darknet.bvw.view.HorizontalLineView
                         android:id="@+id/lv_pledge_num"
                         android:layout_width="match_parent"

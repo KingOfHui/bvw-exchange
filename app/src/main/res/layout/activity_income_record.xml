@@ -36,7 +36,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/dimen_15dp"
                         android:layout_marginTop="@dimen/dimen_25dp"
-                        android:text="历史总收益"
+                        android:text="@string/history_total_income"
                         android:textColor="@color/_01FCDA"
                         android:textSize="15sp" />
 
