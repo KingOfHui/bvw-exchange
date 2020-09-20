@@ -955,4 +955,6 @@
     <string name="add_mineral_tip7">2.3、完成</string>
     <string name="add_mineral_tip8">保存设置等待矿机显示算力，矿机将在1分钟左右自动添加至您BTW矿机账户的矿工页面。</string>
     <string name="in_the_chain">抵押上链中</string>
+    <string name="income">收益</string>
+    <string name="time">时间</string>
 </resources>

@@ -918,5 +918,7 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="add_mineral_tip7">2.3 Finish</string>
     <string name="add_mineral_tip8">Save the settings and wait for the miner to display the computing power. The miner will be automatically added to the miner page of your btw miner account in about 1 minute.</string>
     <string name="in_the_chain">In the chain</string>
+    <string name="income">Income</string>
+    <string name="time">Time</string>
 
 </resources>
