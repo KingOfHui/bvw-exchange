@@ -26,7 +26,7 @@
                 android:layout_marginTop="@dimen/dimen_10dp"
                 android:layout_marginRight="@dimen/dimen_15dp">
 
-                <com.darknet.bvw.view.TypefaceTextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -34,7 +34,7 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/dimen_30dp"
                     android:textStyle="bold"
-                    app:typeface="@string/universal_text_typeface" />
+                     />
 
 
                 <ImageView
@@ -105,7 +105,7 @@
                             android:gravity="left|center"
                             android:orientation="vertical">
 
-                            <com.darknet.bvw.view.TypefaceTextView
+                            <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
@@ -113,9 +113,9 @@
                                 android:gravity="center|left"
                                 android:text="@string/find_kuangji"
                                 android:textColor="@color/white"
-                                android:textSize="15dp"
+                                android:textSize="16dp"
                                 android:textStyle="bold"
-                                app:typeface="@string/universal_text_typeface" />
+                                 />
 
                             <com.darknet.bvw.view.TypefaceTextView
                                 android:layout_width="wrap_content"
@@ -153,7 +153,7 @@
                             android:gravity="left|center"
                             android:orientation="vertical">
 
-                            <com.darknet.bvw.view.TypefaceTextView
+                            <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
@@ -161,9 +161,9 @@
                                 android:gravity="center|left"
                                 android:text="@string/find_video"
                                 android:textColor="@color/white"
-                                android:textSize="15dp"
+                                android:textSize="16dp"
                                 android:textStyle="bold"
-                                app:typeface="@string/universal_text_typeface" />
+                                 />
 
                             <com.darknet.bvw.view.TypefaceTextView
                                 android:layout_width="wrap_content"
@@ -260,7 +260,7 @@
                             android:gravity="left|center"
                             android:orientation="vertical">
 
-                            <com.darknet.bvw.view.TypefaceTextView
+                            <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
@@ -269,9 +269,8 @@
                                 android:text="@string/find_game"
                                 android:textColor="@color/white"
                                 android:paddingRight="30dp"
-                                android:textSize="15dp"
-                                android:textStyle="bold"
-                                app:typeface="@string/universal_text_typeface" />
+                                android:textSize="16dp"
+                                android:textStyle="bold" />
 
 
                             <com.darknet.bvw.view.TypefaceTextView
@@ -311,7 +310,7 @@
                             android:gravity="left|center"
                             android:orientation="vertical">
 
-                            <com.darknet.bvw.view.TypefaceTextView
+                            <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
@@ -319,9 +318,8 @@
                                 android:gravity="center|left"
                                 android:text="@string/find_shop"
                                 android:textColor="@color/white"
-                                android:textSize="15dp"
-                                android:textStyle="bold"
-                                app:typeface="@string/universal_text_typeface" />
+                                android:textSize="16dp"
+                                android:textStyle="bold" />
 
                             <com.darknet.bvw.view.TypefaceTextView
                                 android:layout_width="wrap_content"
@@ -368,7 +366,7 @@
                             android:gravity="left|center"
                             android:orientation="vertical">
 
-                            <com.darknet.bvw.view.TypefaceTextView
+                            <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
@@ -377,9 +375,8 @@
                                 android:text="@string/find_chat"
                                 android:textColor="@color/white"
                                 android:paddingRight="30dp"
-                                android:textSize="15dp"
-                                android:textStyle="bold"
-                                app:typeface="@string/universal_text_typeface" />
+                                android:textSize="16dp"
+                                android:textStyle="bold" />
 
 
                             <com.darknet.bvw.view.TypefaceTextView
@@ -419,7 +416,7 @@
                             android:gravity="left|center"
                             android:orientation="vertical">
 
-                            <com.darknet.bvw.view.TypefaceTextView
+                            <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
@@ -427,9 +424,8 @@
                                 android:gravity="center|left"
                                 android:text="@string/find_fatie"
                                 android:textColor="@color/white"
-                                android:textSize="15dp"
-                                android:textStyle="bold"
-                                app:typeface="@string/universal_text_typeface" />
+                                android:textSize="16dp"
+                                android:textStyle="bold"/>
 
                             <com.darknet.bvw.view.TypefaceTextView
                                 android:layout_width="wrap_content"
@@ -476,7 +472,7 @@
                             android:gravity="left|center"
                             android:orientation="vertical">
 
-                            <com.darknet.bvw.view.TypefaceTextView
+                            <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
@@ -484,9 +480,8 @@
                                 android:gravity="center|left"
                                 android:text="@string/find_guangao"
                                 android:textColor="@color/white"
-                                android:textSize="15dp"
-                                android:textStyle="bold"
-                                app:typeface="@string/universal_text_typeface" />
+                                android:textSize="16dp"
+                                android:textStyle="bold" />
 
                             <com.darknet.bvw.view.TypefaceTextView
                                 android:layout_width="wrap_content"

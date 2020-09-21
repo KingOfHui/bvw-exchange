@@ -51,6 +51,7 @@ import com.darknet.bvw.view.QianDaoSuccessDialogView;
 import com.darknet.bvw.view.TypefaceTextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 import com.handmark.pulltorefresh.library.ILoadingLayout;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
@@ -669,11 +670,15 @@ public class FirstFragment extends Fragment {
                             String backVal = backresponse.body();
 //                            Log.e("backVal", "backVal=" + backVal);
                             if (backVal != null) {
-                                Gson gson = new Gson();
-                                NoticeResponse response = gson.fromJson(backVal, NoticeResponse.class);
-                                if (response != null && response.getCode() == 0 && response.getData() != null) {
-//                                    Log.e("noticeresponse", "backVal=" + response.toString());
-                                    setNoticeVal(response.getData());
+                                try {
+                                    Gson gson = new Gson();
+                                    NoticeResponse response = gson.fromJson(backVal, NoticeResponse.class);
+                                    if (response != null && response.getCode() == 0 && response.getData() != null) {
+    //                                    Log.e("noticeresponse", "backVal=" + response.toString());
+                                        setNoticeVal(response.getData());
+                                    }
+                                } catch (Exception e) {
+                                    e.printStackTrace();
                                 }
                             }
                         }
@@ -1094,7 +1099,7 @@ public class FirstFragment extends Fragment {
             View biView = LayoutInflater.from(activity).inflate(R.layout.item_money_layout, null);
             SimpleDraweeView header = (SimpleDraweeView) biView.findViewById(R.id.money_item_header);
             TextView numView = (TextView) biView.findViewById(R.id.money_item_num_val);
-            TypefaceTextView nameView = (TypefaceTextView) biView.findViewById(R.id.money_item_name);
+            TextView nameView = (TextView) biView.findViewById(R.id.money_item_name);
             TypefaceTextView moneyValView = (TypefaceTextView) biView.findViewById(R.id.money_item_val);
 
             View lineOneView = (View) biView.findViewById(R.id.money_item_line_view);

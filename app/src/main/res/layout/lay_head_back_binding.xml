@@ -24,7 +24,7 @@
                 android:src="@mipmap/img_back" />
         </RelativeLayout>
 
-        <com.darknet.bvw.view.TypefaceTextView
+        <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -37,8 +37,7 @@
             android:textStyle="bold"
             android:layout_marginTop="@dimen/dimen_20dp"
             android:textColor="@color/white"
-            android:textSize="@dimen/dimen_20dp"
-            app:typeface="@string/universal_text_typeface" />
+            android:textSize="@dimen/dimen_20dp" />
 
 
         <com.darknet.bvw.view.TypefaceTextView
@@ -46,12 +45,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="center"
             android:layout_marginTop="@dimen/dimen_20dp"
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
             android:textColor="@color/white"
-            android:textSize="@dimen/sp_16"
+            android:textSize="@dimen/dimen_15dp"
             android:visibility="gone"
             app:typeface="@string/universal_text_typeface" />
 

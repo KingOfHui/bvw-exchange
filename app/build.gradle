@@ -74,6 +74,15 @@ android {
                 proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             }
         }
+        applicationVariants.all { variant ->
+            variant.outputs.all {
+                if (variant.name.contains("debug")) {
+                    outputFileName = new File("btw-test-${variant.versionName}.apk")
+                } else {
+                    outputFileName = new File("btw-${variant.name}-${variant.versionName}.apk")
+                }
+            }
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8

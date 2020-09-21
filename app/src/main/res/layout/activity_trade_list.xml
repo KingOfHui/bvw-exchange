@@ -6,6 +6,10 @@
     android:background="@color/appColorPrimary"
     android:orientation="vertical">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/fund_bg" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -217,10 +221,5 @@
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@mipmap/fund_bg" />
 
 </FrameLayout>

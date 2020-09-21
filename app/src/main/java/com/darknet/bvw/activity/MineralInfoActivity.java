@@ -91,6 +91,7 @@ public class MineralInfoActivity extends BaseBindingActivity<ActivityMineralInfo
         mBinding.layoutTitle.titleRight.setTextColor(Color.parseColor("#01FCDA"));
         mBinding.setLifecycleOwner(this);
         btnNext = mBinding.btnToPledge;
+//        btnNext.setTextScaleX(a.getFloat(attr, 1.0f));
         webView = mBinding.webView;
         mBinding.layoutTitle.layBack.setOnClickListener(view -> finish());
         btnNext.setOnClickListener(view -> mViewModel.toPledge());
