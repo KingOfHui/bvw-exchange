@@ -22,10 +22,10 @@
             android:layout_width="77dp"
             android:layout_height="77dp"
             android:padding="@dimen/dimen_15dp"
-            android:background="#181523"
+            android:background="@drawable/shape_mineral_item_bg"
             android:layout_marginTop="@dimen/dimen_15dp"
             android:layout_marginBottom="@dimen/dimen_15dp"
-            android:src="@mipmap/ic_launcher"/>
+            android:src="@mipmap/img_mineral"/>
 
         <com.darknet.bvw.view.TypefaceTextView
             android:id="@+id/tv_state"

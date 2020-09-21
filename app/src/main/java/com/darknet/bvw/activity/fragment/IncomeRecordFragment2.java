@@ -30,7 +30,7 @@ public class IncomeRecordFragment2 extends BaseFragment {
 
     @Override
     public int getLayoutId() {
-        return R.layout.fragment_income_record;
+        return R.layout.fragment_income_record_second;
     }
 
     @Override
@@ -68,13 +68,14 @@ public class IncomeRecordFragment2 extends BaseFragment {
     private static class MyAdapter extends BaseQuickAdapter<MineralBonusListResponse.ItemsBean, BaseViewHolder> {
 
         public MyAdapter() {
-            super(R.layout.item_income_record_first);
+            super(R.layout.item_income_record_second);
         }
 
         @Override
         protected void convert(BaseViewHolder helper, MineralBonusListResponse.ItemsBean item) {
+            helper.setText(R.id.tv_person, String.valueOf(item.getUser_id()));
+            helper.setText(R.id.tv_bonus, String.valueOf(item.getBonus_refer()));
             helper.setText(R.id.tv_time, item.getCreate_at());
-            helper.setText(R.id.tv_bonus, String.valueOf(item.getBonus_big_node()));
         }
     }
 }

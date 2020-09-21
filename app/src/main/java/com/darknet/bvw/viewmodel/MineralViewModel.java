@@ -111,6 +111,7 @@ public class MineralViewModel extends AndroidViewModel {
                     @Override
                     public void onError(Response<String> response) {
                         super.onError(response);
+                        dismissLoadingLive.setValue(true);
                         Log.e("dhdhdh", "onError: " + response.getException().toString());
                     }
                 });

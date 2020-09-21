@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/dimen_15dp">
 
 
+    <com.darknet.bvw.view.TypefaceTextView
+        android:id="@+id/tv_person"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        tools:text="被邀请人" />
     <com.darknet.bvw.view.TypefaceTextView
         android:id="@+id/tv_bonus"
         android:layout_width="0dp"
@@ -13,7 +24,7 @@
         android:gravity="center"
         android:textColor="@color/white"
         android:textSize="13sp"
-        android:text="收益" />
+        tools:text="收益" />
 
     <com.darknet.bvw.view.TypefaceTextView
         android:id="@+id/tv_time"
@@ -23,5 +34,5 @@
         android:layout_weight="1"
         android:gravity="center"
         android:textColor="@color/white"
-        android:text="时间" />
+        tools:text="时间" />
 </LinearLayout>

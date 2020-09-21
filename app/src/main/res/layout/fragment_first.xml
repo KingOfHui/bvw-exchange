@@ -115,6 +115,7 @@
                                 android:layout_marginLeft="20dp"
                                 android:background="@drawable/first_bg_txt_bg"
                                 android:orientation="horizontal"
+                                android:visibility="invisible"
                                 android:paddingLeft="10dp"
                                 android:paddingTop="5dp"
                                 android:paddingRight="10dp"
@@ -137,6 +138,7 @@
                             </LinearLayout>
 
                             <LinearLayout
+                                android:visibility="invisible"
                                 android:id="@+id/zc_address_view"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -172,6 +174,7 @@
                             android:layout_alignParentRight="true"
                             android:layout_marginRight="20dp"
                             android:padding="10dp"
+                            android:visibility="invisible"
                             android:src="@mipmap/yubi_bao_sign"></ImageView>
 
                     </RelativeLayout>

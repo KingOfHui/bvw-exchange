@@ -379,14 +379,14 @@ public class FirstFragment extends Fragment {
             public void onClick(View v) {
 //                Toast.makeText(activity,"here..",Toast.LENGTH_SHORT).show();
 
-                qianDaoDialog = new QianDaoDialog();
+                /*qianDaoDialog = new QianDaoDialog();
                 qianDaoDialog.showTips(activity, "", new QianDaoDialog.QianDaoClick() {
                     @Override
                     public void qiandao() {
                         getQianDaoBidStateData();
 //                        getQianDaoData();
                     }
-                });
+                });*/
 //                QianDaoDialog qianDaoDialog = new QianDaoDialog().showTips(activity,"");
             }
         });
