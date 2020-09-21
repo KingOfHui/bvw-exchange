@@ -127,7 +127,7 @@ public class MineralViewModel extends AndroidViewModel {
 
         Gson gson = new Gson();
         HashMap<String, Integer> map = new HashMap<>();
-        map.put("limit", 20);
+        map.put("limit", 50);
         map.put("page", 0);
         RequestBody requestBody = RequestBody.create(JSON, gson.toJson(map));
         OkGo.<String>post(ConfigNetWork.JAVA_API_URL + UrlPath.GET_MINERAL_LIST)

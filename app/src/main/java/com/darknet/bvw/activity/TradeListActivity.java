@@ -198,7 +198,7 @@ public class TradeListActivity extends BaseActivity implements TradeListTwoAdapt
             public void onClick(View view) {
 
 
-                if(moneyType.equalsIgnoreCase("BVW")){
+                if(moneyType.equalsIgnoreCase("BTW")){
                     Intent zIntent = new Intent(TradeListActivity.this, TransferAccountsThreeActivity.class);
                     zIntent.putExtra("type", moneyType);
                     zIntent.putExtra("leftval", leftVal);
@@ -251,7 +251,7 @@ public class TradeListActivity extends BaseActivity implements TradeListTwoAdapt
             public void onClick(View view) {
 
 
-                if(moneyType.equalsIgnoreCase("BVW")){
+                if(moneyType.equalsIgnoreCase("BTW")){
                     Intent zIntent = new Intent(TradeListActivity.this, MyQrThreeActivity.class);
                     zIntent.putExtra("brcAddress",brcAddress);
                     startActivity(zIntent);

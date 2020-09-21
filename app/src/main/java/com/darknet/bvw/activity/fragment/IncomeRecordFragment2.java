@@ -3,7 +3,7 @@ package com.darknet.bvw.activity.fragment;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import androidx.core.content.ContextCompat;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,11 +11,8 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.darknet.bvw.R;
 import com.darknet.bvw.common.BaseFragment;
-import com.darknet.bvw.commonlib.widget.ProgressLayout;
 import com.darknet.bvw.model.MineralBonusListResponse;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.darknet.bvw.viewmodel.IncomeRecordViewModel;
 
 public class IncomeRecordFragment2 extends BaseFragment {
 
@@ -24,7 +21,7 @@ public class IncomeRecordFragment2 extends BaseFragment {
     private LinearLayout layNoData;
     private RecyclerView mRv;
 
-    public static IncomeRecordFragment2 newInstance(boolean b) {
+    public static IncomeRecordFragment2 newInstance(int type) {
         return new IncomeRecordFragment2();
     }
 
@@ -41,6 +38,18 @@ public class IncomeRecordFragment2 extends BaseFragment {
         mRv.setLayoutManager(new LinearLayoutManager(requireContext()));
         mAdapter = new MyAdapter();
         mRv.setAdapter(mAdapter);
+
+        IncomeRecordViewModel viewModel = new ViewModelProvider(this, new ViewModelProvider.AndroidViewModelFactory(requireActivity().getApplication())).get(IncomeRecordViewModel.class);
+        viewModel.itemsLive.observe(this, itemsBeans -> {
+            if (itemsBeans != null && itemsBeans.size() > 0) {
+                mAdapter.setNewData(itemsBeans);
+            } else {
+                llTitle.setVisibility(View.GONE);
+                mRv.setVisibility(View.GONE);
+                layNoData.setVisibility(View.VISIBLE);
+            }
+        });
+        viewModel.getIncomeRecord(2);
     }
 
 
@@ -51,17 +60,6 @@ public class IncomeRecordFragment2 extends BaseFragment {
 
     @Override
     public void initEvent() {
-
-    }
-
-    public void setList(List<MineralBonusListResponse.ItemsBean> itemsBeans) {
-        if (itemsBeans!=null && itemsBeans.size() >0) {
-            mAdapter.setNewData(itemsBeans);
-        } else {
-            llTitle.setVisibility(View.GONE);
-            mRv.setVisibility(View.GONE);
-            layNoData.setVisibility(View.VISIBLE);
-        }
 
     }
 

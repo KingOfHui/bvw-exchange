@@ -857,7 +857,7 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="mineral_weight">weight：%skg</string>
     <string name="mineral_power">hashrate：%s   power：%sW</string>
     <string name="my_invite">My invitation</string>
-    <string name="mineral">Mine</string>
+    <string name="mineral">BTC Mine</string>
     <string name="mineral_pool">Ore pool</string>
     <string name="mineral_list_no_data">Miner not added</string>
     <string name="mineral_time">Mining time：%s years</string>
@@ -920,5 +920,8 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="in_the_chain">In the chain</string>
     <string name="income">Income</string>
     <string name="time">Time</string>
+    <string name="input_btw_private_key">Please input your BTW private key</string>
+    <string name="mingwen_siyao">Plaintext private key</string>
+    <string name="btc_bonus">BTC bonus</string>
 
 </resources>

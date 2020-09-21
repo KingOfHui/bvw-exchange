@@ -3,15 +3,11 @@ package com.darknet.bvw.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
-import android.text.SpannableStringBuilder;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.Observer;
@@ -19,27 +15,16 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.darknet.bvw.R;
 import com.darknet.bvw.base.BaseDataBindingAdapter;
 import com.darknet.bvw.databinding.ActivityHardMineralBinding;
 import com.darknet.bvw.databinding.ItemMineralBinding;
 import com.darknet.bvw.model.response.MineralListResponse;
-import com.darknet.bvw.model.response.MineralStatusResponse;
-import com.darknet.bvw.util.NoUnderlineClickSpan;
-import com.darknet.bvw.util.SpanHelper;
 import com.darknet.bvw.viewmodel.MineralViewModel;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.List;
 
-import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
-import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.BiFunction;
-import io.reactivex.functions.Consumer;
 
 /**
  * @ClassName HardwareMineralActivity
@@ -100,7 +85,7 @@ public class HardwareMineralActivity extends BaseBindingActivity<ActivityHardMin
             MineralListResponse.ItemsBean itemsBean = data.get(position);
             MineralInfoActivity.startSelfForResult(this, itemsBean, mViewModel.getMineralStatusResponseLiveData().getValue(), 10000);
         });
-        mBinding.tvIncomeRecord.setOnClickListener(view -> IncomeRecordActivity.startSelf(this));
+        mBinding.tvIncomeRecord.setOnClickListener(view -> IncomeRecordActivity.startSelf(this, mViewModel.getMineralStatusResponseLiveData().getValue()));
         mBinding.executePendingBindings();
         mBinding.refreshLayout.setOnRefreshListener(refreshLayout -> requestData());
     }

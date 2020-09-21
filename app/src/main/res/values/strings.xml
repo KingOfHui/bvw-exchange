@@ -894,7 +894,7 @@
     <string name="mineral_weight">重量：%skg</string>
     <string name="mineral_power">算力：%s   功率：%sW</string>
     <string name="my_invite">我的邀请</string>
-    <string name="mineral">矿机</string>
+    <string name="mineral">BTC矿机</string>
     <string name="mineral_pool">矿池</string>
     <string name="mineral_list_no_data">您暂未添加矿机</string>
     <string name="mineral_time">挖矿时间：%s年</string>
@@ -957,4 +957,7 @@
     <string name="in_the_chain">抵押上链中</string>
     <string name="income">收益</string>
     <string name="time">时间</string>
+    <string name="input_btw_private_key">请输入您的BTW私钥</string>
+    <string name="mingwen_siyao">明文私钥</string>
+    <string name="btc_bonus">BTC收益</string>
 </resources>

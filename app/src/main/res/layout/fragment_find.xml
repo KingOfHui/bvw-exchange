@@ -113,7 +113,7 @@
                                 android:gravity="center|left"
                                 android:text="@string/find_kuangji"
                                 android:textColor="@color/white"
-                                android:textSize="14dp"
+                                android:textSize="15dp"
                                 android:textStyle="bold"
                                 app:typeface="@string/universal_text_typeface" />
 

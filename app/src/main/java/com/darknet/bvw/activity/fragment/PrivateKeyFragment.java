@@ -110,7 +110,7 @@ public class PrivateKeyFragment extends Fragment {
         walletModel.setKeyStoreVal(btcDo.getKeyStoreVal());
         walletModel.setPrivateKey(btcDo.getPrivateKey());
         walletModel.setPublicKey(btcDo.getPublicKey());
-        walletModel.setName(walletNameVal);
+//        walletModel.setName(walletNameVal);
         walletModel.setPassword(pwdVal);
 
 
@@ -144,10 +144,10 @@ public class PrivateKeyFragment extends Fragment {
 //            ToastUtils.showToast(R.string.load_wallet_already_exist);
 //            return false;
 //        }
-        else if (TextUtils.isEmpty(name)) {
+        /*else if (TextUtils.isEmpty(name)) {
             ToastUtils.showToast(R.string.account_name_notice);
             return false;
-        } else if (TextUtils.isEmpty(walletPwd) || walletPwd.length() < 6) {
+        }*/ else if (TextUtils.isEmpty(walletPwd) || walletPwd.length() < 6) {
             ToastUtils.showToast(R.string.wallet_pwd_six);
             return false;
         }

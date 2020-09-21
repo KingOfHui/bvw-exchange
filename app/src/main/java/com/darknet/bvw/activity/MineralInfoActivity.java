@@ -110,7 +110,7 @@ public class MineralInfoActivity extends BaseBindingActivity<ActivityMineralInfo
                 payDialog(s);
             }
         });
-        mBinding.tvIncomeRecord.setOnClickListener(view -> IncomeRecordActivity.startSelf(this));
+        mBinding.tvIncomeRecord.setOnClickListener(view -> IncomeRecordActivity.startSelf(this, statusInfo));
         mBinding.tvMineralStatus.setText(mItemInfo.getState()==2?getString(R.string.gu_zhang_zhong):mItemInfo.getState() ==1?getString(R.string.wa_kuang_zhong):getString(R.string.wei_kai_ji));
     }
 

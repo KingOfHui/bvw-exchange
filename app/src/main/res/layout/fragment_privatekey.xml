@@ -15,9 +15,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/dimen_15dp"
-            android:text="@string/lead_in_copy_private_key"
             android:textColor="@color/txtGray"
+            android:text="@string/mingwen_siyao"
             app:typeface="@string/universal_text_typeface" />
+<!--            android:text="@string/lead_in_copy_private_key"-->
+<!--            android:hint="@string/lead_in_copy_private_key"-->
 
         <EditText
             android:id="@+id/import_private_key_content"
@@ -27,7 +29,7 @@
             android:layout_marginRight="@dimen/dimen_15dp"
             android:background="@drawable/edit_background"
             android:gravity="top"
-            android:hint="@string/lead_in_copy_private_key"
+            android:hint="@string/input_btw_private_key"
             android:paddingLeft="@dimen/dimen_10dp"
             android:paddingTop="@dimen/dimen_5dp"
             android:paddingRight="@dimen/dimen_10dp"
@@ -42,6 +44,7 @@
             android:layout_marginLeft="@dimen/dimen_15dp"
             android:layout_marginTop="@dimen/dimen_30dp"
             android:layout_marginRight="@dimen/dimen_15dp"
+            android:visibility="gone"
             android:orientation="vertical">
 
             <com.darknet.bvw.view.TypefaceTextView
