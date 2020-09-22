@@ -15,7 +15,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/black"
+        android:background="#181523"
         android:orientation="vertical">
 
         <include
@@ -59,7 +59,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/dimen_15dp"
-                        android:background="#272436"
+                        android:background="#1F1B2C"
                         android:orientation="vertical"
                         android:paddingLeft="@dimen/dimen_15dp"
                         android:paddingRight="@dimen/dimen_15dp"
@@ -108,7 +108,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/dimen_15dp"
-                                    android:text="@{vm.getSpanString(vm.mineralStatusResponseLiveData.power_24_hour_avg,` H/S`), default = `0`}"
+                                    android:text="@{vm.getSpanString(vm.mineralStatusResponseLiveData.power_24_hour_avg,` TH/S`), default = `0`}"
                                     android:textColor="@color/_01FCDA"
                                     android:textSize="28sp"
                                     app:typeface="DINProRegular"
@@ -268,7 +268,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/dimen_15dp"
                         android:layout_marginTop="@dimen/dimen_15dp"
-                        android:background="#272436"
+                        android:background="#1F1B2C"
                         android:orientation="vertical"
                         android:paddingLeft="@dimen/dimen_15dp"
                         android:paddingRight="@dimen/dimen_15dp"

@@ -47,7 +47,7 @@ public class HardwareMineralActivity extends BaseBindingActivity<ActivityHardMin
     public void initView() {
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            getWindow().setStatusBarColor(Color.BLACK);
+            getWindow().setStatusBarColor(Color.parseColor("#181523"));
         }
         mViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication())).get(MineralViewModel.class);
         mBinding.setVm(mViewModel);
