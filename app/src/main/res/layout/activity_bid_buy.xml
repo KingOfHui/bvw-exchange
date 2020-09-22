@@ -49,6 +49,7 @@
         android:layout_marginRight="15dp">
 
         <LinearLayout
+            android:visibility="gone"
             android:id="@+id/bid_buy_num_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -80,6 +81,7 @@
 
 
         <View
+            android:visibility="gone"
             android:id="@+id/bid_buy_line_view"
             android:layout_width="match_parent"
             android:layout_height="1dp"
@@ -89,6 +91,7 @@
 
 
         <TextView
+            android:visibility="gone"
             android:id="@+id/bid_buy_sign_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -101,6 +104,7 @@
 
 
         <TextView
+            android:visibility="gone"
             android:id="@+id/bid_buy_sign_two_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -110,6 +114,7 @@
             android:text="@string/bid_buy_intro"
             android:textColor="@color/gray"
             android:textSize="14dp"></TextView>
+<!--            android:hint="@string/bid_buy_notice"-->
 
         <EditText
             android:id="@+id/bid_buy_ma_view"
@@ -118,7 +123,7 @@
             android:layout_below="@id/bid_buy_sign_two_view"
             android:layout_marginTop="20dp"
             android:background="@drawable/shense_bg"
-            android:hint="@string/bid_buy_notice"
+            android:hint="@string/input_invite_code"
             android:paddingLeft="10dp"
             android:paddingTop="15dp"
             android:paddingBottom="15dp"
@@ -135,6 +140,7 @@
             android:layout_marginTop="40dp"
             android:layout_marginBottom="30dp"
             android:gravity="center"
+            android:visibility="gone"
             android:orientation="horizontal">
 
             <TextView

@@ -28,6 +28,7 @@ import com.darknet.bvw.model.response.CreateTradeResponse.Unspent;
 import com.darknet.bvw.model.response.LeftMoneyResponse;
 import com.darknet.bvw.model.response.PublicAddressResponse;
 import com.darknet.bvw.model.response.SendTradeResponse;
+import com.darknet.bvw.util.ToastUtils;
 import com.darknet.bvw.util.bitcoinj.BitcoinjKit;
 import com.darknet.bvw.view.BottomDialogView;
 import com.darknet.bvw.view.FailDialogView;
@@ -45,6 +46,7 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 import org.json.JSONObject;
 
+import java.util.HashMap;
 import java.util.List;
 
 import okhttp3.MediaType;
@@ -108,27 +110,60 @@ public class BidBuyActivity extends BaseActivity {
                     return;
                 }
 
-                if (leftVal == null) {
-                    Toast.makeText(BidBuyActivity.this, getString(R.string.bid_yue_zero), Toast.LENGTH_SHORT).show();
-                    return;
-                }
+                ETHWalletModel walletModel = WalletDaoUtils.getCurrent();
 
+                String privateKey = walletModel.getPrivateKey();
+                String addressVals = walletModel.getAddress();
 
-//                BigDecimal a = new BigDecimal(leftVal);
-//                BigDecimal b = new BigDecimal("10");
-//
-//                int compareResult = a.compareTo(b);
-//
-//                if (compareResult == -1) {
-//                    Toast.makeText(BidBuyActivity.this, getString(R.string.bid_yue_not_encough), Toast.LENGTH_SHORT).show();
-//                    return;
-//                }
+                String msg = "" + System.currentTimeMillis();
+                String signVal = BitcoinjKit.signMessageBy58(msg, privateKey);
 
+                showDialog(getString(R.string.load_data));
+                buyView.setEnabled(false);
+
+                HashMap<String, String> map = new HashMap<>();
+                map.put("invest_code", tuijianVal);
+                String json = new Gson().toJson(map);
+                RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json);
+
+                OkGo.<String>post(ConfigNetWork.JAVA_API_URL + UrlPath.OPEN_BID)
+                        .tag(BidBuyActivity.this)
+                        .headers("Chain-Authentication", addressVals + "#" + msg + "#" + signVal)
+                        .upRequestBody(requestBody)
+                        .execute(new StringCallback() {
+                            @Override
+                            public void onSuccess(Response<String> backresponse) {
+                                if (backresponse != null) {
+                                    String backVal = backresponse.body();
+                                    if (backVal != null) {
+                                        Gson gson = new Gson();
+                                        try {
+                                            BidMoneyResponse response = gson.fromJson(backVal, BidMoneyResponse.class);
+                                            if (response != null && response.getCode() == 0) {
+                                                //刷新状态
+                                                ToastUtils.showSingleToast(getString(R.string.bid_open_sucdess));
+                                                EventBus.getDefault().post(new BidSuccessEvent());
+                                                finish();
+//                                                new SuccessDialogView().showTips(BidBuyActivity.this, getString(R.string.bid_open_sucdess));
+                                            }else {
+                                                Toast.makeText(BidBuyActivity.this,response.getMsg(),Toast.LENGTH_SHORT).show();
+                                            }
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onFinish() {
+                                super.onFinish();
+                                dismissDialog();
+                                buyView.setEnabled(true);
+                            }
+                        });
                 //获取实际需要支付的接口
-
-                getRealPayData();
-
-
+//                getRealPayData();
             }
         });
 

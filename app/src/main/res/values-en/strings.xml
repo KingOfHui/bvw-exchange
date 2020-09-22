@@ -923,5 +923,6 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="input_btw_private_key">Please input your BTW private key</string>
     <string name="mingwen_siyao">Plaintext private key</string>
     <string name="btc_bonus">BTC bonus</string>
+    <string name="input_invite_code">Please input invite code</string>
 
 </resources>

@@ -14,6 +14,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.alibaba.fastjson.JSONObject;
 import com.darknet.bvw.R;
+import com.darknet.bvw.activity.BidIntroActivity;
 import com.darknet.bvw.activity.SuanLiListActivity;
 import com.darknet.bvw.common.BaseResponse;
 import com.darknet.bvw.config.ConfigNetWork;
@@ -21,6 +22,7 @@ import com.darknet.bvw.config.UrlPath;
 import com.darknet.bvw.db.Entity.ETHWalletModel;
 import com.darknet.bvw.db.WalletDaoUtils;
 import com.darknet.bvw.model.DictByKeyResponse;
+import com.darknet.bvw.model.response.BidStateResponse;
 import com.darknet.bvw.model.response.MineralListResponse;
 import com.darknet.bvw.model.response.MineralStatusResponse;
 import com.darknet.bvw.model.response.SuanLiResponse;
@@ -43,6 +45,7 @@ public class MineralViewModel extends AndroidViewModel {
     private MutableLiveData<MineralListResponse> mMineralListLive;
     public MutableLiveData<Boolean> isEmptyLive = new MutableLiveData<>();
     public MutableLiveData<Boolean> dismissLoadingLive = new MutableLiveData<>();
+    public MutableLiveData<Boolean> isOpenBid = new MutableLiveData<>();
 
     public MutableLiveData<String> address = new MutableLiveData<>();
 
@@ -203,6 +206,53 @@ public class MineralViewModel extends AndroidViewModel {
                     @Override
                     public void onFinish() {
                         super.onFinish();
+                    }
+                });
+    }
+
+    //获取bid状态
+    private void getPublicAddress() {
+
+        dismissLoadingLive.setValue(false);
+        ETHWalletModel walletModel = WalletDaoUtils.getCurrent();
+
+        String privateKey = walletModel.getPrivateKey();
+        String addressVals = walletModel.getAddress();
+
+        String msg = "" + System.currentTimeMillis();
+        String signVal = BitcoinjKit.signMessageBy58(msg, privateKey);
+
+
+        OkGo.<String>get(ConfigNetWork.JAVA_API_URL + UrlPath.FIND_BID_STATE_URL)
+                .tag(MineralViewModel.this)
+                .headers("Chain-Authentication", addressVals + "#" + msg + "#" + signVal)
+                .execute(new StringCallback() {
+                    @Override
+                    public void onSuccess(Response<String> backresponse) {
+                        dismissLoadingLive.setValue(true);
+                        if (backresponse != null) {
+                            String backVal = backresponse.body();
+                            if (backVal != null) {
+                                Gson gson = new Gson();
+                                try {
+                                    BidStateResponse response = gson.fromJson(backVal, BidStateResponse.class);
+                                    if (response != null && response.getCode() == 0) {
+                                        if (response.getData() != null) {
+                                            int status = response.getData().getStatus();
+                                            isOpenBid.setValue(status != 0);
+                                        }
+                                    }
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        super.onFinish();
+                        dismissLoadingLive.setValue(true);
                     }
                 });
     }

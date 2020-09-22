@@ -22,6 +22,7 @@ import com.darknet.bvw.databinding.ActivityMineralInfoBinding;
 import com.darknet.bvw.db.Entity.ETHWalletModel;
 import com.darknet.bvw.db.WalletDaoUtils;
 import com.darknet.bvw.model.SignModelTwo;
+import com.darknet.bvw.model.event.BidSuccessEvent;
 import com.darknet.bvw.model.event.TradeSuccessEvent;
 import com.darknet.bvw.model.request.CreateTradeRequest;
 import com.darknet.bvw.model.request.SendTradeRequest;
@@ -32,6 +33,7 @@ import com.darknet.bvw.model.response.CreateTradeResponse.Unspent;
 import com.darknet.bvw.model.response.MineralListResponse;
 import com.darknet.bvw.model.response.MineralStatusResponse;
 import com.darknet.bvw.model.response.SendTradeResponse;
+import com.darknet.bvw.util.ToastUtils;
 import com.darknet.bvw.util.bitcoinj.BitcoinjKit;
 import com.darknet.bvw.view.BottomDialogView;
 import com.darknet.bvw.view.FailZZDialogView;
@@ -46,6 +48,8 @@ import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 import org.json.JSONObject;
 
 import java.io.Serializable;
@@ -82,6 +86,7 @@ public class MineralInfoActivity extends BaseBindingActivity<ActivityMineralInfo
 
     @Override
     public void initView() {
+        EventBus.getDefault().register(this);
         mViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication())).get(MineralViewModel.class);
         mBinding.setVm(mViewModel);
         mBinding.layoutTitle.layBack.setOnClickListener(v -> finish());
@@ -94,7 +99,15 @@ public class MineralInfoActivity extends BaseBindingActivity<ActivityMineralInfo
 //        btnNext.setTextScaleX(a.getFloat(attr, 1.0f));
         webView = mBinding.webView;
         mBinding.layoutTitle.layBack.setOnClickListener(view -> finish());
-        btnNext.setOnClickListener(view -> mViewModel.toPledge());
+        btnNext.setOnClickListener(view -> {
+            Boolean value = mViewModel.isOpenBid.getValue();
+            if (value!=null && value) {
+                mViewModel.toPledge();
+            } else {
+                Intent buyIntent = new Intent(MineralInfoActivity.this, BidBuyActivity.class);
+                startActivity(buyIntent);
+            }
+        });
     }
 
     @Override
@@ -111,8 +124,28 @@ public class MineralInfoActivity extends BaseBindingActivity<ActivityMineralInfo
                 payDialog(s);
             }
         });
+        mViewModel.isOpenBid.observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                if (aBoolean) {
+//                    ToastUtils.showSingleToast();
+                    mViewModel.toPledge();
+                }
+            }
+        });
         mBinding.tvIncomeRecord.setOnClickListener(view -> IncomeRecordActivity.startSelf(this, statusInfo));
         mBinding.tvMineralStatus.setText(mItemInfo.getState()==2?getString(R.string.gu_zhang_zhong):mItemInfo.getState() ==1?getString(R.string.wa_kuang_zhong):getString(R.string.wei_kai_ji));
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void receiveClose(BidSuccessEvent nameEvent) {
+        mViewModel.isOpenBid.setValue(true);
     }
 
     private void payDialog(String address) {

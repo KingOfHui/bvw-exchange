@@ -93,4 +93,5 @@ public class UrlPath {
     public static final String GET_MINERAL_PAY_ADDRESS = "api/v1/dictByKey/MINER_PAY_BTW";
     public static final String CTEATE_RAW_TX = "api/v1/wallet/createRawTx";//创建交易
     public static final String SEND_RAW_TX = "api/v1/wallet/sendRawTx";//发送交易
+    public static final String OPEN_BID = "api/v1/user/openBid";//开通Bid
 }
