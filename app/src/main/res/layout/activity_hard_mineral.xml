@@ -43,10 +43,15 @@
                     app:layout_constraintTop_toBottomOf="@id/layout_title">
 
                     <ImageView
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@mipmap/fund_bg" />
+                    <ImageView
                         android:id="@+id/iv_image"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:src="@mipmap/hq_banner_one"
+                        android:src="@mipmap/img_mineral_banner_english"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <LinearLayout

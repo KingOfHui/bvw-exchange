@@ -12,41 +12,41 @@ public class MineralBonusListResponse {
      * totalPage : 0
      */
 
-    private int limit;
-    private int page;
-    private int totalCount;
-    private int totalPage;
+    private String limit;
+    private String page;
+    private String totalCount;
+    private String totalPage;
     private List<ItemsBean> items;
 
-    public int getLimit() {
+    public String getLimit() {
         return limit;
     }
 
-    public void setLimit(int limit) {
+    public void setLimit(String limit) {
         this.limit = limit;
     }
 
-    public int getPage() {
+    public String getPage() {
         return page;
     }
 
-    public void setPage(int page) {
+    public void setPage(String page) {
         this.page = page;
     }
 
-    public int getTotalCount() {
+    public String getTotalCount() {
         return totalCount;
     }
 
-    public void setTotalCount(int totalCount) {
+    public void setTotalCount(String totalCount) {
         this.totalCount = totalCount;
     }
 
-    public int getTotalPage() {
+    public String getTotalPage() {
         return totalPage;
     }
 
-    public void setTotalPage(int totalPage) {
+    public void setTotalPage(String totalPage) {
         this.totalPage = totalPage;
     }
 
@@ -80,54 +80,54 @@ public class MineralBonusListResponse {
          * user_id : 0
          */
 
-        private int bonus_all;
-        private int bonus_big_node;
-        private int bonus_big_pool;
-        private int bonus_btc;
+        private String bonus_all;
+        private String bonus_big_node;
+        private String bonus_big_pool;
+        private String bonus_btc;
         private String bonus_date;
-        private int bonus_miner;
-        private int bonus_refer;
-        private int bonus_small_pool;
+        private String bonus_miner;
+        private String bonus_refer;
+        private String bonus_small_pool;
         private String btc_pay_status;
         private String btc_tx_hash;
         private String btw_pay_status;
         private String btw_tx_hash;
         private String create_at;
-        private int id;
-        private int payment_btc_id;
-        private int payment_id;
+        private String id;
+        private String payment_btc_id;
+        private String payment_id;
         private String update_at;
-        private int user_id;
+        private String user_id;
 
-        public int getBonus_all() {
+        public String getBonus_all() {
             return bonus_all;
         }
 
-        public void setBonus_all(int bonus_all) {
+        public void setBonus_all(String bonus_all) {
             this.bonus_all = bonus_all;
         }
 
-        public int getBonus_big_node() {
+        public String getBonus_big_node() {
             return bonus_big_node;
         }
 
-        public void setBonus_big_node(int bonus_big_node) {
+        public void setBonus_big_node(String bonus_big_node) {
             this.bonus_big_node = bonus_big_node;
         }
 
-        public int getBonus_big_pool() {
+        public String getBonus_big_pool() {
             return bonus_big_pool;
         }
 
-        public void setBonus_big_pool(int bonus_big_pool) {
+        public void setBonus_big_pool(String bonus_big_pool) {
             this.bonus_big_pool = bonus_big_pool;
         }
 
-        public int getBonus_btc() {
+        public String getBonus_btc() {
             return bonus_btc;
         }
 
-        public void setBonus_btc(int bonus_btc) {
+        public void setBonus_btc(String bonus_btc) {
             this.bonus_btc = bonus_btc;
         }
 
@@ -139,27 +139,27 @@ public class MineralBonusListResponse {
             this.bonus_date = bonus_date;
         }
 
-        public int getBonus_miner() {
+        public String getBonus_miner() {
             return bonus_miner;
         }
 
-        public void setBonus_miner(int bonus_miner) {
+        public void setBonus_miner(String bonus_miner) {
             this.bonus_miner = bonus_miner;
         }
 
-        public int getBonus_refer() {
+        public String getBonus_refer() {
             return bonus_refer;
         }
 
-        public void setBonus_refer(int bonus_refer) {
+        public void setBonus_refer(String bonus_refer) {
             this.bonus_refer = bonus_refer;
         }
 
-        public int getBonus_small_pool() {
+        public String getBonus_small_pool() {
             return bonus_small_pool;
         }
 
-        public void setBonus_small_pool(int bonus_small_pool) {
+        public void setBonus_small_pool(String bonus_small_pool) {
             this.bonus_small_pool = bonus_small_pool;
         }
 
@@ -203,27 +203,27 @@ public class MineralBonusListResponse {
             this.create_at = create_at;
         }
 
-        public int getId() {
+        public String getId() {
             return id;
         }
 
-        public void setId(int id) {
+        public void setId(String id) {
             this.id = id;
         }
 
-        public int getPayment_btc_id() {
+        public String getPayment_btc_id() {
             return payment_btc_id;
         }
 
-        public void setPayment_btc_id(int payment_btc_id) {
+        public void setPayment_btc_id(String payment_btc_id) {
             this.payment_btc_id = payment_btc_id;
         }
 
-        public int getPayment_id() {
+        public String getPayment_id() {
             return payment_id;
         }
 
-        public void setPayment_id(int payment_id) {
+        public void setPayment_id(String payment_id) {
             this.payment_id = payment_id;
         }
 
@@ -235,11 +235,11 @@ public class MineralBonusListResponse {
             this.update_at = update_at;
         }
 
-        public int getUser_id() {
+        public String getUser_id() {
             return user_id;
         }
 
-        public void setUser_id(int user_id) {
+        public void setUser_id(String user_id) {
             this.user_id = user_id;
         }
     }

@@ -20,6 +20,7 @@ import com.darknet.bvw.base.BaseDataBindingAdapter;
 import com.darknet.bvw.databinding.ActivityHardMineralBinding;
 import com.darknet.bvw.databinding.ItemMineralBinding;
 import com.darknet.bvw.model.response.MineralListResponse;
+import com.darknet.bvw.util.Language;
 import com.darknet.bvw.viewmodel.MineralViewModel;
 
 import java.util.List;
@@ -51,7 +52,8 @@ public class HardwareMineralActivity extends BaseBindingActivity<ActivityHardMin
         mViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication())).get(MineralViewModel.class);
         mBinding.setVm(mViewModel);
         mBinding.setLifecycleOwner(this);
-        mBinding.layoutTitle.backSignView.setOnClickListener((view -> finish()));
+        mBinding.ivImage.setImageResource(Language.readFromConfig() == Language.CHINA ? R.mipmap.img_mineral_banner_chinese : R.mipmap.img_mineral_banner_english);
+        mBinding.layoutTitle.layBack.setOnClickListener((view -> finish()));
         mBinding.layoutTitle.title.setText(getString(R.string.mineral));
         mBinding.layoutTitle.titleRight.setText(getString(R.string.my_invite));
         mBinding.layoutTitle.titleRight.setOnClickListener(view -> MyInviteActivity.startSelf(HardwareMineralActivity.this));

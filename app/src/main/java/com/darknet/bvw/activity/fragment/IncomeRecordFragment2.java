@@ -72,7 +72,7 @@ public class IncomeRecordFragment2 extends BaseFragment {
         @Override
         protected void convert(BaseViewHolder helper, MineralBonusListResponse.ItemsBean item) {
             helper.setText(R.id.tv_person, String.valueOf(item.getUser_id()));
-            helper.setText(R.id.tv_bonus, String.valueOf(item.getBonus_refer()));
+            helper.setText(R.id.tv_bonus, String.valueOf(item.getBonus_refer())+"BTW");
             helper.setText(R.id.tv_time, item.getCreate_at());
         }
     }

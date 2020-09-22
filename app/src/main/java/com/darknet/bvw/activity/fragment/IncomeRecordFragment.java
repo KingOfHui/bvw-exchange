@@ -89,13 +89,13 @@ public class IncomeRecordFragment extends BaseFragment {
         @Override
         protected void convert(BaseViewHolder helper, MineralBonusListResponse.ItemsBean item) {
             helper.setText(R.id.tv_time, item.getCreate_at());
-            int bonus = 0;
+            String bonus = "";
             if (mType == 1) {
-                bonus = item.getBonus_miner();
+                bonus = item.getBonus_miner()+"BTW";
             } else if (mType == 3) {
-                bonus = item.getBonus_big_node();
+                bonus = item.getBonus_big_node()+"BTW";
             } else if (mType == 4) {
-                bonus = item.getBonus_btc();
+                bonus = item.getBonus_btc()+"BTC";
             }
             helper.setText(R.id.tv_bonus, String.valueOf(bonus));
         }

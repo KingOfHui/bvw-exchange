@@ -43,7 +43,7 @@ public class IncomeRecordViewModel extends AndroidViewModel {
 
         Gson gson = new Gson();
         HashMap<String, Integer> map = new HashMap<>();
-        map.put("limit", 50);
+        map.put("limit", 20);
         map.put("page", 0);
         map.put("type", type);
         RequestBody requestBody = RequestBody.create(JSON, gson.toJson(map));
