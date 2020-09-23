@@ -35,6 +35,7 @@ import com.darknet.bvw.model.response.MineralStatusResponse;
 import com.darknet.bvw.model.response.SendTradeResponse;
 import com.darknet.bvw.util.ToastUtils;
 import com.darknet.bvw.util.bitcoinj.BitcoinjKit;
+import com.darknet.bvw.view.BidDialogView;
 import com.darknet.bvw.view.BottomDialogView;
 import com.darknet.bvw.view.FailZZDialogView;
 import com.darknet.bvw.view.SuccessDialogView;
@@ -124,8 +125,7 @@ public class MineralInfoActivity extends BaseBindingActivity<ActivityMineralInfo
                 if (value!=null && value) {
                     mViewModel.toPledge();
                 } else {
-                    Intent buyIntent = new Intent(MineralInfoActivity.this, BidBuyActivity.class);
-                    startActivity(buyIntent);
+                    new BidDialogView().showTips(MineralInfoActivity.this, getString(R.string.find_invest_notice));
                 }
             }
         });

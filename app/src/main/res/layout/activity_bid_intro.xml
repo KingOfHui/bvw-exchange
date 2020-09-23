@@ -340,7 +340,7 @@
                         android:drawableTop="@mipmap/bid_wakuang_three_three_img"
                         android:drawablePadding="5dp"
                         android:gravity="center"
-                        android:text="@string/bid_info_even"
+                        android:text="@string/find_kuangji"
                         android:textColor="#FFFFFF"
                         android:textSize="10dp"></TextView>
 

@@ -19,9 +19,16 @@ import com.darknet.bvw.R;
 import com.darknet.bvw.base.BaseDataBindingAdapter;
 import com.darknet.bvw.databinding.ActivityHardMineralBinding;
 import com.darknet.bvw.databinding.ItemMineralBinding;
+import com.darknet.bvw.model.Event;
+import com.darknet.bvw.model.event.BidSuccessEvent;
 import com.darknet.bvw.model.response.MineralListResponse;
 import com.darknet.bvw.util.Language;
+import com.darknet.bvw.view.BidDialogView;
 import com.darknet.bvw.viewmodel.MineralViewModel;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
 
@@ -45,6 +52,7 @@ public class HardwareMineralActivity extends BaseBindingActivity<ActivityHardMin
 
     @Override
     public void initView() {
+        EventBus.getDefault().register(this);
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             getWindow().setStatusBarColor(Color.parseColor("#181523"));
@@ -56,7 +64,7 @@ public class HardwareMineralActivity extends BaseBindingActivity<ActivityHardMin
         mBinding.layoutTitle.layBack.setOnClickListener((view -> finish()));
         mBinding.layoutTitle.title.setText(getString(R.string.mineral));
         mBinding.layoutTitle.titleRight.setText(getString(R.string.my_invite));
-        mBinding.layoutTitle.titleRight.setOnClickListener(view -> MyInviteActivity.startSelf(HardwareMineralActivity.this));
+        mBinding.layoutTitle.titleRight.setOnClickListener(view -> mViewModel.getPublicAddress());
         mBinding.layoutTitle.titleRight.setVisibility(View.VISIBLE);
         mBinding.layoutTitle.titleRight.setTextColor(Color.parseColor("#01FCDA"));
         MyAdapter adapter = new MyAdapter();
@@ -74,6 +82,16 @@ public class HardwareMineralActivity extends BaseBindingActivity<ActivityHardMin
             if (aBoolean) {
                 dismissDialog();
                 mBinding.refreshLayout.finishRefresh();
+            }
+        });
+        mViewModel.isOpenBid.observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                if (aBoolean != null && aBoolean) {
+                    MyInviteActivity.startSelf(HardwareMineralActivity.this);
+                } else {
+                    new BidDialogView().showTips(HardwareMineralActivity.this, getString(R.string.find_invest_notice));
+                }
             }
         });
 
@@ -112,6 +130,11 @@ public class HardwareMineralActivity extends BaseBindingActivity<ActivityHardMin
 //        mDi = ob1.concatWith(ob2).subscribe(o -> finishRefresh(), throwable -> finishRefresh());
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void success(BidSuccessEvent nameEvent) {
+        mViewModel.isOpenBid.setValue(true);
+    }
+
     private void finishRefresh() {
         dismissDialog();
         mBinding.refreshLayout.finishRefresh();
@@ -133,6 +156,7 @@ public class HardwareMineralActivity extends BaseBindingActivity<ActivityHardMin
         if (mDi != null) {
             mDi.dispose();
         }
+        EventBus.getDefault().unregister(this);
     }
 
     public static class MyAdapter extends BaseDataBindingAdapter<MineralListResponse.ItemsBean, ItemMineralBinding> {

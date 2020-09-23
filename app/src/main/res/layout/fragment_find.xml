@@ -239,7 +239,7 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
-                        android:id="@+id/find_three_layout"
+                        android:id="@+id/find_five_layout"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
@@ -252,7 +252,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
-                            android:src="@mipmap/find_item_game"/>
+                            android:src="@mipmap/find_item_chat_img"/>
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -266,7 +266,7 @@
                                 android:layout_centerVertical="true"
                                 android:layout_marginLeft="@dimen/dimen_15dp"
                                 android:gravity="center|left"
-                                android:text="@string/find_game"
+                                android:text="@string/find_chat"
                                 android:textColor="@color/white"
                                 android:paddingRight="30dp"
                                 android:textSize="16dp"
@@ -279,7 +279,7 @@
                                 android:layout_centerVertical="true"
                                 android:layout_marginLeft="@dimen/dimen_15dp"
                                 android:gravity="center|left"
-                                android:text="@string/find_game_info"
+                                android:text="@string/find_chat_info"
                                 android:textColor="@color/gray3"
                                 android:layout_marginTop="2dp"
                                 android:textSize="12dp"
@@ -287,7 +287,6 @@
                         </LinearLayout>
 
                     </LinearLayout>
-
                     <LinearLayout
                         android:id="@+id/find_six_layout"
                         android:layout_width="0dp"
@@ -345,7 +344,7 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
-                        android:id="@+id/find_five_layout"
+                        android:id="@+id/find_three_layout"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
@@ -358,7 +357,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
-                            android:src="@mipmap/find_item_chat_img"/>
+                            android:src="@mipmap/find_item_game"/>
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -372,7 +371,7 @@
                                 android:layout_centerVertical="true"
                                 android:layout_marginLeft="@dimen/dimen_15dp"
                                 android:gravity="center|left"
-                                android:text="@string/find_chat"
+                                android:text="@string/find_game"
                                 android:textColor="@color/white"
                                 android:paddingRight="30dp"
                                 android:textSize="16dp"
@@ -385,7 +384,7 @@
                                 android:layout_centerVertical="true"
                                 android:layout_marginLeft="@dimen/dimen_15dp"
                                 android:gravity="center|left"
-                                android:text="@string/find_chat_info"
+                                android:text="@string/find_game_info"
                                 android:textColor="@color/gray3"
                                 android:layout_marginTop="2dp"
                                 android:textSize="12dp"
@@ -393,7 +392,6 @@
                         </LinearLayout>
 
                     </LinearLayout>
-
                     <LinearLayout
                         android:id="@+id/find_eight_layout"
                         android:layout_width="0dp"

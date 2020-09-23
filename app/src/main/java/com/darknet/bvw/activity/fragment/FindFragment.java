@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -124,7 +125,7 @@ public class FindFragment extends Fragment implements View.OnClickListener {
 	private void lazyLoad() {
 		if (getUserVisibleHint() && isPrepared) {
 			Log.e("xxxxxxxx", ".....lazyLoad...do...FindFragment....");
-			isLeader();
+			getPublicAddressTwo();
 		}
 	}
 
@@ -276,7 +277,7 @@ public class FindFragment extends Fragment implements View.OnClickListener {
 
 //        showDialog(getString(R.string.load_data));
 
-		OkGo.<String>get(ConfigNetWork.JAVA_API_URL + UrlPath.FIND_BID_STATE_URL)
+		OkGo.<String>get(ConfigNetWork.JAVA_API_URL + UrlPath.USER_BID_INFO_URL)
 				.tag(activity)
 				.headers("Chain-Authentication", addressVals + "#" + msg + "#" + signVal)
 				.execute(new StringCallback() {
@@ -291,7 +292,7 @@ public class FindFragment extends Fragment implements View.OnClickListener {
 									if (response != null && response.getCode() == 0) {
 										if (response.getData() != null) {
 
-											showStateTwo(response.getData());
+											showStateTwo(response.getData().getReferer_id());
 										}
 									}
 								} catch (Exception e) {
@@ -356,38 +357,18 @@ public class FindFragment extends Fragment implements View.OnClickListener {
 	}
 
 
-	private void showStateTwo(BidStateResponse.BidStateModel bidStateModel) {
+	private void showStateTwo(String bidStateModel) {
 
-		if (bidStateModel.getStatus() == 0 || bidStateModel.getStatus() == 2) {
-			isOpenSign = 0;
-			//未开通
-			stateLidType = 0;
-			stateRidType = 0;
-			changeNoOpenState();
-
-		} else if (bidStateModel.getStatus() == 2) {
+		if (TextUtils.isEmpty(bidStateModel)) {
 			isOpenSign = 0;
 			//未开通
 			stateLidType = 0;
 			stateRidType = 0;
 			changeOpeningState();
-		} else if (bidStateModel.getStatus() == 1) {
+		} else {
 			isOpenSign = 1;
 
 			changeOpenState();
-			//已开通
-			if (bidStateModel.getLid() != null && bidStateModel.getLid().trim().length() > 0) {
-				stateLidType = 1;
-				lid = bidStateModel.getLid();
-			} else {
-				stateLidType = 3;
-			}
-			if (bidStateModel.getRid() != null && bidStateModel.getRid().trim().length() > 0) {
-				stateRidType = 2;
-				rid = bidStateModel.getRid();
-			} else {
-				stateRidType = 4;
-			}
 		}
 
 	}
@@ -572,54 +553,5 @@ public class FindFragment extends Fragment implements View.OnClickListener {
 		return language;
 	}
 
-	/**
-	 * 是否是领导
-	 */
-	private void isLeader() {
-		ETHWalletModel walletModel = WalletDaoUtils.getCurrent();
-		String privateKey = walletModel.getPrivateKey();
-		String addressVals = walletModel.getAddress();
-		String msg = "" + System.currentTimeMillis();
-		String signVal = BitcoinjKit.signMessageBy58(msg, privateKey);
-
-		OkGo.<String>get(ConfigNetWork.JAVA_API_URL + UrlPath.BVW_STATE_URL)
-				.tag(this)
-				.headers("Chain-Authentication", addressVals + "#" + msg + "#" + signVal)
-				.execute(new StringCallback() {
-					@Override
-					public void onSuccess(Response<String> backresponse) {
-						Log.d("FindFragment", ConfigNetWork.JAVA_API_URL + UrlPath.BVW_STATE_URL + ":" + backresponse.body());
-						try {
-							Gson gson = new Gson();
-							BaseResponse<String> response = gson.fromJson(backresponse.body(), new TypeToken<BaseResponse<String>>() {
-							}.getType());
-							if (response.getCode() == 0) {
-								String data = response.getData();
-								if ("true".equals(data)) {
-									isLeader = true;
-									leaderSignView.setVisibility(View.VISIBLE);
-									imgSettingTwo.setVisibility(View.GONE);
-									int lanType = SPUtil.getInstance(activity).getSelectLanguage();
-									if (lanType == 1) {
-										leaderSignView.setImageResource(R.mipmap.resurrection_cn);
-									} else {
-										leaderSignView.setImageResource(R.mipmap.resurrection);
-									}
-								} else {
-									isLeader = false;
-									leaderSignView.setVisibility(View.GONE);
-								}
-								getPublicAddressTwo();
-							}
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-					}
-
-					@Override
-					public void onError(Response<String> response) {
-					}
-				});
-	}
 
 }

@@ -255,15 +255,15 @@
     <string name="bid_info_six">Invitation bonus</string>
     <string name="bid_info_seven">Array rewards</string>
     <string name="bid_info_eight">Advertising revenue</string>
-    <string name="bid_info_nine">BVW chat</string>
-    <string name="bid_info_nine2">BVW chat</string>
+    <string name="bid_info_nine">BTW chat</string>
+    <string name="bid_info_nine2">BTW chat</string>
     <string name="bid_info_ten">Social identity</string>
     <string name="bid_info_even">Single-core HW mining</string>
     <string name="bid_info_twleve">Storage mining</string>
 
 
-    <string name="bid_info_intro_content">BVW is a public chain project that introduces a POS single-core HW consensus algorithm in the public chain shard area. BID atomic nodes participate in bookkeeping, open source, and mixed chain point-to-point distributed network nodes. BVW is the first time that human beings have imitated the creator to create a sustainable smart contract machine DNA, and to build a life body that all humans trust.
-\nBVW is also the first time that human beings have attempted to allow human technology to reproduce itself in a sustainable way.</string>
+    <string name="bid_info_intro_content">BTW is a public chain project that introduces a POS single-core HW consensus algorithm in the public chain shard area. BID atomic nodes participate in bookkeeping, open source, and mixed chain point-to-point distributed network nodes. BTW is the first time that human beings have imitated the creator to create a sustainable smart contract machine DNA, and to build a life body that all humans trust.
+\nBTW is also the first time that human beings have attempted to allow human technology to reproduce itself in a sustainable way.</string>
 
     <string name="bid_info_sign">BID ID</string>
     <string name="bid_info_sign_intro">BID can enjoy various benefits</string>
@@ -273,7 +273,7 @@
     <string name="bid_info_sub_content_three">On-chain confirmation</string>
     <string name="bid_info_left_money">Balance</string>
 
-    <string name="bid_info_is_what">What is BVW ?</string>
+    <string name="bid_info_is_what">What is BTW ?</string>
     <string name="bid_info_quanyi">BID Rights</string>
     <string name="bid_info_title">Activate BID identity</string>
 

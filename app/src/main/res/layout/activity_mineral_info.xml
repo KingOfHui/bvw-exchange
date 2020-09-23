@@ -102,7 +102,7 @@
                         android:layout_margin="@dimen/dimen_15dp"
                         android:text="@{info.minerInfo.base_name}"
                         android:textColor="@color/white"
-                        android:textSize="26sp"
+                        android:textSize="24sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toTopOf="@id/tv_mine_money"
                         app:layout_constraintLeft_toLeftOf="parent"
@@ -150,7 +150,7 @@
                         android:layout_marginTop="12dp"
                         android:text="@{info.minerInfo.base_pay_usdt+`USDT`}"
                         android:textColor="@color/color_01FCDA"
-                        android:textSize="25sp"
+                        android:textSize="23sp"
                         app:typeface="@string/DINProRegular"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_mineral_name" />
@@ -282,7 +282,7 @@
                                 android:drawablePadding="@dimen/dimen_10dp"
                                 android:text="@string/average_hashrate_24"
                                 android:textColor="@color/white"
-                                android:textSize="12sp" />
+                                android:textSize="13sp" />
 
                         </RelativeLayout>
 
@@ -309,7 +309,7 @@
                                 android:drawablePadding="@dimen/dimen_10dp"
                                 android:text="@string/income_before_24h"
                                 android:textColor="@color/white"
-                                android:textSize="12sp" />
+                                android:textSize="13sp" />
                         </RelativeLayout>
                     </LinearLayout>
 
@@ -340,7 +340,7 @@
                                 android:drawablePadding="@dimen/dimen_10dp"
                                 android:text="@string/income_today_btc"
                                 android:textColor="@color/white"
-                                android:textSize="12sp" />
+                                android:textSize="13sp" />
 
                         </RelativeLayout>
 
@@ -367,7 +367,7 @@
                                 android:drawablePadding="@dimen/dimen_10dp"
                                 android:text="@string/income_today_btw"
                                 android:textColor="@color/white"
-                                android:textSize="12sp" />
+                                android:textSize="13sp" />
                         </RelativeLayout>
                     </LinearLayout>
 

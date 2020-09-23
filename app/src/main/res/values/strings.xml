@@ -335,13 +335,13 @@
     <string name="bid_info_seven">阵列奖励</string>
     <string name="bid_info_eight">广告收益</string>
     <string name="bid_info_nine">聊天</string>
-    <string name="bid_info_nine2">畅聊Chat</string>
+    <string name="bid_info_nine2">匿名聊天</string>
     <string name="bid_info_ten">社交身份</string>
     <string name="bid_info_even">单核HW挖矿</string>
     <string name="bid_info_twleve">存储挖矿</string>
 
-    <string name="bid_info_intro_content">BVW是一个在公链分片片区引入POS单核HW共识算法，BID原子节点参与记账、开源的，混链点对点分布式网络节点的公有链项目。BVW是人类第一次模仿造物主去创造一种永续的智能合约机器DNA，去构建一个全人类共同信任的生命体。
-\n\nBVW也是人类第一次尝试用一种永续的方式让人类科技进行自我复制繁殖。</string>
+    <string name="bid_info_intro_content">BTW是一个在公链分片片区引入POS单核HW共识算法，BID原子节点参与记账、开源的，混链点对点分布式网络节点的公有链项目。BTW是人类第一次模仿造物主去创造一种永续的智能合约机器DNA，去构建一个全人类共同信任的生命体。
+\n\nBTW也是人类第一次尝试用一种永续的方式让人类科技进行自我复制繁殖。</string>
 
 
     <string name="bid_info_sign">BID身份</string>
@@ -351,7 +351,7 @@
     <string name="bid_info_sub_content_two">您已经是BID身份</string>
     <string name="bid_info_sub_content_three">链上确认中</string>
     <string name="bid_info_left_money">我的余额</string>
-    <string name="bid_info_is_what">什么是 BVW ?</string>
+    <string name="bid_info_is_what">什么是 BTW ?</string>
     <string name="bid_info_quanyi">BID权益</string>
     <string name="bid_info_title">开通BID身份</string>
 
@@ -881,7 +881,7 @@
     <string name="not_pledged">未抵押</string>
     <string name="DINProRegular">DINProRegular</string>
     <string name="mineral_hashrate">算力:%sTH/S</string>
-    <string name="mineral_currency">挖矿币种:%s</string>
+    <string name="mineral_currency">挖矿币种：%s</string>
     <string name="my_mineral_status">我的矿机状态</string>
     <string name="income_record">收益记录</string>
     <string name="average_hashrate_24">24小时平均算力</string>
@@ -908,7 +908,7 @@
     <string name="net_miner_count_tip">全网矿机数量</string>
     <string name="net_miner_count">%s个</string>
     <string name="bit_price_tip">币价</string>
-    <string name="bit_price">btc$%s   btw$%s</string>
+    <string name="bit_price">BTC$%s   BTW$%s</string>
     <string name="mineral_pool_info_tip">矿池信息</string>
     <string name="mineral_pool_hashrate_tip">矿池算力</string>
     <string name="pool_power">%s</string>
