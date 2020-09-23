@@ -25,6 +25,7 @@ public class UrlPath {
     public static String PUBLIC_ADDRESS_URL = "api/v1/dictByType"; //获取官方地址
 
     public static String FIND_BID_STATE_URL = "api/v1/user/bidInfo"; //查询bid状态
+    public static String USER_BID_INFO_URL = "api/v1/user/info"; //查询bid状态新街口
 
     public static String REAL_PAY_BID_PRICE_URL = "api/v1/user/bidPrice"; //查询bid状态
 

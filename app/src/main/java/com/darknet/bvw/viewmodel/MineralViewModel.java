@@ -3,6 +3,7 @@ package com.darknet.bvw.viewmodel;
 import android.app.Application;
 import android.graphics.Color;
 import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -211,7 +212,7 @@ public class MineralViewModel extends AndroidViewModel {
     }
 
     //获取bid状态
-    private void getPublicAddress() {
+    public void getPublicAddress() {
 
         dismissLoadingLive.setValue(false);
         ETHWalletModel walletModel = WalletDaoUtils.getCurrent();
@@ -223,7 +224,7 @@ public class MineralViewModel extends AndroidViewModel {
         String signVal = BitcoinjKit.signMessageBy58(msg, privateKey);
 
 
-        OkGo.<String>get(ConfigNetWork.JAVA_API_URL + UrlPath.FIND_BID_STATE_URL)
+        OkGo.<String>get(ConfigNetWork.JAVA_API_URL + UrlPath.USER_BID_INFO_URL)
                 .tag(MineralViewModel.this)
                 .headers("Chain-Authentication", addressVals + "#" + msg + "#" + signVal)
                 .execute(new StringCallback() {
@@ -238,8 +239,8 @@ public class MineralViewModel extends AndroidViewModel {
                                     BidStateResponse response = gson.fromJson(backVal, BidStateResponse.class);
                                     if (response != null && response.getCode() == 0) {
                                         if (response.getData() != null) {
-                                            int status = response.getData().getStatus();
-                                            isOpenBid.setValue(status != 0);
+                                            String status = response.getData().getReferer_id();
+                                            isOpenBid.setValue(!TextUtils.isEmpty(status));
                                         }
                                     }
                                 } catch (Exception e) {

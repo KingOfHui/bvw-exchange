@@ -17,6 +17,15 @@ public class BidStateResponse extends BaseResponse {
         private int status;
         private String lid;
         private String rid;
+        private String referer_id;
+
+        public String getReferer_id() {
+            return referer_id;
+        }
+
+        public void setReferer_id(String referer_id) {
+            this.referer_id = referer_id;
+        }
 
         public int getStatus() {
             return status;

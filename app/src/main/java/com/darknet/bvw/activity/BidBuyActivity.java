@@ -20,6 +20,7 @@ import com.darknet.bvw.model.SignModelTwo;
 import com.darknet.bvw.model.event.BidSuccessEvent;
 import com.darknet.bvw.model.request.CreateTradeRequest;
 import com.darknet.bvw.model.request.SendTradeRequest;
+import com.darknet.bvw.model.response.BaseResponse;
 import com.darknet.bvw.model.response.BidMoneyResponse;
 import com.darknet.bvw.model.response.CreateTradeResponse.JsonRootBean;
 import com.darknet.bvw.model.response.CreateTradeResponse.SendTx;
@@ -138,7 +139,7 @@ public class BidBuyActivity extends BaseActivity {
                                     if (backVal != null) {
                                         Gson gson = new Gson();
                                         try {
-                                            BidMoneyResponse response = gson.fromJson(backVal, BidMoneyResponse.class);
+                                            BaseResponse response = gson.fromJson(backVal, BaseResponse.class);
                                             if (response != null && response.getCode() == 0) {
                                                 //刷新状态
                                                 ToastUtils.showSingleToast(getString(R.string.bid_open_sucdess));

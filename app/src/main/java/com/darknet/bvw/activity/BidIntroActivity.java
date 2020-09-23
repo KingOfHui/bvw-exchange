@@ -261,7 +261,7 @@ public class BidIntroActivity extends BaseActivity implements OnPlayerEventListe
 
         showDialog(getString(R.string.load_data));
 
-        OkGo.<String>get(ConfigNetWork.JAVA_API_URL + UrlPath.FIND_BID_STATE_URL)
+        OkGo.<String>get(ConfigNetWork.JAVA_API_URL + UrlPath.USER_BID_INFO_URL)
                 .tag(BidIntroActivity.this)
                 .headers("Chain-Authentication", addressVals + "#" + msg + "#" + signVal)
                 .execute(new StringCallback() {
@@ -275,7 +275,7 @@ public class BidIntroActivity extends BaseActivity implements OnPlayerEventListe
                                     BidStateResponse response = gson.fromJson(backVal, BidStateResponse.class);
                                     if (response != null && response.getCode() == 0) {
                                         if (response.getData() != null) {
-                                            setStateVal(response.getData().getStatus());
+                                            setStateVal(TextUtils.isEmpty(response.getData().getReferer_id()));
                                         }
                                     }
                                 } catch (Exception e) {
@@ -294,8 +294,10 @@ public class BidIntroActivity extends BaseActivity implements OnPlayerEventListe
     }
 
 
-    private void setStateVal(int stateVal) {
-        if (stateVal == 0) {
+    private void setStateVal(boolean stateVal) {
+        bidStateView.setText(stateVal?getString(R.string.bid_info_sub_content):getString(R.string.bid_info_sub_content_two));
+        buyView.setEnabled(stateVal);
+        /*if (stateVal == 0) {
             //未开通
             bidStateView.setText(getString(R.string.bid_info_sub_content));
         } else if (stateVal == 1) {
@@ -306,7 +308,7 @@ public class BidIntroActivity extends BaseActivity implements OnPlayerEventListe
             //开通中
             bidStateView.setText(getString(R.string.bid_info_sub_content_three));
             buyView.setEnabled(false);
-        }
+        }*/
     }
 
 

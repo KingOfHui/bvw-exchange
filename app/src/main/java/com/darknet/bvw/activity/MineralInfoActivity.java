@@ -100,13 +100,7 @@ public class MineralInfoActivity extends BaseBindingActivity<ActivityMineralInfo
         webView = mBinding.webView;
         mBinding.layoutTitle.layBack.setOnClickListener(view -> finish());
         btnNext.setOnClickListener(view -> {
-            Boolean value = mViewModel.isOpenBid.getValue();
-            if (value!=null && value) {
-                mViewModel.toPledge();
-            } else {
-                Intent buyIntent = new Intent(MineralInfoActivity.this, BidBuyActivity.class);
-                startActivity(buyIntent);
-            }
+            mViewModel.getPublicAddress();
         });
     }
 
@@ -126,10 +120,12 @@ public class MineralInfoActivity extends BaseBindingActivity<ActivityMineralInfo
         });
         mViewModel.isOpenBid.observe(this, new Observer<Boolean>() {
             @Override
-            public void onChanged(Boolean aBoolean) {
-                if (aBoolean) {
-//                    ToastUtils.showSingleToast();
+            public void onChanged(Boolean value) {
+                if (value!=null && value) {
                     mViewModel.toPledge();
+                } else {
+                    Intent buyIntent = new Intent(MineralInfoActivity.this, BidBuyActivity.class);
+                    startActivity(buyIntent);
                 }
             }
         });
