@@ -961,4 +961,7 @@
     <string name="mingwen_siyao">明文私钥</string>
     <string name="btc_bonus">BTC收益</string>
     <string name="input_invite_code">请输入邀请码</string>
+    <string name="get_address_failed">获取收款地址失败</string>
+    <string name="msg_no_shoukuan">暂不支持收款</string>
+    <string name="zan_bu_zhi_chi_ti_bi">暂不支持提币</string>
 </resources>

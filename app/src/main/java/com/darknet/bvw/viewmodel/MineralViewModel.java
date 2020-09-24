@@ -96,15 +96,6 @@ public class MineralViewModel extends AndroidViewModel {
                                         getMineralStatusResponseLiveData().setValue(status.getData());
                                         isEmptyLive.setValue(true);
                                     }
-                                    /*SuanLiResponse response = gson.fromJson(backVal, SuanLiResponse.class);
-                                    if (response != null && response.getCode() == 0) {
-                                        if (response.getData() != null && response.getData().getPowerHistoryList() != null && response.getData().getPowerHistoryList().size() > 0) {
-                                            setVal(response.getData().getPowerHistoryList());
-                                        } else {
-//                                            Toast.makeText(SuanLiListActivity.this, response.getMsg(), Toast.LENGTH_SHORT).show();
-                                            setNoData();
-                                        }
-                                    }*/
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }

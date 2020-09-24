@@ -95,4 +95,5 @@ public class UrlPath {
     public static final String CTEATE_RAW_TX = "api/v1/wallet/createRawTx";//创建交易
     public static final String SEND_RAW_TX = "api/v1/wallet/sendRawTx";//发送交易
     public static final String OPEN_BID = "api/v1/user/openBid";//开通Bid
+    public static final String GET_ADDRESS_WITHDRAW = "api/v1/wallet/resetAddress/";//激活钱包
 }

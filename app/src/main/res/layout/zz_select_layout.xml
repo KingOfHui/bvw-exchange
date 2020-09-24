@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/two_shense_corner">
+    android:background="#37314D">
 
     <RelativeLayout
         android:id="@+id/btnPickByTake"
@@ -16,8 +16,8 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
             android:text="@string/trade_dialog_select_one"
             android:textColor="@color/white"
             android:textSize="16dp" />
@@ -47,8 +47,9 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:layout_marginTop="@dimen/dimen_15dp"
             android:text="@string/trade_dialog_select_two"
             android:textColor="@color/white"
             android:textSize="16dp" />

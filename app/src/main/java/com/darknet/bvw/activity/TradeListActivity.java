@@ -1,6 +1,7 @@
 package com.darknet.bvw.activity;
 
 import android.content.Intent;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -18,8 +19,11 @@ import com.darknet.bvw.db.Entity.ETHWalletModel;
 import com.darknet.bvw.db.WalletDaoUtils;
 import com.darknet.bvw.model.event.TradeSuccessEvent;
 import com.darknet.bvw.model.request.TradeListRequest;
+import com.darknet.bvw.model.response.BaseResponse;
 import com.darknet.bvw.model.response.LeftMoneyResponse;
+import com.darknet.bvw.model.response.ResetAddressResponse;
 import com.darknet.bvw.model.response.TradeListResponse;
+import com.darknet.bvw.util.ToastUtils;
 import com.darknet.bvw.util.bitcoinj.BitcoinjKit;
 import com.darknet.bvw.view.BottomZhuanZDialogView;
 import com.darknet.bvw.view.TypefaceTextView;
@@ -75,6 +79,8 @@ public class TradeListActivity extends BaseActivity implements TradeListTwoAdapt
     private int pageNumber = 1;
     private LRecyclerViewAdapter mLRecyclerViewAdapter = null;
     private boolean hasMore = true;
+    private boolean canWithDraw;
+    private boolean canRecharge;
 
 
 //    PullToRefreshScrollView pullToRefreshScrollView;
@@ -196,8 +202,6 @@ public class TradeListActivity extends BaseActivity implements TradeListTwoAdapt
         zzView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 if(moneyType.equalsIgnoreCase("BTW")){
                     Intent zIntent = new Intent(TradeListActivity.this, TransferAccountsThreeActivity.class);
                     zIntent.putExtra("type", moneyType);
@@ -226,16 +230,10 @@ public class TradeListActivity extends BaseActivity implements TradeListTwoAdapt
                             }
                         }.show();
                     }else {
-                        //BRC 20
-                        Intent zIntent = new Intent(TradeListActivity.this, TransferAccountsActivity.class);
-                        zIntent.putExtra("type", moneyType);
-                        zIntent.putExtra("leftval", leftVal);
-                        startActivity(zIntent);
+
+                getAddressToDoSomething();
                     }
                 }
-
-
-
 
 
 //                Intent zIntent = new Intent(TradeListActivity.this, TransferAccountsActivity.class);
@@ -257,11 +255,19 @@ public class TradeListActivity extends BaseActivity implements TradeListTwoAdapt
                     startActivity(zIntent);
 
                 }else {
+                    if (!canRecharge) {
+                        ToastUtils.showSingleToast(getString(R.string.msg_no_shoukuan));
+                        return;
+                    }
                     if(main_address != null && main_address.trim().length() != 0){
                         new BottomZhuanZDialogView(TradeListActivity.this,moneyType){
 
                             @Override
                             public void btnPickBySelect() {
+                                if (TextUtils.isEmpty(brcAddress)) {
+                                    ToastUtils.showSingleToast(getString(R.string.get_address_failed));
+                                    return;
+                                }
                                 //BRC 20
                                 Intent zIntent = new Intent(TradeListActivity.this, MyQrActivity.class);
                                 zIntent.putExtra("brcAddress",brcAddress);
@@ -279,10 +285,60 @@ public class TradeListActivity extends BaseActivity implements TradeListTwoAdapt
                             }
                         }.show();
                     }else {
-                        //BRC 20
-                        Intent zIntent = new Intent(TradeListActivity.this, MyQrActivity.class);
-                        zIntent.putExtra("brcAddress",brcAddress);
-                        startActivity(zIntent);
+                    ETHWalletModel walletModel = WalletDaoUtils.getCurrent();
+                    String privateKey = walletModel.getPrivateKey();
+                    String addressVals = walletModel.getAddress();
+                    String msg = "" + System.currentTimeMillis();
+                    String signVal = BitcoinjKit.signMessageBy58(msg, privateKey);
+
+
+                    Log.e("paydialog", ".....find...left...money....");
+
+                    OkGo.<String>get(ConfigNetWork.JAVA_API_URL + UrlPath.GET_ADDRESS_WITHDRAW+moneyType)
+                            .tag(TradeListActivity.this)
+                            .headers("Chain-Authentication", addressVals + "#" + msg + "#" + signVal)
+                            .execute(new StringCallback() {
+                                @Override
+                                public void onSuccess(Response<String> backresponse) {
+                                    if (backresponse != null) {
+                                        String backVal = backresponse.body();
+//                            Log.e("backVal", "backVal=" + backVal);
+                                        if (backVal != null) {
+                                            ResetAddressResponse baseResponse = new Gson().fromJson(backVal, ResetAddressResponse.class);
+                                            if (baseResponse!=null && baseResponse.getCode() == 0) {
+                                                main_address = baseResponse.data;
+                                                if (TextUtils.isEmpty(main_address)) {
+                                                    ToastUtils.showSingleToast(getString(R.string.get_address_failed));
+                                                    return;
+                                                }
+                                                new BottomZhuanZDialogView(TradeListActivity.this,moneyType){
+
+                                                    @Override
+                                                    public void btnPickBySelect() {
+                                                        //BRC 20
+                                                        Intent zIntent = new Intent(TradeListActivity.this, MyQrActivity.class);
+                                                        zIntent.putExtra("brcAddress",brcAddress);
+                                                        zIntent.putExtra("moneyType",moneyType);
+                                                        startActivity(zIntent);
+                                                    }
+
+                                                    @Override
+                                                    public void btnPickByTake() {
+                                                        //主链
+                                                        Intent zIntent = new Intent(TradeListActivity.this, MyQrTwoActivity.class);
+                                                        zIntent.putExtra("mainAddress",main_address);
+                                                        zIntent.putExtra("moneyType",moneyType);
+                                                        startActivity(zIntent);
+                                                    }
+                                                }.show();
+                                                return;
+                                            }
+                                        }
+                                    }
+                                    ToastUtils.showSingleToast(getString(R.string.get_address_failed));
+                                }
+
+                            });
                     }
                 }
             }
@@ -352,6 +408,82 @@ public class TradeListActivity extends BaseActivity implements TradeListTwoAdapt
 
     }
 
+    private void getAddressToDoSomething() {
+        if (canWithDraw) {
+            ToastUtils.showSingleToast(getString(R.string.zan_bu_zhi_chi_ti_bi));
+            return;
+        }
+
+        ETHWalletModel walletModel = WalletDaoUtils.getCurrent();
+        String privateKey = walletModel.getPrivateKey();
+        String addressVals = walletModel.getAddress();
+        String msg = "" + System.currentTimeMillis();
+        String signVal = BitcoinjKit.signMessageBy58(msg, privateKey);
+
+
+        Log.e("paydialog", ".....find...left...money....");
+
+        OkGo.<String>get(ConfigNetWork.JAVA_API_URL + UrlPath.GET_ADDRESS_WITHDRAW + moneyType)
+                .tag(TradeListActivity.this)
+                .headers("Chain-Authentication", addressVals + "#" + msg + "#" + signVal)
+                .execute(new StringCallback() {
+                    @Override
+                    public void onSuccess(Response<String> backresponse) {
+                        if (backresponse != null) {
+                            String backVal = backresponse.body();
+//                            Log.e("backVal", "backVal=" + backVal);
+                            if (backVal != null) {
+                                ResetAddressResponse baseResponse = new Gson().fromJson(backVal, ResetAddressResponse.class);
+                                if (baseResponse!=null && baseResponse.getCode() == 0) {
+                                    main_address = baseResponse.data;
+                                    if (TextUtils.isEmpty(main_address)) {
+                                        ToastUtils.showSingleToast(getString(R.string.get_address_failed));
+                                        return;
+                                    }
+                                    new BottomZhuanZDialogView(TradeListActivity.this, moneyType) {
+
+                                        @Override
+                                        public void btnPickBySelect() {
+                                            //BRC 20
+                                            Intent zIntent = new Intent(TradeListActivity.this, TransferAccountsActivity.class);
+                                            zIntent.putExtra("type", moneyType);
+                                            zIntent.putExtra("leftval", leftVal);
+                                            startActivity(zIntent);
+                                        }
+
+                                        @Override
+                                        public void btnPickByTake() {
+                                            //主链
+                                            Intent zIntent = new Intent(TradeListActivity.this, TransferAccountsTwoActivity.class);
+                                            zIntent.putExtra("type", moneyType);
+                                            zIntent.putExtra("leftval", leftVal);
+                                            startActivity(zIntent);
+                                        }
+                                    }.show();
+                                }
+//                                        try {
+//
+//                                            Gson gson = new Gson();
+//                                            LeftMoneyResponse response = gson.fromJson(backVal, LeftMoneyResponse.class);
+//                                            if (response != null && response.getCode() == 0 && response.getData() != null && response.getData().size() > 0) {
+////                                        int find = 0;
+//                                                for (int i = 0; i < response.getData().size(); i++) {
+//                                                    LeftMoneyResponse.LeftMoneyModel leftMoneyModel = response.getData().get(i);
+//                                                    if (moneyType.equals(leftMoneyModel.getName())) {
+//                                                        setLefMoney(leftMoneyModel);
+//                                                        break;
+//                                                    }
+//                                                }
+//                                            }
+//                                        } catch (Exception e) {
+//                                            e.printStackTrace();
+//                                        }
+                            }
+                        }
+                    }
+
+                });
+    }
 
 
     @Override
@@ -454,6 +586,9 @@ public class TradeListActivity extends BaseActivity implements TradeListTwoAdapt
 
         numView.setText(leftVal);
         valView.setText("≈$" + enMoney);
+        main_address = leftMoneyModel.getChain_deposit_address();
+        canWithDraw = leftMoneyModel.getCan_withdraw() == 1;
+        canRecharge = leftMoneyModel.getCan_recharge() == 1;
 
     }
 

@@ -38,6 +38,7 @@ import com.darknet.bvw.util.bitcoinj.BitcoinjKit;
 import com.darknet.bvw.view.BidDialogView;
 import com.darknet.bvw.view.BottomDialogView;
 import com.darknet.bvw.view.FailZZDialogView;
+import com.darknet.bvw.view.InputPasswordDialog;
 import com.darknet.bvw.view.SuccessDialogView;
 import com.darknet.bvw.viewmodel.MineralViewModel;
 import com.github.lzyzsd.jsbridge.BridgeWebView;
@@ -146,7 +147,7 @@ public class MineralInfoActivity extends BaseBindingActivity<ActivityMineralInfo
 
     private void payDialog(String address) {
 
-        BottomDialogView.Builder builder = new BottomDialogView.Builder(MineralInfoActivity.this);
+       /* BottomDialogView.Builder builder = new BottomDialogView.Builder(MineralInfoActivity.this);
 
         View dialogView = (View) LayoutInflater.from(MineralInfoActivity.this).inflate(R.layout.dialog_pwd_input_two, null);
 
@@ -170,7 +171,14 @@ public class MineralInfoActivity extends BaseBindingActivity<ActivityMineralInfo
         sureBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String contentVal = contentView.getText().toString();
+
+            }
+        });*/
+        InputPasswordDialog dialog = new InputPasswordDialog(this);
+        dialog.setListener(new InputPasswordDialog.OnClickListener() {
+            @Override
+            public void clickSure(String contentVal) {
+//                String contentVal = contentView.getText().toString();
                 if (null == contentVal || contentVal.length() == 0) {
                     Toast.makeText(MineralInfoActivity.this, getString(R.string.empty_pwd), Toast.LENGTH_SHORT).show();
                     return;
@@ -178,7 +186,7 @@ public class MineralInfoActivity extends BaseBindingActivity<ActivityMineralInfo
                     ETHWalletModel walletModel = WalletDaoUtils.getCurrent();
                     if (contentVal.equals(walletModel.getPassword())) {
                         hintKeyBoard();
-                        bottomDialog.dismiss();
+                        dialog.dismiss();
                         createTrade(String.valueOf(mItemInfo.getPay_amount()),address,"BTW");
 
                     } else {
@@ -186,7 +194,13 @@ public class MineralInfoActivity extends BaseBindingActivity<ActivityMineralInfo
                     }
                 }
             }
+
+            @Override
+            public void clickCancel() {
+                hintKeyBoard();
+            }
         });
+        dialog.show();
     }
 
     private void createTrade(String num, String address, String walletType) {

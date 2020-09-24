@@ -32,6 +32,24 @@ public class LeftMoneyResponse extends BaseResponse {
         private String value_qty;//数量
         private String icon;
         private String chain_deposit_address;
+        private int can_withdraw;
+        private int can_recharge;
+
+        public int getCan_withdraw() {
+            return can_withdraw;
+        }
+
+        public void setCan_withdraw(int can_withdraw) {
+            this.can_withdraw = can_withdraw;
+        }
+
+        public int getCan_recharge() {
+            return can_recharge;
+        }
+
+        public void setCan_recharge(int can_recharge) {
+            this.can_recharge = can_recharge;
+        }
 
         public String getChain_deposit_address() {
             return chain_deposit_address;

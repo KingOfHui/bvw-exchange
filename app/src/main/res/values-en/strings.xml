@@ -924,5 +924,8 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="mingwen_siyao">Plaintext private key</string>
     <string name="btc_bonus">BTC bonus</string>
     <string name="input_invite_code">Please input invite code</string>
+    <string name="get_address_failed">Failed to get collection address</string>
+    <string name="msg_no_shoukuan">Collection is not supported</string>
+    <string name="zan_bu_zhi_chi_ti_bi">Withdrawal of currency is not supported</string>
 
 </resources>
