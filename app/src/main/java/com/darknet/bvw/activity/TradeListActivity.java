@@ -409,7 +409,7 @@ public class TradeListActivity extends BaseActivity implements TradeListTwoAdapt
     }
 
     private void getAddressToDoSomething() {
-        if (canWithDraw) {
+        if (!canWithDraw) {
             ToastUtils.showSingleToast(getString(R.string.zan_bu_zhi_chi_ti_bi));
             return;
         }
@@ -460,7 +460,10 @@ public class TradeListActivity extends BaseActivity implements TradeListTwoAdapt
                                             startActivity(zIntent);
                                         }
                                     }.show();
+                                    return;
                                 }
+                                ToastUtils.showSingleToast(getString(R.string.get_address_failed));
+
 //                                        try {
 //
 //                                            Gson gson = new Gson();
