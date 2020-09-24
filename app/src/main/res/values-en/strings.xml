@@ -910,7 +910,7 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="btn_pledge_to_start">pledge %sBTW to start</string>
     <string name="add_mineral">Adding miner</string>
     <string name="add_mineral_tip1">1. Hosting users, please contact the community;</string>
-    <string name="add_mineral_tip2">2. Unmanaged users (after purchasing the mining machine, the mining machine will be sent home)</string>
+    <string name="add_mineral_tip2">2. Unmanaged users (after purchasing the mining machine, the following steps)</string>
     <string name="add_mineral_tip3">2.1 connecting LAN</string>
     <string name="add_mineral_tip4">Mine machine assembly, start-up, networking, the computer connected to the local area network where the mining machine is located, find the miner IP, and log in the mining machine background in the computer browser.</string>
     <string name="add_mineral_tip5">2.2 mining machine configuration</string>

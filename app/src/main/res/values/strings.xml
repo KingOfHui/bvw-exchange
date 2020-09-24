@@ -947,7 +947,7 @@
     <string name="btn_pledge_to_start">立即质押%sBTW开机</string>
     <string name="add_mineral">添加矿机</string>
     <string name="add_mineral_tip1">1、托管用户，请联系社区；</string>
-    <string name="add_mineral_tip2">2、非托管用户（购买矿机后，矿机寄到家）</string>
+    <string name="add_mineral_tip2">2、非托管用户（购买矿机后，以下步骤）</string>
     <string name="add_mineral_tip3">2.1、连接局域网</string>
     <string name="add_mineral_tip4">矿机组装、开机、联网，电脑连接矿机所在的局域网，查找矿机IP，电脑浏览器中登陆矿机后台。</string>
     <string name="add_mineral_tip5">2.2、矿机配置</string>

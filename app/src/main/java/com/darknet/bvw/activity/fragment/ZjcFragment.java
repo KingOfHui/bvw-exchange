@@ -23,6 +23,8 @@ import com.darknet.bvw.model.BtcDo;
 import com.darknet.bvw.util.ToastUtils;
 import com.darknet.bvw.wallet.BtcWalletUtils;
 
+import java.util.List;
+
 public class ZjcFragment extends Fragment {
 
     TextView textView;
@@ -137,12 +139,17 @@ public class ZjcFragment extends Fragment {
             Toast.makeText(getActivity(), getString(R.string.repeat_wallet_val), Toast.LENGTH_SHORT).show();
             return;
         }
+        List<ETHWalletModel> ethWalletModels = WalletDaoUtils.loadAll();
+        int length = 1;
+        if (ethWalletModels != null) {
+            length = ethWalletModels.size()+1;
+        }
 
 
         ETHWalletModel walletModel = new ETHWalletModel();
         walletModel.setAddress(btcDo.getAddress());
         walletModel.setMnemonic(zjcVal);
-        walletModel.setName(accountNameVals);
+        walletModel.setName("BTW-Wallet-"+length);
         walletModel.setPassword(pwdVals);
         //记住把其他钱包，设置为不可选
         walletModel.setCurrentSelect(1);

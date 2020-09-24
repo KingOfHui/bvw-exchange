@@ -22,6 +22,8 @@ import com.darknet.bvw.model.BtcDo;
 import com.darknet.bvw.util.ToastUtils;
 import com.darknet.bvw.wallet.BtcWalletUtils;
 
+import java.util.List;
+
 public class PrivateKeyFragment extends Fragment {
 
 
@@ -100,6 +102,11 @@ public class PrivateKeyFragment extends Fragment {
             Toast.makeText(getActivity(), getString(R.string.repeat_wallet_val), Toast.LENGTH_SHORT).show();
             return;
         }
+        List<ETHWalletModel> ethWalletModels = WalletDaoUtils.loadAll();
+        int length = 1;
+        if (ethWalletModels != null) {
+            length = ethWalletModels.size()+1;
+        }
 
         String walletNameVal = walletName.getText().toString();
         String pwdVal = pwdContent.getText().toString();
@@ -110,7 +117,7 @@ public class PrivateKeyFragment extends Fragment {
         walletModel.setKeyStoreVal(btcDo.getKeyStoreVal());
         walletModel.setPrivateKey(btcDo.getPrivateKey());
         walletModel.setPublicKey(btcDo.getPublicKey());
-//        walletModel.setName(walletNameVal);
+        walletModel.setName("BTW-Wallet-"+length);
         walletModel.setPassword(pwdVal);
 
 

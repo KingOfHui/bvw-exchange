@@ -364,7 +364,7 @@ public class FindFragment extends Fragment implements View.OnClickListener {
 			//未开通
 			stateLidType = 0;
 			stateRidType = 0;
-			changeOpeningState();
+			changeNoOpenState();
 		} else {
 			isOpenSign = 1;
 
