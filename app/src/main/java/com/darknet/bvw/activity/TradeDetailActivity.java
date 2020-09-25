@@ -89,9 +89,9 @@ public class TradeDetailActivity extends BaseActivity implements View.OnClickLis
 
                 if (tradeListModel.getService_fee() != null) {
                     if (tradeListModel.getService_fee().compareTo(BigDecimal.ZERO) == 0) {
-                        kuangFeiView.setText("0 BVW");
+                        kuangFeiView.setText("0 BTW");
                     } else {
-                        kuangFeiView.setText(tradeListModel.getService_fee().stripTrailingZeros().toPlainString() + "BVW");
+                        kuangFeiView.setText(tradeListModel.getService_fee().stripTrailingZeros().toPlainString() + "BTW");
                     }
                 } else {
                     kuangFeiView.setText("");
@@ -99,16 +99,16 @@ public class TradeDetailActivity extends BaseActivity implements View.OnClickLis
 
             } else {
                 if (tradeListModel.getFee().compareTo(BigDecimal.ZERO) == 0) {
-                    kuangFeiView.setText("0 BVW");
+                    kuangFeiView.setText("0 BTW");
                 } else {
-                    kuangFeiView.setText(tradeListModel.getFee().stripTrailingZeros().toPlainString() + "BVW");
+                    kuangFeiView.setText(tradeListModel.getFee().stripTrailingZeros().toPlainString() + "BTW");
                 }
             }
         } else {
             if (tradeListModel.getFee().compareTo(BigDecimal.ZERO) == 0) {
-                kuangFeiView.setText("0 BVW");
+                kuangFeiView.setText("0 BTW");
             } else {
-                kuangFeiView.setText(tradeListModel.getFee().stripTrailingZeros().toPlainString() + "BVW");
+                kuangFeiView.setText(tradeListModel.getFee().stripTrailingZeros().toPlainString() + "BTW");
             }
         }
 
