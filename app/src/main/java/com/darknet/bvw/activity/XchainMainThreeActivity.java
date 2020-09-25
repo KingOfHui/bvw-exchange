@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import com.darknet.bvw.BuildConfig;
 import com.darknet.bvw.R;
 import com.darknet.bvw.activity.fragment.ExchangeFragment;
 import com.darknet.bvw.activity.fragment.FindFragment;
@@ -30,6 +31,7 @@ import com.darknet.bvw.model.event.PushEvent;
 import com.darknet.bvw.model.event.TradeEvent;
 import com.darknet.bvw.model.response.UpdateApkResponse;
 import com.darknet.bvw.model.response.UserInfoResponse;
+import com.darknet.bvw.util.Language;
 import com.darknet.bvw.util.UserSPHelper;
 import com.darknet.bvw.util.bitcoinj.BitcoinjKit;
 import com.darknet.bvw.view.SmartFragmentStatePagerAdapter;
@@ -289,9 +291,8 @@ public class XchainMainThreeActivity extends BaseActivity implements View.OnClic
         if(updateData == null){
             return;
         }
-
-        int curversioncode = getCurVersionCode(XchainMainThreeActivity.this);
-        if (curversioncode < Integer.parseInt(updateData.getVersion_code())) {
+        String version = updateData.getVersion();
+        if (!BuildConfig.VERSION_NAME.equals(version)) {
             showDialog(updateData);
         }
 
@@ -302,9 +303,14 @@ public class XchainMainThreeActivity extends BaseActivity implements View.OnClic
         new UpdateDialog(new UpdateDialog.UpdateItemClick() {
             @Override
             public void updateClick() {
+                Language language = Language.readFromConfig();
+                String url = updateData.getAbroad_android_url();
+                if (language == Language.CHINA) {
+                    url = updateData.getInternal_android_url();
+                }
                 Intent intent= new Intent();
                 intent.setAction("android.intent.action.VIEW");
-                Uri content_url = Uri.parse(updateData.getUrl_address());
+                Uri content_url = Uri.parse(url);
                 intent.setData(content_url);
                 startActivity(intent);
             }

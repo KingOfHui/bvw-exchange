@@ -44,7 +44,7 @@ public class BidZhenMaActivity extends BaseActivity {
         copyView = (TextView)this.findViewById(R.id.zhenma_copy_view);
         saveView = (TextView)this.findViewById(R.id.zhenma_save_view);
 
-        tilteView.setText(getString(R.string.find_bid_zhen_ma));
+        tilteView.setText(getString(R.string.find_bid_pop_one));
         backView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

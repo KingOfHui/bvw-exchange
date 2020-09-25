@@ -18,6 +18,15 @@ public class BidStateResponse extends BaseResponse {
         private String lid;
         private String rid;
         private String referer_id;
+        private String invite_code;
+
+        public String getInvite_code() {
+            return invite_code;
+        }
+
+        public void setInvite_code(String invite_code) {
+            this.invite_code = invite_code;
+        }
 
         public String getReferer_id() {
             return referer_id;

@@ -255,10 +255,6 @@ public class TradeListActivity extends BaseActivity implements TradeListTwoAdapt
                     startActivity(zIntent);
 
                 }else {
-                    if (!canRecharge) {
-                        ToastUtils.showSingleToast(getString(R.string.msg_no_shoukuan));
-                        return;
-                    }
                     if(main_address != null && main_address.trim().length() != 0){
                         new BottomZhuanZDialogView(TradeListActivity.this,moneyType){
 
@@ -285,6 +281,13 @@ public class TradeListActivity extends BaseActivity implements TradeListTwoAdapt
                             }
                         }.show();
                     }else {
+                        if (!canRecharge) {
+                            Intent zIntent = new Intent(TradeListActivity.this, MyQrActivity.class);
+                            zIntent.putExtra("brcAddress",brcAddress);
+                            zIntent.putExtra("moneyType",moneyType);
+                            startActivity(zIntent);
+                            return;
+                        }
                     ETHWalletModel walletModel = WalletDaoUtils.getCurrent();
                     String privateKey = walletModel.getPrivateKey();
                     String addressVals = walletModel.getAddress();
@@ -410,10 +413,14 @@ public class TradeListActivity extends BaseActivity implements TradeListTwoAdapt
 
     private void getAddressToDoSomething() {
         if (!canWithDraw) {
-            ToastUtils.showSingleToast(getString(R.string.zan_bu_zhi_chi_ti_bi));
+//            ToastUtils.showSingleToast(getString(R.string.zan_bu_zhi_chi_ti_bi));
+            //BRC 20
+            Intent zIntent = new Intent(TradeListActivity.this, TransferAccountsActivity.class);
+            zIntent.putExtra("type", moneyType);
+            zIntent.putExtra("leftval", leftVal);
+            startActivity(zIntent);
             return;
         }
-
         ETHWalletModel walletModel = WalletDaoUtils.getCurrent();
         String privateKey = walletModel.getPrivateKey();
         String addressVals = walletModel.getAddress();

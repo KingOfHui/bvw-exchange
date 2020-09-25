@@ -40,6 +40,24 @@ public class UpdateApkResponse extends BaseResponse {
         private String updateTime;
         private String url_address;
         private String version_code;
+        private String abroad_android_url;
+        private String internal_android_url;
+
+        public String getAbroad_android_url() {
+            return abroad_android_url;
+        }
+
+        public void setAbroad_android_url(String abroad_android_url) {
+            this.abroad_android_url = abroad_android_url;
+        }
+
+        public String getInternal_android_url() {
+            return internal_android_url;
+        }
+
+        public void setInternal_android_url(String internal_android_url) {
+            this.internal_android_url = internal_android_url;
+        }
 
         public String getVersion_code() {
             return version_code;

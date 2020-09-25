@@ -16,7 +16,7 @@ public class UrlPath {
 
 //    public static String MONEY_TYPE_URL = "api/v1/wallet/toke/list"; //支持币种
 
-    public static String UPDATE_URL = "api/v1/appCheckVersion"; //检查更新
+    public static String UPDATE_URL = "api/v1/getAppOnline"; //检查更新
 
     public static String ADD_PEOPLE_URL = "api/v1/address/add"; //新增地址
 
