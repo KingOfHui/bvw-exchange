@@ -322,7 +322,7 @@ public class CommunityLeaderAct extends BaseActivity {
                     @Override
                     public void onSuccess(Response<String> backresponse) {
                         pullToRefreshScrollView.onRefreshComplete();
-                        Log.d(TAG, ConfigNetWork.JAVA_API_URL + UrlPath.BVW_PERFORMANCE_URL + ":" + backresponse.body());
+                        Log.d(TAG, ConfigNetWork.JAVA_API_URL + UrlPath.BTW_PERFORMANCE_URL + ":" + backresponse.body());
                         try {
 
                             Gson gson = new Gson();
@@ -452,13 +452,13 @@ public class CommunityLeaderAct extends BaseActivity {
         String msg = "" + System.currentTimeMillis();
         String signVal = BitcoinjKit.signMessageBy58(msg, privateKey);
 
-        OkGo.<String>get(ConfigNetWork.JAVA_API_URL + UrlPath.BVW_STATE_URL)
+        OkGo.<String>get(ConfigNetWork.JAVA_API_URL + UrlPath.BTW_STATE_URL)
                 .tag(this)
                 .headers("Chain-Authentication", addressVals + "#" + msg + "#" + signVal)
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(Response<String> backresponse) {
-                        Log.d(TAG, ConfigNetWork.JAVA_API_URL + UrlPath.BVW_STATE_URL + ":" + backresponse.body());
+                        Log.d(TAG, ConfigNetWork.JAVA_API_URL + UrlPath.BTW_STATE_URL + ":" + backresponse.body());
                         try {
                             Gson gson = new Gson();
                             BaseResponse<String> response = gson.fromJson(backresponse.body(), new TypeToken<BaseResponse<String>>() {

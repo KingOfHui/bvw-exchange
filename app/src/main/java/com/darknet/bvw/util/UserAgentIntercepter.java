@@ -34,14 +34,16 @@ public class UserAgentIntercepter implements Interceptor {
             //中文
            Request request = chain.request().newBuilder()
                    .addHeader("clientId", jiguangId)
-                   .addHeader("lang","cn")
+//                   .addHeader("lang","cn")
+                   .addHeader("Accept-Language","zh_CN")
                    .build();
 
            return chain.proceed(request);
         }else {
            Request request = chain.request().newBuilder()
                    .addHeader("clientId", jiguangId)
-                   .addHeader("lang","en")
+//                   .addHeader("lang","en")
+                   .addHeader("Accept-Language","en_US")
                    .build();
 
            return chain.proceed(request);

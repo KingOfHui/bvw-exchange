@@ -57,7 +57,7 @@
                 android:id="@+id/fenlie_success_num_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="3000BVW"
+                android:text="3000BTW"
                 android:textColor="#01FCDA"
                 android:textSize="16dp"
                 android:textStyle="bold" />

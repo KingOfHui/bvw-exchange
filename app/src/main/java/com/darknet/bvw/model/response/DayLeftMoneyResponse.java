@@ -6,9 +6,9 @@ public class DayLeftMoneyResponse extends BaseResponse {
 
 //
 //    {"code":0,"msg":"success","data":{"":0,"":0,"":0,"":0.000000,
-//            "":0.000000,"":0,"msg":"请输入今日可转出额度0USD,剩余0USD,可累计到20BVW*3USD后统一转出",
+//            "":0.000000,"":0,"msg":"请输入今日可转出额度0USD,剩余0USD,可累计到20BTW*3USD后统一转出",
 //            "":"You can " +
-//            "transfer today: 0 USDs input, with 0 remaining, can add to 20BVW*3USD to gather transfer"},"success":true}
+//            "transfer today: 0 USDs input, with 0 remaining, can add to 20BTW*3USD to gather transfer"},"success":true}
 
 
 

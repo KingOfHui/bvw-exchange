@@ -306,7 +306,7 @@
                                 android:layout_alignParentRight="true"
                                 android:layout_centerVertical="true"
                                 android:layout_marginRight="10dp"
-                                android:text="BVW"
+                                android:text="BTW"
                                 android:textColor="#ff979fa7"
                                 android:textSize="14sp" />
                         </RelativeLayout>

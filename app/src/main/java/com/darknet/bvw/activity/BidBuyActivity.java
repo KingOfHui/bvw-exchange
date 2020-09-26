@@ -92,7 +92,7 @@ public class BidBuyActivity extends BaseActivity {
 
         priceNumView = (TextView) findViewById(R.id.bid_buy_price_view);
 
-        leftView.setText(":" + leftVal + " BVW");
+        leftView.setText(":" + leftVal + " BTW");
 
         backView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -240,7 +240,7 @@ public class BidBuyActivity extends BaseActivity {
             startActivity(bidIntent);
         } else {
             //直接支付
-            priceNumView.setText(bidMoneyModel.getBid_price() + " BVW");
+            priceNumView.setText(bidMoneyModel.getBid_price() + " BTW");
             directPay(bidMoneyModel.getBid_price());
         }
 
@@ -303,7 +303,7 @@ public class BidBuyActivity extends BaseActivity {
             return;
         }
         buyView.setEnabled(false);
-        createTrade(shouldPayVals, publicAddressVal, "BVW");
+        createTrade(shouldPayVals, publicAddressVal, "BTW");
     }
 
 
@@ -492,7 +492,7 @@ public class BidBuyActivity extends BaseActivity {
         SendTradeRequest sendTradeRequest = new SendTradeRequest();
         sendTradeRequest.setAmount(shouldPayVals);
         sendTradeRequest.setRaw(signVal);
-        sendTradeRequest.setSymbol("BVW");
+        sendTradeRequest.setSymbol("BTW");
         sendTradeRequest.setTo_address(publicAddressVal);
         sendTradeRequest.setType(1);
         sendTradeRequest.setReferer_code(tuijianVal);
@@ -703,7 +703,7 @@ public class BidBuyActivity extends BaseActivity {
             for (int i = 0; i < allMoney.size(); i++) {
                 LeftMoneyResponse.LeftMoneyModel zcMoneyModel = allMoney.get(i);
                 if (!TextUtils.isEmpty(zcMoneyModel.getName())) {
-                    if (zcMoneyModel.getName().equalsIgnoreCase("BVW")) {
+                    if (zcMoneyModel.getName().equalsIgnoreCase("BTW")) {
                         if (TextUtils.isEmpty(zcMoneyModel.getValue_qty()) || zcMoneyModel.getValue_qty().equals("0") || zcMoneyModel.getValue_qty().equals("0.000000")) {
                             leftMoneyVal = "0";
                         } else {
@@ -714,7 +714,7 @@ public class BidBuyActivity extends BaseActivity {
             }
         }
 
-        leftView.setText(":" + leftMoneyVal + " BVW");
+        leftView.setText(":" + leftMoneyVal + " BTW");
 
     }
 

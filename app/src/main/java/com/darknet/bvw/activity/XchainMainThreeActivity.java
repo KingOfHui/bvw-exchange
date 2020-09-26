@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -292,13 +293,39 @@ public class XchainMainThreeActivity extends BaseActivity implements View.OnClic
             return;
         }
         String version = updateData.getVersion();
-        if (!BuildConfig.VERSION_NAME.equals(version)) {
+
+        if (getVersionCode(BuildConfig.VERSION_NAME) < getVersionCode(version)) {
             showDialog(updateData);
         }
 
     }
+    private float getVersionCode(String version) {
+        if (TextUtils.isEmpty(version)) {
+            return 0;
+        }
 
+        int index = version.indexOf(".");
+        if (index < 0) {
+            return toFloat(version);
+        }
 
+        if (index == version.length() - 1) {
+            return toFloat(version.substring(0, index));
+        }
+
+        String prefix = version.substring(0, index + 1);
+        String suffix = version.substring(index + 1).replace(".", "");
+        return toFloat(prefix + suffix);
+    }
+
+    public float toFloat(String number) {
+        try {
+            return Float.parseFloat(number);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return 0;
+    }
     private void showDialog(UpdateApkResponse.UpdateModel updateData){
         new UpdateDialog(new UpdateDialog.UpdateItemClick() {
             @Override

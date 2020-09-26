@@ -115,7 +115,7 @@ public class QrCodeUtil {
     public static void saveImageToGallery(Context context, Bitmap bmp) {
 
         // 首先保存图片
-        File appDir = new File(Environment.getExternalStorageDirectory(), "BVW");
+        File appDir = new File(Environment.getExternalStorageDirectory(), "BTW");
         if (!appDir.exists()) {
 
             appDir.mkdir();

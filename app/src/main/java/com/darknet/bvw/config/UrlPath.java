@@ -23,6 +23,7 @@ public class UrlPath {
     public static String PEOPLE_LIST_URL = "api/v1/address/list"; //获取地址列表
 
     public static String PUBLIC_ADDRESS_URL = "api/v1/dictByType"; //获取官方地址
+    public static String PUBLIC_DICT_BY_KEY_URL = "api/v1/dictByKey"; //获取官方地址
 
     public static String FIND_BID_STATE_URL = "api/v1/user/bidInfo"; //查询bid状态
     public static String USER_BID_INFO_URL = "api/v1/user/info"; //查询bid状态新街口
@@ -71,15 +72,15 @@ public class UrlPath {
     public static String DEAL_LIST_URL = "api/v1/exchange/trade/list"; //交易列表
     public static String KLINE_ALL_DATA_URL = "api/v1/exchange/kline/";// 获取K线历史数据
     public static String SYMBOL_TICKER_URL = "api/v1/exchange/ticker";
-    public static String BVW_USDT_URL = "api/v1/exchange/market/detail/";
+    public static String BTW_USDT_URL = "api/v1/exchange/market/detail/";
     /**
      * 我的业绩聚合接口
      */
-    public static String BVW_PERFORMANCE_URL = "api/v1/leaderPlan/performance";
+    public static String BTW_PERFORMANCE_URL = "api/v1/leaderPlan/performance";
     /**
      * 是否是社区领导用户
      */
-    public static String BVW_STATE_URL = "api/v1/leaderPlan/state";
+    public static String BTW_STATE_URL = "api/v1/leaderPlan/state";
     public static String NOTICE_CONTENT_URL = "api/v1/announcement/getTop"; //签到接口
     public static String ADD_IN_YUBI_URL = "api/v1/bvwInvest/apply"; //加入余币宝
     public static String YUBIBAO_LIST_URL = "api/v1/bvwInvest/applyList"; //余币宝申请列表

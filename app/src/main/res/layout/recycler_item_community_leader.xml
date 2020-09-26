@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:text="(BVW)"
+        android:text="(BTW)"
         android:textColor="@color/color_01FCDA"
         android:textSize="16sp"
         android:textStyle="bold" />

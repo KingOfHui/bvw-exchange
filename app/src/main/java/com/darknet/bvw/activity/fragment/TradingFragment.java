@@ -1191,7 +1191,7 @@ public class TradingFragment extends Fragment {
                 if (!TextUtils.isEmpty(priceViewVal) && !TextUtils.isEmpty(numViewVal)) {
                     if (baskSymble.equals("USDT")) {
                         setScan = 3;
-                    } else if (baskSymble.equals("BVW")) {
+                    } else if (baskSymble.equals("BTW")) {
                         setScan = 2;
                     } else if (baskSymble.equals("BTC")) {
                         setScan = 8;

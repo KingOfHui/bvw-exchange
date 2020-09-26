@@ -328,7 +328,7 @@ public class WeiTuoListActivity extends BaseActivity implements View.OnClickList
 //
 //        tradeRequest.setLimit(100);
 //        tradeRequest.setPage(1);
-//        tradeRequest.setMarketId("BVW-USDT");
+//        tradeRequest.setMarketId("BTW-USDT");
 //        GsonBuilder builder = new GsonBuilder();
 //        Gson gson = builder.create();
 //        String jsonVal = gson.toJson(tradeRequest);

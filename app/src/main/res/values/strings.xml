@@ -210,7 +210,7 @@
     <string name="wallet_create_sign_repeat_pwd">请填写钱包重复密码</string>
     <string name="wallet_create_sign_pwd_not">密码与重复密码不相同</string>
     <string name="wallet_pwd_notice">密码用于保护私钥和交易授权，强度非常重要</string>
-    <string name="wallet_remember_notice">BVW不存储密码，也无法帮您找回，请务必牢记</string>
+    <string name="wallet_remember_notice">BTW不存储密码，也无法帮您找回，请务必牢记</string>
     <string name="wallet_name">钱包名称</string>
     <string name="wallet_pwd">密码</string>
     <string name="wallet_pwd_six">六位及以上密码</string>
@@ -357,9 +357,9 @@
 
     <string name="bid_buy_price">价格</string>
     <string name="bid_buy_open_guide">开通指南</string>
-    <string name="bid_buy_intro">可通过推荐者的梯阵码或像阵码，付费10个BVW后，即可创建BID。</string>
+    <string name="bid_buy_intro">可通过推荐者的梯阵码或像阵码，付费10个BTW后，即可创建BID。</string>
 
-    <string name="bid_buy_notice">请输入梯阵码或像阵码</string>
+    <string name="bid_buy_notice">请输入邀请码</string>
 
     <string name="bid_open_sucdess">恭喜您！成功开通BID身份</string>
 
@@ -453,7 +453,7 @@
     <string name="fenlie_header_evelve">已销毁：</string>
     <string name="fenlie_header_twelev">累计阶段累计资金</string>
 
-    <string name="fenlie_middle_one">总分裂BVW</string>
+    <string name="fenlie_middle_one">总分裂BTW</string>
     <string name="fenlie_middle_two">分裂</string>
     <string name="fenlie_middle_three">成功</string>
     <string name="fenlie_middle_four">分裂详情</string>
@@ -466,7 +466,7 @@
 
     <string name="order_item_one">分裂类型：</string>
     <string name="order_item_two">分裂比例</string>
-    <string name="order_item_three">获得BVW</string>
+    <string name="order_item_three">获得BTW</string>
     <string name="order_item_four">总资金</string>
 
     <string name="zhenlie_left_val">梯阵</string>
@@ -491,7 +491,7 @@
     <string name="qr_erweima_code_two_two"> BRC20地址充值（请谨慎填写， 防止资产丢失）</string>
 
 
-    <string name="qr_erweima_title_one">USDT 收款码（BVW）</string>
+    <string name="qr_erweima_title_one">USDT 收款码（BTW）</string>
     <string name="qr_erweima_title_two">USDT 收款码（Ethereum）</string>
 
     <string name="qr_erweima_title_three">收款码（BRC20）</string>
@@ -502,7 +502,7 @@
     <string name="trade_account_one_title">BTC转账(BRC20)</string>
     <string name="trade_account_two_title">BTC转账(Bitcoin)</string>
 
-    <string name="trade_account_one_header">请填写对方BVW公链，BRC20 </string>
+    <string name="trade_account_one_header">请填写对方BTW公链，BRC20 </string>
     <string name="trade_account_one_one_header"> 地址，（请谨慎填写， 防止资产丢失）</string>
 
     <string name="trade_account_two_header">请填写对方的</string>
@@ -520,7 +520,7 @@
 
 
     <string name="fenlie_btc_midle_one">例如：A用户参与分裂后即可获得交易记录hash:</string>
-    <string name="fenlie_btc_midle_two">根据每笔分裂的交易hash最后一位数字是偶数还是奇数， 智能合约来判断是进入左叉和右叉，无论是进入左叉和右 叉，均可以释放90%的BVW，其他22%，如果回滚成功， 即可获得22%的全部奖励，如果回滚失败，则根据智能合 约进入回滚表。</string>
+    <string name="fenlie_btc_midle_two">根据每笔分裂的交易hash最后一位数字是偶数还是奇数， 智能合约来判断是进入左叉和右叉，无论是进入左叉和右 叉，均可以释放90%的BTW，其他22%，如果回滚成功， 即可获得22%的全部奖励，如果回滚失败，则根据智能合 约进入回滚表。</string>
 
     <string name="first_totoal_money">我的总资产（$）</string>
     <string name="first_suanli_sign">当前算力</string>
@@ -654,7 +654,7 @@
     <string name="weituo_item_finish">完成</string>
 
 
-    <string name="hz_notice_sign">只有将资产划转到对应账户才可进行交易，账户间的划转不收取手续费，每笔矿费0.001BVW</string>
+    <string name="hz_notice_sign">只有将资产划转到对应账户才可进行交易，账户间的划转不收取手续费，每笔矿费0.001BTW</string>
 
     <string name="hz_top_sign">划转</string>
     <string name="hz_top_from">从</string>
@@ -672,7 +672,7 @@
     <string name="zz_select_dialog_eth_one">Ethereum公链资产</string>
     <string name="zz_select_dialog_usdt_one">Ethereum公链资产</string>
 
-    <string name="zz_select_dialog_bvw_two">BVW公链资产</string>
+    <string name="zz_select_dialog_bvw_two">BTW公链资产</string>
 
     <string name="bid_jiangli_height">区块高度：</string>
 
@@ -683,7 +683,7 @@
     <string name="bid_jiangli_no_data_top_sign">暂无TOP榜信息。</string>
     <string name="bid_jiangli_no_data_lucky_sign">暂无Lucky榜信息。</string>
 
-    <string name="bvw_shoukuan_ma">BVW公链地址</string>
+    <string name="bvw_shoukuan_ma">BTW公链地址</string>
 
     <string name="sign_success_notice">您今日已经签到！</string>
 
@@ -700,7 +700,7 @@
 
     <string name="bibi_pop_left_viwe">币币</string>
 
-    <string name="notice_add_money_type">矿费太低，请充值BVW矿费</string>
+    <string name="notice_add_money_type">矿费太低，请充值BTW矿费</string>
 
     <!--    <string name="hz_input_num_sign">请输入划账数量</string>-->
 
@@ -723,25 +723,25 @@
     <string name="mine_award_ratio">释放矿池奖金=每日业绩* %s -已发放奖金</string>
     <string name="accept_leader">申请成为复活者</string>
     <string name="is_leader">您已经是复活者</string>
-    <string name="title_com_leader">BVW复活者计划</string>
-    <string name="title_com_leader_help">BVW复活者计划</string>
+    <string name="title_com_leader">BTW复活者计划</string>
+    <string name="title_com_leader_help">BTW复活者计划</string>
     <string name="help">帮助</string>
     <string name="community_desc1">宇宙的诞生 便有着生生不息的力量
-        \nBVW的永续经营理念正是效仿宇宙永恒的法则
-        \nBVW将以宇宙永恒的理念
+        \nBTW的永续经营理念正是效仿宇宙永恒的法则
+        \nBTW将以宇宙永恒的理念
         \n在全球范围内开启【复活者计划】
         \n首批2亿美金“梦想启动金”帮助所有失败投资者。
     </string>
     <string name="community_desc2">加入【复活者计划】</string>
-    <string name="community_desc3">通过BVW已注册的会员报备，需要至少10名成员同时报名，提交相关资料经审核通过并激活BVW买入协议以后，BVW则会根据每个投资人投资失败证明/资料，给予个人投资人最高200，000美金的梦想启动金。每个加入【复活者计划】投资人必须开通BID。 </string>
+    <string name="community_desc3">通过BTW已注册的会员报备，需要至少10名成员同时报名，提交相关资料经审核通过并激活BTW买入协议以后，BTW则会根据每个投资人投资失败证明/资料，给予个人投资人最高200，000美金的梦想启动金。每个加入【复活者计划】投资人必须开通BID。 </string>
     <string name="community_desc4">【复活者计划】参与流程 </string>
     <string name="community_desc5">
         1、准备自己旧资产的证明。
-        \n\n\n2、联系已经注册BVW的用户，至少10人（原团队成员）注册下载BVW，并开通BID。
+        \n\n\n2、联系已经注册BTW的用户，至少10人（原团队成员）注册下载BTW，并开通BID。
         \n\n\n3、填写【复活者计划】申请书，并且进入每期的【复活者计划】培训群，进行每期的【复活者计划】专项培训，培训完结以后正式录入【复活者计划】名录。
-       \n\n\n4、进入【复活者计划】名录以后，提交BVW收款地址，和资产证明。
-        \n\n\n5、对接【复活者计划】团队需要在BVW 内置交易所首次买入价值1万USDT的BVW，用于激活协议。
-        \n\n\n6、完成买入BVW协议以后，根据亏损金额给予每人5万美金-20万美金的救赎款。每月1号 5号 10号 15号 20号 25 号进行发放救赎金。
+       \n\n\n4、进入【复活者计划】名录以后，提交BTW收款地址，和资产证明。
+        \n\n\n5、对接【复活者计划】团队需要在BTW 内置交易所首次买入价值1万USDT的BTW，用于激活协议。
+        \n\n\n6、完成买入BTW协议以后，根据亏损金额给予每人5万美金-20万美金的救赎款。每月1号 5号 10号 15号 20号 25 号进行发放救赎金。
         \n\n\n7、第二日开始并激活【复活者计划】梦想启动金矿池，按照总持币价值10%，进入【复活者计划】梦想启动金矿池，（矿池总金额最多不超过20万美金，当用户的总业绩超过200万美金以后，业绩10%进入矿池的指令将自动消失）。</string>
     <string name="community_desc6">奖金规则： </string>
     <string name="community_desc7">如何激活矿池：
@@ -750,21 +750,21 @@
     </string>
 
     <string name="community_desc8">
-        \n\n注：【复活者计划】用户需要满足持有至少＞200枚BVW，系统才会开始进行激活矿池流入。
+        \n\n注：【复活者计划】用户需要满足持有至少＞200枚BTW，系统才会开始进行激活矿池流入。
     </string>
     <string name="community_desc9">结算规则： </string>
     <string name="community_desc10">
-        【复活者计划】的梦想启动金释放将与BVW每日涨幅进行关联，BVW每日00：10的涨幅百分比，
-        将作为【复活者计划】矿池释放的百分比。（涨幅负数不做任何奖励）即当日BVW的涨幅百分比=当日BVW矿池余额释放百分比。
-        举例：用户参与了【复活者计划】，今日整个团队新增业绩 100万，则流入【复活者计划】矿池100X10%=10万，今日BVW涨幅5%，
+        【复活者计划】的梦想启动金释放将与BTW每日涨幅进行关联，BTW每日00：10的涨幅百分比，
+        将作为【复活者计划】矿池释放的百分比。（涨幅负数不做任何奖励）即当日BTW的涨幅百分比=当日BTW矿池余额释放百分比。
+        举例：用户参与了【复活者计划】，今日整个团队新增业绩 100万，则流入【复活者计划】矿池100X10%=10万，今日BTW涨幅5%，
         用户则可以获得10万X5%=5000元【复活者计划】梦想启动金。用户随时可以对释放的梦想启动金发起交易/提现。
     </string>
     <string name="community_desc11">休眠系统： </string>
     <string name="community_desc12">
         【复活者计划】为防止用户操控市场，系统同步会启动休眠系统。
-        休眠系统只对【复活者计划】用户体系生效，对正常BVW经济模式用户无效。
+        休眠系统只对【复活者计划】用户体系生效，对正常BTW经济模式用户无效。
         \n休眠系统说明：参与【复活者计划】用户，新增业绩10%可进入复活者计划矿池系统，最多矿池容量≤20万USDT。
-        如用户当日总业绩＞历史最高业绩，则新增业绩10%，流入【复活者计划】矿池，根据当日BVW的涨幅百分比释放矿池余额的百分比；
+        如用户当日总业绩＞历史最高业绩，则新增业绩10%，流入【复活者计划】矿池，根据当日BTW的涨幅百分比释放矿池余额的百分比；
     </string>
     <string name="community_desc13">如用户当日总业绩≤历史最高业绩，则进入休眠状态，
         【复活者计划】矿池将停止释放；当用户总计＞历史最高业绩以后，
@@ -772,7 +772,7 @@
     </string>
     <string name="community_desc14">每日业绩统计：（伦敦时间） </string>
     <string name="community_desc15">每日00：00-24：00为业绩统计时间，持币未满24小时将不计入业绩统计
-        \n每日00：10为BVW当日涨幅计算时间
+        \n每日00：10为BTW当日涨幅计算时间
         \n第二日12：00为收益发放时间
     </string>
     <string name="day_60_usdt">我的昨日奖金：%sUSDT</string>
@@ -787,7 +787,7 @@
     <string name="near_60">近60天</string>
     <string name="to_the_account">到账时间：伦敦时间今日12 : 00后1小时内</string>
     <string name="apply_success">
-       请联系全球BVW注册用户，
+       请联系全球BTW注册用户，
 \n提交旧资产证明
 \n通过审核以后，
 \n即可加入【复活者计划】
@@ -800,34 +800,34 @@
     <string name="unit_price">单价：%s</string>
     <string name="fast_photo">%s&#160;快照</string>
 
-    <string name="yb_header_one">存入≥201枚BVW</string>
+    <string name="yb_header_one">存入≥201枚BTW</string>
     <string name="yb_header_two">即可加入余币宝计划</string>
 
     <string name="yb_txt_one">一、6个月合约期</string>
-    <string name="yb_txt_two">保证本金100%，每日挖矿BVW可自由交易提现，到期挖矿收益约100%！
+    <string name="yb_txt_two">保证本金100%，每日挖矿BTW可自由交易提现，到期挖矿收益约100%！
 </string>
     <string name="yb_txt_three">二、12个月合约期</string>
-    <string name="yb_txt_four">保证本金100%，每日挖矿BVW可自由交易提现，到期挖矿收益约150%！</string>
+    <string name="yb_txt_four">保证本金100%，每日挖矿BTW可自由交易提现，到期挖矿收益约150%！</string>
     <string name="yb_txt_five">三、24个月合约期</string>
-    <string name="yb_txt_six">保证本金100%，每日挖矿BVW可自由交易提现，到期挖矿收益约200%！</string>
+    <string name="yb_txt_six">保证本金100%，每日挖矿BTW可自由交易提现，到期挖矿收益约200%！</string>
 
     <string name="yb_md_one">例如：</string>
-    <string name="yb_md_two">用户3月3日后通过交易所或者分裂池购入3001枚BVW加入余币宝，
-并选择6个月的合约期。单价为1USDT/BVW.
+    <string name="yb_md_two">用户3月3日后通过交易所或者分裂池购入3001枚BTW加入余币宝，
+并选择6个月的合约期。单价为1USDT/BTW.
 用户余币宝总合约价值为：
 3001x1USDT=3001USDT。
-假如：用户每日产币为10枚BVW，BVW价格
+假如：用户每日产币为10枚BTW，BTW价格
 一直恒定为1USDT，用户6个月可以获得
 额外挖矿收益为：10x1x180=1800USDT。
-合约到期，用户把本金BVW转回给合约后，即可返还3001USDT（100%本金）
+合约到期，用户把本金BTW转回给合约后，即可返还3001USDT（100%本金）
 ，总金额为：3001+1800=4801USDT，总收益率为：160%
 </string>
     <string name="yb_md_three">五、加入余币宝和普通挖矿用户有什么区别？
 </string>
-    <string name="yb_md_four">1、加入余币宝6、12、24个月锁定，合约到期，用户把本金BVW转回给合约后，即可以USDT的形式返回本金（24个月合约用户可选择BVW、USDT其中一种）。\n\n
+    <string name="yb_md_four">1、加入余币宝6、12、24个月锁定，合约到期，用户把本金BTW转回给合约后，即可以USDT的形式返回本金（24个月合约用户可选择BTW、USDT其中一种）。\n\n
 2、未加入余币宝的余额：
 可自由钱包转账，不受合约锁定限制，无保本资格，可自由抛售每日收益，本币可以在2月4日 24:00之前选择加入余币宝，2月4日 24:00后如果未加入，暂时只能每日抛售收益。
-凡是3月3日后在交易所和分裂池获得的BVW，每日可划转、提现，3月3日至今余额峰值最高额度的1%BVW。后期会陆续开放更多跨链转出!
+凡是3月3日后在交易所和分裂池获得的BTW，每日可划转、提现，3月3日至今余额峰值最高额度的1%BTW。后期会陆续开放更多跨链转出!
 </string>
 
     <string name="yb_bm_one">额度</string>
@@ -835,7 +835,7 @@
     <string name="yb_bm_three">签名授权加入余币宝</string>
 
     <string name="yb_title_val">余币宝</string>
-    <string name="yb_pay_success_sign">您已经把 %s BVW授权给BVW合约，锁定%s个月！</string>
+    <string name="yb_pay_success_sign">您已经把 %s BTW授权给BTW合约，锁定%s个月！</string>
     <string name="yb_list_title">我的余币宝：</string>
 
     <string name="yb_list_bj">返回本金</string>
@@ -853,7 +853,7 @@
 
 
     <string name="yb_txt_new_six_title">余币宝价格取值：</string>
-    <string name="yb_txt_new_six_content">3月3日前加入余币宝用户，本金价格取值,以获取BVW当时的价格为准，3月3日后加入余币宝的用户，本金价格取值，按照加入当时BVW的单价为准</string>
+    <string name="yb_txt_new_six_content">3月3日前加入余币宝用户，本金价格取值,以获取BTW当时的价格为准，3月3日后加入余币宝的用户，本金价格取值，按照加入当时BTW的单价为准</string>
 
     <string name="yb_txt_new_seven_title">余币宝收益计算方式：每天产出的币，每天卖出既是收益!
 </string>
@@ -865,10 +865,10 @@
 
     <string name="yb_txt_new_eight_title">余币宝到期后：</string>
     <string name="yb_txt_new_eight_content">加入余币宝6个月和12个月的伙伴，系统将自动返还本金到原有账户，以USDT进行结算到伙伴的USDT账户里；收益不足合约收益的，系统将自动补齐。
-其中24个月特权用户的伙伴，余币宝合约到期，伙伴可以自由选择USDT/BVW进行结算；收益不足合约收益的，系统将自动补齐;</string>
+其中24个月特权用户的伙伴，余币宝合约到期，伙伴可以自由选择USDT/BTW进行结算；收益不足合约收益的，系统将自动补齐;</string>
 
 
-    <string name="yb_header_two_two">交易所购买，分裂获得的BVW
+    <string name="yb_header_two_two">交易所购买，分裂获得的BTW
 </string>
     <string name="find_game">游戏</string>
     <string name="find_game_info">休闲、策略手游</string>
@@ -964,4 +964,6 @@
     <string name="get_address_failed">获取收款地址失败</string>
     <string name="msg_no_shoukuan">暂不支持收款</string>
     <string name="zan_bu_zhi_chi_ti_bi">暂不支持提币</string>
+    <string name="cross_chain_no">跨链交易号</string>
+    <string name="cross_chain_fee">跨链手续费</string>
 </resources>

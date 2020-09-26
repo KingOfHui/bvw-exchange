@@ -94,7 +94,7 @@
     <string name="trade_select_corn">Select currency</string>
     <string name="trade_next_step">Next</string>
 
-    <string name="bvw_shoukuan_ma">BVW public link address</string>
+    <string name="bvw_shoukuan_ma">BTW public link address</string>
 
 
     <string name="set_title">Setting</string>
@@ -135,7 +135,7 @@
     <string name="wallet_create_sign_repeat_pwd">Please fill in the wallet duplicate password.</string>
     <string name="wallet_create_sign_pwd_not">Password is not the same as duplicate password.</string>
     <string name="wallet_pwd_notice">Password is used to protect private keys and transaction authorization, strength is very important.</string>
-    <string name="wallet_remember_notice">BVW does not store passwords, nor can it help you get back, please keep in mind.</string>
+    <string name="wallet_remember_notice">BTW does not store passwords, nor can it help you get back, please keep in mind.</string>
     <string name="wallet_name">Wallet name</string>
     <string name="wallet_pwd">Password</string>
     <string name="wallet_pwd_six">Six or more passwords</string>
@@ -154,7 +154,7 @@
 
     <string name="create_aacoutn_view">Create Account</string>
     <string name="about_us_title">About us</string>
-    <string name="about_us_content">   BTW is a public-chain project that introduces POS single-core HW consensus algorithm in the public-chain segmentation area, BID atomic node participates in accounting, open source, and mixed-chain point-to-point distributed network nodes. In addition to providing a high-TPS settlement, programmable smart contract platform technology solution to assist DAPP landing, BVW also created a global fission ecological network using fragmentation nodes. BTW is the first time humans have imitated the Creator to create a sustainable intelligent contract-machine DNA to build a living body that is shared by all human beings. BTW is also the first time humans have tried to make human technology self-replicate and propagate in a sustainable way.</string>
+    <string name="about_us_content">   BTW is a public-chain project that introduces POS single-core HW consensus algorithm in the public-chain segmentation area, BID atomic node participates in accounting, open source, and mixed-chain point-to-point distributed network nodes. In addition to providing a high-TPS settlement, programmable smart contract platform technology solution to assist DAPP landing, BTW also created a global fission ecological network using fragmentation nodes. BTW is the first time humans have imitated the Creator to create a sustainable intelligent contract-machine DNA to build a living body that is shared by all human beings. BTW is also the first time humans have tried to make human technology self-replicate and propagate in a sustainable way.</string>
     <string name="help_title">Using help</string>
     <string name="del_wallet_fail">Filed to delete</string>
     <string name="no_data">No transfer record</string>
@@ -280,9 +280,9 @@
     <string name="bid_buy_price">Price</string>
 
     <string name="bid_buy_open_guide">Launch Guide</string>
-    <string name="bid_buy_intro">The BID can be created after paying 10 BVW through the recommender is ladder code or like matrix code.</string>
+    <string name="bid_buy_intro">The BID can be created after paying 10 BTW through the recommender is ladder code or like matrix code.</string>
 
-    <string name="bid_buy_notice">Please enter ladder matrix code or like matrix code</string>
+    <string name="bid_buy_notice">Please enter invite code</string>
 
     <string name="bid_open_sucdess">Congratulations! Successfully opened BID identity</string>
     <string name="bid_open_fail">Payment failed</string>
@@ -370,7 +370,7 @@
     <string name="fenlie_header_evelve">Destruction: </string>
     <string name="fenlie_header_twelev">Cumulative Money</string>
 
-    <string name="fenlie_middle_one">Total Split BVW</string>
+    <string name="fenlie_middle_one">Total Split BTW</string>
     <string name="fenlie_middle_two">Split</string>
     <string name="fenlie_middle_three">Success</string>
     <string name="fenlie_middle_four">Split Details</string>
@@ -383,7 +383,7 @@
 
     <string name="order_item_one">Split type:</string>
     <string name="order_item_two">Split ratio</string>
-    <string name="order_item_three">Get BVW</string>
+    <string name="order_item_three">Get BTW</string>
     <string name="order_item_four">Total funds</string>
 
     <string name="zhenlie_left_val">Echelons</string>
@@ -414,14 +414,14 @@
     <string name="gonglian_sign">Public chain</string>
 
 
-    <string name="qr_erweima_title_one">Usdt collection code (BVW)</string>
+    <string name="qr_erweima_title_one">Usdt collection code (BTW)</string>
     <string name="qr_erweima_title_two">Usdt collection code (Ethereum)</string>
 
 
     <string name="trade_account_one_title">BTC transfer (brc20)</string>
     <string name="trade_account_two_title">BTC transfer (bitcoin)</string>
 
-    <string name="trade_account_one_header">Please fill in the address of BVW public chain and brc20 </string>
+    <string name="trade_account_one_header">Please fill in the address of BTW public chain and brc20 </string>
     <string name="trade_account_one_one_header"> of the other party (please fill in carefully to prevent asset loss)</string>
 
 
@@ -442,7 +442,7 @@
     <string name="fenlie_btc_midle_two">
         According to the last digit of the hash of each split transaction is even or odd,
         The Intelligent Contract Protocol determines it is entering the left forks or right forks.
-        Whether it is entering the left or right fork, 90% of BVW can be seted free,
+        Whether it is entering the left or right fork, 90% of BTW can be seted free,
         The other 22% If the rollback succeeds, it can earn the total 22% reward.
         If the rollback fails, the Intelligent Contract Protocol enters the rollback table.
     </string>
@@ -522,7 +522,7 @@
     <string name="please_iput_money_eth">Please input split amount, minimum 3eth!</string>
 
 
-    <string name="fenlie_order_split_sign_two">BVW was obtained 4 hours after splitting!</string>
+    <string name="fenlie_order_split_sign_two">BTW was obtained 4 hours after splitting!</string>
     <!--K线页面-->
 
     <string name="k_high_line">High</string>
@@ -584,7 +584,7 @@
     <string name="weituo_item_total_num">Total</string>
     <string name="weituo_item_finish">Complete</string>
 
-    <string name="hz_notice_sign">Only transfer the assets to the corresponding account can the transaction be carried out. There is no service charge for transfer between accounts. Each mineral fee is 0.001BVW</string>
+    <string name="hz_notice_sign">Only transfer the assets to the corresponding account can the transaction be carried out. There is no service charge for transfer between accounts. Each mineral fee is 0.001BTW</string>
 
     <string name="hz_top_sign">Transfer</string>
     <string name="hz_top_from">From</string>
@@ -600,7 +600,7 @@
     <string name="zz_select_dialog_btc_one">BTC public chain assets</string>
     <string name="zz_select_dialog_eth_one">Ethereum public chain assets</string>
     <string name="zz_select_dialog_usdt_one">Ethereum public chain assets</string>
-    <string name="zz_select_dialog_bvw_two">BVW public chain assets</string>
+    <string name="zz_select_dialog_bvw_two">BTW public chain assets</string>
 
     <string name="bid_jiangli_height">Block height:</string>
     <string name="bid_jiangli_no_data_sign">No leaderboard information is available at this stage</string>
@@ -623,7 +623,7 @@
     <string name="cancel_order_success_sign">Current order cancelled successfully</string>
 
     <string name="bibi_pop_left_viwe">Exchange</string>
-    <string name="notice_add_money_type">The fee for absenteeism is too low. Please recharge the BVW fee for absenteeism</string>
+    <string name="notice_add_money_type">The fee for absenteeism is too low. Please recharge the BTW fee for absenteeism</string>
 
     <string name="deal_type_sell_sign">Sell</string>
     <string name="deal_type_buy_sign">Buy</string>
@@ -643,30 +643,30 @@
     <string name="community_desc1">
         The birth of a new universe
         \nHas endless power,
-        \nBVW\'s sustainable business philosophy is exactly following the eternal law of the universe.
-        \nBVW will be based on the eternal idea of the universe
+        \nBTW\'s sustainable business philosophy is exactly following the eternal law of the universe.
+        \nBTW will be based on the eternal idea of the universe
         \nLaunching the Resurrection Project worldwide
         \nThe first $ 200 million "Dream Startup Fund" helped all failed investors.
     </string>
     <string name="community_desc2">Join the Resurrection Project:</string>
     <string name="community_desc3">
-       Through the registration of BVW registered members at least 10 members are required to register at the same time.
-        After submitting relevant materials for review and activation of the BVW purchase agreement,
-        BVW will according to the individual investor investment failure information according,
+       Through the registration of BTW registered members at least 10 members are required to register at the same time.
+        After submitting relevant materials for review and activation of the BTW purchase agreement,
+        BTW will according to the individual investor investment failure information according,
         give a way max of $ 200,000 dream starter to each investor.
         Every investor who joins the [Resurrection Program] must open BID.
     </string>
     <string name="community_desc4">[Resurrection Plan] Participation Process:</string>
     <string name="community_desc5">
        1. Prepare proof of your old assets
-\n\n\n2. Contact the users who have registered BVW.
-        At least 10 people (the original team members) register to download BVW and activate BID.
+\n\n\n2. Contact the users who have registered BTW.
+        At least 10 people (the original team members) register to download BTW and activate BID.
 \n\n\n3. Fill in the [Resurrection Plan] application form,
         and enter each period of [Resurrection Plan] training group, and conduct each period of [Resurrection Plan] special training, and officially join the [Resurrection Plan] directory after the training
 \n\n\n4. After joining the [Resurrection Plan] directory,
-        submit the BVW payment address and asset certificate.
-\n\n\n5. Docking [Resurrection Plan] The team needs to buy BVW worth 10,000 USDT for the first time on the BVW built-in exchange to activate the agreement.
-\n\n\n6. After completing the purchase of the BVW agreement, a redemption payment of USD 50,000 to USD 200,000 per person will be made according to the loss amount.
+        submit the BTW payment address and asset certificate.
+\n\n\n5. Docking [Resurrection Plan] The team needs to buy BTW worth 10,000 USDT for the first time on the BTW built-in exchange to activate the agreement.
+\n\n\n6. After completing the purchase of the BTW agreement, a redemption payment of USD 50,000 to USD 200,000 per person will be made according to the loss amount.
         Redemption payments will be issued on the 1st, 5th, 10th, 15th, 20th, and 25th of each month.
 7. Start and activate the [Resurrection Plan] dream to start the mining pool on the second day.
         Join the [Resurrection Plan] dream to start the mining pool at 10% of the total holding value.
@@ -682,17 +682,17 @@
 
     </string>
     <string name="community_desc8">
-        \n\nNote: [Resurrection Plan] The user needs to meet the requirement to hold at least 200 BVW before the system will start to activate the inflow of mining pools.
+        \n\nNote: [Resurrection Plan] The user needs to meet the requirement to hold at least 200 BTW before the system will start to activate the inflow of mining pools.
          </string>
     <string name="community_desc9">Settlement rules:</string>
 
     <string name="community_desc10">
-        [Resurrection Plan] The release of Dream Starter bouns will be linked to the daily increase of BVW.
-        The daily percentage increase of BVW at 00:10 will be used as the percentage of the [Resurrection Plan] mining pool release.
+        [Resurrection Plan] The release of Dream Starter bouns will be linked to the daily increase of BTW.
+        The daily percentage increase of BTW at 00:10 will be used as the percentage of the [Resurrection Plan] mining pool release.
         (Negative increase does not make any reward) That is,
-        the percentage increase of BVW on that day = the percentage of BVW mining pool balance release on that day.
+        the percentage increase of BTW on that day = the percentage of BTW mining pool balance release on that day.
         \nExample: The user participated in the [Resurrection Plan], and today the entire team added 1 million new results,
-        which will flow into the [Resurrection Plan] mining pool 100X10%= 100,000, today\'s BVW increase by 5%,
+        which will flow into the [Resurrection Plan] mining pool 100X10%= 100,000, today\'s BTW increase by 5%,
         and users can get 100,000X5% = 5,000 yuan [resurrection plan] dream start money.
         Users can start trading / cashing on the released dream at any time.
     </string>
@@ -700,13 +700,13 @@
        Hibernation system:
     </string>
     <string name="community_desc12">
-        [Resurrection Plan] In order to prevent users from controlling the market, the system synchronization will start the hibernation system. The dormant system is only effective for the [Resurrection Plan] user system and is not valid for normal BVW economic mode users.
+        [Resurrection Plan] In order to prevent users from controlling the market, the system synchronization will start the hibernation system. The dormant system is only effective for the [Resurrection Plan] user system and is not valid for normal BTW economic mode users.
    \nDescription of the dormant system: Users participating in the [Resurrection Plan] users can enter the Resurrection Plan mining pool system by adding 10% of their new performance, and the maximum mining pool capacity is ≤200,000 USDT.
     </string>
     <string name="community_desc13">
         If the user \’s total performance on that day is the highest historical performance,
         a new performance of 10% will flow into the [Resurrection Plan] mining pool,
-        and the percentage of the mining pool balance will be released according to the percentage increase of BVW on that day;
+        and the percentage of the mining pool balance will be released according to the percentage increase of BTW on that day;
 \nIf the user \’s total performance on that day is ≤ the historical highest performance,
         he will enter a dormant state, and the [Resurrection Plan] mining pool will stop releasing;
         when the user total performance is > historical highest performance,
@@ -717,8 +717,8 @@
        Daily performance statistics: (London time)
     </string>
     <string name="community_desc15">
-        Daily 00: 00-24: 00 is the time for performance statistics, and BVW holding for less than 24 hours will not be included in performance statistics
-\n00:10 daily calculation time for BVW daily gain
+        Daily 00: 00-24: 00 is the time for performance statistics, and BTW holding for less than 24 hours will not be included in performance statistics
+\n00:10 daily calculation time for BTW daily gain
 \n12:00 on the second day to release the rewards
     </string>
     <string name="mine_award">Yesterday\'s release of \nmine pool bonus</string>
@@ -727,7 +727,7 @@
     <string name="mine_award_ratio">Release mining pool bonus\n= daily performance * %s - bonus paid</string>
     <string name="day_60_usdt">My bonus yesterday: %sUSDT</string>
     <string name="accept_leader">Apply to be a Resurrection </string>
-    <string name="title_com_leader">BVW Global SAVING PLAN</string>
+    <string name="title_com_leader">BTW Global SAVING PLAN</string>
     <string name="completed">completed</string>
     <string name="cancelled">cancelled</string>
     <string name="partially_completed">partially completed</string>
@@ -740,8 +740,8 @@
     <string name="to_the_account">Time of receipt: within 1 hour after 12:00 today,London time</string>
     <string name="is_leader">You are already the Resurrection</string>
     <string name="apply_success">
-        Please contact BVW registered users worldwide to submit proof of old assets.
-            \nAfter passing the review, you can join the  BVW  Global SAVING PLAN.
+        Please contact BTW registered users worldwide to submit proof of old assets.
+            \nAfter passing the review, you can join the  BTW  Global SAVING PLAN.
 \nGet 50,000-200,000 USDT dream start money.
     </string>
     <string name="apply_desc">Get 200000 usdt Gold Pool</string>
@@ -758,24 +758,24 @@
 
 
 
-    <string name="yb_header_one">Deposit ≥201 BVW</string>
+    <string name="yb_header_one">Deposit ≥201 BTW</string>
     <string name="yb_header_two">You can apply to join the YuBi Bank</string>
 
     <string name="yb_txt_one">(1) 6-months contract period.</string>
-    <string name="yb_txt_two">Guaranteed 100% of the principal, daily mining BVW can be freely traded to withdraw, and the mining income due is about 100%!</string>
+    <string name="yb_txt_two">Guaranteed 100% of the principal, daily mining BTW can be freely traded to withdraw, and the mining income due is about 100%!</string>
     <string name="yb_txt_three">(2) 12-month contract period.</string>
-    <string name="yb_txt_four">Guaranteed 100% of the principal, daily mining BVW can be freely traded to withdraw, and the mining income due is about 150%!</string>
+    <string name="yb_txt_four">Guaranteed 100% of the principal, daily mining BTW can be freely traded to withdraw, and the mining income due is about 150%!</string>
     <string name="yb_txt_five">(3) 24-month contract period.</string>
-    <string name="yb_txt_six">Guaranteed 100% of the principal, daily mining BVW can be freely traded to withdraw, and the mining income due is about 200%!</string>
+    <string name="yb_txt_six">Guaranteed 100% of the principal, daily mining BTW can be freely traded to withdraw, and the mining income due is about 200%!</string>
 
     <string name="yb_md_one">E.g:</string>
-    <string name="yb_md_two">After March 3 ,users will purchase 3001 BVW to join YuBi Bank through the exchange or split pool.
-And choose a 6-month contract period. The unit price is 1USDT / BVW.
+    <string name="yb_md_two">After March 3 ,users will purchase 3001 BTW to join YuBi Bank through the exchange or split pool.
+And choose a 6-month contract period. The unit price is 1USDT / BTW.
 The total contract value of the user YuBi bank is:
 3001x1USDT = 3001USDT.
-the user produces 10 BVW coins per day, if the BVW price always constant at 1USDT, users can get 6 months
+the user produces 10 BTW coins per day, if the BTW price always constant at 1USDT, users can get 6 months
 The extra mining income is: 10x1x180 = 1800USDT.
-After the contract expires, the user can return 3001USDT (100% of the principal) after transferring the principal BVW to the contract issuer
+After the contract expires, the user can return 3001USDT (100% of the principal) after transferring the principal BTW to the contract issuer
 , The total amount is: 3001 + 1800 = 4801USDT, the total rate of return: 160%
 </string>
 
@@ -783,18 +783,18 @@ After the contract expires, the user can return 3001USDT (100% of the principal)
 
     <string name="yb_md_three">5- What is the difference between joining YuBi bank and ordinary mining users?</string>
     <string name="yb_md_four">1. Join Yu Yuan Bao, you can enjoy capital protection + surplus currency income + Contract income protection scheme for 3 different financial derivatives.
-After joining Yubibao for 6, 12, and 24 months, the contract expires. After the user transfers the principal BVW to the contract issuer(24-month contract users can choose to settlement by BVW or USDT), only the principal can be returned in USDT. .\n
+After joining Yubibao for 6, 12, and 24 months, the contract expires. After the user transfers the principal BTW to the contract issuer(24-month contract users can choose to settlement by BTW or USDT), only the principal can be returned in USDT. .\n
 
 2. The Non-YuBi Bank Users:
 Free wallet to wallet transfers, no contract lock restrictions, no capital protection, free to sell daily income, principle coins can choose to join YuBi bank before 24:00 on February 4th, if not joined after 24:00 on February 4th For the time being, you can only sell earnings daily.
-All BVW obtained on the exchanges and split pools after March 3 can be transferred and withdrawn daily of 1% BVW and later more cross-chain transfers will be opened!
+All BTW obtained on the exchanges and split pools after March 3 can be transferred and withdrawn daily of 1% BTW and later more cross-chain transfers will be opened!
 </string>
 
     <string name="yb_bm_one">Quota</string>
     <string name="yb_bm_two">the term</string>
     <string name="yb_bm_three">Signature authorization to join Yu Bi Bank</string>
     <string name="yb_title_val">YuBi Bank</string>
-    <string name="yb_pay_success_sign">You have authorized %s BVW to BVW contract and locked it for %s months!</string>
+    <string name="yb_pay_success_sign">You have authorized %s BTW to BTW contract and locked it for %s months!</string>
 
     <string name="yb_list_title">My Yu BiBand:</string>
     <string name="yb_list_bj">return principal</string>
@@ -806,10 +806,10 @@ All BVW obtained on the exchanges and split pools after March 3 can be transferr
     <string name="yb_moth_three_val">24 months</string>
 
 
-    <string name="yb_header_two_two">BVW obtained by exchange purchase</string>
+    <string name="yb_header_two_two">BTW obtained by exchange purchase</string>
     <string name="yb_txt_new_one">(4) you can choose to renew the contract after expiration, or choose to return the principal.</string>
     <string name="yb_txt_new_six_title">The value of YuBi Bank:</string>
-    <string name="yb_txt_new_six_content">users Joined Yubibao before March 3, the value of the principal, based on the current price of BVW, users who join YuBi Bank after March 3, the value of the principal, Based on BVW unit price at the time of joining.</string>
+    <string name="yb_txt_new_six_content">users Joined Yubibao before March 3, the value of the principal, based on the current price of BTW, users who join YuBi Bank after March 3, the value of the principal, Based on BTW unit price at the time of joining.</string>
 
     <string name="yb_txt_new_seven_title">The calculation method of YuBi Bank income: every day the currency is produced, and the daily sale is the income !
 </string>
@@ -822,7 +822,7 @@ All BVW obtained on the exchanges and split pools after March 3 can be transferr
 
     <string name="yb_txt_new_eight_title">After YuBi Bank expires:</string>
     <string name="yb_txt_new_eight_content">After joining YuBi bank partner for 6 months and 12 months, the system will automatically return the principal to the original account and settle the USDT account to the partner is USDT account.
-Among the partners of the privileged user for 24 months, the YuBi Bank contract expires, and the partner can freely choose USDT / BVW for settlement; if the revenue is not enough for the contract, the system will automatically add it .</string>
+Among the partners of the privileged user for 24 months, the YuBi Bank contract expires, and the partner can freely choose USDT / BTW for settlement; if the revenue is not enough for the contract, the system will automatically add it .</string>
 
 
     <string name="find_zhineng_info">Daily interest 0.5% unlocked principal in and out</string>
@@ -927,5 +927,7 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="get_address_failed">Failed to get collection address</string>
     <string name="msg_no_shoukuan">Collection is not supported</string>
     <string name="zan_bu_zhi_chi_ti_bi">Withdrawal of currency is not supported</string>
+    <string name="cross_chain_no">Cross chain trade no</string>
+    <string name="cross_chain_fee">Cross chain fee</string>
 
 </resources>

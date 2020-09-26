@@ -2,7 +2,7 @@ package com.darknet.bvw.model.event;
 
 public class KLineEvent {
 
-    //{"marketId":"BVW-USDT","openPrice":0.44,"highestPrice":0.44,"lowestPrice":0.44,"closePrice":0.44
+    //{"marketId":"BTW-USDT","openPrice":0.44,"highestPrice":0.44,"lowestPrice":0.44,"closePrice":0.44
     // ,"time":1578502620000,"period":"1min","count":0,"volume":0,"turnover":0}
     private String marketId;
     private float openPrice;
