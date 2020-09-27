@@ -220,18 +220,18 @@ public class TransferAccountsThreeActivity extends BaseActivity implements View.
                         return;
                     }
 
-                    BigDecimal compareVal = new BigDecimal(leftVal).subtract(new BigDecimal(numVal));
-                    if (compareVal.compareTo(new BigDecimal(200)) < 0) {
-//                    if ( < 200) {
-                        new ZhuanZhangNoticeDialog().showTips(TransferAccountsThreeActivity.this, "", new ZhuanZhangNoticeDialog.DialogClickL() {
-                            @Override
-                            public void clickView() {
-                                payDialog();
-                            }
-                        });
-                    } else {
+//                    BigDecimal compareVal = new BigDecimal(leftVal).subtract(new BigDecimal(numVal));
+//                    if (compareVal.compareTo(new BigDecimal(200)) < 0) {
+////                    if ( < 200) {
+//                        new ZhuanZhangNoticeDialog().showTips(TransferAccountsThreeActivity.this, "", new ZhuanZhangNoticeDialog.DialogClickL() {
+//                            @Override
+//                            public void clickView() {
+//                                payDialog();
+//                            }
+//                        });
+//                    } else {
                         payDialog();
-                    }
+//                    }
                 } else {
                     payDialog();
                 }

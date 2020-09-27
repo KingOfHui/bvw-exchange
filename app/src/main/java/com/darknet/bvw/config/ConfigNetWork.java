@@ -23,8 +23,8 @@ public class ConfigNetWork {
             JAVA_SOCKET_URL = "wss://ws-test.bvw.im/websocket";
             WEB_URL ="file:///android_asset/test/index.html";
         }else {
-            JAVA_API_URL = "https://api.bvw.im/";
-            JAVA_SOCKET_URL = "wss://ws.bvw.im/websocket";
+            JAVA_API_URL = "https://api.bitw.im/";
+            JAVA_SOCKET_URL = "wss://ws.bitw.im/websocket";
             WEB_URL ="file:///android_asset/prod/index.html";
         }
     }

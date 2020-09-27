@@ -227,17 +227,17 @@ public class TransferAccountsActivity extends BaseActivity implements View.OnCli
                     }
 
                     BigDecimal compareVal = new BigDecimal(leftVal).subtract(new BigDecimal(numVal));
-                    if (compareVal.compareTo(new BigDecimal(200)) < 0) {
-//                    if ( < 200) {
-                        new ZhuanZhangNoticeDialog().showTips(TransferAccountsActivity.this, "", new ZhuanZhangNoticeDialog.DialogClickL() {
-                            @Override
-                            public void clickView() {
-                                payDialog();
-                            }
-                        });
-                    } else {
+//                    if (compareVal.compareTo(new BigDecimal(200)) < 0) {
+////                    if ( < 200) {
+//                        new ZhuanZhangNoticeDialog().showTips(TransferAccountsActivity.this, "", new ZhuanZhangNoticeDialog.DialogClickL() {
+//                            @Override
+//                            public void clickView() {
+//                                payDialog();
+//                            }
+//                        });
+//                    } else {
                         payDialog();
-                    }
+//                    }
                 } else {
                     payDialog();
                 }
