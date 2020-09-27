@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/appColorPrimary">
 
     <include layout="@layout/lay_head_back" />
@@ -237,6 +238,7 @@
 
             <ImageView
                 android:id="@+id/imgQr"
+                android:padding="1px"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_gravity="center_horizontal"
@@ -261,6 +263,8 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/lay4"
+        android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/lay3"
@@ -326,6 +330,7 @@
             android:orientation="vertical">
 
             <ImageView
+                android:padding="2px"
                 android:id="@+id/imgQr_out"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
@@ -347,6 +352,15 @@
                 android:textSize="12dp" />
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/tv_out_no_data"
+            android:layout_width="@dimen/dimen_80dp"
+            android:layout_height="@dimen/dimen_80dp"
+            tools:text= "package black pending"
+            android:textColor="@color/txtGray"
+            android:gravity="center"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/dimen_10dp"/>
 
     </RelativeLayout>
 </RelativeLayout>

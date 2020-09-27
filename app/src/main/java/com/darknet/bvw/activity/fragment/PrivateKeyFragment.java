@@ -1,6 +1,7 @@
 package com.darknet.bvw.activity.fragment;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -21,12 +22,15 @@ import com.darknet.bvw.db.WalletDaoUtils;
 import com.darknet.bvw.model.BtcDo;
 import com.darknet.bvw.util.SharedPreferencesUtil;
 import com.darknet.bvw.util.ToastUtils;
+import com.darknet.bvw.util.UserSPHelper;
 import com.darknet.bvw.util.language.SPUtil;
 import com.darknet.bvw.wallet.BtcWalletUtils;
 
 import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class PrivateKeyFragment extends Fragment {
 
@@ -107,11 +111,15 @@ public class PrivateKeyFragment extends Fragment {
             return;
         }
 //        List<ETHWalletModel> ethWalletModels = WalletDaoUtils.loadAll();
-
-        Integer data = (Integer) SharedPreferencesUtil.getData("wallet-name", 0);
-        int length = data + 1;
-        SharedPreferencesUtil.putData("wallet_name", length);
-        String name = "BTW-Wallet-" + length;
+        Integer data = (Integer) UserSPHelper.get(requireContext(), "wallet", 0);
+//        SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("wallet", MODE_PRIVATE);
+//        int data =sharedPreferences.getInt("wallet-name",0);
+        String name = "BTW-Wallet-1";
+        if (data!=null) {
+            int length = data + 1;
+            UserSPHelper.setParam(requireContext(), "wallet", length);
+            name = "BTW-Wallet-" + length;
+        }
 
 //        String walletNameVal = walletName.getText().toString();
         String pwdVal = pwdContent.getText().toString();

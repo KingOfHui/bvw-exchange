@@ -77,8 +77,10 @@ public class TradeDetailActivity extends BaseActivity implements View.OnClickLis
 
         paySignView = findViewById(R.id.sign_img_succ);
         TextView tvOutHash = findViewById(R.id.tv_out_hash);
+        TextView tv_out_no_data = findViewById(R.id.tv_out_no_data);
         TextView tvOutFee = findViewById(R.id.tv_out_fee);
         RelativeLayout lay3 = findViewById(R.id.lay3);
+        RelativeLayout lay4 = findViewById(R.id.lay4);
 
 
         titleView.setText(getString(R.string.trade_detail_title));
@@ -88,10 +90,9 @@ public class TradeDetailActivity extends BaseActivity implements View.OnClickLis
         faKuanView.setText(tradeListModel.getFrom_address());
         shouKuanView.setText(tradeListModel.getTo_address());
 
-
         if (tradeListModel.getType() != null) {
             if (tradeListModel.getType().equals("3")) {
-                lay3.setVisibility(View.VISIBLE);
+                lay4.setVisibility(View.VISIBLE);
 
                 if (tradeListModel.getService_fee() != null) {
                     if (tradeListModel.getService_fee().compareTo(BigDecimal.ZERO) == 0) {
@@ -103,7 +104,11 @@ public class TradeDetailActivity extends BaseActivity implements View.OnClickLis
                     tvOutFee.setText("");
                 }
                 String pay_tx_hash = tradeListModel.getPay_tx_hash();
-                tvOutHash.setText(TextUtils.isEmpty(pay_tx_hash) ? "" : pay_tx_hash);
+                if (pay_tx_hash != null && pay_tx_hash.contains("package black pending")) {
+                    tvOutHash.setText(pay_tx_hash);
+                } else {
+                    tvOutHash.setText(TextUtils.isEmpty(pay_tx_hash) ? "" : pay_tx_hash);
+                }
 
             }
                 if (tradeListModel.getFee().compareTo(BigDecimal.ZERO) == 0) {
@@ -167,20 +172,31 @@ public class TradeDetailActivity extends BaseActivity implements View.OnClickLis
 
         if ("3".equals(tradeListModel.getType())) {
             String pay_tx_hash = tradeListModel.getPay_tx_hash();
-            Bitmap out_bp = QrCodeUtil.createQRCode(pay_tx_hash, 200, 200, null);
-            imgOut.setImageBitmap(out_bp);
-            copy_out.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-                    // 创建一个剪贴数据集，包含一个普通文本数据条目（需要复制的数据）
-                    ClipData clipData = ClipData.newPlainText(null, pay_tx_hash);
-                    // 把数据集设置（复制）到剪贴板
-                    clipboard.setPrimaryClip(clipData);
-                    Toast.makeText(TradeDetailActivity.this, getResources().getString(R.string.copy_bord_content), Toast.LENGTH_SHORT).show();
-                    rockAction();
-                }
-            });
+            if (pay_tx_hash != null && pay_tx_hash.contains("package")){
+                tv_out_no_data.setVisibility(View.VISIBLE);
+                tv_out_no_data.setText("package black pending");
+                imgOut.setVisibility(View.INVISIBLE);
+                copy_out.setVisibility(View.INVISIBLE);
+            } else {
+                tv_out_no_data.setVisibility(View.INVISIBLE);
+                tv_out_no_data.setText("package black pending");
+                imgOut.setVisibility(View.VISIBLE);
+                copy_out.setVisibility(View.VISIBLE);
+                Bitmap out_bp = QrCodeUtil.createQRCode(pay_tx_hash, 200, 200, null);
+                imgOut.setImageBitmap(out_bp);
+                copy_out.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                        // 创建一个剪贴数据集，包含一个普通文本数据条目（需要复制的数据）
+                        ClipData clipData = ClipData.newPlainText(null, pay_tx_hash);
+                        // 把数据集设置（复制）到剪贴板
+                        clipboard.setPrimaryClip(clipData);
+                        Toast.makeText(TradeDetailActivity.this, getResources().getString(R.string.copy_bord_content), Toast.LENGTH_SHORT).show();
+                        rockAction();
+                    }
+                });
+            }
 
         }
             createUrl = tradeListModel.getTx_hash();
