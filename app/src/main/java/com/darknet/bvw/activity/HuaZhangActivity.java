@@ -172,7 +172,7 @@ public class HuaZhangActivity extends BaseActivity implements View.OnClickListen
 
 
         if (zcModel.getSymbol() != null) {
-            if (zcModel.getSymbol().equalsIgnoreCase("BVW")) {
+            if (zcModel.getSymbol().equalsIgnoreCase("BTW")) {
                 hzNumView.addTextChangedListener(new DecimalInputTextWatcher(hzNumView, 20, 2));
             } else if (zcModel.getSymbol().equalsIgnoreCase("BTC")) {
                 hzNumView.addTextChangedListener(new DecimalInputTextWatcher(hzNumView, 20, 6));
@@ -193,7 +193,7 @@ public class HuaZhangActivity extends BaseActivity implements View.OnClickListen
 
 //                    if(ArithmeticUtils.compare(zcModel.getBalance().toPlainString(),"0.001")){
                     if (ArithmeticUtils.compare(leftBvwMoney, "0.001")) {
-                        if (zcModel.getSymbol().equalsIgnoreCase("BVW")) {
+                        if (zcModel.getSymbol().equalsIgnoreCase("BTW")) {
 //                            qianbaoLeftMoney = ArithmeticUtils.minusDown(qianbaoLeftMoney, "0.001", 2);
                             String afterHandleVal = ArithmeticUtils.minusDown(qianbaoLeftMoney, "0.001", 2);
                             hzNumView.setText(afterHandleVal);
@@ -368,7 +368,7 @@ public class HuaZhangActivity extends BaseActivity implements View.OnClickListen
                 if (type == 0) {
                     type = 1;
 
-                    if(zcModel.getSymbol().equalsIgnoreCase("BVW")){
+                    if(zcModel.getSymbol().equalsIgnoreCase("BTW")){
                         leftMoneySignNotice.setVisibility(View.VISIBLE);
                     }else {
                         leftMoneySignNotice.setVisibility(View.GONE);
@@ -959,7 +959,7 @@ public class HuaZhangActivity extends BaseActivity implements View.OnClickListen
             leftMoneyView.setText(qianbaoLeftMoney + zcModel.getSymbol());
             leftMoneyNoticeView.setText(getResources().getString(R.string.hz_jiaoyisuo_left_money_two));
 
-            if(zcModel.getSymbol().equalsIgnoreCase("BVW")){
+            if(zcModel.getSymbol().equalsIgnoreCase("BTW")){
                 leftMoneySignNotice.setVisibility(View.VISIBLE);
             }else {
                 leftMoneySignNotice.setVisibility(View.GONE);
@@ -1077,7 +1077,7 @@ public class HuaZhangActivity extends BaseActivity implements View.OnClickListen
                 qianbaoLeftMoney = tempZcDel.getValue_qty();
             }
 
-            if (tempZcDel.getSymbol().equalsIgnoreCase("BVW")) {
+            if (tempZcDel.getSymbol().equalsIgnoreCase("BTW")) {
                 leftBvwMoney = tempZcDel.getValue_qty();
             }
         }
@@ -1148,7 +1148,7 @@ public class HuaZhangActivity extends BaseActivity implements View.OnClickListen
                         qianbaoLeftMoney = zcMoneyModel.getValue_qty();
                     }
 
-                    if (zcMoneyModel.getName().equalsIgnoreCase("BVW")) {
+                    if (zcMoneyModel.getName().equalsIgnoreCase("BTW")) {
                         leftBvwMoney = zcMoneyModel.getValue_qty();
                     }
                 }

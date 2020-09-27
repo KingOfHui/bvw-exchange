@@ -729,7 +729,7 @@ var render = function() {
               _vm._s(_vm.$t("message.dayOutput")) +
                 "：" +
                 _vm._s(_vm.nodeData.powerDateBonus) +
-                "BVW"
+                "BTW"
             )
           ])
         ])

@@ -12,9 +12,11 @@ import com.darknet.bvw.db.Entity.DaoMaster;
 import com.darknet.bvw.db.Entity.DaoSession;
 import com.darknet.bvw.db.MyDBHelper;
 import com.darknet.bvw.util.EnvironmentUtil;
+import com.darknet.bvw.util.Language;
 import com.darknet.bvw.util.SharedPreferencesUtil;
 import com.darknet.bvw.util.UserAgentIntercepter;
 import com.darknet.bvw.util.language.LocalManageUtil;
+import com.darknet.bvw.util.language.SPUtil;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.github.jokar.multilanguages.library.LanguageLocalListener;
 import com.github.jokar.multilanguages.library.MultiLanguage;
@@ -29,12 +31,16 @@ import com.lzy.okgo.model.HttpHeaders;
 import com.lzy.okhttputils.OkHttpUtils;
 import com.tencent.bugly.crashreport.CrashReport;
 
+import java.io.IOException;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 
 import cn.jpush.android.api.JPushInterface;
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class MyApp extends Application {
 
@@ -156,6 +162,9 @@ public class MyApp extends Application {
         headers.put("Content-Type", "text/xml");
         headers.put("clientId", jiguangId);
         headers.put("clientOs", "android");
+//        Language language = Language.readFromConfig();
+        int lanType = SPUtil.getInstance(this).getSelectLanguage();
+        headers.put("Accept-Language", lanType == 1 ? "zh-CN" : "en_US");
 
 
 //        int lanType = SPUtil.getInstance(this).getSelectLanguage();

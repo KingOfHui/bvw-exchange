@@ -51,7 +51,7 @@ public class MyQrActivity extends BaseActivity implements View.OnClickListener {
         erweimaSign = findViewById(R.id.erweima_sign_view);
 
         gonglianUnder = findViewById(R.id.erweima_gonglian_under);
-        gonglianUnder.setText("BVW"+getResources().getString(R.string.gonglian_sign)+moneyType);
+        gonglianUnder.setText("BTW"+getResources().getString(R.string.gonglian_sign)+moneyType);
 
 
         erweimaSign.setText(getResources().getString(R.string.qr_erweima_code_two) + moneyType +" "+ getResources().getString(R.string.qr_erweima_code_two_two));

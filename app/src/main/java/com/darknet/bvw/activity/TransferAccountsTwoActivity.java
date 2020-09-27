@@ -27,10 +27,12 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.darknet.bvw.R;
+import com.darknet.bvw.common.BaseResponse;
 import com.darknet.bvw.config.ConfigNetWork;
 import com.darknet.bvw.config.UrlPath;
 import com.darknet.bvw.db.Entity.ETHWalletModel;
 import com.darknet.bvw.db.WalletDaoUtils;
+import com.darknet.bvw.model.DictByKeyResponse;
 import com.darknet.bvw.model.SignModelTwo;
 import com.darknet.bvw.model.event.AddressEvent;
 import com.darknet.bvw.model.event.TradeSuccessEvent;
@@ -56,6 +58,7 @@ import com.github.lzyzsd.jsbridge.BridgeWebView;
 import com.github.lzyzsd.jsbridge.CallBackFunction;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
@@ -996,7 +999,7 @@ public class TransferAccountsTwoActivity extends BaseActivity implements View.On
 
         showDialog(getString(R.string.load_data));
 
-        OkGo.<String>get(ConfigNetWork.JAVA_API_URL + UrlPath.PUBLIC_ADDRESS_URL + "/org_address")
+        OkGo.<String>get(ConfigNetWork.JAVA_API_URL + UrlPath.PUBLIC_DICT_BY_KEY_URL + "/org_address_withdraw")
                 .tag(TransferAccountsTwoActivity.this)
                 .headers("Chain-Authentication", addressVals + "#" + msg + "#" + signVal)
                 .execute(new StringCallback() {
@@ -1007,10 +1010,10 @@ public class TransferAccountsTwoActivity extends BaseActivity implements View.On
                             if (backVal != null) {
                                 Gson gson = new Gson();
                                 try {
-                                    PublicAddressResponse response = gson.fromJson(backVal, PublicAddressResponse.class);
+                                    BaseResponse<DictByKeyResponse> response = gson.fromJson(backVal, new TypeToken<BaseResponse<DictByKeyResponse>>(){}.getType());
                                     if (response != null && response.getCode() == 0) {
-                                        if (response.getData() != null && response.getData().size() > 0) {
-                                            setAddress(response.getData());
+                                        if (response.getData() != null ) {
+                                            publicAddressVal = response.getData().getV();
                                         }
                                     }
                                 } catch (Exception e) {

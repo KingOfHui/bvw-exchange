@@ -19,12 +19,14 @@ import android.widget.Toast;
 import androidx.fragment.app.FragmentActivity;
 
 import com.cq.library.utils.member.ActivityResult;
+import com.darknet.bvw.BuildConfig;
 import com.darknet.bvw.R;
 import com.darknet.bvw.config.ConfigNetWork;
 import com.darknet.bvw.config.UrlPath;
 import com.darknet.bvw.db.Entity.ETHWalletModel;
 import com.darknet.bvw.db.WalletDaoUtils;
 import com.darknet.bvw.model.response.UpdateApkResponse;
+import com.darknet.bvw.util.Language;
 import com.darknet.bvw.util.UpdateAppHttpUtil;
 import com.darknet.bvw.util.bitcoinj.BitcoinjKit;
 import com.darknet.bvw.view.TypefaceTextView;
@@ -220,17 +222,26 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
             return;
         }
 
-        jumpUrl = updateData.getUrl_address();
+        String version = updateData.getVersion();
+        if (!BuildConfig.VERSION_NAME.equals(version)) {
+            Language language = Language.readFromConfig();
+            jumpUrl = updateData.getAbroad_android_url();
+            if (language == Language.CHINA) {
+                jumpUrl = updateData.getInternal_android_url();
+            }
+//            showDialog(updateData);
+//        }
 
-        int curversioncode = getCurVersionCode(SettingActivity.this);
+//        jumpUrl = updateData.getUrl_address();
 
-        Log.e("versioncode","curversioncode="+curversioncode);
-
-        if (curversioncode < Integer.parseInt(updateData.getVersion_code())) {
+//        int curversioncode = getCurVersionCode(SettingActivity.this);
+//
+//        Log.e("versioncode","curversioncode="+curversioncode);
+//
+//        if (curversioncode < Integer.parseInt(updateData.getVersion_code())) {
 //            updateApkDialog(response.getData());
             versionView.setText(getString(R.string.update_version_num)+" "+updateData.getVersion());
             layCheckUpdate.setEnabled(true);
-            jumpUrl = updateData.getUrl_address();
         } else {
             versionView.setText(getString(R.string.update_newset_notice));
 //            Toast.makeText(SettingActivity.this, getString(R.string.update_compare_sign), Toast.LENGTH_SHORT).show();

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import com.darknet.bvw.BuildConfig;
 import com.darknet.bvw.R;
 import com.darknet.bvw.activity.fragment.ExchangeFragment;
 import com.darknet.bvw.activity.fragment.FindFragment;
@@ -30,6 +32,7 @@ import com.darknet.bvw.model.event.PushEvent;
 import com.darknet.bvw.model.event.TradeEvent;
 import com.darknet.bvw.model.response.UpdateApkResponse;
 import com.darknet.bvw.model.response.UserInfoResponse;
+import com.darknet.bvw.util.Language;
 import com.darknet.bvw.util.UserSPHelper;
 import com.darknet.bvw.util.bitcoinj.BitcoinjKit;
 import com.darknet.bvw.view.SmartFragmentStatePagerAdapter;
@@ -289,22 +292,52 @@ public class XchainMainThreeActivity extends BaseActivity implements View.OnClic
         if(updateData == null){
             return;
         }
+        String version = updateData.getVersion();
 
-        int curversioncode = getCurVersionCode(XchainMainThreeActivity.this);
-        if (curversioncode < Integer.parseInt(updateData.getVersion_code())) {
+        if (getVersionCode(BuildConfig.VERSION_NAME) < getVersionCode(version)) {
             showDialog(updateData);
         }
 
     }
+    private float getVersionCode(String version) {
+        if (TextUtils.isEmpty(version)) {
+            return 0;
+        }
 
+        int index = version.indexOf(".");
+        if (index < 0) {
+            return toFloat(version);
+        }
 
+        if (index == version.length() - 1) {
+            return toFloat(version.substring(0, index));
+        }
+
+        String prefix = version.substring(0, index + 1);
+        String suffix = version.substring(index + 1).replace(".", "");
+        return toFloat(prefix + suffix);
+    }
+
+    public float toFloat(String number) {
+        try {
+            return Float.parseFloat(number);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return 0;
+    }
     private void showDialog(UpdateApkResponse.UpdateModel updateData){
         new UpdateDialog(new UpdateDialog.UpdateItemClick() {
             @Override
             public void updateClick() {
+                Language language = Language.readFromConfig();
+                String url = updateData.getAbroad_android_url();
+                if (language == Language.CHINA) {
+                    url = updateData.getInternal_android_url();
+                }
                 Intent intent= new Intent();
                 intent.setAction("android.intent.action.VIEW");
-                Uri content_url = Uri.parse(updateData.getUrl_address());
+                Uri content_url = Uri.parse(url);
                 intent.setData(content_url);
                 startActivity(intent);
             }

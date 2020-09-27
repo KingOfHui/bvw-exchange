@@ -20,6 +20,7 @@ import com.darknet.bvw.activity.WalletCreateActivity;
 import com.darknet.bvw.db.Entity.ETHWalletModel;
 import com.darknet.bvw.db.WalletDaoUtils;
 import com.darknet.bvw.model.BtcDo;
+import com.darknet.bvw.util.SharedPreferencesUtil;
 import com.darknet.bvw.util.ToastUtils;
 import com.darknet.bvw.wallet.BtcWalletUtils;
 
@@ -139,17 +140,16 @@ public class ZjcFragment extends Fragment {
             Toast.makeText(getActivity(), getString(R.string.repeat_wallet_val), Toast.LENGTH_SHORT).show();
             return;
         }
-        List<ETHWalletModel> ethWalletModels = WalletDaoUtils.loadAll();
-        int length = 1;
-        if (ethWalletModels != null) {
-            length = ethWalletModels.size()+1;
-        }
+        Integer data = (Integer) SharedPreferencesUtil.getData("wallet-name", 0);
+        int length = data + 1;
+        SharedPreferencesUtil.putData("wallet_name", length);
+        String name = "BTW-Wallet-" + length;
 
 
         ETHWalletModel walletModel = new ETHWalletModel();
         walletModel.setAddress(btcDo.getAddress());
         walletModel.setMnemonic(zjcVal);
-        walletModel.setName("BTW-Wallet-"+length);
+        walletModel.setName(name);
         walletModel.setPassword(pwdVals);
         //记住把其他钱包，设置为不可选
         walletModel.setCurrentSelect(1);
@@ -188,10 +188,10 @@ public class ZjcFragment extends Fragment {
 //            ToastUtils.showToast(R.string.load_wallet_already_exist);
 //            return false;
 //        }
-        else if (TextUtils.isEmpty(name)) {
+        /*else if (TextUtils.isEmpty(name)) {
             ToastUtils.showToast(R.string.account_name_notice);
             return false;
-        } else if (TextUtils.isEmpty(walletPwd) || walletPwd.length() < 6) {
+        } */else if (TextUtils.isEmpty(walletPwd) || walletPwd.length() < 6) {
             ToastUtils.showToast(R.string.wallet_pwd_six);
             return false;
         }

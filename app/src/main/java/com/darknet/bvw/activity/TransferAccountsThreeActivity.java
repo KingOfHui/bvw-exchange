@@ -208,7 +208,7 @@ public class TransferAccountsThreeActivity extends BaseActivity implements View.
                 break;
             case R.id.btnNext:
 
-                if (moneyType.equalsIgnoreCase("BVW")) {
+                if (moneyType.equalsIgnoreCase("BTW")) {
 
                     String addressVal = editSkrAddress.getText().toString();
                     String numVal = editZzMoney.getText().toString();

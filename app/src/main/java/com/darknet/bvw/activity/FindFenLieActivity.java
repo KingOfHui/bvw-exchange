@@ -228,12 +228,12 @@ public class FindFenLieActivity extends BaseActivity implements View.OnClickList
         changeSelectSign(0);
         scrollView.scrollTo(0, 0);
 
-        btcFenlieBiView.setText("1BTC:" + btcBvw + "BVW");
-        ethFenlieBiView.setText("1ETH:" + ethBvw + "BVW");
+        btcFenlieBiView.setText("1BTC:" + btcBvw + "BTW");
+        ethFenlieBiView.setText("1ETH:" + ethBvw + "BTW");
 
 
-//        btcFenlieNumView.setText("" + btcLfVal + "BVW");
-//        ethFenlieNumView.setText("" + ethLfVal + "BVW");
+//        btcFenlieNumView.setText("" + btcLfVal + "BTW");
+//        ethFenlieNumView.setText("" + ethLfVal + "BTW");
 
 
         int lanType = SPUtil.getInstance(FindFenLieActivity.this).getSelectLanguage();

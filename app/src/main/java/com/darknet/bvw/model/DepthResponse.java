@@ -12,7 +12,7 @@ public class DepthResponse {
 
     /**
      * code : 0
-     * data : {"asks":[{"amount":1,"price":0.0015},{"amount":1,"price":0.0013}],"bids":[{"amount":1,"price":0.0013},{"amount":1,"price":0.0013}],"marketId":"BVW-USDT"}
+     * data : {"asks":[{"amount":1,"price":0.0015},{"amount":1,"price":0.0013}],"bids":[{"amount":1,"price":0.0013},{"amount":1,"price":0.0013}],"marketId":"BTW-USDT"}
      * msg : success
      * success : true
      */
@@ -58,7 +58,7 @@ public class DepthResponse {
         /**
          * asks : [{"amount":1,"price":0.0015},{"amount":1,"price":0.0013}]
          * bids : [{"amount":1,"price":0.0013},{"amount":1,"price":0.0013}]
-         * marketId : BVW-USDT
+         * marketId : BTW-USDT
          */
 
         private String marketId;

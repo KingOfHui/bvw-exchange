@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 public class HZLeftMoneyResponse extends BaseResponse {
 
 //    {"code":0,"msg":"success","data":{"":0,"":0E-8,"":0E-8,
-//            "msg":"You can trade today: 0 BVWs input, with 0 remaining","enMsg":"You can trade today: 0 BVWs input, with 0 remaining"},
+//            "msg":"You can trade today: 0 BTWs input, with 0 remaining","enMsg":"You can trade today: 0 BTWs input, with 0 remaining"},
 //        "success":true}
 
 

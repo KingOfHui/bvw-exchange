@@ -17,6 +17,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -58,6 +59,10 @@ import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -231,6 +236,7 @@ public class FirstFragment extends Fragment {
 
 
     private void initView(View view) {
+        EventBus.getDefault().register(this);
 
 //        for (int i = 0; i < 10; i++) {
 //            list.add(i + "item");
@@ -488,8 +494,20 @@ public class FirstFragment extends Fragment {
 ////        addressView.setText(tempAddrss);
 //    }
 
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onReceiveWalletChange(ETHWalletModel model) {
+        try {
+            ETHWalletModel allWallets = WalletDaoUtils.getCurrent();
+            nameView.setText(allWallets.getName());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        initData();
+    }
     @Override
     public void onDestroyView() {
+        EventBus.getDefault().unregister(this);
         if (unbinder != null) {
             unbinder.unbind();
         }

@@ -80,7 +80,7 @@
                 android:layout_below="@id/qr_img"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
-                android:text="USDT BVW BRC20"
+                android:text="USDT BTW BRC20"
                 android:textColor="@color/white"
                 android:textSize="12dp"></TextView>
 

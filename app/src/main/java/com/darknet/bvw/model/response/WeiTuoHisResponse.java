@@ -6,7 +6,7 @@ import java.util.List;
 public class WeiTuoHisResponse extends BaseResponse {
 
 //    "id": 7,
-//            "market_id": "BVW-USDT",
+//            "market_id": "BTW-USDT",
 //            "price": 0.50000000,
 //            "confirmed_amount": 0,
 //            "fee": 0,

@@ -19,8 +19,12 @@ import com.darknet.bvw.activity.WalletCreateActivity;
 import com.darknet.bvw.db.Entity.ETHWalletModel;
 import com.darknet.bvw.db.WalletDaoUtils;
 import com.darknet.bvw.model.BtcDo;
+import com.darknet.bvw.util.SharedPreferencesUtil;
 import com.darknet.bvw.util.ToastUtils;
+import com.darknet.bvw.util.language.SPUtil;
 import com.darknet.bvw.wallet.BtcWalletUtils;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
@@ -102,13 +106,14 @@ public class PrivateKeyFragment extends Fragment {
             Toast.makeText(getActivity(), getString(R.string.repeat_wallet_val), Toast.LENGTH_SHORT).show();
             return;
         }
-        List<ETHWalletModel> ethWalletModels = WalletDaoUtils.loadAll();
-        int length = 1;
-        if (ethWalletModels != null) {
-            length = ethWalletModels.size()+1;
-        }
+//        List<ETHWalletModel> ethWalletModels = WalletDaoUtils.loadAll();
 
-        String walletNameVal = walletName.getText().toString();
+        Integer data = (Integer) SharedPreferencesUtil.getData("wallet-name", 0);
+        int length = data + 1;
+        SharedPreferencesUtil.putData("wallet_name", length);
+        String name = "BTW-Wallet-" + length;
+
+//        String walletNameVal = walletName.getText().toString();
         String pwdVal = pwdContent.getText().toString();
 
         ETHWalletModel walletModel = new ETHWalletModel();
@@ -117,7 +122,7 @@ public class PrivateKeyFragment extends Fragment {
         walletModel.setKeyStoreVal(btcDo.getKeyStoreVal());
         walletModel.setPrivateKey(btcDo.getPrivateKey());
         walletModel.setPublicKey(btcDo.getPublicKey());
-        walletModel.setName("BTW-Wallet-"+length);
+        walletModel.setName(name);
         walletModel.setPassword(pwdVal);
 
 
@@ -133,6 +138,7 @@ public class PrivateKeyFragment extends Fragment {
 //        AtyContainer.getInstance().finishAllActivity();
 //        EventBus.getDefault().post(new CloseViewEvent());
 
+        EventBus.getDefault().post(walletModel);
 
         Intent mainIntent = new Intent(getActivity(), StopActivity.class);
         startActivity(mainIntent);

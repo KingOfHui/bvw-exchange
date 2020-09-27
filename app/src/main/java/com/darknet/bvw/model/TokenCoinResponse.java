@@ -12,7 +12,7 @@ public class TokenCoinResponse {
 
     /**
      * code : 0
-     * data : ["USDT","BVW"]
+     * data : ["USDT","BTW"]
      * msg : success
      * success : true
      */

@@ -152,7 +152,7 @@ public class ExchangeZcResponse extends BaseResponse {
 
     //    "id": 514,
 //            "user_id": 1000001,
-//            "symbol": "BVW",
+//            "symbol": "BTW",
 //            "balance": 96.48900000,
 //            "lock_balance": 3.50100000,
 //            "create_at": "2020-01-03 06:09:14",

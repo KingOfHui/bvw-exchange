@@ -27,6 +27,8 @@ import com.darknet.bvw.config.ConfigNetWork;
 import com.darknet.bvw.config.UrlPath;
 import com.darknet.bvw.db.Entity.ETHWalletModel;
 import com.darknet.bvw.db.WalletDaoUtils;
+import com.darknet.bvw.model.Event;
+import com.darknet.bvw.model.event.BidSuccessEvent;
 import com.darknet.bvw.model.response.BidStateResponse;
 import com.darknet.bvw.util.Language;
 import com.darknet.bvw.util.bitcoinj.BitcoinjKit;
@@ -43,6 +45,10 @@ import com.lzy.okgo.model.Response;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import static com.darknet.bvw.util.language.LocalManageUtil.getSystemLocale;
 
@@ -82,6 +88,7 @@ public class FindFragment extends Fragment implements View.OnClickListener {
 	private boolean isLeader;
 	private LinearLayout mFindSevenLayout;
 	private LinearLayout mFindEightLayout;
+	private BidStateResponse mResponse;
 
 	@Override
 	public void onAttach(Context context) {
@@ -131,6 +138,7 @@ public class FindFragment extends Fragment implements View.OnClickListener {
 
 
 	private void initView(View view) {
+		EventBus.getDefault().register(this);
 		imgSetting = view.findViewById(R.id.imgSetting);
 		imgSettingTwo = view.findViewById(R.id.imgSetting_two);
 		leaderSignView = view.findViewById(R.id.imgSetting_bid_leader_sign_view);
@@ -263,6 +271,16 @@ public class FindFragment extends Fragment implements View.OnClickListener {
 
 	}
 
+	@Subscribe(threadMode = ThreadMode.MAIN)
+	public void success(BidSuccessEvent nameEvent) {
+		getPublicAddressTwo();
+	}
+
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		EventBus.getDefault().unregister(this);
+	}
 
 	//获取bid状态
 	private void getPublicAddressTwo() {
@@ -288,11 +306,11 @@ public class FindFragment extends Fragment implements View.OnClickListener {
 							if (backVal != null) {
 								Gson gson = new Gson();
 								try {
-									BidStateResponse response = gson.fromJson(backVal, BidStateResponse.class);
-									if (response != null && response.getCode() == 0) {
-										if (response.getData() != null) {
+									mResponse = gson.fromJson(backVal, BidStateResponse.class);
+									if (mResponse != null && mResponse.getCode() == 0) {
+										if (mResponse.getData() != null) {
 
-											showStateTwo(response.getData().getReferer_id());
+											showStateTwo(mResponse.getData().getReferer_id());
 										}
 									}
 								} catch (Exception e) {
@@ -473,9 +491,11 @@ public class FindFragment extends Fragment implements View.OnClickListener {
 			@Override
 			public void onClick(View v) {
 
-				if (stateLidType == 1) {
+				String referer_id = mResponse.getData().getReferer_id();
+				String invite_code = mResponse.getData().getInvite_code();
+				if (!TextUtils.isEmpty(referer_id)) {
 					Intent tiIntent = new Intent(activity, BidZhenMaActivity.class);
-					tiIntent.putExtra("lid", lid);
+					tiIntent.putExtra("lid", invite_code);
 					startActivity(tiIntent);
 					window.dismiss();
 

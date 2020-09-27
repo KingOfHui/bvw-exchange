@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:text="BVW"
+                android:text="BTW"
                 android:textColor="@color/white"
                 android:textSize="14dp" />
 

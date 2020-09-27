@@ -69,11 +69,16 @@ public class TradeDetailActivity extends BaseActivity implements View.OnClickLis
         qukuaiView = findViewById(R.id.txtQk);
         jiaoyiTimeView = findViewById(R.id.txtTradeTime);
         imgView = findViewById(R.id.imgQr);
+        ImageView imgOut = findViewById(R.id.imgQr_out);
         backView = findViewById(R.id.layBack);
         titleView = findViewById(R.id.title);
         getUrlView = findViewById(R.id.get_url_view);
+        Button copy_out = findViewById(R.id.get_url_view_out);
 
         paySignView = findViewById(R.id.sign_img_succ);
+        TextView tvOutHash = findViewById(R.id.tv_out_hash);
+        TextView tvOutFee = findViewById(R.id.tv_out_fee);
+        RelativeLayout lay3 = findViewById(R.id.lay3);
 
 
         titleView.setText(getString(R.string.trade_detail_title));
@@ -86,29 +91,32 @@ public class TradeDetailActivity extends BaseActivity implements View.OnClickLis
 
         if (tradeListModel.getType() != null) {
             if (tradeListModel.getType().equals("3")) {
+                lay3.setVisibility(View.VISIBLE);
 
                 if (tradeListModel.getService_fee() != null) {
                     if (tradeListModel.getService_fee().compareTo(BigDecimal.ZERO) == 0) {
-                        kuangFeiView.setText("0 BTW");
+                        tvOutFee.setText("0 BTC");
                     } else {
-                        kuangFeiView.setText(tradeListModel.getService_fee().stripTrailingZeros().toPlainString() + "BTW");
+                        tvOutFee.setText(tradeListModel.getService_fee().stripTrailingZeros().toPlainString() + "BTC");
                     }
                 } else {
-                    kuangFeiView.setText("");
+                    tvOutFee.setText("");
+                }
+                String pay_tx_hash = tradeListModel.getPay_tx_hash();
+                tvOutHash.setText(TextUtils.isEmpty(pay_tx_hash) ? "" : pay_tx_hash);
+
+            }
+                if (tradeListModel.getFee().compareTo(BigDecimal.ZERO) == 0) {
+                    kuangFeiView.setText("0 BTC");
+                } else {
+                    kuangFeiView.setText(tradeListModel.getFee().stripTrailingZeros().toPlainString() + "BTC");
                 }
 
-            } else {
-                if (tradeListModel.getFee().compareTo(BigDecimal.ZERO) == 0) {
-                    kuangFeiView.setText("0 BTW");
-                } else {
-                    kuangFeiView.setText(tradeListModel.getFee().stripTrailingZeros().toPlainString() + "BTW");
-                }
-            }
         } else {
             if (tradeListModel.getFee().compareTo(BigDecimal.ZERO) == 0) {
-                kuangFeiView.setText("0 BTW");
+                kuangFeiView.setText("0 BTC");
             } else {
-                kuangFeiView.setText(tradeListModel.getFee().stripTrailingZeros().toPlainString() + "BTW");
+                kuangFeiView.setText(tradeListModel.getFee().stripTrailingZeros().toPlainString() + "BTC");
             }
         }
 
@@ -154,14 +162,29 @@ public class TradeDetailActivity extends BaseActivity implements View.OnClickLis
             }
         });
 
-//        String createUrl = ConfigNetWork.JAVA_API_URL + "BVW/tx/" + tradeListModel.getTx_hash();
+//        String createUrl = ConfigNetWork.JAVA_API_URL + "BTW/tx/" + tradeListModel.getTx_hash();
 
 
-        if (tradeListModel.getType().equals("3")) {
-            createUrl = tradeListModel.getPay_tx_hash();
-        } else {
-            createUrl = tradeListModel.getTx_hash();
+        if ("3".equals(tradeListModel.getType())) {
+            String pay_tx_hash = tradeListModel.getPay_tx_hash();
+            Bitmap out_bp = QrCodeUtil.createQRCode(pay_tx_hash, 200, 200, null);
+            imgOut.setImageBitmap(out_bp);
+            copy_out.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                    // 创建一个剪贴数据集，包含一个普通文本数据条目（需要复制的数据）
+                    ClipData clipData = ClipData.newPlainText(null, pay_tx_hash);
+                    // 把数据集设置（复制）到剪贴板
+                    clipboard.setPrimaryClip(clipData);
+                    Toast.makeText(TradeDetailActivity.this, getResources().getString(R.string.copy_bord_content), Toast.LENGTH_SHORT).show();
+                    rockAction();
+                }
+            });
+
         }
+            createUrl = tradeListModel.getTx_hash();
+
 
         Bitmap bitmap = QrCodeUtil.createQRCode(createUrl, 200, 200, null);
         imgView.setImageBitmap(bitmap);

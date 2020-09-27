@@ -394,14 +394,14 @@ public class FenLieThreeActivity extends BaseActivity {
     private void setFenLieData(FenLieFirstResponse.FenLieFirstData fenLieData) {
 
 
-//        headerOneView.setText(fenLieData.getBvw().stripTrailingZeros().setScale(0, BigDecimal.ROUND_DOWN).toPlainString() + "BVW");
+//        headerOneView.setText(fenLieData.getBvw().stripTrailingZeros().setScale(0, BigDecimal.ROUND_DOWN).toPlainString() + "BTW");
 //        headerTwoView.setText(fenLieData.getHeight());
 //        stateView.setText(getResources().getString(R.string.fenlie_header_one_one)+fenLieData.getStage()+getResources().getString(R.string.fenlie_header_one_one_one));
 
 
         setHeaderData(fenLieData);
 
-        middleOneView.setText(fenLieData.getBvw_left().stripTrailingZeros().setScale(0, BigDecimal.ROUND_DOWN).toPlainString() + "BVW");
+        middleOneView.setText(fenLieData.getBvw_left().stripTrailingZeros().setScale(0, BigDecimal.ROUND_DOWN).toPlainString() + "BTW");
 
 //        System.out.println(new BigDecimal(0.293432).setScale(1, BigDecimal.ROUND_DOWN).doubleValue());// 0.2
 //
@@ -416,10 +416,10 @@ public class FenLieThreeActivity extends BaseActivity {
         middleFiveView.setText(fenLieData.getEth_left().setScale(0, BigDecimal.ROUND_DOWN) + "");
 
 
-        histoyOneView.setText(fenLieData.getBvw_destroy().stripTrailingZeros().setScale(0, BigDecimal.ROUND_DOWN).toPlainString() + "BVW");
+        histoyOneView.setText(fenLieData.getBvw_destroy().stripTrailingZeros().setScale(0, BigDecimal.ROUND_DOWN).toPlainString() + "BTW");
         histoyTwoView.setText(fenLieData.getBtc_total().stripTrailingZeros().setScale(1, BigDecimal.ROUND_DOWN).doubleValue() + "BTC");
         histoyThreeView.setText(fenLieData.getEth_total().stripTrailingZeros().setScale(0, BigDecimal.ROUND_DOWN).toPlainString() + "ETH");
-        histoyFourView.setText(fenLieData.getBvw_fl().stripTrailingZeros().setScale(0, BigDecimal.ROUND_DOWN).doubleValue() + "BVW");
+        histoyFourView.setText(fenLieData.getBvw_fl().stripTrailingZeros().setScale(0, BigDecimal.ROUND_DOWN).doubleValue() + "BTW");
         histoyFiveView.setText(fenLieData.getEth_fl().stripTrailingZeros().setScale(0, BigDecimal.ROUND_DOWN).toPlainString() + "ETH");
 
         btcVal = fenLieData.getBtc_left().toString();
@@ -449,7 +449,7 @@ public class FenLieThreeActivity extends BaseActivity {
                     stateView.setText(fenLieData.getStage_name_en());
                 }
                 headerTotalLayout.setVisibility(View.GONE);
-                headerTotalMoenyView.setText(fenLieData.getBvw().stripTrailingZeros().setScale(0, BigDecimal.ROUND_DOWN).toPlainString() + "BVW");
+                headerTotalMoenyView.setText(fenLieData.getBvw().stripTrailingZeros().setScale(0, BigDecimal.ROUND_DOWN).toPlainString() + "BTW");
             } else {
                 headerOneView.setText(fenLieData.getNext_stage_height());
                 headerTwoView.setText(fenLieData.getNext_stage_scale());
@@ -466,7 +466,7 @@ public class FenLieThreeActivity extends BaseActivity {
                 }
 
                 headerTotalLayout.setVisibility(View.GONE);
-                headerTotalMoenyView.setText(fenLieData.getBvw().stripTrailingZeros().setScale(0, BigDecimal.ROUND_DOWN).toPlainString() + "BVW");
+                headerTotalMoenyView.setText(fenLieData.getBvw().stripTrailingZeros().setScale(0, BigDecimal.ROUND_DOWN).toPlainString() + "BTW");
 
             }
 
@@ -526,7 +526,7 @@ public class FenLieThreeActivity extends BaseActivity {
 
         horProBarOne.setFirstText("1:" + oneModel.getBtc_bvw().intValue());
         horProBarOne.setSecondText("1:" + oneModel.getEth_bvw().intValue());
-        horProBarOne.setLastText(oneModel.getBvw().stripTrailingZeros().setScale(0, BigDecimal.ROUND_DOWN).toPlainString() + "BVW");
+        horProBarOne.setLastText(oneModel.getBvw().stripTrailingZeros().setScale(0, BigDecimal.ROUND_DOWN).toPlainString() + "BTW");
 
 
         int bvwflval = oneModel.getBvw_fl().intValue();
@@ -557,32 +557,32 @@ public class FenLieThreeActivity extends BaseActivity {
 
         horProBarTWo.setFirstText("1:" + twoModel.getBtc_bvw().intValue());
         horProBarTWo.setSecondText("1:" + twoModel.getEth_bvw().intValue());
-        horProBarTWo.setLastText(twoModel.getBvw().stripTrailingZeros().setScale(0, BigDecimal.ROUND_DOWN).toPlainString() + "BVW");
+        horProBarTWo.setLastText(twoModel.getBvw().stripTrailingZeros().setScale(0, BigDecimal.ROUND_DOWN).toPlainString() + "BTW");
 //        horProBarTWo.setCurrentProgress(40);
 //        horProBarTWo.setShowPercent(0);
 
         horProBarThree.setFirstText("1:" + threeModel.getBtc_bvw().intValue());
         horProBarThree.setSecondText("1:" + threeModel.getEth_bvw().intValue());
-        horProBarThree.setLastText(threeModel.getBvw().stripTrailingZeros().setScale(0, BigDecimal.ROUND_DOWN).toPlainString() + "BVW");
+        horProBarThree.setLastText(threeModel.getBvw().stripTrailingZeros().setScale(0, BigDecimal.ROUND_DOWN).toPlainString() + "BTW");
 //        horProBarThree.setCurrentProgress(40);
 //        horProBarThree.setShowPercent(0);
 
 
         horProBarFour.setFirstText("1:" + fourModel.getBtc_bvw().intValue());
         horProBarFour.setSecondText("1:" + fourModel.getEth_bvw().intValue());
-        horProBarFour.setLastText(fourModel.getBvw().stripTrailingZeros().setScale(0, BigDecimal.ROUND_DOWN).toPlainString() + "BVW");
+        horProBarFour.setLastText(fourModel.getBvw().stripTrailingZeros().setScale(0, BigDecimal.ROUND_DOWN).toPlainString() + "BTW");
 //        horProBarFour.setCurrentProgress(40);
 //        horProBarFour.setShowPercent(0);
 
         horProBarFive.setFirstText("1:" + fiveModel.getBtc_bvw().intValue());
         horProBarFive.setSecondText("1:" + fiveModel.getEth_bvw().intValue());
-        horProBarFive.setLastText(fiveModel.getBvw().stripTrailingZeros().setScale(0, BigDecimal.ROUND_DOWN).toPlainString() + "BVW");
+        horProBarFive.setLastText(fiveModel.getBvw().stripTrailingZeros().setScale(0, BigDecimal.ROUND_DOWN).toPlainString() + "BTW");
 //        horProBarFive.setCurrentProgress(40);
 //        horProBarFive.setShowPercent(0);
 
         horProBarSix.setFirstText("1:" + sixModel.getBtc_bvw().intValue());
         horProBarSix.setSecondText("1:" + sixModel.getEth_bvw().intValue());
-        horProBarSix.setLastText(sixModel.getBvw().stripTrailingZeros().setScale(0, BigDecimal.ROUND_DOWN).toPlainString() + "BVW");
+        horProBarSix.setLastText(sixModel.getBvw().stripTrailingZeros().setScale(0, BigDecimal.ROUND_DOWN).toPlainString() + "BTW");
 
     }
 
@@ -641,18 +641,18 @@ public class FenLieThreeActivity extends BaseActivity {
                 if (!TextUtils.isEmpty(zcMoneyModel.getName())) {
                     if (zcMoneyModel.getName().equalsIgnoreCase("BTC")) {
                         if (TextUtils.isEmpty(zcMoneyModel.getValue_qty()) || zcMoneyModel.getValue_qty().equals("0") || zcMoneyModel.getValue_qty().equals("0.000000")) {
-//                            leftMoneyView.setText("  0 BVW");
+//                            leftMoneyView.setText("  0 BTW");
                             btcLeftVal = "0";
                         } else {
-//                            leftMoneyView.setText("  " + zcMoneyModel.getValue_qty() + " BVW");
+//                            leftMoneyView.setText("  " + zcMoneyModel.getValue_qty() + " BTW");
                             btcLeftVal = zcMoneyModel.getValue_qty();
                         }
                     } else if (zcMoneyModel.getName().equalsIgnoreCase("ETH")) {
                         if (TextUtils.isEmpty(zcMoneyModel.getValue_qty()) || zcMoneyModel.getValue_qty().equals("0") || zcMoneyModel.getValue_qty().equals("0.000000")) {
-//                            leftMoneyView.setText("  0 BVW");
+//                            leftMoneyView.setText("  0 BTW");
                             ethLeftVal = "0";
                         } else {
-//                            leftMoneyView.setText("  " + zcMoneyModel.getValue_qty() + " BVW");
+//                            leftMoneyView.setText("  " + zcMoneyModel.getValue_qty() + " BTW");
                             ethLeftVal = zcMoneyModel.getValue_qty();
                         }
                     }

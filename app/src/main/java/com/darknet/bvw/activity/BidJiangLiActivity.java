@@ -413,12 +413,12 @@ public class BidJiangLiActivity extends BaseActivity implements View.OnClickList
             for (int i = 0; i < allMoney.size(); i++) {
                 LeftMoneyResponse.LeftMoneyModel zcMoneyModel = allMoney.get(i);
                 if (!TextUtils.isEmpty(zcMoneyModel.getName())) {
-                    if (zcMoneyModel.getName().equalsIgnoreCase("BVW")) {
+                    if (zcMoneyModel.getName().equalsIgnoreCase("BTW")) {
                         if (TextUtils.isEmpty(zcMoneyModel.getValue_qty()) || zcMoneyModel.getValue_qty().equals("0") || zcMoneyModel.getValue_qty().equals("0.000000")) {
-//                            leftMoneyView.setText("  0 BVW");
+//                            leftMoneyView.setText("  0 BTW");
                             leftMoneyVal = "0";
                         } else {
-//                            leftMoneyView.setText("  " + zcMoneyModel.getValue_qty() + " BVW");
+//                            leftMoneyView.setText("  " + zcMoneyModel.getValue_qty() + " BTW");
                             leftMoneyVal = zcMoneyModel.getValue_qty();
                         }
                     }
