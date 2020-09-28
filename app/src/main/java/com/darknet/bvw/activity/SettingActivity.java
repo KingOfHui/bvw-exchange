@@ -223,7 +223,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
         }
 
         String version = updateData.getVersion();
-        if (!BuildConfig.VERSION_NAME.equals(version)) {
+        if (getVersionCode(BuildConfig.VERSION_NAME) < getVersionCode(version)) {
             Language language = Language.readFromConfig();
             jumpUrl = updateData.getAbroad_android_url();
             if (language == Language.CHINA) {
@@ -247,7 +247,33 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
 //            Toast.makeText(SettingActivity.this, getString(R.string.update_compare_sign), Toast.LENGTH_SHORT).show();
         }
     }
+    private float getVersionCode(String version) {
+        if (TextUtils.isEmpty(version)) {
+            return 0;
+        }
 
+        int index = version.indexOf(".");
+        if (index < 0) {
+            return toFloat(version);
+        }
+
+        if (index == version.length() - 1) {
+            return toFloat(version.substring(0, index));
+        }
+
+        String prefix = version.substring(0, index + 1);
+        String suffix = version.substring(index + 1).replace(".", "");
+        return toFloat(prefix + suffix);
+    }
+
+    public float toFloat(String number) {
+        try {
+            return Float.parseFloat(number);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return 0;
+    }
 
     public static int getCurVersionCode(Context ctx) {
         try {

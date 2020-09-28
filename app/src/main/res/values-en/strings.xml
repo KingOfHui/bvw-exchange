@@ -324,7 +324,7 @@
     <string name="update_version_num">Update: latest version</string>
 
     <string name="update_one_sign_content">New version detected, update?</string>
-    <string name="update_two_sign_content">Update will not lose your account, please feel free to use.</string>
+    <string name="update_two_sign_content">If the update fails, please delete the old version, updated again.</string>
     <string name="update_three_sign_content">If you delete the app, please back up all account private keys before deleting Prevent loss of funds.</string>
     <string name="update_four_sign_content">Update immediately</string>
     <string name="update_five_sign_content">Later on</string>

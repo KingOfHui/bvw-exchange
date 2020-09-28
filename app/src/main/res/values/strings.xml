@@ -404,7 +404,7 @@
     <string name="update_version_num">更新：最新版本</string>
 
     <string name="update_one_sign_content">检测到新版本，是否更新?</string>
-    <string name="update_two_sign_content">更新不会丢失账户，请放心使用。</string>
+    <string name="update_two_sign_content">如果更新失败，请删除老版本，再次进行更新！</string>
     <string name="update_three_sign_content">如果您删除APP，删除前请备份所有账户私钥防止资金丢失。</string>
     <string name="update_four_sign_content">立即更新</string>
     <string name="update_five_sign_content">稍后在说</string>
