@@ -112,16 +112,16 @@ public class TradeDetailActivity extends BaseActivity implements View.OnClickLis
 
             }
                 if (tradeListModel.getFee().compareTo(BigDecimal.ZERO) == 0) {
-                    kuangFeiView.setText("0 BTC");
+                    kuangFeiView.setText("0 BTW");
                 } else {
-                    kuangFeiView.setText(tradeListModel.getFee().stripTrailingZeros().toPlainString() + "BTC");
+                    kuangFeiView.setText(tradeListModel.getFee().stripTrailingZeros().toPlainString() + "BTW");
                 }
 
         } else {
             if (tradeListModel.getFee().compareTo(BigDecimal.ZERO) == 0) {
-                kuangFeiView.setText("0 BTC");
+                kuangFeiView.setText("0 BTW");
             } else {
-                kuangFeiView.setText(tradeListModel.getFee().stripTrailingZeros().toPlainString() + "BTC");
+                kuangFeiView.setText(tradeListModel.getFee().stripTrailingZeros().toPlainString() + "BTW");
             }
         }
 

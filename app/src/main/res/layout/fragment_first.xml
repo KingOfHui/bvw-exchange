@@ -64,6 +64,7 @@
                             android:layout_toRightOf="@id/first_name_view"
                             android:background="@mipmap/first_header_name"
                             android:gravity="center"
+                            android:visibility="invisible"
                             android:text="@string/first_title_mark"
                             android:textColor="@color/black"
                             android:textSize="10dp"></TextView>

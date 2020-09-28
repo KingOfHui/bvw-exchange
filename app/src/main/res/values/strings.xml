@@ -230,7 +230,7 @@
 
     <string name="create_aacoutn_view">创建账户</string>
     <string name="about_us_title">关于我们</string>
-    <string name="about_us_content">   BTW是一个在公链分片片区引入POS单核HW共识算法，BID原子节点参与记账、开源的，混链点对点分布式网络节点的公有链项目。BTW除了提供一个高TPS结算、可编程智能合约平台的技术解决方案辅助DAPP落地以外，还利用分片节点创建了一个全球性的裂变生态网络。BTW是人类第一次模仿造物主去创造一种永续的智能合约-机器DNA，去构建一个全人类共同信任的生命体。BTW也是人类第一次尝试用一种永续的方式让人类科技进行自我复制繁殖。</string>
+    <string name="about_us_content">  BTW（BITWORLD）区块链网络是一个在以太坊和比特币网络上利用layer2层技术进行区块链网络扩容的解决方案。BTW在BVW 480000区块正式开启BTW网络硬分叉，BTW硬分叉网络主要工作将在比特币和以太坊网络中建立一条layer2层的区块链网络来降低BTC 和ETH结算的成本，当用户在比特币和以太坊小额交易转账时，可以选择使用BTW layer2网络来进行结算，成本仅是原来成本的1%，BTW开发者社区致力于在完全去中心化的前提下，不断的探索layer2 layer3在dapp应用中的开发和实践.</string>
     <string name="help_title">使用帮助</string>
     <string name="del_wallet_fail">删除失败</string>
     <string name="no_data">暂无相关数据</string>
