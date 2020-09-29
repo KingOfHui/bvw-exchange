@@ -134,7 +134,7 @@ public class TransferAccountsActivity extends BaseActivity implements View.OnCli
         signContentView = findViewById(R.id.brc_sign_content_view);
 
         signContentView.setText(getResources().getString(R.string.trade_account_one_header) + " " + moneyType + getResources().getString(R.string.trade_account_one_one_header));
-
+        signContentView.setVisibility(View.GONE);
         seekBar = findViewById(R.id.seekBar);
         switch1 = findViewById(R.id.switch1);
         btnNext = findViewById(R.id.btnNext);

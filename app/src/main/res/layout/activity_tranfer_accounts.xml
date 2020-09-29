@@ -23,6 +23,7 @@
             android:layout_below="@id/title_layout"
             android:background="#37314D"
             android:gravity="center"
+            android:visibility="gone"
             android:orientation="horizontal"
             android:paddingTop="10dp"
             android:paddingBottom="10dp">

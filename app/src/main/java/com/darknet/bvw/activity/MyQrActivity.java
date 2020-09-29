@@ -57,7 +57,7 @@ public class MyQrActivity extends BaseActivity implements View.OnClickListener {
         erweimaSign.setText(getResources().getString(R.string.qr_erweima_code_two) + moneyType +" "+ getResources().getString(R.string.qr_erweima_code_two_two));
 //        title.setText(getString(R.string.qr_erweima_title_two));
         title.setText(moneyType + " " + getString(R.string.qr_erweima_title_three));
-
+        erweimaSign.setVisibility(View.GONE);
 
 
         layBack.setOnClickListener(this);
