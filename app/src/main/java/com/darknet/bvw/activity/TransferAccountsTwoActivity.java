@@ -163,7 +163,7 @@ public class TransferAccountsTwoActivity extends BaseActivity implements View.On
             title.setText(moneyType + " " + getString(R.string.trade_list_zhuanzhang) + " (" + moneyType +getResources().getString(R.string.gonglian_sign)+ ")");
             signContentView.setText(getResources().getString(R.string.trade_account_two_header) + moneyType + getResources().getString(R.string.trade_account_two_two_header));
         }
-        signContentView.setVisibility(View.GONE);
+
 
         //输入总长度15位，小数2位
         editZzMoney.addTextChangedListener(new DecimalInputTextWatcher(editZzMoney, 20, 6));

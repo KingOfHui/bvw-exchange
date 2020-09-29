@@ -65,7 +65,7 @@ public class MyQrTwoActivity extends BaseActivity implements View.OnClickListene
             erweimaView.setText(getResources().getString(R.string.qr_erweima_code_one) + moneyType + getResources().getString(R.string.gonglian_sign) + getResources().getString(R.string.qr_erweima_code_one_one));
             zhulianUnder.setText(moneyType + getResources().getString(R.string.gonglian_sign));
         }
-        erweimaView.setVisibility(View.GONE);
+
 //
 //
 
