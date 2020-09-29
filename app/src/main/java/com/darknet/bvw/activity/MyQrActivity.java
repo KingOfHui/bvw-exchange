@@ -51,13 +51,17 @@ public class MyQrActivity extends BaseActivity implements View.OnClickListener {
         erweimaSign = findViewById(R.id.erweima_sign_view);
 
         gonglianUnder = findViewById(R.id.erweima_gonglian_under);
-        gonglianUnder.setText("BTW"+getResources().getString(R.string.gonglian_sign)+moneyType);
+        if (!"BVW".equals(moneyType)) {
+            gonglianUnder.setText("BTW" + getResources().getString(R.string.gonglian_sign) + moneyType);
+        } else {
+            gonglianUnder.setVisibility(View.INVISIBLE);
+        }
 
 
         erweimaSign.setText(getResources().getString(R.string.qr_erweima_code_two) + moneyType +" "+ getResources().getString(R.string.qr_erweima_code_two_two));
 //        title.setText(getString(R.string.qr_erweima_title_two));
-        title.setText(moneyType + " " + getString(R.string.qr_erweima_title_three));
-
+        title.setText(moneyType + " " + ("BVW".equals(moneyType)?"":getString(R.string.qr_erweima_title_three)));
+        findViewById(R.id.warn_layout).setVisibility("BVW".equals(moneyType) ? View.GONE : View.VISIBLE);
 
 
         layBack.setOnClickListener(this);

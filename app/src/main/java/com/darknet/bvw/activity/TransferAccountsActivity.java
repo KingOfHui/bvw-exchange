@@ -138,6 +138,7 @@ public class TransferAccountsActivity extends BaseActivity implements View.OnCli
         seekBar = findViewById(R.id.seekBar);
         switch1 = findViewById(R.id.switch1);
         btnNext = findViewById(R.id.btnNext);
+        findViewById(R.id.warn_layout).setVisibility("BVW".equals(moneyTypeVal) ? View.GONE : View.VISIBLE);
 
         contackPeopleView = findViewById(R.id.trade_contack_people_view);
 
@@ -150,7 +151,7 @@ public class TransferAccountsActivity extends BaseActivity implements View.OnCli
 
 //        title.setText(moneyTypeVal +" "+ getString(R.string.trade_sign_title));
 //        title.setText(getString(R.string.trade_account_one_title));
-        title.setText(moneyType + " " + getString(R.string.trade_list_zhuanzhang) + " (BRC20)");
+        title.setText(moneyType + " " + getString(R.string.trade_list_zhuanzhang) + ("BVW".equals(moneyTypeVal) ?"":" (BRC20)"));
 
         layBack.setOnClickListener(this);
         btnNext.setOnClickListener(this);
