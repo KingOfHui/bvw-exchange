@@ -147,8 +147,8 @@ public class MineFragment extends Fragment implements View.OnClickListener {
                 startActivity(aboutIntent);
                 break;
             case R.id.layHelpCenter:
-                Intent helpIntent = new Intent(activity, HelpActivity.class);
-                startActivity(helpIntent);
+//                Intent helpIntent = new Intent(activity, HelpActivity.class);
+//                startActivity(helpIntent);
                 break;
             case R.id.layMsgCenter:
 //                Intent msgIntent = new Intent(activity, MessageCenterTwoActivity.class);
