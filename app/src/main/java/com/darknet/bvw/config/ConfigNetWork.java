@@ -18,15 +18,15 @@ public class ConfigNetWork {
 //        }else {
 //            WEB_URL ="file:///android_asset/test/index.html";
 //        }
-//        if (BuildConfig.DEBUG) {
-//            JAVA_API_URL = "https://t.bvw.im/";
-//            JAVA_SOCKET_URL = "wss://ws-test.bvw.im/websocket";
-//            WEB_URL ="file:///android_asset/test/index.html";
-//        }else {
+        if (BuildConfig.DEBUG) {
+            JAVA_API_URL = "https://t.bvw.im/";
+            JAVA_SOCKET_URL = "wss://ws-test.bvw.im/websocket";
+            WEB_URL ="file:///android_asset/test/index.html";
+        }else {
             JAVA_API_URL = "https://api.bitw.im/";
             JAVA_SOCKET_URL = "wss://ws.bitw.im/websocket";
             WEB_URL ="file:///android_asset/prod/index.html";
-//        }
+        }
     }
 
 
