@@ -19,42 +19,60 @@
         android:paddingTop="@dimen/dimen_15dp"
         android:paddingBottom="@dimen/dimen_15dp">
 
-        <com.darknet.bvw.view.TypefaceTextView
+        <TextView
             android:id="@+id/typefaceTextView2"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:text="@{data.address}"
+            android:gravity="center"
             android:textColor="@color/_01FCDA"
-            app:layout_constraintEnd_toStartOf="@+id/typefaceTextView"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:text="@{data.address}"
+            android:ellipsize="end"
+            android:singleLine="true"
             tools:text="被邀请人" />
 
         <com.darknet.bvw.view.TypefaceTextView
             android:id="@+id/typefaceTextView"
-            android:layout_width="20dp"
-            android:layout_height="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@{String.valueOf(data.bonus)+`BTW`}"
             android:textColor="@color/_01FCDA"
-            app:layout_constraintEnd_toStartOf="@+id/typefaceTextView3"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/typefaceTextView2"
+            app:layout_constraintStart_toEndOf="@+id/guideline2"
             app:layout_constraintTop_toTopOf="parent"
+            android:ellipsize="end"
             tools:text="日产" />
 
         <com.darknet.bvw.view.TypefaceTextView
             android:id="@+id/typefaceTextView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{data.create_time}"
             android:textColor="@color/_01FCDA"
+            android:ellipsize="end"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/typefaceTextView"
+            app:layout_constraintStart_toEndOf="@+id/guideline3"
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteY="0dp"
-            android:text="@{data.create_time}"
             tools:text="邀请时间" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.33" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.66" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
