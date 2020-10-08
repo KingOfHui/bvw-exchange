@@ -23,6 +23,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="被邀请人"
+                android:lines="1"
+                android:ellipsize="end"
                 android:textColor="@color/_01FCDA"
                 android:textSize="13sp" />
 

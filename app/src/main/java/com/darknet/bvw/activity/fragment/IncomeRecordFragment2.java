@@ -12,6 +12,7 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.darknet.bvw.R;
 import com.darknet.bvw.common.BaseFragment;
 import com.darknet.bvw.model.MineralBonusListResponse;
+import com.darknet.bvw.model.ReferBonusListResponse;
 import com.darknet.bvw.viewmodel.IncomeRecordViewModel;
 
 public class IncomeRecordFragment2 extends BaseFragment {
@@ -40,7 +41,7 @@ public class IncomeRecordFragment2 extends BaseFragment {
         mRv.setAdapter(mAdapter);
 
         IncomeRecordViewModel viewModel = new ViewModelProvider(this, new ViewModelProvider.AndroidViewModelFactory(requireActivity().getApplication())).get(IncomeRecordViewModel.class);
-        viewModel.itemsLive.observe(this, itemsBeans -> {
+        viewModel.referBonusItemsLive.observe(this, itemsBeans -> {
             if (itemsBeans != null && itemsBeans.size() > 0) {
                 mAdapter.setNewData(itemsBeans);
             } else {
@@ -63,17 +64,17 @@ public class IncomeRecordFragment2 extends BaseFragment {
 
     }
 
-    private static class MyAdapter extends BaseQuickAdapter<MineralBonusListResponse.ItemsBean, BaseViewHolder> {
+    private static class MyAdapter extends BaseQuickAdapter<ReferBonusListResponse.ItemsBean, BaseViewHolder> {
 
         public MyAdapter() {
             super(R.layout.item_income_record_second);
         }
 
         @Override
-        protected void convert(BaseViewHolder helper, MineralBonusListResponse.ItemsBean item) {
+        protected void convert(BaseViewHolder helper, ReferBonusListResponse.ItemsBean item) {
             helper.setText(R.id.tv_person, String.valueOf(item.getUser_id()));
-            helper.setText(R.id.tv_bonus, String.valueOf(item.getBonus_refer())+"BTW");
-            helper.setText(R.id.tv_time, item.getCreate_at());
+            helper.setText(R.id.tv_bonus, String.valueOf(item.getRefer_bonus())+"BTW");
+            helper.setText(R.id.tv_time, item.getBonus_date());
         }
     }
 }
