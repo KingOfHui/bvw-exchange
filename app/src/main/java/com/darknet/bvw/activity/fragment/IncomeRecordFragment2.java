@@ -50,7 +50,7 @@ public class IncomeRecordFragment2 extends BaseFragment {
                 layNoData.setVisibility(View.VISIBLE);
             }
         });
-        viewModel.getIncomeRecord(2);
+        viewModel.referBonusList();
     }
 
 
