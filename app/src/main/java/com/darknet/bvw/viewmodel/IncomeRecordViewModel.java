@@ -94,7 +94,7 @@ public class IncomeRecordViewModel extends AndroidViewModel {
 
         Gson gson = new Gson();
         HashMap<String, Integer> map = new HashMap<>();
-        map.put("limit", 100);
+        map.put("limit", 50);
         map.put("page", 0);
         RequestBody requestBody = RequestBody.create(JSON, gson.toJson(map));
         OkGo.<String>post(ConfigNetWork.JAVA_API_URL + UrlPath.GET_REFER_BONUS_LIST)

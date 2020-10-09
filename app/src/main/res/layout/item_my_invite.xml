@@ -35,8 +35,9 @@
 
         <com.darknet.bvw.view.TypefaceTextView
             android:id="@+id/typefaceTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="@{String.valueOf(data.bonus)+`BTW`}"
             android:textColor="@color/_01FCDA"
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
@@ -48,10 +49,11 @@
 
         <com.darknet.bvw.view.TypefaceTextView
             android:id="@+id/typefaceTextView3"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@{data.create_time}"
             android:textColor="@color/_01FCDA"
+            android:gravity="center"
             android:ellipsize="end"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
