@@ -66,9 +66,9 @@ public class IncomeRecordViewModel extends AndroidViewModel {
                                     if (status != null && status.isSuccess()) {
                                         List<MineralBonusListResponse.ItemsBean> items = status.getData().getItems();
                                         itemsLive.setValue(items);
-                                    } else {
+                                    } /*else {
                                         Toast.makeText(getApplication(), "获取收益列表失败~", Toast.LENGTH_SHORT).show();
-                                    }
+                                    }*/
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
@@ -114,9 +114,9 @@ public class IncomeRecordViewModel extends AndroidViewModel {
                                     if (status != null && status.isSuccess()) {
                                         List<ReferBonusListResponse.ItemsBean> items = status.getData().getItems();
                                         referBonusItemsLive.setValue(items);
-                                    } else {
+                                    }/* else {
                                         Toast.makeText(getApplication(), "获取收益列表失败~", Toast.LENGTH_SHORT).show();
-                                    }
+                                    }*/
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
