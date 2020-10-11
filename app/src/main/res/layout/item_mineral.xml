@@ -109,7 +109,7 @@
             android:textSize="9dp"
             app:layout_constraintLeft_toRightOf="@id/tv_mineral_whole_hashrate"
             tools:text="fjslfjdsl"
-            android:text="@{@string/mineral_currency(vm.pay_symbol)}"
+            android:text="@{@string/mineral_currency(vm.minerInfo.base_out_symbol)}"
             android:layout_marginBottom="@dimen/dp_4"
             android:textColor="@color/white"
             android:alpha="0.7"

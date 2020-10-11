@@ -72,7 +72,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="：10 BTW"
+                android:text="：10 BIW"
                 android:textColor="#01FCDA"
                 android:textSize="18dp"
                 android:textStyle="bold"></TextView>
@@ -156,7 +156,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text=":0 BTW"
+                android:text=":0 BIW"
                 android:textColor="#01FCDA"
                 android:textSize="13dp"></TextView>
         </LinearLayout>

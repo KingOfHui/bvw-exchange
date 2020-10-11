@@ -55,7 +55,7 @@ public class SuanLiListItemAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             ((FenLieViewHolder) holder).fiveView.setText(tradeListModel.getInviterPower().stripTrailingZeros().toPlainString()+"kH/S");
             ((FenLieViewHolder) holder).sixView.setText(tradeListModel.getBidPower().stripTrailingZeros().toPlainString()+"kH/S");
             ((FenLieViewHolder) holder).bomOneView.setText(tradeListModel.getDayPower().stripTrailingZeros().toPlainString() +"kH/S");
-            ((FenLieViewHolder) holder).bomTwoView.setText(tradeListModel.getDayBonus().stripTrailingZeros().toPlainString() +"BTW");
+            ((FenLieViewHolder) holder).bomTwoView.setText(tradeListModel.getDayBonus().stripTrailingZeros().toPlainString() +"BIW");
         }
 
     }

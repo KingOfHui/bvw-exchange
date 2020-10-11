@@ -176,7 +176,7 @@ public class SuanLiWaKuangActivity extends BaseActivity {
 
 
             headerThreeView.setText(sunLiData.getSumPower().stripTrailingZeros().toPlainString()+"kH/S");
-            headerFourView.setText(sunLiData.getSumBonus().stripTrailingZeros().toPlainString()+"BTW");
+            headerFourView.setText(sunLiData.getSumBonus().stripTrailingZeros().toPlainString()+"BIW");
 
 //        totalOneView.setText(sunLiData.getSumPower());
 //        totalTwoView.setText(sunLiData.getSumBonus());
@@ -205,7 +205,7 @@ public class SuanLiWaKuangActivity extends BaseActivity {
         itemSixView.setText(sunLiItemModel.getBidPower().stripTrailingZeros().toPlainString()+"kH/S");
 
         totalOneView.setText(sunLiItemModel.getDayPower().stripTrailingZeros().toPlainString()+"kH/S");
-        totalTwoView.setText(sunLiItemModel.getDayBonus().stripTrailingZeros().toPlainString()+"BTW");
+        totalTwoView.setText(sunLiItemModel.getDayBonus().stripTrailingZeros().toPlainString()+"BIW");
 
     }
 

@@ -355,7 +355,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="@dimen/dimen_15dp"
                                 android:layout_marginTop="@dimen/dimen_15dp"
-                                android:text="@{vm.getSpanString(vm.mineralStatusResponseLiveData.today_btw_bonus,` BTW`), default = `0`}"
+                                android:text="@{vm.getSpanString(vm.mineralStatusResponseLiveData.today_btw_bonus,` BIW`), default = `0`}"
                                 android:textColor="@color/white" />
 
                             <com.darknet.bvw.view.TypefaceTextView
@@ -700,7 +700,7 @@
                         android:layout_margin="@dimen/dimen_15dp"
                         app:layout_constraintTop_toBottomOf="@id/lv_pledge_status"
                         app:left_text="@string/mineral_pledge_num"
-                        app:right_text="@{info.pay_amount+`btw`}" />
+                        app:right_text="@{info.pay_amount+`BIW`}" />
                     <com.darknet.bvw.view.HorizontalLineView
                         android:id="@+id/lv_no_pledge"
                         android:layout_width="match_parent"

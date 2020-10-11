@@ -112,16 +112,16 @@ public class TradeDetailActivity extends BaseActivity implements View.OnClickLis
 
             }
                 if (tradeListModel.getFee().compareTo(BigDecimal.ZERO) == 0) {
-                    kuangFeiView.setText("0 BTW");
+                    kuangFeiView.setText("0 BIW");
                 } else {
-                    kuangFeiView.setText(tradeListModel.getFee().stripTrailingZeros().toPlainString() + "BTW");
+                    kuangFeiView.setText(tradeListModel.getFee().stripTrailingZeros().toPlainString() + "BIW");
                 }
 
         } else {
             if (tradeListModel.getFee().compareTo(BigDecimal.ZERO) == 0) {
-                kuangFeiView.setText("0 BTW");
+                kuangFeiView.setText("0 BIW");
             } else {
-                kuangFeiView.setText(tradeListModel.getFee().stripTrailingZeros().toPlainString() + "BTW");
+                kuangFeiView.setText(tradeListModel.getFee().stripTrailingZeros().toPlainString() + "BIW");
             }
         }
 
@@ -167,7 +167,7 @@ public class TradeDetailActivity extends BaseActivity implements View.OnClickLis
             }
         });
 
-//        String createUrl = ConfigNetWork.JAVA_API_URL + "BTW/tx/" + tradeListModel.getTx_hash();
+//        String createUrl = ConfigNetWork.JAVA_API_URL + "BIW/tx/" + tradeListModel.getTx_hash();
 
 
         if ("3".equals(tradeListModel.getType())) {

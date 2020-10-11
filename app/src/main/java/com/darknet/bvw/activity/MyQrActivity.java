@@ -52,7 +52,7 @@ public class MyQrActivity extends BaseActivity implements View.OnClickListener {
 
         gonglianUnder = findViewById(R.id.erweima_gonglian_under);
         if (!"BVW".equals(moneyType)) {
-            gonglianUnder.setText("BTW" + getResources().getString(R.string.gonglian_sign) + moneyType);
+            gonglianUnder.setText("BIW" + getResources().getString(R.string.gonglian_sign) + moneyType);
         } else {
             gonglianUnder.setVisibility(View.INVISIBLE);
         }

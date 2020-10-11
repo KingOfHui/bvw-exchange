@@ -192,7 +192,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/dimen_15dp"
-                                    android:text="@{vm.getSpanString(vm.mineralStatusResponseLiveData.today_btw_bonus,` BTW`), default = `0`}"
+                                    android:text="@{vm.getSpanString(vm.mineralStatusResponseLiveData.today_btw_bonus,` BIW`), default = `0`}"
                                     android:textColor="@color/_01FCDA"
                                     android:textSize="28sp"
                                     app:typeface="DINProRegular"

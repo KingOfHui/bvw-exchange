@@ -29,7 +29,7 @@
                     android:id="@+id/item_coins_money_type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="BTW"
+                    android:text="BIW"
                     android:textColor="#ffffff"
                     android:textSize="16sp"
                     android:textStyle="bold" />

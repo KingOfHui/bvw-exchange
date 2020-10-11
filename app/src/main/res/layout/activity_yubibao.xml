@@ -310,7 +310,7 @@
                         android:gravity="center"
                         android:paddingTop="15dp"
                         android:paddingBottom="15dp"
-                        android:text="201 BTW"
+                        android:text="201 BIW"
                         android:textColor="@color/black"
                         android:textSize="14dp"></TextView>
 
@@ -324,7 +324,7 @@
                         android:gravity="center"
                         android:paddingTop="15dp"
                         android:paddingBottom="15dp"
-                        android:text="801 BTW"
+                        android:text="801 BIW"
                         android:textColor="#FF01FCDA"
                         android:textSize="14dp"></TextView>
 
@@ -339,7 +339,7 @@
                         android:gravity="center"
                         android:paddingTop="15dp"
                         android:paddingBottom="15dp"
-                        android:text="3001 BTW"
+                        android:text="3001 BIW"
                         android:textColor="#FF01FCDA"
                         android:textSize="14dp"></TextView>
                 </LinearLayout>
@@ -360,7 +360,7 @@
                         android:gravity="center"
                         android:paddingTop="15dp"
                         android:paddingBottom="15dp"
-                        android:text="10001 BTW"
+                        android:text="10001 BIW"
                         android:textColor="@color/black"
                         android:textSize="14dp"></TextView>
 
@@ -374,7 +374,7 @@
                         android:gravity="center"
                         android:paddingTop="15dp"
                         android:paddingBottom="15dp"
-                        android:text="50001 BTW"
+                        android:text="50001 BIW"
                         android:textColor="#FF01FCDA"
                         android:textSize="14dp"></TextView>
 
@@ -389,7 +389,7 @@
                         android:paddingTop="15dp"
                         android:paddingBottom="15dp"
                         android:visibility="invisible"
-                        android:text="50001 BTW"
+                        android:text="50001 BIW"
                         android:textColor="#FF01FCDA"
                         android:textSize="14dp"></TextView>
                 </LinearLayout>

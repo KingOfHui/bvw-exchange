@@ -644,7 +644,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:gravity="left"
-                        android:text="（BTC ETH/BTW)"
+                        android:text="（BTC ETH/BIW)"
                         android:textColor="@color/white"
                         android:textSize="12dp"></TextView>
                 </LinearLayout>

@@ -358,7 +358,7 @@ public class KlineActivity extends BaseActivity implements View.OnClickListener 
         String msg = "" + System.currentTimeMillis();
         String signVal = BitcoinjKit.signMessageBy58(msg, privateKey);
 
-        OkGo.<String>get(ConfigNetWork.JAVA_API_URL + UrlPath.BTW_USDT_URL + markID)
+        OkGo.<String>get(ConfigNetWork.JAVA_API_URL + UrlPath.BIW_USDT_URL + markID)
                 .tag(this)
                 .headers("Chain-Authentication", addressVals + "#" + msg + "#" + signVal)
                 .execute(new StringCallback() {

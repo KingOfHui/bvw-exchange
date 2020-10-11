@@ -135,7 +135,7 @@ public class IncomeRecordActivity extends BaseBindingActivity<ActivityIncomeReco
                 .setTextColor(Color.parseColor("#01FCDA"))
                 .setTextSize(30)
                 .next(" ")
-                .next("BTW")
+                .next("BIW")
                 .setTextSize(15)
                 .setTextColor(Color.WHITE)
                 .get());

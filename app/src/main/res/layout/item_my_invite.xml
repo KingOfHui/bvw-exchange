@@ -39,7 +39,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@{String.valueOf(data.bonus)+` BTW`}"
+            android:text="@{String.valueOf(data.bonus)+` BIW`}"
             android:textColor="@color/_01FCDA"
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
             app:layout_constraintHorizontal_bias="0.5"

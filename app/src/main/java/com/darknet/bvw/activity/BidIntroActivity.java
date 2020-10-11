@@ -188,12 +188,12 @@ public class BidIntroActivity extends BaseActivity implements OnPlayerEventListe
             for (int i = 0; i < allMoney.size(); i++) {
                 LeftMoneyResponse.LeftMoneyModel zcMoneyModel = allMoney.get(i);
                 if (!TextUtils.isEmpty(zcMoneyModel.getName())) {
-                    if (zcMoneyModel.getName().equalsIgnoreCase("BTW")) {
+                    if (zcMoneyModel.getName().equalsIgnoreCase("BIW")) {
                         if (TextUtils.isEmpty(zcMoneyModel.getValue_qty()) || zcMoneyModel.getValue_qty().equals("0") || zcMoneyModel.getValue_qty().equals("0.000000")) {
-                            leftMoneyView.setText("  0 BTW");
+                            leftMoneyView.setText("  0 BIW");
                             leftMoneyVal = "0";
                         } else {
-                            leftMoneyView.setText("  " + zcMoneyModel.getValue_qty() + " BTW");
+                            leftMoneyView.setText("  " + zcMoneyModel.getValue_qty() + " BIW");
                             leftMoneyVal = zcMoneyModel.getValue_qty();
                         }
                     }

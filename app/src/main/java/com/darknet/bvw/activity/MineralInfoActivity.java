@@ -187,7 +187,7 @@ public class MineralInfoActivity extends BaseBindingActivity<ActivityMineralInfo
                     if (contentVal.equals(walletModel.getPassword())) {
                         hintKeyBoard();
                         dialog.dismiss();
-                        createTrade(String.valueOf(mItemInfo.getPay_amount()),address,"BTW");
+                        createTrade(String.valueOf(mItemInfo.getPay_amount()),address,"BIW");
 
                     } else {
                         Toast.makeText(MineralInfoActivity.this, getString(R.string.wrong_pwd), Toast.LENGTH_SHORT).show();
@@ -383,7 +383,7 @@ public class MineralInfoActivity extends BaseBindingActivity<ActivityMineralInfo
         SendTradeRequest sendTradeRequest = new SendTradeRequest();
         sendTradeRequest.setAmount(String.valueOf(mItemInfo.getPay_amount()));
         sendTradeRequest.setRaw(signVal);
-        sendTradeRequest.setSymbol("BTW");
+        sendTradeRequest.setSymbol("BIW");
         sendTradeRequest.setTo_address(mViewModel.address.getValue());
         sendTradeRequest.setType(13);
         sendTradeRequest.setDemo("质押矿机");

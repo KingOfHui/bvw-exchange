@@ -215,7 +215,7 @@ public class TransferAccountsActivity extends BaseActivity implements View.OnCli
                 break;
             case R.id.btnNext:
 
-                if (moneyType.equalsIgnoreCase("BTW")) {
+                if (moneyType.equalsIgnoreCase("BIW")) {
 
                     String addressVal = editSkrAddress.getText().toString();
                     String numVal = editZzMoney.getText().toString();

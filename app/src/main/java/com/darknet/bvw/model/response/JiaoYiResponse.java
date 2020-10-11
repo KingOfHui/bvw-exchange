@@ -7,7 +7,7 @@ public class JiaoYiResponse extends BaseResponse {
 
 //    "id": 1225,
 //            "status": "successful",
-//            "market_id": "BTW-USDT",
+//            "market_id": "BIW-USDT",
 //            "maker": 1042081,
 //            "taker": 1042081,
 //            "price": 0.60000000,

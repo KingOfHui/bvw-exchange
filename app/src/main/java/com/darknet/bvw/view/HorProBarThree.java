@@ -158,7 +158,7 @@ public class HorProBarThree extends View {
 
     private String mFirstText = "1:1";
     private String mSecondText = "1:1";
-    private String mLastText = "0BTW";
+    private String mLastText = "0BIW";
     private boolean mNeedDrawProgressText=false;
 
 

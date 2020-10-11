@@ -72,15 +72,15 @@ public class UrlPath {
     public static String DEAL_LIST_URL = "api/v1/exchange/trade/list"; //交易列表
     public static String KLINE_ALL_DATA_URL = "api/v1/exchange/kline/";// 获取K线历史数据
     public static String SYMBOL_TICKER_URL = "api/v1/exchange/ticker";
-    public static String BTW_USDT_URL = "api/v1/exchange/market/detail/";
+    public static String BIW_USDT_URL = "api/v1/exchange/market/detail/";
     /**
      * 我的业绩聚合接口
      */
-    public static String BTW_PERFORMANCE_URL = "api/v1/leaderPlan/performance";
+    public static String BIW_PERFORMANCE_URL = "api/v1/leaderPlan/performance";
     /**
      * 是否是社区领导用户
      */
-    public static String BTW_STATE_URL = "api/v1/leaderPlan/state";
+    public static String BIW_STATE_URL = "api/v1/leaderPlan/state";
     public static String NOTICE_CONTENT_URL = "api/v1/announcement/getTop"; //签到接口
     public static String ADD_IN_YUBI_URL = "api/v1/bvwInvest/apply"; //加入余币宝
     public static String YUBIBAO_LIST_URL = "api/v1/bvwInvest/applyList"; //余币宝申请列表
@@ -93,7 +93,7 @@ public class UrlPath {
     public static final String GET_REFER_BONUS_LIST = "api/v1/miner/referBonusList";//获取矿机推荐收益列表
     public static final String GET_USER_INVITE_DATA = "api/v1/user/inviteData";//获取我的邀请信息和邀请人列表
 
-    public static final String GET_MINERAL_PAY_ADDRESS = "api/v1/dictByKey/MINER_PAY_BTW";
+    public static final String GET_MINERAL_PAY_ADDRESS = "api/v1/dictByKey/MINER_PAY_BIW";
     public static final String CTEATE_RAW_TX = "api/v1/wallet/createRawTx";//创建交易
     public static final String SEND_RAW_TX = "api/v1/wallet/sendRawTx";//发送交易
     public static final String OPEN_BID = "api/v1/user/openBid";//开通Bid

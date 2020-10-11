@@ -46,7 +46,7 @@ public class MyQrThreeActivity extends BaseActivity implements View.OnClickListe
 
 
 //        title.setText(getString(R.string.qr_erweima_title_two));
-        title.setText("BTW "+getString(R.string.shoukuan_code));
+        title.setText("BIW "+getString(R.string.shoukuan_code));
 
 
         layBack.setOnClickListener(this);

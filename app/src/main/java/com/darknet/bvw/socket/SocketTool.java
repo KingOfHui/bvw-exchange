@@ -128,7 +128,7 @@ public class SocketTool {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(topicMessage -> {
-                    //{"marketId":"BTW-USDT","openPrice":0.44,"highestPrice":0.44,"lowestPrice":0.44,"closePrice":0.44,"time":1578502620000,"period":"1min","count":0,"volume":0,"turnover":0}
+                    //{"marketId":"BIW-USDT","openPrice":0.44,"highestPrice":0.44,"lowestPrice":0.44,"closePrice":0.44,"time":1578502620000,"period":"1min","count":0,"volume":0,"turnover":0}
                     Log.e(TAG, "Received--K线订阅 " + topicMessage.getPayload());
                     KLineEvent kLineEvent = new GsonBuilder().create().fromJson(topicMessage.getPayload(), KLineEvent.class);
                     EventBus.getDefault().post(kLineEvent);

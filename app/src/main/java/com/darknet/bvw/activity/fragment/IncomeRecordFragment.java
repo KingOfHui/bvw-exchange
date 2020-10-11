@@ -93,9 +93,9 @@ public class IncomeRecordFragment extends BaseFragment {
             helper.setText(R.id.tv_time, getStringToDate(item.getCreate_at(), "yyyy-MM-dd HH:mm"));
             String bonus = "";
             if (mType == 1) {
-                bonus = item.getBonus_miner()+"BTW";
+                bonus = item.getBonus_miner()+"BIW";
             } else if (mType == 3) {
-                bonus = item.getBonus_big_node()+"BTW";
+                bonus = item.getBonus_big_node()+"BIW";
             } else if (mType == 4) {
                 bonus = item.getBonus_btc()+"BTC";
             }

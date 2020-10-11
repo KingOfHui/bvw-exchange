@@ -515,7 +515,7 @@ public class YuBiBaoDetailActivity extends BaseActivity implements View.OnClickL
                 TextView twoItemView = (TextView) ybItemView.findViewById(R.id.yb_list_content_two);
                 TextView threeItemView = (TextView) ybItemView.findViewById(R.id.yb_list_content_three);
 
-                oneItemView.setText(yuBiListModel.getAmount().toPlainString() + "BTW, ");
+                oneItemView.setText(yuBiListModel.getAmount().toPlainString() + "BIW, ");
                 twoItemView.setText(TimeUtil.getYHDVal(yuBiListModel.getEnd_time()) + " " + getString(R.string.yb_list_item_month, yuBiListModel.getDate_limit()) + ",");
                 threeItemView.setText(getString(R.string.yb_list_bj));
 
@@ -577,7 +577,7 @@ public class YuBiBaoDetailActivity extends BaseActivity implements View.OnClickL
             for (int i = 0; i < allMoney.size(); i++) {
                 LeftMoneyResponse.LeftMoneyModel zcMoneyModel = allMoney.get(i);
                 if (!TextUtils.isEmpty(zcMoneyModel.getName())) {
-                    if (zcMoneyModel.getName().equalsIgnoreCase("BTW")) {
+                    if (zcMoneyModel.getName().equalsIgnoreCase("BIW")) {
                         if (TextUtils.isEmpty(zcMoneyModel.getValue_qty()) || zcMoneyModel.getValue_qty().equals("0") || zcMoneyModel.getValue_qty().equals("0.000000")) {
                             leftMoneyVal = "0";
                         } else {

@@ -155,7 +155,7 @@ public class HorProBarFour extends View {
 
     private String mFirstText = "1:1000";
     private String mSecondText = "1:4000";
-    private String mLastText = "1000300BTW";
+    private String mLastText = "1000300BIW";
     private boolean mNeedDrawProgressText = false;
 
     private int excetionTime = 0;

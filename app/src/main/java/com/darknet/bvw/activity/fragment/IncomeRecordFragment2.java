@@ -81,7 +81,7 @@ public class IncomeRecordFragment2 extends BaseFragment {
         @Override
         protected void convert(BaseViewHolder helper, ReferBonusListResponse.ItemsBean item) {
             helper.setText(R.id.tv_person, String.valueOf(item.getRefer_user_address()));
-            helper.setText(R.id.tv_bonus, String.valueOf(item.getRefer_bonus())+"BTW");
+            helper.setText(R.id.tv_bonus, String.valueOf(item.getRefer_bonus())+"BIW");
             helper.setText(R.id.tv_time,  getStringToDate(item.getBonus_date(), "yyyy-MM-dd HH:mm"));
         }
     }

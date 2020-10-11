@@ -290,7 +290,7 @@ public class PushReceiver extends BroadcastReceiver {
 
         mBuilder = new NotificationCompat.Builder(MyApp.getInstance())
                 .setSmallIcon(R.mipmap.logo_icon)
-                .setContentTitle("BTW")
+                .setContentTitle("BIW")
                 .setAutoCancel(true)
                 .setContentText(msgContent);
 

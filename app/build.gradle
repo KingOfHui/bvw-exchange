@@ -25,7 +25,7 @@ android {
         minSdkVersion 19
         targetSdkVersion 28
         versionCode 20201011
-        versionName "2.1"
+        versionName "2.2"
         multiDexEnabled true
         javaCompileOptions {
             annotationProcessorOptions {
@@ -77,9 +77,9 @@ android {
         applicationVariants.all { variant ->
             variant.outputs.all {
                 if (variant.name.contains("debug")) {
-                    outputFileName = new File("btw-test-${variant.versionName}.apk")
+                    outputFileName = new File("BIW-test-${variant.versionName}.apk")
                 } else {
-                    outputFileName = new File("btw-${variant.name}-${variant.versionName}.apk")
+                    outputFileName = new File("BIW-${variant.name}-${variant.versionName}.apk")
                 }
             }
         }

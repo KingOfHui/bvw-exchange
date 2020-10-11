@@ -228,8 +228,8 @@ public class FindFenLieActivity extends BaseActivity implements View.OnClickList
         changeSelectSign(0);
         scrollView.scrollTo(0, 0);
 
-        btcFenlieBiView.setText("1BTC:" + btcBvw + "BTW");
-        ethFenlieBiView.setText("1ETH:" + ethBvw + "BTW");
+        btcFenlieBiView.setText("1BTC:" + btcBvw + "BIW");
+        ethFenlieBiView.setText("1ETH:" + ethBvw + "BIW");
 
 
 //        btcFenlieNumView.setText("" + btcLfVal + "BTW");

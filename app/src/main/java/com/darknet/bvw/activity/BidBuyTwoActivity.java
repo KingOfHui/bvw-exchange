@@ -82,9 +82,9 @@ public class BidBuyTwoActivity extends BaseActivity {
         shouldPayView = (TextView) findViewById(R.id.bid_lead_pay_val_view);
         shouldSubPayView = (TextView) findViewById(R.id.bid_leader_pay_val_view);
 
-        leftView.setText(":" + leftVal + " BTW");
-        shouldPayView.setText(new BigDecimal(shouldPayVal).stripTrailingZeros().toPlainString()  + "BTW");
-        shouldSubPayView.setText(new BigDecimal(shouldPayVal).stripTrailingZeros().toPlainString() + "BTW");
+        leftView.setText(":" + leftVal + " BIW");
+        shouldPayView.setText(new BigDecimal(shouldPayVal).stripTrailingZeros().toPlainString()  + "BIW");
+        shouldSubPayView.setText(new BigDecimal(shouldPayVal).stripTrailingZeros().toPlainString() + "BIW");
 
         backView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -176,7 +176,7 @@ public class BidBuyTwoActivity extends BaseActivity {
             return;
         }
 
-        createTrade(shouldPayVal, publicAddressVal, "BTW");
+        createTrade(shouldPayVal, publicAddressVal, "BIW");
     }
 
 
@@ -358,7 +358,7 @@ public class BidBuyTwoActivity extends BaseActivity {
         SendTradeRequest sendTradeRequest = new SendTradeRequest();
         sendTradeRequest.setAmount(shouldPayVal);
         sendTradeRequest.setRaw(signVal);
-        sendTradeRequest.setSymbol("BTW");
+        sendTradeRequest.setSymbol("BIW");
         sendTradeRequest.setTo_address(publicAddressVal);
         sendTradeRequest.setType(1);
         sendTradeRequest.setReferer_code(tuijianVal);

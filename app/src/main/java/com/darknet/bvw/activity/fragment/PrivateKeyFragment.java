@@ -114,11 +114,11 @@ public class PrivateKeyFragment extends Fragment {
         Integer data = (Integer) UserSPHelper.get(requireContext(), "wallet", 0);
 //        SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("wallet", MODE_PRIVATE);
 //        int data =sharedPreferences.getInt("wallet-name",0);
-        String name = "BTW-Wallet-1";
+        String name = "BIW-Wallet-1";
         if (data!=null) {
             int length = data + 1;
             UserSPHelper.setParam(requireContext(), "wallet", length);
-            name = "BTW-Wallet-" + length;
+            name = "BIW-Wallet-" + length;
         }
 
 //        String walletNameVal = walletName.getText().toString();

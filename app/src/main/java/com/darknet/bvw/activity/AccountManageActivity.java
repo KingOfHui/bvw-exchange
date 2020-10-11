@@ -116,7 +116,7 @@ public class AccountManageActivity extends BaseActivity implements View.OnClickL
 //            Log.e("wallet", ethWalletModel.getName());
 
 
-            nickNameView.setText(TextUtils.isEmpty(ethWalletModel.getName()) ? "BTW-Wallet-" + i : ethWalletModel.getName());
+            nickNameView.setText(TextUtils.isEmpty(ethWalletModel.getName()) ? "BIW-Wallet-" + i : ethWalletModel.getName());
 
             String addressVals = ethWalletModel.getAddress();
             StringBuilder sb = new StringBuilder();
