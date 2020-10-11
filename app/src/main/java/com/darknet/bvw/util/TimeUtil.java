@@ -9,6 +9,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class TimeUtil {
     //获取当前日期
@@ -155,5 +156,14 @@ public class TimeUtil {
             return "";
         }
     }
-
+    public static long parseTime(String time, String format){
+        SimpleDateFormat dateFormat = new SimpleDateFormat(format, Locale.CHINA);
+        try {
+            Date date = dateFormat.parse(time);
+            if(date != null) return date.getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
 }

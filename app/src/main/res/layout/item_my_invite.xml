@@ -7,6 +7,7 @@
         <variable
             name="data"
             type="com.darknet.bvw.model.response.InviteDataResponse.LowerLevel1ListBean.ItemsBean" />
+        <import type="com.darknet.bvw.util.TimeUtil"/>
     </data>
 
 
@@ -14,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/dimen_15dp"
-        android:layout_marginRight="@dimen/dimen_15dp"
+        android:layout_marginRight="@dimen/dimen_5dp"
         android:background="#272436"
         android:paddingTop="@dimen/dimen_15dp"
         android:paddingBottom="@dimen/dimen_15dp">
@@ -38,7 +39,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@{String.valueOf(data.bonus)+`BTW`}"
+            android:text="@{String.valueOf(data.bonus)+` BTW`}"
             android:textColor="@color/_01FCDA"
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
             app:layout_constraintHorizontal_bias="0.5"
@@ -51,7 +52,7 @@
             android:id="@+id/typefaceTextView3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@{data.create_time}"
+            android:text="@{TimeUtil.getStringToDate(data.create_time,`yyyy-MM-dd HH:mm`)}"
             android:textColor="@color/_01FCDA"
             android:gravity="right"
             android:lines="1"
@@ -75,7 +76,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.66" />
+            app:layout_constraintGuide_percent="0.6" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

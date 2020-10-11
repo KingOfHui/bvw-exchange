@@ -15,6 +15,14 @@ import com.darknet.bvw.model.MineralBonusListResponse;
 import com.darknet.bvw.model.ReferBonusListResponse;
 import com.darknet.bvw.viewmodel.IncomeRecordViewModel;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+import static com.darknet.bvw.util.TimeUtil.getStringToDate;
+import static com.darknet.bvw.util.TimeUtil.parseTime;
+
 public class IncomeRecordFragment2 extends BaseFragment {
 
     private MyAdapter mAdapter;
@@ -72,9 +80,9 @@ public class IncomeRecordFragment2 extends BaseFragment {
 
         @Override
         protected void convert(BaseViewHolder helper, ReferBonusListResponse.ItemsBean item) {
-            helper.setText(R.id.tv_person, String.valueOf(item.getUser_id()));
+            helper.setText(R.id.tv_person, String.valueOf(item.getRefer_user_address()));
             helper.setText(R.id.tv_bonus, String.valueOf(item.getRefer_bonus())+"BTW");
-            helper.setText(R.id.tv_time, item.getBonus_date());
+            helper.setText(R.id.tv_time,  getStringToDate(item.getBonus_date(), "yyyy-MM-dd HH:mm"));
         }
     }
 }

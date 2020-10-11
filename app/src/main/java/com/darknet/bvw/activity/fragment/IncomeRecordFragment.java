@@ -23,6 +23,8 @@ import com.fasterxml.jackson.databind.ser.std.IterableSerializer;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.darknet.bvw.util.TimeUtil.getStringToDate;
+
 public class IncomeRecordFragment extends BaseFragment {
 
     private MyAdapter mAdapter;
@@ -88,7 +90,7 @@ public class IncomeRecordFragment extends BaseFragment {
 
         @Override
         protected void convert(BaseViewHolder helper, MineralBonusListResponse.ItemsBean item) {
-            helper.setText(R.id.tv_time, item.getCreate_at());
+            helper.setText(R.id.tv_time, getStringToDate(item.getCreate_at(), "yyyy-MM-dd HH:mm"));
             String bonus = "";
             if (mType == 1) {
                 bonus = item.getBonus_miner()+"BTW";
