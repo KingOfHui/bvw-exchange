@@ -20,6 +20,14 @@
             android:id="@+id/title_layout"
             layout="@layout/lay_head_back_binding" />
 
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/smartRefresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.scwang.smartrefresh.layout.header.ClassicsHeader
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -174,7 +182,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        app:layout_constraintGuide_percent="0.66" />
+                        app:layout_constraintGuide_percent="0.6" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <com.darknet.bvw.commonlib.widget.ProgressLayout
@@ -200,5 +208,7 @@
                 </com.darknet.bvw.commonlib.widget.ProgressLayout>
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
     </LinearLayout>
 </layout>

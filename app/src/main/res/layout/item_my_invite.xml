@@ -14,7 +14,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dimen_15dp"
+        android:layout_marginLeft="@dimen/dimen_5dp"
         android:layout_marginRight="@dimen/dimen_5dp"
         android:background="#272436"
         android:paddingTop="@dimen/dimen_15dp"

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.print.PrintJob;
 
+import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -15,8 +16,12 @@ import com.darknet.bvw.base.BaseDataBindingAdapter;
 import com.darknet.bvw.databinding.ActivityMyInviteBinding;
 import com.darknet.bvw.databinding.ItemMyInviteBinding;
 import com.darknet.bvw.model.response.InviteDataResponse;
+import com.darknet.bvw.util.TimeBigToSmallComparator;
 import com.darknet.bvw.viewmodel.InviteViewModel;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -58,6 +63,13 @@ public class MyInviteActivity extends BaseBindingActivity<ActivityMyInviteBindin
                 }
                 mBinding.progressLayout.showEmpty(ContextCompat.getDrawable(mAppContext, R.mipmap.img_no_data), getString(R.string.my_invite_no_data));
 
+            }
+        });
+        mBinding.smartRefresh.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                viewModel.getInviteStatus();
+                mBinding.smartRefresh.finishRefresh();
             }
         });
     }

@@ -164,7 +164,7 @@ public class MyApp extends Application {
         headers.put("clientOs", "android");
 //        Language language = Language.readFromConfig();
         int lanType = SPUtil.getInstance(this).getSelectLanguage();
-        headers.put("Accept-Language", lanType == 1 ? "zh-CN" : "en_US");
+        headers.put("Accept-Language", lanType == 1 ? "zh-CN" : "en-US");
 
 
 //        int lanType = SPUtil.getInstance(this).getSelectLanguage();
