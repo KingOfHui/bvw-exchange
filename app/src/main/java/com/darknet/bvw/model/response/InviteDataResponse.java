@@ -111,7 +111,7 @@ public class InviteDataResponse {
              */
 
             private String address;
-            private int bonus;
+            private String bonus;
             private String create_time;
 
             public String getAddress() {
@@ -122,11 +122,11 @@ public class InviteDataResponse {
                 this.address = address;
             }
 
-            public int getBonus() {
+            public String getBonus() {
                 return bonus;
             }
 
-            public void setBonus(int bonus) {
+            public void setBonus(String bonus) {
                 this.bonus = bonus;
             }
 

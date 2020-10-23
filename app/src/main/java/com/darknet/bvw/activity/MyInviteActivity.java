@@ -16,7 +16,6 @@ import com.darknet.bvw.base.BaseDataBindingAdapter;
 import com.darknet.bvw.databinding.ActivityMyInviteBinding;
 import com.darknet.bvw.databinding.ItemMyInviteBinding;
 import com.darknet.bvw.model.response.InviteDataResponse;
-import com.darknet.bvw.util.TimeBigToSmallComparator;
 import com.darknet.bvw.viewmodel.InviteViewModel;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
