@@ -112,6 +112,21 @@ public class MineralInfoActivity extends BaseBindingActivity<ActivityMineralInfo
         mItemInfo = (MineralListResponse.ItemsBean) intent.getSerializableExtra("itemInfo");
         MineralStatusResponse statusInfo = (MineralStatusResponse) intent.getSerializableExtra("statusInfo");
         mBinding.setInfo(mItemInfo);
+        String text = getString(R.string.unknown);
+        if (mItemInfo.getMiner_type() == 2) {
+            if (mItemInfo.getPay_state() == 0 && mItemInfo.getState() != 1) {
+                text = getString(R.string.no_miners);
+            } else if (mItemInfo.getPay_state() == 0 && mItemInfo.getState() == 1) {
+                text = getString(R.string.wei_zhi_ya);
+            } else if (mItemInfo.getPay_state() != 0 && mItemInfo.getState() != 1) {
+                text = getString(R.string.shut_down);
+            } else if (mItemInfo.getPay_state() != 0 && mItemInfo.getState() == 1) {
+                text = getString(R.string.wa_kuang_zhong);
+            }
+        } else {
+            text = mItemInfo.getState() == 2 ? getString(R.string.gu_zhang_zhong) : mItemInfo.getState() == 1 ? getString(R.string.wa_kuang_zhong) : getString(R.string.wei_kai_ji);
+        }
+        mBinding.lvPledgeStatus.setRightText(text);
         mBinding.layoutTitle.titleRight.setOnClickListener(v->AddMineralActivity.startSelf(this, mItemInfo.getMinerInfo()));
         mViewModel.getMineralStatusResponseLiveData().setValue(statusInfo);
         mViewModel.address.observe(this, new Observer<String>() {

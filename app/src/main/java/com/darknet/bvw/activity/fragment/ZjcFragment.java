@@ -26,6 +26,8 @@ import com.darknet.bvw.util.ToastUtils;
 import com.darknet.bvw.util.UserSPHelper;
 import com.darknet.bvw.wallet.BtcWalletUtils;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.List;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -174,6 +176,7 @@ public class ZjcFragment extends Fragment {
 //        AtyContainer.getInstance().finishAllActivity();
 //        EventBus.getDefault().post(new CloseViewEvent());
 
+        EventBus.getDefault().post(walletModel);
 
         Intent mainIntent = new Intent(getActivity(), StopActivity.class);
 //        mainIntent.putExtra("addressVals", btcDo.getAddress());

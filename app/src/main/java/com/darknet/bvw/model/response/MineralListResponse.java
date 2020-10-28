@@ -98,6 +98,15 @@ public class MineralListResponse implements Serializable {
         private String update_at;
         private String user_address;
         private int user_id;
+        private int miner_type;
+
+        public int getMiner_type() {
+            return miner_type;
+        }
+
+        public void setMiner_type(int miner_type) {
+            this.miner_type = miner_type;
+        }
 
         public String getCreate_at() {
             return create_at;

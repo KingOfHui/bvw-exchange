@@ -929,5 +929,8 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="zan_bu_zhi_chi_ti_bi">Withdrawal of currency is not supported</string>
     <string name="cross_chain_no">Cross chain trade no</string>
     <string name="cross_chain_fee">Cross chain fee</string>
+    <string name="shut_down">shut down</string>
+    <string name="no_miners">no miners</string>
+    <string name="unknown">unknown</string>
 
 </resources>
