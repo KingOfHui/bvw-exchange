@@ -69,6 +69,7 @@ android {
         debug {
             debug {
                 debuggable true//是否支持断点调试
+                signingConfig signingConfigs.release
                 // 动态配置信息
                 minifyEnabled false
                 proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
