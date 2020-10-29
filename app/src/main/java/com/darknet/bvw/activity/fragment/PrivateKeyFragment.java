@@ -68,7 +68,7 @@ public class PrivateKeyFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                String keyVal = contentView.getText().toString().trim();
+                String keyVal = contentView.getText().toString().trim().replace(" ","").replace("\n","");
                 String walletNameVal = walletName.getText().toString();
                 String pwdVal = pwdContent.getText().toString();
                 String pwdTwoVal = pwdContentTwo.getText().toString();

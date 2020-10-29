@@ -30,6 +30,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.disposables.Disposable;
@@ -71,8 +72,22 @@ public class HardwareMineralActivity extends BaseBindingActivity<ActivityHardMin
         mViewModel.getMineralListLive().observe(this, new Observer<MineralListResponse>() {
             @Override
             public void onChanged(MineralListResponse mineralListResponse) {
-                if (mineralListResponse != null && mineralListResponse.getItems() != null && !mineralListResponse.getItems().isEmpty()) {
-                    adapter.setNewData(mineralListResponse.getItems());
+                if (mineralListResponse == null) {
+                    mBinding.progressLayout.showEmpty(ContextCompat.getDrawable(mAppContext, R.mipmap.img_no_data), getString(R.string.mineral_list_no_data));
+                    return;
+                }
+                List<MineralListResponse.ItemsBean> items = mineralListResponse.getItems();
+                List<MineralListResponse.ItemsBean> itemsBeans = new ArrayList<>();
+                if (items!=null) {
+                    for (MineralListResponse.ItemsBean item : items) {
+                        if (item.getPay_state() == 0 && item.getState() != 1) {
+                            continue;
+                        }
+                        itemsBeans.add(item);
+                    }
+                }
+                if (!itemsBeans.isEmpty()) {
+                    adapter.setNewData(items);
                 } else {
                     mBinding.progressLayout.showEmpty(ContextCompat.getDrawable(mAppContext, R.mipmap.img_no_data), getString(R.string.mineral_list_no_data));
                 }
@@ -169,7 +184,21 @@ public class HardwareMineralActivity extends BaseBindingActivity<ActivityHardMin
         protected void convert(ItemMineralBinding itemMineralBinding, MineralListResponse.ItemsBean item) {
             itemMineralBinding.setVm(item);
             Context context = itemMineralBinding.tvState.getContext();
-            itemMineralBinding.tvState.setText(item.getState() == 2 ? context.getString(R.string.gu_zhang_zhong) : item.getState() == 1 ? context.getString(R.string.wa_kuang_zhong) : context.getString(R.string.wei_kai_ji));
+            String text = context.getString(R.string.unknown);
+            if (item.getMiner_type() == 2) {
+                if (item.getPay_state() == 0 && item.getState() != 1) {
+                    text = context.getString(R.string.no_miners);
+                } else if (item.getPay_state() == 0 && item.getState() == 1) {
+                    text = context.getString(R.string.wei_zhi_ya);
+                } else if (item.getPay_state() != 0 && item.getState() != 1) {
+                    text = context.getString(R.string.shut_down);
+                } else if (item.getPay_state() != 0 && item.getState() == 1) {
+                    text = context.getString(R.string.wa_kuang_zhong);
+                }
+            } else {
+                text = item.getState() == 2 ? context.getString(R.string.gu_zhang_zhong) : item.getState() == 1 ? context.getString(R.string.wa_kuang_zhong) : context.getString(R.string.wei_kai_ji);
+            }
+            itemMineralBinding.tvState.setText(text);
         }
     }
 }

@@ -966,4 +966,7 @@
     <string name="zan_bu_zhi_chi_ti_bi">暂不支持提币</string>
     <string name="cross_chain_no">跨链交易号</string>
     <string name="cross_chain_fee">跨链手续费</string>
+    <string name="shut_down">关机中</string>
+    <string name="no_miners">您无矿机</string>
+    <string name="unknown">未知状态</string>
 </resources>

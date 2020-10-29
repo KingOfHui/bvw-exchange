@@ -24,7 +24,7 @@ android {
         applicationId "com.darknet.bvw"
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 20201023
+        versionCode 20201029
         versionName "2.3"
         multiDexEnabled true
         javaCompileOptions {
@@ -69,6 +69,7 @@ android {
         debug {
             debug {
                 debuggable true//是否支持断点调试
+                signingConfig signingConfigs.release
                 // 动态配置信息
                 minifyEnabled false
                 proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
