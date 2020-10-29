@@ -93,7 +93,7 @@ public class UrlPath {
     public static final String GET_REFER_BONUS_LIST = "api/v1/miner/referBonusList";//获取矿机推荐收益列表
     public static final String GET_USER_INVITE_DATA = "api/v1/user/inviteData";//获取我的邀请信息和邀请人列表
 
-    public static final String GET_MINERAL_PAY_ADDRESS = "api/v1/dictByKey/MINER_PAY_BIW";
+    public static final String GET_MINERAL_PAY_ADDRESS = "api/v1/dictByKey/MINER_PAY_BTW";
     public static final String CTEATE_RAW_TX = "api/v1/wallet/createRawTx";//创建交易
     public static final String SEND_RAW_TX = "api/v1/wallet/sendRawTx";//发送交易
     public static final String OPEN_BID = "api/v1/user/openBid";//开通Bid

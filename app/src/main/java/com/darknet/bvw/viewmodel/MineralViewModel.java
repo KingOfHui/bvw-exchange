@@ -186,7 +186,7 @@ public class MineralViewModel extends AndroidViewModel {
                                     if (status != null && status.isSuccess()) {
                                         address.setValue(status.getData().getV());
                                     } else {
-                                        Toast.makeText(getApplication(), "获取地址失败~", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplication(), R.string.get_pledge_address_failed, Toast.LENGTH_SHORT).show();
                                     }
                                 } catch (Exception e) {
                                     e.printStackTrace();
