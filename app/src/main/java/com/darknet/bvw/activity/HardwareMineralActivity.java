@@ -87,7 +87,7 @@ public class HardwareMineralActivity extends BaseBindingActivity<ActivityHardMin
                     }
                 }
                 if (!itemsBeans.isEmpty()) {
-                    adapter.setNewData(items);
+                    adapter.setNewData(itemsBeans);
                 } else {
                     mBinding.progressLayout.showEmpty(ContextCompat.getDrawable(mAppContext, R.mipmap.img_no_data), getString(R.string.mineral_list_no_data));
                 }

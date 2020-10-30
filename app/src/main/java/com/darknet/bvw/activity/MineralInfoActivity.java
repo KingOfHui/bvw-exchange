@@ -146,7 +146,7 @@ public class MineralInfoActivity extends BaseBindingActivity<ActivityMineralInfo
             }
         });
         mBinding.tvIncomeRecord.setOnClickListener(view -> IncomeRecordActivity.startSelf(this, statusInfo));
-        mBinding.tvMineralStatus.setText(mItemInfo.getState()==2?getString(R.string.gu_zhang_zhong):mItemInfo.getState() ==1?getString(R.string.wa_kuang_zhong):getString(R.string.wei_kai_ji));
+        mBinding.tvMineralStatus.setText(text);
     }
 
     @Override
@@ -260,7 +260,7 @@ public class MineralInfoActivity extends BaseBindingActivity<ActivityMineralInfo
                                         } else {
 
                                             try {
-                                                new FailZZDialogView().showTips(MineralInfoActivity.this, getString(R.string.dialog_fail_sign));
+                                                new FailZZDialogView().showTips(MineralInfoActivity.this, response.getMsg());
                                                 btnNext.setEnabled(true);
 //                                                dismissDialog();
 
