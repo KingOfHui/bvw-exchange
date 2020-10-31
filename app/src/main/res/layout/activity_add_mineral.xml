@@ -79,7 +79,7 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv3"
                     android:text="@string/add_mineral_tip3"
-                    android:textSize="13sp"
+                    android:textSize="13dp"
                     android:textColor="@color/_01FCDA"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
@@ -90,7 +90,7 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv4"
                     android:text="@string/add_mineral_tip4"
-                    android:textSize="12sp"
+                    android:textSize="12dp"
                     android:textColor="#BEBDC3"
                     android:layout_width="0dp"
                     app:layout_constraintRight_toRightOf="parent"
@@ -103,7 +103,7 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv5"
                     android:text="@string/add_mineral_tip5"
-                    android:textSize="13sp"
+                    android:textSize="13dp"
                     android:textColor="@color/_01FCDA"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
@@ -114,7 +114,7 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv6"
                     android:text="@string/add_mineral_tip6"
-                    android:textSize="12sp"
+                    android:textSize="12dp"
                     android:textColor="#BEBDC3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
@@ -126,7 +126,7 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv7"
                     android:text="@string/add_mineral_tip7"
-                    android:textSize="13sp"
+                    android:textSize="13dp"
                     android:textColor="@color/_01FCDA"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
@@ -137,7 +137,7 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv8"
                     android:text="@string/add_mineral_tip8"
-                    android:textSize="12sp"
+                    android:textSize="12dp"
                     android:textColor="#BEBDC3"
                     android:layout_width="0dp"
                     app:layout_constraintRight_toRightOf="parent"
@@ -149,7 +149,7 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv9"
                     android:text="URL1:"
-                    android:textSize="13sp"
+                    android:textSize="13dp"
                     android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
@@ -164,7 +164,7 @@
                     android:text="@{model.url_1}"
                     android:textColor="#88FFFFFF"
                     android:textColorHint="#88FFFFFF"
-                    android:textSize="12sp"
+                    android:textSize="12dp"
                     app:layout_constraintTop_toBottomOf="@id/tv10" />
 
                 <ImageView
@@ -184,7 +184,7 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/et_url_1"
                     android:text="URL2:"
-                    android:textSize="13sp"
+                    android:textSize="13dp"
                     android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
@@ -199,7 +199,7 @@
                     android:text="@{model.url_2}"
                     android:textColor="#88FFFFFF"
                     android:textColorHint="#88FFFFFF"
-                    android:textSize="12sp"
+                    android:textSize="12dp"
                     app:layout_constraintTop_toBottomOf="@id/tv11" />
                 <ImageView
                     android:id="@+id/iv_copy_2"
@@ -218,7 +218,7 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/et_url_2"
                     android:text="URL3:"
-                    android:textSize="13sp"
+                    android:textSize="13dp"
                     android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
@@ -233,7 +233,7 @@
                     android:text="@{model.url_3}"
                     android:textColor="#88FFFFFF"
                     android:textColorHint="#88FFFFFF"
-                    android:textSize="12sp"
+                    android:textSize="12dp"
                     app:layout_constraintTop_toBottomOf="@id/tv12" />
 
                 <ImageView

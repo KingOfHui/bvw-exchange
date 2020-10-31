@@ -24,8 +24,8 @@ android {
         applicationId "com.darknet.bvw"
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 20201029
-        versionName "2.3"
+        versionCode 20201031
+        versionName "2.4"
         multiDexEnabled true
         javaCompileOptions {
             annotationProcessorOptions {
@@ -234,6 +234,10 @@ dependencies {
 
     implementation 'me.jessyan:autosize:1.2.0'
     implementation 'com.qmuiteam:qmui:2.0.0-alpha10'
+    api 'com.squareup.retrofit2:retrofit:2.3.0'
+    api 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+    api 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
 }
 
 multiLanguages {

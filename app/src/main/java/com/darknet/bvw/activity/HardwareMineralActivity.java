@@ -80,7 +80,7 @@ public class HardwareMineralActivity extends BaseBindingActivity<ActivityHardMin
                 List<MineralListResponse.ItemsBean> itemsBeans = new ArrayList<>();
                 if (items!=null) {
                     for (MineralListResponse.ItemsBean item : items) {
-                        if (item.getPay_state() == 0 && item.getState() != 1) {
+                        if (item.getMiner_type() == 2 && item.getPay_state() == 0 && item.getState() != 1) {
                             continue;
                         }
                         itemsBeans.add(item);
@@ -196,7 +196,7 @@ public class HardwareMineralActivity extends BaseBindingActivity<ActivityHardMin
                     text = context.getString(R.string.wa_kuang_zhong);
                 }
             } else {
-                text = item.getState() == 2 ? context.getString(R.string.gu_zhang_zhong) : item.getState() == 1 ? context.getString(R.string.wa_kuang_zhong) : context.getString(R.string.wei_kai_ji);
+                text = item.getState() == 2 ? context.getString(R.string.gu_zhang_zhong) : item.getState() == 1 ? context.getString(R.string.wa_kuang_zhong) : context.getString(R.string.wei_zhi_ya);
             }
             itemMineralBinding.tvState.setText(text);
         }

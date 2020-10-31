@@ -260,7 +260,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="≈ "
                                 android:textColor="#ffd0d0d0"
-                                android:textSize="12sp" />
+                                android:textSize="12dp" />
 
                             <TextView
                                 android:id="@+id/change_cny_price_tv"
@@ -268,14 +268,14 @@
                                 android:layout_height="wrap_content"
                                 android:text="0"
                                 android:textColor="#ffd0d0d0"
-                                android:textSize="12sp" />
+                                android:textSize="12dp" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text=" USDT"
                                 android:textColor="#ffd0d0d0"
-                                android:textSize="12sp" />
+                                android:textSize="12dp" />
                         </LinearLayout>
 
                         <RelativeLayout
@@ -369,7 +369,7 @@
                                 android:paddingBottom="8dp"
                                 android:text="25%"
                                 android:textColor="#ffb7b8ba"
-                                android:textSize="12sp" />
+                                android:textSize="12dp" />
 
                             <TextView
                                 android:id="@+id/change_precent_50"
@@ -386,7 +386,7 @@
                                 android:paddingBottom="8dp"
                                 android:text="50%"
                                 android:textColor="#ffb7b8ba"
-                                android:textSize="12sp" />
+                                android:textSize="12dp" />
 
 
                         </LinearLayout>
@@ -412,7 +412,7 @@
                                 android:paddingBottom="8dp"
                                 android:text="75%"
                                 android:textColor="#ffb7b8ba"
-                                android:textSize="12sp" />
+                                android:textSize="12dp" />
 
                             <TextView
                                 android:id="@+id/change_precent_100"
@@ -429,7 +429,7 @@
                                 android:paddingBottom="8dp"
                                 android:text="100%"
                                 android:textColor="#ffb7b8ba"
-                                android:textSize="12sp" />
+                                android:textSize="12dp" />
 
                         </LinearLayout>
 
@@ -444,7 +444,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/trade_trade_item_total"
                                 android:textColor="#FFFFFF"
-                                android:textSize="10sp" />
+                                android:textSize="10dp" />
 
                             <TextView
                                 android:id="@+id/idt_eth_amount_tv"
@@ -453,7 +453,7 @@
                                 android:layout_toLeftOf="@id/total_money_count_view"
                                 android:text=" 0 "
                                 android:textColor="#FFFFFF"
-                                android:textSize="10sp"
+                                android:textSize="10dp"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -462,7 +462,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentRight="true"
                                 android:textColor="#FFFFFF"
-                                android:textSize="10sp"
+                                android:textSize="10dp"
                                 android:textStyle="bold" />
 
 
@@ -481,7 +481,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/trade_trade_totalfee"
                                 android:textColor="#FFFFFF"
-                                android:textSize="10sp" />
+                                android:textSize="10dp" />
 
                             <TextView
                                 android:id="@+id/cost_coins_num_tv"
@@ -490,7 +490,7 @@
                                 android:layout_alignParentRight="true"
                                 android:text=" 0"
                                 android:textColor="#FFFFFF"
-                                android:textSize="10sp"
+                                android:textSize="10dp"
                                 android:textStyle="bold" />
 
 
@@ -500,7 +500,7 @@
                                 android:layout_alignParentRight="true"
                                 android:text=" WETH"
                                 android:textColor="#FFFFFF"
-                                android:textSize="10sp"
+                                android:textSize="10dp"
                                 android:textStyle="bold" />
 
                         </RelativeLayout>
@@ -622,14 +622,14 @@
                                     android:layout_height="wrap_content"
                                     android:text="≈ "
                                     android:textColor="#D0D0D0"
-                                    android:textSize="12sp" />
+                                    android:textSize="12dp" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="$ "
                                     android:textColor="#D0D0D0"
-                                    android:textSize="12sp" />
+                                    android:textSize="12dp" />
 
                                 <TextView
                                     android:id="@+id/yue_dengyu_price"
@@ -637,7 +637,7 @@
                                     android:layout_height="wrap_content"
                                     android:text="0"
                                     android:textColor="#D0D0D0"
-                                    android:textSize="12sp" />
+                                    android:textSize="12dp" />
 
 
                             </LinearLayout>
@@ -689,7 +689,7 @@
                         android:padding="10dp"
                         android:text="@string/trade_trade_more"
                         android:textColor="#ffc3c1c9"
-                        android:textSize="12sp" />
+                        android:textSize="12dp" />
 
 
                 </RelativeLayout>

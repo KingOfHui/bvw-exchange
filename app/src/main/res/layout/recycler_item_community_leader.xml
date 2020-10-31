@@ -55,14 +55,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:textColor="@color/white"
-        android:textSize="12sp" />
+        android:textSize="12dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="(USDT)"
         android:textColor="@color/white"
-        android:textSize="10sp" />
+        android:textSize="10dp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -77,14 +77,14 @@
             android:layout_height="wrap_content"
             android:text="@string/amount_of_increase"
             android:textColor="@color/white"
-            android:textSize="12sp" />
+            android:textSize="12dp" />
 
         <TextView
             android:id="@+id/tv_change_rate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:textSize="11sp" />
+            android:textSize="11dp" />
 
     </LinearLayout>
 
@@ -94,5 +94,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
-        android:textSize="12sp" />
+        android:textSize="12dp" />
 </LinearLayout>

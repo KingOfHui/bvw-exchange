@@ -6,8 +6,57 @@
     android:background="@color/appColorPrimary"
     android:orientation="vertical">
 
-    <include layout="@layout/lay_head_back" />
+<!--    <include layout="@layout/lay_head_back" />-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_45dp">
 
+        <RelativeLayout
+            android:id="@+id/layBack"
+            android:layout_width="@dimen/dimen_45dp"
+            android:layout_height="@dimen/dimen_45dp"
+            android:layout_alignParentLeft="true">
+
+            <ImageView
+                android:id="@+id/back_sign_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/img_back" />
+        </RelativeLayout>
+
+        <com.darknet.bvw.view.TypefaceTextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:layout_toRightOf="@id/layBack"
+            android:layout_marginEnd="@dimen/dimen_45dp"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_18dp"
+            app:typeface="@string/universal_text_typeface" />
+
+
+        <com.darknet.bvw.view.TypefaceTextView
+            android:id="@+id/title_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_18dp"
+            android:visibility="gone"
+            app:typeface="@string/universal_text_typeface" />
+
+    </RelativeLayout>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">

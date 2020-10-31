@@ -25,7 +25,7 @@
             android:layout_alignParentLeft="true"
             android:gravity="center"
             android:textColor="@color/gray1"
-            android:textSize="11sp" />
+            android:textSize="11dp" />
 
         <TextView
             android:id="@+id/item_change_out_price"
@@ -35,7 +35,7 @@
             android:layout_toRightOf="@+id/item_change_position_price"
             android:gravity="left"
             android:textColor="@color/white"
-            android:textSize="11sp" />
+            android:textSize="11dp" />
 
         <TextView
             android:id="@+id/item_change_out_amount"
@@ -44,6 +44,6 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="5dp"
             android:textColor="#01FCDA"
-            android:textSize="11sp" />
+            android:textSize="11dp" />
     </RelativeLayout>
 </FrameLayout>

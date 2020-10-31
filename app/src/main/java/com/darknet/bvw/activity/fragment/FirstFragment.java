@@ -42,6 +42,10 @@ import com.darknet.bvw.model.response.BaseResponse;
 import com.darknet.bvw.model.response.BidStateResponse;
 import com.darknet.bvw.model.response.LeftMoneyResponse;
 import com.darknet.bvw.model.response.NoticeResponse;
+import com.darknet.bvw.net.retrofit.ApiInterface;
+import com.darknet.bvw.net.retrofit.BIWNetworkApi;
+import com.darknet.bvw.net.retrofit.BaseObserver;
+import com.darknet.bvw.net.retrofit.MvvmNetworkObserver;
 import com.darknet.bvw.util.HandleTimeUtil;
 import com.darknet.bvw.util.TimeUtil;
 import com.darknet.bvw.util.bitcoinj.BitcoinjKit;
@@ -71,12 +75,30 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 
 /**
  * 资产fragment
  */
 public class FirstFragment extends Fragment {
+    private CompositeDisposable compositeDisposable;
 
+    public void cancel() {
+        if (compositeDisposable != null && !compositeDisposable.isDisposed()) {
+            compositeDisposable.dispose();
+        }
+    }
+
+    public void addDisposable(Disposable disposable) {
+        if (disposable == null) {
+            return;
+        }
+        if (compositeDisposable == null) {
+            compositeDisposable = new CompositeDisposable();
+        }
+        compositeDisposable.add(disposable);
+    }
     //    @BindView(R.id.rv)
 //    RecyclerView mRecyclerView;
     //    @BindView(R.id.refreshLayout)
@@ -670,7 +692,7 @@ public class FirstFragment extends Fragment {
 
     //获取公告内容
     private void getNoticeContent() {
-        ETHWalletModel walletModel = WalletDaoUtils.getCurrent();
+        /*ETHWalletModel walletModel = WalletDaoUtils.getCurrent();
         String privateKey = walletModel.getPrivateKey();
         String addressVals = walletModel.getAddress();
         String msg = "" + System.currentTimeMillis();
@@ -712,7 +734,23 @@ public class FirstFragment extends Fragment {
                     public void onFinish() {
                         super.onFinish();
                     }
-                });
+                });*/
+//        addDisposable(
+//
+//        );
+        BIWNetworkApi.getService(ApiInterface.class).getTopic1().compose(BIWNetworkApi.getInstance().applySchedulers(new BaseObserver<>(
+                new MvvmNetworkObserver<com.darknet.bvw.common.BaseResponse<NoticeResponse.NoticeData>>() {
+                    @Override
+                    public void onSuccess(com.darknet.bvw.common.BaseResponse<NoticeResponse.NoticeData> t, boolean isFromCache) {
+                        setNoticeVal(t.getData());
+                    }
+
+                    @Override
+                    public void onFailure(Throwable throwable) {
+
+                    }
+                }
+        )));
     }
 
 

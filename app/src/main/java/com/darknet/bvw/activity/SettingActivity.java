@@ -143,7 +143,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                 public void updateClick() {
                     Intent intent= new Intent();
                     intent.setAction("android.intent.action.VIEW");
-                    Uri content_url = Uri.parse(jumpUrl);
+                    Uri content_url = Uri.parse("https://bitw.im/download.html");
                     intent.setData(content_url);
                     startActivity(intent);
                 }

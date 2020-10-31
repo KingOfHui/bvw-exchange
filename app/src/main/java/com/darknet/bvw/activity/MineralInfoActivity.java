@@ -124,7 +124,7 @@ public class MineralInfoActivity extends BaseBindingActivity<ActivityMineralInfo
                 text = getString(R.string.wa_kuang_zhong);
             }
         } else {
-            text = mItemInfo.getState() == 2 ? getString(R.string.gu_zhang_zhong) : mItemInfo.getState() == 1 ? getString(R.string.wa_kuang_zhong) : getString(R.string.wei_kai_ji);
+            text = mItemInfo.getState() == 2 ? getString(R.string.gu_zhang_zhong) : mItemInfo.getState() == 1 ? getString(R.string.wa_kuang_zhong) : getString(R.string.wei_zhi_ya);
         }
         mBinding.lvPledgeStatus.setRightText(text);
         mBinding.layoutTitle.titleRight.setOnClickListener(v->AddMineralActivity.startSelf(this, mItemInfo.getMinerInfo()));

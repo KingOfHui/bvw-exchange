@@ -87,7 +87,7 @@
                                 android:drawableLeft="@mipmap/icon_income_record"
                                 android:drawablePadding="@dimen/dp_6"
                                 android:gravity="center_vertical"
-                                android:textSize="13sp"
+                                android:textSize="13dp"
                                 android:text="@string/income_record"
                                 android:textColor="@color/white" />
                         </LinearLayout>
@@ -117,7 +117,7 @@
 
                                 <com.darknet.bvw.view.TypefaceTextView
                                     android:layout_width="wrap_content"
-                                    android:textSize="13sp"
+                                    android:textSize="13dp"
                                     android:layout_height="wrap_content"
                                     android:layout_below="@id/tv_average_count"
                                     android:text="@string/average_hashrate_24"
@@ -146,7 +146,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_below="@id/tv_before_count"
                                     android:text="@string/income_before_24h"
-                                    android:textSize="13sp"
+                                    android:textSize="13dp"
                                     android:textColor="#BEBDC3" />
                             </RelativeLayout>
                         </LinearLayout>
@@ -177,7 +177,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_below="@id/tv_btc_income"
                                     android:text="@string/income_today_btc"
-                                    android:textSize="13sp"
+                                    android:textSize="13dp"
                                     android:textColor="#BEBDC3" />
 
                             </RelativeLayout>
@@ -203,7 +203,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_below="@id/tv_btw_income"
                                     android:text="@string/income_today_btw"
-                                    android:textSize="13sp"
+                                    android:textSize="13dp"
                                     android:textColor="#BEBDC3" />
                             </RelativeLayout>
                         </LinearLayout>
@@ -239,7 +239,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_below="@id/tv_total_count"
                                     android:text="@string/mineral_total_num"
-                                    android:textSize="13sp"
+                                    android:textSize="13dp"
                                     android:textColor="@color/white" />
 
                             </RelativeLayout>
@@ -264,7 +264,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_below="@id/tv_work_count"
                                     android:text="@string/working_mineral"
-                                    android:textSize="13sp"
+                                    android:textSize="13dp"
                                     android:textColor="@color/white" />
                             </RelativeLayout>
                         </LinearLayout>

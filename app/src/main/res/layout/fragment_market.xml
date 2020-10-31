@@ -113,7 +113,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/trade_market_name"
                     android:textColor="@color/gray1"
-                    android:textSize="11sp" />
+                    android:textSize="11dp" />
 
             </LinearLayout>
 
@@ -131,7 +131,7 @@
                     android:gravity="right"
                     android:text="@string/trade_market_price"
                     android:textColor="@color/gray1"
-                    android:textSize="11sp" />
+                    android:textSize="11dp" />
             </LinearLayout>
 
 
@@ -149,7 +149,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/trade_market_zf"
                     android:textColor="@color/gray1"
-                    android:textSize="11sp" />
+                    android:textSize="11dp" />
             </LinearLayout>
         </LinearLayout>
 

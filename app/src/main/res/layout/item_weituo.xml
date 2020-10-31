@@ -110,7 +110,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/weituo_item_price"
                     android:textColor="@color/gray1"
-                    android:textSize="10sp" />
+                    android:textSize="10dp" />
 
                 <TextView
                     android:id="@+id/commone_pricet_type_one"
@@ -118,7 +118,7 @@
                     android:layout_height="wrap_content"
                     android:text="usdt"
                     android:textColor="@color/gray1"
-                    android:textSize="10sp" />
+                    android:textSize="10dp" />
             </LinearLayout>
 
         </LinearLayout>
@@ -151,7 +151,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/weituo_item_num"
                     android:textColor="@color/gray1"
-                    android:textSize="10sp" />
+                    android:textSize="10dp" />
 
                 <TextView
                     android:id="@+id/commone_pricet_type_two"
@@ -159,7 +159,7 @@
                     android:layout_height="wrap_content"
                     android:text="usdt"
                     android:textColor="@color/gray1"
-                    android:textSize="10sp" />
+                    android:textSize="10dp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -192,7 +192,7 @@
                     android:layout_height="14dp"
                     android:text="@string/weituo_item_total_num"
                     android:textColor="@color/gray1"
-                    android:textSize="10sp" />
+                    android:textSize="10dp" />
 
                 <TextView
                     android:id="@+id/commone_pricet_type_three"
@@ -200,7 +200,7 @@
                     android:layout_height="wrap_content"
                     android:text="usdt"
                     android:textColor="@color/gray1"
-                    android:textSize="10sp" />
+                    android:textSize="10dp" />
             </LinearLayout>
         </LinearLayout>
 

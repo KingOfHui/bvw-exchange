@@ -26,7 +26,7 @@
                 android:lines="1"
                 android:ellipsize="end"
                 android:textColor="@color/_01FCDA"
-                android:textSize="13sp" />
+                android:textSize="13dp" />
 
             <com.darknet.bvw.view.TypefaceTextView
                 android:layout_width="0dp"
@@ -35,7 +35,7 @@
                 android:gravity="center"
                 android:text="推荐收益"
                 android:textColor="@color/_01FCDA"
-                android:textSize="13sp" />
+                android:textSize="13dp" />
 
             <com.darknet.bvw.view.TypefaceTextView
                 android:layout_width="0dp"
@@ -44,7 +44,7 @@
                 android:gravity="center"
                 android:text="时间"
                 android:textColor="@color/_01FCDA"
-                android:textSize="13sp" />
+                android:textSize="13dp" />
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView

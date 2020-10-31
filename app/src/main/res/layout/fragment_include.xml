@@ -41,7 +41,7 @@
             android:layout_marginBottom="@dimen/dimen_10dp"
             android:text="比特币（Bitcoin）的概念最初由中本聪在2008年11月1日提出，并于2009年1月3日正式诞生。根据中本聪的思路设计发布的开源软件以及建构其上的P2P网络。比特币是一种P2P形式的虚拟的加"
             android:textColor="#ff222222"
-            android:textSize="13sp" />
+            android:textSize="13dp" />
 
         <View
             android:layout_width="match_parent"
@@ -66,7 +66,7 @@
                 android:layout_marginLeft="@dimen/dimen_5dp"
                 android:text="排名"
                 android:textColor="#ff222222"
-                android:textSize="13sp" />
+                android:textSize="13dp" />
 
             <TextView
                 android:id="@+id/quotation_ranking_tv"
@@ -75,7 +75,7 @@
                 android:layout_alignParentRight="true"
                 android:text="1"
                 android:textColor="#ff82919a"
-                android:textSize="13sp" />
+                android:textSize="13dp" />
 
 
         </RelativeLayout>
@@ -106,7 +106,7 @@
                 android:text="市值"
 
                 android:textColor="#ff222222"
-                android:textSize="13sp" />
+                android:textSize="13dp" />
 
             <TextView
                 android:id="@+id/quotation_market_cap_tv"
@@ -115,7 +115,7 @@
                 android:layout_alignParentRight="true"
                 android:text="￥9033.23亿"
                 android:textColor="#ff82919a"
-                android:textSize="13sp" />
+                android:textSize="13dp" />
 
 
         </RelativeLayout>
@@ -145,7 +145,7 @@
                 android:layout_marginLeft="@dimen/dimen_5dp"
                 android:text="流通量"
                 android:textColor="#ff222222"
-                android:textSize="13sp" />
+                android:textSize="13dp" />
 
             <TextView
                 android:id="@+id/quotation_circulateSupply_tv"
@@ -154,7 +154,7 @@
                 android:layout_alignParentRight="true"
                 android:text="30000000"
                 android:textColor="#ff82919a"
-                android:textSize="13sp" />
+                android:textSize="13dp" />
 
 
         </RelativeLayout>
@@ -185,7 +185,7 @@
                 android:layout_marginLeft="@dimen/dimen_5dp"
                 android:text="总量"
                 android:textColor="#ff222222"
-                android:textSize="13sp" />
+                android:textSize="13dp" />
 
             <TextView
                 android:id="@+id/quotation_maxSupply_tv"
@@ -194,7 +194,7 @@
                 android:layout_alignParentRight="true"
                 android:text="210000000"
                 android:textColor="#ff82919a"
-                android:textSize="13sp" />
+                android:textSize="13dp" />
 
 
         </RelativeLayout>

@@ -894,7 +894,7 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="tuijian_income">Recommended revenue</string>
     <string name="da_kuang_gong_jiang_li">Reward for big miners</string>
     <string name="wei_zhi_ya">Not pledged</string>
-    <string name="wei_kai_ji">Not turned on</string>
+    <string name="wei_kai_ji">OFF</string>
     <string name="already_pledge">Pledged</string>
     <string name="wa_kuang_zhong">Mining</string>
     <string name="gu_zhang_zhong">In trouble</string>
@@ -929,7 +929,7 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="zan_bu_zhi_chi_ti_bi">Withdrawal of currency is not supported</string>
     <string name="cross_chain_no">Cross chain trade no</string>
     <string name="cross_chain_fee">Cross chain fee</string>
-    <string name="shut_down">shut down</string>
+    <string name="shut_down">OFF</string>
     <string name="no_miners">no miners</string>
     <string name="unknown">unknown</string>
     <string name="get_pledge_address_failed">Get pledge address failed</string>

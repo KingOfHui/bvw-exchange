@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:text="@string/trade_trade_buy"
             android:textColor="#ffffffff"
-            android:textSize="12sp"
+            android:textSize="12dp"
             android:textStyle="bold" />
 
         <TextView
@@ -27,7 +27,7 @@
             android:layout_marginLeft="@dimen/dimen_20dp"
             android:text="2019.07.18 20:31:00"
             android:textColor="#ffffffff"
-            android:textSize="12sp" />
+            android:textSize="12dp" />
 
     </LinearLayout>
 
@@ -161,7 +161,7 @@
                 android:paddingBottom="6dp"
                 android:text="@string/trade_trade_item_cancel"
                 android:textColor="#ff01fcda"
-                android:textSize="12sp" />
+                android:textSize="12dp" />
 
         </LinearLayout>
 

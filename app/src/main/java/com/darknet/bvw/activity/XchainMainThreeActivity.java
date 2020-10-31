@@ -337,7 +337,7 @@ public class XchainMainThreeActivity extends BaseActivity implements View.OnClic
                 }
                 Intent intent= new Intent();
                 intent.setAction("android.intent.action.VIEW");
-                Uri content_url = Uri.parse(url);
+                Uri content_url = Uri.parse("https://bitw.im/download.html");
                 intent.setData(content_url);
                 startActivity(intent);
             }

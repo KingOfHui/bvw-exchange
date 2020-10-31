@@ -28,7 +28,7 @@
             android:layout_alignParentLeft="true"
             android:text=""
             android:textColor="#FC6767"
-            android:textSize="11sp" />
+            android:textSize="11dp" />
 
         <TextView
             android:id="@+id/item_change_amount"
@@ -38,6 +38,6 @@
             android:layout_marginRight="15dp"
             android:text=""
             android:textColor="#FC6767"
-            android:textSize="11sp" />
+            android:textSize="11dp" />
     </RelativeLayout>
 </FrameLayout>

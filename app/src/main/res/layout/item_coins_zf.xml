@@ -55,7 +55,7 @@
                     android:layout_height="wrap_content"
                     android:text="24H "
                     android:textColor="@color/gray2"
-                    android:textSize="10sp" />
+                    android:textSize="10dp" />
 
                 <TextView
                     android:id="@+id/item_num24_num"
@@ -64,7 +64,7 @@
                     android:layout_marginLeft="@dimen/dimen_5dp"
                     android:text="295189254"
                     android:textColor="@color/gray2"
-                    android:textSize="10sp" />
+                    android:textSize="10dp" />
             </LinearLayout>
 
 
@@ -92,7 +92,7 @@
                 android:layout_height="wrap_content"
                 android:text="¥ 23.34"
                 android:textColor="@color/gray1"
-                android:textSize="10sp" />
+                android:textSize="10dp" />
 
         </LinearLayout>
 

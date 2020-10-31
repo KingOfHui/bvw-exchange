@@ -120,7 +120,7 @@
                         android:paddingRight="7dp"
                         android:text="@string/btw"
                         android:textColor="@color/color_01FCDA"
-                        android:textSize="10sp"
+                        android:textSize="10dp"
                         app:layout_constraintBottom_toBottomOf="@+id/tv_mineral_name"
                         app:layout_constraintLeft_toRightOf="@id/tv_mineral_name"
                         app:layout_constraintTop_toTopOf="@+id/tv_mineral_name" />
@@ -137,7 +137,7 @@
                         android:paddingRight="7dp"
                         android:text="@string/professional_chip"
                         android:textColor="@color/color_01FCDA"
-                        android:textSize="10sp"
+                        android:textSize="10dp"
                         app:layout_constraintBottom_toBottomOf="@+id/tv_mine_desc1"
                         app:layout_constraintLeft_toRightOf="@id/tv_mine_desc1"
                         app:layout_constraintTop_toTopOf="@+id/tv_mine_desc1" />
@@ -173,7 +173,7 @@
                         android:drawablePadding="@dimen/dimen_10dp"
                         android:text="@{@string/mineral_weight(info.minerInfo.base_weight)}"
                         android:textColor="@color/white"
-                        android:textSize="13sp"
+                        android:textSize="13dp"
                         app:layout_constraintTop_toBottomOf="@id/view1" />
 
                     <com.darknet.bvw.view.TypefaceTextView
@@ -183,9 +183,9 @@
                         android:layout_margin="@dimen/dimen_15dp"
                         android:drawableLeft="@mipmap/icon_hashrate"
                         android:drawablePadding="@dimen/dimen_10dp"
-                        android:text="@{@string/mineral_power(info.minerInfo.pool_power,info.minerInfo.base_electricity)}"
+                        android:text="@{@string/mineral_power(info.minerInfo.base_power,info.minerInfo.base_electricity)}"
                         android:textColor="@color/white"
-                        android:textSize="13sp"
+                        android:textSize="13dp"
                         app:layout_constraintTop_toBottomOf="@id/tv_mine_desc_weight" />
 
                     <com.darknet.bvw.view.TypefaceTextView
@@ -197,7 +197,7 @@
                         android:drawablePadding="@dimen/dimen_10dp"
                         android:text="@{@string/mineral_currency(info.minerInfo.base_out_symbol)}"
                         android:textColor="@color/white"
-                        android:textSize="13sp"
+                        android:textSize="13dp"
                         app:layout_constraintTop_toBottomOf="@id/tv_mine_power" />
 
                     <com.darknet.bvw.view.TypefaceTextView
@@ -209,7 +209,7 @@
                         android:drawablePadding="@dimen/dimen_10dp"
                         android:text="@{@string/mineral_time(info.minerInfo.base_years)}"
                         android:textColor="@color/white"
-                        android:textSize="13sp"
+                        android:textSize="13dp"
                         app:layout_constraintTop_toBottomOf="@id/tv_mine_currency" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -247,7 +247,7 @@
                             android:gravity="center_vertical"
                             android:text="@string/income_record"
                             android:textColor="@color/white"
-                            android:textSize="13sp" />
+                            android:textSize="13dp" />
                     </LinearLayout>
 
                     <View
@@ -282,7 +282,7 @@
                                 android:drawablePadding="@dimen/dimen_10dp"
                                 android:text="@string/average_hashrate_24"
                                 android:textColor="@color/white"
-                                android:textSize="13sp" />
+                                android:textSize="13dp" />
 
                         </RelativeLayout>
 
@@ -309,7 +309,7 @@
                                 android:drawablePadding="@dimen/dimen_10dp"
                                 android:text="@string/income_before_24h"
                                 android:textColor="@color/white"
-                                android:textSize="13sp" />
+                                android:textSize="13dp" />
                         </RelativeLayout>
                     </LinearLayout>
 
@@ -340,7 +340,7 @@
                                 android:drawablePadding="@dimen/dimen_10dp"
                                 android:text="@string/income_today_btc"
                                 android:textColor="@color/white"
-                                android:textSize="13sp" />
+                                android:textSize="13dp" />
 
                         </RelativeLayout>
 
@@ -367,7 +367,7 @@
                                 android:drawablePadding="@dimen/dimen_10dp"
                                 android:text="@string/income_today_btw"
                                 android:textColor="@color/white"
-                                android:textSize="13sp" />
+                                android:textSize="13dp" />
                         </RelativeLayout>
                     </LinearLayout>
 
@@ -407,7 +407,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/dimen_15dp"
-                        android:textSize="12sp"
+                        android:textSize="12dp"
                         app:layout_constraintTop_toBottomOf="@id/view2"
                         app:left_text="@string/net_power"
                         app:right_text="@{@string/net_power_num(info.minerInfo.net_power)}" />
@@ -588,7 +588,7 @@
                         android:text="@{info.miner_no}"
                         android:textColor="#88FFFFFF"
                         android:textColorHint="#88FFFFFF"
-                        android:textSize="12sp"
+                        android:textSize="12dp"
                         app:layout_constraintTop_toBottomOf="@id/tv_account_create_hint" />
 
                     <com.darknet.bvw.view.TypefaceTextView
@@ -611,7 +611,7 @@
                         android:textColor="#88FFFFFF"
                         android:drawablePadding="7dp"
                         android:textColorHint="#88FFFFFF"
-                        android:textSize="12sp"
+                        android:textSize="12dp"
                         app:layout_constraintTop_toBottomOf="@id/tv_account_pwd" />
 
                     <com.darknet.bvw.view.TypefaceTextView
@@ -634,7 +634,7 @@
                         android:text="@{info.user_address}"
                         android:textColor="#88FFFFFF"
                         android:textColorHint="#88FFFFFF"
-                        android:textSize="12sp"
+                        android:textSize="12dp"
                         app:layout_constraintTop_toBottomOf="@id/tv_account_receive_address" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

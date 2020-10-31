@@ -36,6 +36,11 @@ public class NoticeActivity extends BaseActivity {
         if (noticeData != null) {
             titleContent.setText(noticeData.getTitle());
             contentView.setText(noticeData.getContent());
+            if (noticeData.getTitle().length() > 25) {
+                titleContent.setTextSize(9f);
+            } else if (noticeData.getTitle().length() > 18) {
+                titleContent.setTextSize(13f);
+            }
         }
 
     }
