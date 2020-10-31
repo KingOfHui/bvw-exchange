@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textColor="#ffffffff"
-                android:textSize="18sp"
+                android:textSize="18dp"
                 app:typeface="PingFangBold" />
 
             <com.darknet.bvw.view.TypefaceTextView
@@ -46,7 +46,7 @@
                 android:gravity="center"
                 android:text="/"
                 android:textColor="#ffffffff"
-                android:textSize="18sp"
+                android:textSize="18dp"
                 app:typeface="PingFangBold" />
 
 
@@ -56,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textColor="#ffffffff"
-                android:textSize="18sp"
+                android:textSize="18dp"
                 app:typeface="PingFangBold" />
         </LinearLayout>
 
@@ -136,7 +136,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/k_buy_sign"
                             android:textColor="#ff01fcda"
-                            android:textSize="18sp" />
+                            android:textSize="18dp" />
 
                         <View
                             android:id="@+id/mairu_line_view"
@@ -165,7 +165,7 @@
                             android:gravity="center"
                             android:text="@string/k_scall_sign"
                             android:textColor="#ffffffff"
-                            android:textSize="15sp" />
+                            android:textSize="15dp" />
 
                         <View
                             android:id="@+id/maichu_line_view"
@@ -221,7 +221,7 @@
                                 android:padding="8dp"
                                 android:textColor="#ffffff"
                                 android:textColorHint="#ffffff"
-                                android:textSize="14sp" />
+                                android:textSize="14dp" />
 
 
                             <ImageView
@@ -297,7 +297,7 @@
                                 android:padding="8dp"
                                 android:textColor="@color/white"
                                 android:textColorHint="#ff979fa7"
-                                android:textSize="14sp" />
+                                android:textSize="14dp" />
 
                             <TextView
                                 android:id="@+id/trade_money_type_view"
@@ -308,7 +308,7 @@
                                 android:layout_marginRight="10dp"
                                 android:text="BIW"
                                 android:textColor="#ff979fa7"
-                                android:textSize="14sp" />
+                                android:textSize="14dp" />
                         </RelativeLayout>
 
 
@@ -516,7 +516,7 @@
                             android:paddingBottom="8dp"
                             android:text="@string/trade_trade_buy"
                             android:textColor="@color/black"
-                            android:textSize="15sp"
+                            android:textSize="15dp"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -607,7 +607,7 @@
                                 android:layout_marginTop="10dp"
                                 android:text="0"
                                 android:textColor="#ff3ab5a1"
-                                android:textSize="15sp" />
+                                android:textSize="15dp" />
 
 
                             <LinearLayout
@@ -675,7 +675,7 @@
                         android:layout_marginLeft="15dp"
                         android:text="@string/trade_trade_weituo"
                         android:textColor="#ff01fcda"
-                        android:textSize="18sp" />
+                        android:textSize="18dp" />
 
 
                     <TextView

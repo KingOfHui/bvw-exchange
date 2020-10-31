@@ -78,7 +78,7 @@
                                 android:layout_weight="1"
                                 android:text="@string/my_mineral_status"
                                 android:textColor="#01FCDA"
-                                android:textSize="15sp" />
+                                android:textSize="15dp" />
 
                             <com.darknet.bvw.view.TypefaceTextView
                                 android:id="@+id/tv_income_record"
@@ -111,7 +111,7 @@
                                     android:layout_marginTop="@dimen/dimen_15dp"
                                     android:text="@{vm.getSpanString(vm.mineralStatusResponseLiveData.power_24_hour_avg,` TH/S`), default = `0`}"
                                     android:textColor="@color/_01FCDA"
-                                    android:textSize="28sp"
+                                    android:textSize="28dp"
                                     app:typeface="DINProRegular"
                                     tools:text="0.0000" />
 
@@ -137,7 +137,7 @@
                                     android:layout_marginTop="@dimen/dimen_15dp"
                                     android:text="@{vm.getSpanString(vm.mineralStatusResponseLiveData.power_24_hour_usd_bonus,` USDT`), default = `0`}"
                                     android:textColor="@color/_01FCDA"
-                                    android:textSize="28sp"
+                                    android:textSize="28dp"
                                     app:typeface="@string/DINProRegular"
                                     tools:text="0.00" />
 
@@ -168,7 +168,7 @@
                                     android:layout_marginTop="@dimen/dimen_15dp"
                                     android:text="@{vm.getSpanString(vm.mineralStatusResponseLiveData.today_btc_bonus,` BTC`), default = `0`}"
                                     android:textColor="@color/_01FCDA"
-                                    android:textSize="28sp"
+                                    android:textSize="28dp"
                                     app:typeface="DINProRegular"
                                     tools:text="0.00004" />
 
@@ -194,7 +194,7 @@
                                     android:layout_marginTop="@dimen/dimen_15dp"
                                     android:text="@{vm.getSpanString(vm.mineralStatusResponseLiveData.today_btw_bonus,` BIW`), default = `0`}"
                                     android:textColor="@color/_01FCDA"
-                                    android:textSize="28sp"
+                                    android:textSize="28dp"
                                     app:typeface="DINProRegular"
                                     tools:text="400.00" />
 
@@ -230,7 +230,7 @@
                                     android:layout_height="wrap_content"
                                     android:text="@{String.valueOf(vm.mineralStatusResponseLiveData.miner_count)}"
                                     android:textColor="@color/_01FCDA"
-                                    android:textSize="28sp"
+                                    android:textSize="28dp"
                                     app:typeface="DINProRegular"
                                     tools:text="0.00004" />
 
@@ -255,7 +255,7 @@
                                     android:layout_height="wrap_content"
                                     android:text="@{String.valueOf(vm.mineralStatusResponseLiveData.miner_working_count)}"
                                     android:textColor="@color/_01FCDA"
-                                    android:textSize="28sp"
+                                    android:textSize="28dp"
                                     app:typeface="DINProRegular"
                                     tools:text="400.00" />
 
@@ -289,7 +289,7 @@
                             android:layout_marginTop="@dimen/dimen_15dp"
                             android:text="@string/my_mineral"
                             android:textColor="@color/_01FCDA"
-                            android:textSize="15sp" />
+                            android:textSize="15dp" />
 
                         <View
                             style="@style/Line_4E4A5E"
@@ -301,7 +301,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             app:emptyContentTextColor="#A4A4AB"
-                            app:emptyContentTextSize="14sp">
+                            app:emptyContentTextSize="14dp">
 
                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/rv_mineral"

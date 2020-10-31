@@ -26,6 +26,7 @@
             android:layout_height="wrap_content"
             android:text="@{data.address}"
             android:gravity="left"
+            android:textSize="@dimen/dimen_13dp"
             android:textColor="@color/_01FCDA"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintStart_toStartOf="parent"
@@ -37,6 +38,7 @@
         <com.darknet.bvw.view.TypefaceTextView
             android:id="@+id/typefaceTextView"
             android:layout_width="0dp"
+            android:textSize="@dimen/dimen_13dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@{String.valueOf(data.bonus)+` BIW`}"
@@ -56,6 +58,7 @@
             android:textColor="@color/_01FCDA"
             android:gravity="right"
             android:lines="1"
+            android:textSize="@dimen/dimen_13dp"
             android:ellipsize="end"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

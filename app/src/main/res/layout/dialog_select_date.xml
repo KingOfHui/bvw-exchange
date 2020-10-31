@@ -15,7 +15,7 @@
         android:paddingBottom="@dimen/dimen_20dp"
         android:text="@string/near_14"
         android:textColor="@color/white"
-        android:textSize="16sp" />
+        android:textSize="16dp" />
 
     <View
         android:layout_width="match_parent"
@@ -31,7 +31,7 @@
         android:paddingBottom="@dimen/dimen_20dp"
         android:text="@string/near_30"
         android:textColor="@color/white"
-        android:textSize="16sp" />
+        android:textSize="16dp" />
 
     <View
         android:layout_width="match_parent"
@@ -47,7 +47,7 @@
         android:paddingBottom="@dimen/dimen_20dp"
         android:text="@string/near_45"
         android:textColor="@color/white"
-        android:textSize="16sp" />
+        android:textSize="16dp" />
 
     <View
         android:layout_width="match_parent"
@@ -63,6 +63,6 @@
         android:paddingBottom="@dimen/dimen_20dp"
         android:text="@string/near_60"
         android:textColor="@color/white"
-        android:textSize="16sp" />
+        android:textSize="16dp" />
 
 </LinearLayout>

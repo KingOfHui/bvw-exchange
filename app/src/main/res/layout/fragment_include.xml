@@ -20,7 +20,7 @@
             android:layout_marginBottom="@dimen/dimen_10dp"
             android:text="基本信息"
             android:textColor="#ff222222"
-            android:textSize="14sp"
+            android:textSize="14dp"
             android:textStyle="bold" />
 
 

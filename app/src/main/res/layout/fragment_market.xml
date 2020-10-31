@@ -40,7 +40,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/trade_market_zx"
                     android:textColor="#ff01fcda"
-                    android:textSize="18sp" />
+                    android:textSize="18dp" />
 
                 <View
                     android:id="@+id/market_zixuan_line_view"
@@ -70,7 +70,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/trade_market_zfb"
                     android:textColor="@color/gray1"
-                    android:textSize="15sp" />
+                    android:textSize="15dp" />
 
                 <View
                     android:id="@+id/market_zf_line_view"

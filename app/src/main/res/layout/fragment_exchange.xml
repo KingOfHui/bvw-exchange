@@ -45,7 +45,7 @@
                     android:gravity="center"
                     android:text="@string/the_market"
                     android:textColor="@color/gray2"
-                    android:textSize="18sp" />
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/fragment_exchange_exchange_tv"
@@ -55,7 +55,7 @@
                     android:gravity="center"
                     android:text="@string/the_exchange"
                     android:textColor="#ffffffff"
-                    android:textSize="18sp" />
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/fragment_exchange_amount_tv"
@@ -65,7 +65,7 @@
                     android:gravity="center"
                     android:text="@string/the_amount"
                     android:textColor="@color/gray2"
-                    android:textSize="18sp" />
+                    android:textSize="18dp" />
             </LinearLayout>
         </RelativeLayout>
 

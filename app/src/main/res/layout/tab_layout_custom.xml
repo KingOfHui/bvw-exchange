@@ -9,4 +9,4 @@
     tools:text="全部"
     android:textStyle="bold"
     android:textColor="#70FFFFFF"
-    android:textSize="15sp" />
+    android:textSize="15dp" />

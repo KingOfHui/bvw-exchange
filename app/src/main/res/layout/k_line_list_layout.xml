@@ -24,7 +24,7 @@
             android:paddingBottom="14dp"
             android:text="@string/k_shendu_sign"
             android:textColor="@drawable/btn_title_text_selector"
-            android:textSize="18sp"
+            android:textSize="18dp"
             android:textStyle="bold" />
 
         <RadioButton
@@ -40,7 +40,7 @@
             android:paddingBottom="14dp"
             android:text="@string/k_chengjiao_sign"
             android:textColor="@drawable/btn_title_text_selector"
-            android:textSize="18sp"
+            android:textSize="18dp"
             android:textStyle="bold" />
     </RadioGroup>
 

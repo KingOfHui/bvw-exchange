@@ -19,7 +19,7 @@
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
             android:background="@drawable/shape_next"
-            android:textSize="16sp"
+            android:textSize="16dp"
             android:textColor="#FFFFFF"
             android:text="重播"/>
 

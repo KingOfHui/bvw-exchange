@@ -57,7 +57,7 @@
             android:paddingBottom="@dimen/dimen_10dp"
             android:text="@string/k_buy_sign"
             android:textColor="#ff000000"
-            android:textSize="18sp"
+            android:textSize="18dp"
             android:textStyle="bold" />
 
         <TextView
@@ -74,7 +74,7 @@
             android:paddingBottom="@dimen/dimen_10dp"
             android:text="@string/k_scall_sign"
             android:textColor="#ffffffff"
-            android:textSize="18sp"
+            android:textSize="18dp"
             android:textStyle="bold" />
 
     </LinearLayout>

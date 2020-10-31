@@ -56,6 +56,7 @@
                     android:background="@drawable/shape_bg_mineral_status"
                     android:paddingLeft="@dimen/dimen_10dp"
                     android:gravity="center"
+                    android:textSize="@dimen/dimen_13dp"
                     android:paddingBottom="3dp"
                     android:paddingTop="3dp"
                     android:paddingRight="@dimen/dimen_15dp"
@@ -76,6 +77,7 @@
                     android:text="@{vm.getStatusText()}"
                     android:visibility="@{info.state == 2?View.VISIBLE:View.INVISIBLE}"
                     android:textColor="@color/black"
+                    android:textSize="@dimen/dimen_13dp"
                     android:background="@drawable/shape_bg_mineral_status"
                     android:paddingLeft="@dimen/dimen_10dp"
                     android:paddingBottom="3dp"
@@ -102,7 +104,7 @@
                         android:layout_margin="@dimen/dimen_15dp"
                         android:text="@{info.minerInfo.base_name}"
                         android:textColor="@color/white"
-                        android:textSize="24sp"
+                        android:textSize="24dp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toTopOf="@id/tv_mine_money"
                         app:layout_constraintLeft_toLeftOf="parent"
@@ -150,7 +152,7 @@
                         android:layout_marginTop="12dp"
                         android:text="@{info.minerInfo.base_pay_usdt+`USDT`}"
                         android:textColor="@color/color_01FCDA"
-                        android:textSize="23sp"
+                        android:textSize="23dp"
                         app:typeface="@string/DINProRegular"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_mineral_name" />
@@ -234,7 +236,7 @@
                             android:layout_weight="1"
                             android:text="@string/my_mineral_status"
                             android:textColor="#01FCDA"
-                            android:textSize="15sp" />
+                            android:textSize="15dp" />
 
                         <com.darknet.bvw.view.TypefaceTextView
                             android:id="@+id/tv_income_record"
@@ -390,7 +392,7 @@
                         android:drawablePadding="@dimen/dimen_10dp"
                         android:text="@string/net_btw_info"
                         android:textColor="@color/color_01FCDA"
-                        android:textSize="15sp"
+                        android:textSize="15dp"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <View
@@ -475,7 +477,7 @@
                         android:layout_margin="@dimen/dimen_15dp"
                         android:text="@string/mineral_pool_info_tip"
                         android:textColor="@color/color_01FCDA"
-                        android:textSize="15sp"
+                        android:textSize="15dp"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <View
@@ -556,7 +558,7 @@
                         android:layout_margin="@dimen/dimen_15dp"
                         android:text="@string/account_info"
                         android:textColor="@color/color_01FCDA"
-                        android:textSize="15sp"
+                        android:textSize="15dp"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <View
@@ -673,7 +675,7 @@
                         android:layout_margin="@dimen/dimen_15dp"
                         android:text="@string/mineral_pledge_info"
                         android:textColor="@color/color_01FCDA"
-                        android:textSize="15sp"
+                        android:textSize="15dp"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <View

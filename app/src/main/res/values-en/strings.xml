@@ -843,8 +843,8 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="professional_chip">Chip Pro</string>
     <string name="not_pledged">Not pledged</string>
     <string name="DINProRegular">DINProRegular</string>
-    <string name="mineral_hashrate">hashrate:%sTH/S</string>
-    <string name="mineral_currency">Mining currency: %s</string>
+    <string name="mineral_hashrate">hashrate：%sTH/S</string>
+    <string name="mineral_currency">Mining currency：%s</string>
     <string name="my_mineral_status">My miner status</string>
     <string name="income_record">Revenue records</string>
     <string name="average_hashrate_24">24h average hashrate</string>

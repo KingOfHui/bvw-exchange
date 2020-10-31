@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:text="BTC"
             android:textColor="@color/black"
-            android:textSize="15sp" />
+            android:textSize="15dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -46,6 +46,6 @@
         android:layout_marginRight="@dimen/dimen_20dp"
         android:text="0.16594"
         android:textColor="#ff17b975"
-        android:textSize="15sp" />
+        android:textSize="15dp" />
 
 </RelativeLayout>

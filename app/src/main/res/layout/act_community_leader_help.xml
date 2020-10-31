@@ -48,7 +48,7 @@
                     android:layout_marginRight="20dp"
                     android:text="@string/community_desc2"
                     android:textColor="@color/white"
-                    android:textSize="15sp"
+                    android:textSize="15dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -69,7 +69,7 @@
                     android:layout_marginRight="20dp"
                     android:text="@string/community_desc4"
                     android:textColor="@color/white"
-                    android:textSize="15sp"
+                    android:textSize="15dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -91,7 +91,7 @@
                     android:layout_marginRight="20dp"
                     android:text="@string/community_desc6"
                     android:textColor="@color/white"
-                    android:textSize="15sp"
+                    android:textSize="15dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -121,7 +121,7 @@
                     android:layout_marginRight="20dp"
                     android:text="@string/community_desc9"
                     android:textColor="@color/white"
-                    android:textSize="15sp"
+                    android:textSize="15dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -143,7 +143,7 @@
                     android:layout_marginRight="20dp"
                     android:text="@string/community_desc11"
                     android:textColor="@color/white"
-                    android:textSize="15sp"
+                    android:textSize="15dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -175,7 +175,7 @@
                     android:layout_marginRight="20dp"
                     android:text="@string/community_desc14"
                     android:textColor="@color/white"
-                    android:textSize="15sp"
+                    android:textSize="15dp"
                     android:textStyle="bold" />
 
                 <TextView

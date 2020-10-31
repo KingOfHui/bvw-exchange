@@ -32,7 +32,7 @@
             android:layout_centerInParent="true"
             android:text="@string/scan_view_notice_sign"
             android:textColor="#ffffffff"
-            android:textSize="20sp" />
+            android:textSize="20dp" />
 
     </RelativeLayout>
 

@@ -148,7 +148,7 @@
                             android:layout_centerVertical="true"
                             android:text="@string/mine_performance_desc"
                             android:textColor="@color/_01FCDA"
-                            android:textSize="18sp" />
+                            android:textSize="18dp" />
 
                         <TextView
                             android:id="@+id/tv_dialog"
@@ -192,11 +192,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         app:emptyContentTextColor="@color/grey"
-                        app:emptyContentTextSize="14sp"
+                        app:emptyContentTextSize="14dp"
                         app:errorButtonTextColor="@color/teal"
-                        app:errorButtonTextSize="14sp"
+                        app:errorButtonTextSize="14dp"
                         app:errorContentTextColor="@color/grey"
-                        app:errorContentTextSize="14sp"
+                        app:errorContentTextSize="14dp"
                         app:errorImageHeight="200dp"
                         app:errorImageWidth="200dp"
                         app:loadingProgressBarColor="@color/teal"
@@ -245,7 +245,7 @@
             android:background="@drawable/bg_color_ff01fcda_radius_2"
             android:gravity="center"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="16dp"
             android:textStyle="bold" />
     </LinearLayout>
 </RelativeLayout>

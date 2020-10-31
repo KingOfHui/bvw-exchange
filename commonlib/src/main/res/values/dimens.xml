@@ -4,7 +4,7 @@
     <dimen name="spacing_medium">10dp</dimen>
     <dimen name="spacing_large">15dp</dimen>
 
-    <dimen name="font_size">14sp</dimen>
+    <dimen name="font_size">14dp</dimen>
     <dimen name="image_size">150dp</dimen>
     <dimen name="progressbar_radius">100dp</dimen>
     <dimen name="spin_width">8dp</dimen>

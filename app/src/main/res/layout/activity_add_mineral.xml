@@ -39,7 +39,7 @@
                     android:layout_marginTop="@dimen/dimen_20dp"                    app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     android:text="@string/add_mineral"
-                    android:textSize="15sp"
+                    android:textSize="15dp"
                     android:textColor="@color/_01FCDA"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
@@ -56,7 +56,7 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/line"
                     android:text="@string/add_mineral_tip1"
-                    android:textSize="15sp"
+                    android:textSize="15dp"
                     android:textColor="@color/_01FCDA"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
@@ -68,7 +68,7 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv2"
                     android:text="@string/add_mineral_tip2"
-                    android:textSize="15sp"
+                    android:textSize="15dp"
                     android:textColor="@color/_01FCDA"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>

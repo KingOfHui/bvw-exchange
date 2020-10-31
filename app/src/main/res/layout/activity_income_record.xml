@@ -38,7 +38,7 @@
                         android:layout_marginTop="@dimen/dimen_25dp"
                         android:text="@string/history_total_income"
                         android:textColor="@color/_01FCDA"
-                        android:textSize="15sp" />
+                        android:textSize="15dp" />
 
                     <View
                         style="@style/Line_4E4A5E"

@@ -39,7 +39,7 @@
             android:gravity="center"
             android:text="BIW"
             android:textColor="#ffffffff"
-            android:textSize="18sp"
+            android:textSize="18dp"
             app:typeface="PingFangBold" />
 
         <com.darknet.bvw.view.TypefaceTextView
@@ -48,7 +48,7 @@
             android:gravity="center"
             android:text="/"
             android:textColor="#ffffffff"
-            android:textSize="18sp"
+            android:textSize="18dp"
             app:typeface="PingFangBold" />
 
 
@@ -59,7 +59,7 @@
             android:gravity="center"
             android:text="USDT"
             android:textColor="#ffffffff"
-            android:textSize="18sp"
+            android:textSize="18dp"
             app:typeface="PingFangBold" />
     </LinearLayout>
 
