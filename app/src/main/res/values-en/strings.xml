@@ -449,7 +449,7 @@
 
 
     <string name="first_totoal_money">My total assets ($)</string>
-    <string name="first_suanli_sign">Current computing</string>
+    <string name="first_suanli_sign">Current hashrate</string>
     <string name="first_title_mark">Planet</string>
     <string name="first_qiandao_mark">Sign in</string>
 
@@ -861,7 +861,7 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="mineral_pool">Ore pool</string>
     <string name="mineral_list_no_data">Miner not added</string>
     <string name="mineral_time">Mining time：%s years</string>
-    <string name="net_power">Network computing power</string>
+    <string name="net_power">Network hashrate</string>
     <string name="net_power_num">%s</string>
     <string name="net_day_bonus_tip">Revenue per t day</string>
     <string name="net_day_bonus">%sUSDT</string>
@@ -873,7 +873,7 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="bit_price_tip">Currency price</string>
     <string name="bit_price">BTC$%s   BIW$%s</string>
     <string name="mineral_pool_info_tip">Mine pool information</string>
-    <string name="mineral_pool_hashrate_tip">Calculation power of ore pool</string>
+    <string name="mineral_pool_hashrate_tip">Hashrate of ore pool</string>
     <string name="pool_power">%s</string>
     <string name="pool_pay_time_tip">Payment time</string>
     <string name="pool_us_tip">US region</string>
