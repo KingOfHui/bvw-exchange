@@ -118,7 +118,7 @@
     <string name="trade_detail_no_data">暂无</string>
     <string name="trade_detail_fakuan">发款方</string>
     <string name="trade_detail_shoukuan">收款方</string>
-    <string name="trade_detail_kuangongfei">旷工费用</string>
+    <string name="trade_detail_kuangongfei">矿工费用</string>
     <string name="trade_detail_beizhu">备注</string>
     <string name="trade_detail_beizhu_two">请输入备注</string>
     <string name="trade_detail_jiaoyihao">交易号</string>
