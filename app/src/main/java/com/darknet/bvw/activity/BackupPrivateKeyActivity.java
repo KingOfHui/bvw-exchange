@@ -143,7 +143,7 @@ public class BackupPrivateKeyActivity extends BaseActivity implements View.OnCli
                         WalletDaoUtils.insertNewWallet(walletModel);
                         dismissDialog();
 //                        AtyContainer.getInstance().finishAllActivity();
-
+                        EventBus.getDefault().post(walletModel);
                         Intent detailIntent = new Intent(BackupPrivateKeyActivity.this, StopActivity.class);
                         startActivity(detailIntent);
                         finish();

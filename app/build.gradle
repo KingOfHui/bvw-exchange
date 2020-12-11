@@ -23,7 +23,7 @@ android {
     defaultConfig {
         applicationId "com.darknet.bvw"
         minSdkVersion 19
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 20201110
         versionName "2.4.0"
         multiDexEnabled true
