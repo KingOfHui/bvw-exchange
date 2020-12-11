@@ -50,29 +50,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class XchainMainThreeActivity extends BaseActivity implements View.OnClickListener, ViewPager.OnPageChangeListener {
-//    private EasyNavigationBar navigitionBar;
-
-    //    private String[] tabText = {"首页", "资产", "发现", "消息", "我的"};
-//    private String[] tabText = new String[4];
-//    private int[] normalIcon = {R.mipmap.img_home_unpressed,
-//            R.mipmap.img_fund_unpressed,
-//            R.mipmap.img_fill, R.mipmap.img_message_unpressed, R.mipmap.img_mine_unpressed};
-
-//    private int[] normalIcon = {
-//            R.mipmap.img_fund_unpressed, R.mipmap.img_fill_unpressed, R.mipmap.img_message_unpressed, R.mipmap.img_mine_unpressed};
-//
-//
-//    private int[] selectIcon = {R.mipmap.img_fund_pressed, R.mipmap.img_fill, R.mipmap.img_message_pressed, R.mipmap.img_mine_pressed};
 
     List<Fragment> fragmentList = new ArrayList<>();
-
-
     private LinearLayout fristLayout, secLayout, /*thirdLayout,*/ fourLayout;
     private ImageView firstImg, secImg, /*thirdImg,*/ fourImg;
     private TextView firstTxt, secTxt, /*thirdTxt,*/ fourTxt;
     private ViewPager viewPager;
 
     private LinearLayout bomLayout;
+    private LinearLayout mMallLayout;
+    private ImageView mMallImg;
+    private TextView mMallTxt;
 
 
     @Override
@@ -82,32 +70,28 @@ public class XchainMainThreeActivity extends BaseActivity implements View.OnClic
         fristLayout = this.findViewById(R.id.main_first_layout);
         firstImg = this.findViewById(R.id.main_first_img);
         firstTxt = this.findViewById(R.id.main_first_txt);
+        mMallLayout = findViewById(R.id.main_mall_layout);
+        mMallImg = findViewById(R.id.main_mall_img);
+        mMallTxt = findViewById(R.id.main_mall_txt);
 
         secLayout = this.findViewById(R.id.main_second_layout);
         secImg = this.findViewById(R.id.main_second_img);
         secTxt = this.findViewById(R.id.main_second_txt);
 
-//        thirdLayout = this.findViewById(R.id.main_third_layout);
-//        thirdImg = this.findViewById(R.id.main_third_img);
-//        thirdTxt = this.findViewById(R.id.main_third_txt);
-
         fourLayout = this.findViewById(R.id.main_four_layout);
         fourImg = this.findViewById(R.id.main_four_img);
         fourTxt = this.findViewById(R.id.main_four_txt);
 
-        viewPager= this.findViewById(R.id.main_viewpager);
+        viewPager = this.findViewById(R.id.main_viewpager);
 
         bomLayout = this.findViewById(R.id.main_bom_layout);
 
-        //        Fragment homeFragment = new FundFragment();
         FirstFragment moneyFragment = new FirstFragment();
         Fragment findFragment = new FindFragment();
-//        Fragment academicFragment = new MsgFragment();
-//        Fragment academicFragment = new ExchangeFragment();
         Fragment mineFragment = new MineFragment();
 
-//        fragmentList.add(homeFragment);
         fragmentList.add(moneyFragment);
+        fragmentList.add(new FirstFragment());
         fragmentList.add(findFragment);
 //        fragmentList.add(academicFragment);
         fragmentList.add(mineFragment);
@@ -126,25 +110,9 @@ public class XchainMainThreeActivity extends BaseActivity implements View.OnClic
             }
         });
 
-
-//        viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
-//            @Override
-//            public Fragment getItem(int position) {
-//                return fragmentList.get(position);
-//            }
-//
-//            @Override
-//            public int getCount() {
-//                return fragmentList.size();
-//            }
-//        });
-
-
-
         viewPager.setCurrentItem(0);
         viewPager.setOnPageChangeListener(this);
-        tableFirst();
-
+        switchTab(0);
 
         viewPager.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -155,60 +123,13 @@ public class XchainMainThreeActivity extends BaseActivity implements View.OnClic
 
 
         fristLayout.setOnClickListener(this);
+        mMallLayout.setOnClickListener(this);
         secLayout.setOnClickListener(this);
-//        thirdLayout.setOnClickListener(this);
         fourLayout.setOnClickListener(this);
-
-
 
 
         //发送关闭事件
         EventBus.getDefault().post(new CloseViewEvent());
-
-
-//        tabText[0] = getResources().getString(R.string.xmain_table_one);
-//        tabText[1] = getResources().getString(R.string.xmain_table_find);
-//        tabText[2] = getResources().getString(R.string.xmain_table_two);
-//        tabText[3] = getResources().getString(R.string.xmain_table_three);
-
-//       tabText = {getResources().getString(R.string.xmain_table_one),getResources().getString(R.string.xmain_table_two), getResources().getString(R.string.xmain_table_three)};
-
-
-//        navigitionBar = findViewById(R.id.navigitionBar);
-
-
-
-
-//        navigitionBar.titleItems(tabText)
-//                .normalIconItems(normalIcon)
-//                .selectIconItems(selectIcon)
-//                .iconSize(20)
-//                .tabTextSize(10)
-//                .tabTextTop(2)
-//                .fragmentList(fragmentList)
-//                .hasPadding(true)
-//                .navigationBackground(Color.parseColor("#171522"))
-//                .addLayoutRule(EasyNavigationBar.RULE_BOTTOM)
-//                .lineHeight(1)         //分割线高度  默认1px
-//                .lineColor(Color.parseColor("#171522"))
-//                .addIconSize(20)
-//                .canScroll(false)    //Viewpager能否左右滑动
-//                .addAsFragment(true)
-//                .normalTextColor(Color.parseColor("#807e8c"))   //Tab未选中时字体颜色
-//                .selectTextColor(Color.parseColor("#72f8db"))
-//                .fragmentManager(getSupportFragmentManager())
-//                .onTabClickListener(new EasyNavigationBar.OnTabClickListener() {
-//                    @Override
-//                    public boolean onTabClickEvent(View view, int i) {
-//                        return false;
-//                    }
-//                })
-//                .mode(EasyNavigationBar.MODE_NORMAL)
-//                .build();
-
-
-
-
 
     }
 
@@ -232,7 +153,6 @@ public class XchainMainThreeActivity extends BaseActivity implements View.OnClic
     public void configViews() {
 
     }
-
 
 
     private void checkUpdate() {
@@ -267,7 +187,7 @@ public class XchainMainThreeActivity extends BaseActivity implements View.OnClic
                                             Toast.makeText(XchainMainThreeActivity.this, response.getMsg(), Toast.LENGTH_SHORT).show();
                                         }
                                     }
-                                }catch (Exception e){
+                                } catch (Exception e) {
                                     e.printStackTrace();
                                 }
                             }
@@ -287,9 +207,9 @@ public class XchainMainThreeActivity extends BaseActivity implements View.OnClic
     }
 
 
-    private void setUpdateData(UpdateApkResponse.UpdateModel updateData){
+    private void setUpdateData(UpdateApkResponse.UpdateModel updateData) {
 
-        if(updateData == null){
+        if (updateData == null) {
             return;
         }
         String version = updateData.getVersion();
@@ -299,6 +219,7 @@ public class XchainMainThreeActivity extends BaseActivity implements View.OnClic
         }
 
     }
+
     private float getVersionCode(String version) {
         if (TextUtils.isEmpty(version)) {
             return 0;
@@ -321,12 +242,13 @@ public class XchainMainThreeActivity extends BaseActivity implements View.OnClic
     public float toFloat(String number) {
         try {
             return Float.parseFloat(number);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return 0;
     }
-    private void showDialog(UpdateApkResponse.UpdateModel updateData){
+
+    private void showDialog(UpdateApkResponse.UpdateModel updateData) {
         new UpdateDialog(new UpdateDialog.UpdateItemClick() {
             @Override
             public void updateClick() {
@@ -335,7 +257,7 @@ public class XchainMainThreeActivity extends BaseActivity implements View.OnClic
                 if (language == Language.CHINA) {
                     url = updateData.getInternal_android_url();
                 }
-                Intent intent= new Intent();
+                Intent intent = new Intent();
                 intent.setAction("android.intent.action.VIEW");
                 Uri content_url = Uri.parse("https://bitw.im/download.html");
                 intent.setData(content_url);
@@ -346,7 +268,7 @@ public class XchainMainThreeActivity extends BaseActivity implements View.OnClic
             public void dismissClick() {
 
             }
-        }).showTips(XchainMainThreeActivity.this,"");
+        }).showTips(XchainMainThreeActivity.this, "");
     }
 
     public static int getCurVersionCode(Context ctx) {
@@ -411,87 +333,38 @@ public class XchainMainThreeActivity extends BaseActivity implements View.OnClic
                 });
     }
 
-
-
-
-//    private int[] normalIcon = {
-//            R.mipmap.img_fund_unpressed, R.mipmap.img_fill_unpressed, R.mipmap.img_message_unpressed, R.mipmap.img_mine_unpressed};
-//
-//
-//    private int[] selectIcon = {R.mipmap.img_fund_pressed, R.mipmap.img_fill, R.mipmap.img_message_pressed, R.mipmap.img_mine_pressed};
-
-
-    private void tableFirst() {
-        viewPager.setCurrentItem(0);
-        firstImg.setImageResource(R.mipmap.img_home_pressed);
-        secImg.setImageResource(R.mipmap.img_fill_unpressed);
-//        thirdImg.setImageResource(R.mipmap.home_trade_normal);
-        fourImg.setImageResource(R.mipmap.img_mine_unpressed);
-
-
-        firstTxt.setTextColor(getResources().getColor(R.color._72f8db));
-        secTxt.setTextColor(getResources().getColor(R.color._807e8c));
-//        thirdTxt.setTextColor(getResources().getColor(R.color._807e8c));
-        fourTxt.setTextColor(getResources().getColor(R.color._807e8c));
-    }
-
-    private void tableSec() {
-        viewPager.setCurrentItem(1);
-        firstImg.setImageResource(R.mipmap.img_home_unpressed);
-        secImg.setImageResource(R.mipmap.img_fill);
-//        thirdImg.setImageResource(R.mipmap.home_trade_normal);
-        fourImg.setImageResource(R.mipmap.img_mine_unpressed);
-
-        firstTxt.setTextColor(getResources().getColor(R.color._807e8c));
-        secTxt.setTextColor(getResources().getColor(R.color._72f8db));
-//        thirdTxt.setTextColor(getResources().getColor(R.color._807e8c));
-        fourTxt.setTextColor(getResources().getColor(R.color._807e8c));
-    }
-
-/*    private void tableThird() {
-        viewPager.setCurrentItem(2);
-        firstImg.setImageResource(R.mipmap.img_home_unpressed);
-        secImg.setImageResource(R.mipmap.img_fill_unpressed);
-//        thirdImg.setImageResource(R.mipmap.home_trade_press);
-        fourImg.setImageResource(R.mipmap.img_mine_unpressed);
-
-        firstTxt.setTextColor(getResources().getColor(R.color._807e8c));
-        secTxt.setTextColor(getResources().getColor(R.color._807e8c));
-//        thirdTxt.setTextColor(getResources().getColor(R.color._72f8db));
-        fourTxt.setTextColor(getResources().getColor(R.color._807e8c));
-    }*/
-
-
-    private void tableFour() {
-        viewPager.setCurrentItem(2);
-        firstImg.setImageResource(R.mipmap.img_home_unpressed);
-        secImg.setImageResource(R.mipmap.img_fill_unpressed);
-//        thirdImg.setImageResource(R.mipmap.home_trade_normal);
-        fourImg.setImageResource(R.mipmap.img_mine_pressed);
-
-        firstTxt.setTextColor(getResources().getColor(R.color._807e8c));
-        secTxt.setTextColor(getResources().getColor(R.color._807e8c));
-//        thirdTxt.setTextColor(getResources().getColor(R.color._807e8c));
-        fourTxt.setTextColor(getResources().getColor(R.color._72f8db));
-    }
-
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.main_first_layout:
-                tableFirst();
+                switchTab(0);
+                break;
+            case R.id.main_mall_layout:
+                switchTab(1);
                 break;
             case R.id.main_second_layout:
-                tableSec();
+                switchTab(2);
                 break;
-//            case R.id.main_third_layout:
-//                tableThird();
-//                break;
             case R.id.main_four_layout:
-                tableFour();
+                switchTab(3);
+                break;
+            default:
                 break;
         }
+    }
+
+    private void switchTab(int position) {
+        viewPager.setCurrentItem(position);
+        firstImg.setImageResource(position == 0 ? R.mipmap.img_home_pressed : R.mipmap.img_home_unpressed);
+        mMallImg.setImageResource(position == 1 ? R.mipmap.icon_mall_unpressed : R.mipmap.icon_mall_unpressed);
+        secImg.setImageResource(position == 2 ? R.mipmap.img_fill : R.mipmap.img_fill_unpressed);
+        fourImg.setImageResource(position == 3 ? R.mipmap.img_mine_pressed : R.mipmap.img_mine_unpressed);
+
+        firstTxt.setTextColor(getResources().getColor(position == 0 ? R.color._72f8db : R.color._807e8c));
+        mMallTxt.setTextColor(getResources().getColor(position == 1 ? R.color._72f8db : R.color._807e8c));
+        secTxt.setTextColor(getResources().getColor(position == 2 ? R.color._72f8db : R.color._807e8c));
+        fourTxt.setTextColor(getResources().getColor(position == 3 ? R.color._72f8db : R.color._807e8c));
+
     }
 
     @Override
@@ -501,21 +374,7 @@ public class XchainMainThreeActivity extends BaseActivity implements View.OnClic
 
     @Override
     public void onPageSelected(int position) {
-
-        switch (position) {
-            case 0:
-                tableFirst();
-                break;
-            case 1:
-                tableSec();
-                break;
-            case 2:
-//                tableThird();
-//                break;
-//            case 3:
-                tableFour();
-                break;
-        }
+        switchTab(position);
     }
 
     @Override
@@ -545,9 +404,9 @@ public class XchainMainThreeActivity extends BaseActivity implements View.OnClic
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void receiveTradeEvent(TradeEvent tradeEvent) {
-        if(tradeEvent.getType() == 0){
+        if (tradeEvent.getType() == 0) {
             bomLayout.setVisibility(View.GONE);
-        }else {
+        } else {
             bomLayout.setVisibility(View.VISIBLE);
         }
 //        viewPager.setCurrentItem(2);

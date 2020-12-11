@@ -50,8 +50,8 @@
 
             <ImageView
                 android:id="@+id/main_first_img"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_gravity="center"
                 android:src="@mipmap/img_home_pressed" />
 
@@ -61,11 +61,37 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:gravity="center"
-                android:text="@string/xmain_table_shouye"
+                android:text="@string/main_tab_wallet"
                 android:textSize="10dp" />
 
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/main_mall_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/main_mall_img"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:src="@mipmap/icon_mall_unpressed" />
+
+            <TextView
+                android:id="@+id/main_mall_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:textColor="@color/_807e8c"
+                android:text="@string/xmain_tab_mall"
+                android:textSize="10dp" />
+
+        </LinearLayout>
         <LinearLayout
             android:id="@+id/main_second_layout"
             android:layout_width="0dp"
@@ -76,8 +102,8 @@
 
             <ImageView
                 android:id="@+id/main_second_img"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_gravity="center"
                 android:src="@mipmap/img_fill_unpressed" />
 
@@ -130,8 +156,8 @@
 
             <ImageView
                 android:id="@+id/main_four_img"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_gravity="center"
                 android:src="@mipmap/img_mine_unpressed" />
 

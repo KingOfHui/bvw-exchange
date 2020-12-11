@@ -933,5 +933,7 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="no_miners">no miners</string>
     <string name="unknown">unknown</string>
     <string name="get_pledge_address_failed">Get pledge address failed</string>
+    <string name="xmain_tab_mall">Mall</string>
+    <string name="main_tab_wallet">Wallet</string>
 
 </resources>

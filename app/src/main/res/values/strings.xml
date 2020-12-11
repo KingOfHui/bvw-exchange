@@ -970,4 +970,6 @@
     <string name="no_miners">您无矿机</string>
     <string name="unknown">未知状态</string>
     <string name="get_pledge_address_failed">获取地址失败~</string>
+    <string name="xmain_tab_mall">商城</string>
+    <string name="main_tab_wallet">钱包</string>
 </resources>
