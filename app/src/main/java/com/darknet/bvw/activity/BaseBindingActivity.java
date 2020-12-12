@@ -10,8 +10,10 @@ import android.view.inputmethod.InputMethodManager;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.darknet.bvw.MyApp;
+import com.darknet.bvw.common.BaseViewModel;
 import com.darknet.bvw.view.CustomDialog;
 
 import butterknife.ButterKnife;
@@ -34,6 +36,7 @@ public abstract class BaseBindingActivity<BINDING extends ViewDataBinding> exten
         Log.d(TAG, "onCreate");
 //        setContentView(getLayoutId());
         mBinding = DataBindingUtil.setContentView(this, getLayoutId());
+        mBinding.setLifecycleOwner(this);
         ButterKnife.bind(this);
         AtyContainer.getInstance().addActivity(this);
         mAppContext = MyApp.getInstance();
@@ -54,6 +57,12 @@ public abstract class BaseBindingActivity<BINDING extends ViewDataBinding> exten
      */
     public void configViews(){};
 
+    protected final <T extends BaseViewModel> T getViewModel(Class<T> viewModelClass) {
+        T viewModel = new ViewModelProvider(this,
+                new ViewModelProvider.AndroidViewModelFactory(getApplication())).get(
+                viewModelClass);
+        return viewModel;
+    }
 
     // dialog
     public CustomDialog getDialog() {

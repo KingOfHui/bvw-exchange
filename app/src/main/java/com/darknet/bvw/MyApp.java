@@ -14,6 +14,7 @@ import com.darknet.bvw.db.MyDBHelper;
 import com.darknet.bvw.util.EnvironmentUtil;
 import com.darknet.bvw.util.Language;
 import com.darknet.bvw.util.SharedPreferencesUtil;
+import com.darknet.bvw.util.SmartRefreshLayoutInitializer;
 import com.darknet.bvw.util.UserAgentIntercepter;
 import com.darknet.bvw.util.language.LocalManageUtil;
 import com.darknet.bvw.util.language.SPUtil;
@@ -103,6 +104,7 @@ public class MyApp extends Application {
             initDb();
             //网络初始化
             initOkGo();
+            SmartRefreshLayoutInitializer.init();
         }
 
     }
