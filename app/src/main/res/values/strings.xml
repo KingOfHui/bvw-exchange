@@ -972,4 +972,8 @@
     <string name="get_pledge_address_failed">获取地址失败~</string>
     <string name="xmain_tab_mall">商城</string>
     <string name="main_tab_wallet">钱包</string>
+    <string name="order_all">全部订单</string>
+    <string name="order_to_be_delivered">待发货</string>
+    <string name="order_to_be_taken">待收货</string>
+    <string name="order_to_be_paid">待付款</string>
 </resources>

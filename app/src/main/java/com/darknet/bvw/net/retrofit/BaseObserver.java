@@ -1,27 +1,32 @@
 package com.darknet.bvw.net.retrofit;
 
 
-
+import com.darknet.bvw.common.BaseViewModel;
 import com.darknet.bvw.net.retrofit.errorhandler.ExceptionHandlerUtil;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
 public class BaseObserver<T> implements Observer<T> {
-//    MvvmBaseModel baseModel;
+
+    BaseViewModel mViewModel;
     MvvmNetworkObserver<T> mvvmNetworkObserver;
 
-    public BaseObserver(/*MvvmBaseModel baseModel,*/ MvvmNetworkObserver<T> mvvmNetworkObserver) {
-//        this.baseModel = baseModel;
+    public BaseObserver(MvvmNetworkObserver<T> mvvmNetworkObserver) {
+        this(null, mvvmNetworkObserver);
+    }
+
+    public BaseObserver(BaseViewModel viewModel, MvvmNetworkObserver<T> mvvmNetworkObserver) {
+        mViewModel = viewModel;
         this.mvvmNetworkObserver = mvvmNetworkObserver;
     }
 
     @Override
     public void onSubscribe(Disposable d) {
 
-//        if (baseModel != null) {
-//            baseModel.addDisposable(d);
-//        }
+        if (mViewModel != null) {
+            mViewModel.addDisposable(d);
+        }
     }
 
     @Override
@@ -34,7 +39,7 @@ public class BaseObserver<T> implements Observer<T> {
         if (e instanceof ExceptionHandlerUtil.ResponseThrowable) {
             mvvmNetworkObserver.onFailure(e);
         } else {
-            mvvmNetworkObserver.onFailure(new ExceptionHandlerUtil.ResponseThrowable(e,ExceptionHandlerUtil.ERROR.UNKNOWN));
+            mvvmNetworkObserver.onFailure(new ExceptionHandlerUtil.ResponseThrowable(e, ExceptionHandlerUtil.ERROR.UNKNOWN));
         }
     }
 

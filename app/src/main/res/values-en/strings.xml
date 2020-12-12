@@ -935,5 +935,9 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="get_pledge_address_failed">Get pledge address failed</string>
     <string name="xmain_tab_mall">Mall</string>
     <string name="main_tab_wallet">Wallet</string>
+    <string name="order_all">All Orders</string>
+    <string name="order_to_be_delivered">Wait Delivery</string>
+    <string name="order_to_be_taken">Wait Receive</string>
+    <string name="order_to_be_paid">Wait Paid</string>
 
 </resources>
