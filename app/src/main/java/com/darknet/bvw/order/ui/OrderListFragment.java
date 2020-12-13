@@ -1,7 +1,8 @@
 package com.darknet.bvw.order.ui;
 
-import androidx.databinding.ViewDataBinding;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
 import com.darknet.bvw.R;
 import com.darknet.bvw.common.BaseBindingFragment;
 import com.darknet.bvw.databinding.FragmentOrderListBindingImpl;
@@ -20,7 +21,6 @@ public class OrderListFragment extends BaseBindingFragment<OrderListViewModel, F
     }
     @Override
     public int setLayoutResId() {
-//        mDataBinding.setVm(mViewModel);
         return R.layout.fragment_order_list;
     }
 
@@ -30,6 +30,27 @@ public class OrderListFragment extends BaseBindingFragment<OrderListViewModel, F
     }
 
     @Override
-    protected void initData() {
+    protected void setDataToBinding() {
+        super.setDataToBinding();
+        OrderListAdapter orderListAdapter = new OrderListAdapter();
+        mDataBinding.setAdapter(orderListAdapter);
     }
+
+    @Override
+    protected void initData() {
+        mViewModel.refresh();
+
+    }
+
+    public static class OrderListAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
+        public OrderListAdapter() {
+            super(R.layout.item_order_list);
+        }
+
+        @Override
+        protected void convert(BaseViewHolder helper, String item) {
+            helper.setText(R.id.tv, item);
+        }
+    }
+
 }

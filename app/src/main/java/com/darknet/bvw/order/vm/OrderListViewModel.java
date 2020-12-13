@@ -14,13 +14,16 @@ import com.darknet.bvw.net.retrofit.BIWNetworkApi;
 import com.darknet.bvw.net.retrofit.BaseObserver;
 import com.darknet.bvw.net.retrofit.MvvmNetworkObserver;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @ClassName OrderListViewModel
  * @Description
  * @Author dinghui
  * @Date 2020/12/12 0012 16:51
  */
-public class OrderListViewModel extends BaseLoadMoreViewModel {
+public class OrderListViewModel extends BaseLoadMoreViewModel<String> {
     public OrderListViewModel(@NonNull Application application) {
         super(application);
     }
@@ -43,5 +46,11 @@ public class OrderListViewModel extends BaseLoadMoreViewModel {
                                     }
                                 }
                         )));
+
+        List<String> strings = new ArrayList<>();
+        for (int i = 0; i < 20; i++) {
+            strings.add("position : " + i);
+        }
+        notifyResultToTopViewModel(strings,20);
     }
 }

@@ -39,13 +39,13 @@ public abstract class BaseBindingFragment<VM extends BaseViewModel, DB extends V
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mViewModel = initViewModel();
         mDataBinding = DataBindingUtil.inflate(inflater, setLayoutResId(), container, false);
         mDataBinding.setLifecycleOwner(this);
+        mViewModel = initViewModel();
         mDataBinding.setVariable(BR.vm, mViewModel);
+        setDataToBinding();
         return mDataBinding.getRoot();
     }
-
 
     @Override
     public void onResume() {
@@ -60,6 +60,9 @@ public abstract class BaseBindingFragment<VM extends BaseViewModel, DB extends V
     public void onDestroyView() {
         super.onDestroyView();
         isLoaded = false;
+    }
+
+    protected void setDataToBinding() {
     }
 
     private void onFragmentFirstVisible() {
