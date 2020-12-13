@@ -27,6 +27,7 @@ import com.darknet.bvw.config.ConfigNetWork;
 import com.darknet.bvw.config.UrlPath;
 import com.darknet.bvw.db.Entity.ETHWalletModel;
 import com.darknet.bvw.db.WalletDaoUtils;
+import com.darknet.bvw.mall.ui.MallFragment;
 import com.darknet.bvw.model.event.CloseViewEvent;
 import com.darknet.bvw.model.event.PushEvent;
 import com.darknet.bvw.model.event.TradeEvent;
@@ -91,7 +92,7 @@ public class XchainMainThreeActivity extends BaseActivity implements View.OnClic
         Fragment mineFragment = new MineFragment();
 
         fragmentList.add(moneyFragment);
-        fragmentList.add(new FirstFragment());
+        fragmentList.add(MallFragment.newInstance());
         fragmentList.add(findFragment);
 //        fragmentList.add(academicFragment);
         fragmentList.add(mineFragment);

@@ -20,8 +20,8 @@ public abstract class BaseLoadMoreViewModel<DATA> extends BaseViewModel {
     private final int INIT_PAGE_NUM = 1;
     private int mPageNum = INIT_PAGE_NUM;
     private boolean mIsClear = true;
-    public MutableLiveData<Boolean> refreshing = new MutableLiveData<>(); //是否正在刷新
-    public MutableLiveData<Boolean> hasMore = new MutableLiveData<>(); //是否有更多数据
+    protected MutableLiveData<Boolean> refreshing = new MutableLiveData<>(); //是否正在刷新
+    protected MutableLiveData<Boolean> hasMore = new MutableLiveData<>(); //是否有更多数据
 
     private MutableLiveData<List<DATA>> mListLive = new MutableLiveData<>(); //列表数据
 
@@ -29,6 +29,20 @@ public abstract class BaseLoadMoreViewModel<DATA> extends BaseViewModel {
         super(application);
     }
 
+
+    public LiveData<Boolean> getRefreshing() {
+        if (refreshing.getValue() == null) {
+            refreshing.setValue(false);
+        }
+        return refreshing;
+    }
+
+    public LiveData<Boolean> getHasMore() {
+        if (hasMore.getValue() == null) {
+            hasMore.setValue(true);
+        }
+        return hasMore;
+    }
 
     public LiveData<List<DATA>> getListLive() {
         if (mListLive.getValue() == null) {

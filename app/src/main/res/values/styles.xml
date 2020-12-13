@@ -247,4 +247,20 @@
     </style>
 <!--        <item name="android:textStyle">bold</item>-->
 
+    <style name="NormalTabLayoutStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">34dp</item>
+        <item name="tabGravity">center</item>
+        <item name="tabMinWidth">@dimen/dimen_20dp</item>
+        <item name="tabIndicator">@drawable/tab_indicator</item>
+        <item name="tabIndicatorColor">@color/_01FCDA</item>
+        <item name="tabIndicatorFullWidth">false</item>
+        <item name="tabIndicatorHeight">2dp</item>
+        <item name="tabMaxWidth">0dp</item>
+        <item name="tabMode">scrollable</item>
+        <item name="tabSelectedTextColor">@color/_01FCDA</item>
+        <item name="tabTextAppearance">@style/IncomeRecordTabLayoutText</item>
+        <item name="tabTextColor">#C7C7C7</item>
+        <item name="tabRippleColor">@null</item>
+    </style>
 </resources>

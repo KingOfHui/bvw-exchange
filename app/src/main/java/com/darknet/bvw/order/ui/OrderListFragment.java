@@ -4,6 +4,7 @@ import androidx.databinding.ViewDataBinding;
 
 import com.darknet.bvw.R;
 import com.darknet.bvw.common.BaseBindingFragment;
+import com.darknet.bvw.databinding.FragmentOrderListBindingImpl;
 import com.darknet.bvw.order.vm.OrderListViewModel;
 
 /**
@@ -12,13 +13,14 @@ import com.darknet.bvw.order.vm.OrderListViewModel;
  * @Author dinghui
  * @Date 2020/12/12 0012 17:07
  */
-public class OrderListFragment extends BaseBindingFragment<OrderListViewModel, ViewDataBinding> {
+public class OrderListFragment extends BaseBindingFragment<OrderListViewModel, FragmentOrderListBindingImpl> {
 
     public static OrderListFragment newInstance() {
         return new OrderListFragment();
     }
     @Override
     public int setLayoutResId() {
+//        mDataBinding.setVm(mViewModel);
         return R.layout.fragment_order_list;
     }
 
@@ -29,6 +31,5 @@ public class OrderListFragment extends BaseBindingFragment<OrderListViewModel, V
 
     @Override
     protected void initData() {
-
     }
 }

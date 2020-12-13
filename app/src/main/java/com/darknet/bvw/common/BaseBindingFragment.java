@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
+import androidx.databinding.library.baseAdapters.BR;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -38,9 +39,10 @@ public abstract class BaseBindingFragment<VM extends BaseViewModel, DB extends V
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        mViewModel = initViewModel();
         mDataBinding = DataBindingUtil.inflate(inflater, setLayoutResId(), container, false);
         mDataBinding.setLifecycleOwner(this);
-        mViewModel = initViewModel();
+        mDataBinding.setVariable(BR.vm, mViewModel);
         return mDataBinding.getRoot();
     }
 

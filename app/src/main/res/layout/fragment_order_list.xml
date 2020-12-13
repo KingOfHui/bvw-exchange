@@ -4,9 +4,9 @@
 
     <data>
 
-        <variable
-            name="vm"
-            type="com.darknet.bvw.order.vm.OrderListViewModel" />
+<!--        <variable-->
+<!--            name="vm"-->
+<!--            type="com.darknet.bvw.order.vm.OrderListViewModel" />-->
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,10 +16,6 @@
         <com.scwang.smartrefresh.layout.SmartRefreshLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            onRefreshListener="@{()->vm.refresh()}"
-            onLoadMoreListener="@{()->vm.tryToLoadNext()}"
-            refreshing="@{vm.refreshing}"
-            hasMore="@{vm.hasMore}"
             app:layout_constraintTop_toTopOf="parent">
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
