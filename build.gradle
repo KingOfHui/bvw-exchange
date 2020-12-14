@@ -1,7 +1,40 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+static Properties getLocalProperties(Project project){
+    Properties properties = new Properties()
+    InputStream inputStream = project.rootProject.file('local.properties').newDataInputStream()
+    properties.load( inputStream )
+    return properties
+}
 
 buildscript {
+
+    Properties localProperties = new Properties()
+    InputStream inputStream = project.rootProject.file('local.properties').newDataInputStream()
+    localProperties.load( inputStream )
+    def _username = localProperties.get("username")
+    def _password = localProperties.get("password")
+    print _password
+    print _username
     repositories {
+        /*maven {
+            url uri('./maven-local')
+        }*/
+
+        maven {
+            credentials {
+                username "$_username"
+                password "$_password"
+            }
+            url 'https://packages.aliyun.com/maven/repository/2057525-release-vGOFA8/'
+        }
+        maven {
+            credentials {
+                username "$_username"
+                password "$_password"
+            }
+            url 'https://packages.aliyun.com/maven/repository/2057525-snapshot-UNzxBP/'
+        }
+
         maven { url 'https://maven.aliyun.com/repository/google'}
         maven { url 'https://maven.aliyun.com/repository/jcenter'}
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public'}
@@ -20,8 +53,32 @@ buildscript {
     }
 }
 
+Properties localProperties = getLocalProperties(project)
+def _username = localProperties.get("username")
+def _password = localProperties.get("password")
+
 allprojects {
     repositories {
+
+        maven {
+            credentials {
+                username "$_username"
+                password "$_password"
+            }
+            url 'https://packages.aliyun.com/maven/repository/2057525-release-vGOFA8/'
+        }
+        maven {
+            credentials {
+                username "$_username"
+                password "$_password"
+            }
+            url 'https://packages.aliyun.com/maven/repository/2057525-snapshot-UNzxBP/'
+        }
+
+       /* maven {
+            url uri(new File(rootDir, "maven-local"))
+        }*/
+
         maven { url 'https://maven.aliyun.com/repository/google'}
         maven { url 'https://maven.aliyun.com/repository/jcenter'}
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public'}

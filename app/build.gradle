@@ -238,6 +238,7 @@ dependencies {
     api 'com.squareup.retrofit2:converter-gson:2.3.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
     api 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    implementation 'com.cq.lib:activity-var:0.0.6-androidx-has-source-SNAPSHOT'
 }
 
 multiLanguages {

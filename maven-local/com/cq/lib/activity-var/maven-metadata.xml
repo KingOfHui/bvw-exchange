@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.cq.lib</groupId>
+  <artifactId>activity-var</artifactId>
+  <versioning>
+    <versions>
+      <version>0.0.6-androidx-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20201214063215</lastUpdated>
+  </versioning>
+</metadata>
