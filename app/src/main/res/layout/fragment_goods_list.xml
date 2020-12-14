@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <variable
+            name="vm"
+            type="com.darknet.bvw.mall.vm.GoodsListViewModel" />
+
+        <variable
+            name="adapter"
+            type="com.darknet.bvw.mall.ui.GoodsListFragment.Adapter" />
 
     </data>
 
@@ -10,16 +17,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tv"
-            android:textColor="@color/white"
-            android:textSize="@dimen/dimen_45dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            />
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/refreshLayout"
+            hasMore="@{vm.hasMore}"
+            onLoadMoreListener="@{()->vm.tryToLoadNext()}"
+            onRefreshListener="@{()->vm.refresh()}"
+            refreshing="@{vm.refreshing}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv"
+                adapter="@{adapter}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
