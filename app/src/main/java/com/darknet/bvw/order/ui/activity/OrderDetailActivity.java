@@ -1,5 +1,7 @@
 package com.darknet.bvw.order.ui.activity;
 
+import android.view.View;
+
 import com.darknet.bvw.R;
 import com.darknet.bvw.activity.BaseBindingActivity;
 import com.darknet.bvw.databinding.ActivityOrderDetailBinding;
@@ -18,6 +20,8 @@ public class OrderDetailActivity extends BaseBindingActivity<ActivityOrderDetail
 
     @Override
     public void initView() {
+        mBinding.layoutTitle.layBack.setOnClickListener(v -> finish());
+        mBinding.layoutTitle.title.setText(R.string.order_detail);
 
     }
 

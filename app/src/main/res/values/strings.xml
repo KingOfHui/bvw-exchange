@@ -976,4 +976,5 @@
     <string name="order_to_be_delivered">待发货</string>
     <string name="order_to_be_taken">待收货</string>
     <string name="order_to_be_paid">待付款</string>
+    <string name="order_detail">订单详情</string>
 </resources>

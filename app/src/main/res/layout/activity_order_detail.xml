@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -7,7 +8,37 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/color_bg_181523">
+        <include
+            android:id="@+id/layout_title"
+            layout="@layout/lay_head_back_binding" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvOrderStatus"
+            app:layout_constraintTop_toBottomOf="@id/layout_title"
+            android:text="@string/order_to_be_paid"
+            android:textColor="@color/color_text_00FBD9"
+            android:textSize="@dimen/dimen_20dp"
+            android:layout_marginStart="@dimen/dimen_40dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvOrderTime"
+            app:layout_constraintTop_toBottomOf="@id/tvOrderStatus"
+            app:layout_constraintLeft_toLeftOf="@id/tvOrderStatus"
+            android:text="剩余23小时自动关闭"
+            android:textColor="@color/white"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:textSize="@dimen/sp_12"
+            />
+<!--        <ImageView-->
+<!--            android:layout_width="@dimen/dimen_45dp"-->
+<!--            android:layout_height="@dimen/dimen_45dp"-->
+<!--            android:src="@mipmap/icon_success"-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

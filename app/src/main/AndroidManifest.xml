@@ -651,6 +651,7 @@
         <activity android:name=".activity.MyInviteActivity" />
         <activity android:name=".activity.IncomeRecordActivity" />
         <activity android:name=".order.ui.activity.OrderListActivity" />
+        <activity android:name=".order.ui.activity.OrderDetailActivity" />
 
         <receiver
             android:name=".receiver.PushReceiver"

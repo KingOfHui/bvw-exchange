@@ -939,5 +939,6 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="order_to_be_delivered">Wait Delivery</string>
     <string name="order_to_be_taken">Wait Receive</string>
     <string name="order_to_be_paid">Wait Paid</string>
+    <string name="order_detail">Order Detail</string>
 
 </resources>
