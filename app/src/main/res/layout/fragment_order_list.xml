@@ -9,7 +9,7 @@
             type="com.darknet.bvw.order.vm.OrderListViewModel" />
         <variable
             name="adapter"
-            type="com.darknet.bvw.order.ui.OrderListFragment.OrderListAdapter" />
+            type="com.darknet.bvw.order.ui.fragment.OrderListFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -26,6 +26,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.recyclerview.widget.RecyclerView
+                android:paddingTop="@dimen/dimen_5dp"
                 submitList="@{vm.listLive}"
                 adapter="@{adapter}"
                 android:layout_width="match_parent"

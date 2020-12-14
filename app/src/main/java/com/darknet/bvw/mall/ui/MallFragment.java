@@ -1,15 +1,12 @@
 package com.darknet.bvw.mall.ui;
 
-import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
 
 import com.darknet.bvw.R;
 import com.darknet.bvw.base.BaseFragmentPagerAdapter;
 import com.darknet.bvw.common.BaseBindingFragment;
-import com.darknet.bvw.common.BaseFragment;
 import com.darknet.bvw.databinding.FragmentMallBindingImpl;
 import com.darknet.bvw.mall.vm.MallViewModel;
-import com.darknet.bvw.order.ui.OrderListFragment;
 
 /**
  * @ClassName MallFragment

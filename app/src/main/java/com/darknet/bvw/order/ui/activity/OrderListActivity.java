@@ -1,25 +1,16 @@
-package com.darknet.bvw.order.ui;
+package com.darknet.bvw.order.ui.activity;
 
 import android.content.Context;
 import android.content.Intent;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
-import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
 
 import com.darknet.bvw.R;
 import com.darknet.bvw.activity.BaseBindingActivity;
-import com.darknet.bvw.activity.fragment.IncomeRecordFragment;
-import com.darknet.bvw.activity.fragment.IncomeRecordFragment2;
 import com.darknet.bvw.base.BaseFragmentPagerAdapter;
-import com.darknet.bvw.common.BaseBindingFragment;
-import com.darknet.bvw.common.BaseFragment;
 import com.darknet.bvw.databinding.ActivityOrderListBinding;
+import com.darknet.bvw.order.ui.fragment.OrderListFragment;
 import com.darknet.bvw.order.vm.OrderListViewModel;
-import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
-
-import jnr.ffi.annotations.In;
 
 /**
  * @ClassName OrderListActivity

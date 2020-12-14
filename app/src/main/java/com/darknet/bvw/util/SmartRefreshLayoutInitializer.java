@@ -22,7 +22,7 @@ public class SmartRefreshLayoutInitializer {
 			layout.setEnableOverScrollBounce(true);
 			layout.setEnableLoadMoreWhenContentNotFull(true);
 			layout.setEnableScrollContentWhenRefreshed(true);
-			layout.setPrimaryColorsId(R.color.white, R.color.colorPrimary);
+			layout.setPrimaryColorsId(R.color.controller_bg_light, R.color.white);
 		});
 
 		SmartRefreshLayout.setDefaultRefreshFooterCreator((context, layout) -> new ClassicsFooter(context));

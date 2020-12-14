@@ -20,12 +20,11 @@ import com.darknet.bvw.R;
 import com.darknet.bvw.activity.AboutActivity;
 import com.darknet.bvw.activity.AccountManageActivity;
 import com.darknet.bvw.activity.ContactPeopleActivity;
-import com.darknet.bvw.activity.HelpActivity;
 import com.darknet.bvw.activity.MessageCenterActivity;
 import com.darknet.bvw.activity.SettingActivity;
 import com.darknet.bvw.db.Entity.ETHWalletModel;
 import com.darknet.bvw.db.WalletDaoUtils;
-import com.darknet.bvw.order.ui.OrderListActivity;
+import com.darknet.bvw.order.ui.activity.OrderListActivity;
 import com.darknet.bvw.util.UserSPHelper;
 
 

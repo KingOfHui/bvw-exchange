@@ -1,4 +1,4 @@
-package com.darknet.bvw.order.ui;
+package com.darknet.bvw.order.ui.fragment;
 
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -7,6 +7,7 @@ import com.darknet.bvw.R;
 import com.darknet.bvw.common.BaseBindingFragment;
 import com.darknet.bvw.databinding.FragmentOrderListBindingImpl;
 import com.darknet.bvw.order.vm.OrderListViewModel;
+import com.darknet.bvw.util.view.ViewUtil;
 
 /**
  * @ClassName OrderListFragment
@@ -49,7 +50,8 @@ public class OrderListFragment extends BaseBindingFragment<OrderListViewModel, F
 
         @Override
         protected void convert(BaseViewHolder helper, String item) {
-            helper.setText(R.id.tv, item);
+//            helper.setText(R.id.tv, item);
+            ViewUtil.setTextViewDeleteLine(helper.getView(R.id.tvOriginPrice));
         }
     }
 
