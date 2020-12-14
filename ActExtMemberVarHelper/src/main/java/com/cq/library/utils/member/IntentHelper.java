@@ -36,7 +36,12 @@ public class IntentHelper {
 			, @NonNull final Intent intent, @NonNull final ActivityResult result){
 		final ActivityMemberVarExtSupportFragment fragment = ActExtMemberVarHelper.getSupportFragment(activity);
 		if(!fragment.isAdded()){
-			mHandler.post(() -> startActivityForResultImpl(activity, intent, getRequestCode(), result, fragment));
+			mHandler.post(new Runnable() {
+				@Override
+				public void run() {
+					startActivityForResultImpl(activity, intent, getRequestCode(), result, fragment);
+				}
+			});
 		}else {
 			startActivityForResultImpl(activity, intent, getRequestCode(), result, fragment);
 		}

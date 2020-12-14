@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata modelVersion="1.1.0">
+  <groupId>com.cq.lib</groupId>
+  <artifactId>activity-var</artifactId>
+  <version>0.0.6-androidx-SNAPSHOT</version>
+  <versioning>
+    <snapshot>
+      <timestamp>20201214.063215</timestamp>
+      <buildNumber>1</buildNumber>
+    </snapshot>
+    <lastUpdated>20201214063215</lastUpdated>
+    <snapshotVersions>
+      <snapshotVersion>
+        <extension>aar</extension>
+        <value>0.0.6-androidx-20201214.063215-1</value>
+        <updated>20201214063215</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <extension>pom</extension>
+        <value>0.0.6-androidx-20201214.063215-1</value>
+        <updated>20201214063215</updated>
+      </snapshotVersion>
+    </snapshotVersions>
+  </versioning>
+</metadata>

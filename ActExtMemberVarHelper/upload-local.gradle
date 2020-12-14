@@ -1,0 +1,14 @@
+def artifactId = "${project.ext.artifactId}"
+def lib_version = "${project.ext.lib_version}"
+def lib_group = "${project.ext.lib_group}"
+
+apply plugin: 'maven'
+
+uploadArchives {
+    repositories.mavenDeployer {
+        repository(url: uri('../maven-local'))
+        pom.groupId = "$lib_group"
+        pom.artifactId = "$artifactId"
+        pom.version = "$lib_version"
+    }
+}

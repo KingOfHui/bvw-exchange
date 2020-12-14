@@ -1,0 +1,25 @@
+def artifactId = "${project.ext.artifactId}"
+def lib_version = "${project.ext.lib_version}"
+def lib_group = "${project.ext.lib_group}"
+apply plugin: 'maven'
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: 'https://packages.aliyun.com/maven/repository/2057525-release-vGOFA8/') {
+                authentication(
+                        userName: "$rootProject.userName",
+                        password: "$rootProject.password"
+                )
+            }
+            snapshotRepository(url: 'https://packages.aliyun.com/maven/repository/2057525-snapshot-UNzxBP/') {
+                authentication(
+                        userName: "$rootProject.userName",
+                        password: "$rootProject.password"
+                )
+            }
+            pom.version = "$lib_version"
+            pom.artifactId = "$artifactId"
+            pom.groupId = "$lib_group"
+        }
+    }
+}
