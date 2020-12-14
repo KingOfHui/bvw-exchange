@@ -1,4 +1,4 @@
-include ':ActExtMemberVarHelper'
+//include ':ActExtMemberVarHelper'
 include ':maven-local'
 include ':app',
         ':client',

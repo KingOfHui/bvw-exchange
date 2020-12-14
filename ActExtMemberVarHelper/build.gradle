@@ -32,7 +32,7 @@ dependencies {
 }
 
 ext {
-    lib_version = "0.0.6-androidx-SNAPSHOT"
+    lib_version = "0.0.6-androidx-has-source-SNAPSHOT"
     lib_group = "com.cq.lib"
     artifactId = "activity-var"
 }

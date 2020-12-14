@@ -1,8 +1,36 @@
+apply plugin: 'maven'
+
 static Properties getLocalProperties(Project project){
     Properties properties = new Properties()
     InputStream inputStream = project.rootProject.file('local.properties').newDataInputStream()
     properties.load( inputStream )
     return properties
+}
+
+task androidJavadocs(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    failOnError false// 忽略错误配置
+}
+
+task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) {
+    classifier = 'javadoc'
+    from androidJavadocs.destinationDir
+}
+
+task androidSourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.srcDirs
+}
+
+artifacts {
+    archives androidSourcesJar
+    archives androidJavadocsJar
+}
+
+task javadoc(type: Javadoc) {
+    options.encoding "UTF-8"
+    options.charSet 'UTF-8'
 }
 
 Properties localProperties = getLocalProperties(project)
@@ -12,7 +40,7 @@ def password = localProperties.get("password")
 def artifactId = "${project.ext.artifactId}"
 def lib_version = "${project.ext.lib_version}"
 def lib_group = "${project.ext.lib_group}"
-apply plugin: 'maven'
+
 uploadArchives {
     repositories {
         mavenDeployer {
