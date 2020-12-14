@@ -61,7 +61,11 @@
 
     <declare-styleable name="HorizontalLineView">
         <attr name="left_text" format="string" />
+        <attr name="left_text_size" format="reference|dimension" />
+        <attr name="left_text_color" format="reference|color" />
         <attr name="right_text" format="string" />
+        <attr name="right_text_size" format="reference|dimension" />
+        <attr name="right_text_color" format="reference|color" />
         <attr name="right_image" format="reference" />
         <attr name="img_visible" format="boolean"/>
     </declare-styleable>

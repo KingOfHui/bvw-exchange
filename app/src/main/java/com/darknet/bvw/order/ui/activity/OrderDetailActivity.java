@@ -1,5 +1,7 @@
 package com.darknet.bvw.order.ui.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 
 import com.darknet.bvw.R;
@@ -28,5 +30,9 @@ public class OrderDetailActivity extends BaseBindingActivity<ActivityOrderDetail
     @Override
     public void initDatas() {
 
+    }
+
+    public static void start(Context context) {
+        context.startActivity(new Intent(context, OrderDetailActivity.class));
     }
 }

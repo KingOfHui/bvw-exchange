@@ -5,6 +5,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import com.darknet.bvw.R;
+import com.darknet.bvw.util.EnvironmentUtil;
 import com.darknet.bvw.util.TipHelper;
 
 /**
@@ -49,6 +51,10 @@ public class HorizontalLineView extends LinearLayout {
         mIvRight = view.findViewById(R.id.iv_right);
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.HorizontalLineView);
         String leftText = ta.getString(R.styleable.HorizontalLineView_left_text);
+        int leftTextColor = ta.getColor(R.styleable.HorizontalLineView_left_text_color, 0);
+        float leftTextSize = ta.getDimension(R.styleable.HorizontalLineView_left_text_size, 0);
+        int rightTextColor = ta.getColor(R.styleable.HorizontalLineView_right_text_color, 0);
+        float rightTextSize = ta.getDimension(R.styleable.HorizontalLineView_right_text_size, 0);
         String rightText = ta.getString(R.styleable.HorizontalLineView_right_text);
         int rightImageRes = ta.getResourceId(R.styleable.HorizontalLineView_right_image, R.mipmap.icon_copy);
         boolean visible = ta.getBoolean(R.styleable.HorizontalLineView_img_visible, false);
@@ -56,6 +62,19 @@ public class HorizontalLineView extends LinearLayout {
         mTvRight.setText(rightText);
         mIvRight.setVisibility(visible ? VISIBLE : GONE);
         mIvRight.setImageResource(rightImageRes);
+        if (leftTextColor != 0) {
+            mTvLeft.setTextColor(leftTextColor);
+        }
+        if (leftTextSize != 0) {
+            mTvLeft.setTextSize(leftTextSize);
+        }
+        if (rightTextColor != 0) {
+            mTvRight.setTextColor(rightTextColor);
+        }
+        if (rightTextSize != 0) {
+            mTvRight.setTextSize(rightTextSize);
+        }
+
         ta.recycle();
     }
 

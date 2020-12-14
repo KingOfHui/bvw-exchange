@@ -35,7 +35,6 @@
             android:paddingLeft="10dp"
             android:singleLine="true"
             android:ellipsize="end"
-            android:textStyle="bold"
             android:layout_marginTop="@dimen/dimen_20dp"
             android:textColor="@color/white"
             android:textSize="@dimen/dimen_20dp" />

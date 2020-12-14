@@ -940,5 +940,16 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="order_to_be_taken">Wait Receive</string>
     <string name="order_to_be_paid">Wait Paid</string>
     <string name="order_detail">Order Detail</string>
+    <string name="order_close_time">剩余%s自动关闭</string>
+    <string name="order_submit_time">下单时间：%s</string>
+    <string name="order_number">订单号：%s</string>
+    <string name="order_freight">运费：</string>
+    <string name="order_discounts">优惠：</string>
+    <string name="order_money_off">满减：</string>
+    <string name="order_total_price">合计：</string>
+    <string name="order_to_pay">立即支付</string>
+    <string name="order_count_number">共 %s 件商品</string>
+    <string name="to_pay">Pay</string>
+    <string name="order_cancel">取消订单</string>
 
 </resources>
