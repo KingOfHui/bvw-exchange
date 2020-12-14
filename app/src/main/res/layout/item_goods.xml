@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:background="#181523"
+        android:paddingBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.darknet.bvw.view.RoundImageView
+            android:id="@+id/iv_icon"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="175dp"/>
+        <TextView
+            android:id="@+id/tag"
+            app:layout_constraintLeft_toLeftOf="@id/iv_icon"
+            app:layout_constraintTop_toTopOf="@id/iv_icon"
+            android:paddingStart="5dp"
+            android:paddingEnd="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"/>
+        <TextView
+            android:id="@+id/tv_name"
+            app:layout_constraintTop_toBottomOf="@id/iv_icon"
+            app:layout_constraintLeft_toLeftOf="@id/iv_icon"
+            android:layout_marginTop="10dp"
+            android:text="商品名称"
+            android:textSize="11sp"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tv_price"
+            app:layout_constraintTop_toBottomOf="@id/tv_name"
+            app:layout_constraintLeft_toLeftOf="@id/iv_icon"
+            android:layout_marginTop="15dp"
+            android:text="USDT 198.0"
+            android:textSize="15sp"
+            android:textColor="#01FCDA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tv_number"
+            app:layout_constraintTop_toTopOf="@id/tv_price"
+            app:layout_constraintBottom_toBottomOf="@id/tv_price"
+            app:layout_constraintLeft_toRightOf="@id/tv_price"
+            android:layout_marginLeft="5dp"
+            android:text="2002 人付款"
+            android:textSize="9sp"
+            android:textColor="#77FFFFFF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
