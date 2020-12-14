@@ -5,7 +5,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.darknet.bvw.R;
 import com.darknet.bvw.common.BaseBindingFragment;
-import com.darknet.bvw.databinding.FragmentOrderListBindingImpl;
+import com.darknet.bvw.databinding.FragmentOrderListBinding;
 import com.darknet.bvw.order.vm.OrderListViewModel;
 import com.darknet.bvw.util.view.ViewUtil;
 
@@ -15,7 +15,7 @@ import com.darknet.bvw.util.view.ViewUtil;
  * @Author dinghui
  * @Date 2020/12/12 0012 17:07
  */
-public class OrderListFragment extends BaseBindingFragment<OrderListViewModel, FragmentOrderListBindingImpl> {
+public class OrderListFragment extends BaseBindingFragment<OrderListViewModel, FragmentOrderListBinding> {
 
     public static OrderListFragment newInstance() {
         return new OrderListFragment();
