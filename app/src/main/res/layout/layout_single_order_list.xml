@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
@@ -79,7 +79,7 @@
             android:textSize="11dp"
             app:layout_constraintLeft_toRightOf="@id/ivGoodsImg"
             app:layout_constraintTop_toBottomOf="@id/tvGoodsName"
-            android:text="@{``}"
+            android:text="@{`cczxc`}"
             tools:text="一次性口罩 10只装" />
 
         <TextView
@@ -154,12 +154,18 @@
             app:layout_constraintBottom_toBottomOf="@id/tvCount"
             app:layout_constraintRight_toRightOf="parent" />
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvCount">
+
         <View
             android:id="@+id/line2"
             style="@style/Line_White_02"
             android:layout_marginTop="@dimen/dimen_10dp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvCount" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
             android:layout_width="@dimen/dimen_80dp"
@@ -170,12 +176,12 @@
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
             android:textColor="@color/black"
-            android:background="#00FBD9"
+            android:background="@drawable/shape_circle_rect_2"
             android:gravity="center"
             android:text="@string/to_pay"
             tools:text="去支付"
             android:textSize="@dimen/sp_12"
-            android:layout_marginTop="@dimen/dimen_20dp" />
+            android:layout_marginTop="@dimen/dimen_15dp" />
 
         <TextView
             android:layout_width="@dimen/dimen_80dp"
@@ -189,9 +195,13 @@
             android:paddingBottom="8dp"
             android:text="@string/order_cancel"
             tools:text="取消订单"
+            app:drawable_radius="@{2}"
+            app:drawable_shapeMode="@{0}"
+            app:drawable_strokeColor="@{@color/color_8236FF}"
+            app:drawable_solidColor="@{@color/color_8236FF}"
             android:textSize="@dimen/sp_12"
-            android:background="#8236FF"
             android:layout_marginEnd="5dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

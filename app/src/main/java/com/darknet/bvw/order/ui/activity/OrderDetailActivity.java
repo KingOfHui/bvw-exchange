@@ -24,7 +24,7 @@ public class OrderDetailActivity extends BaseBindingActivity<ActivityOrderDetail
     public void initView() {
         mBinding.layoutTitle.layBack.setOnClickListener(v -> finish());
         mBinding.layoutTitle.title.setText(R.string.order_detail);
-
+        mBinding.tvToPay.setOnClickListener((view)->{LogisticsTrackingActivity.start(this);});
     }
 
     @Override

@@ -5,9 +5,8 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 
-import com.darknet.bvw.common.BaseLoadMoreViewModel;
+import com.darknet.bvw.common.BaseRefreshViewModel;
 import com.darknet.bvw.common.BaseResponse;
-import com.darknet.bvw.common.BaseViewModel;
 import com.darknet.bvw.model.response.NoticeResponse;
 import com.darknet.bvw.net.retrofit.ApiInterface;
 import com.darknet.bvw.net.retrofit.BIWNetworkApi;
@@ -23,7 +22,7 @@ import java.util.List;
  * @Author dinghui
  * @Date 2020/12/12 0012 16:51
  */
-public class OrderListViewModel extends BaseLoadMoreViewModel<String> {
+public class OrderListViewModel extends BaseRefreshViewModel<String> {
     public OrderListViewModel(@NonNull Application application) {
         super(application);
     }

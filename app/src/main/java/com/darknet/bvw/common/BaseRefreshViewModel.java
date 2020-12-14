@@ -15,7 +15,7 @@ import java.util.List;
  * @Author dinghui
  * @Date 2020/11/25 0025 15:41
  */
-public abstract class BaseLoadMoreViewModel<DATA> extends BaseViewModel {
+public abstract class BaseRefreshViewModel<DATA> extends BaseViewModel {
 
     private final int INIT_PAGE_NUM = 1;
     private int mPageNum = INIT_PAGE_NUM;
@@ -25,7 +25,7 @@ public abstract class BaseLoadMoreViewModel<DATA> extends BaseViewModel {
 
     private MutableLiveData<List<DATA>> mListLive = new MutableLiveData<>(); //列表数据
 
-    public BaseLoadMoreViewModel(@NonNull Application application) {
+    public BaseRefreshViewModel(@NonNull Application application) {
         super(application);
     }
 

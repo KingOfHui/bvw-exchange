@@ -37,7 +37,6 @@ public abstract class BaseBindingActivity<BINDING extends ViewDataBinding> exten
 //        setContentView(getLayoutId());
         mBinding = DataBindingUtil.setContentView(this, getLayoutId());
         mBinding.setLifecycleOwner(this);
-        ButterKnife.bind(this);
         AtyContainer.getInstance().addActivity(this);
         mAppContext = MyApp.getInstance();
         initView();

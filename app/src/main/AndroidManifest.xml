@@ -652,6 +652,7 @@
         <activity android:name=".activity.IncomeRecordActivity" />
         <activity android:name=".order.ui.activity.OrderListActivity" />
         <activity android:name=".order.ui.activity.OrderDetailActivity" />
+        <activity android:name=".order.ui.activity.LogisticsTrackingActivity" />
 
         <receiver
             android:name=".receiver.PushReceiver"
