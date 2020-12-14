@@ -920,10 +920,10 @@
     <string name="bonus_address">收益地址</string>
     <string name="mineral_pwd">矿机密码</string>
     <string name="mineral_no">矿机编号</string>
-    <string name="my_invite_no_data">当前没有邀请的人</string>
-    <string name="total_person_no">总人数</string>
-    <string name="first_join_person_no">直接加入人数</string>
-    <string name="second_join_person_no">间接加入人数</string>
+    <string name="my_invite_no_data">当前没有邀请数据</string>
+    <string name="total_person_no">总台数</string>
+    <string name="first_join_person_no">直接加入台数</string>
+    <string name="second_join_person_no">间接加入台数</string>
     <string name="tip_invitee">被邀请人</string>
     <string name="tip_daily_capacity">日产</string>
     <string name="tip_invite_time">邀请时间</string>

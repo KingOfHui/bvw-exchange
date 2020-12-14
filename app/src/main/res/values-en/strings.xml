@@ -883,8 +883,8 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="bonus_address">Income address</string>
     <string name="mineral_pwd">Mining password</string>
     <string name="mineral_no">Miner No</string>
-    <string name="my_invite_no_data">There are no people currently invited</string>
-    <string name="total_person_no">Total number of people</string>
+    <string name="my_invite_no_data">There are no data currently invited</string>
+    <string name="total_person_no">Total number</string>
     <string name="first_join_person_no">Number of direct participants</string>
     <string name="second_join_person_no">Number of indirect participants</string>
     <string name="tip_invitee">Invitees</string>
