@@ -1,6 +1,20 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+static Properties getLocalProperties(Project project){
+    Properties properties = new Properties()
+    InputStream inputStream = project.rootProject.file('local.properties').newDataInputStream()
+    properties.load( inputStream )
+    return properties
+}
 
 buildscript {
+
+    Properties localProperties = new Properties()
+    InputStream inputStream = project.rootProject.file('local.properties').newDataInputStream()
+    localProperties.load( inputStream )
+    def _username = localProperties.get("username")
+    def _password = localProperties.get("password")
+    print _password
+    print _username
     repositories {
         /*maven {
             url uri('./maven-local')
@@ -8,15 +22,15 @@ buildscript {
 
         maven {
             credentials {
-                username '5fd6ee5fece168490ce9f552'
-                password 'hAZQ-V8nmB_o'
+                username "$_username"
+                password "$_password"
             }
             url 'https://packages.aliyun.com/maven/repository/2057525-release-vGOFA8/'
         }
         maven {
             credentials {
-                username '5fd6ee5fece168490ce9f552'
-                password 'hAZQ-V8nmB_o'
+                username "$_username"
+                password "$_password"
             }
             url 'https://packages.aliyun.com/maven/repository/2057525-snapshot-UNzxBP/'
         }
@@ -39,20 +53,24 @@ buildscript {
     }
 }
 
+Properties localProperties = getLocalProperties(project)
+def _username = localProperties.get("username")
+def _password = localProperties.get("password")
+
 allprojects {
     repositories {
 
         maven {
             credentials {
-                username '5fd6ee5fece168490ce9f552'
-                password 'hAZQ-V8nmB_o'
+                username "$_username"
+                password "$_password"
             }
             url 'https://packages.aliyun.com/maven/repository/2057525-release-vGOFA8/'
         }
         maven {
             credentials {
-                username '5fd6ee5fece168490ce9f552'
-                password 'hAZQ-V8nmB_o'
+                username "$_username"
+                password "$_password"
             }
             url 'https://packages.aliyun.com/maven/repository/2057525-snapshot-UNzxBP/'
         }

@@ -1,3 +1,14 @@
+static Properties getLocalProperties(Project project){
+    Properties properties = new Properties()
+    InputStream inputStream = project.rootProject.file('local.properties').newDataInputStream()
+    properties.load( inputStream )
+    return properties
+}
+
+Properties localProperties = getLocalProperties(project)
+def username = localProperties.get("username")
+def password = localProperties.get("password")
+
 def artifactId = "${project.ext.artifactId}"
 def lib_version = "${project.ext.lib_version}"
 def lib_group = "${project.ext.lib_group}"
@@ -7,14 +18,14 @@ uploadArchives {
         mavenDeployer {
             repository(url: 'https://packages.aliyun.com/maven/repository/2057525-release-vGOFA8/') {
                 authentication(
-                        userName: "$rootProject.userName",
-                        password: "$rootProject.password"
+                        userName: "$username",
+                        password: "$password"
                 )
             }
             snapshotRepository(url: 'https://packages.aliyun.com/maven/repository/2057525-snapshot-UNzxBP/') {
                 authentication(
-                        userName: "$rootProject.userName",
-                        password: "$rootProject.password"
+                        userName: "$username",
+                        password: "$password"
                 )
             }
             pom.version = "$lib_version"
