@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @ClassName BaseLoadMoreViewModel
+ * @ClassName BaseRefreshViewModel
  * @Description 实现加载更多基类ViewModel
  * @Author dinghui
  * @Date 2020/11/25 0025 15:41

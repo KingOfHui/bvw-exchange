@@ -37,8 +37,7 @@ public class RecyclerViewBindingAdapter {
     public static <T, VH extends BaseViewHolder> void bindList(RecyclerView recyclerView, BaseQuickAdapter<T, VH> adapter, List<T> list,
                                                                boolean autoScrollToTopWhenInsert, boolean autoScrollToBottomWhenInsert) {
 
-        if (recyclerView != null && list != null) {
-
+        if (recyclerView != null && adapter != null) {
             if (recyclerView.getAdapter() == null) {
                 recyclerView.setAdapter(adapter);
 
@@ -54,9 +53,12 @@ public class RecyclerViewBindingAdapter {
                 });
             }
 
-            if (list!=null && list.size()>0) {
+            if (list != null && list.size() > 0) {
                 adapter.setNewData(list);
-            } else {
+            }
+
+            List<T> data = adapter.getData();
+            if ((data == null || data.size() == 0) && adapter.getHeaderLayoutCount() < 1 && adapter.getFooterLayoutCount() < 1) {
                 View view = View.inflate(recyclerView.getContext(), R.layout.empty_view, null);
                 adapter.setEmptyView(view);
             }

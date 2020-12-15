@@ -54,7 +54,7 @@ public class GoodsListFragment extends BaseBindingFragment<GoodsListViewModel, F
             }
         });
         mDataBinding.rv.setLayoutManager(lm);
-        mHeader = View.inflate(getContext(), R.layout.goods_list_header, mDataBinding.rv);
+        mHeader = View.inflate(getContext(), R.layout.goods_list_header, null);
         mDataBinding.getAdapter().addHeaderView(mHeader);
     }
 

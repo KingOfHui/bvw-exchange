@@ -4,10 +4,9 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 
-import com.darknet.bvw.common.BaseLoadMoreViewModel;
-import com.darknet.bvw.common.BaseViewModel;
+import com.darknet.bvw.common.BaseRefreshViewModel;
 
-public class GoodsListViewModel extends BaseLoadMoreViewModel<Object> {
+public class GoodsListViewModel extends BaseRefreshViewModel<Object> {
     public GoodsListViewModel(@NonNull Application application) {
         super(application);
     }
