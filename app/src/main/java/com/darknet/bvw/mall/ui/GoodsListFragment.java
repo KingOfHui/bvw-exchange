@@ -1,11 +1,13 @@
 package com.darknet.bvw.mall.ui;
 
+import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.ViewDataBinding;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,6 +18,13 @@ import com.darknet.bvw.common.BaseBindingFragment;
 import com.darknet.bvw.databinding.FragmentGoodsListBinding;
 import com.darknet.bvw.databinding.ItemGoodsBinding;
 import com.darknet.bvw.mall.vm.GoodsListViewModel;
+import com.darknet.bvw.util.EnvironmentUtil;
+import com.darknet.bvw.view.GridItemDecoration;
+import com.github.fujianlian.klinechart.draw.MACDDraw;
+import com.scwang.smartrefresh.layout.util.DesignUtil;
+import com.scwang.smartrefresh.layout.util.SmartUtil;
+
+import java.util.List;
 
 public class GoodsListFragment extends BaseBindingFragment<GoodsListViewModel, FragmentGoodsListBinding> {
 
@@ -54,8 +63,30 @@ public class GoodsListFragment extends BaseBindingFragment<GoodsListViewModel, F
             }
         });
         mDataBinding.rv.setLayoutManager(lm);
+        mDataBinding.rv.addItemDecoration(
+                new RecyclerView.ItemDecoration() {
+                    @Override
+                    public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
+                        super.getItemOffsets(outRect, view, parent, state);
+                        int itemPosition = ((RecyclerView.LayoutParams) view.getLayoutParams()).getViewLayoutPosition();
+                        int dp10 = EnvironmentUtil.dp2px(view.getContext(), 10);
+                        if (itemPosition < 0) {
+                            return;
+                        }
+                        if(itemPosition % 2 == 0){
+                            outRect.left = dp10;
+                            outRect.right = dp10;
+                        }else {
+                            outRect.left = dp10;
+                            outRect.right = 0;
+                        }
+                    }
+                }
+        );
         mHeader = View.inflate(getContext(), R.layout.goods_list_header, null);
         mDataBinding.getAdapter().addHeaderView(mHeader);
+        mViewModel.getListLive().observe(this
+                , objects -> mDataBinding.getAdapter().setNewData(objects));
     }
 
     @Override
