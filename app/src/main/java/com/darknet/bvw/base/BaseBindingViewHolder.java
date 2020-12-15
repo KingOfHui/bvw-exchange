@@ -7,9 +7,7 @@ import androidx.databinding.ViewDataBinding;
 import com.chad.library.adapter.base.BaseViewHolder;
 
 /**
- * Date: 2017/5/11 14:42.
- * Email: tyshengsx@gmail.com
- * @author tysheng
+ * DataBinding的BaseViewHolder
  */
 
 public class BaseBindingViewHolder<B extends ViewDataBinding> extends BaseViewHolder {

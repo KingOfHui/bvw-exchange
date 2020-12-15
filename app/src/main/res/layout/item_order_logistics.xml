@@ -7,38 +7,61 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:background="#232233"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_70dp">
+        android:layout_height="@dimen/dimen_70dp"
+        android:background="#232233">
 
-        <View style="@style/VerticalLine_White_02"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:id="@+id/line"
+        <View
+            android:id="@+id/lineTop"
+            style="@style/VerticalLine_White_02"
+            android:layout_height="0dp"
             android:layout_marginStart="@dimen/dimen_25dp"
-            />
+            app:layout_constraintBottom_toTopOf="@id/view"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/lineBottom"
+            style="@style/VerticalLine_White_02"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/dimen_25dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:background="@drawable/white_point"
+            app:layout_constraintBottom_toBottomOf="@id/tvOrderStatus"
+            app:layout_constraintLeft_toLeftOf="@id/lineBottom"
+            app:layout_constraintRight_toRightOf="@id/lineBottom"
+            app:layout_constraintTop_toTopOf="@id/tvOrderStatus" />
 
         <TextView
             android:id="@+id/tvOrderStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_20dp"
+            android:includeFontPadding="false"
             android:text="已到达上海市"
             android:textColor="@color/white"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toRightOf="@id/line"
-            android:layout_marginStart="@dimen/dimen_20dp"/>
+            app:layout_constraintLeft_toRightOf="@id/lineBottom"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_20dp"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:layout_marginBottom="@dimen/dimen_30dp"
+            android:includeFontPadding="false"
             android:text="已到达上海市"
             android:textColor="@color/white"
-            app:layout_constraintTop_toBottomOf="@id/tvOrderStatus"
-            android:layout_marginTop="@dimen/dimen_5dp"
-            app:layout_constraintLeft_toRightOf="@id/line"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="@dimen/dimen_30dp"
-            android:layout_marginStart="@dimen/dimen_20dp"/>
+            app:layout_constraintLeft_toRightOf="@id/lineBottom"
+            app:layout_constraintTop_toBottomOf="@id/tvOrderStatus" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

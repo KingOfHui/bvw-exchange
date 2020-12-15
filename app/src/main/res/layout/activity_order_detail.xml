@@ -102,7 +102,7 @@
                 android:id="@+id/clContract"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_15dp"
+                android:layout_marginTop="@dimen/dimen_10dp"
                 android:background="@drawable/shape_circle_rect_order"
                 android:paddingTop="@dimen/dimen_15dp"
                 android:paddingBottom="@dimen/dimen_15dp"

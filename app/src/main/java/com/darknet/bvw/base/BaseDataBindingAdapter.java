@@ -15,9 +15,7 @@ import java.util.List;
 
 
 /**
- * Created by tysheng
- * Date: 2017/5/11 14:39.
- * Email: tyshengsx@gmail.com
+ * 使用DataBinding的BaseQuickAdapter
  */
 
 public abstract class BaseDataBindingAdapter<T, B extends ViewDataBinding> extends BaseQuickAdapter<T, BaseBindingViewHolder<B>> {

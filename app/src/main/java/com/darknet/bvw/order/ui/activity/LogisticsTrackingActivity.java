@@ -9,6 +9,7 @@ import com.darknet.bvw.R;
 import com.darknet.bvw.activity.BaseBindingActivity;
 import com.darknet.bvw.base.BaseDataBindingAdapter;
 import com.darknet.bvw.databinding.ActivityLogisticsTrackingBinding;
+import com.darknet.bvw.databinding.ItemOrderListBinding;
 import com.darknet.bvw.order.vm.LogisticsTrackingViewModel;
 
 /**
@@ -37,14 +38,14 @@ public class LogisticsTrackingActivity extends BaseBindingActivity<ActivityLogis
 
     }
 
-    public static class LogisticsAdapter extends BaseDataBindingAdapter<String, ViewDataBinding> {
+    public static class LogisticsAdapter extends BaseDataBindingAdapter<String, ItemOrderListBinding> {
 
         public LogisticsAdapter() {
             super(R.layout.item_order_logistics);
         }
 
         @Override
-        protected void convert(ViewDataBinding viewDataBinding, String item) {
+        protected void convert(ItemOrderListBinding binding, String item) {
 
         }
     }
