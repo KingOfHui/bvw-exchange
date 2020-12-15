@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <import type="com.darknet.bvw.util.binding.LineDivideManagers"/>
         <variable
             name="adapter"
             type="com.darknet.bvw.order.ui.activity.MyAddressesActivity.AddressAdapter" />
@@ -22,9 +22,26 @@
             android:id="@+id/rvAddress"
             adapter="@{adapter}"
             submitList=""
+            linearItemDecoration="@{LineDivideManagers.horizontal(@color/color_4A4957)}"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/dimen_10dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@id/tvAddAddress"
             app:layout_constraintTop_toBottomOf="@id/layout_title" />
+
+        <TextView
+            android:id="@+id/tvAddAddress"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_margin="@dimen/dimen_15dp"
+            android:background="@drawable/shape_circle_rect_black"
+            android:backgroundTint="@color/_01FCDA"
+            android:gravity="center"
+            android:text="+ 添加新地址"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_16"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

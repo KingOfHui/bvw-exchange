@@ -654,6 +654,7 @@
         <activity android:name=".order.ui.activity.OrderDetailActivity" />
         <activity android:name=".order.ui.activity.LogisticsTrackingActivity" />
         <activity android:name=".order.ui.activity.ConfirmOrderActivity" />
+        <activity android:name=".order.ui.activity.MyAddressesActivity" />
 
         <receiver
             android:name=".receiver.PushReceiver"

@@ -24,6 +24,7 @@ import com.darknet.bvw.activity.MessageCenterActivity;
 import com.darknet.bvw.activity.SettingActivity;
 import com.darknet.bvw.db.Entity.ETHWalletModel;
 import com.darknet.bvw.db.WalletDaoUtils;
+import com.darknet.bvw.order.ui.activity.MyAddressesActivity;
 import com.darknet.bvw.order.ui.activity.OrderListActivity;
 import com.darknet.bvw.util.UserSPHelper;
 
@@ -94,6 +95,8 @@ public class MineFragment extends Fragment implements View.OnClickListener {
 
         clientIdLayout = (LinearLayout) view.findViewById(R.id.client_id);
         LinearLayout llAllOrder = view.findViewById(R.id.llAllOrder);
+        LinearLayout llWaitPay = view.findViewById(R.id.llWaitPay);
+        llWaitPay.setOnClickListener(view1 -> MyAddressesActivity.start(requireContext()));
         llAllOrder.setOnClickListener(v -> OrderListActivity.start(requireContext()));
 
         try {
