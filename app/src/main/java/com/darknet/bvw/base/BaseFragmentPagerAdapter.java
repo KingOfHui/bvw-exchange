@@ -1,6 +1,7 @@
 package com.darknet.bvw.base;
 
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -19,19 +20,19 @@ public class BaseFragmentPagerAdapter<T extends Fragment> extends FragmentPagerA
     private List<CharSequence> fragmentTitles;
 
     public BaseFragmentPagerAdapter(FragmentManager fm) {
-        super(fm);
+        super(fm,BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         fragmentTitles = new ArrayList<>();
         fragments = new ArrayList<>();
     }
 
-    public BaseFragmentPagerAdapter add(T fragment) {
+    public BaseFragmentPagerAdapter<T> add(T fragment) {
         if (fragment != null) {
             fragments.add(fragment);
         }
         return this;
     }
 
-    public BaseFragmentPagerAdapter add(T fragment, CharSequence fragmentTitle) {
+    public BaseFragmentPagerAdapter<T> add(T fragment, CharSequence fragmentTitle) {
         if (fragment != null) {
             fragments.add(fragment);
             fragmentTitles.add(fragmentTitle);
@@ -39,7 +40,7 @@ public class BaseFragmentPagerAdapter<T extends Fragment> extends FragmentPagerA
         return this;
     }
 
-    public BaseFragmentPagerAdapter addAll(List<T> fragments, List<CharSequence> fragmentTitles) {
+    public BaseFragmentPagerAdapter<T> addAll(List<T> fragments, List<CharSequence> fragmentTitles) {
 
         if (this.fragments != null && fragments.size() != 0) {
             this.fragments.addAll(fragments);
@@ -65,6 +66,7 @@ public class BaseFragmentPagerAdapter<T extends Fragment> extends FragmentPagerA
         return fragmentTitles.get(position);
     }
 
+    @NonNull
     @Override
     public Fragment getItem(int i) {
         return fragments.get(i);
