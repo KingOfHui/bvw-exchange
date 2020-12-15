@@ -4,11 +4,11 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 
-import com.darknet.bvw.common.BaseRefreshViewModel;
+import com.darknet.bvw.common.BaseListViewModel;
 
 import java.util.ArrayList;
 
-public class LogisticsTrackingViewModel extends BaseRefreshViewModel<String> {
+public class LogisticsTrackingViewModel extends BaseListViewModel<String> {
     public LogisticsTrackingViewModel(@NonNull Application application) {
         super(application);
     }

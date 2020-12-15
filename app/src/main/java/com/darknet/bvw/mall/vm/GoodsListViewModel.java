@@ -4,12 +4,12 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 
-import com.darknet.bvw.common.BaseRefreshViewModel;
+import com.darknet.bvw.common.BaseListViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class GoodsListViewModel extends BaseRefreshViewModel<Object> {
+public class GoodsListViewModel extends BaseListViewModel<Object> {
     public GoodsListViewModel(@NonNull Application application) {
         super(application);
     }

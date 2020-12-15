@@ -1,5 +1,6 @@
 package com.darknet.bvw.util.binding;
 
+import androidx.annotation.ColorInt;
 import androidx.recyclerview.widget.RecyclerView;
 
 /**
@@ -18,6 +19,31 @@ public class LineDivideManagers {
 
     public static LineManagerFactory vertical() {
         return recyclerView -> new DividerLine(recyclerView.getContext(), DividerLine.LineDrawMode.VERTICAL, 1);
+    }
+
+    public static LineManagerFactory horizontal(@ColorInt int color) {
+        return horizontal(1, color);
+    }
+
+
+    public static LineManagerFactory vertical(@ColorInt int color) {
+        return vertical(1, color);
+    }
+
+    public static LineManagerFactory both(@ColorInt int color) {
+        return both(1, color);
+    }
+
+    public static LineManagerFactory horizontal(int divideSize, @ColorInt int color) {
+        return recyclerView -> new DividerLine(recyclerView.getContext(), DividerLine.LineDrawMode.HORIZONTAL, divideSize, color);
+    }
+
+    public static LineManagerFactory vertical(int divideSize, @ColorInt int color) {
+        return recyclerView -> new DividerLine(recyclerView.getContext(), DividerLine.LineDrawMode.VERTICAL, divideSize, color);
+    }
+
+    public static LineManagerFactory both(int divideSize, @ColorInt int color) {
+        return recyclerView -> new DividerLine(recyclerView.getContext(), DividerLine.LineDrawMode.BOTH, divideSize, color);
     }
 
     interface LineManagerFactory {

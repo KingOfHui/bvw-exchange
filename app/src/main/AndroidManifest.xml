@@ -653,6 +653,7 @@
         <activity android:name=".order.ui.activity.OrderListActivity" />
         <activity android:name=".order.ui.activity.OrderDetailActivity" />
         <activity android:name=".order.ui.activity.LogisticsTrackingActivity" />
+        <activity android:name=".order.ui.activity.ConfirmOrderActivity" />
 
         <receiver
             android:name=".receiver.PushReceiver"
