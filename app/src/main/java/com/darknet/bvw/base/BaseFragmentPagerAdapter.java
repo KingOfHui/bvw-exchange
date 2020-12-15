@@ -9,6 +9,10 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 通用ViewPageAdapter
+ * @param <T>
+ */
 public class BaseFragmentPagerAdapter<T extends Fragment> extends FragmentPagerAdapter {
 
     private List<T> fragments;
