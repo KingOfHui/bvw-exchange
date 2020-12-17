@@ -952,5 +952,6 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="to_pay">Pay</string>
     <string name="order_cancel">取消订单</string>
     <string name="my_shipping_address">我的收货地址</string>
+    <string name="add_address">添加地址</string>
 
 </resources>
