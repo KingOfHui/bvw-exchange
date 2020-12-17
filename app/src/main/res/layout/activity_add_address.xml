@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -14,7 +15,176 @@
             android:id="@+id/layout_title"
             layout="@layout/lay_head_back_binding" />
 
+        <View
+            android:id="@+id/line"
+            style="@style/Line_White_02"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_title" />
+
+        <TextView
+            android:id="@+id/tvContract"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dimen_70dp"
+            android:layout_marginStart="@dimen/dimen_15dp"
+            android:gravity="center"
+            android:text="@string/contact"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_14"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line" />
+
+        <EditText
+            android:id="@+id/etContact"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/dimen_40dp"
+            android:hint="@string/input_name"
+            android:maxLength="25"
+            android:background="@null"
+            android:textColor="@color/white"
+            android:textColorHint="@color/result_minor_text"
+            android:textSize="@dimen/sp_14"
+            app:layout_constraintBottom_toBottomOf="@id/tvContract"
+            app:layout_constraintLeft_toRightOf="@id/tvContract"
+            app:layout_constraintTop_toTopOf="@id/tvContract" />
+
+        <View
+            android:id="@+id/line2"
+            style="@style/Line_White_02"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvContract" />
 
 
+        <TextView
+            android:id="@+id/tvMobile"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dimen_70dp"
+            android:layout_marginStart="@dimen/dimen_15dp"
+            android:gravity="center"
+            android:text="@string/phone_number"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_14"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvContract" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:hint="@string/input_mobile"
+            android:maxLength="25"
+            android:background="@null"
+            android:textColor="@color/white"
+            android:textColorHint="@color/result_minor_text"
+            android:textSize="@dimen/sp_14"
+            app:layout_constraintBottom_toBottomOf="@id/tvMobile"
+            app:layout_constraintLeft_toLeftOf="@id/etContact"
+            app:layout_constraintTop_toTopOf="@id/tvMobile" />
+
+        <View
+            android:id="@+id/line3"
+            style="@style/Line_White_02"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvMobile" />
+
+        <TextView
+            android:id="@+id/tvAreaLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dimen_70dp"
+            android:layout_marginStart="@dimen/dimen_15dp"
+            android:gravity="center"
+            android:text="@string/yout_region"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_14"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line3" />
+
+        <TextView
+            android:id="@+id/tvArea"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:maxLength="25"
+            android:textColor="@color/white"
+            android:textColorHint="@color/result_minor_text"
+            android:textSize="@dimen/sp_14"
+            app:layout_constraintBottom_toBottomOf="@id/tvAreaLeft"
+            app:layout_constraintLeft_toLeftOf="@id/etContact"
+            app:layout_constraintTop_toTopOf="@id/tvAreaLeft" />
+
+        <View
+            android:id="@+id/line4"
+            style="@style/Line_White_02"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvArea" />
+
+        <TextView
+            android:id="@+id/tvAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dimen_70dp"
+            android:layout_marginStart="@dimen/dimen_15dp"
+            android:gravity="center"
+            android:text="@string/detailed_address"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_14"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line4" />
+
+        <EditText
+            android:id="@+id/etAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:hint="@string/input_detail_address"
+            android:maxLength="25"
+            android:textColor="@color/white"
+            android:background="@null"
+            android:textColorHint="@color/result_minor_text"
+            android:textSize="@dimen/sp_14"
+            app:layout_constraintBottom_toBottomOf="@id/tvAddress"
+            app:layout_constraintLeft_toLeftOf="@id/etContact"
+            app:layout_constraintTop_toTopOf="@id/tvAddress" />
+
+        <View
+            android:id="@+id/line5"
+            style="@style/Line_White_02"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvAddress" />
+
+        <TextView
+            android:id="@+id/tvSetDefault"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_marginStart="@dimen/dimen_15dp"
+            android:gravity="center"
+            android:text="@string/set_default_address"
+            android:textColor="@color/white"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line5" />
+
+        <Switch
+            android:id="@+id/switchDefault"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dimen_15dp"
+            android:checked="true"
+            android:thumb="@drawable/selector_bg_switch_thumb"
+            android:track="@drawable/selector_bg_switch_track"
+            app:layout_constraintBottom_toBottomOf="@id/tvSetDefault"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvSetDefault"/>
+
+        <TextView
+            android:id="@+id/tvSave"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginStart="@dimen/dimen_15dp"
+            android:layout_marginEnd="@dimen/dimen_15dp"
+            android:layout_marginBottom="@dimen/dimen_30dp"
+            android:background="@drawable/shape_circle_rect_black"
+            android:backgroundTint="@color/_01FCDA"
+            android:gravity="center"
+            android:text="@string/save"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_16"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -2,9 +2,11 @@ package com.darknet.bvw.order.ui.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.view.View;
 
 import androidx.databinding.ViewDataBinding;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.darknet.bvw.R;
 import com.darknet.bvw.activity.BaseBindingActivity;
 import com.darknet.bvw.base.BaseDataBindingAdapter;
@@ -24,6 +26,7 @@ public class MyAddressesActivity extends BaseBindingActivity<ActivityMyAddresses
     public static void start(Context context) {
         context.startActivity(new Intent(context, MyAddressesActivity.class));
     }
+
     @Override
     public int getLayoutId() {
         return R.layout.activity_my_addresses;
@@ -39,6 +42,7 @@ public class MyAddressesActivity extends BaseBindingActivity<ActivityMyAddresses
             strings.add("position:" + i);
         }
         mBinding.getAdapter().setNewData(strings);
+        mBinding.getAdapter().setOnItemClickListener((adapter, view, position) -> AddAddressActivity.start(MyAddressesActivity.this));
     }
 
     @Override

@@ -941,17 +941,27 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="order_to_be_paid">Wait Paid</string>
     <string name="order_detail">Order Detail</string>
     <string name="order_close_time">剩余%s自动关闭</string>
-    <string name="order_submit_time">下单时间：%s</string>
-    <string name="order_number">订单号：%s</string>
-    <string name="order_freight">运费：</string>
-    <string name="order_discounts">优惠：</string>
+    <string name="order_submit_time">Order time：%s</string>
+    <string name="order_number">Order no：%s</string>
+    <string name="order_freight">Freight：</string>
+    <string name="order_discounts">Discounts：</string>
     <string name="order_money_off">满减：</string>
-    <string name="order_total_price">合计：</string>
-    <string name="order_to_pay">立即支付</string>
+    <string name="order_total_price">Total：</string>
+    <string name="order_to_pay">Pay now</string>
     <string name="order_count_number">共 %s 件商品</string>
     <string name="to_pay">Pay</string>
-    <string name="order_cancel">取消订单</string>
-    <string name="my_shipping_address">我的收货地址</string>
-    <string name="add_address">添加地址</string>
+    <string name="order_cancel">Cancel Order</string>
+    <string name="my_shipping_address">My shipping Address</string>
+    <string name="add_address">Add address</string>
+    <string name="contact">Contact</string>
+    <string name="phone_number">Mobile</string>
+    <string name="confirm_order">Confirm order</string>
+    <string name="input_name">Please fill in the name</string>
+    <string name="input_mobile">Please enter phone number</string>
+    <string name="yout_region">Your region</string>
+    <string name="detailed_address">Address</string>
+    <string name="input_detail_address">Please fill in the detailed address</string>
+    <string name="set_default_address">Set as the default address</string>
+    <string name="save">Save</string>
 
 </resources>
