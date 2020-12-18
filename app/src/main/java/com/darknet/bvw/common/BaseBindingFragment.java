@@ -20,8 +20,6 @@ import androidx.databinding.library.baseAdapters.BR;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.darknet.bvw.util.ToastUtils;
-
 import static android.app.Activity.RESULT_OK;
 
 /**
@@ -43,7 +41,7 @@ public abstract class BaseBindingFragment<VM extends BaseViewModel, DB extends V
         mDataBinding.setLifecycleOwner(this);
         mViewModel = initViewModel();
         mDataBinding.setVariable(BR.vm, mViewModel);
-        setDataToBinding();
+        initView();
         return mDataBinding.getRoot();
     }
 
@@ -62,8 +60,7 @@ public abstract class BaseBindingFragment<VM extends BaseViewModel, DB extends V
         isLoaded = false;
     }
 
-    protected void setDataToBinding() {
-    }
+    protected abstract void initView();
 
     private void onFragmentFirstVisible() {
         initData();

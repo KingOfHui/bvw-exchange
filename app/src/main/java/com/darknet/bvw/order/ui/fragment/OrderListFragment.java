@@ -2,10 +2,7 @@ package com.darknet.bvw.order.ui.fragment;
 
 
 import android.net.Uri;
-import android.view.View;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.BaseViewHolder;
 import com.darknet.bvw.R;
 import com.darknet.bvw.base.BaseDataBindingAdapter;
 import com.darknet.bvw.common.BaseBindingFragment;
@@ -37,8 +34,7 @@ public class OrderListFragment extends BaseBindingFragment<OrderListViewModel, F
     }
 
     @Override
-    protected void setDataToBinding() {
-        super.setDataToBinding();
+    protected void initView() {
         OrderListAdapter orderListAdapter = new OrderListAdapter();
         orderListAdapter.setOnItemClickListener((adapter, view, position) -> OrderDetailActivity.start(requireActivity()));
         mDataBinding.setAdapter(orderListAdapter);

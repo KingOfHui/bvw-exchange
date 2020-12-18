@@ -1,13 +1,10 @@
 package com.darknet.bvw.mall.ui;
 
-import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.NonNull;
-import androidx.databinding.ViewDataBinding;
-import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,12 +16,6 @@ import com.darknet.bvw.databinding.FragmentGoodsListBinding;
 import com.darknet.bvw.databinding.ItemGoodsBinding;
 import com.darknet.bvw.mall.vm.GoodsListViewModel;
 import com.darknet.bvw.util.EnvironmentUtil;
-import com.darknet.bvw.view.GridItemDecoration;
-import com.github.fujianlian.klinechart.draw.MACDDraw;
-import com.scwang.smartrefresh.layout.util.DesignUtil;
-import com.scwang.smartrefresh.layout.util.SmartUtil;
-
-import java.util.List;
 
 public class GoodsListFragment extends BaseBindingFragment<GoodsListViewModel, FragmentGoodsListBinding> {
 
@@ -49,8 +40,7 @@ public class GoodsListFragment extends BaseBindingFragment<GoodsListViewModel, F
     }
 
     @Override
-    protected void setDataToBinding() {
-        super.setDataToBinding();
+    protected void initView() {
         mDataBinding.setAdapter(new Adapter());
         GridLayoutManager lm = new GridLayoutManager(getContext(), 2);
         lm.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {

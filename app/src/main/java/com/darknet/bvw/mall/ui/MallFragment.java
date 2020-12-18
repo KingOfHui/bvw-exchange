@@ -16,6 +16,18 @@ import com.darknet.bvw.mall.vm.MallViewModel;
  */
 public class MallFragment extends BaseBindingFragment<MallViewModel, FragmentMallBindingImpl> {
     @Override
+    protected void initView() {
+        String[] arr = new String[]{"首页", "家居", "美妆", "服饰", "母婴", "疫情防护"};
+        BaseFragmentPagerAdapter<Fragment> adapter = new BaseFragmentPagerAdapter<>(getChildFragmentManager());
+        for (String s : arr) {
+            adapter.add(GoodsListFragment.newInstance(s), s);
+        }
+        mDataBinding.viewPager.setOffscreenPageLimit(3);
+        mDataBinding.viewPager.setAdapter(adapter);
+        mDataBinding.tabLayout.setupWithViewPager(mDataBinding.viewPager);
+    }
+
+    @Override
     public int setLayoutResId() {
         return R.layout.fragment_mall;
     }
@@ -27,14 +39,7 @@ public class MallFragment extends BaseBindingFragment<MallViewModel, FragmentMal
 
     @Override
     protected void initData() {
-        String[] arr = new String[]{"首页", "家居", "美妆", "服饰", "母婴", "疫情防护"};
-        BaseFragmentPagerAdapter<Fragment> adapter = new BaseFragmentPagerAdapter<>(getChildFragmentManager());
-        for (String s : arr) {
-            adapter.add(GoodsListFragment.newInstance(s), s);
-        }
-        mDataBinding.viewPager.setOffscreenPageLimit(3);
-        mDataBinding.viewPager.setAdapter(adapter);
-        mDataBinding.tabLayout.setupWithViewPager(mDataBinding.viewPager);
+
     }
 
     public static MallFragment newInstance() {
