@@ -7,7 +7,9 @@ import androidx.databinding.ViewDataBinding;
 
 import com.darknet.bvw.R;
 import com.darknet.bvw.activity.BaseBindingActivity;
+import com.darknet.bvw.base.BaseDataBindingAdapter;
 import com.darknet.bvw.databinding.ActivityOrderConfirmBinding;
+import com.darknet.bvw.order.ui.adapter.OrderGoodsAdapter;
 
 /**
  * @ClassName ConfirmOrderActivity
@@ -29,6 +31,7 @@ public class ConfirmOrderActivity extends BaseBindingActivity<ActivityOrderConfi
     public void initView() {
         mBinding.layoutTitle.layBack.setOnClickListener(view -> finish());
         mBinding.layoutTitle.title.setText(getString(R.string.confirm_order));
+        mBinding.setAdapter(new OrderGoodsAdapter());
     }
 
     @Override

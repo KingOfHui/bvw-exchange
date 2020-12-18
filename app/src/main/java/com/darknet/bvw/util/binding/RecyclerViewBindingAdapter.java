@@ -1,7 +1,12 @@
 package com.darknet.bvw.util.binding;
 
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import androidx.annotation.DrawableRes;
 import androidx.databinding.BindingAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -33,9 +38,10 @@ public class RecyclerViewBindingAdapter {
         recyclerView.setItemAnimator(itemAnimator);
     }
 
-    @BindingAdapter(value = {"adapter", "submitList", "autoScrollToTopWhenInsert", "autoScrollToBottomWhenInsert"}, requireAll = false)
+    @BindingAdapter(value = {"adapter", "submitList", "autoScrollToTopWhenInsert", "autoScrollToBottomWhenInsert","emptyImageResource","emptyText"}, requireAll = false)
     public static <T, VH extends BaseViewHolder> void bindList(RecyclerView recyclerView, BaseQuickAdapter<T, VH> adapter, List<T> list,
-                                                               boolean autoScrollToTopWhenInsert, boolean autoScrollToBottomWhenInsert) {
+                                                               boolean autoScrollToTopWhenInsert, boolean autoScrollToBottomWhenInsert,
+                                                               Drawable emptyImageResource, String emptyText) {
 
         if (recyclerView != null && adapter != null) {
             if (recyclerView.getAdapter() == null) {
@@ -60,6 +66,15 @@ public class RecyclerViewBindingAdapter {
             List<T> data = adapter.getData();
             if ((data == null || data.size() == 0) && adapter.getHeaderLayoutCount() < 1 && adapter.getFooterLayoutCount() < 1) {
                 View view = View.inflate(recyclerView.getContext(), R.layout.empty_view, null);
+
+                if (emptyImageResource != null) {
+                    ImageView ivNoData = view.findViewById(R.id.ivNoData);
+                    ivNoData.setImageDrawable(emptyImageResource);
+                }
+                if (!TextUtils.isEmpty(emptyText)) {
+                    TextView tvNoData = view.findViewById(R.id.tvNoData);
+                    tvNoData.setText(emptyText);
+                }
                 adapter.setEmptyView(view);
             }
         }

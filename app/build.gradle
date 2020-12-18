@@ -34,8 +34,8 @@ android {
         }
         buildConfigField("String", "BuglyId", '"9ebf099788"')
         if (Boolean.parseBoolean(project.releaseApi)) {
-            buildConfigField("String", "JAVA_API_URL", "\"https://api.bvw.im/\"")
-            buildConfigField("String", "JAVA_SOCKET_URL", "\"wss://ws.bvw.im/websocket\"")
+            buildConfigField("String", "JAVA_API_URL", "\"https://api.bitw.im/\"")
+            buildConfigField("String", "JAVA_SOCKET_URL", "\"wss://ws.bitw.im/websocket\"")
             buildConfigField("String", "WORK", "\"line\"")
         } else {
             buildConfigField("String", "JAVA_API_URL", "\"http://t.bvw.im/\"")
