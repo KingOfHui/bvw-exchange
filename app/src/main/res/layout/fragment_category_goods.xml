@@ -63,7 +63,7 @@
                     android:layout_height="0.5dp"/>
             </LinearLayout>
         </com.google.android.material.appbar.AppBarLayout>
-        <androidx.recyclerview.widget.RecyclerView
+        <com.darknet.bvw.view.ViewPagerRecyclerView
             android:id="@+id/rv"
             android:layout_gravity="center_horizontal|top"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"

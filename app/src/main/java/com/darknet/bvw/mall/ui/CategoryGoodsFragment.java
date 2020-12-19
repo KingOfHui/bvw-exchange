@@ -66,6 +66,12 @@ public class CategoryGoodsFragment extends BaseFragment {
 	}
 
 	@Override
+	public void onPause() {
+		super.onPause();
+		mRv.scrollToPosition(0);
+	}
+
+	@Override
 	public void initEvent() {
 
 	}
