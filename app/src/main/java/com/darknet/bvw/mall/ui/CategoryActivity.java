@@ -12,7 +12,10 @@ import com.darknet.bvw.activity.BaseActivity;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 /**
@@ -60,7 +63,24 @@ public class CategoryActivity extends BaseActivity {
 				,"面膜"
 		)));
 		mVp2.setOrientation(ViewPager2.ORIENTATION_VERTICAL);
-//		mVp2.setAdapter();
+		mVp2.setAdapter(new FragmentStateAdapter(getSupportFragmentManager(), getLifecycle()) {
+			@NonNull
+			@Override
+			public Fragment createFragment(int position) {
+				return CategoryGoodsFragment.newInstance(mCategoryAdapter.getItem(position));
+			}
+
+			@Override
+			public int getItemCount() {
+				return mCategoryAdapter.getItemCount();
+			}
+		});
+		mVp2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+			@Override
+			public void onPageSelected(int position) {
+				mCategoryAdapter.select(position);
+			}
+		});
 	}
 
 	@Override
@@ -73,7 +93,7 @@ public class CategoryActivity extends BaseActivity {
 
 	}
 
-	private static class CategoryAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
+	private class CategoryAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
 
 		private int selected = 0;
 
@@ -87,12 +107,19 @@ public class CategoryActivity extends BaseActivity {
 			tv.setSelected(selected == helper.getAdapterPosition());
 			tv.setText(item);
 			tv.setOnClickListener(v -> {
-				int old = selected;
-				selected = helper.getAdapterPosition();
-				if(old == selected) return;
-				notifyItemChanged(old);
-				notifyItemChanged(selected);
+				if(select(helper.getAdapterPosition())) {
+					mVp2.setCurrentItem(selected);
+				}
 			});
+		}
+
+		public boolean select(int position){
+			int old = selected;
+			selected = position;
+			if(old == selected) return false;
+			notifyItemChanged(old);
+			notifyItemChanged(selected);
+			return true;
 		}
 	}
 }
