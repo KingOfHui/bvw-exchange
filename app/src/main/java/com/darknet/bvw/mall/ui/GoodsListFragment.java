@@ -1,5 +1,6 @@
 package com.darknet.bvw.mall.ui;
 
+import android.graphics.Paint;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.View;
@@ -92,8 +93,8 @@ public class GoodsListFragment extends BaseBindingFragment<GoodsListViewModel, F
         }
 
         @Override
-        protected void convert(ItemGoodsBinding itemGoodsBinding, Object item) {
-
+        protected void convert(ItemGoodsBinding binding, Object item) {
+            binding.tvOriginalPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
         }
     }
 }
