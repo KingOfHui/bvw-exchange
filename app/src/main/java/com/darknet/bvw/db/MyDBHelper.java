@@ -2,8 +2,14 @@ package com.darknet.bvw.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.darknet.bvw.db.Entity.DaoMaster;
+import com.darknet.bvw.db.Entity.ShippingAddressModel;
+import com.darknet.bvw.db.Entity.ShippingAddressModelDao;
+import com.github.yuweiguocn.library.greendao.MigrationHelper;
+
+import org.greenrobot.greendao.database.Database;
 
 public class MyDBHelper extends DaoMaster.OpenHelper {
     public static final String DBNAME = "wallet.db";
@@ -26,10 +32,22 @@ public class MyDBHelper extends DaoMaster.OpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         super.onUpgrade(db, oldVersion, newVersion);
+//        MigrationHelper.migrate(db, new MigrationHelper.ReCreateAllTableListener() {
+//            @Override
+//            public void onCreateAllTables(Database db, boolean ifNotExists) {
+//                DaoMaster.createAllTables(db, ifNotExists);
+//            }
+//
+//            @Override
+//            public void onDropAllTables(Database db, boolean ifExists) {
+//                DaoMaster.dropAllTables(db, ifExists);
+//            }
+//        }, ShippingAddressModelDao.class);
         if (newVersion > oldVersion) {
+            if (newVersion == 2) {
 
-            String sqlOne = "ALTER TABLE ZC_MONEY_MODEL ADD CHAIN_DEPOSIT_ADDRESS TEXT";
-            db.execSQL(sqlOne);
+                String sqlOne = "ALTER TABLE ZC_MONEY_MODEL ADD CHAIN_DEPOSIT_ADDRESS TEXT";
+                db.execSQL(sqlOne);
 
 //            if (newVersion == 2) {
 //            String sqlOne = "CREATE TABLE \"MUSIC_ITEM_DOWN\" (\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ,\"MEDIA_ID\" INTEGER NOT NULL ,\"FILE_URL\" TEXT,\"FILE_NAME\" TEXT,\"PIC_URL\" TEXT,\"PLAY_NUM\" TEXT,\"DOWNLOAD_NUM\" TEXT,\"FILE_SIZE\" TEXT,\"IMG_TEXT\" TEXT,\"ALBUM_ID\" INTEGER NOT NULL ,\"SHOW\" TEXT,\"ADD_TIME\" TEXT,\"ALL_TIME\" TEXT,\"COMMENT_NUM\" TEXT,\"LOCAL_PATH\" TEXT,\"LAST_PLAY\" INTEGER NOT NULL ,\"FILE_STATE\" INTEGER NOT NULL ,\"CURRENT_PALY\" INTEGER NOT NULL );\n";
@@ -39,10 +57,15 @@ public class MyDBHelper extends DaoMaster.OpenHelper {
 //            }
 
 //            ZqhLogUtils.e("db", "...update...");
-            // 创建临时表
-            // 复制旧数据到临时表
-            // 数据库（表）删除
-            // 临时表重命名
+                // 创建临时表
+                // 复制旧数据到临时表
+                // 数据库（表）删除
+                // 临时表重命名
+            } else if (newVersion <= 3) {
+                db.execSQL("CREATE TABLE SHIPPING_ADDRESS_MODEL ('_id' INTEGER PRIMARY KEY AUTOINCREMENT,'ADDRESS' TEXT,'NAME' TEXT,'MOBILE' TEXT, 'IS_DEFAULT' Integer default 0)");
+//                db.execSQL("ALTER TABLE SHIPPING_ADDRESS_MODEL ADD COLUMN 'address' TEXT");
+                Log.e("dhdhdh", "onUpgrade: ------------");
+            }
         }
     }
 }

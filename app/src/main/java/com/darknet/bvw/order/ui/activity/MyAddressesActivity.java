@@ -12,8 +12,11 @@ import com.darknet.bvw.activity.BaseBindingActivity;
 import com.darknet.bvw.base.BaseDataBindingAdapter;
 import com.darknet.bvw.databinding.ActivityMyAddressesBinding;
 import com.darknet.bvw.databinding.ItemAddressBinding;
+import com.darknet.bvw.db.AddressDaoUtils;
+import com.darknet.bvw.db.Entity.ShippingAddressModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @ClassName MyAddressesActivity
@@ -36,28 +39,28 @@ public class MyAddressesActivity extends BaseBindingActivity<ActivityMyAddresses
     public void initView() {
         mBinding.layoutTitle.layBack.setOnClickListener((view -> finish()));
         mBinding.layoutTitle.title.setText(getString(R.string.my_shipping_address));
+        mBinding.tvAddAddress.setOnClickListener((view -> AddAddressActivity.start(this)));
         mBinding.setAdapter(new AddressAdapter());
-        ArrayList<String> strings = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            strings.add("position:" + i);
-        }
-        mBinding.getAdapter().setNewData(strings);
         mBinding.getAdapter().setOnItemClickListener((adapter, view, position) -> AddAddressActivity.start(MyAddressesActivity.this));
     }
 
     @Override
     public void initDatas() {
-
+        List<ShippingAddressModel> list = AddressDaoUtils.queryAll();
+        mBinding.getAdapter().setNewData(list);
     }
 
-    public static class AddressAdapter extends BaseDataBindingAdapter<String, ItemAddressBinding> {
+    public static class AddressAdapter extends BaseDataBindingAdapter<ShippingAddressModel, ItemAddressBinding> {
         public AddressAdapter() {
             super(R.layout.item_address);
         }
 
         @Override
-        protected void convert(ItemAddressBinding binding, String item) {
-
+        protected void convert(ItemAddressBinding binding, ShippingAddressModel item) {
+            binding.tvName.setText(item.getName());
+            binding.tvMobile.setText(item.getMobile());
+            binding.tvAddress.setText(item.getAddress());
+            binding.cbSelect.setSelected(true);
         }
     }
 

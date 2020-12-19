@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_30dp"
             android:layout_marginStart="@dimen/dimen_15dp"
-            android:text="Harry"
+            tools:text="Harry"
             android:textColor="@color/white"
             android:textSize="@dimen/dp_18"
             app:layout_constraintLeft_toRightOf="@id/cbSelect"
@@ -38,7 +38,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dimen_10dp"
-            android:text="126545135115"
+            tools:text="126545135115"
             android:textColor="@color/white"
             android:textSize="@dimen/sp_14"
             app:layout_constraintBaseline_toBaselineOf="@id/tvName"
@@ -64,7 +64,7 @@
             android:layout_marginTop="7dp"
             android:layout_marginBottom="@dimen/dimen_30dp"
             android:layout_marginEnd="@dimen/dimen_10dp"
-            android:text="260 51651,11515 15154fsdafsdafdsafsdafasfsdafdasfdsa1515dsgdfgfsg"
+            tools:text="260 51651,11515 15154fsdafsdafdsafsdafasfsdafdasfdsa1515dsgdfgfsg"
             android:textColor="@color/white"
             android:textSize="@dimen/sp_14"
             app:layout_constraintBottom_toBottomOf="parent"

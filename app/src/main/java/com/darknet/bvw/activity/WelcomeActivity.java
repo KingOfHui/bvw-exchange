@@ -6,6 +6,7 @@ import android.os.Message;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.darknet.bvw.BuildConfig;
 import com.darknet.bvw.R;
 import com.darknet.bvw.db.Entity.ETHWalletModel;
 import com.darknet.bvw.db.WalletDaoUtils;
@@ -143,6 +144,13 @@ public class WelcomeActivity extends BaseActivity {
 
 //                AtyContainer.getInstance().finishAllActivity();
 
+                if (BuildConfig.DEBUG) {
+
+                    Intent mainIntent = new Intent(this, XchainMainThreeActivity.class);
+                    startActivity(mainIntent);
+                    finish();
+                    return;
+                }
                 Intent createIntent = new Intent(WelcomeActivity.this, PasswordCheckActivity.class);
                 createIntent.putExtra("name", walletModel.getName());
                 createIntent.putExtra("pwd", walletModel.getPassword());

@@ -12,7 +12,7 @@ buildscript {
 }
 
 greendao {
-    schemaVersion 2
+    schemaVersion 3
 //    daoPackage 'com.darknet.bvw.db.Entity'//1
 //    targetGenDir 'src/main/java'
 }
@@ -160,7 +160,7 @@ dependencies {
 
     // greenDao
     implementation 'org.greenrobot:greendao:3.2.2'
-
+    implementation 'io.github.yuweiguocn:GreenDaoUpgradeHelper:v2.2.1'
     //网络封装
     implementation 'com.lzy.net:okgo:3.0.4'
     implementation 'com.lzy.net:okhttputils:1.8.1'
