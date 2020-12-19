@@ -1,4 +1,5 @@
-//include ':ActExtMemberVarHelper'
+include ':JinguiUtils'
+include ':JinguiToolBar'//include ':ActExtMemberVarHelper'
 include ':maven-local'
 include ':app',
         ':client',

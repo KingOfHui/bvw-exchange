@@ -656,6 +656,8 @@
         <activity android:name=".order.ui.activity.ConfirmOrderActivity" />
         <activity android:name=".order.ui.activity.MyAddressesActivity" />
         <activity android:name=".order.ui.activity.AddAddressActivity" />
+        <activity android:name=".mall.ui.CategoryActivity" />
+        <activity android:name=".mall.ui.HotSearchActivity" />
 
         <receiver
             android:name=".receiver.PushReceiver"

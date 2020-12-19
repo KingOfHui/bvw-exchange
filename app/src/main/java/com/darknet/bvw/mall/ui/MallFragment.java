@@ -1,5 +1,7 @@
 package com.darknet.bvw.mall.ui;
 
+import android.view.View;
+
 import androidx.fragment.app.Fragment;
 
 import com.darknet.bvw.R;
@@ -25,6 +27,9 @@ public class MallFragment extends BaseBindingFragment<MallViewModel, FragmentMal
         mDataBinding.viewPager.setOffscreenPageLimit(3);
         mDataBinding.viewPager.setAdapter(adapter);
         mDataBinding.tabLayout.setupWithViewPager(mDataBinding.viewPager);
+        mDataBinding.ivClassification.setOnClickListener(v -> {
+            CategoryActivity.start(v.getContext());
+        });
     }
 
     @Override

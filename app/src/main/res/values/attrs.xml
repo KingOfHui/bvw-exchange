@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <declare-styleable name="CornerTextView">
+        <!--圆角角度-->
+        <attr name="corner" format="dimension|reference" />
+        <attr name="corner_left_top" format="dimension|reference" />
+        <attr name="corner_right_top" format="dimension|reference" />
+        <attr name="corner_right_bottom" format="dimension|reference" />
+        <attr name="corner_left_bottom" format="dimension|reference" />
+        <!--边框宽度-->
+        <attr name="stroke_size" format="dimension|reference" />
+        <!--shape填充颜色-->
+        <attr name="color" format="color|reference" />
+        <!--shape渐变颜色及角度-->
+        <attr name="startColor" format="color|reference" />
+        <attr name="endColor" format="color|reference" />
+        <attr name="angle" format="integer" />
+    </declare-styleable>
 
     <declare-styleable name="BubbleImageView">
         <attr name="bubble_arrowTop" format="dimension|reference" />

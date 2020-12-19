@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--用于处理 Android 各版本之间的差异-->
+    <!--api level < 21-->
+<resources>
+    <style name="touchWaterRippleStyle">
+        <item name="android:background">@drawable/nim_touch_bg</item>
+    </style>
+</resources>

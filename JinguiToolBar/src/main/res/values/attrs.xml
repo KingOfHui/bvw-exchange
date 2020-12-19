@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="JinGuiToolBar">
+        <attr name="leftIcon" format="reference" />
+        <attr name="centerTitleText" format="string|reference" />
+        <attr name="centerTitleStyle" format="flags">
+            <flag name="normal" value="0" />
+            <flag name="bold" value="1" />
+            <flag name="italic" value="2" />
+        </attr>
+        <attr name="centerTitleColor" format="color|reference" />
+        <attr name="centerTitleTextSize" format="dimension|reference" />
+        <attr name="rightIcon1" format="reference" />
+        <attr name="rightIcon2" format="reference" />
+        <attr name="rightText" format="string|reference" />
+        <attr name="rightTextColor" format="color|reference" />
+        <attr name="rightTextSize" format="dimension|reference" />
+        <attr name="rightTextStyle" format="flags">
+            <flag name="normal" value="0" />
+            <flag name="bold" value="1" />
+            <flag name="italic" value="2" />
+        </attr>
+    </declare-styleable>
+</resources>

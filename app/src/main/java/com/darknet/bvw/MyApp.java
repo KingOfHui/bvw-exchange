@@ -21,6 +21,7 @@ import com.darknet.bvw.util.language.SPUtil;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.github.jokar.multilanguages.library.LanguageLocalListener;
 import com.github.jokar.multilanguages.library.MultiLanguage;
+import com.jingui.lib.utils.BaseApplication;
 import com.kk.taurus.playerbase.config.PlayerLibrary;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.cache.CacheEntity;
@@ -85,6 +86,7 @@ public class MyApp extends Application {
     public void onCreate() {
         super.onCreate();
         sInstance = this;
+        BaseApplication.setInstance(sInstance);
         initMultiLanguage();
         if (EnvironmentUtil.isMainProcess(this)) {
             initImageLoader();

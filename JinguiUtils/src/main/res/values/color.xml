@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="item_hover">#cccccc</color>
+    <color name="transparent">#00000000</color>
+    <color name="water_color">#99000000</color>
+</resources>
