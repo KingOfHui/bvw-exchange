@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/item_category_bg"
+    android:text="美食"
+    android:textColor="@color/selector_item_category_color"
+    android:textSize="12sp"
+    android:gravity="center_vertical"
+    android:paddingLeft="15dp"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"/>

@@ -10,6 +10,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.darknet.bvw.BuildConfig;
 import com.darknet.bvw.R;
 import com.darknet.bvw.model.event.CloseViewEvent;
 import com.darknet.bvw.util.language.LocalManageUtil;
@@ -148,6 +149,9 @@ public class PasswordCheckActivity extends BaseActivity implements View.OnClickL
                 break;
             case R.id.btnLogin:
                 String inputPwd = editPassword.getText().toString();
+                if(BuildConfig.DEBUG && inputPwd.isEmpty()) {
+                    inputPwd = "1234567";
+                }
                 hintKeyBoard();
                 if (inputPwd != null && inputPwd.trim().length() != 0) {
                     if (pwd.equals(inputPwd)) {
