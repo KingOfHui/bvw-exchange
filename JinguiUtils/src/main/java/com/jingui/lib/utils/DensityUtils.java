@@ -23,7 +23,11 @@ public class DensityUtils {
 	 * 获取状态栏高度
 	 */
 	public static int getStatusBarHeight() {
+
 		try {
+//			int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
+//			int statusBarHeight = context.getResources().getDimensionPixelSize(resourceId);
+//			return statusBarHeight;
 			Class<?> c = Class.forName("com.android.internal.R$dimen");
 			Object o = c.newInstance();
 			Field field = c.getField("status_bar_height");

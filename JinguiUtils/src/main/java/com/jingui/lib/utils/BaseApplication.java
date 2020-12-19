@@ -16,6 +16,6 @@ public class BaseApplication {
 		INSTANCE = application;
 	}
 	public static Application instance() {
-		return null;
+		return INSTANCE;
 	}
 }
