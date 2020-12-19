@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="KEY_MULTI_CLICK_LISTENER"/>
+    <string name="KEY_CLICK_SPAN_TOUCH"/>
+</resources>

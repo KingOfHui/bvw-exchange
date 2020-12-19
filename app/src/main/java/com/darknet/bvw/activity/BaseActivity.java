@@ -9,6 +9,7 @@ import android.view.inputmethod.InputMethodManager;
 
 import com.darknet.bvw.MyApp;
 import com.darknet.bvw.view.CustomDialog;
+import com.jingui.lib.utils.Immerse2Helper;
 
 import androidx.appcompat.app.AppCompatActivity;
 import butterknife.ButterKnife;
@@ -28,6 +29,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate");
+        if(immerse()) {
+            Immerse2Helper.setup(this, dark());
+        }
         setContentView(getLayoutId());
         ButterKnife.bind(this);
         AtyContainer.getInstance().addActivity(this);
@@ -36,11 +40,19 @@ public abstract class BaseActivity extends AppCompatActivity {
         initDatas();
     }
 
+    public boolean immerse(){
+        return false;
+    }
+
+    public boolean dark(){
+        return false;
+    }
+
     public abstract int getLayoutId();
 
     public abstract void initView();
 
-    public void initToolBar(){};
+    public void initToolBar(){}
 
     public abstract void initDatas();
 
