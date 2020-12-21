@@ -8,9 +8,21 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.darknet.bvw.R;
 import com.darknet.bvw.activity.BaseActivity;
+import com.darknet.bvw.common.BaseResponse;
+import com.darknet.bvw.mall.bean.CategoryBean;
+import com.darknet.bvw.mall.bean.GoodsBannerBean;
+import com.darknet.bvw.mall.bean.GoodsBean;
+import com.darknet.bvw.mall.bean.ShopHomeBean;
+import com.darknet.bvw.mall.presenter.CategoryPresenter;
+import com.darknet.bvw.net.retrofit.ApiInterface;
+import com.darknet.bvw.net.retrofit.BIWNetworkApi;
+import com.darknet.bvw.net.retrofit.BaseObserver;
+import com.darknet.bvw.net.retrofit.MvvmNetworkObserver;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -32,8 +44,13 @@ public class CategoryActivity extends BaseActivity {
 	private androidx.viewpager2.widget.ViewPager2 mVp2;
 	private CategoryAdapter mCategoryAdapter;
 
-	public static void start(Context context) {
+	private CategoryPresenter mPresenter = new CategoryPresenter(this);
+	private Integer mId;
+	private CategoryBean mFirstCategory;
+
+	public static void start(Context context, CategoryBean category) {
 	    Intent starter = new Intent(context, CategoryActivity.class);
+	    starter.putExtra("category", category);
 	    context.startActivity(starter);
 	}
 
@@ -52,22 +69,30 @@ public class CategoryActivity extends BaseActivity {
 		mBack.setOnClickListener(v -> finish());
 		mCategory.setLayoutManager(new LinearLayoutManager(this));
 		mCategory.setAdapter(mCategoryAdapter = new CategoryAdapter());
-		mCategoryAdapter.setNewData(new ArrayList<>(Arrays.asList(
-				"美食"
-				,"美妆护肤"
-				,"防护鞋 帽"
-				,"珠宝首饰"
-				,"酒水零食"
-				,"母婴用品"
-				,"生鲜果品"
-				,"面膜"
-		)));
 		mVp2.setOrientation(ViewPager2.ORIENTATION_VERTICAL);
+	}
+
+	@Override
+	public boolean immerse() {
+		return true;
+	}
+
+	@Override
+	public void initDatas() {
+		mFirstCategory = (CategoryBean) getIntent().getSerializableExtra("category");
+		mPresenter.loadCategory(mFirstCategory);
+	}
+
+	public void initViewPager(BaseResponse<List<CategoryBean>> response) {
+		mCategoryAdapter.setNewData(response.getData());
 		mVp2.setAdapter(new FragmentStateAdapter(getSupportFragmentManager(), getLifecycle()) {
 			@NonNull
 			@Override
 			public Fragment createFragment(int position) {
-				return CategoryGoodsFragment.newInstance(mCategoryAdapter.getItem(position));
+				if(mFirstCategory == CategoryBean.HOME){
+					return CategoryGoodsFragment.newInstance(mCategoryAdapter.getItem(position).getId(), null);
+				}
+				return CategoryGoodsFragment.newInstance(mFirstCategory.getId(), mCategoryAdapter.getItem(position).getId());
 			}
 
 			@Override
@@ -81,19 +106,10 @@ public class CategoryActivity extends BaseActivity {
 				mCategoryAdapter.select(position);
 			}
 		});
+//		mVp2.setUserInputEnabled(fa);
 	}
 
-	@Override
-	public boolean immerse() {
-		return true;
-	}
-
-	@Override
-	public void initDatas() {
-
-	}
-
-	private class CategoryAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
+	private class CategoryAdapter extends BaseQuickAdapter<CategoryBean, BaseViewHolder> {
 
 		private int selected = 0;
 
@@ -102,10 +118,10 @@ public class CategoryActivity extends BaseActivity {
 		}
 
 		@Override
-		protected void convert(BaseViewHolder helper, String item) {
+		protected void convert(BaseViewHolder helper, CategoryBean item) {
 			TextView tv = (TextView) helper.itemView;
 			tv.setSelected(selected == helper.getAdapterPosition());
-			tv.setText(item);
+			tv.setText(item.getName());
 			tv.setOnClickListener(v -> {
 				if(select(helper.getAdapterPosition())) {
 					mVp2.setCurrentItem(selected);

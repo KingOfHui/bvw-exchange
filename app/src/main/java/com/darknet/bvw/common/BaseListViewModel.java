@@ -68,7 +68,7 @@ public abstract class BaseListViewModel<DATA> extends BaseViewModel {
         notifyResultToTopViewModel(dataList, 0);
     }
 
-    protected void notifyResultToTopViewModel(List<DATA> dataList, int size) {
+    protected void notifyResultToTopViewModel(List<? extends DATA> dataList, int size) {
         List<DATA> list = getListLive().getValue();
         if (list == null) {
             return;

@@ -18,6 +18,7 @@
                 android:layout_height="wrap_content">
                 <com.youth.banner.Banner
                     android:id="@+id/banner"
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="110dp"/>
                 <LinearLayout
@@ -26,35 +27,39 @@
                     android:layout_width="match_parent"
                     android:layout_height="56dp">
                     <TextView
-                        android:textColor="@color/white"
+                        android:id="@+id/zonghe"
+                        android:textColor="@color/selector_category_color"
                         android:gravity="center"
                         android:textSize="11sp"
                         android:text="综合"
                         android:layout_weight="1"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="match_parent"/>
                     <TextView
-                        android:textColor="@color/white"
+                        android:id="@+id/sale"
+                        android:textColor="@color/selector_category_color"
                         android:gravity="center"
                         android:textSize="11sp"
                         android:text="销量"
                         android:layout_weight="1"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="match_parent"/>
                     <FrameLayout
+                        android:id="@+id/click_price"
                         android:layout_weight="1"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content">
+                        android:layout_height="match_parent">
                         <TextView
+                            android:id="@+id/tv_price"
                             android:layout_gravity="center"
-                            android:textColor="@color/white"
+                            android:textColor="@color/selector_category_color"
                             android:textSize="11sp"
                             android:text="价格"
                             android:drawablePadding="5dp"
                             android:drawableRight="@mipmap/price_asc"
                             android:gravity="center"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="match_parent"/>
                     </FrameLayout>
                 </LinearLayout>
                 <View

@@ -16,8 +16,10 @@ import com.darknet.bvw.base.BaseDataBindingAdapter;
 import com.darknet.bvw.common.BaseBindingFragment;
 import com.darknet.bvw.databinding.FragmentGoodsListBinding;
 import com.darknet.bvw.databinding.ItemGoodsBinding;
+import com.darknet.bvw.mall.bean.CategoryBean;
 import com.darknet.bvw.mall.bean.GoodsBannerBean;
 import com.darknet.bvw.mall.bean.GoodsBean;
+import com.darknet.bvw.mall.bean.GoodsDetailBean;
 import com.darknet.bvw.mall.vm.GoodsListViewModel;
 import com.darknet.bvw.util.EnvironmentUtil;
 import com.darknet.bvw.util.GlideImageLoader;
@@ -25,6 +27,7 @@ import com.jingui.lib.utils.DataUtil;
 import com.youth.banner.Banner;
 import com.youth.banner.listener.OnBannerListener;
 
+import java.io.Serializable;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -36,10 +39,10 @@ public class GoodsListFragment extends BaseBindingFragment<GoodsListViewModel, F
 	private View mHeader;
 	private Banner mBanner;
 
-	public static GoodsListFragment newInstance(String titleName) {
+	public static GoodsListFragment newInstance(CategoryBean category) {
 		GoodsListFragment fragment = new GoodsListFragment();
 		Bundle bundle = new Bundle();
-		bundle.putString("title", titleName);
+		bundle.putSerializable("category", category);
 		fragment.setArguments(bundle);
 		return fragment;
 	}
@@ -95,6 +98,8 @@ public class GoodsListFragment extends BaseBindingFragment<GoodsListViewModel, F
         mDataBinding.getAdapter().addHeaderView(mHeader);
         mViewModel.getListLive().observe(this
 				, objects -> mDataBinding.getAdapter().setNewData(objects));
+		CategoryBean category = (CategoryBean) getArguments().getSerializable("category");
+		mViewModel.setCategory(category);
 		mViewModel.refresh();
 	}
 
@@ -130,23 +135,45 @@ public class GoodsListFragment extends BaseBindingFragment<GoodsListViewModel, F
 		String title = bundle.getString("title");
 	}
 
-	public static class Adapter extends BaseDataBindingAdapter<GoodsBean, ItemGoodsBinding> {
+	public static class Adapter extends BaseDataBindingAdapter<Object, ItemGoodsBinding> {
 
 		public Adapter() {
 			super(R.layout.item_goods);
 		}
 
 		@Override
-		protected void convert(ItemGoodsBinding binding, GoodsBean item) {
+		protected void convert(ItemGoodsBinding binding, Object item) {
 			binding.tvOriginalPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-            Glide.with(binding.ivIcon.getContext())
-                    .load(item.getProduct_img())
-                    .apply(RequestOptions.centerCropTransform())
-                    .into(binding.ivIcon);
+			if(item instanceof GoodsBean){
+				convertHome(binding, (GoodsBean)item);
+			}else if(item instanceof GoodsDetailBean){
+				convertDetail(binding, (GoodsDetailBean)item);
+			}
+		}
+
+		private void convertDetail(ItemGoodsBinding binding, GoodsDetailBean item) {
+			Glide.with(binding.ivIcon.getContext())
+					.load(item.getImg_url())
+					.apply(RequestOptions.centerCropTransform())
+					.into(binding.ivIcon);
 //            binding.tag TODO 没字段
-            binding.tvName.setText(item.getName());
-            binding.tvPrice.setText("USTD "+item.getPrice());
-            binding.tvOriginalPrice.setText("USTD "+item.getOriginal_price());
+			binding.tvName.setText(item.getName());
+			binding.tvPrice.setText("USTD "+item.getPrice());
+			binding.tvOriginalPrice.setVisibility(item.getPrice().equals(item.getOriginal_price()) ? View.GONE : View.VISIBLE);
+			binding.tvOriginalPrice.setText("USTD "+item.getOriginal_price());
+//            binding.tvNumber TODO 没字段
+		}
+
+		private void convertHome(ItemGoodsBinding binding, GoodsBean item) {
+			Glide.with(binding.ivIcon.getContext())
+					.load(item.getProduct_img())
+					.apply(RequestOptions.centerCropTransform())
+					.into(binding.ivIcon);
+//            binding.tag TODO 没字段
+			binding.tvName.setText(item.getName());
+			binding.tvPrice.setText("USTD "+item.getPrice());
+			binding.tvOriginalPrice.setVisibility(item.getPrice().equals(item.getOriginal_price()) ? View.GONE : View.VISIBLE);
+			binding.tvOriginalPrice.setText("USTD "+item.getOriginal_price());
 //            binding.tvNumber TODO 没字段
 		}
 	}

@@ -1,11 +1,15 @@
 package com.darknet.bvw.net.retrofit;
 
 import com.darknet.bvw.common.BaseResponse;
+import com.darknet.bvw.mall.bean.CategoryBean;
+import com.darknet.bvw.mall.bean.GoodsDetailBean;
 import com.darknet.bvw.mall.bean.ProductDetailResp;
 import com.darknet.bvw.mall.bean.ShopHomeBean;
 import com.darknet.bvw.model.response.NoticeResponse;
 import com.darknet.bvw.order.bean.OrderDetailResp;
 import com.darknet.bvw.order.bean.ShippingAddress;
+
+import java.util.List;
 
 import java.util.List;
 
@@ -85,4 +89,23 @@ public interface ApiInterface {
     @POST("api/shop/address/update")
     Observable<BaseResponse<Object>> updateAddress(@Body RequestBody body);
 
+
+    //一级分类
+    @GET("api/shop/catalog/list")
+    Observable<BaseResponse<List<CategoryBean>>> category();
+
+    //二级分类
+    @GET("api/shop/catalog/list2/{parent_id}")
+    Observable<BaseResponse<List<CategoryBean>>> categorySecond(@Path("parent_id") int parent_id);
+
+    //商品列表(根据分类)
+    @GET("api/shop/product/category")
+    Observable<BaseResponse<List<GoodsDetailBean>>> shopListByCategory(
+            @Query("root_category_id") int root_category_id // 一级分类
+            , @Query("category_id") Integer category_id // 二级分类 不传返回全部
+            , @Query("limit") Integer limit
+            , @Query("order_field") String order_field //排序字段,可用值:sale,price,create_time
+            , @Query("order_side") String order_side //升序降序,可用值:desc,asc
+            , @Query("page") Integer page
+    );
 }

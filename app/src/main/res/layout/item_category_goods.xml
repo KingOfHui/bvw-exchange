@@ -11,6 +11,7 @@
         android:id="@+id/iv_icon"
         android:src="@mipmap/ic_launcher"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_width="131dp"
         android:layout_height="131dp"/>
     <TextView
