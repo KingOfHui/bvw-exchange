@@ -975,7 +975,7 @@
     <string name="order_all">全部订单</string>
     <string name="order_to_be_delivered">待发货</string>
     <string name="order_to_be_taken">待收货</string>
-    <string name="order_to_be_paid">待付款</string>
+    <string name="order_to_be_paid">待支付</string>
     <string name="order_detail">订单详情</string>
     <string name="order_close_time">剩余%s自动关闭</string>
     <string name="order_submit_time">下单时间：%s</string>

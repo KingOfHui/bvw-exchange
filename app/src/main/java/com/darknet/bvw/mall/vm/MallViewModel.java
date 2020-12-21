@@ -18,6 +18,7 @@ import com.darknet.bvw.net.retrofit.MvvmNetworkObserver;
 import java.util.List;
 
 import androidx.lifecycle.MutableLiveData;
+
 import io.reactivex.Observable;
 
 /**
@@ -38,10 +39,11 @@ public class MallViewModel extends BaseViewModel {
         return category;
     }
 
-    public void loadCategory(){
+    public void loadCategory() {
         BIWNetworkApi.getService(ApiInterface.class)
                 .category()
-                .compose(BIWNetworkApi.getInstance().applySchedulers(new BaseObserver<>(new MvvmNetworkObserver<BaseResponse<List<CategoryBean>>>() {
+                .compose(BIWNetworkApi.getInstance().applySchedulers())
+                .subscribe(new BaseObserver<>(new MvvmNetworkObserver<BaseResponse<List<CategoryBean>>>() {
                     @Override
                     public void onSuccess(BaseResponse<List<CategoryBean>> response, boolean isFromCache) {
                         List<CategoryBean> list = response.getData();
@@ -52,6 +54,6 @@ public class MallViewModel extends BaseViewModel {
                     @Override
                     public void onFailure(Throwable throwable) {
                     }
-                })));
+                }));
     }
 }

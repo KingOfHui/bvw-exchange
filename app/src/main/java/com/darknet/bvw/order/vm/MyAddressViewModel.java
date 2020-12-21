@@ -29,6 +29,7 @@ import cn.hutool.core.collection.CollectionUtil;
 public class MyAddressViewModel extends BaseListViewModel<ShippingAddress> {
 
     public MutableLiveData<Boolean> isSuccess = new MutableLiveData<>();
+    public MutableLiveData<ShippingAddress> selectAddress = new MutableLiveData<>();
 
     public MyAddressViewModel(@NonNull Application application) {
         super(application);
@@ -36,18 +37,27 @@ public class MyAddressViewModel extends BaseListViewModel<ShippingAddress> {
 
     @Override
     protected void loadData(int pageNum, boolean isClear) {
-        apiService.getAddressList().compose(BIWNetworkApi.getInstance().applySchedulers(new BaseObserver<>(this, new MvvmNetworkObserver<BaseResponse<List<ShippingAddress>>>() {
-            @Override
-            public void onSuccess(BaseResponse<List<ShippingAddress>> t, boolean isFromCache) {
-                List<ShippingAddress> data = t.getData();
-                notifyResultToTopViewModel(data);
-            }
+        apiService.getAddressList().compose(BIWNetworkApi.getInstance().applySchedulers())
+                .subscribe(new BaseObserver<>(this, new MvvmNetworkObserver<BaseResponse<List<ShippingAddress>>>() {
+                    @Override
+                    public void onSuccess(BaseResponse<List<ShippingAddress>> t, boolean isFromCache) {
+                        List<ShippingAddress> data = t.getData();
+                        notifyResultToTopViewModel(data);
+                        if (CollectionUtil.isNotEmpty(data)) {
+                            for (ShippingAddress address : data) {
+                                if (address.getDefault_state() == 1) {
+                                    selectAddress.setValue(address);
+                                    break;
+                                }
+                            }
+                        }
+                    }
 
-            @Override
-            public void onFailure(Throwable throwable) {
-                loadFailed(throwable.getMessage());
-            }
-        })));
+                    @Override
+                    public void onFailure(Throwable throwable) {
+                        loadFailed(throwable.getMessage());
+                    }
+                }));
     }
 
     public void addAddress(ShippingAddress shippingAddress) {

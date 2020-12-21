@@ -22,6 +22,8 @@ public class ShippingAddress implements Serializable {
      * user_name :
      */
 
+    private int id;
+    private String user_id;
     private String city;
     private String county;
     private int default_state;
@@ -31,6 +33,22 @@ public class ShippingAddress implements Serializable {
     private String province;
     private String tel_number;
     private String user_name;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
+    }
 
     public String getCity() {
         return city;

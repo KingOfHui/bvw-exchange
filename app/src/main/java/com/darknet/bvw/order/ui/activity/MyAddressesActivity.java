@@ -20,6 +20,8 @@ import com.darknet.bvw.order.vm.MyAddressViewModel;
  */
 public class MyAddressesActivity extends BaseBindingActivity<ActivityMyAddressesBinding> {
 
+    private MyAddressViewModel mViewModel;
+
     public static void start(Context context) {
         context.startActivity(new Intent(context, MyAddressesActivity.class));
     }
@@ -31,14 +33,21 @@ public class MyAddressesActivity extends BaseBindingActivity<ActivityMyAddresses
 
     @Override
     public void initView() {
-        MyAddressViewModel viewModel = getViewModel(MyAddressViewModel.class);
-        mBinding.setVm(viewModel);
+        int selectId = getIntent().getIntExtra("selectId", -1);
+        mViewModel = getViewModel(MyAddressViewModel.class);
+        mBinding.setVm(mViewModel);
         mBinding.layoutTitle.layBack.setOnClickListener((view -> finish()));
         mBinding.layoutTitle.title.setText(getString(R.string.my_shipping_address));
         mBinding.tvAddAddress.setOnClickListener((view -> AddAddressActivity.start(this, null, true)));
-        mBinding.setAdapter(new AddressAdapter());
-//        mBinding.getAdapter().setOnItemClickListener((adapter, view, position) -> AddAddressActivity.start(MyAddressesActivity.this, null));
-        viewModel.refresh();
+        AddressAdapter adapter = new AddressAdapter(selectId);
+        mBinding.setAdapter(adapter);
+        mBinding.getAdapter().setOnItemClickListener((adapter2, view, position) -> {
+            ShippingAddress shippingAddress = adapter.getData().get(position);
+            Intent intent = new Intent();
+            intent.putExtra("address", shippingAddress);
+            setResult(RESULT_OK,intent);
+            finish();
+        });
     }
 
     @Override
@@ -47,9 +56,17 @@ public class MyAddressesActivity extends BaseBindingActivity<ActivityMyAddresses
 //        mBinding.getAdapter().setNewData(list);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mViewModel.refresh();
+    }
+
     public static class AddressAdapter extends BaseDataBindingAdapter<ShippingAddress, ItemAddressBinding> {
-        public AddressAdapter() {
+        private int selectId = -1;
+        public AddressAdapter(int selectId) {
             super(R.layout.item_address);
+            this.selectId = selectId;
         }
 
         @Override
@@ -57,8 +74,7 @@ public class MyAddressesActivity extends BaseBindingActivity<ActivityMyAddresses
             binding.tvName.setText(item.getUser_name());
             binding.tvMobile.setText(item.getTel_number());
             binding.tvAddress.setText(item.getDetail_info());
-            binding.cbSelect.setSelected(true);
-            binding.cbSelect.setEnabled(true);
+            binding.cbSelect.setSelected(selectId == -1 ? item.getDefault_state() == 1 : item.getId() == selectId);
             binding.tvEdit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

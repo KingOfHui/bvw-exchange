@@ -25,6 +25,7 @@ public class OrderListViewModel extends BaseListViewModel<String> {
         super(application);
     }
 
+    //类型 -1全部 0->待付款；1->待发货 2->已发货|待收货 3->已完成 4->已取消 8待评价,可用值:-1,0,1,2,3,8
     private MutableLiveData<Integer> tradeStateLive;
 
     public MutableLiveData<Integer> getTradeStateLive() {
@@ -40,19 +41,20 @@ public class OrderListViewModel extends BaseListViewModel<String> {
     protected void loadData(int pageNum, boolean isClear) {
         BIWNetworkApi.getService(ApiInterface.class).getOrderList(getTradeStateLive().getValue(), pageNum, 20)
                 .compose(BIWNetworkApi.getInstance()
-                        .applySchedulers(new BaseObserver<>(this,
-                                new MvvmNetworkObserver<BaseResponse<Object>>() {
-                                    @Override
-                                    public void onSuccess(BaseResponse<Object> t, boolean isFromCache) {
-                                        Log.i("dhdhdh", "onSuccess: " + t.toString());
-                                    }
+                        .applySchedulers())
+                .subscribe(new BaseObserver<>(this,
+                        new MvvmNetworkObserver<BaseResponse<Object>>() {
+                            @Override
+                            public void onSuccess(BaseResponse<Object> t, boolean isFromCache) {
+                                Log.i("dhdhdh", "onSuccess: " + t.toString());
+                            }
 
-                                    @Override
-                                    public void onFailure(Throwable throwable) {
-                                        loadFailed(throwable.getMessage());
-                                    }
-                                }
-                        )));
+                            @Override
+                            public void onFailure(Throwable throwable) {
+                                loadFailed(throwable.getMessage());
+                            }
+                        }
+                ));
 
         notifyResultToTopViewModel(null, 20);
     }

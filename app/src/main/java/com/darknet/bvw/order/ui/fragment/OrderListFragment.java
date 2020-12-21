@@ -2,6 +2,7 @@ package com.darknet.bvw.order.ui.fragment;
 
 
 import android.net.Uri;
+import android.os.Bundle;
 
 import com.darknet.bvw.R;
 import com.darknet.bvw.base.BaseDataBindingAdapter;
@@ -20,8 +21,12 @@ import com.darknet.bvw.util.view.ViewUtil;
  */
 public class OrderListFragment extends BaseBindingFragment<OrderListViewModel, FragmentOrderListBinding> {
 
-    public static OrderListFragment newInstance() {
-        return new OrderListFragment();
+    public static OrderListFragment newInstance(int state) {
+        Bundle bundle = new Bundle();
+        bundle.putInt("trade_state", state);
+        OrderListFragment fragment = new OrderListFragment();
+        fragment.setArguments(bundle);
+        return fragment;
     }
     @Override
     public int setLayoutResId() {
@@ -42,6 +47,11 @@ public class OrderListFragment extends BaseBindingFragment<OrderListViewModel, F
 
     @Override
     protected void initData() {
+        Bundle bundle = getArguments();
+        if (bundle!= null) {
+            int trade_state = bundle.getInt("trade_state", 0);
+            mViewModel.getTradeStateLive().setValue(trade_state);
+        }
         mViewModel.refresh();
 
     }

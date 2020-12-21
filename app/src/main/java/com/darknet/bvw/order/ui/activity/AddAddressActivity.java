@@ -64,7 +64,7 @@ public class AddAddressActivity extends BaseBindingActivity<ActivityAddAddressBi
                 String mobile = mBinding.etMobile.getText().toString().trim();
                 boolean checked = mBinding.switchDefault.isChecked();
                 if (TextUtils.isEmpty(name)) {
-                    ToastUtils.showSingleToast("请输入姓名");
+                    ToastUtils.showSingleToast(getString(R.string.input_name));
                     return;
                 }
                 if (TextUtils.isEmpty(address)) {
@@ -72,19 +72,21 @@ public class AddAddressActivity extends BaseBindingActivity<ActivityAddAddressBi
                     return;
                 }
                 if (TextUtils.isEmpty(mobile)) {
-                    ToastUtils.showSingleToast("请输入手机号");
+                    ToastUtils.showSingleToast(getString(R.string.input_mobile));
                     return;
                 }
 
-                ShippingAddress shippingAddress = new ShippingAddress();
-                shippingAddress.setTel_number(mobile);
-                shippingAddress.setUser_name(name);
-                shippingAddress.setDetail_info(address);
-                shippingAddress.setDefault_state(checked ? 1 : 0);
+                if (mAddress == null) {
+                    mAddress = new ShippingAddress();
+                }
+                mAddress.setTel_number(mobile);
+                mAddress.setUser_name(name);
+                mAddress.setDetail_info(address);
+                mAddress.setDefault_state(checked ? 1 : 0);
                 if (mIsAdd) {
-                    viewModel.addAddress(shippingAddress);
+                    viewModel.addAddress(mAddress);
                 } else {
-                    viewModel.updateAddress(shippingAddress);
+                    viewModel.updateAddress(mAddress);
                 }
 
                 /*ShippingAddressModel model = new ShippingAddressModel();

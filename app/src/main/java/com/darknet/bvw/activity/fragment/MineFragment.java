@@ -98,10 +98,13 @@ public class MineFragment extends Fragment implements View.OnClickListener {
         LinearLayout llAllOrder = view.findViewById(R.id.llAllOrder);
         LinearLayout llWaitPay = view.findViewById(R.id.llWaitPay);
         LinearLayout llWaitTaken = view.findViewById(R.id.llWaitTaken);
+        LinearLayout llWaitDelivered = view.findViewById(R.id.llWaitDelivered);
+//        llWaitPay.setOnClickListener(view1 -> OrderListActivity.start(requireContext(),1));
+        llWaitDelivered.setOnClickListener(view1 -> OrderListActivity.start(requireContext(),2));
+//        llWaitTaken.setOnClickListener(view1 -> OrderListActivity.start(requireContext(),3));
+        llAllOrder.setOnClickListener(v -> OrderListActivity.start(requireContext(),0));
         llWaitTaken.setOnClickListener(view1 -> ConfirmOrderActivity.start(requireContext()));
         llWaitPay.setOnClickListener(view1 -> MyAddressesActivity.start(requireContext()));
-        llAllOrder.setOnClickListener(v -> OrderListActivity.start(requireContext()));
-
         try {
             String nameVal = (String) UserSPHelper.get(activity, "nickName", "no");
             if (nameVal.equals("no")) {
@@ -115,7 +118,7 @@ public class MineFragment extends Fragment implements View.OnClickListener {
             e.printStackTrace();
         }
 
-        ETHWalletModel walletModel = WalletDaoUtils.getCurrent();
+//        ETHWalletModel walletModel = WalletDaoUtils.getCurrent();
 //        walletName.setText(walletModel.getName());
 
         manageWallet.setOnClickListener(this);
