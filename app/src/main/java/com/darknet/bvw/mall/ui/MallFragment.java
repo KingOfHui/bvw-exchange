@@ -43,6 +43,7 @@ public class MallFragment extends BaseBindingFragment<MallViewModel, FragmentMal
                 initViewPager(category);
             }
         });
+        mViewModel.loadCategory();
     }
 
     private void initViewPager(List<CategoryBean> category) {
