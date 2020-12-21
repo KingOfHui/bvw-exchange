@@ -42,7 +42,7 @@ public class OrderListFragment extends BaseBindingFragment<OrderListViewModel, F
 
     @Override
     protected void initData() {
-//        mViewModel.refresh();
+        mViewModel.refresh();
 
     }
 
