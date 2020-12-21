@@ -9,7 +9,7 @@
             type="com.darknet.bvw.order.ui.adapter.OrderGoodsAdapter" />
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/color_bg_181523"
@@ -20,8 +20,11 @@
             layout="@layout/lay_head_back_binding" />
 
         <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/tvSubmitOrder"
+            app:layout_constraintTop_toBottomOf="@id/layout_title">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -166,16 +169,17 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <EditText
+                        android:id="@+id/etRemark"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/dimen_70dp"
                         android:layout_marginTop="@dimen/dimen_10dp"
                         android:background="@color/color_bg_181523"
-                        android:hint="请输入备注内容"
                         android:gravity="top|left"
+                        android:hint="请输入备注内容"
                         android:padding="@dimen/dimen_5dp"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/dp_14"
                         android:textColorHint="#77ffffff"
+                        android:textSize="@dimen/dp_14"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toLeftOf="@id/tvRemarkTip"
                         app:layout_constraintTop_toBottomOf="@id/tvRemarkTip" />
@@ -264,23 +268,24 @@
                     app:right_text_color="@color/color_text_00FBD9"
                     app:right_text_size="5dp" />
 
-                <TextView
-                    android:id="@+id/tvSubmitOrder"
-                    android:layout_width="match_parent"
-                    android:layout_height="44dp"
-                    android:layout_marginStart="@dimen/dimen_15dp"
-                    android:layout_marginTop="@dimen/dimen_40dp"
-                    android:layout_marginEnd="@dimen/dimen_15dp"
-                    android:layout_marginBottom="@dimen/dimen_30dp"
-                    android:background="@drawable/shape_circle_rect_black"
-                    android:backgroundTint="@color/_01FCDA"
-                    android:gravity="center"
-                    android:text="提交订单"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/sp_16"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/hlvTotalPrice" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
-    </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvSubmitOrder"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginStart="@dimen/dimen_15dp"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:layout_marginEnd="@dimen/dimen_15dp"
+            android:layout_marginBottom="@dimen/dimen_20dp"
+            android:background="@drawable/shape_circle_rect_black"
+            android:backgroundTint="@color/_01FCDA"
+            android:gravity="center"
+            android:text="提交订单"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/scrollView" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

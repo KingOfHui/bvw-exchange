@@ -1,12 +1,14 @@
 package com.darknet.bvw.order.bean;
 
+import java.io.Serializable;
+
 /**
  * @ClassName ShippingAddress
  * @Description
  * @Author dinghui
  * @Date 2020/12/21 0021 13:54
  */
-public class ShippingAddress {
+public class ShippingAddress implements Serializable {
 
     /**
      * city :

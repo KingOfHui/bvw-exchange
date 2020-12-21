@@ -1000,4 +1000,6 @@
     <string name="input_detail_address">请填写详细地址</string>
     <string name="set_default_address">设为默认地址</string>
     <string name="save">保存</string>
+    <string name="add_address_success">添加地址成功</string>
+    <string name="update_address_success">更新地址成功</string>
 </resources>

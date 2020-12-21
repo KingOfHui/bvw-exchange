@@ -4,19 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 
-import androidx.databinding.ViewDataBinding;
-
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.darknet.bvw.R;
 import com.darknet.bvw.activity.BaseBindingActivity;
 import com.darknet.bvw.base.BaseDataBindingAdapter;
 import com.darknet.bvw.databinding.ActivityMyAddressesBinding;
 import com.darknet.bvw.databinding.ItemAddressBinding;
-import com.darknet.bvw.db.AddressDaoUtils;
-import com.darknet.bvw.db.Entity.ShippingAddressModel;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.darknet.bvw.order.bean.ShippingAddress;
+import com.darknet.bvw.order.vm.MyAddressViewModel;
 
 /**
  * @ClassName MyAddressesActivity
@@ -37,30 +31,40 @@ public class MyAddressesActivity extends BaseBindingActivity<ActivityMyAddresses
 
     @Override
     public void initView() {
+        MyAddressViewModel viewModel = getViewModel(MyAddressViewModel.class);
+        mBinding.setVm(viewModel);
         mBinding.layoutTitle.layBack.setOnClickListener((view -> finish()));
         mBinding.layoutTitle.title.setText(getString(R.string.my_shipping_address));
-        mBinding.tvAddAddress.setOnClickListener((view -> AddAddressActivity.start(this)));
+        mBinding.tvAddAddress.setOnClickListener((view -> AddAddressActivity.start(this, null, true)));
         mBinding.setAdapter(new AddressAdapter());
-        mBinding.getAdapter().setOnItemClickListener((adapter, view, position) -> AddAddressActivity.start(MyAddressesActivity.this));
+//        mBinding.getAdapter().setOnItemClickListener((adapter, view, position) -> AddAddressActivity.start(MyAddressesActivity.this, null));
+        viewModel.refresh();
     }
 
     @Override
     public void initDatas() {
-        List<ShippingAddressModel> list = AddressDaoUtils.queryAll();
-        mBinding.getAdapter().setNewData(list);
+//        List<ShippingAddressModel> list = AddressDaoUtils.queryAll();
+//        mBinding.getAdapter().setNewData(list);
     }
 
-    public static class AddressAdapter extends BaseDataBindingAdapter<ShippingAddressModel, ItemAddressBinding> {
+    public static class AddressAdapter extends BaseDataBindingAdapter<ShippingAddress, ItemAddressBinding> {
         public AddressAdapter() {
             super(R.layout.item_address);
         }
 
         @Override
-        protected void convert(ItemAddressBinding binding, ShippingAddressModel item) {
-            binding.tvName.setText(item.getName());
-            binding.tvMobile.setText(item.getMobile());
-            binding.tvAddress.setText(item.getAddress());
+        protected void convert(ItemAddressBinding binding, ShippingAddress item) {
+            binding.tvName.setText(item.getUser_name());
+            binding.tvMobile.setText(item.getTel_number());
+            binding.tvAddress.setText(item.getDetail_info());
             binding.cbSelect.setSelected(true);
+            binding.cbSelect.setEnabled(true);
+            binding.tvEdit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AddAddressActivity.start(v.getContext(), item, false);
+                }
+            });
         }
     }
 

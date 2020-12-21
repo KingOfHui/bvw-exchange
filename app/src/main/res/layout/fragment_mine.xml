@@ -133,10 +133,10 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/dimen_25dp"
+                    android:layout_height="@dimen/dimen_25dp"
                     android:layout_gravity="center_horizontal"
-                    android:src="@mipmap/img_contact" />
+                    android:src="@mipmap/icon_wait_pay" />
 
                 <com.darknet.bvw.view.TypefaceTextView
                     android:layout_width="wrap_content"
@@ -147,7 +147,34 @@
                     android:gravity="center"
                     android:textSize="@dimen/sp_12"
                     android:textColor="@color/white"
-                    android:textStyle="bold"
+                    app:typeface="@string/universal_text_typeface" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llWaitDelivered"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="@dimen/dimen_10dp"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="@dimen/dimen_25dp"
+                    android:layout_height="@dimen/dimen_25dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@mipmap/icon_wait_delivery" />
+
+                <com.darknet.bvw.view.TypefaceTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/order_to_be_delivered"
+                    android:textSize="@dimen/sp_12"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/dimen_10dp"
+                    android:textColor="@color/white"
                     app:typeface="@string/universal_text_typeface" />
 
             </LinearLayout>
@@ -161,10 +188,10 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/dimen_25dp"
+                    android:layout_height="@dimen/dimen_25dp"
                     android:layout_gravity="center_horizontal"
-                    android:src="@mipmap/img_contact" />
+                    android:src="@mipmap/icon_wait_receive" />
 
                 <com.darknet.bvw.view.TypefaceTextView
                     android:layout_width="wrap_content"
@@ -175,35 +202,6 @@
                     android:textSize="@dimen/sp_12"
                     android:layout_marginTop="@dimen/dimen_10dp"
                     android:textColor="@color/white"
-                    android:textStyle="bold"
-                    app:typeface="@string/universal_text_typeface" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/llWaitDelivered"
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="@dimen/dimen_10dp"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:src="@mipmap/img_contact" />
-
-                <com.darknet.bvw.view.TypefaceTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="@string/order_to_be_delivered"
-                    android:textSize="@dimen/sp_12"
-                    android:gravity="center"
-                    android:layout_marginTop="@dimen/dimen_10dp"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
                     app:typeface="@string/universal_text_typeface" />
 
             </LinearLayout>
@@ -217,10 +215,10 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/dimen_25dp"
+                    android:layout_height="@dimen/dimen_25dp"
                     android:layout_gravity="center_horizontal"
-                    android:src="@mipmap/img_contact" />
+                    android:src="@mipmap/icon_all_order" />
 
                 <com.darknet.bvw.view.TypefaceTextView
                     android:layout_width="wrap_content"
@@ -231,7 +229,6 @@
                     android:gravity="center"
                     android:layout_marginTop="@dimen/dimen_10dp"
                     android:textColor="@color/white"
-                    android:textStyle="bold"
                     app:typeface="@string/universal_text_typeface" />
 
             </LinearLayout>

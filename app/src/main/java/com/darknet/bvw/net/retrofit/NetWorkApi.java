@@ -91,7 +91,18 @@ public abstract class NetWorkApi implements IEnvironment {
             }
         };
     }
-
+    public <T> ObservableTransformer<T, T> applySchedulers() {
+        return new ObservableTransformer<T, T>() {
+            @Override
+            public ObservableSource<T> apply(Observable<T> upstream) {
+                Observable<T> observable = (Observable<T>) upstream.subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .map(getAppErrorHandler())
+                        .onErrorResumeNext(new HttpErrorHandler<T>());
+                return observable;
+            }
+        };
+    }
     protected abstract Interceptor getInterceptor();
 
     protected abstract <T> Function<T, T> getAppErrorHandler();

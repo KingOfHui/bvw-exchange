@@ -963,5 +963,7 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="input_detail_address">Please fill in the detailed address</string>
     <string name="set_default_address">Set as the default address</string>
     <string name="save">Save</string>
+    <string name="add_address_success">添加地址成功</string>
+    <string name="update_address_success">更新地址成功</string>
 
 </resources>

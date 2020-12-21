@@ -5,6 +5,9 @@ import com.darknet.bvw.mall.bean.ProductDetailResp;
 import com.darknet.bvw.mall.bean.ShopHomeBean;
 import com.darknet.bvw.model.response.NoticeResponse;
 import com.darknet.bvw.order.bean.OrderDetailResp;
+import com.darknet.bvw.order.bean.ShippingAddress;
+
+import java.util.List;
 
 import io.reactivex.Observable;
 import okhttp3.RequestBody;
@@ -72,7 +75,7 @@ public interface ApiInterface {
 
     //我的地址列表
     @GET("api/shop/address/list")
-    Observable<BaseResponse<Object>> getAddressList();
+    Observable<BaseResponse<List<ShippingAddress>>> getAddressList();
 
     //设置默认地址
     @POST("api/shop/address/setDefault/{id}")

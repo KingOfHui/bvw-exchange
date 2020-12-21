@@ -11,12 +11,12 @@
         android:layout_height="wrap_content"
         android:background="@color/color_bg_181523">
 
-        <View
+        <ImageView
             android:id="@+id/cbSelect"
             android:layout_width="@dimen/dimen_20dp"
             android:layout_height="@dimen/dimen_20dp"
             android:layout_marginStart="@dimen/dimen_20dp"
-            android:background="@drawable/selector_check_box_selected"
+            android:background="@drawable/selector_box_selected"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
