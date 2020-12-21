@@ -61,7 +61,7 @@
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
             android:layout_marginTop="@dimen/dimen_15dp"
-
+            app:layout_constraintLeft_toLeftOf="parent"
             android:paddingStart="@dimen/dimen_5dp"
             app:layout_constraintTop_toBottomOf="@id/llSearch"
             style="@style/NormalTabLayoutStyle" />
@@ -69,8 +69,9 @@
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tabLayout" />
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/tabLayout"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

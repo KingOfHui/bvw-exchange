@@ -259,10 +259,10 @@
                     app:layout_constraintTop_toBottomOf="@id/hlvFreight"
                     app:left_text="商品合计"
                     app:left_text_color="@color/white"
-                    app:left_text_size="6dp"
+                    app:left_text_size="5dp"
                     app:right_text="USDT 10"
                     app:right_text_color="@color/color_text_00FBD9"
-                    app:right_text_size="6dp" />
+                    app:right_text_size="5dp" />
 
                 <TextView
                     android:id="@+id/tvSubmitOrder"

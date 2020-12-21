@@ -11,6 +11,7 @@ import com.darknet.bvw.config.ConfigNetWork;
 import com.darknet.bvw.db.Entity.DaoMaster;
 import com.darknet.bvw.db.Entity.DaoSession;
 import com.darknet.bvw.db.MyDBHelper;
+import com.darknet.bvw.net.retrofit.NetWorkApi;
 import com.darknet.bvw.util.EnvironmentUtil;
 import com.darknet.bvw.util.Language;
 import com.darknet.bvw.util.SharedPreferencesUtil;
@@ -39,6 +40,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 
 import cn.jpush.android.api.JPushInterface;
+import io.reactivex.functions.Consumer;
+import io.reactivex.plugins.RxJavaPlugins;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -107,8 +110,18 @@ public class MyApp extends Application {
             //网络初始化
             initOkGo();
             SmartRefreshLayoutInitializer.init();
+            NetWorkApi.init(this);
         }
 
+        handleRxJavaError();
+    }
+
+    private void handleRxJavaError() {
+        RxJavaPlugins.setErrorHandler(throwable -> {
+            //异常处理
+            if(throwable == null) return;
+            throwable.printStackTrace();
+        });
     }
 
     /**

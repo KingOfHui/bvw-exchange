@@ -37,8 +37,9 @@ public abstract class NetWorkApi implements IEnvironment {
     protected NetWorkApi() {
         if (!mIsFormal) {
             mBaseUrl = getTest();
+        } else {
+            this.mBaseUrl = getFormal();
         }
-        this.mBaseUrl = getFormal();
     }
 
 

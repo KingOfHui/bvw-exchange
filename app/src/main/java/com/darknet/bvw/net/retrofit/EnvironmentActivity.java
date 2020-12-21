@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.darknet.bvw.BuildConfig;
 import com.darknet.bvw.R;
 
 
@@ -29,6 +30,6 @@ public class EnvironmentActivity extends AppCompatActivity {
     }
 
     public static boolean isOfficialEnvironment(Application application) {
-        return true;
+        return "line".equalsIgnoreCase(BuildConfig.WORK);
     }
 }

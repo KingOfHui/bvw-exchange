@@ -13,7 +13,7 @@ import okhttp3.Response;
 
 public class BIWNetworkApi extends NetWorkApi {
     private static final String BASE_URL = "https://api.bitw.im/";
-    private static final String BASE_URL_TEST = "https://api.bitw.im/";
+    private static final String BASE_URL_TEST = "http://t.bvw.im/";
 
     private static volatile BIWNetworkApi sInstance;
 

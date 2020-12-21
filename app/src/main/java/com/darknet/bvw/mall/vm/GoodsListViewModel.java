@@ -46,7 +46,7 @@ public class GoodsListViewModel extends BaseListViewModel<GoodsBean> {
 
                     @Override
                     public void onFailure(Throwable throwable) {
-
+                        loadFailed(throwable.getMessage());
                     }
                 }))).subscribe();
     }
