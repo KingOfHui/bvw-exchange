@@ -52,6 +52,6 @@ public class MallViewModel extends BaseViewModel {
                     @Override
                     public void onFailure(Throwable throwable) {
                     }
-                })));
+                }))).subscribe();
     }
 }

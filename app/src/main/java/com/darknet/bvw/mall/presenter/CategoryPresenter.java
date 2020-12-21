@@ -23,7 +23,7 @@ public class CategoryPresenter extends Presenter<CategoryActivity> {
 	}
 
 	public void loadCategory(CategoryBean category) {
-		if(category == CategoryBean.HOME){
+		if(CategoryBean.isHome(category)){
 			loadFirstCategory();
 		}else {
 			loadSecondCategory(category);

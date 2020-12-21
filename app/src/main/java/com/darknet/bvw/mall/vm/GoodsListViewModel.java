@@ -36,7 +36,7 @@ public class GoodsListViewModel extends BaseListViewModel<Object> {
 
     @Override
     protected void loadData(int pageNum, boolean isClear) {
-        if(mCategory == null || mCategory == CategoryBean.HOME){
+        if(CategoryBean.isHome(mCategory)){
             loadHome();
         }else {
             loadByCategory(pageNum);
