@@ -21,6 +21,7 @@ import com.darknet.bvw.mall.bean.GoodsBean;
 import com.darknet.bvw.mall.vm.GoodsListViewModel;
 import com.darknet.bvw.util.EnvironmentUtil;
 import com.darknet.bvw.util.GlideImageLoader;
+import com.jingui.lib.utils.DataUtil;
 import com.youth.banner.Banner;
 import com.youth.banner.listener.OnBannerListener;
 
@@ -106,7 +107,13 @@ public class GoodsListFragment extends BaseBindingFragment<GoodsListViewModel, F
             }
         });
         mViewModel.getBanner().observe(this, banner -> {
-            mBanner.setImages(banner);
+        	if(DataUtil.isEmpty(banner)){
+        		mBanner.setVisibility(View.GONE);
+			}else {
+        		mBanner.setVisibility(View.VISIBLE);
+				mBanner.setImages(banner);
+				mBanner.start();
+			}
         });
         mBanner.setOnBannerListener(position -> {
             List<GoodsBannerBean> value = mViewModel.getBanner().getValue();
