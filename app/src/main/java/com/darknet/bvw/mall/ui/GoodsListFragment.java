@@ -59,7 +59,7 @@ public class GoodsListFragment extends BaseBindingFragment<GoodsListViewModel, F
 		GridLayoutManager lm = new GridLayoutManager(getContext(), 2);
 		lm.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
 			@Override
-			public int getSpanSize(int position) {
+			 public int getSpanSize(int position) {
 				if (mDataBinding.getAdapter().getItemViewType(position) == BaseQuickAdapter.HEADER_VIEW) {
 					return 1;
 				}
@@ -93,6 +93,7 @@ public class GoodsListFragment extends BaseBindingFragment<GoodsListViewModel, F
         mDataBinding.getAdapter().addHeaderView(mHeader);
         mViewModel.getListLive().observe(this
 				, objects -> mDataBinding.getAdapter().setNewData(objects));
+		mViewModel.refresh();
 	}
 
     private void initBanner() {
