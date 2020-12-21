@@ -78,15 +78,16 @@ public class GoodsListFragment extends BaseBindingFragment<GoodsListViewModel, F
 						super.getItemOffsets(outRect, view, parent, state);
 						int itemPosition = ((RecyclerView.LayoutParams) view.getLayoutParams()).getViewLayoutPosition();
 						int dp10 = EnvironmentUtil.dp2px(view.getContext(), 10);
+						int dp5 = EnvironmentUtil.dp2px(view.getContext(), 5);
 						if (itemPosition < 0) {
 							return;
 						}
 						if (itemPosition % 2 == 0) {
-							outRect.left = dp10;
+							outRect.left = dp5;
 							outRect.right = dp10;
 						} else {
 							outRect.left = dp10;
-							outRect.right = 0;
+							outRect.right = dp5;
 						}
 					}
 				}
