@@ -89,7 +89,7 @@ public class CategoryActivity extends BaseActivity {
 			@NonNull
 			@Override
 			public Fragment createFragment(int position) {
-				if(mFirstCategory == CategoryBean.HOME){
+				if(CategoryBean.isHome(mFirstCategory)){
 					return CategoryGoodsFragment.newInstance(mCategoryAdapter.getItem(position).getId(), null);
 				}
 				return CategoryGoodsFragment.newInstance(mFirstCategory.getId(), mCategoryAdapter.getItem(position).getId());

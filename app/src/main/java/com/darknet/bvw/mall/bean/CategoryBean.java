@@ -12,12 +12,18 @@ import androidx.annotation.Keep;
 @Keep
 public class CategoryBean implements Serializable {
 
-	public static final CategoryBean HOME = new CategoryBean("首页");
+	public static final int ID_HOME = -1;
+	public static final CategoryBean HOME = new CategoryBean("首页", ID_HOME);
+
+	public static boolean isHome(CategoryBean category){
+		return category == null || category == HOME || category.id == ID_HOME;
+	}
 
 	public CategoryBean() {
 	}
 
-	public CategoryBean(String name) {
+	public CategoryBean(String name, int id) {
+		this.id = id;
 		this.name = name;
 	}
 
