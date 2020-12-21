@@ -58,6 +58,6 @@ public class CategoryPresenter extends Presenter<CategoryActivity> {
 					@Override
 					public void onFailure(Throwable throwable) {
 					}
-				}))).subscribe();
+				})));
 	}
 }

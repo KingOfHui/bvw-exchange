@@ -38,7 +38,7 @@ android {
             buildConfigField("String", "JAVA_SOCKET_URL", "\"wss://ws.bitw.im/websocket\"")
             buildConfigField("String", "WORK", "\"line\"")
         } else {
-            buildConfigField("String", "JAVA_API_URL", "\"http://t.bvw.im/\"")
+            buildConfigField("String", "JAVA_API_URL", "\"https://t.bvw.im/\"")
             buildConfigField("String", "JAVA_SOCKET_URL", "\"wss://ws-test.bvw.im/websocket\"")
             buildConfigField("String", "WORK", "\"test\"")
         }
