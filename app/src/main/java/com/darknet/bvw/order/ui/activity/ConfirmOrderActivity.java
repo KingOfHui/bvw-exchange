@@ -11,6 +11,7 @@ import com.darknet.bvw.activity.BaseBindingActivity;
 import com.darknet.bvw.databinding.ActivityOrderConfirmBinding;
 import com.darknet.bvw.order.bean.ShippingAddress;
 import com.darknet.bvw.order.ui.adapter.OrderGoodsAdapter;
+import com.darknet.bvw.order.vm.ConfirmOrderViewModel;
 import com.darknet.bvw.order.vm.MyAddressViewModel;
 
 /**
@@ -36,6 +37,7 @@ public class ConfirmOrderActivity extends BaseBindingActivity<ActivityOrderConfi
     @Override
     public void initView() {
         mAddressViewModel = getViewModel(MyAddressViewModel.class);
+        ConfirmOrderViewModel orderViewModel = getViewModel(ConfirmOrderViewModel.class);
         mAddressViewModel.refresh();
         mAddressViewModel.selectAddress.observe(this, shippingAddress -> {
             if (shippingAddress != null) {

@@ -75,7 +75,7 @@ public interface ApiInterface {
 
     //删除地址
     @POST("api/shop/address/delete/{id}")
-    Observable<BaseResponse<Object>> submitCart(@Path("id") String id);
+    Observable<BaseResponse<Object>> deleteAddress(@Path("id") String id);
 
     //我的地址列表
     @GET("api/shop/address/list")
