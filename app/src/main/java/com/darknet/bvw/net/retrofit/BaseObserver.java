@@ -3,6 +3,7 @@ package com.darknet.bvw.net.retrofit;
 
 import com.darknet.bvw.common.BaseViewModel;
 import com.darknet.bvw.net.retrofit.errorhandler.ExceptionHandlerUtil;
+import com.darknet.bvw.util.ToastUtils;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -36,6 +37,7 @@ public class BaseObserver<T> implements Observer<T> {
 
     @Override
     public void onError(Throwable e) {
+        ToastUtils.showToast(e.getMessage());
         if (e instanceof ExceptionHandlerUtil.ResponseThrowable) {
             mvvmNetworkObserver.onFailure(e);
         } else {

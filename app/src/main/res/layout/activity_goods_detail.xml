@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_bg_181523">
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="@dimen/dimen_20dp"
+            android:layout_height="@dimen/dimen_20dp"
+            android:layout_marginStart="@dimen/dimen_5dp"
+            android:layout_marginTop="@dimen/dimen_15dp"
+            android:src="@mipmap/back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/clBottom"
+            app:layout_constraintTop_toBottomOf="@id/ivBack">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.youth.banner.Banner
+                    android:id="@+id/banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_200dp"
+                    android:layout_margin="@dimen/dimen_15dp"
+                    android:layout_marginTop="@dimen/dimen_15dp"
+                    app:indicator_drawable_selected="@drawable/shape_select_dot"
+                    app:indicator_drawable_unselected="@drawable/shape_normal_dot"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clGoodsInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_15dp"
+                    android:background="@drawable/shape_circle_rect_black"
+                    app:layout_constraintTop_toBottomOf="@id/banner">
+
+                    <TextView
+                        android:id="@+id/tvGoodsName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="@dimen/dimen_20dp"
+                        android:layout_marginEnd="@dimen/dimen_15dp"
+                        android:text="牛仔短裤女2020夏新款韩版chin宽松牛仔短裤女2020夏新款韩版chin宽松"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/dp_18"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_20dp"
+                        android:includeFontPadding="false"
+                        android:text="USDT 206.00"
+                        android:textColor="@color/_01FCDA"
+                        android:textSize="@dimen/dimen_20dp"
+                        app:layout_constraintStart_toStartOf="@id/tvGoodsName"
+                        app:layout_constraintTop_toBottomOf="@id/tvGoodsName" />
+
+                    <TextView
+                        android:id="@+id/tvSales"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_15dp"
+                        android:text="月销 5000+"
+                        android:textColor="#AAAAB0"
+                        android:textSize="@dimen/sp_14"
+                        app:layout_constraintBaseline_toBaselineOf="@id/tvPrice"
+                        app:layout_constraintBottom_toBottomOf="@id/tvPrice"
+                        app:layout_constraintStart_toEndOf="@id/tvPrice" />
+
+                    <ImageView
+                        android:id="@+id/ivShare"
+                        android:layout_width="@dimen/dp_18"
+                        android:layout_height="@dimen/dp_18"
+                        android:layout_marginEnd="@dimen/dimen_30dp"
+                        android:layout_marginBottom="@dimen/dp_10"
+                        android:src="@mipmap/icon_share"
+                        app:layout_constraintBottom_toBottomOf="@id/tvSales"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_5dp"
+                        android:text="分享"
+                        android:textColor="@color/white"
+                        android:textSize="9dp"
+                        app:layout_constraintEnd_toEndOf="@id/ivShare"
+                        app:layout_constraintStart_toStartOf="@id/ivShare"
+                        app:layout_constraintTop_toBottomOf="@id/ivShare" />
+
+                    <View
+                        android:id="@+id/line1"
+                        style="@style/Line_White_02"
+                        android:layout_marginStart="@dimen/dimen_15dp"
+                        android:layout_marginTop="@dimen/dimen_30dp"
+                        android:layout_marginEnd="@dimen/dimen_15dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvPrice" />
+
+                    <TextView
+                        android:id="@+id/tvCanUsedDiscountsTip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:gravity="center"
+                        android:text="可用现金券"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp_12"
+                        app:layout_constraintStart_toStartOf="@id/tvGoodsName"
+                        app:layout_constraintTop_toBottomOf="@id/line1" />
+
+                    <TextView
+                        android:id="@+id/tvCanUsedDiscounts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_20dp"
+                        android:background="@drawable/shape_circle_rect_black"
+                        android:backgroundTint="@color/_01FCDA"
+                        android:paddingStart="@dimen/dp_10"
+                        android:paddingTop="@dimen/dimen_5dp"
+                        android:paddingEnd="@dimen/dp_10"
+                        android:paddingBottom="@dimen/dimen_5dp"
+                        android:text="30现金券"
+                        android:textColor="@color/black"
+                        app:layout_constraintBottom_toBottomOf="@id/tvCanUsedDiscountsTip"
+                        app:layout_constraintStart_toEndOf="@id/tvCanUsedDiscountsTip"
+                        app:layout_constraintTop_toTopOf="@id/tvCanUsedDiscountsTip" />
+
+                    <ImageView
+                        android:id="@+id/ivDiscountsMore"
+                        android:layout_width="@dimen/dimen_13dp"
+                        android:layout_height="3dp"
+                        android:layout_marginEnd="@dimen/dimen_15dp"
+                        android:src="@mipmap/icon_more"
+                        app:layout_constraintBottom_toBottomOf="@id/tvCanUsedDiscountsTip"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tvCanUsedDiscountsTip" />
+
+                    <View
+                        android:id="@+id/line2"
+                        style="@style/Line_White_02"
+                        android:layout_marginStart="@dimen/dimen_15dp"
+                        android:layout_marginEnd="@dimen/dimen_15dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvCanUsedDiscountsTip" />
+
+                    <TextView
+                        android:id="@+id/tvSelectSkuTip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:gravity="center"
+                        android:text="选择规格"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp_12"
+                        app:layout_constraintStart_toStartOf="@id/tvGoodsName"
+                        app:layout_constraintTop_toBottomOf="@id/line2" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/dimen_15dp"
+                        android:alpha="0.6"
+                        android:drawableEnd="@mipmap/ic_right_arrow"
+                        android:drawablePadding="@dimen/dimen_5dp"
+                        android:text="3种规格可选"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp_12"
+                        app:layout_constraintBottom_toBottomOf="@id/tvSelectSkuTip"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tvSelectSkuTip" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/clGoodsInfo">
+
+                    <ImageView
+                        android:id="@+id/ivGoodsDetail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clBottom"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_80dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <com.darknet.bvw.view.DrawableTextView
+                android:id="@+id/tvToHome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_15dp"
+                android:layout_marginTop="@dimen/dimen_15dp"
+                app:drawableTop="@mipmap/icon_home"
+                android:drawablePadding="@dimen/dimen_5dp"
+                android:text="首页"
+                app:drawableWidth="@dimen/dimen_20dp"
+                app:drawableHeight="@dimen/dimen_20dp"
+                android:textColor="@color/white"
+                android:textSize="11dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.darknet.bvw.view.DrawableTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_15dp"
+                app:drawableTop="@mipmap/cion_cart"
+                android:drawablePadding="@dimen/dimen_5dp"
+                android:text="购物车"
+                app:drawableWidth="@dimen/dimen_20dp"
+                app:drawableHeight="@dimen/dimen_20dp"
+                android:textColor="@color/white"
+                android:textSize="11dp"
+                app:layout_constraintEnd_toStartOf="@id/tvAddToCart"
+                app:layout_constraintStart_toEndOf="@id/tvToHome"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvAddToCart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:background="@drawable/shape_circle_rect_left"
+                android:backgroundTint="@color/_01FCDA"
+                android:paddingStart="@dimen/dimen_25dp"
+                android:paddingTop="@dimen/dimen_15dp"
+                android:paddingEnd="@dimen/dimen_25dp"
+                android:paddingBottom="@dimen/dimen_15dp"
+                android:text="加入购物车"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dimen_15dp"
+                app:layout_constraintEnd_toStartOf="@id/tvBuyNow"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvBuyNow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/shape_circle_rect_right"
+                android:backgroundTint="#8236FF"
+                android:paddingStart="@dimen/dimen_25dp"
+                android:paddingTop="@dimen/dimen_15dp"
+                android:paddingEnd="@dimen/dimen_25dp"
+                android:paddingBottom="@dimen/dimen_15dp"
+                android:text="立即购买"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

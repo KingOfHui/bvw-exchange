@@ -1002,4 +1002,11 @@
     <string name="save">保存</string>
     <string name="add_address_success">添加地址成功</string>
     <string name="update_address_success">更新地址成功</string>
+    <string name="network_error">网络错误</string>
+    <string name="analytical_error">解析错误</string>
+    <string name="connect_failed">连接失败</string>
+    <string name="verification_failed">证书验证失败</string>
+    <string name="unknown_error">未知错误</string>
+    <string name="connect_timeout">连接超时</string>
+    <string name="add_to_cart_success">添加成功</string>
 </resources>

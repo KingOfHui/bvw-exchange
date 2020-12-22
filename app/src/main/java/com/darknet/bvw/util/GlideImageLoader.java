@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
+import com.darknet.bvw.R;
 import com.darknet.bvw.view.RoundImageView;
 import com.youth.banner.loader.ImageLoader;
 
@@ -16,6 +17,7 @@ public class GlideImageLoader extends ImageLoader {
         Glide.with(context)
                 .load(path)
                 .fitCenter()
+                .placeholder(R.mipmap.img_default)
                 .into(imageView);
     }
 

@@ -8,6 +8,10 @@ import androidx.annotation.Keep;
  * <br>createBy guoshiwen
  * <br>createTime: 2020/12/21 15:53
  * <br>desc: TODO
+ * 9:18
+ * 如果 coupon_discount > 0  就可以用优惠券
+ * 9:18
+ * 优惠券金额 就是 具体的  coupon_discount 值
  */
 @Keep
 public class GoodsDetailBean {
@@ -51,7 +55,8 @@ public class GoodsDetailBean {
 	private String category_name;
 	private int collect_count;
 	private int comment_count;
-	private int comment_score;
+	private String comment_score;
+	private float coupon_discount;
 	private String create_time;
 	private int delete_state;
 	private String detail_html;
@@ -124,12 +129,28 @@ public class GoodsDetailBean {
 		this.comment_count = comment_count;
 	}
 
-	public int getComment_score() {
+	public String getComment_score() {
 		return comment_score;
 	}
 
-	public void setComment_score(int comment_score) {
+	public void setComment_score(String comment_score) {
 		this.comment_score = comment_score;
+	}
+
+	public float getCoupon_discount() {
+		return coupon_discount;
+	}
+
+	public void setCoupon_discount(float coupon_discount) {
+		this.coupon_discount = coupon_discount;
+	}
+
+	public void setOriginal_price(String original_price) {
+		this.original_price = original_price;
+	}
+
+	public void setPrice(String price) {
+		this.price = price;
 	}
 
 	public String getCreate_time() {
@@ -434,10 +455,10 @@ public class GoodsDetailBean {
 		private String img_url;
 		private String img_url_list;
 		private int orders;
-		private int original_price;
-		private int price;
+		private String original_price;
+		private String price;
 		private int product_id;
-		private int sale;
+		private String sale;
 		private String sp1;
 		private String sp2;
 		private String sp3;
@@ -475,20 +496,28 @@ public class GoodsDetailBean {
 			this.orders = orders;
 		}
 
-		public int getOriginal_price() {
+		public String getOriginal_price() {
 			return original_price;
 		}
 
-		public void setOriginal_price(int original_price) {
+		public void setOriginal_price(String original_price) {
 			this.original_price = original_price;
 		}
 
-		public int getPrice() {
+		public String getPrice() {
 			return price;
 		}
 
-		public void setPrice(int price) {
+		public void setPrice(String price) {
 			this.price = price;
+		}
+
+		public String getSale() {
+			return sale;
+		}
+
+		public void setSale(String sale) {
+			this.sale = sale;
 		}
 
 		public int getProduct_id() {
@@ -497,14 +526,6 @@ public class GoodsDetailBean {
 
 		public void setProduct_id(int product_id) {
 			this.product_id = product_id;
-		}
-
-		public int getSale() {
-			return sale;
-		}
-
-		public void setSale(int sale) {
-			this.sale = sale;
 		}
 
 		public String getSp1() {

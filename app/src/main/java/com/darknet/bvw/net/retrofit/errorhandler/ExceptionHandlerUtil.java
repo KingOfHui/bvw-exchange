@@ -2,6 +2,8 @@ package com.darknet.bvw.net.retrofit.errorhandler;
 
 import android.net.ParseException;
 
+import com.darknet.bvw.MyApp;
+import com.darknet.bvw.R;
 import com.google.gson.JsonParseException;
 
 import org.json.JSONException;
@@ -40,7 +42,7 @@ public class ExceptionHandlerUtil {
                 case GATEWAY_UNAVAILABLE:
                 case GATEWAY_TIMEOUT:
                 default:
-                    ex.message = "网络错误";
+                    ex.message = MyApp.getInstance().getString(R.string.network_error);
                     break;
             }
             return ex;
@@ -53,23 +55,23 @@ public class ExceptionHandlerUtil {
         } else if (e instanceof JsonParseException || e instanceof JSONException
                 || e instanceof ParseException) {
             ex = new ResponseThrowable(e, ERROR.PARSE_ERROR);
-            ex.message = "解析错误";
+            ex.message = MyApp.getInstance().getString(R.string.analytical_error);
             return ex;
         } else if (e instanceof ConnectException) {
             ex = new ResponseThrowable(e, ERROR.NETWORK_ERROR);
-            ex.message = "连接失败";
+            ex.message = MyApp.getInstance().getString(R.string.connect_failed);
             return ex;
         } else if (e instanceof SSLHandshakeException) {
             ex = new ResponseThrowable(e, ERROR.SSL_ERROR);
-            ex.message = "证书验证失败";
+            ex.message = MyApp.getInstance().getString(R.string.verification_failed);
             return ex;
         } else if (e instanceof SocketTimeoutException) {
             ex = new ResponseThrowable(e, ERROR.TIMEOUT_ERROR);
-            ex.message = "连接超时";
+            ex.message = MyApp.getInstance().getString(R.string.connect_timeout);
             return ex;
         } else {
             ex = new ResponseThrowable(e, ERROR.UNKNOWN);
-            ex.message = "未知错误";
+            ex.message = MyApp.getInstance().getString(R.string.unknown_error);
             return ex;
         }
 

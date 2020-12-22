@@ -11,6 +11,7 @@ import com.darknet.bvw.common.BaseBindingFragment;
 import com.darknet.bvw.databinding.FragmentMallBindingImpl;
 import com.darknet.bvw.mall.bean.CategoryBean;
 import com.darknet.bvw.mall.vm.MallViewModel;
+import com.darknet.bvw.order.ui.activity.CartActivity;
 
 import java.util.List;
 
@@ -58,6 +59,7 @@ public class MallFragment extends BaseBindingFragment<MallViewModel, FragmentMal
             int position = mDataBinding.viewPager.getCurrentItem();
             CategoryActivity.start(v.getContext(), category.get(position));
         });
+        mDataBinding.ivCart.setOnClickListener(view -> CartActivity.start(requireActivity()));
     }
 
     public static MallFragment newInstance() {

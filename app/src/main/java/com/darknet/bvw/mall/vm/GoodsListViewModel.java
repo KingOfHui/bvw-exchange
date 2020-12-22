@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.darknet.bvw.base.BaseListBean;
 import com.darknet.bvw.common.BaseListViewModel;
 import com.darknet.bvw.common.BaseResponse;
 import com.darknet.bvw.mall.bean.CategoryBean;
@@ -47,10 +48,10 @@ public class GoodsListViewModel extends BaseListViewModel<Object> {
         BIWNetworkApi.getService(ApiInterface.class)
                 .shopListByCategory(mCategory.getId(), null, 20, null, null, page)
                 .compose(BIWNetworkApi.getInstance().applySchedulers())
-                    .subscribe(new BaseObserver<>(new MvvmNetworkObserver<BaseResponse<List<GoodsDetailBean>>>() {
+                    .subscribe(new BaseObserver<>(new MvvmNetworkObserver<BaseResponse<BaseListBean<GoodsDetailBean>>>() {
                     @Override
-                    public void onSuccess(BaseResponse<List<GoodsDetailBean>> response, boolean isFromCache) {
-                        List<GoodsDetailBean> list = response.getData();
+                    public void onSuccess(BaseResponse<BaseListBean<GoodsDetailBean>> response, boolean isFromCache) {
+                        List<GoodsDetailBean> list = BaseListBean.getItems(response.getData());
                         notifyResultToTopViewModel(list, 20);
                         mBanner.setValue(null);
                     }

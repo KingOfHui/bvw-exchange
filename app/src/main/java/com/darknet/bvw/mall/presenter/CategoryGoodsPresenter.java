@@ -1,5 +1,6 @@
 package com.darknet.bvw.mall.presenter;
 
+import com.darknet.bvw.base.BaseListBean;
 import com.darknet.bvw.base.Presenter;
 import com.darknet.bvw.common.BaseResponse;
 import com.darknet.bvw.mall.bean.CategoryBean;
@@ -33,10 +34,10 @@ public class CategoryGoodsPresenter extends Presenter<CategoryGoodsFragment> {
 		BIWNetworkApi.getService(ApiInterface.class)
 				.shopListByCategory(mFirstCategoryId, mSecondCategoryId, 1000, mOrder, equals(mOrder, "price") ? mSort:null, 1)
 				.compose(BIWNetworkApi.getInstance().applySchedulers())
-				.subscribe(new BaseObserver<>(new MvvmNetworkObserver<BaseResponse<List<GoodsDetailBean>>>() {
+				.subscribe(new BaseObserver<>(new MvvmNetworkObserver<BaseResponse<BaseListBean<GoodsDetailBean>>>() {
 					@Override
-					public void onSuccess(BaseResponse<List<GoodsDetailBean>> response, boolean isFromCache) {
-						mView.refreshUI(response.getData());
+					public void onSuccess(BaseResponse<BaseListBean<GoodsDetailBean>> response, boolean isFromCache) {
+						mView.refreshUI(BaseListBean.getItems(response.getData()));
 					}
 
 					@Override

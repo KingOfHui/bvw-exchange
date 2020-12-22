@@ -1,11 +1,12 @@
 package com.darknet.bvw.net.retrofit;
 
+import com.darknet.bvw.base.BaseListBean;
 import com.darknet.bvw.common.BaseResponse;
 import com.darknet.bvw.mall.bean.CategoryBean;
 import com.darknet.bvw.mall.bean.GoodsDetailBean;
-import com.darknet.bvw.mall.bean.ProductDetailResp;
 import com.darknet.bvw.mall.bean.ShopHomeBean;
 import com.darknet.bvw.model.response.NoticeResponse;
+import com.darknet.bvw.order.bean.CartData;
 import com.darknet.bvw.order.bean.OrderDetailResp;
 import com.darknet.bvw.order.bean.ShippingAddress;
 
@@ -31,12 +32,16 @@ public interface ApiInterface {
     /***********              商城-产品            **********/
      //获取产品详情
     @GET("api/shop/product/detail/{id}")
-    Observable<BaseResponse<ProductDetailResp>> getProductDetail(@Path("id")String id);
+    Observable<BaseResponse<GoodsDetailBean>> getProductDetail(@Path("id")int id);
 
     /***********              商城-购物车            **********/
     //添加商品到购物车
     @POST("api/shop/cart/add")
     Observable<BaseResponse<Object>> addToCart(@Body RequestBody body);
+
+    //获取购物车中的数据
+    @GET("api/shop/cart/list")
+    Observable<BaseResponse<CartData>> getCartList();
 
     /***********              商城-订单            **********/
     //订单列表
@@ -100,7 +105,7 @@ public interface ApiInterface {
 
     //商品列表(根据分类)
     @GET("api/shop/product/category")
-    Observable<BaseResponse<List<GoodsDetailBean>>> shopListByCategory(
+    Observable<BaseResponse<BaseListBean<GoodsDetailBean>>> shopListByCategory(
             @Query("root_category_id") int root_category_id // 一级分类
             , @Query("category_id") Integer category_id // 二级分类 不传返回全部
             , @Query("limit") Integer limit

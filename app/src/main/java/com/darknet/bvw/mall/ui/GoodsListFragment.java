@@ -165,6 +165,7 @@ public class GoodsListFragment extends BaseBindingFragment<GoodsListViewModel, F
 		}
 
 		private void convertHome(ItemGoodsBinding binding, GoodsBean item) {
+			setOnItemClick(binding, item.getProduct_id());
 			Glide.with(binding.ivIcon.getContext())
 					.load(item.getProduct_img())
 					.apply(RequestOptions.centerCropTransform())
@@ -175,6 +176,11 @@ public class GoodsListFragment extends BaseBindingFragment<GoodsListViewModel, F
 			binding.tvOriginalPrice.setVisibility(item.getPrice().equals(item.getOriginal_price()) ? View.GONE : View.VISIBLE);
 			binding.tvOriginalPrice.setText("USTD "+item.getOriginal_price());
 //            binding.tvNumber TODO 没字段
+		}
+
+		private void setOnItemClick(ItemGoodsBinding binding, int product_id) {
+			binding.getRoot().setOnClickListener(view ->
+					GoodsDetailActivity.start(binding.getRoot().getContext(),product_id));
 		}
 	}
 }

@@ -274,4 +274,13 @@
         <item name="tabTextColor">#C7C7C7</item>
         <item name="tabRippleColor">@null</item>
     </style>
+    <!-- 图片文字自定义属性 -->
+    <declare-styleable name="DrawableTextView">
+        <attr name="drawableLeft" format="reference"/>
+        <attr name="drawableBottom" format="reference"/>
+        <attr name="drawableRight" format="reference"/>
+        <attr name="drawableTop" format="reference"/>
+        <attr name="drawableWidth" format="dimension"/>
+        <attr name="drawableHeight" format="dimension"/>
+    </declare-styleable>
 </resources>
