@@ -32,8 +32,8 @@ public class CategoryGoodsPresenter extends Presenter<CategoryGoodsFragment> {
 	public void loadById() {
 		BIWNetworkApi.getService(ApiInterface.class)
 				.shopListByCategory(mFirstCategoryId, mSecondCategoryId, 1000, mOrder, equals(mOrder, "price") ? mSort:null, 1)
-				.compose(BIWNetworkApi.getInstance().applySchedulers(
-						new BaseObserver<>(new MvvmNetworkObserver<BaseResponse<List<GoodsDetailBean>>>() {
+				.compose(BIWNetworkApi.getInstance().applySchedulers())
+				.subscribe(new BaseObserver<>(new MvvmNetworkObserver<BaseResponse<List<GoodsDetailBean>>>() {
 					@Override
 					public void onSuccess(BaseResponse<List<GoodsDetailBean>> response, boolean isFromCache) {
 						mView.refreshUI(response.getData());
@@ -42,7 +42,7 @@ public class CategoryGoodsPresenter extends Presenter<CategoryGoodsFragment> {
 					@Override
 					public void onFailure(Throwable throwable) {
 					}
-				}))).subscribe();
+				}));
 	}
 
 	public void updateSortRule(String order, String sort) {

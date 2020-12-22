@@ -34,7 +34,8 @@ public class CategoryPresenter extends Presenter<CategoryActivity> {
 	private void loadSecondCategory(CategoryBean category) {
 		BIWNetworkApi.getService(ApiInterface.class)
 				.categorySecond(category.getId())
-				.compose(BIWNetworkApi.getInstance().applySchedulers(new BaseObserver<>(new MvvmNetworkObserver<BaseResponse<List<CategoryBean>>>() {
+				.compose(BIWNetworkApi.getInstance().applySchedulers())
+				.subscribe(new BaseObserver<>(new MvvmNetworkObserver<BaseResponse<List<CategoryBean>>>() {
 					@Override
 					public void onSuccess(BaseResponse<List<CategoryBean>> response, boolean isFromCache) {
 						mView.initViewPager(response);
@@ -43,13 +44,14 @@ public class CategoryPresenter extends Presenter<CategoryActivity> {
 					@Override
 					public void onFailure(Throwable throwable) {
 					}
-				}))).subscribe();
+				}));
 	}
 
 	private void loadFirstCategory() {
 		BIWNetworkApi.getService(ApiInterface.class)
 				.category()
-				.compose(BIWNetworkApi.getInstance().applySchedulers(new BaseObserver<>(new MvvmNetworkObserver<BaseResponse<List<CategoryBean>>>() {
+				.compose(BIWNetworkApi.getInstance().applySchedulers())
+				.subscribe(new BaseObserver<>(new MvvmNetworkObserver<BaseResponse<List<CategoryBean>>>() {
 					@Override
 					public void onSuccess(BaseResponse<List<CategoryBean>> response, boolean isFromCache) {
 						mView.initViewPager(response);
@@ -58,6 +60,6 @@ public class CategoryPresenter extends Presenter<CategoryActivity> {
 					@Override
 					public void onFailure(Throwable throwable) {
 					}
-				})));
+				}));
 	}
 }

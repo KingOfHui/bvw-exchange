@@ -46,8 +46,8 @@ public class GoodsListViewModel extends BaseListViewModel<Object> {
     private void loadByCategory(int page) {
         BIWNetworkApi.getService(ApiInterface.class)
                 .shopListByCategory(mCategory.getId(), null, 20, null, null, page)
-                .compose(BIWNetworkApi.getInstance().applySchedulers(
-                        new BaseObserver<>(new MvvmNetworkObserver<BaseResponse<List<GoodsDetailBean>>>() {
+                .compose(BIWNetworkApi.getInstance().applySchedulers())
+                    .subscribe(new BaseObserver<>(new MvvmNetworkObserver<BaseResponse<List<GoodsDetailBean>>>() {
                     @Override
                     public void onSuccess(BaseResponse<List<GoodsDetailBean>> response, boolean isFromCache) {
                         List<GoodsDetailBean> list = response.getData();
@@ -59,13 +59,14 @@ public class GoodsListViewModel extends BaseListViewModel<Object> {
                     public void onFailure(Throwable throwable) {
                         loadFailed(throwable.getMessage());
                     }
-                }))).subscribe();
+                }));
     }
 
     private void loadHome() {
         BIWNetworkApi.getService(ApiInterface.class)
                 .shopHome()
-                .compose(BIWNetworkApi.getInstance().applySchedulers(new BaseObserver<>(new MvvmNetworkObserver<BaseResponse<ShopHomeBean>>() {
+                .compose(BIWNetworkApi.getInstance().applySchedulers())
+                .subscribe(new BaseObserver<>(new MvvmNetworkObserver<BaseResponse<ShopHomeBean>>() {
                     @Override
                     public void onSuccess(BaseResponse<ShopHomeBean> response, boolean isFromCache) {
                         ShopHomeBean data = response.getData();
@@ -79,7 +80,7 @@ public class GoodsListViewModel extends BaseListViewModel<Object> {
                     public void onFailure(Throwable throwable) {
                         loadFailed(throwable.getMessage());
                     }
-                }))).subscribe();
+                }));
     }
 
     public void setCategory(CategoryBean category) {
