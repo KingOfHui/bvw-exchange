@@ -83,6 +83,7 @@ public class SearchResultFragment extends BaseFragment {
 		mLoadmoreHolder = new SmartLoadmoreHolder<>(mRefresh, mAdapter);
 		mRefreshHolder.setRefreshListener(mPresenter);
 		mLoadmoreHolder.setLoadmoreListener(mPresenter);
+		mRefreshHolder.bind(mLoadmoreHolder);
 	}
 
 	@Override

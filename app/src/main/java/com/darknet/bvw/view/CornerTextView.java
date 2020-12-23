@@ -86,4 +86,12 @@ public class CornerTextView extends AppCompatTextView {
 		mColor = color;
 		updateBackground();
 	}
+
+	public void setCorner(int corner){
+		mCornerLeftTop = corner;
+		mCornerRightTop = corner;
+		mCornerRightBottom = corner;
+		mCornerLeftBottom = corner;
+		updateBackground();
+	}
 }

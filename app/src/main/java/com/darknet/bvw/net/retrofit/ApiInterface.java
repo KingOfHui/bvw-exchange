@@ -104,10 +104,14 @@ public interface ApiInterface {
     //关键字搜索
     @GET("api/shop/product/keyword")
     Observable<BaseResponse<BaseListBean<GoodsDetailBean>>> search(
-            @Path("keyword") String keyword
+            @Query("keyword") String keyword
             , @Query("limit") Integer limit
             , @Query("page") Integer page
     );
+
+    //热搜关键词
+    @GET("api/shop/home/hotkeys")
+    Observable<BaseResponse<String>> hotKeyword();
 
     //商品列表(根据分类)
     @GET("api/shop/product/category")

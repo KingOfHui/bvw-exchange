@@ -4,12 +4,14 @@ import android.view.View;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import java8.util.function.Function;
 
 import com.darknet.bvw.R;
 import com.darknet.bvw.base.BaseFragmentPagerAdapter;
 import com.darknet.bvw.common.BaseBindingFragment;
 import com.darknet.bvw.databinding.FragmentMallBindingImpl;
 import com.darknet.bvw.mall.bean.CategoryBean;
+import com.darknet.bvw.mall.ui.search.SearchActivity;
 import com.darknet.bvw.mall.vm.MallViewModel;
 import com.darknet.bvw.order.ui.activity.CartActivity;
 
@@ -24,6 +26,9 @@ import java.util.List;
 public class MallFragment extends BaseBindingFragment<MallViewModel, FragmentMallBindingImpl> {
     @Override
     protected void initView() {
+        mDataBinding.llSearch.setOnClickListener(v -> {
+            SearchActivity.start(v.getContext());
+        });
     }
 
     @Override
@@ -38,13 +43,12 @@ public class MallFragment extends BaseBindingFragment<MallViewModel, FragmentMal
 
     @Override
     protected void initData() {
-        mViewModel.getCategory().observe(this, new Observer<List<CategoryBean>>() {
-            @Override
-            public void onChanged(List<CategoryBean> category) {
-                initViewPager(category);
-            }
-        });
+        mViewModel.getCategory().observe(this, this::initViewPager);
         mViewModel.loadCategory();
+        mViewModel.initSearchHint(keyword -> {
+            mDataBinding.tvSearch.setText(keyword);
+            return null;
+        });
     }
 
     private void initViewPager(List<CategoryBean> category) {

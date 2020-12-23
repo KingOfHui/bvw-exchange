@@ -1,15 +1,10 @@
 package com.darknet.bvw.mall.vm;
 
-import android.annotation.SuppressLint;
 import android.app.Application;
 
-import androidx.annotation.NonNull;
-
-import com.darknet.bvw.adapter.BaseViewHolder;
 import com.darknet.bvw.common.BaseResponse;
 import com.darknet.bvw.common.BaseViewModel;
 import com.darknet.bvw.mall.bean.CategoryBean;
-import com.darknet.bvw.model.response.NoticeResponse;
 import com.darknet.bvw.net.retrofit.ApiInterface;
 import com.darknet.bvw.net.retrofit.BIWNetworkApi;
 import com.darknet.bvw.net.retrofit.BaseObserver;
@@ -17,9 +12,9 @@ import com.darknet.bvw.net.retrofit.MvvmNetworkObserver;
 
 import java.util.List;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
-
-import io.reactivex.Observable;
+import java8.util.function.Function;
 
 /**
  * @ClassName MallViewModel
@@ -37,6 +32,27 @@ public class MallViewModel extends BaseViewModel {
 
     public MutableLiveData<List<CategoryBean>> getCategory() {
         return category;
+    }
+
+    public void initSearchHint(Function<String, Void> callback){
+        BIWNetworkApi.getService(ApiInterface.class)
+                .hotKeyword()
+                .compose(BIWNetworkApi.getInstance().applySchedulers())
+                .subscribe(new BaseObserver<>(new MvvmNetworkObserver<BaseResponse<String>>() {
+                    @Override
+                    public void onSuccess(BaseResponse<String> response, boolean isFromCache) {
+                        String data = response.getData();
+                        String[] keywords = data.split(",");
+                        if(keywords.length > 0) {
+                            callback.apply(keywords[0]);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Throwable throwable) {
+
+                    }
+                }));
     }
 
     public void loadCategory() {
