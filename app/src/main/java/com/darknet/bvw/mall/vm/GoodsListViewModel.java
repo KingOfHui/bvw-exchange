@@ -73,7 +73,7 @@ public class GoodsListViewModel extends BaseListViewModel<Object> {
                         ShopHomeBean data = response.getData();
                         List<GoodsBannerBean> banners = data.getBanners();
                         List<GoodsBean> recommends = data.getRecommends();
-                        notifyResultToTopViewModel(recommends, 0);
+                        notifyResultToTopViewModel(recommends, Integer.MAX_VALUE);
                         mBanner.setValue(banners);
                     }
 

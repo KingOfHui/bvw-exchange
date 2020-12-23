@@ -22,7 +22,7 @@ public class RefreshLayoutBindingAdapter {
         }
 
         if (!hasMore) {
-            smartRefreshLayout.resetNoMoreData();
+            smartRefreshLayout.setNoMoreData(true);
         }
     }
 
