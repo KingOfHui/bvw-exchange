@@ -12,6 +12,7 @@ import com.bumptech.glide.RequestBuilder;
 import com.bumptech.glide.request.RequestOptions;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.darknet.bvw.R;
+import com.darknet.bvw.base.BaseBindingViewHolder;
 import com.darknet.bvw.base.BaseDataBindingAdapter;
 import com.darknet.bvw.common.BaseBindingFragment;
 import com.darknet.bvw.databinding.FragmentGoodsListBinding;
@@ -59,6 +60,8 @@ public class GoodsListFragment extends BaseBindingFragment<GoodsListViewModel, F
 
 	@Override
 	protected void initView() {
+		CategoryBean category = (CategoryBean) getArguments().getSerializable("category");
+
 		mDataBinding.setAdapter(new Adapter());
 		GridLayoutManager lm = new GridLayoutManager(getContext(), 2);
 		lm.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
@@ -93,12 +96,13 @@ public class GoodsListFragment extends BaseBindingFragment<GoodsListViewModel, F
 				}
 		);
 		mHeader = View.inflate(getContext(), R.layout.goods_list_header, null);
-        initBanner();
-
-        mDataBinding.getAdapter().addHeaderView(mHeader);
-        mViewModel.getListLive().observe(this
+		initBanner();
+		mDataBinding.getAdapter().addHeaderView(mHeader);
+		if(!CategoryBean.isHome(category)) {
+			mHeader.setVisibility(View.GONE);
+		}
+		mViewModel.getListLive().observe(this
 				, objects -> mDataBinding.getAdapter().setNewData(objects));
-		CategoryBean category = (CategoryBean) getArguments().getSerializable("category");
 		mViewModel.setCategory(category);
 		mViewModel.refresh();
 	}
@@ -109,7 +113,11 @@ public class GoodsListFragment extends BaseBindingFragment<GoodsListViewModel, F
             @Override
             public void displayImage(Context context, Object path, ImageView imageView) {
                 GoodsBannerBean data = (GoodsBannerBean) path;
-                super.displayImage(context, data.getBanner_img(), imageView);
+				Glide.with(context)
+						.load(data.getBanner_img())
+						.placeholder(R.mipmap.default_banner)
+						.fitCenter()
+						.into(imageView);
             }
         });
         mViewModel.getBanner().observe(this, banner -> {
@@ -151,10 +159,19 @@ public class GoodsListFragment extends BaseBindingFragment<GoodsListViewModel, F
 			}
 		}
 
+		@Override
+		protected void convert(@NonNull BaseBindingViewHolder<ItemGoodsBinding> helper, Object item) {
+			super.convert(helper, item);
+			helper.itemView.setOnClickListener(v -> {
+				DetailActivity.start(v.getContext());
+			});
+		}
+
 		private void convertDetail(ItemGoodsBinding binding, GoodsDetailBean item) {
 			Glide.with(binding.ivIcon.getContext())
 					.load(item.getImg_url())
 					.apply(RequestOptions.centerCropTransform())
+					.placeholder(R.mipmap.default_item)
 					.into(binding.ivIcon);
 //            binding.tag TODO 没字段
 			binding.tvName.setText(item.getName());

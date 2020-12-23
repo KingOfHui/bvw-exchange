@@ -685,6 +685,7 @@
         <activity android:name=".order.ui.activity.CartActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".mall.ui.GoodsDetailActivity" />
+        <activity android:name=".mall.ui.DetailActivity" />
 
         <receiver
             android:name=".receiver.PushReceiver"
