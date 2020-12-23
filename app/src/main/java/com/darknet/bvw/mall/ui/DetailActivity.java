@@ -18,7 +18,7 @@ public class DetailActivity extends BaseActivity {
 
 	@Override
 	public int getLayoutId() {
-		return R.layout.activity_goods_detail;
+		return R.layout.activity_goods_detail_2;
 	}
 
 	@Override

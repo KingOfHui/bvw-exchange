@@ -679,7 +679,7 @@
         <activity android:name=".mall.ui.CategoryActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".mall.ui.HotSearchActivity"
+        <activity android:name=".mall.ui.search.SearchActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".order.ui.activity.CartActivity"

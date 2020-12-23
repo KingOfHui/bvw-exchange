@@ -173,7 +173,8 @@ public class GoodsListFragment extends BaseBindingFragment<GoodsListViewModel, F
 					.apply(RequestOptions.centerCropTransform())
 					.placeholder(R.mipmap.default_item)
 					.into(binding.ivIcon);
-//            binding.tag TODO 没字段
+			binding.tag.setVisibility(item.getCoupon_discount() > 0 ? View.VISIBLE : View.GONE);
+			binding.tag.setText("现金卷"+item.getCoupon_discount());
 			binding.tvName.setText(item.getName());
 			binding.tvPrice.setText("USTD "+item.getPrice());
 			binding.tvOriginalPrice.setVisibility(item.getPrice().equals(item.getOriginal_price()) ? View.GONE : View.VISIBLE);

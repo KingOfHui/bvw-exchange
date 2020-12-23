@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#181523"
+    android:paddingBottom="20dp">
+
+    <com.darknet.bvw.view.RoundImageView
+        android:id="@+id/iv_icon"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="175dp"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/tag"
+        app:layout_constraintLeft_toLeftOf="@id/iv_icon"
+        app:layout_constraintTop_toTopOf="@id/iv_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/tag"
+        android:gravity="center"
+        android:paddingStart="5dp"
+        android:paddingEnd="8dp"
+        android:text="现金券 6666666$"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        app:layout_constraintLeft_toLeftOf="@id/iv_icon"
+        app:layout_constraintTop_toBottomOf="@id/iv_icon"
+        tools:text="商品名称"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/white"
+        android:textSize="11sp" />
+
+    <TextView
+        android:id="@+id/tv_price"
+        app:layout_constraintLeft_toLeftOf="@id/iv_icon"
+        app:layout_constraintTop_toBottomOf="@id/tv_name"
+        tools:text="USDT 198.0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:textColor="#01FCDA"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/tv_original_price"
+        app:layout_constraintBottom_toBottomOf="@id/tv_price"
+        app:layout_constraintLeft_toRightOf="@id/tv_price"
+        app:layout_constraintTop_toTopOf="@id/tv_price"
+        tools:text="USDT 198.0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:textColor="@color/white"
+        android:textSize="9sp" />
+
+    <TextView
+        android:id="@+id/tv_number"
+        app:layout_constraintBottom_toBottomOf="@id/tv_price"
+        app:layout_constraintLeft_toRightOf="@id/tv_original_price"
+        app:layout_constraintTop_toTopOf="@id/tv_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:text="2002 人付款"
+        android:textColor="#77FFFFFF"
+        android:textSize="9sp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
