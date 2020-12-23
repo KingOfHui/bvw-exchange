@@ -159,13 +159,13 @@ public class GoodsListFragment extends BaseBindingFragment<GoodsListViewModel, F
 			}
 		}
 
-		@Override
-		protected void convert(@NonNull BaseBindingViewHolder<ItemGoodsBinding> helper, Object item) {
-			super.convert(helper, item);
-			helper.itemView.setOnClickListener(v -> {
-				DetailActivity.start(v.getContext());
-			});
-		}
+//		@Override
+//		protected void convert(@NonNull BaseBindingViewHolder<ItemGoodsBinding> helper, Object item) {
+//			super.convert(helper, item);
+//			helper.itemView.setOnClickListener(v -> {
+//				DetailActivity.start(v.getContext());
+//			});
+//		}
 
 		private void convertDetail(ItemGoodsBinding binding, GoodsDetailBean item) {
 			setOnItemClick(binding, item.getId());

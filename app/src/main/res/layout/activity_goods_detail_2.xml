@@ -264,7 +264,6 @@
         android:layout_height="wrap_content">
         <ImageView
             android:id="@+id/back"
-            android:marginLeft="15dp"
             android:padding="15dp"
             android:src="@mipmap/back"
             android:layout_width="wrap_content"

@@ -17,6 +17,7 @@ import com.darknet.bvw.MyApp;
 import com.darknet.bvw.base.IView;
 import com.darknet.bvw.common.BaseViewModel;
 import com.darknet.bvw.view.CustomDialog;
+import com.jingui.lib.utils.Immerse2Helper;
 
 import butterknife.ButterKnife;
 import cn.jpush.android.api.JPushInterface;
@@ -36,6 +37,9 @@ public abstract class BaseBindingActivity<BINDING extends ViewDataBinding> exten
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate");
+        if(immerse()) {
+            Immerse2Helper.setup(this, dark());
+        }
 //        setContentView(getLayoutId());
         mBinding = DataBindingUtil.setContentView(this, getLayoutId());
         mBinding.setLifecycleOwner(this);
@@ -43,6 +47,14 @@ public abstract class BaseBindingActivity<BINDING extends ViewDataBinding> exten
         mAppContext = MyApp.getInstance();
         initView();
         initDatas();
+    }
+
+    public boolean immerse(){
+        return false;
+    }
+
+    public boolean dark(){
+        return false;
     }
 
     public abstract int getLayoutId();

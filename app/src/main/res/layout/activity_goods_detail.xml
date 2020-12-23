@@ -14,10 +14,10 @@
 
         <ImageView
             android:id="@+id/ivBack"
-            android:layout_width="@dimen/dimen_20dp"
-            android:layout_height="@dimen/dimen_20dp"
-            android:layout_marginStart="@dimen/dimen_5dp"
-            android:layout_marginTop="@dimen/dimen_15dp"
+            android:layout_width="@dimen/dimen_35dp"
+            android:layout_height="@dimen/dimen_35dp"
+            android:paddingLeft="@dimen/dimen_15dp"
+            android:paddingTop="@dimen/dimen_15dp"
             android:src="@mipmap/back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -106,7 +106,7 @@
                         app:layout_constraintEnd_toEndOf="@id/ivShare"
                         app:layout_constraintStart_toStartOf="@id/ivShare"
                         app:layout_constraintTop_toBottomOf="@id/ivShare"
-                        tools:text="@string/share" />
+                        android:text="@string/share" />
 
                     <View
                         android:id="@+id/line1"
@@ -215,7 +215,6 @@
                         />
                 </LinearLayout>
 
-
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
 
@@ -230,7 +229,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dimen_15dp"
-                android:layout_marginTop="@dimen/dimen_15dp"
+                android:paddingTop="@dimen/dimen_15dp"
+                android:paddingBottom="@dimen/dimen_15dp"
                 app:drawableTop="@mipmap/icon_home"
                 android:drawablePadding="@dimen/dimen_5dp"
                 android:text="@string/xmain_table_shouye"
@@ -245,10 +245,10 @@
                 android:id="@+id/tvToCart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_15dp"
                 app:drawableTop="@mipmap/cion_cart"
                 android:drawablePadding="@dimen/dimen_5dp"
                 android:text="@string/cart"
+                android:padding="@dimen/dimen_15dp"
                 app:drawableWidth="@dimen/dimen_20dp"
                 app:drawableHeight="@dimen/dimen_20dp"
                 android:textColor="@color/white"
@@ -256,7 +256,21 @@
                 app:layout_constraintEnd_toStartOf="@id/tvAddToCart"
                 app:layout_constraintStart_toEndOf="@id/tvToHome"
                 app:layout_constraintTop_toTopOf="parent" />
-
+            <com.darknet.bvw.view.CornerTextView
+                android:id="@+id/shopping_num"
+                app:layout_constraintLeft_toLeftOf="@id/tvToCart"
+                app:layout_constraintTop_toTopOf="@id/tvToCart"
+                android:layout_marginStart="@dimen/dimen_15dp"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                app:corner="16dp"
+                app:color="#01FCDA"
+                android:textSize="10sp"
+                android:text="99"
+                android:layout_width="16dp"
+                android:layout_height="16dp"/>
             <TextView
                 android:id="@+id/tvAddToCart"
                 android:layout_width="wrap_content"
