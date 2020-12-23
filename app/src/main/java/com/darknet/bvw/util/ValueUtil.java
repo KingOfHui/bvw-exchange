@@ -25,7 +25,7 @@ public class ValueUtil {
     }
 
     public static String formatCustomPrice(String currency, BigDecimal bigDecimal) {
-        return String.format("%1$s%2$s",
+        return String.format("%1$s %2$s",
                 currency, sPriceFormat.format(bigDecimal));
     }
 

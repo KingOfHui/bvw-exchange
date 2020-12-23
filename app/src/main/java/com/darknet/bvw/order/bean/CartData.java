@@ -113,6 +113,15 @@ public class CartData {
         private String sp3;
         private String update_time;
         private int user_id;
+        private boolean isSelected;
+
+        public boolean isSelected() {
+            return isSelected;
+        }
+
+        public void setSelected(boolean selected) {
+            isSelected = selected;
+        }
 
         public int getCheck() {
             return check;
@@ -203,6 +212,9 @@ public class CartData {
         }
 
         public String getProduct_name() {
+            if (product_name != null) {
+                product_name = product_name.trim();
+            }
             return product_name;
         }
 

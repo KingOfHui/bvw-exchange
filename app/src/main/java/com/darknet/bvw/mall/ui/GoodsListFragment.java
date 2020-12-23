@@ -152,6 +152,7 @@ public class GoodsListFragment extends BaseBindingFragment<GoodsListViewModel, F
 		}
 
 		private void convertDetail(ItemGoodsBinding binding, GoodsDetailBean item) {
+			setOnItemClick(binding, item.getId());
 			Glide.with(binding.ivIcon.getContext())
 					.load(item.getImg_url())
 					.apply(RequestOptions.centerCropTransform())

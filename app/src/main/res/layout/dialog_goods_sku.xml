@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="500dp"
+    android:background="#00232233">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:background="#232233"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivGoods"
+        android:layout_width="117dp"
+        android:layout_height="117dp"
+        android:layout_marginStart="@dimen/dimen_15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@mipmap/img_default" />
+
+    <TextView
+        android:id="@+id/tvGoodsName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_15dp"
+        android:layout_marginTop="@dimen/dimen_35dp"
+        android:layout_marginEnd="@dimen/dimen_15dp"
+        android:background="#232233"
+        tools:text="牛仔短裤女2020夏新款韩版chin宽松牛仔短裤女2020夏新款韩版chin宽松"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_12"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivGoods"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_5dp"
+        tools:text="USDT162"
+        android:textColor="@color/_01FCDA"
+        android:textSize="@dimen/dimen_15dp"
+        app:layout_constraintStart_toStartOf="@id/tvGoodsName"
+        app:layout_constraintTop_toBottomOf="@id/tvGoodsName" />
+
+    <TextView
+        android:id="@+id/tvSelectSku"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        tools:text="已选`一次性口罩10个装`"
+        android:textColor="#999999"
+        android:textSize="@dimen/sp_12"
+        android:layout_marginEnd="@dimen/dimen_15dp"
+        app:layout_constraintStart_toStartOf="@id/tvGoodsName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPrice" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/dimen_40dp"
+        app:layout_constraintBottom_toTopOf="@id/tvSure"
+        app:layout_constraintTop_toBottomOf="@id/ivGoods">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_15dp"
+            android:layout_marginEnd="@dimen/dimen_15dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvSkuTip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/product_specifications"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_12"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.flexbox.FlexboxLayout
+                android:id="@+id/flexLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                app:layout_constraintTop_toBottomOf="@id/tvSkuTip" />
+
+            <TextView
+                android:id="@+id/tvCountTip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_20dp"
+                android:text="@string/number"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_12"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/flexLayout" />
+
+            <TextView
+                android:id="@+id/tvStockNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_15dp"
+                tools:text="库存300"
+                android:textColor="#999999"
+                android:textSize="@dimen/dp_10"
+                app:layout_constraintBaseline_toBaselineOf="@id/tvCountTip"
+                app:layout_constraintStart_toEndOf="@id/tvCountTip" />
+
+            <com.darknet.bvw.view.CustomCarCounterView
+                android:id="@+id/numberView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvCountTip" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <TextView
+        android:id="@+id/tvSure"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_margin="@dimen/dimen_15dp"
+        android:background="@drawable/shape_circle_rect_black"
+        android:backgroundTint="@color/_01FCDA"
+        android:gravity="center"
+        android:text="@string/sure_sure"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_16"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

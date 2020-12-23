@@ -1,5 +1,7 @@
 package com.darknet.bvw.mall.bean;
 
+import android.text.TextUtils;
+
 import java.util.List;
 
 import androidx.annotation.Keep;
@@ -226,6 +228,9 @@ public class GoodsDetailBean {
 	}
 
 	public String getName() {
+		if (!TextUtils.isEmpty(name)){
+			name = name.trim();
+		}
 		return name;
 	}
 
@@ -463,6 +468,15 @@ public class GoodsDetailBean {
 		private String sp2;
 		private String sp3;
 		private int stock;
+		private int quantity = 1;
+
+		public int getQuantity() {
+			return quantity;
+		}
+
+		public void setQuantity(int quantity) {
+			this.quantity = quantity;
+		}
 
 		public int getId() {
 			return id;
