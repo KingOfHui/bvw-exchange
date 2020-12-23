@@ -12,8 +12,6 @@ import com.darknet.bvw.order.bean.ShippingAddress;
 
 import java.util.List;
 
-import java.util.List;
-
 import io.reactivex.Observable;
 import okhttp3.RequestBody;
 import retrofit2.http.Body;
@@ -102,6 +100,14 @@ public interface ApiInterface {
     //二级分类
     @GET("api/shop/catalog/list2/{parent_id}")
     Observable<BaseResponse<List<CategoryBean>>> categorySecond(@Path("parent_id") int parent_id);
+
+    //关键字搜索
+    @GET("api/shop/product/keyword")
+    Observable<BaseResponse<BaseListBean<GoodsDetailBean>>> search(
+            @Path("keyword") String keyword
+            , @Query("limit") Integer limit
+            , @Query("page") Integer page
+    );
 
     //商品列表(根据分类)
     @GET("api/shop/product/category")
