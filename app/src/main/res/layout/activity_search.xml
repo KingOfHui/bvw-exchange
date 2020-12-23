@@ -12,13 +12,15 @@
             android:layout_height="wrap_content">
             <EditText
                 android:id="@+id/edit_text"
+                android:textColor="@color/white"
                 android:layout_marginLeft="15dp"
+                android:singleLine="true"
                 android:background="@drawable/shape_circle_rect_search"
                 android:paddingLeft="10dp"
                 android:drawableLeft="@mipmap/search_2"
                 android:layout_weight="1"
                 android:imeOptions="actionSearch"
-                android:hint="医用防护、口罩、手套"
+                android:hint="请输入搜索内容: "
                 android:textColorHint="#686672"
                 android:drawablePadding="10dp"
                 android:textSize="13sp"

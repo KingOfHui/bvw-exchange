@@ -32,6 +32,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -101,6 +102,7 @@ public class GoodsListFragment extends BaseBindingFragment<GoodsListViewModel, F
 		if(!CategoryBean.isHome(category)) {
 			mHeader.setVisibility(View.GONE);
 		}
+		mViewModel.getHasMore().observe(this, more -> mDataBinding.refreshLayout.setNoMoreData(more));
 		mViewModel.getListLive().observe(this
 				, objects -> mDataBinding.getAdapter().setNewData(objects));
 		mViewModel.setCategory(category);
