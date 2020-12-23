@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.inputmethod.InputMethodManager;
 
 import com.darknet.bvw.MyApp;
+import com.darknet.bvw.base.IView;
 import com.darknet.bvw.view.CustomDialog;
 import com.jingui.lib.utils.Immerse2Helper;
 
@@ -17,7 +18,7 @@ import cn.jpush.android.api.JPushInterface;
 
 import static com.darknet.bvw.util.language.LocalManageUtil.getSystemLocale;
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity implements IView {
 
     protected String TAG = this.getClass().getSimpleName();
 
@@ -61,6 +62,15 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     public void configViews(){};
 
+    @Override
+    public void showLoading() {
+        showDialog("");
+    }
+
+    @Override
+    public void hideLoading() {
+        dismissDialog();
+    }
 
     // dialog
     public CustomDialog getDialog() {

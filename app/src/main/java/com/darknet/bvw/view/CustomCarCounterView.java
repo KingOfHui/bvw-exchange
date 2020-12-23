@@ -148,8 +148,8 @@ public class CustomCarCounterView extends FrameLayout {
      */
     public void setCanAdd(boolean canAdd) {
         mImgAdd.setClickable(canAdd);
-        mImgAdd.setBackgroundResource(canAdd ? R.drawable.img_number_add
-                                              : R.drawable.img_number_add_uncheck);
+        mImgAdd.setBackgroundResource(canAdd ? R.mipmap.icon_plus
+                                              : R.mipmap.icon_plus);
     }
 
     /**
@@ -159,8 +159,8 @@ public class CustomCarCounterView extends FrameLayout {
      */
     public void setCanSum(boolean canSum) {
         mImgSum.setClickable(canSum);
-        mImgSum.setBackgroundResource(canSum ? R.drawable.img_number_subtract
-                                              : R.drawable.img_number_subtract_uncheck);
+        mImgSum.setBackgroundResource(canSum ? R.mipmap.icon_sub
+                                              : R.mipmap.icon_sub);
     }
 
     /**
@@ -276,6 +276,7 @@ public class CustomCarCounterView extends FrameLayout {
     public void setMinCount(BigDecimal minCount) {
         if (minCount != null) {
             this.mMinCount = minCount;
+            setNumber(minCount);
         }
         if (mCanSwitch) {
             mHandler.sendEmptyMessage(-1);

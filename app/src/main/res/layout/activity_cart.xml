@@ -45,6 +45,8 @@
             android:id="@+id/rvCartGoods"
             submitList="@{vm.listLive}"
             adapter="@{adapter}"
+            emptyImageResource="@{@drawable/img_cart_no_data}"
+            emptyText="@{@string/cart_no_data}"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginStart="@dimen/dimen_15dp"

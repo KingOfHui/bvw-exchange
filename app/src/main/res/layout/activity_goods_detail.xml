@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -13,10 +14,10 @@
 
         <ImageView
             android:id="@+id/ivBack"
-            android:layout_width="@dimen/dimen_20dp"
-            android:layout_height="@dimen/dimen_20dp"
-            android:layout_marginStart="@dimen/dimen_5dp"
-            android:layout_marginTop="@dimen/dimen_15dp"
+            android:layout_width="@dimen/dimen_35dp"
+            android:layout_height="@dimen/dimen_35dp"
+            android:paddingLeft="@dimen/dimen_15dp"
+            android:paddingTop="@dimen/dimen_15dp"
             android:src="@mipmap/back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -24,6 +25,7 @@
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="10dp"
             app:layout_constraintBottom_toTopOf="@id/clBottom"
             app:layout_constraintTop_toBottomOf="@id/ivBack">
 
@@ -56,10 +58,10 @@
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="@dimen/dimen_20dp"
                         android:layout_marginEnd="@dimen/dimen_15dp"
-                        android:text="牛仔短裤女2020夏新款韩版chin宽松牛仔短裤女2020夏新款韩版chin宽松"
                         android:textColor="@color/white"
                         android:textSize="@dimen/dp_18"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="牛仔短裤女2020夏新款韩版chin宽松牛仔短裤女2020夏新款韩版chin宽松" />
 
                     <TextView
                         android:id="@+id/tvPrice"
@@ -67,23 +69,23 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dimen_20dp"
                         android:includeFontPadding="false"
-                        android:text="USDT 206.00"
                         android:textColor="@color/_01FCDA"
                         android:textSize="@dimen/dimen_20dp"
                         app:layout_constraintStart_toStartOf="@id/tvGoodsName"
-                        app:layout_constraintTop_toBottomOf="@id/tvGoodsName" />
+                        app:layout_constraintTop_toBottomOf="@id/tvGoodsName"
+                        tools:text="USDT 206.00" />
 
                     <TextView
                         android:id="@+id/tvSales"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dimen_15dp"
-                        android:text="月销 5000+"
                         android:textColor="#AAAAB0"
                         android:textSize="@dimen/sp_14"
                         app:layout_constraintBaseline_toBaselineOf="@id/tvPrice"
                         app:layout_constraintBottom_toBottomOf="@id/tvPrice"
-                        app:layout_constraintStart_toEndOf="@id/tvPrice" />
+                        app:layout_constraintStart_toEndOf="@id/tvPrice"
+                        tools:text="月销 5000+" />
 
                     <ImageView
                         android:id="@+id/ivShare"
@@ -99,12 +101,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dimen_5dp"
-                        android:text="分享"
                         android:textColor="@color/white"
                         android:textSize="9dp"
                         app:layout_constraintEnd_toEndOf="@id/ivShare"
                         app:layout_constraintStart_toStartOf="@id/ivShare"
-                        app:layout_constraintTop_toBottomOf="@id/ivShare" />
+                        app:layout_constraintTop_toBottomOf="@id/ivShare"
+                        android:text="@string/share" />
 
                     <View
                         android:id="@+id/line1"
@@ -120,7 +122,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/dimen_50dp"
                         android:gravity="center"
-                        android:text="可用现金券"
+                        android:text="@string/can_used_discounts"
                         android:textColor="@color/white"
                         android:textSize="@dimen/sp_12"
                         app:layout_constraintStart_toStartOf="@id/tvGoodsName"
@@ -137,11 +139,11 @@
                         android:paddingTop="@dimen/dimen_5dp"
                         android:paddingEnd="@dimen/dp_10"
                         android:paddingBottom="@dimen/dimen_5dp"
-                        android:text="30现金券"
                         android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="@id/tvCanUsedDiscountsTip"
                         app:layout_constraintStart_toEndOf="@id/tvCanUsedDiscountsTip"
-                        app:layout_constraintTop_toTopOf="@id/tvCanUsedDiscountsTip" />
+                        app:layout_constraintTop_toTopOf="@id/tvCanUsedDiscountsTip"
+                        tools:text="30现金券" />
 
                     <ImageView
                         android:id="@+id/ivDiscountsMore"
@@ -163,28 +165,36 @@
 
                     <TextView
                         android:id="@+id/tvSelectSkuTip"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="@dimen/dimen_50dp"
-                        android:gravity="center"
-                        android:text="选择规格"
+                        android:gravity="center_vertical"
+                        android:text="@string/select_specification"
                         android:textColor="@color/white"
                         android:textSize="@dimen/sp_12"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@id/tvGoodsName"
                         app:layout_constraintTop_toBottomOf="@id/line2" />
 
                     <TextView
+                        android:id="@+id/tvSelectSku"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/dimen_15dp"
                         android:alpha="0.6"
                         android:drawableEnd="@mipmap/ic_right_arrow"
                         android:drawablePadding="@dimen/dimen_5dp"
-                        android:text="3种规格可选"
+                        android:text="@string/species_optional_3"
                         android:textColor="@color/white"
                         android:textSize="@dimen/sp_12"
                         app:layout_constraintBottom_toBottomOf="@id/tvSelectSkuTip"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@id/tvSelectSkuTip" />
+
+                    <androidx.constraintlayout.widget.Group
+                        android:id="@+id/groupDiscounts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:constraint_referenced_ids="tvCanUsedDiscounts,line2,ivDiscountsMore,tvCanUsedDiscountsTip" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -193,16 +203,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
+                    android:layout_margin="@dimen/dimen_15dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/clGoodsInfo">
 
-                    <ImageView
-                        android:id="@+id/ivGoodsDetail"
+                    <com.darknet.bvw.view.NoScrollWebView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="match_parent"
+                        android:id="@+id/webview"
+                        />
                 </LinearLayout>
-
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
@@ -218,10 +229,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dimen_15dp"
-                android:layout_marginTop="@dimen/dimen_15dp"
+                android:paddingTop="@dimen/dimen_15dp"
+                android:paddingBottom="@dimen/dimen_15dp"
                 app:drawableTop="@mipmap/icon_home"
                 android:drawablePadding="@dimen/dimen_5dp"
-                android:text="首页"
+                android:text="@string/xmain_table_shouye"
                 app:drawableWidth="@dimen/dimen_20dp"
                 app:drawableHeight="@dimen/dimen_20dp"
                 android:textColor="@color/white"
@@ -230,12 +242,13 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.darknet.bvw.view.DrawableTextView
+                android:id="@+id/tvToCart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_15dp"
                 app:drawableTop="@mipmap/cion_cart"
                 android:drawablePadding="@dimen/dimen_5dp"
-                android:text="购物车"
+                android:text="@string/cart"
+                android:padding="@dimen/dimen_15dp"
                 app:drawableWidth="@dimen/dimen_20dp"
                 app:drawableHeight="@dimen/dimen_20dp"
                 android:textColor="@color/white"
@@ -243,7 +256,21 @@
                 app:layout_constraintEnd_toStartOf="@id/tvAddToCart"
                 app:layout_constraintStart_toEndOf="@id/tvToHome"
                 app:layout_constraintTop_toTopOf="parent" />
-
+            <com.darknet.bvw.view.CornerTextView
+                android:id="@+id/shopping_num"
+                app:layout_constraintLeft_toLeftOf="@id/tvToCart"
+                app:layout_constraintTop_toTopOf="@id/tvToCart"
+                android:layout_marginStart="@dimen/dimen_15dp"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                app:corner="16dp"
+                app:color="#01FCDA"
+                android:textSize="10sp"
+                android:text="99"
+                android:layout_width="16dp"
+                android:layout_height="16dp"/>
             <TextView
                 android:id="@+id/tvAddToCart"
                 android:layout_width="wrap_content"
@@ -252,10 +279,10 @@
                 android:background="@drawable/shape_circle_rect_left"
                 android:backgroundTint="@color/_01FCDA"
                 android:paddingStart="@dimen/dimen_25dp"
-                android:paddingTop="@dimen/dimen_15dp"
+                android:paddingTop="@dimen/dp12"
                 android:paddingEnd="@dimen/dimen_25dp"
-                android:paddingBottom="@dimen/dimen_15dp"
-                android:text="加入购物车"
+                android:paddingBottom="@dimen/dp12"
+                android:text="@string/add_to_cart"
                 android:textColor="@color/black"
                 android:textSize="@dimen/dimen_15dp"
                 app:layout_constraintEnd_toStartOf="@id/tvBuyNow"
@@ -270,10 +297,10 @@
                 android:background="@drawable/shape_circle_rect_right"
                 android:backgroundTint="#8236FF"
                 android:paddingStart="@dimen/dimen_25dp"
-                android:paddingTop="@dimen/dimen_15dp"
+                android:paddingTop="@dimen/dp12"
                 android:paddingEnd="@dimen/dimen_25dp"
-                android:paddingBottom="@dimen/dimen_15dp"
-                android:text="立即购买"
+                android:paddingBottom="@dimen/dp12"
+                android:text="@string/buy_now"
                 android:textColor="@color/white"
                 android:textSize="@dimen/dimen_15dp"
                 app:layout_constraintEnd_toEndOf="parent"

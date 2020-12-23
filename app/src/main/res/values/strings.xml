@@ -1009,4 +1009,20 @@
     <string name="unknown_error">未知错误</string>
     <string name="connect_timeout">连接超时</string>
     <string name="add_to_cart_success">添加成功</string>
+    <string name="please_select_sku">请先选择商品规格</string>
+    <string name="goods_stock">库存 %s</string>
+    <string name="select_sku">已选 \'%s-%s\'</string>
+    <string name="product_specifications">产品规格</string>
+    <string name="number">数量</string>
+    <string name="select_goods_sku">已选 ’ %s ‘</string>
+    <string name="monthly_sales">月销 %s</string>
+    <string name="share">分享</string>
+    <string name="can_used_discounts">可用现金券</string>
+    <string name="select_specification">选择规格</string>
+    <string name="species_optional_3">%s种规格可选</string>
+    <string name="cart">购物车</string>
+    <string name="add_to_cart">加入购物车</string>
+    <string name="buy_now">立即购买</string>
+    <string name="discounts">%s现金券</string>
+    <string name="cart_no_data">您的购物车为空\n赶紧去逛逛</string>
 </resources>
