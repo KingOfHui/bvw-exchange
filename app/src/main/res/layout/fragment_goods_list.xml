@@ -19,7 +19,6 @@
 
         <com.scwang.smartrefresh.layout.SmartRefreshLayout
             android:id="@+id/refreshLayout"
-            hasMore="@{vm.hasMore}"
             onLoadMoreListener="@{()->vm.tryToLoadNext()}"
             onRefreshListener="@{()->vm.refresh()}"
             refreshing="@{vm.refreshing}"
