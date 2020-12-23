@@ -3,8 +3,11 @@ package com.darknet.bvw.order.ui.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
+
+import androidx.lifecycle.Observer;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -15,11 +18,14 @@ import com.darknet.bvw.activity.BaseBindingActivity;
 import com.darknet.bvw.databinding.ActivityCartBinding;
 import com.darknet.bvw.order.bean.CartData;
 import com.darknet.bvw.order.vm.CartViewModel;
+import com.darknet.bvw.util.ToastUtils;
 import com.darknet.bvw.util.ValueUtil;
 import com.darknet.bvw.util.view.ViewUtil;
 import com.darknet.bvw.view.CustomCarCounterView;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @ClassName CartActivity
@@ -28,6 +34,9 @@ import java.math.BigDecimal;
  * @Date 2020/12/22 0022 17:43
  */
 public class CartActivity extends BaseBindingActivity<ActivityCartBinding> {
+
+    private CartAdapter mCartAdapter;
+
     public static void start(Context context) {
         context.startActivity(new Intent(context, CartActivity.class));
     }
@@ -41,17 +50,61 @@ public class CartActivity extends BaseBindingActivity<ActivityCartBinding> {
     public void initView() {
         CartViewModel viewModel = getViewModel(CartViewModel.class);
         mBinding.setVm(viewModel);
-        CartAdapter cartAdapter = new CartAdapter();
-        mBinding.setAdapter(cartAdapter);
+        mCartAdapter = new CartAdapter();
+        mBinding.setAdapter(mCartAdapter);
         viewModel.refresh();
-        cartAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+        mCartAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                CartData.CartItemListBean itemListBean = cartAdapter.getData().get(position);
+                List<CartData.CartItemListBean> data = mCartAdapter.getData();
+                CartData.CartItemListBean itemListBean = data.get(position);
                 itemListBean.setSelected(!itemListBean.isSelected());
-                cartAdapter.notifyItemChanged(position);
+                mCartAdapter.notifyItemChanged(position);
+                updateBottomView();
             }
         });
+        mBinding.tvSettle.setOnClickListener(view -> {
+            StringBuilder sb = new StringBuilder();
+            List<CartData.CartItemListBean> data = mCartAdapter.getData();
+            for (int i = 0; i < data.size(); i++) {
+                CartData.CartItemListBean cartItemListBean = data.get(i);
+                if (cartItemListBean.isSelected()) {
+                    sb.append(cartItemListBean.getProduct_id()).append(i < data.size() - 1 ? "," : "");
+                }
+            }
+            if (TextUtils.isEmpty(sb.toString())) {
+                ToastUtils.showToast(getString(R.string.first_check_goods));
+                return;
+            }
+            viewModel.checkCartByProduct(1, sb.toString());
+        });
+        mBinding.ivAllSelected.setOnClickListener(view -> {
+            mCartAdapter.allSelectedOrNot();
+            mBinding.ivAllSelected.setSelected(mCartAdapter.isAllSelect());
+        });
+        mBinding.tvAllSelect.setOnClickListener(view -> mCartAdapter.allSelectedOrNot());
+
+        viewModel.checkCartSuccessLive.observe(this, aBoolean -> {
+            if (aBoolean) {
+                ConfirmOrderActivity.start(this, mCartAdapter.getAllSelected());
+            }
+        });
+        viewModel.refreshCartSuccessLive.observe(this, a-> updateBottomView());
+    }
+
+    private void updateBottomView() {
+        List<CartData.CartItemListBean> data = mCartAdapter.getData();
+        int selectCount = 0;
+        BigDecimal total = BigDecimal.ZERO;
+        for (int i = 0; i < data.size(); i++) {
+            boolean selected = data.get(i).isSelected();
+            if (selected) {
+                selectCount += 1;
+                total = total.add(data.get(i).getPrice());
+            }
+        }
+        mBinding.tvSettle.setText(String.format(getString(R.string.settle_s), String.valueOf(selectCount)));
+        mBinding.tvTotalPrice.setText(String.format(getString(R.string.total_money), ValueUtil.stripTrailingZeros(total)));
     }
 
     @Override
@@ -60,6 +113,8 @@ public class CartActivity extends BaseBindingActivity<ActivityCartBinding> {
     }
 
     public static class CartAdapter extends BaseQuickAdapter<CartData.CartItemListBean, BaseViewHolder> {
+
+        private boolean isAllSelect = false;
 
         public CartAdapter() {
             super(R.layout.item_cart_goods);
@@ -73,19 +128,40 @@ public class CartActivity extends BaseBindingActivity<ActivityCartBinding> {
                     .into((ImageView) helper.getView(R.id.sdvGoods));
             helper.getView(R.id.ivSelected).setSelected(item.isSelected());
             helper.setText(R.id.tvGoodsName, item.getProduct_name());
-            helper.setText(R.id.tvPrice,  ValueUtil.formatCustomPrice("USDT",item.getPrice()));
+            helper.setText(R.id.tvPrice, ValueUtil.formatCustomPrice("USDT", item.getPrice()));
             helper.setText(R.id.tvSku, item.getSp1());
-            helper.setText(R.id.tvOriginPrice, ValueUtil.formatCustomPrice("USDT",item.getOriginal_price()));
+            helper.setText(R.id.tvOriginPrice, ValueUtil.formatCustomPrice("USDT", item.getOriginal_price()));
             CustomCarCounterView numView = helper.getView(R.id.numView);
             numView.setMinCount(BigDecimal.ONE);
             numView.setNumber(BigDecimal.valueOf(item.getQuantity()));
-            numView.setUpdateNumberListener(new CustomCarCounterView.UpdateNumberListener() {
-                @Override
-                public void updateNumber(BigDecimal number) {
-                    item.setQuantity(number.intValue());
-                }
-            });
+            numView.setUpdateNumberListener(number -> item.setQuantity(number.intValue()));
             ViewUtil.setTextViewDeleteLine(helper.getView(R.id.tvOriginPrice));
+        }
+
+        private ArrayList<CartData.CartItemListBean> getAllSelected() {
+            ArrayList<CartData.CartItemListBean> cartItemListBeans = new ArrayList<>();
+            List<CartData.CartItemListBean> data = getData();
+            for (int i = 0; i < data.size(); i++) {
+                CartData.CartItemListBean cartItemListBean = data.get(i);
+                boolean selected = cartItemListBean.isSelected();
+                if (selected) {
+                    cartItemListBeans.add(cartItemListBean);
+                }
+            }
+            return cartItemListBeans;
+        }
+
+        private void allSelectedOrNot() {
+            isAllSelect = !isAllSelect;
+            List<CartData.CartItemListBean> data = getData();
+            for (CartData.CartItemListBean datum : data) {
+                datum.setSelected(isAllSelect);
+            }
+            notifyDataSetChanged();
+        }
+
+        public boolean isAllSelect() {
+            return isAllSelect;
         }
     }
 }

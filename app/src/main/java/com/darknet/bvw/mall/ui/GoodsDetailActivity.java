@@ -63,7 +63,7 @@ public class GoodsDetailActivity extends BaseBindingActivity<ActivityGoodsDetail
             if (value != null) {
                 List<GoodsDetailBean.SkuListBean> sku_list = value.getSku_list();
                 if (CollectionUtil.isNotEmpty(sku_list)) {
-                    GoodsSkuDialog skuDialog = new GoodsSkuDialog(this, value);
+                    GoodsSkuDialog skuDialog = new GoodsSkuDialog(this, value, mSelectSkuListBean);
                     skuDialog.setSkuListener(new GoodsSkuDialog.OnSelectSkuListener() {
                         @Override
                         public void select(GoodsDetailBean.SkuListBean skuListBean) {

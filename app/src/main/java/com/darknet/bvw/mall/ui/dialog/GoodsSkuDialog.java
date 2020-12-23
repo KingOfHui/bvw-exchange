@@ -28,9 +28,10 @@ public class GoodsSkuDialog extends BottomDialog {
     private GoodsDetailBean mGoodsDetailBean;
     private GoodsDetailBean.SkuListBean mSelectSkuBean;
 
-    public GoodsSkuDialog(@NonNull Context context, GoodsDetailBean goodsDetailBean) {
+    public GoodsSkuDialog(@NonNull Context context, GoodsDetailBean goodsDetailBean, GoodsDetailBean.SkuListBean selectSkuListBean) {
         super(context);
         mGoodsDetailBean = goodsDetailBean;
+        mSelectSkuBean = selectSkuListBean;
     }
 
     @Override
@@ -59,6 +60,10 @@ public class GoodsSkuDialog extends BottomDialog {
                     .load(mGoodsDetailBean.getImg_url())
                     .apply(RequestOptions.centerCropTransform())
                     .into(ivGoods);
+        }
+        if (mSelectSkuBean != null) {
+            numberView.setNumber(BigDecimal.valueOf(mSelectSkuBean.getQuantity()));
+            // TODO: 2020/12/23 反显
         }
 
         tvSure.setOnClickListener(new View.OnClickListener() {

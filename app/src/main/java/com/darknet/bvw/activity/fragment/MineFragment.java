@@ -22,8 +22,6 @@ import com.darknet.bvw.activity.AccountManageActivity;
 import com.darknet.bvw.activity.ContactPeopleActivity;
 import com.darknet.bvw.activity.MessageCenterActivity;
 import com.darknet.bvw.activity.SettingActivity;
-import com.darknet.bvw.db.Entity.ETHWalletModel;
-import com.darknet.bvw.db.WalletDaoUtils;
 import com.darknet.bvw.order.ui.activity.ConfirmOrderActivity;
 import com.darknet.bvw.order.ui.activity.MyAddressesActivity;
 import com.darknet.bvw.order.ui.activity.OrderListActivity;
@@ -99,12 +97,10 @@ public class MineFragment extends Fragment implements View.OnClickListener {
         LinearLayout llWaitPay = view.findViewById(R.id.llWaitPay);
         LinearLayout llWaitTaken = view.findViewById(R.id.llWaitTaken);
         LinearLayout llWaitDelivered = view.findViewById(R.id.llWaitDelivered);
-//        llWaitPay.setOnClickListener(view1 -> OrderListActivity.start(requireContext(),1));
+        llWaitPay.setOnClickListener(view1 -> OrderListActivity.start(requireContext(),1));
         llWaitDelivered.setOnClickListener(view1 -> OrderListActivity.start(requireContext(),2));
-//        llWaitTaken.setOnClickListener(view1 -> OrderListActivity.start(requireContext(),3));
+        llWaitTaken.setOnClickListener(view1 -> OrderListActivity.start(requireContext(),3));
         llAllOrder.setOnClickListener(v -> OrderListActivity.start(requireContext(),0));
-        llWaitTaken.setOnClickListener(view1 -> ConfirmOrderActivity.start(requireContext()));
-        llWaitPay.setOnClickListener(view1 -> MyAddressesActivity.start(requireContext()));
         try {
             String nameVal = (String) UserSPHelper.get(activity, "nickName", "no");
             if (nameVal.equals("no")) {

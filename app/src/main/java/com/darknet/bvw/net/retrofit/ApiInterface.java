@@ -9,6 +9,7 @@ import com.darknet.bvw.model.response.NoticeResponse;
 import com.darknet.bvw.order.bean.CartData;
 import com.darknet.bvw.order.bean.OrderDetailResp;
 import com.darknet.bvw.order.bean.ShippingAddress;
+import com.darknet.bvw.order.bean.SubmitOrderResp;
 
 import java.util.List;
 
@@ -41,6 +42,14 @@ public interface ApiInterface {
     @GET("api/shop/cart/list")
     Observable<BaseResponse<CartData>> getCartList();
 
+    //选中商品按产品,入参为商品ID,多个以逗号隔开
+//    {
+//        "check": 0,
+//            "ids": ""
+//    }
+    @POST("api/shop/cart/checkedByProduct")
+    Observable<BaseResponse<Object>> checkCartByProduct(@Body RequestBody body);
+
     /***********              商城-订单            **********/
     //订单列表
     @GET("api/shop/order/list")
@@ -60,12 +69,12 @@ public interface ApiInterface {
 
     //提交订单
     @POST("api/shop/order/submit")
-    Observable<BaseResponse<Object>> submitOrder(@Body RequestBody body);
+    Observable<BaseResponse<List<SubmitOrderResp>>> submitOrder(@Body RequestBody body);
 
 
     //提交购物车订单
     @POST("api/shop/order/submitCart")
-    Observable<BaseResponse<Object>> submitCart(@Body RequestBody body);
+    Observable<BaseResponse<List<SubmitOrderResp>>> submitCart(@Body RequestBody body);
 
     //修改订单地址
     @POST("api/shop/order/updateAddress")

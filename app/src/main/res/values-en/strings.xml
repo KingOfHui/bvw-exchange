@@ -987,5 +987,9 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="buy_now">立即购买</string>
     <string name="discounts">%s现金券</string>
     <string name="cart_no_data">您的购物车为空\n赶紧去逛逛</string>
+    <string name="settle_s">结算（%s）</string>
+    <string name="total_money">合计：USDT %s</string>
+    <string name="first_check_goods">请先勾选商品</string>
+    <string name="goods_count">共%s件商品</string>
 
 </resources>

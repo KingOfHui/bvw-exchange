@@ -1,5 +1,8 @@
 package com.darknet.bvw.order.bean;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -69,7 +72,7 @@ public class CartData {
         this.mall_list = mall_list;
     }
 
-    public static class CartItemListBean {
+    public static class CartItemListBean implements Parcelable {
         /**
          * check : 0
          * create_time :
@@ -116,10 +119,11 @@ public class CartData {
         private boolean isSelected;
 
         public boolean isSelected() {
-            return isSelected;
+            return check == 1;
         }
 
         public void setSelected(boolean selected) {
+            check = isSelected ? 1 : 0;
             isSelected = selected;
         }
 
@@ -285,6 +289,75 @@ public class CartData {
         public void setUser_id(int user_id) {
             this.user_id = user_id;
         }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            dest.writeInt(this.check);
+            dest.writeString(this.create_time);
+            dest.writeInt(this.id);
+            dest.writeInt(this.mall_id);
+            dest.writeSerializable(this.original_price);
+            dest.writeSerializable(this.price);
+            dest.writeString(this.product_attr);
+            dest.writeString(this.product_brand);
+            dest.writeInt(this.product_category_id);
+            dest.writeInt(this.product_id);
+            dest.writeString(this.product_img_url);
+            dest.writeString(this.product_name);
+            dest.writeString(this.product_no);
+            dest.writeInt(this.product_sku_id);
+            dest.writeInt(this.quantity);
+            dest.writeString(this.sp1);
+            dest.writeString(this.sp2);
+            dest.writeString(this.sp3);
+            dest.writeString(this.update_time);
+            dest.writeInt(this.user_id);
+            dest.writeByte(this.isSelected ? (byte) 1 : (byte) 0);
+        }
+
+        public CartItemListBean() {
+        }
+
+        protected CartItemListBean(Parcel in) {
+            this.check = in.readInt();
+            this.create_time = in.readString();
+            this.id = in.readInt();
+            this.mall_id = in.readInt();
+            this.original_price = (BigDecimal) in.readSerializable();
+            this.price = (BigDecimal) in.readSerializable();
+            this.product_attr = in.readString();
+            this.product_brand = in.readString();
+            this.product_category_id = in.readInt();
+            this.product_id = in.readInt();
+            this.product_img_url = in.readString();
+            this.product_name = in.readString();
+            this.product_no = in.readString();
+            this.product_sku_id = in.readInt();
+            this.quantity = in.readInt();
+            this.sp1 = in.readString();
+            this.sp2 = in.readString();
+            this.sp3 = in.readString();
+            this.update_time = in.readString();
+            this.user_id = in.readInt();
+            this.isSelected = in.readByte() != 0;
+        }
+
+        public static final Parcelable.Creator<CartItemListBean> CREATOR = new Parcelable.Creator<CartItemListBean>() {
+            @Override
+            public CartItemListBean createFromParcel(Parcel source) {
+                return new CartItemListBean(source);
+            }
+
+            @Override
+            public CartItemListBean[] newArray(int size) {
+                return new CartItemListBean[size];
+            }
+        };
     }
 
     public static class MallListBean {

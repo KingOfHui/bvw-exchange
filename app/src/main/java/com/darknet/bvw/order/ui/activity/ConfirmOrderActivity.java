@@ -2,6 +2,7 @@ package com.darknet.bvw.order.ui.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
 
 import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
@@ -9,10 +10,17 @@ import androidx.lifecycle.Observer;
 import com.darknet.bvw.R;
 import com.darknet.bvw.activity.BaseBindingActivity;
 import com.darknet.bvw.databinding.ActivityOrderConfirmBinding;
+import com.darknet.bvw.order.bean.CartData;
 import com.darknet.bvw.order.bean.ShippingAddress;
+import com.darknet.bvw.order.bean.SubmitOrderResp;
 import com.darknet.bvw.order.ui.adapter.OrderGoodsAdapter;
 import com.darknet.bvw.order.vm.ConfirmOrderViewModel;
 import com.darknet.bvw.order.vm.MyAddressViewModel;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import cn.hutool.core.collection.CollectionUtil;
 
 /**
  * @ClassName ConfirmOrderActivity
@@ -25,8 +33,10 @@ public class ConfirmOrderActivity extends BaseBindingActivity<ActivityOrderConfi
     private ShippingAddress mAddress;
     private MyAddressViewModel mAddressViewModel;
 
-    public static void start(Context context) {
-        context.startActivity(new Intent(context, ConfirmOrderActivity.class));
+    public static void start(Context context, ArrayList<CartData.CartItemListBean> allSelected) {
+        Intent intent = new Intent(context, ConfirmOrderActivity.class);
+        intent.putParcelableArrayListExtra("allSelected", allSelected);
+        context.startActivity(intent);
     }
 
     @Override
@@ -36,6 +46,8 @@ public class ConfirmOrderActivity extends BaseBindingActivity<ActivityOrderConfi
 
     @Override
     public void initView() {
+        Intent data = getIntent();
+        ArrayList<CartData.CartItemListBean> allSelected = data.getParcelableArrayListExtra("allSelected");
         mAddressViewModel = getViewModel(MyAddressViewModel.class);
         ConfirmOrderViewModel orderViewModel = getViewModel(ConfirmOrderViewModel.class);
         mAddressViewModel.refresh();
@@ -43,7 +55,8 @@ public class ConfirmOrderActivity extends BaseBindingActivity<ActivityOrderConfi
             if (shippingAddress != null) {
                 mAddress = shippingAddress;
                 mBinding.tvContact.setText(String.format("%s   %s", mAddress.getUser_name(), mAddress.getTel_number()));
-                mBinding.tvAddress.setText(mAddress.getNation() + mAddress.getProvince() + mAddress.getCity() + mAddress.getCounty() + mAddress.getDetail_info());
+                mBinding.tvAddress.setText(String.format("%s%s%s%s%s",
+                        mAddress.getNation(), mAddress.getProvince(), mAddress.getCity(), mAddress.getCounty(), mAddress.getDetail_info()));
             }
         });
         mBinding.layoutTitle.layBack.setOnClickListener(view -> finish());
@@ -52,9 +65,19 @@ public class ConfirmOrderActivity extends BaseBindingActivity<ActivityOrderConfi
         mBinding.tvAddressTip.setOnClickListener(view -> {
             Intent intent = new Intent(this, MyAddressesActivity.class);
             intent.putExtra("selectId", mAddress.getId());
-            startActivityForResult(intent,10000);
+            startActivityForResult(intent, 10000);
         });
         mBinding.ivEdit.setOnClickListener(view -> AddAddressActivity.start(this, mAddress, false));
+        mBinding.tvSubmitOrder.setOnClickListener(view -> {
+            orderViewModel.submitCartOrder();
+        });
+        orderViewModel.submitOrderLive.observe(this, submitOrderResps -> {
+            if (CollectionUtil.isNotEmpty(submitOrderResps) && submitOrderResps.size() > 1) {
+                OrderListActivity.start(this, 1);
+            } else {
+                OrderListActivity.start(this, 1);
+            }
+        });
     }
 
     @Override
@@ -67,8 +90,8 @@ public class ConfirmOrderActivity extends BaseBindingActivity<ActivityOrderConfi
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 10000 && resultCode == RESULT_OK && data != null) {
             ShippingAddress address = (ShippingAddress) data.getSerializableExtra("address");
-            if (address!=null) {
-               mAddressViewModel.selectAddress.setValue(address);
+            if (address != null) {
+                mAddressViewModel.selectAddress.setValue(address);
             }
         }
     }
