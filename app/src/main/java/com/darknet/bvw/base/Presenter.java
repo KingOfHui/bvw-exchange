@@ -5,7 +5,7 @@ package com.darknet.bvw.base;
  * <br>createTime: 2020/12/21 16:19
  * <br>desc: TODO
  */
-public abstract class Presenter<V> {
+public abstract class Presenter<V extends IView> {
 
 	protected V mView;
 	public Presenter(V v) {

@@ -31,6 +31,7 @@ public class CategoryGoodsPresenter extends Presenter<CategoryGoodsFragment> {
 	}
 
 	public void loadById() {
+		mView.showLoading();
 		BIWNetworkApi.getService(ApiInterface.class)
 				.shopListByCategory(mFirstCategoryId, mSecondCategoryId, 1000, mOrder, equals(mOrder, "price") ? mSort:null, 1)
 				.compose(BIWNetworkApi.getInstance().applySchedulers())
@@ -38,10 +39,12 @@ public class CategoryGoodsPresenter extends Presenter<CategoryGoodsFragment> {
 					@Override
 					public void onSuccess(BaseResponse<BaseListBean<GoodsDetailBean>> response, boolean isFromCache) {
 						mView.refreshUI(BaseListBean.getItems(response.getData()));
+						mView.dismissDialog();
 					}
 
 					@Override
 					public void onFailure(Throwable throwable) {
+						mView.dismissDialog();
 					}
 				}));
 	}

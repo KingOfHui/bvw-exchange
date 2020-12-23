@@ -4,6 +4,7 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.MutableLiveData;
 
 import com.darknet.bvw.net.retrofit.ApiInterface;
 import com.darknet.bvw.net.retrofit.BIWNetworkApi;
@@ -20,6 +21,7 @@ public class BaseViewModel extends AndroidViewModel{
 
     protected CompositeDisposable mDisposableContainer;
     protected ApiInterface apiService;
+    public MutableLiveData<Boolean> showLoadingLive = new MutableLiveData<>();
 
     public BaseViewModel(@NonNull Application application) {
         super(application);

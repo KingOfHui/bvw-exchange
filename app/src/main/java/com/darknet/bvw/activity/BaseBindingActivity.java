@@ -10,9 +10,11 @@ import android.view.inputmethod.InputMethodManager;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.darknet.bvw.MyApp;
+import com.darknet.bvw.base.IView;
 import com.darknet.bvw.common.BaseViewModel;
 import com.darknet.bvw.view.CustomDialog;
 
@@ -21,7 +23,7 @@ import cn.jpush.android.api.JPushInterface;
 
 import static com.darknet.bvw.util.language.LocalManageUtil.getSystemLocale;
 
-public abstract class BaseBindingActivity<BINDING extends ViewDataBinding> extends AppCompatActivity {
+public abstract class BaseBindingActivity<BINDING extends ViewDataBinding> extends AppCompatActivity implements IView {
 
     protected String TAG = this.getClass().getSimpleName();
 
@@ -60,6 +62,16 @@ public abstract class BaseBindingActivity<BINDING extends ViewDataBinding> exten
         T viewModel = new ViewModelProvider(this,
                 new ViewModelProvider.AndroidViewModelFactory(getApplication())).get(
                 viewModelClass);
+        viewModel.showLoadingLive.observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                if (aBoolean) {
+                    showLoading();
+                } else {
+                    dismissDialog();
+                }
+            }
+        });
         return viewModel;
     }
 
@@ -78,6 +90,15 @@ public abstract class BaseBindingActivity<BINDING extends ViewDataBinding> exten
         }
     }
 
+    @Override
+    public void showLoading() {
+        showDialog("");
+    }
+
+    @Override
+    public void hideLoading() {
+        dismissDialog();
+    }
     public void showDialog(String progressTip) {
         if (isFinishing()) {
             return;

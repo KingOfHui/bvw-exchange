@@ -18,7 +18,11 @@ import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.databinding.library.baseAdapters.BR;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+
+import com.darknet.bvw.base.IView;
+import com.darknet.bvw.view.CustomDialog;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -28,10 +32,10 @@ import static android.app.Activity.RESULT_OK;
  * @Author dinghui
  * @Date 2020/12/11 0011 17:22
  */
-public abstract class BaseBindingFragment<VM extends BaseViewModel, DB extends ViewDataBinding> extends Fragment {
+public abstract class BaseBindingFragment<VM extends BaseViewModel, DB extends ViewDataBinding> extends Fragment implements IView {
     protected DB mDataBinding;
     protected VM mViewModel;
-
+    private CustomDialog dialog;//进度条
     private boolean isLoaded = false;
 
     @Nullable
@@ -74,14 +78,29 @@ public abstract class BaseBindingFragment<VM extends BaseViewModel, DB extends V
 
     protected final <T extends BaseViewModel> T getFragmentViewModel(Class<T> tClass) {
         T viewModel = new ViewModelProvider(this, new ViewModelProvider.AndroidViewModelFactory(requireActivity().getApplication())).get(tClass);
+        handleLoadingLive(viewModel);
         return viewModel;
     }
 
     protected final <T extends BaseViewModel> T getActivityViewModel(Class<T> viewModelClass) {
         T viewModel = new ViewModelProvider(requireActivity(), new ViewModelProvider.AndroidViewModelFactory(requireActivity().getApplication())).get(viewModelClass);
+        handleLoadingLive(viewModel);
         return viewModel;
     }
 
+    public void handleLoadingLive(BaseViewModel viewModel) {
+        viewModel.showLoadingLive.observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                if (aBoolean) {
+                    showLoading();
+                } else {
+                    dismissDialog();
+                }
+            }
+        });
+
+    }
     public void finishActivity() {
         requireActivity().finish();
     }
@@ -89,5 +108,45 @@ public abstract class BaseBindingFragment<VM extends BaseViewModel, DB extends V
     public void finishActivityWithResultOk() {
         requireActivity().finish();
         requireActivity().setResult(RESULT_OK);
+    }
+    // dialog
+    public CustomDialog getDialog() {
+        if (dialog == null) {
+            dialog = CustomDialog.instance(requireActivity());
+            dialog.setCancelable(true);
+        }
+        return dialog;
+    }
+
+    public void hideDialog() {
+        if (dialog != null) {
+            dialog.hide();
+        }
+    }
+
+    @Override
+    public void showLoading() {
+        showDialog("");
+    }
+
+    @Override
+    public void hideLoading() {
+        dismissDialog();
+    }
+    public void showDialog(String progressTip) {
+        if (requireActivity().isFinishing()) {
+            return;
+        }
+        getDialog().show();
+        if (progressTip != null) {
+            getDialog().setTvProgress(progressTip);
+        }
+    }
+
+    public void dismissDialog() {
+        if (dialog != null) {
+            dialog.dismiss();
+            dialog = null;
+        }
     }
 }

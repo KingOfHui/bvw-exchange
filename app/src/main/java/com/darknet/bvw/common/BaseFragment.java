@@ -11,11 +11,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public abstract class BaseFragment extends Fragment {
+import com.darknet.bvw.base.IView;
+import com.darknet.bvw.view.CustomDialog;
+
+public abstract class BaseFragment extends Fragment implements IView {
 
     protected Activity mActivity;
     private View mView;
-
+    private CustomDialog dialog;//进度条
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,5 +50,45 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
+    }
+    // dialog
+    public CustomDialog getDialog() {
+        if (dialog == null) {
+            dialog = CustomDialog.instance(requireActivity());
+            dialog.setCancelable(true);
+        }
+        return dialog;
+    }
+
+    public void hideDialog() {
+        if (dialog != null) {
+            dialog.hide();
+        }
+    }
+
+    @Override
+    public void showLoading() {
+        showDialog("");
+    }
+
+    @Override
+    public void hideLoading() {
+        dismissDialog();
+    }
+    public void showDialog(String progressTip) {
+        if (requireActivity().isFinishing()) {
+            return;
+        }
+        getDialog().show();
+        if (progressTip != null) {
+            getDialog().setTvProgress(progressTip);
+        }
+    }
+
+    public void dismissDialog() {
+        if (dialog != null) {
+            dialog.dismiss();
+            dialog = null;
+        }
     }
 }
