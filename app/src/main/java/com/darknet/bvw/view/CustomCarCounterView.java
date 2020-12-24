@@ -211,6 +211,9 @@ public class CustomCarCounterView extends FrameLayout {
             mGoodsNumber = getMaxCount();
         } else {
             mGoodsNumber = addResult;
+            if (mAddOrSubListener != null) {
+                mAddOrSubListener.onAdd();
+            }
         }
         if (mCanSwitch) {
             mHandler.sendEmptyMessage(-1);
@@ -229,6 +232,9 @@ public class CustomCarCounterView extends FrameLayout {
                 mGoodsNumber = getMinCount();
             } else {
                 mGoodsNumber = resultValue;
+                if (mAddOrSubListener != null) {
+                    mAddOrSubListener.onSub();
+                }
             }
         }
         if (mCanSwitch) {
@@ -324,5 +330,17 @@ public class CustomCarCounterView extends FrameLayout {
      */
     public interface UpdateNumberListener {
         void updateNumber(BigDecimal number);
+    }
+
+    private AddOrSubListener mAddOrSubListener;
+
+    public void setAddOrSubListener(AddOrSubListener addOrSubListener) {
+        mAddOrSubListener = addOrSubListener;
+    }
+    public interface AddOrSubListener{
+        void onAdd();
+
+        void onSub();
+
     }
 }

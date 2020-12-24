@@ -47,7 +47,7 @@ public class CartActivity extends BaseBindingActivity<ActivityCartBinding> {
 
     @Override
     public void initView() {
-        StatusBarUtil.setStatusBarColor(this,R.color.color_bg_181523);
+        StatusBarUtil.setStatusBarColor(this, R.color.color_bg_181523);
         CartViewModel viewModel = getViewModel(CartViewModel.class);
         mBinding.setVm(viewModel);
         mCartAdapter = new CartAdapter();
@@ -61,6 +61,17 @@ public class CartActivity extends BaseBindingActivity<ActivityCartBinding> {
                 itemListBean.setCheck(itemListBean.getCheck() == 1 ? 0 : 1);
                 mCartAdapter.notifyItemChanged(position);
                 updateBottomView(mCartAdapter.getData());
+            }
+        });
+        mCartAdapter.setAddOrSubListener(new CartAdapter.AddOrSubListener() {
+            @Override
+            public void onAdd(int product_sku_id) {
+                viewModel.addToCart(product_sku_id,1);
+            }
+
+            @Override
+            public void onSub(int product_sku_id) {
+                viewModel.subCartGoods(product_sku_id,1);
             }
         });
         mBinding.tvSettle.setOnClickListener(view -> {
@@ -85,14 +96,17 @@ public class CartActivity extends BaseBindingActivity<ActivityCartBinding> {
             mCartAdapter.allSelectedOrNot();
             mBinding.ivAllSelected.setSelected(mCartAdapter.isAllSelect());
         });
-        mBinding.tvAllSelect.setOnClickListener(view -> mCartAdapter.allSelectedOrNot());
+        mBinding.tvAllSelect.setOnClickListener(view -> {
+            mCartAdapter.allSelectedOrNot();
+            mBinding.ivAllSelected.setSelected(mCartAdapter.isAllSelect());
+        });
 
         viewModel.checkCartSuccessLive.observe(this, aBoolean -> {
             if (aBoolean) {
                 ConfirmOrderActivity.start(this, mCartAdapter.getAllSelected());
             }
         });
-        viewModel.cartItemListLive.observe(this, a -> updateBottomView(a));
+        viewModel.cartItemListLive.observe(this, this::updateBottomView);
     }
 
     private void updateBottomView(List<CartData.CartItemListBean> data) {
@@ -136,7 +150,22 @@ public class CartActivity extends BaseBindingActivity<ActivityCartBinding> {
             CustomCarCounterView numView = helper.getView(R.id.numView);
             numView.setMinCount(BigDecimal.ONE);
             numView.setNumber(BigDecimal.valueOf(item.getQuantity()));
-            numView.setUpdateNumberListener(number -> item.setQuantity(number.intValue()));
+//            numView.setUpdateNumberListener(number -> item.setQuantity(number.intValue()));
+            numView.setAddOrSubListener(new CustomCarCounterView.AddOrSubListener() {
+                @Override
+                public void onAdd() {
+                    if (mAddOrSubListener != null) {
+                        mAddOrSubListener.onAdd(item.getProduct_sku_id());
+                    }
+                }
+
+                @Override
+                public void onSub() {
+                    if (mAddOrSubListener != null) {
+                        mAddOrSubListener.onSub(item.getProduct_sku_id());
+                    }
+                }
+            });
             ViewUtil.setTextViewDeleteLine(helper.getView(R.id.tvOriginPrice));
         }
 
@@ -165,5 +194,17 @@ public class CartActivity extends BaseBindingActivity<ActivityCartBinding> {
         public boolean isAllSelect() {
             return isAllSelect;
         }
+
+        private AddOrSubListener mAddOrSubListener;
+
+        public void setAddOrSubListener(AddOrSubListener addOrSubListener) {
+            mAddOrSubListener = addOrSubListener;
+        }
+        public interface AddOrSubListener{
+            void onAdd(int product_sku_id);
+
+            void onSub(int product_sku_id);
+        }
+
     }
 }

@@ -14,9 +14,9 @@ import com.darknet.bvw.util.ValueUtil;
  * @Author dinghui
  * @Date 2020/12/24 0024 17:20
  */
-public class CouponAdapter extends BaseQuickAdapter<CouponBean, BaseViewHolder> {
-    public CouponAdapter() {
-        super(R.layout.item_coupon);
+public class MyCouponAdapter extends BaseQuickAdapter<CouponBean, BaseViewHolder> {
+    public MyCouponAdapter() {
+        super(R.layout.item_my_coupon);
     }
 
     @Override
@@ -24,15 +24,15 @@ public class CouponAdapter extends BaseQuickAdapter<CouponBean, BaseViewHolder> 
         helper.setText(R.id.tvCouponName, item.getName());
         helper.setText(R.id.tvValue, ValueUtil.stripTrailingZeros(item.getDiscount()));
         Context context = helper.itemView.getContext();
-        helper.setText(R.id.tvDate, String.format(context.getString(R.string.s_biw_can_buy),
+        helper.setText(R.id.tvDate, String.format(context.getString(R.string.validity_date),
                 ValueUtil.stripTrailingZeros(item.getPrice())));
         if (item.getStock() > 0) {
             helper.addOnClickListener(R.id.tvBuy);
-            helper.setText(R.id.tvBuy, R.string.buy);
+            helper.setText(R.id.tvBuy, "去使用");
             helper.getView(R.id.tvBuy).setEnabled(true);
         } else {
             helper.getView(R.id.tvBuy).setEnabled(false);
-            helper.setText(R.id.tvBuy, R.string.sold_out);
+            helper.setText(R.id.tvBuy, "已使用");
         }
     }
 }

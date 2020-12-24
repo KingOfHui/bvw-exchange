@@ -997,4 +997,10 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="cash_coupon">现金券</string>
     <string name="my_cash_coupon">我的现金券</string>
     <string name="coupon_no_data">暂无现金券</string>
+    <string name="s_biw_can_buy">%s BIW 即可购买</string>
+    <string name="buy">购买</string>
+    <string name="sold_out">已抢光</string>
+    <string name="buy_coupon_title">购买%s元无门槛现金券</string>
+    <string name="buy_can_use_biw">本次购买将消耗%sBIW</string>
+    <string name="validity_date">有效期：%s</string>
 </resources>

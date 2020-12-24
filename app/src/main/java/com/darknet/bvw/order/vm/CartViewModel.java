@@ -1,6 +1,7 @@
 package com.darknet.bvw.order.vm;
 
 import android.app.Application;
+import android.text.TextUtils;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
@@ -14,9 +15,6 @@ import com.darknet.bvw.net.retrofit.RequestBodyBuilder;
 import com.darknet.bvw.order.bean.CartData;
 
 import java.util.List;
-
-import io.reactivex.Observable;
-import io.reactivex.functions.BiFunction;
 
 public class CartViewModel extends BaseListViewModel<CartData.CartItemListBean> {
 
@@ -50,14 +48,51 @@ public class CartViewModel extends BaseListViewModel<CartData.CartItemListBean> 
 
     public void checkCartByProduct(String idsUnSelect, String idsSelect) {
         showLoading();
-        Observable.zip(apiService.checkCartByProduct(new RequestBodyBuilder().addParams("check", 1).addParams("ids", idsSelect).build()),
-                apiService.checkCartByProduct(new RequestBodyBuilder().addParams("check", 0).addParams("ids", idsUnSelect).build()),
-                (objectBaseResponse, objectBaseResponse2) -> 1)
+        apiService.checkCartByProduct(new RequestBodyBuilder().addParams("check", 1).addParams("ids", idsSelect).build())
                 .compose(BIWNetworkApi.getInstance().applySchedulers())
-                .subscribe(new BaseObserver<>(this, new MvvmNetworkObserver<Integer>() {
+                .subscribe(new BaseObserver<>(this, new MvvmNetworkObserver<Object>() {
                     @Override
-                    public void onSuccess(Integer t, boolean isFromCache) {
+                    public void onSuccess(Object t, boolean isFromCache) {
+                        if (TextUtils.isEmpty(idsUnSelect)) {
+                            checkCartSuccessLive.setValue(true);
+                            hideLoading();
+                        } else {
+                            uncheckCartByProduct(idsUnSelect);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Throwable throwable) {
+                        hideLoading();
+                    }
+                }));
+    }
+
+    public void uncheckCartByProduct(String idsUnSelect) {
+        apiService.checkCartByProduct(new RequestBodyBuilder().addParams("check", 0).addParams("ids", idsUnSelect).build())
+                .compose(BIWNetworkApi.getInstance().applySchedulers())
+                .subscribe(new BaseObserver<>(this, new MvvmNetworkObserver<Object>() {
+                    @Override
+                    public void onSuccess(Object t, boolean isFromCache) {
                         checkCartSuccessLive.setValue(true);
+                        hideLoading();
+                    }
+
+                    @Override
+                    public void onFailure(Throwable throwable) {
+                        hideLoading();
+                    }
+                }));
+
+    }
+
+    public void addToCart(int skuId, int quantity) {
+        showLoading();
+        apiService.addToCart(new RequestBodyBuilder().addParams("product_sku_id", skuId).addParams("quantity", quantity).build())
+                .compose(BIWNetworkApi.getInstance().applySchedulers())
+                .subscribe(new BaseObserver<>(this, new MvvmNetworkObserver<BaseResponse<Object>>() {
+                    @Override
+                    public void onSuccess(BaseResponse<Object> t, boolean isFromCache) {
                         hideLoading();
                     }
 
@@ -68,4 +103,21 @@ public class CartViewModel extends BaseListViewModel<CartData.CartItemListBean> 
                 }));
     }
 
+    public void subCartGoods(int skuId, int quantity) {
+        showLoading();
+        apiService.subCartGoods(new RequestBodyBuilder().addParams("product_sku_id", skuId).addParams("quantity", quantity).build())
+                .compose(BIWNetworkApi.getInstance().applySchedulers())
+                .subscribe(new BaseObserver<>(this, new MvvmNetworkObserver<BaseResponse<Object>>() {
+                    @Override
+                    public void onSuccess(BaseResponse<Object> t, boolean isFromCache) {
+                        hideLoading();
+                    }
+
+                    @Override
+                    public void onFailure(Throwable throwable) {
+                        hideLoading();
+
+                    }
+                }));
+    }
 }

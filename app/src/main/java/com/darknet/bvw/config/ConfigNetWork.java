@@ -13,11 +13,11 @@ public class ConfigNetWork {
     public static String WEB_URL;
 
     public static void initWebWork(){
-        if(BuildConfig.WORK.equalsIgnoreCase("line")){
+//        if(BuildConfig.WORK.equalsIgnoreCase("line")){
             WEB_URL ="file:///android_asset/prod/index.html";
-        }else {
-            WEB_URL ="file:///android_asset/test/index.html";
-        }
+//        }else {
+//            WEB_URL ="file:///android_asset/test/index.html";
+//        }
     }
 
 

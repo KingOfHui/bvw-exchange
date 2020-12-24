@@ -53,11 +53,7 @@ public class GoodsDetailActivity extends BaseBindingActivity<ActivityGoodsDetail
         mBinding.ivBack.setOnClickListener(v -> finish());
         mBinding.tvToCart.setOnClickListener(v -> CartActivity.start(this));
         mBinding.tvAddToCart.setOnClickListener(view -> {
-            if (mSelectSkuListBean != null) {
-                mViewModel.addToCart(mSelectSkuListBean.getId(), mSelectSkuListBean.getQuantity());
-            } else {
-                ToastUtils.showToast(getString(R.string.please_select_sku));
-            }
+            showSkuDialog(mViewModel);
         });
         mBinding.tvSelectSkuTip.setOnClickListener(v -> showSkuDialog(mViewModel));
 
@@ -92,6 +88,11 @@ public class GoodsDetailActivity extends BaseBindingActivity<ActivityGoodsDetail
                     public void select(GoodsDetailBean.SkuListBean skuListBean) {
                         mSelectSkuListBean = skuListBean;
                         mBinding.tvSelectSku.setText(String.format(getString(R.string.select_goods_sku), skuListBean.getSp1()));
+                        if (mSelectSkuListBean != null) {
+                            mViewModel.addToCart(mSelectSkuListBean.getId(), mSelectSkuListBean.getQuantity());
+                        } else {
+                            ToastUtils.showToast(getString(R.string.please_select_sku));
+                        }
                     }
                 });
                 skuDialog.show();

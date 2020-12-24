@@ -6,10 +6,10 @@
 
         <variable
             name="vm"
-            type="com.darknet.bvw.order.vm.CouponViewModel" />
+            type="com.darknet.bvw.order.vm.MyCouponViewModel" />
         <variable
             name="adapter"
-            type="com.darknet.bvw.order.ui.adapter.CouponAdapter" />
+            type="com.darknet.bvw.order.ui.adapter.MyCouponAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

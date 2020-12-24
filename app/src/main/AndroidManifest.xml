@@ -690,6 +690,7 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".order.ui.activity.CouponListActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".order.ui.activity.MyCouponListActivity" />
 
         <receiver
             android:name=".receiver.PushReceiver"

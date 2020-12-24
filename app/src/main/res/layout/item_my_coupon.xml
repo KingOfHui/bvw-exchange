@@ -47,15 +47,6 @@
         app:layout_constraintEnd_toEndOf="@id/ivCoupon"
         app:layout_constraintStart_toStartOf="@id/ivCoupon" />
 
-    <ImageView
-        android:id="@+id/ivBiw"
-        android:layout_width="14dp"
-        android:layout_height="14dp"
-        android:src="@mipmap/icon_biw_brand"
-        android:layout_marginTop="@dimen/dimen_10dp"
-        app:layout_constraintStart_toStartOf="@id/tvCouponName"
-        app:layout_constraintTop_toBottomOf="@id/tvCouponName" />
-
     <TextView
         android:id="@+id/tvCouponName"
         android:layout_width="0dp"
@@ -74,20 +65,19 @@
         android:id="@+id/tvDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/s_biw_can_buy"
-        tools:text="%s BIW 即可购买"
+        android:text="@string/validity_date"
+        tools:text="有效期：2020.11.11"
         android:textColor="@color/white"
         android:textSize="@dimen/sp_12"
-        android:layout_marginStart="@dimen/dimen_10dp"
-        app:layout_constraintStart_toEndOf="@id/ivBiw"
-        app:layout_constraintBottom_toBottomOf="@id/ivBiw"
-        app:layout_constraintTop_toTopOf="@id/ivBiw" />
+        android:layout_marginTop="@dimen/dimen_10dp"
+        app:layout_constraintStart_toStartOf="@id/tvCouponName"
+        app:layout_constraintTop_toBottomOf="@id/tvCouponName" />
 
     <TextView
         android:id="@+id/tvBuy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="购买"
+        android:text="去使用"
         android:textColor="@color/selector_coupon_buy"
         android:textSize="@dimen/sp_14"
         app:layout_constraintTop_toTopOf="@id/tvCouponName"
