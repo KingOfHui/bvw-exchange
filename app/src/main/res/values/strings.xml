@@ -1029,4 +1029,9 @@
     <string name="total_money">合计：USDT %s</string>
     <string name="first_check_goods">请先勾选商品</string>
     <string name="goods_count">共%s件商品</string>
+    <string name="pending_paid">待付款</string>
+    <string name="closed">已关闭</string>
+    <string name="invalid_order">无效订单</string>
+    <string name="cash_coupon">现金券</string>
+    <string name="my_cash_coupon">我的现金券</string>
 </resources>

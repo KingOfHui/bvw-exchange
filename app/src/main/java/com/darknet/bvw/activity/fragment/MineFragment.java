@@ -23,6 +23,7 @@ import com.darknet.bvw.activity.ContactPeopleActivity;
 import com.darknet.bvw.activity.MessageCenterActivity;
 import com.darknet.bvw.activity.SettingActivity;
 import com.darknet.bvw.order.ui.activity.ConfirmOrderActivity;
+import com.darknet.bvw.order.ui.activity.CouponListActivity;
 import com.darknet.bvw.order.ui.activity.MyAddressesActivity;
 import com.darknet.bvw.order.ui.activity.OrderListActivity;
 import com.darknet.bvw.util.UserSPHelper;
@@ -99,7 +100,8 @@ public class MineFragment extends Fragment implements View.OnClickListener {
         LinearLayout llWaitDelivered = view.findViewById(R.id.llWaitDelivered);
         llWaitPay.setOnClickListener(view1 -> OrderListActivity.start(requireContext(),1));
         llWaitDelivered.setOnClickListener(view1 -> OrderListActivity.start(requireContext(),2));
-        llWaitTaken.setOnClickListener(view1 -> OrderListActivity.start(requireContext(),3));
+//        llWaitTaken.setOnClickListener(view1 -> OrderListActivity.start(requireContext(),3));
+        llWaitTaken.setOnClickListener(view1 -> CouponListActivity.start(requireContext()));
         llAllOrder.setOnClickListener(v -> OrderListActivity.start(requireContext(),0));
         try {
             String nameVal = (String) UserSPHelper.get(activity, "nickName", "no");

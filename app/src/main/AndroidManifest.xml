@@ -684,8 +684,12 @@
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".order.ui.activity.CartActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".mall.ui.GoodsDetailActivity" />
-        <activity android:name=".mall.ui.DetailActivity" />
+        <activity android:name=".mall.ui.GoodsDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".mall.ui.DetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".order.ui.activity.CouponListActivity"
+            android:screenOrientation="portrait"/>
 
         <receiver
             android:name=".receiver.PushReceiver"

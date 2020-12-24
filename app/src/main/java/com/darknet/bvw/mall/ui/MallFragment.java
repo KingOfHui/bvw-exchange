@@ -1,5 +1,6 @@
 package com.darknet.bvw.mall.ui;
 
+import android.util.Log;
 import android.view.View;
 
 import androidx.fragment.app.Fragment;
@@ -14,6 +15,7 @@ import com.darknet.bvw.mall.bean.CategoryBean;
 import com.darknet.bvw.mall.ui.search.SearchActivity;
 import com.darknet.bvw.mall.vm.MallViewModel;
 import com.darknet.bvw.order.ui.activity.CartActivity;
+import com.darknet.bvw.util.StatusBarUtil;
 
 import java.util.List;
 
@@ -43,6 +45,7 @@ public class MallFragment extends BaseBindingFragment<MallViewModel, FragmentMal
 
     @Override
     protected void initData() {
+        Log.e("dhdhdh", "initData: --------------");
         mViewModel.getCategory().observe(this, this::initViewPager);
         mViewModel.loadCategory();
         mViewModel.initSearchHint(keyword -> {
@@ -68,5 +71,10 @@ public class MallFragment extends BaseBindingFragment<MallViewModel, FragmentMal
 
     public static MallFragment newInstance() {
         return new MallFragment();
+    }
+
+    @Override
+    public boolean ChangeStatus() {
+        return true;
     }
 }

@@ -21,7 +21,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.darknet.bvw.R;
 import com.darknet.bvw.base.IView;
+import com.darknet.bvw.util.StatusBarUtil;
 import com.darknet.bvw.view.CustomDialog;
 
 import static android.app.Activity.RESULT_OK;
@@ -56,6 +58,19 @@ public abstract class BaseBindingFragment<VM extends BaseViewModel, DB extends V
             onFragmentFirstVisible();
             isLoaded = true;
         }
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (ChangeStatus()) {
+            StatusBarUtil.setStatusBarColor(requireActivity(),
+                    isVisibleToUser?R.color.appColorPrimary:R.color.color_bg_181523);
+        }
+    }
+
+    public boolean ChangeStatus() {
+        return false;
     }
 
     @Override

@@ -11,6 +11,7 @@ import com.darknet.bvw.base.BaseFragmentPagerAdapter;
 import com.darknet.bvw.databinding.ActivityOrderListBinding;
 import com.darknet.bvw.order.ui.fragment.OrderListFragment;
 import com.darknet.bvw.order.vm.OrderListViewModel;
+import com.darknet.bvw.util.StatusBarUtil;
 
 /**
  * @ClassName OrderListActivity
@@ -32,6 +33,7 @@ public class OrderListActivity extends BaseBindingActivity<ActivityOrderListBind
 
     @Override
     public void initView() {
+        StatusBarUtil.setStatusBarColor(this, R.color.color_bg_181523);
         OrderListViewModel viewModel = getViewModel(OrderListViewModel.class);
         mBinding.layoutTitle.layBack.setOnClickListener((view -> finish()));
         mBinding.layoutTitle.title.setText(getString(R.string.order_all));

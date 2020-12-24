@@ -7,12 +7,14 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
+import com.darknet.bvw.base.BaseListBean;
 import com.darknet.bvw.common.BaseListViewModel;
 import com.darknet.bvw.common.BaseResponse;
 import com.darknet.bvw.net.retrofit.ApiInterface;
 import com.darknet.bvw.net.retrofit.BIWNetworkApi;
 import com.darknet.bvw.net.retrofit.BaseObserver;
 import com.darknet.bvw.net.retrofit.MvvmNetworkObserver;
+import com.darknet.bvw.order.bean.SubmitOrderResp;
 
 /**
  * @ClassName OrderListViewModel
@@ -43,9 +45,9 @@ public class OrderListViewModel extends BaseListViewModel<String> {
                 .compose(BIWNetworkApi.getInstance()
                         .applySchedulers())
                 .subscribe(new BaseObserver<>(this,
-                        new MvvmNetworkObserver<BaseResponse<Object>>() {
+                        new MvvmNetworkObserver<BaseResponse<BaseListBean<SubmitOrderResp>>>() {
                             @Override
-                            public void onSuccess(BaseResponse<Object> t, boolean isFromCache) {
+                            public void onSuccess(BaseResponse<BaseListBean<SubmitOrderResp>> t, boolean isFromCache) {
                                 Log.i("dhdhdh", "onSuccess: " + t.toString());
                             }
 

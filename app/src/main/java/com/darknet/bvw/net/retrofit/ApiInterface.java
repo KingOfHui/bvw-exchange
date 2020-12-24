@@ -53,7 +53,7 @@ public interface ApiInterface {
     /***********              商城-订单            **********/
     //订单列表
     @GET("api/shop/order/list")
-    Observable<BaseResponse<Object>> getOrderList(@Query("trade_state") int trade_state, @Query("limit") int limit, @Query("page") int pageNum);
+    Observable<BaseResponse<BaseListBean<SubmitOrderResp>>> getOrderList(@Query("trade_state") int trade_state, @Query("limit") int limit, @Query("page") int pageNum);
 
     //订单详情
     @GET("api/order/detail/{id}")

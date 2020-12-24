@@ -13,7 +13,7 @@ public class SmartFragmentStatePagerAdapter extends FragmentStatePagerAdapter {
     private SparseArray<Fragment> registeredFragments = new SparseArray<Fragment>();
 
     public SmartFragmentStatePagerAdapter(FragmentManager fragmentManager) {
-        super(fragmentManager);
+        super(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
     }
 
     @NonNull

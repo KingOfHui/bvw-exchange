@@ -7,6 +7,8 @@ import android.view.View;
 import com.darknet.bvw.R;
 import com.darknet.bvw.activity.BaseBindingActivity;
 import com.darknet.bvw.databinding.ActivityOrderDetailBinding;
+import com.darknet.bvw.util.StatusBarUtil;
+import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 
 /**
  * @ClassName OrderDetailActivity
@@ -22,6 +24,7 @@ public class OrderDetailActivity extends BaseBindingActivity<ActivityOrderDetail
 
     @Override
     public void initView() {
+        StatusBarUtil.setStatusBarColor(this, R.color.color_bg_181523);
         mBinding.layoutTitle.layBack.setOnClickListener(v -> finish());
         mBinding.layoutTitle.title.setText(R.string.order_detail);
         mBinding.tvToPay.setOnClickListener((view)->{LogisticsTrackingActivity.start(this);});
