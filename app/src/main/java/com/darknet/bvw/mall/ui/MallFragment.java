@@ -5,6 +5,8 @@ import android.view.View;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+
+import cn.hutool.core.collection.CollectionUtil;
 import java8.util.function.Function;
 
 import com.darknet.bvw.R;
@@ -15,6 +17,7 @@ import com.darknet.bvw.mall.bean.CategoryBean;
 import com.darknet.bvw.mall.ui.search.SearchActivity;
 import com.darknet.bvw.mall.vm.MallViewModel;
 import com.darknet.bvw.order.ui.activity.CartActivity;
+import com.darknet.bvw.order.vm.CartViewModel;
 import com.darknet.bvw.util.StatusBarUtil;
 
 import java.util.List;
@@ -26,6 +29,9 @@ import java.util.List;
  * @Date 2020/12/12 0012 15:43
  */
 public class MallFragment extends BaseBindingFragment<MallViewModel, FragmentMallBindingImpl> {
+
+    private CartViewModel mCartViewModel;
+
     @Override
     protected void initView() {
         mDataBinding.llSearch.setOnClickListener(v -> {
@@ -40,6 +46,7 @@ public class MallFragment extends BaseBindingFragment<MallViewModel, FragmentMal
 
     @Override
     protected MallViewModel initViewModel() {
+        mCartViewModel = getFragmentViewModel(CartViewModel.class);
         return getFragmentViewModel(MallViewModel.class);
     }
 
@@ -52,6 +59,9 @@ public class MallFragment extends BaseBindingFragment<MallViewModel, FragmentMal
             mDataBinding.tvSearch.setText(keyword);
             return null;
         });
+        mCartViewModel.refresh();
+        mCartViewModel.cartItemListLive.observe(getViewLifecycleOwner(),it->
+                mDataBinding.shoppingNum.setText(String.valueOf(CollectionUtil.isNotEmpty(it)?it.size():0)));
     }
 
     private void initViewPager(List<CategoryBean> category) {

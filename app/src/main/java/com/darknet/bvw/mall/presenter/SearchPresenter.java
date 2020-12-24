@@ -50,7 +50,7 @@ public class SearchPresenter extends Presenter<SearchResultFragment> implements 
 	@Override
 	public void onRefresh(RefreshListener.Emitter<GoodsDetailBean> emitter) {
 		BIWNetworkApi.getService(ApiInterface.class)
-				.search(keyword, 20, 0)
+				.search(keyword, 20, 1)
 				.compose(BIWNetworkApi.getInstance().applySchedulers())
 				.subscribe(new BaseObserver<>(new MvvmNetworkObserver<BaseResponse<BaseListBean<GoodsDetailBean>>>() {
 					@Override

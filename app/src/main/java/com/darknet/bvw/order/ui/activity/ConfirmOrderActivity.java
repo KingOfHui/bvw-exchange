@@ -2,23 +2,19 @@ package com.darknet.bvw.order.ui.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Parcelable;
 
 import androidx.annotation.Nullable;
-import androidx.lifecycle.Observer;
 
 import com.darknet.bvw.R;
 import com.darknet.bvw.activity.BaseBindingActivity;
 import com.darknet.bvw.databinding.ActivityOrderConfirmBinding;
 import com.darknet.bvw.order.bean.CartData;
 import com.darknet.bvw.order.bean.ShippingAddress;
-import com.darknet.bvw.order.bean.SubmitOrderResp;
 import com.darknet.bvw.order.ui.adapter.OrderGoodsAdapter;
 import com.darknet.bvw.order.vm.ConfirmOrderViewModel;
 import com.darknet.bvw.order.vm.MyAddressViewModel;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import cn.hutool.core.collection.CollectionUtil;
 

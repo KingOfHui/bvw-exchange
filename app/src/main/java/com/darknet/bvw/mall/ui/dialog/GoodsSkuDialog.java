@@ -59,6 +59,7 @@ public class GoodsSkuDialog extends BottomDialog {
             Glide.with(ivGoods.getContext())
                     .load(mGoodsDetailBean.getImg_url())
                     .apply(RequestOptions.centerCropTransform())
+                    .placeholder(R.mipmap.default_item)
                     .into(ivGoods);
         }
         if (mSelectSkuBean != null) {

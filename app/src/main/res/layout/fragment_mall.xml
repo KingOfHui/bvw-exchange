@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -58,7 +59,21 @@
             app:layout_constraintBottom_toBottomOf="@id/llSearch"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@id/llSearch" />
-
+        <com.darknet.bvw.view.CornerTextView
+            android:id="@+id/shopping_num"
+            app:layout_constraintLeft_toLeftOf="@id/ivCart"
+            app:layout_constraintTop_toTopOf="@id/ivCart"
+            android:layout_marginStart="@dimen/dimen_15dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            app:corner="16dp"
+            app:color="#01FCDA"
+            android:textSize="10sp"
+            tools:text="99"
+            android:layout_width="16dp"
+            android:layout_height="16dp"/>
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
             android:layout_marginTop="@dimen/dimen_15dp"

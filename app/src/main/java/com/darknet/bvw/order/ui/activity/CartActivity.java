@@ -7,8 +7,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 
-import androidx.lifecycle.Observer;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -18,6 +16,7 @@ import com.darknet.bvw.activity.BaseBindingActivity;
 import com.darknet.bvw.databinding.ActivityCartBinding;
 import com.darknet.bvw.order.bean.CartData;
 import com.darknet.bvw.order.vm.CartViewModel;
+import com.darknet.bvw.util.StatusBarUtil;
 import com.darknet.bvw.util.ToastUtils;
 import com.darknet.bvw.util.ValueUtil;
 import com.darknet.bvw.util.view.ViewUtil;
@@ -48,6 +47,7 @@ public class CartActivity extends BaseBindingActivity<ActivityCartBinding> {
 
     @Override
     public void initView() {
+        StatusBarUtil.setStatusBarColor(this,R.color.color_bg_181523);
         CartViewModel viewModel = getViewModel(CartViewModel.class);
         mBinding.setVm(viewModel);
         mCartAdapter = new CartAdapter();
@@ -58,25 +58,28 @@ public class CartActivity extends BaseBindingActivity<ActivityCartBinding> {
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 List<CartData.CartItemListBean> data = mCartAdapter.getData();
                 CartData.CartItemListBean itemListBean = data.get(position);
-                itemListBean.setSelected(!itemListBean.isSelected());
+                itemListBean.setCheck(itemListBean.getCheck() == 1 ? 0 : 1);
                 mCartAdapter.notifyItemChanged(position);
-                updateBottomView();
+                updateBottomView(mCartAdapter.getData());
             }
         });
         mBinding.tvSettle.setOnClickListener(view -> {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sbSelect = new StringBuilder();
+            StringBuilder sbUnSelect = new StringBuilder();
             List<CartData.CartItemListBean> data = mCartAdapter.getData();
             for (int i = 0; i < data.size(); i++) {
                 CartData.CartItemListBean cartItemListBean = data.get(i);
-                if (cartItemListBean.isSelected()) {
-                    sb.append(cartItemListBean.getProduct_id()).append(i < data.size() - 1 ? "," : "");
+                if (cartItemListBean.getCheck() == 1) {
+                    sbSelect.append(cartItemListBean.getProduct_id()).append(",");
+                } else {
+                    sbUnSelect.append(cartItemListBean.getProduct_id()).append(",");
                 }
             }
-            if (TextUtils.isEmpty(sb.toString())) {
+            if (TextUtils.isEmpty(sbSelect.toString())) {
                 ToastUtils.showToast(getString(R.string.first_check_goods));
                 return;
             }
-            viewModel.checkCartByProduct(1, sb.toString());
+            viewModel.checkCartByProduct(sbUnSelect.toString(), sbSelect.toString());
         });
         mBinding.ivAllSelected.setOnClickListener(view -> {
             mCartAdapter.allSelectedOrNot();
@@ -89,15 +92,14 @@ public class CartActivity extends BaseBindingActivity<ActivityCartBinding> {
                 ConfirmOrderActivity.start(this, mCartAdapter.getAllSelected());
             }
         });
-        viewModel.refreshCartSuccessLive.observe(this, a-> updateBottomView());
+        viewModel.cartItemListLive.observe(this, a -> updateBottomView(a));
     }
 
-    private void updateBottomView() {
-        List<CartData.CartItemListBean> data = mCartAdapter.getData();
+    private void updateBottomView(List<CartData.CartItemListBean> data) {
         int selectCount = 0;
         BigDecimal total = BigDecimal.ZERO;
         for (int i = 0; i < data.size(); i++) {
-            boolean selected = data.get(i).isSelected();
+            boolean selected = data.get(i).getCheck() == 1;
             if (selected) {
                 selectCount += 1;
                 total = total.add(data.get(i).getPrice());
@@ -126,7 +128,7 @@ public class CartActivity extends BaseBindingActivity<ActivityCartBinding> {
                     .load(item.getProduct_img_url())
                     .apply(RequestOptions.centerCropTransform())
                     .into((ImageView) helper.getView(R.id.sdvGoods));
-            helper.getView(R.id.ivSelected).setSelected(item.isSelected());
+            helper.getView(R.id.ivSelected).setSelected(item.getCheck() == 1);
             helper.setText(R.id.tvGoodsName, item.getProduct_name());
             helper.setText(R.id.tvPrice, ValueUtil.formatCustomPrice("USDT", item.getPrice()));
             helper.setText(R.id.tvSku, item.getSp1());
@@ -143,7 +145,7 @@ public class CartActivity extends BaseBindingActivity<ActivityCartBinding> {
             List<CartData.CartItemListBean> data = getData();
             for (int i = 0; i < data.size(); i++) {
                 CartData.CartItemListBean cartItemListBean = data.get(i);
-                boolean selected = cartItemListBean.isSelected();
+                boolean selected = cartItemListBean.getCheck() == 1;
                 if (selected) {
                     cartItemListBeans.add(cartItemListBean);
                 }
@@ -155,7 +157,7 @@ public class CartActivity extends BaseBindingActivity<ActivityCartBinding> {
             isAllSelect = !isAllSelect;
             List<CartData.CartItemListBean> data = getData();
             for (CartData.CartItemListBean datum : data) {
-                datum.setSelected(isAllSelect);
+                datum.setCheck(isAllSelect ? 1 : 0);
             }
             notifyDataSetChanged();
         }

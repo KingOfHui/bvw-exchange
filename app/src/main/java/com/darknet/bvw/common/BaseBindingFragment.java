@@ -104,7 +104,7 @@ public abstract class BaseBindingFragment<VM extends BaseViewModel, DB extends V
     }
 
     public void handleLoadingLive(BaseViewModel viewModel) {
-        viewModel.showLoadingLive.observe(this, new Observer<Boolean>() {
+        viewModel.isLoadingLive.observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
                 if (aBoolean) {

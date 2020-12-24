@@ -19,7 +19,6 @@ import com.darknet.bvw.common.BaseViewModel;
 import com.darknet.bvw.view.CustomDialog;
 import com.jingui.lib.utils.Immerse2Helper;
 
-import butterknife.ButterKnife;
 import cn.jpush.android.api.JPushInterface;
 
 import static com.darknet.bvw.util.language.LocalManageUtil.getSystemLocale;
@@ -74,7 +73,7 @@ public abstract class BaseBindingActivity<BINDING extends ViewDataBinding> exten
         T viewModel = new ViewModelProvider(this,
                 new ViewModelProvider.AndroidViewModelFactory(getApplication())).get(
                 viewModelClass);
-        viewModel.showLoadingLive.observe(this, new Observer<Boolean>() {
+        viewModel.isLoadingLive.observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
                 if (aBoolean) {

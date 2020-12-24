@@ -12,17 +12,15 @@ import com.darknet.bvw.net.retrofit.BaseObserver;
 import com.darknet.bvw.net.retrofit.MvvmNetworkObserver;
 import com.darknet.bvw.net.retrofit.RequestBodyBuilder;
 import com.darknet.bvw.order.bean.SubmitOrderReq;
-import com.darknet.bvw.order.bean.SubmitOrderResp;
-import com.darknet.bvw.order.ui.activity.OrderListActivity;
+import com.darknet.bvw.order.bean.OrderResp;
 
 import java.util.List;
 
-import cn.hutool.core.collection.CollectionUtil;
 import okhttp3.RequestBody;
 
 public class ConfirmOrderViewModel extends BaseViewModel {
 
-    public MutableLiveData<List<SubmitOrderResp>> submitOrderLive = new MutableLiveData<>();
+    public MutableLiveData<List<OrderResp>> submitOrderLive = new MutableLiveData<>();
 
     public ConfirmOrderViewModel(@NonNull Application application) {
         super(application);
@@ -41,10 +39,10 @@ public class ConfirmOrderViewModel extends BaseViewModel {
         req.setNote("");
         apiService.submitCart(new RequestBodyBuilder().build(req))
                 .compose(BIWNetworkApi.getInstance().applySchedulers())
-                .subscribe(new BaseObserver<>(this, new MvvmNetworkObserver<BaseResponse<List<SubmitOrderResp>>>() {
+                .subscribe(new BaseObserver<>(this, new MvvmNetworkObserver<BaseResponse<List<OrderResp>>>() {
                     @Override
-                    public void onSuccess(BaseResponse<List<SubmitOrderResp>> t, boolean isFromCache) {
-                        List<SubmitOrderResp> data = t.getData();
+                    public void onSuccess(BaseResponse<List<OrderResp>> t, boolean isFromCache) {
+                        List<OrderResp> data = t.getData();
                         submitOrderLive.setValue(data);
                     }
 

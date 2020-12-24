@@ -1,5 +1,6 @@
 package com.darknet.bvw.order.bean;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -8,7 +9,7 @@ import java.util.List;
  * @Author dinghui
  * @Date 2020/12/21 0021 14:05
  */
-public class SubmitOrderResp {
+public class OrderResp {
 
     /**
      * auto_confirm_day : 0
@@ -77,7 +78,7 @@ public class SubmitOrderResp {
     private String delivery_no;
     private String delivery_time;
     private String finish_time;
-    private int freight_amount;
+    private String freight_amount;
     private int id;
     private int mall_id;
     private String mall_pay_address;
@@ -85,7 +86,7 @@ public class SubmitOrderResp {
     private OrderHandleOptionBean orderHandleOption;
     private int orderState;
     private String order_no;
-    private int pay_amount;
+    private String pay_amount;
     private int pay_state;
     private String pay_time;
     private String pay_tx_hash;
@@ -102,11 +103,35 @@ public class SubmitOrderResp {
     private int shipping_state;
     private int state;
     private int submit_type;
-    private int total_amount;
+    private String total_amount;
     private String update_time;
     private String user_address;
     private int user_id;
     private List<OrderItemListBean> order_item_list;
+
+    public String getFreight_amount() {
+        return freight_amount;
+    }
+
+    public void setFreight_amount(String freight_amount) {
+        this.freight_amount = freight_amount;
+    }
+
+    public String getPay_amount() {
+        return pay_amount;
+    }
+
+    public void setPay_amount(String pay_amount) {
+        this.pay_amount = pay_amount;
+    }
+
+    public String getTotal_amount() {
+        return total_amount;
+    }
+
+    public void setTotal_amount(String total_amount) {
+        this.total_amount = total_amount;
+    }
 
     public int getAuto_confirm_day() {
         return auto_confirm_day;
@@ -244,14 +269,6 @@ public class SubmitOrderResp {
         this.finish_time = finish_time;
     }
 
-    public int getFreight_amount() {
-        return freight_amount;
-    }
-
-    public void setFreight_amount(int freight_amount) {
-        this.freight_amount = freight_amount;
-    }
-
     public int getId() {
         return id;
     }
@@ -306,14 +323,6 @@ public class SubmitOrderResp {
 
     public void setOrder_no(String order_no) {
         this.order_no = order_no;
-    }
-
-    public int getPay_amount() {
-        return pay_amount;
-    }
-
-    public void setPay_amount(int pay_amount) {
-        this.pay_amount = pay_amount;
     }
 
     public int getPay_state() {
@@ -442,14 +451,6 @@ public class SubmitOrderResp {
 
     public void setSubmit_type(int submit_type) {
         this.submit_type = submit_type;
-    }
-
-    public int getTotal_amount() {
-        return total_amount;
-    }
-
-    public void setTotal_amount(int total_amount) {
-        this.total_amount = total_amount;
     }
 
     public String getUpdate_time() {
@@ -586,22 +587,22 @@ public class SubmitOrderResp {
          * user_id : 0
          */
 
-        private int amount;
-        private int coupon_amount;
+        private String amount;
+        private String coupon_amount;
         private String create_time;
         private int id;
         private int mall_id;
         private int order_id;
         private String order_no;
-        private int pay_amount;
+        private String pay_amount;
         private String product_attr;
         private int product_category_id;
         private int product_id;
         private String product_img_url;
         private String product_name;
         private String product_no;
-        private int product_price;
-        private int product_quantity;
+        private String product_price;
+        private String product_quantity;
         private int product_sku_id;
         private String product_sku_img_url;
         private String sp1;
@@ -609,20 +610,44 @@ public class SubmitOrderResp {
         private String sp3;
         private int user_id;
 
-        public int getAmount() {
+        public String getAmount() {
             return amount;
         }
 
-        public void setAmount(int amount) {
+        public void setAmount(String amount) {
             this.amount = amount;
         }
 
-        public int getCoupon_amount() {
+        public String getCoupon_amount() {
             return coupon_amount;
         }
 
-        public void setCoupon_amount(int coupon_amount) {
+        public void setCoupon_amount(String coupon_amount) {
             this.coupon_amount = coupon_amount;
+        }
+
+        public String getPay_amount() {
+            return pay_amount;
+        }
+
+        public void setPay_amount(String pay_amount) {
+            this.pay_amount = pay_amount;
+        }
+
+        public String getProduct_price() {
+            return product_price;
+        }
+
+        public void setProduct_price(String product_price) {
+            this.product_price = product_price;
+        }
+
+        public String getProduct_quantity() {
+            return product_quantity;
+        }
+
+        public void setProduct_quantity(String product_quantity) {
+            this.product_quantity = product_quantity;
         }
 
         public String getCreate_time() {
@@ -665,13 +690,6 @@ public class SubmitOrderResp {
             this.order_no = order_no;
         }
 
-        public int getPay_amount() {
-            return pay_amount;
-        }
-
-        public void setPay_amount(int pay_amount) {
-            this.pay_amount = pay_amount;
-        }
 
         public String getProduct_attr() {
             return product_attr;
@@ -706,6 +724,9 @@ public class SubmitOrderResp {
         }
 
         public String getProduct_name() {
+            if (product_name != null) {
+                product_name = product_name.trim();
+            }
             return product_name;
         }
 
@@ -719,22 +740,6 @@ public class SubmitOrderResp {
 
         public void setProduct_no(String product_no) {
             this.product_no = product_no;
-        }
-
-        public int getProduct_price() {
-            return product_price;
-        }
-
-        public void setProduct_price(int product_price) {
-            this.product_price = product_price;
-        }
-
-        public int getProduct_quantity() {
-            return product_quantity;
-        }
-
-        public void setProduct_quantity(int product_quantity) {
-            this.product_quantity = product_quantity;
         }
 
         public int getProduct_sku_id() {

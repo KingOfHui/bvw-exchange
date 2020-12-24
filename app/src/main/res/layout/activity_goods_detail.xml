@@ -268,7 +268,7 @@
                 app:corner="16dp"
                 app:color="#01FCDA"
                 android:textSize="10sp"
-                android:text="99"
+                android:text="0"
                 android:layout_width="16dp"
                 android:layout_height="16dp"/>
             <TextView

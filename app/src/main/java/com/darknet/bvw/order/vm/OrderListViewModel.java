@@ -14,7 +14,9 @@ import com.darknet.bvw.net.retrofit.ApiInterface;
 import com.darknet.bvw.net.retrofit.BIWNetworkApi;
 import com.darknet.bvw.net.retrofit.BaseObserver;
 import com.darknet.bvw.net.retrofit.MvvmNetworkObserver;
-import com.darknet.bvw.order.bean.SubmitOrderResp;
+import com.darknet.bvw.order.bean.OrderResp;
+
+import java.util.List;
 
 /**
  * @ClassName OrderListViewModel
@@ -22,7 +24,7 @@ import com.darknet.bvw.order.bean.SubmitOrderResp;
  * @Author dinghui
  * @Date 2020/12/12 0012 16:51
  */
-public class OrderListViewModel extends BaseListViewModel<String> {
+public class OrderListViewModel extends BaseListViewModel<OrderResp> {
     public OrderListViewModel(@NonNull Application application) {
         super(application);
     }
@@ -41,14 +43,15 @@ public class OrderListViewModel extends BaseListViewModel<String> {
     @Override
     @SuppressLint("CheckResult")
     protected void loadData(int pageNum, boolean isClear) {
-        BIWNetworkApi.getService(ApiInterface.class).getOrderList(getTradeStateLive().getValue(), pageNum, 20)
+        BIWNetworkApi.getService(ApiInterface.class).getOrderList(getTradeStateLive().getValue(), 20, pageNum)
                 .compose(BIWNetworkApi.getInstance()
                         .applySchedulers())
                 .subscribe(new BaseObserver<>(this,
-                        new MvvmNetworkObserver<BaseResponse<BaseListBean<SubmitOrderResp>>>() {
+                        new MvvmNetworkObserver<BaseResponse<BaseListBean<OrderResp>>>() {
                             @Override
-                            public void onSuccess(BaseResponse<BaseListBean<SubmitOrderResp>> t, boolean isFromCache) {
-                                Log.i("dhdhdh", "onSuccess: " + t.toString());
+                            public void onSuccess(BaseResponse<BaseListBean<OrderResp>> t, boolean isFromCache) {
+                                List<OrderResp> items = BaseListBean.getItems(t.getData());
+                                notifyResultToTopViewModel(items, 20);
                             }
 
                             @Override
@@ -57,7 +60,5 @@ public class OrderListViewModel extends BaseListViewModel<String> {
                             }
                         }
                 ));
-
-        notifyResultToTopViewModel(null, 20);
     }
 }

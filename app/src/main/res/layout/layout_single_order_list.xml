@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:background="@drawable/shape_circle_rect_order"
         android:paddingStart="@dimen/dimen_20dp"
         android:paddingTop="@dimen/dimen_15dp"
@@ -26,7 +26,6 @@
             android:textSize="12dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:text="@{@string/order_number(`1087992530`)}"
             tools:text="@string/order_number" />
 
         <TextView
@@ -37,8 +36,7 @@
             android:textSize="@dimen/sp_12"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:text="@string/order_to_be_paid"
-            />
+            tools:text="@string/order_to_be_paid" />
 
         <View
             android:id="@+id/view"
@@ -47,112 +45,119 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvOrderNum" />
 
-        <com.facebook.drawee.view.SimpleDraweeView
-            android:id="@+id/ivGoodsImg"
-            android:layout_width="77dp"
-            android:layout_height="77dp"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvGoodsList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_15dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/view"
-            fresco:roundedCornerRadius="5dp"
-            fresco:placeholderImage="@mipmap/img_mineral"
-            android:src="@mipmap/icon_success" />
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@id/view" />
+        <!--
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/ivGoodsImg"
+                    android:layout_width="77dp"
+                    android:layout_height="77dp"
+                    android:layout_marginTop="@dimen/dimen_15dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view"
+                    fresco:roundedCornerRadius="5dp"
+                    fresco:placeholderImage=pmap/img_mineral"
+                    android:src="@mipmap/icon_success" />
+
+                <TextView
+                    android:id="@+id/tvGoodsName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dimen_10dp"
+                    android:textColor="@color/white"
+                    app:layout_constraintLeft_toRightOf="@+id/ivGoodsImg"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/ivGoodsImg"
+                    android:text="@string/empty"
+                    tools:text="@string/empty"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dimen_10dp"
+                    android:layout_marginTop="@dimen/dimen_5dp"
+                    android:textColor="@color/white"
+                    android:textSize="11dp"
+                    app:layout_constraintLeft_toRightOf="@id/ivGoodsImg"
+                    app:layout_constraintTop_toBottomOf="@id/tvGoodsName"
+                    android:text="@{`cczxc`}"
+                    tools:text="一次性口罩 10只装" />
+
+                <TextView
+                    android:id="@+id/tvPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_10dp"
+                    android:layout_marginBottom="@dimen/dimen_5dp"
+                    android:textColor="@color/_01FCDA"
+                    android:textSize="@dimen/sp_14"
+                    app:layout_constraintBottom_toBottomOf="@id/ivGoodsImg"
+                    app:layout_constraintLeft_toRightOf="@id/ivGoodsImg"
+                    android:text="USDT 138" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvOriginPrice"
+                    android:layout_marginStart="@dimen/dimen_10dp"
+                    app:layout_constraintTop_toTopOf="@id/tvPrice"
+                    app:layout_constraintBottom_toBottomOf="@id/tvPrice"
+                    app:layout_constraintLeft_toRightOf="@id/tvPrice"
+                    android:textSize="@dimen/sp_14"
+                    android:textColor="@color/white"
+                    android:alpha="0.5"
+                    android:text="USDT 256" />
+
+                <TextView
+                    android:id="@+id/tvGoodsNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="x2"
+                    android:textSize="@dimen/sp_14"
+                    android:textColor="@color/white"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tvPrice"
+                    app:layout_constraintBottom_toBottomOf="@id/tvPrice" />
+                    -->
 
         <TextView
-            android:id="@+id/tvGoodsName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dimen_10dp"
-            android:textColor="@color/white"
-            app:layout_constraintLeft_toRightOf="@+id/ivGoodsImg"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/ivGoodsImg"
-            android:text="@string/empty"
-            tools:text="@string/empty"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dimen_10dp"
-            android:layout_marginTop="@dimen/dimen_5dp"
-            android:textColor="@color/white"
-            android:textSize="11dp"
-            app:layout_constraintLeft_toRightOf="@id/ivGoodsImg"
-            app:layout_constraintTop_toBottomOf="@id/tvGoodsName"
-            android:text="@{`cczxc`}"
-            tools:text="一次性口罩 10只装" />
-
-        <TextView
-            android:id="@+id/tvPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dimen_10dp"
-            android:layout_marginBottom="@dimen/dimen_5dp"
-            android:textColor="@color/_01FCDA"
-            android:textSize="@dimen/sp_14"
-            app:layout_constraintBottom_toBottomOf="@id/ivGoodsImg"
-            app:layout_constraintLeft_toRightOf="@id/ivGoodsImg"
-            android:text="USDT 138" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvOriginPrice"
-            android:layout_marginStart="@dimen/dimen_10dp"
-            app:layout_constraintTop_toTopOf="@id/tvPrice"
-            app:layout_constraintBottom_toBottomOf="@id/tvPrice"
-            app:layout_constraintLeft_toRightOf="@id/tvPrice"
-            android:textSize="@dimen/sp_14"
-            android:textColor="@color/white"
-            android:alpha="0.5"
-            android:text="USDT 256" />
-
-        <TextView
-            android:id="@+id/tvGoodsNum"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="x2"
-            android:textSize="@dimen/sp_14"
-            android:textColor="@color/white"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tvPrice"
-            app:layout_constraintBottom_toBottomOf="@id/tvPrice" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/tvCount"
-            tools:text="共 1 件商品"
-            android:text="@{@string/order_count_number(`1`)}"
-            android:textColor="@color/white"
-            android:textSize="@dimen/sp_14"
-            app:layout_constraintTop_toBottomOf="@id/ivGoodsImg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_15dp"
-            app:layout_constraintLeft_toLeftOf="parent" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvTotalTip"
-            android:text="@string/order_total_price"
-            tools:text="合计: "
+            android:textColor="@color/white"
             android:textSize="@dimen/sp_14"
-            android:textColor="@color/white"
-            app:layout_constraintTop_toTopOf="@id/tvCount"
-            app:layout_constraintRight_toLeftOf="@id/tvTotalPrice" />
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rvGoodsList"
+            tools:text="共 1 件商品" />
 
         <TextView
+            android:id="@+id/tvTotalTip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tvTotalPrice"
-            android:text="USDT 206"
-            tools:text="USDT 206"
-            android:textSize="@dimen/dp_18"
+            android:text="@string/order_total_price"
             android:textColor="@color/white"
+            android:textSize="@dimen/sp_14"
+            app:layout_constraintRight_toLeftOf="@id/tvTotalPrice"
+            app:layout_constraintTop_toTopOf="@id/tvCount"
+            tools:text="合计: " />
+
+        <TextView
+            android:id="@+id/tvTotalPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dp_18"
             android:textStyle="bold"
             app:layout_constraintBaseline_toBaselineOf="@id/tvCount"
             app:layout_constraintBottom_toBottomOf="@id/tvCount"
-            app:layout_constraintRight_toRightOf="parent" />
+            app:layout_constraintRight_toRightOf="parent"
+            tools:text="USDT 206" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -160,47 +165,47 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvCount">
 
-        <View
-            android:id="@+id/line2"
-            style="@style/Line_White_02"
-            android:layout_marginTop="@dimen/dimen_10dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            <View
+                android:id="@+id/line2"
+                style="@style/Line_White_02"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:layout_width="@dimen/dimen_80dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvOperationRight"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/line2"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:textColor="@color/black"
-            android:background="@drawable/shape_circle_rect_2"
-            android:gravity="center"
-            android:text="@string/to_pay"
-            tools:text="去支付"
-            android:textSize="@dimen/sp_12"
-            android:layout_marginTop="@dimen/dimen_15dp" />
+            <TextView
+                android:id="@+id/tvOperationRight"
+                android:layout_width="@dimen/dimen_80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_15dp"
+                android:background="@drawable/shape_circle_rect_2"
+                android:gravity="center"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:text="@string/to_pay"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_12"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/line2"
+                tools:text="去支付" />
 
-        <TextView
-            android:layout_width="@dimen/dimen_80dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvOperationLeft"
-            app:layout_constraintRight_toLeftOf="@id/tvOperationRight"
-            app:layout_constraintTop_toTopOf="@id/tvOperationRight"
-            android:textColor="@color/white"
-            android:gravity="center"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:text="@string/order_cancel"
-            tools:text="取消订单"
-            app:drawable_radius="@{2}"
-            app:drawable_shapeMode="@{0}"
-            app:drawable_strokeColor="@{@color/color_8236FF}"
-            app:drawable_solidColor="@{@color/color_8236FF}"
-            android:textSize="@dimen/sp_12"
-            android:layout_marginEnd="5dp" />
+            <TextView
+                android:id="@+id/tvOperationLeft"
+                android:layout_width="@dimen/dimen_80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:gravity="center"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:text="@string/order_cancel"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_12"
+                app:drawable_radius="@{2}"
+                app:drawable_shapeMode="@{0}"
+                app:drawable_solidColor="@{@color/color_8236FF}"
+                app:drawable_strokeColor="@{@color/color_8236FF}"
+                app:layout_constraintRight_toLeftOf="@id/tvOperationRight"
+                app:layout_constraintTop_toTopOf="@id/tvOperationRight"
+                tools:text="取消订单" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

@@ -116,16 +116,6 @@ public class CartData {
         private String sp3;
         private String update_time;
         private int user_id;
-        private boolean isSelected;
-
-        public boolean isSelected() {
-            return check == 1;
-        }
-
-        public void setSelected(boolean selected) {
-            check = isSelected ? 1 : 0;
-            isSelected = selected;
-        }
 
         public int getCheck() {
             return check;
@@ -317,7 +307,6 @@ public class CartData {
             dest.writeString(this.sp3);
             dest.writeString(this.update_time);
             dest.writeInt(this.user_id);
-            dest.writeByte(this.isSelected ? (byte) 1 : (byte) 0);
         }
 
         public CartItemListBean() {
@@ -344,7 +333,6 @@ public class CartData {
             this.sp3 = in.readString();
             this.update_time = in.readString();
             this.user_id = in.readInt();
-            this.isSelected = in.readByte() != 0;
         }
 
         public static final Parcelable.Creator<CartItemListBean> CREATOR = new Parcelable.Creator<CartItemListBean>() {

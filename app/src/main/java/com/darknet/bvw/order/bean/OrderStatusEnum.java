@@ -32,6 +32,15 @@ public enum OrderStatusEnum {
         this.text = text;
     }
 
+    public static OrderStatusEnum getOrderStatus(int state) {
+        for (OrderStatusEnum value : values()) {
+            if (value.getState() == state) {
+                return value;
+            }
+        }
+        return ORDER_INVALID;
+    }
+
     public int getState() {
         return state;
     }

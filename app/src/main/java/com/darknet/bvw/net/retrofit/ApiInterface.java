@@ -7,9 +7,8 @@ import com.darknet.bvw.mall.bean.GoodsDetailBean;
 import com.darknet.bvw.mall.bean.ShopHomeBean;
 import com.darknet.bvw.model.response.NoticeResponse;
 import com.darknet.bvw.order.bean.CartData;
-import com.darknet.bvw.order.bean.OrderDetailResp;
 import com.darknet.bvw.order.bean.ShippingAddress;
-import com.darknet.bvw.order.bean.SubmitOrderResp;
+import com.darknet.bvw.order.bean.OrderResp;
 
 import java.util.List;
 
@@ -53,11 +52,11 @@ public interface ApiInterface {
     /***********              商城-订单            **********/
     //订单列表
     @GET("api/shop/order/list")
-    Observable<BaseResponse<BaseListBean<SubmitOrderResp>>> getOrderList(@Query("trade_state") int trade_state, @Query("limit") int limit, @Query("page") int pageNum);
+    Observable<BaseResponse<BaseListBean<OrderResp>>> getOrderList(@Query("trade_state") int trade_state, @Query("limit") int limit, @Query("page") int pageNum);
 
     //订单详情
     @GET("api/order/detail/{id}")
-    Observable<BaseResponse<OrderDetailResp>> getOrderDetail(@Path("id") int id);
+    Observable<BaseResponse<OrderResp>> getOrderDetail(@Path("id") int id);
 
     //取消订单
     @POST("api/shop/order/cancel")
@@ -69,12 +68,12 @@ public interface ApiInterface {
 
     //提交订单
     @POST("api/shop/order/submit")
-    Observable<BaseResponse<List<SubmitOrderResp>>> submitOrder(@Body RequestBody body);
+    Observable<BaseResponse<List<OrderResp>>> submitOrder(@Body RequestBody body);
 
 
     //提交购物车订单
     @POST("api/shop/order/submitCart")
-    Observable<BaseResponse<List<SubmitOrderResp>>> submitCart(@Body RequestBody body);
+    Observable<BaseResponse<List<OrderResp>>> submitCart(@Body RequestBody body);
 
     //修改订单地址
     @POST("api/shop/order/updateAddress")

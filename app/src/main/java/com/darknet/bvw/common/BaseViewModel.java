@@ -21,7 +21,7 @@ public class BaseViewModel extends AndroidViewModel{
 
     protected CompositeDisposable mDisposableContainer;
     protected ApiInterface apiService;
-    public MutableLiveData<Boolean> showLoadingLive = new MutableLiveData<>();
+    public MutableLiveData<Boolean> isLoadingLive = new MutableLiveData<>();
 
     public BaseViewModel(@NonNull Application application) {
         super(application);
@@ -29,6 +29,13 @@ public class BaseViewModel extends AndroidViewModel{
         apiService = BIWNetworkApi.getService(ApiInterface.class);
     }
 
+    protected void showLoading() {
+        isLoadingLive.setValue(true);
+    }
+
+    protected void hideLoading() {
+        isLoadingLive.setValue(false);
+    }
 
 
     @Override

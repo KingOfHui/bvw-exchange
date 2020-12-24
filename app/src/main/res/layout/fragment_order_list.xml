@@ -9,7 +9,7 @@
             type="com.darknet.bvw.order.vm.OrderListViewModel" />
         <variable
             name="adapter"
-            type="com.darknet.bvw.order.ui.fragment.OrderListFragment.OrderListAdapter" />
+            type="com.darknet.bvw.order.ui.adapter.OrderListAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
