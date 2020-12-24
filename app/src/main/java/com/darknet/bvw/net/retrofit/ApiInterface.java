@@ -7,6 +7,7 @@ import com.darknet.bvw.mall.bean.GoodsDetailBean;
 import com.darknet.bvw.mall.bean.ShopHomeBean;
 import com.darknet.bvw.model.response.NoticeResponse;
 import com.darknet.bvw.order.bean.CartData;
+import com.darknet.bvw.order.bean.CouponBean;
 import com.darknet.bvw.order.bean.ShippingAddress;
 import com.darknet.bvw.order.bean.OrderResp;
 
@@ -48,6 +49,10 @@ public interface ApiInterface {
 //    }
     @POST("api/shop/cart/checkedByProduct")
     Observable<BaseResponse<Object>> checkCartByProduct(@Body RequestBody body);
+
+    /***********              商城-优惠券            **********/
+    @GET("api/shop/couponTemplate/list")
+    Observable<BaseResponse<BaseListBean<CouponBean>>> getCouponList();
 
     /***********              商城-订单            **********/
     //订单列表

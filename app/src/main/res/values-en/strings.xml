@@ -996,5 +996,5 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="invalid_order">无效订单</string>
     <string name="cash_coupon">现金券</string>
     <string name="my_cash_coupon">我的现金券</string>
-
+    <string name="coupon_no_data">暂无现金券</string>
 </resources>

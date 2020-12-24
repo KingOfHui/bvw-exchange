@@ -4,20 +4,34 @@
 
     <data>
 
+        <variable
+            name="vm"
+            type="com.darknet.bvw.order.vm.CouponViewModel" />
+        <variable
+            name="adapter"
+            type="com.darknet.bvw.order.ui.adapter.CouponAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <jingui.android.toolbar.JinGuiToolBar
-            android:id="@+id/toolbar"
+        android:layout_height="match_parent"
+        android:background="@color/color_bg_181523">
+
+        <include
+            android:id="@+id/layout_title"
+            layout="@layout/lay_head_back_binding" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_margin="@dimen/dimen_15dp"
+            adapter="@{adapter}"
+            emptyImageResource="@{@drawable/img_coupon_no_data}"
+            emptyText="@{@string/coupon_no_data}"
+            submitList="@{vm.listLive}"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:leftIcon="@mipmap/back"
-            app:centerTitleText="@string/cash_coupon"
-            app:rightText="@string/my_cash_coupon"
-            app:rightTextColor="@color/_01FCDA"/>
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@id/layout_title" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
