@@ -42,6 +42,7 @@ public class MyCouponAdapter extends BaseQuickAdapter<MyCouponBean, BaseViewHold
                 helper.addOnClickListener(R.id.tvBuy);
                 helper.setText(R.id.tvBuy, "去使用");
                 helper.getView(R.id.tvBuy).setEnabled(true);
+                helper.addOnClickListener(R.id.tvBuy);
                 break;
             case 1:
                 helper.getView(R.id.tvBuy).setEnabled(false);

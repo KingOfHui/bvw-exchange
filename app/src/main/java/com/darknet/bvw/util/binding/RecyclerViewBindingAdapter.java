@@ -4,9 +4,11 @@ import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.DrawableRes;
+import androidx.annotation.VisibleForTesting;
 import androidx.databinding.BindingAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -64,6 +66,18 @@ public class RecyclerViewBindingAdapter {
             }
 
             List<T> data = adapter.getData();
+            if (adapter.getHeaderLayoutCount()>0) {
+                LinearLayout headerLayout = adapter.getHeaderLayout();
+                if (headerLayout.getVisibility() == View.VISIBLE) {
+                    return;
+                }
+            }
+            if (adapter.getFooterLayoutCount()>0) {
+                LinearLayout footerLayout = adapter.getFooterLayout();
+                if (footerLayout.getVisibility() == View.VISIBLE) {
+                    return;
+                }
+            }
             if ((data == null || data.size() == 0) && adapter.getHeaderLayoutCount() < 1 && adapter.getFooterLayoutCount() < 1) {
                 View view = View.inflate(recyclerView.getContext(), R.layout.empty_view, null);
 

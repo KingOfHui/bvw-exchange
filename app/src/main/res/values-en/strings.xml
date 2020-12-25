@@ -1006,4 +1006,13 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="remind_ship">提醒发货</string>
     <string name="view_logistics">查看物流</string>
     <string name="confirm_receipt">确认收货</string>
+    <string name="select_address_first">请选择收货地址</string>
+    <string name="order_note">订单备注</string>
+    <string name="none">无</string>
+    <string name="input_postal">请输入邮政编码</string>
+    <string name="postal_code">邮政编码</string>
+    <string name="pay_now">立即付款</string>
+    <string name="order_settle">订单结算</string>
+    <string name="buy_success">恭喜您，购买成功</string>
+    <string name="paid_num">%s人已付款</string>
 </resources>

@@ -98,14 +98,13 @@ public class GoodsListFragment extends BaseBindingFragment<GoodsListViewModel, F
 		);
 		mHeader = View.inflate(getContext(), R.layout.goods_list_header, null);
 		initBanner();
-		mDataBinding.getAdapter().addHeaderView(mHeader);
-		if(!CategoryBean.isHome(category)) {
-			mHeader.setVisibility(View.GONE);
+		if(CategoryBean.isHome(category)) {
+			mDataBinding.getAdapter().addHeaderView(mHeader);
 		}
-		mViewModel.getListLive().observe(this
-				, objects -> mDataBinding.getAdapter().setNewData(objects));
+		mHeader.setVisibility(View.GONE);
 		mViewModel.setCategory(category);
-		mViewModel.refresh();
+//		mViewModel.getListLive().observe(this
+//				, objects -> mDataBinding.getAdapter().setNewData(objects));
 	}
 
     private void initBanner() {
@@ -142,6 +141,7 @@ public class GoodsListFragment extends BaseBindingFragment<GoodsListViewModel, F
 	protected void initData() {
 		Bundle bundle = getArguments();
 		String title = bundle.getString("title");
+		mViewModel.refresh();
 	}
 
 	public static class Adapter extends BaseDataBindingAdapter<Object, ItemGoodsBinding> {
@@ -181,7 +181,7 @@ public class GoodsListFragment extends BaseBindingFragment<GoodsListViewModel, F
 			binding.tvPrice.setText("USTD "+item.getPrice());
 			binding.tvOriginalPrice.setVisibility(item.getPrice().equals(item.getOriginal_price()) ? View.GONE : View.VISIBLE);
 			binding.tvOriginalPrice.setText("USTD "+item.getOriginal_price());
-//            binding.tvNumber TODO 没字段
+			binding.tvNumber.setText(String.format(mContext.getString(R.string.paid_num),String.valueOf(item.getSale())));
 		}
 
 		private void convertHome(ItemGoodsBinding binding, GoodsBean item) {
@@ -195,7 +195,7 @@ public class GoodsListFragment extends BaseBindingFragment<GoodsListViewModel, F
 			binding.tvPrice.setText("USTD "+item.getPrice());
 			binding.tvOriginalPrice.setVisibility(item.getPrice().equals(item.getOriginal_price()) ? View.GONE : View.VISIBLE);
 			binding.tvOriginalPrice.setText("USTD "+item.getOriginal_price());
-//            binding.tvNumber TODO 没字段
+            binding.tvNumber.setText(String.format(mContext.getString(R.string.paid_num),item.getSale()));
 		}
 
 		private void setOnItemClick(ItemGoodsBinding binding, int product_id) {

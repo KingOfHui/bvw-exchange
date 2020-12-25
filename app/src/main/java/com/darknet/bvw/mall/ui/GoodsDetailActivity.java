@@ -117,7 +117,7 @@ public class GoodsDetailActivity extends BaseBindingActivity<ActivityGoodsDetail
                     .setTextColor(Color.parseColor("#01FCDA"))
                     .setTextSize(14)
                     .next(" ")
-                    .next(productDetailResp.getOriginal_price())
+                    .next(productDetailResp.getPrice())
                     .setTextSize(16)
                     .get());
             mBinding.webview.loadData(productDetailResp.getDetail_html(), "", "");

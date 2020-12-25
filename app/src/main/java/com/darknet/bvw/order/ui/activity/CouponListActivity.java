@@ -1,6 +1,5 @@
 package com.darknet.bvw.order.ui.activity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -8,13 +7,9 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
-import androidx.databinding.ViewDataBinding;
-import androidx.lifecycle.Observer;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.darknet.bvw.R;
 import com.darknet.bvw.activity.BaseBindingActivity;
-import com.darknet.bvw.activity.MineralInfoActivity;
 import com.darknet.bvw.config.ConfigNetWork;
 import com.darknet.bvw.databinding.ActivityCouponListBinding;
 import com.darknet.bvw.db.Entity.ETHWalletModel;
@@ -24,18 +19,20 @@ import com.darknet.bvw.model.response.CreateTradeResponse.SendTx;
 import com.darknet.bvw.model.response.CreateTradeResponse.TransactionRAW;
 import com.darknet.bvw.model.response.CreateTradeResponse.Unspent;
 import com.darknet.bvw.order.bean.CouponBean;
+import com.darknet.bvw.order.bean.MyCouponBean;
 import com.darknet.bvw.order.ui.adapter.CouponAdapter;
 import com.darknet.bvw.order.ui.dialog.BuyCouponDialog;
 import com.darknet.bvw.order.vm.CouponViewModel;
 import com.darknet.bvw.order.vm.PayViewModel;
 import com.darknet.bvw.util.StatusBarUtil;
 import com.darknet.bvw.util.ToastUtils;
-import com.darknet.bvw.view.FailZZDialogView;
 import com.darknet.bvw.view.InputPasswordDialog;
 import com.github.lzyzsd.jsbridge.BridgeWebView;
 import com.github.lzyzsd.jsbridge.CallBackFunction;
 import com.google.gson.Gson;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 import org.json.JSONObject;
 
 import java.util.List;
@@ -65,6 +62,7 @@ public class CouponListActivity extends BaseBindingActivity<ActivityCouponListBi
 
     @Override
     public void initView() {
+        EventBus.getDefault().register(this);
         mWebview = new BridgeWebView(this);
         mWebview.loadUrl(ConfigNetWork.WEB_URL);
 
@@ -72,6 +70,7 @@ public class CouponListActivity extends BaseBindingActivity<ActivityCouponListBi
         mViewModel = getViewModel(CouponViewModel.class);
         mPayViewModel = getViewModel(PayViewModel.class);
         mBinding.setVm(mViewModel);
+        mBinding.layoutTitle.layBack.setOnClickListener(view -> finish());
         mBinding.layoutTitle.title.setText(getString(R.string.cash_coupon));
         mBinding.layoutTitle.titleRight.setVisibility(View.VISIBLE);
         mBinding.layoutTitle.titleRight.setText(getString(R.string.my_cash_coupon));
@@ -95,7 +94,7 @@ public class CouponListActivity extends BaseBindingActivity<ActivityCouponListBi
             if (mCouponDialog != null && mCouponDialog.isShowing()) {
                 mCouponDialog.dismiss();
             }
-            ToastUtils.showToast("恭喜您，购买成功");
+            ToastUtils.showToast(getString(R.string.buy_success));
         });
         mPayViewModel.couponAddress.observe(this, this::showInputPwdDialog);
         mPayViewModel.mSendTxMutableLiveData.observe(this, this::callH5);
@@ -116,7 +115,7 @@ public class CouponListActivity extends BaseBindingActivity<ActivityCouponListBi
                 try {
                     JSONObject jsonObject = new JSONObject(data);
                     String afterSignVal = jsonObject.getString("data");
-                    mPayViewModel.sendTrade(afterSignVal, String.valueOf(mCouponBean.getPrice()), mCouponBean.getId());
+                    mPayViewModel.sendDiscountsTrade(afterSignVal, String.valueOf(mCouponBean.getPrice()), mCouponBean.getId());
                 } catch (Exception e) {
                     ToastUtils.showToast(getString(R.string.send_trade_state_fail));
                 }
@@ -154,5 +153,18 @@ public class CouponListActivity extends BaseBindingActivity<ActivityCouponListBi
 
     private ETHWalletModel getWalletModel() {
         return WalletDaoUtils.getCurrent();
+    }
+
+
+
+    @Subscribe()
+    public void onEvent(MyCouponBean couponBean) {
+        finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }

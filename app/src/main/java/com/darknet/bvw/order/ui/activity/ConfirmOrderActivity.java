@@ -2,8 +2,10 @@ package com.darknet.bvw.order.ui.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.view.View;
 
 import androidx.annotation.Nullable;
+import androidx.lifecycle.Observer;
 
 import com.darknet.bvw.R;
 import com.darknet.bvw.activity.BaseBindingActivity;
@@ -11,11 +13,15 @@ import com.darknet.bvw.databinding.ActivityOrderConfirmBinding;
 import com.darknet.bvw.mall.bean.GoodsDetailBean;
 import com.darknet.bvw.order.bean.CartData;
 import com.darknet.bvw.order.bean.CouponBean;
+import com.darknet.bvw.order.bean.MyCouponBean;
 import com.darknet.bvw.order.bean.ShippingAddress;
 import com.darknet.bvw.order.ui.adapter.ConfirmGoodsAdapter;
 import com.darknet.bvw.order.vm.ConfirmOrderViewModel;
 import com.darknet.bvw.order.vm.MyAddressViewModel;
 import com.darknet.bvw.util.ToastUtils;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -32,7 +38,7 @@ import cn.hutool.core.collection.CollectionUtil;
 public class ConfirmOrderActivity extends BaseBindingActivity<ActivityOrderConfirmBinding> {
 
     private ShippingAddress mAddress;
-    private CouponBean mSelectCouponBean;
+    private MyCouponBean mSelectCouponBean;
     private MyAddressViewModel mAddressViewModel;
     List<CartData.CartItemListBean> mCartItemListBeans = new ArrayList<>();
 
@@ -40,6 +46,10 @@ public class ConfirmOrderActivity extends BaseBindingActivity<ActivityOrderConfi
         Intent intent = new Intent(context, ConfirmOrderActivity.class);
         intent.putExtra("selectSkuListBean", selectSkuListBean);
         intent.putExtra("goodsDetailBean", goodsDetailBean);
+        context.startActivity(intent);
+    }
+    public static void start(Context context) {
+        Intent intent = new Intent(context, ConfirmOrderActivity.class);
         context.startActivity(intent);
     }
 
@@ -50,9 +60,12 @@ public class ConfirmOrderActivity extends BaseBindingActivity<ActivityOrderConfi
 
     @Override
     public void initView() {
+        EventBus.getDefault().register(this);
         Intent data = getIntent();
         GoodsDetailBean.SkuListBean selectSkuListBean = (GoodsDetailBean.SkuListBean) data.getSerializableExtra("selectSkuListBean");
         GoodsDetailBean goodsDetailBean = (GoodsDetailBean) data.getSerializableExtra("goodsDetailBean");
+        mAddressViewModel = getViewModel(MyAddressViewModel.class);
+        ConfirmOrderViewModel orderViewModel = getViewModel(ConfirmOrderViewModel.class);
 
         if (selectSkuListBean != null && goodsDetailBean != null) {
             CartData.CartItemListBean cartItemListBean = new CartData.CartItemListBean();
@@ -63,20 +76,24 @@ public class ConfirmOrderActivity extends BaseBindingActivity<ActivityOrderConfi
             cartItemListBean.setOriginal_price(new BigDecimal(selectSkuListBean.getOriginal_price()));
             cartItemListBean.setQuantity(selectSkuListBean.getQuantity());
             mCartItemListBeans.add(cartItemListBean);
+        } else {
+            orderViewModel.getCartList();
         }
         mBinding.layoutTitle.layBack.setOnClickListener(view -> finish());
         mBinding.layoutTitle.title.setText(getString(R.string.confirm_order));
         ConfirmGoodsAdapter adapter = new ConfirmGoodsAdapter();
         adapter.setNewData(mCartItemListBeans);
         mBinding.setAdapter(adapter);
+        orderViewModel.cartItemListLive.observe(this, adapter::setNewData);
         mBinding.tvAddressTip.setOnClickListener(view -> {
             Intent intent = new Intent(this, MyAddressesActivity.class);
             intent.putExtra("selectId", mAddress.getId());
             startActivityForResult(intent, 10000);
         });
+        mBinding.clDiscounts.setOnClickListener(view -> {
+            startActivity(new Intent(this,CouponListActivity.class));
+        });
         mBinding.ivEdit.setOnClickListener(view -> AddAddressActivity.start(this, mAddress, false));
-        mAddressViewModel = getViewModel(MyAddressViewModel.class);
-        ConfirmOrderViewModel orderViewModel = getViewModel(ConfirmOrderViewModel.class);
         mAddressViewModel.refresh();
         mAddressViewModel.selectAddress.observe(this, shippingAddress -> {
             if (shippingAddress != null) {
@@ -88,7 +105,7 @@ public class ConfirmOrderActivity extends BaseBindingActivity<ActivityOrderConfi
         });
         mBinding.tvSubmitOrder.setOnClickListener(view -> {
             if (mAddress == null) {
-                ToastUtils.showToast("请选择收货地址");
+                ToastUtils.showToast(getString(R.string.select_address_first));
                 return;
             }
 
@@ -96,17 +113,19 @@ public class ConfirmOrderActivity extends BaseBindingActivity<ActivityOrderConfi
 
 
             if (selectSkuListBean == null) {
-                orderViewModel.submitCartOrder(mAddress.getId(),remark,mSelectCouponBean);
+                orderViewModel.submitCartOrder(mAddress.getId(),remark,mSelectCouponBean,orderViewModel.cartItemListLive.getValue().get(0).getProduct_id());
             } else {
-                orderViewModel.submitOrder(mAddress.getId(),remark,mSelectCouponBean, selectSkuListBean.getQuantity(),selectSkuListBean.getId());
+                orderViewModel.submitOrder(mAddress.getId(),remark,mSelectCouponBean,
+                        selectSkuListBean.getQuantity(),selectSkuListBean.getId(),selectSkuListBean.getProduct_id());
             }
         });
         orderViewModel.submitCartOrderLive.observe(this, submitOrderResps -> {
-            if (CollectionUtil.isNotEmpty(submitOrderResps) && submitOrderResps.size() > 1) {
-                OrderListActivity.start(this, 1);
+            if (CollectionUtil.isNotEmpty(submitOrderResps) && submitOrderResps.size() == 1) {
+                PayOrderActivity.start(this, submitOrderResps.get(0).getId());
             } else {
                 OrderListActivity.start(this, 1);
             }
+            finish();
         });
     }
 
@@ -124,5 +143,18 @@ public class ConfirmOrderActivity extends BaseBindingActivity<ActivityOrderConfi
                 mAddressViewModel.selectAddress.setValue(address);
             }
         }
+    }
+
+    @Subscribe()
+    public void onEvent(MyCouponBean couponBean) {
+        mSelectCouponBean = couponBean;
+        mBinding.tvDiscounts.setVisibility(View.VISIBLE);
+        mBinding.tvDiscounts.setText(String.format("%s USDT", couponBean.getDiscount()));
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }

@@ -45,6 +45,7 @@ public class GoodsListViewModel extends BaseListViewModel<Object> {
     }
 
     private void loadByCategory(int page) {
+        showLoading();
         BIWNetworkApi.getService(ApiInterface.class)
                 .shopListByCategory(mCategory.getId(), null, 20, null, null, page)
                 .compose(BIWNetworkApi.getInstance().applySchedulers())
@@ -54,16 +55,19 @@ public class GoodsListViewModel extends BaseListViewModel<Object> {
                         List<GoodsDetailBean> list = BaseListBean.getItems(response.getData());
                         notifyResultToTopViewModel(list, 20);
                         mBanner.setValue(null);
+                        hideLoading();
                     }
 
                     @Override
                     public void onFailure(Throwable throwable) {
                         loadFailed(throwable.getMessage());
+                        hideLoading();
                     }
                 }));
     }
 
     private void loadHome() {
+        showLoading();
         BIWNetworkApi.getService(ApiInterface.class)
                 .shopHome()
                 .compose(BIWNetworkApi.getInstance().applySchedulers())
@@ -75,11 +79,13 @@ public class GoodsListViewModel extends BaseListViewModel<Object> {
                         List<GoodsBean> recommends = data.getRecommends();
                         notifyResultToTopViewModel(recommends, Integer.MAX_VALUE);
                         mBanner.setValue(banners);
+                        hideLoading();
                     }
 
                     @Override
                     public void onFailure(Throwable throwable) {
                         loadFailed(throwable.getMessage());
+                        hideLoading();
                     }
                 }));
     }

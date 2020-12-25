@@ -1,7 +1,6 @@
 package com.darknet.bvw.order.bean;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -71,7 +70,7 @@ public class OrderResp implements Serializable {
     private int comment_state;
     private String comment_time;
     private int confirm_state;
-    private int coupon_amount;
+    private String coupon_amount;
     private int coupon_id;
     private String create_time;
     private int delete_state;
@@ -85,6 +84,7 @@ public class OrderResp implements Serializable {
     private String mall_pay_address;
     private String note;
     private OrderHandleOptionBean orderHandleOption;
+     //订单合并状态 0->待付款；1->待发货 2->已发货 3->已完成 4->已关闭|已取消 5->无效订单 6待退款 7已退款 8待评价 9已评价
     private int orderState;
     private String order_no;
     private String pay_amount;
@@ -206,11 +206,11 @@ public class OrderResp implements Serializable {
         this.confirm_state = confirm_state;
     }
 
-    public int getCoupon_amount() {
+    public String getCoupon_amount() {
         return coupon_amount;
     }
 
-    public void setCoupon_amount(int coupon_amount) {
+    public void setCoupon_amount(String coupon_amount) {
         this.coupon_amount = coupon_amount;
     }
 

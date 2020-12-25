@@ -23,6 +23,15 @@ public class GoodsBean {
 	private String name;
 	private String price;
 	private String original_price;
+	private String sale;
+
+	public String getSale() {
+		return sale;
+	}
+
+	public void setSale(String sale) {
+		this.sale = sale;
+	}
 
 	public int getProduct_id() {
 		return product_id;

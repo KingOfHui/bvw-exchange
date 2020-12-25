@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#232233">
+
+
+    <ImageView
+        android:layout_width="@dimen/dimen_25dp"
+        android:layout_height="@dimen/dimen_25dp"
+        android:padding="3dp"
+        android:src="@mipmap/icon_close"
+        android:id="@+id/ivClose"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/dimen_15dp"
+        android:layout_marginStart="@dimen/dimen_15dp"
+
+        />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="65dp"
+        android:text="付款详情"
+        android:textSize="@dimen/dp_18"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        />
+    <View style="@style/Line_White_02"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_120dp"
+        tools:text="796 USDT"
+        android:id="@+id/tvTotalPrice"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        android:textColor="@color/_01FCDA"
+        android:textSize="@dimen/dimen_30dp"
+        android:gravity="center"/>
+    <View style="@style/Line_White_02"
+        app:layout_constraintTop_toBottomOf="@id/tvTotalPrice"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dimen_70dp"
+        android:text="付款方式"
+
+        android:textColor="@color/white"
+        android:textSize="@dimen/dp_18"
+        app:layout_constraintTop_toBottomOf="@id/tvTotalPrice"
+        android:gravity="center_vertical"
+        android:layout_marginStart="@dimen/dimen_15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dimen_70dp"
+        android:text="USDT"
+        android:id="@+id/tvCurrency"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dp_18"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTotalPrice"
+        android:gravity="center_vertical"
+        android:layout_marginEnd="@dimen/dimen_15dp"
+        />
+    <View style="@style/Line_White_02"
+        app:layout_constraintTop_toBottomOf="@id/tvCurrency"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/tvPay"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginStart="@dimen/dimen_15dp"
+        android:layout_marginTop="@dimen/dimen_100dp"
+        android:layout_marginEnd="@dimen/dimen_15dp"
+        android:layout_marginBottom="@dimen/dimen_20dp"
+        android:background="@drawable/shape_circle_rect_black"
+        android:backgroundTint="@color/_01FCDA"
+        android:gravity="center"
+        android:text="@string/pay_now"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_16"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvCurrency" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.darknet.bvw.order.bean;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
@@ -8,7 +9,7 @@ import java.math.BigDecimal;
  * @Author dinghui
  * @Date 2020/12/24 0024 17:14
  */
-public class CouponBean {
+public class CouponBean implements Serializable {
 
     /**
      * id : 1

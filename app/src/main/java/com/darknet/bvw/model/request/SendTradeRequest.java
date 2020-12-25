@@ -9,8 +9,17 @@ public class SendTradeRequest {
     private String raw;
     private String withdraw_address;
     private String demo;
-    private int miner_id;
-    private int coupon_template_id;
+    private Integer miner_id;
+    private Integer coupon_template_id;
+    private Integer order_id;
+
+    public int getOrder_id() {
+        return order_id;
+    }
+
+    public void setOrder_id(int order_id) {
+        this.order_id = order_id;
+    }
 
     public int getCoupon_template_id() {
         return coupon_template_id;

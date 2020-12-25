@@ -7,7 +7,7 @@
 
         <variable
             name="adapter"
-            type="com.darknet.bvw.order.ui.adapter.ConfirmGoodsAdapter" />
+            type="com.darknet.bvw.order.ui.adapter.OrderGoodsAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -172,7 +172,7 @@
                         android:id="@+id/tvRemarkTip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="订单备注"
+                        android:text="@string/order_note"
                         android:textColor="@color/white"
                         android:textSize="@dimen/dp_14"
                         app:layout_constraintLeft_toLeftOf="parent"
@@ -181,11 +181,12 @@
                     <EditText
                         android:id="@+id/etRemark"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/dimen_70dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dimen_10dp"
                         android:background="@color/color_bg_181523"
                         android:gravity="top|left"
-                        android:hint="请输入备注内容"
+                        android:inputType="none"
+                        android:hint="@string/none"
                         android:padding="@dimen/dimen_5dp"
                         android:textColor="@color/white"
                         android:textColorHint="#77ffffff"

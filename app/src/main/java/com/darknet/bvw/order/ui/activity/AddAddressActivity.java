@@ -52,6 +52,10 @@ public class AddAddressActivity extends BaseBindingActivity<ActivityAddAddressBi
             mBinding.etContact.setText(mAddress.getUser_name());
             mBinding.etMobile.setText(mAddress.getTel_number());
             mBinding.switchDefault.setChecked(mAddress.getDefault_state() == 1);
+            mBinding.etNation.setText(mAddress.getNation());
+            mBinding.etProvince.setText(mAddress.getProvince());
+            mBinding.etCity.setText(mAddress.getCity());
+            mBinding.etContry.setText(mAddress.getCounty());
         }
         MyAddressViewModel viewModel = getViewModel(MyAddressViewModel.class);
         mBinding.layoutTitle.layBack.setOnClickListener((view -> finish()));
@@ -62,13 +66,39 @@ public class AddAddressActivity extends BaseBindingActivity<ActivityAddAddressBi
                 String name = mBinding.etContact.getText().toString().trim();
                 String address = mBinding.etAddress.getText().toString().trim();
                 String mobile = mBinding.etMobile.getText().toString().trim();
+                String nation = mBinding.etNation.getText().toString().trim();
+                String province = mBinding.etProvince.getText().toString().trim();
+                String city = mBinding.etCity.getText().toString().trim();
+                String contry = mBinding.etContry.getText().toString().trim();
+                String postal = mBinding.etPostal.getText().toString().trim();
+
                 boolean checked = mBinding.switchDefault.isChecked();
                 if (TextUtils.isEmpty(name)) {
                     ToastUtils.showSingleToast(getString(R.string.input_name));
                     return;
                 }
-                if (TextUtils.isEmpty(address)) {
-                    ToastUtils.showSingleToast("请输入地址");
+                if (TextUtils.isEmpty(nation)) {
+                    ToastUtils.showSingleToast("请输入国家");
+                    return;
+                }
+                 if (TextUtils.isEmpty(province)) {
+                    ToastUtils.showSingleToast("请输入省/州/地区");
+                    return;
+                }
+                 if (TextUtils.isEmpty(city)) {
+                    ToastUtils.showSingleToast("请输入城市");
+                    return;
+                }
+                 if (TextUtils.isEmpty(contry)) {
+                    ToastUtils.showSingleToast("请输入县");
+                    return;
+                }
+                 if (TextUtils.isEmpty(address)) {
+                    ToastUtils.showSingleToast("请输入详细地址");
+                    return;
+                }
+                 if (TextUtils.isEmpty(postal)) {
+                    ToastUtils.showSingleToast("请输入邮政编码");
                     return;
                 }
                 if (TextUtils.isEmpty(mobile)) {
@@ -79,6 +109,11 @@ public class AddAddressActivity extends BaseBindingActivity<ActivityAddAddressBi
                 if (mAddress == null) {
                     mAddress = new ShippingAddress();
                 }
+                mAddress.setNation(nation);
+                mAddress.setProvince(province);
+                mAddress.setCity(city);
+                mAddress.setCounty(contry);
+                mAddress.setPostal(postal);
                 mAddress.setTel_number(mobile);
                 mAddress.setUser_name(name);
                 mAddress.setDetail_info(address);
@@ -88,16 +123,6 @@ public class AddAddressActivity extends BaseBindingActivity<ActivityAddAddressBi
                 } else {
                     viewModel.updateAddress(mAddress);
                 }
-
-                /*ShippingAddressModel model = new ShippingAddressModel();
-                model.setIsDefault(checked?1:0);
-                model.setMobile(mobile);
-                model.setName(name);
-                model.setAddress(address);
-                AddressDaoUtils.insertNewAddress(model);
-                if (checked) {
-                    AddressDaoUtils.updateAddress(model);
-                }*/
             }
         });
         viewModel.isSuccess.observe(this, new Observer<Boolean>() {

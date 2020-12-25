@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.darknet.bvw.R;
 import com.darknet.bvw.activity.BaseBindingActivity;
 import com.darknet.bvw.databinding.ActivityOrderDetailBinding;
@@ -62,6 +63,9 @@ public class OrderDetailActivity extends BaseBindingActivity<ActivityOrderDetail
         mBinding.hlvDiscounts.setRightText("- USDT " + order.getCoupon_amount());
 //        mBinding.hlvMoneyOff.setRightText("- USDT "+order.getof);
         mBinding.hlvTotalPrice.setRightText("USDT " + order.getTotal_amount());
+        mBinding.tvToPay.setOnClickListener(view -> {
+                PayOrderActivity.start(this,order.getId());
+        });
     }
 
     public static void start(Context context, OrderResp order) {
