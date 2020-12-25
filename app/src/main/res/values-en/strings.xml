@@ -943,10 +943,10 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="order_close_time">剩余%s自动关闭</string>
     <string name="order_submit_time">Order time：%s</string>
     <string name="order_number">Order no：%s</string>
-    <string name="order_freight">Freight：</string>
-    <string name="order_discounts">Discounts：</string>
-    <string name="order_money_off">满减：</string>
-    <string name="order_total_price">Total：</string>
+    <string name="order_freight">Freight</string>
+    <string name="order_discounts">Discounts</string>
+    <string name="order_money_off">满减</string>
+    <string name="order_total_price">Total</string>
     <string name="order_to_pay">Pay now</string>
     <string name="order_count_number">共 %s 件商品</string>
     <string name="to_pay">Pay</string>

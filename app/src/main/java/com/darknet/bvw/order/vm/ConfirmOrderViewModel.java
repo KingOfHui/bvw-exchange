@@ -11,6 +11,7 @@ import com.darknet.bvw.net.retrofit.BIWNetworkApi;
 import com.darknet.bvw.net.retrofit.BaseObserver;
 import com.darknet.bvw.net.retrofit.MvvmNetworkObserver;
 import com.darknet.bvw.net.retrofit.RequestBodyBuilder;
+import com.darknet.bvw.order.bean.CouponBean;
 import com.darknet.bvw.order.bean.SubmitOrderReq;
 import com.darknet.bvw.order.bean.OrderResp;
 
@@ -20,7 +21,8 @@ import okhttp3.RequestBody;
 
 public class ConfirmOrderViewModel extends BaseViewModel {
 
-    public MutableLiveData<List<OrderResp>> submitOrderLive = new MutableLiveData<>();
+    public MutableLiveData<List<OrderResp>> submitCartOrderLive = new MutableLiveData<>();
+    public MutableLiveData<Boolean> submitOrderLive = new MutableLiveData<>();
 
     public ConfirmOrderViewModel(@NonNull Application application) {
         super(application);
@@ -32,7 +34,8 @@ public class ConfirmOrderViewModel extends BaseViewModel {
         apiService.updateOrderAddress(params);
     }
 
-    public void submitCartOrder() {
+    public void submitCartOrder(int id, String remark, CouponBean selectCouponBean) {
+        showLoading();
         SubmitOrderReq req = new SubmitOrderReq();
         req.setAddress_id(1);
 //        req.setCoupon();
@@ -43,13 +46,41 @@ public class ConfirmOrderViewModel extends BaseViewModel {
                     @Override
                     public void onSuccess(BaseResponse<List<OrderResp>> t, boolean isFromCache) {
                         List<OrderResp> data = t.getData();
-                        submitOrderLive.setValue(data);
+                        submitCartOrderLive.setValue(data);
+                        hideLoading();
                     }
 
                     @Override
                     public void onFailure(Throwable throwable) {
-
+                        hideLoading();
                     }
                 }));
+    }
+
+    public void submitOrder(int addressId, String remark, CouponBean selectCouponBean, int quantity, int productId) {
+        showLoading();
+        SubmitOrderReq req = new SubmitOrderReq();
+        req.setAddress_id(addressId);
+        req.setNote(remark);
+        req.setQuantity(quantity);
+        if (selectCouponBean != null) {
+            SubmitOrderReq.CouponBean couponBean = new SubmitOrderReq.CouponBean();
+            couponBean.setCoupon_id(selectCouponBean.getId());
+            couponBean.setMall_id(productId);
+            req.setCoupon(couponBean);
+        }
+        apiService.submitOrder(new RequestBodyBuilder().build(req)).compose(BIWNetworkApi.getInstance().applySchedulers())
+        .subscribe(new BaseObserver<>(this, new MvvmNetworkObserver<BaseResponse<List<OrderResp>>>() {
+            @Override
+            public void onSuccess(BaseResponse<List<OrderResp>> t, boolean isFromCache) {
+                submitOrderLive.setValue(true);
+                hideLoading();
+            }
+
+            @Override
+            public void onFailure(Throwable throwable) {
+                hideLoading();
+            }
+        }));
     }
 }

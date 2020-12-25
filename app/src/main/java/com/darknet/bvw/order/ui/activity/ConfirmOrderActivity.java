@@ -10,11 +10,12 @@ import com.darknet.bvw.activity.BaseBindingActivity;
 import com.darknet.bvw.databinding.ActivityOrderConfirmBinding;
 import com.darknet.bvw.mall.bean.GoodsDetailBean;
 import com.darknet.bvw.order.bean.CartData;
+import com.darknet.bvw.order.bean.CouponBean;
 import com.darknet.bvw.order.bean.ShippingAddress;
 import com.darknet.bvw.order.ui.adapter.ConfirmGoodsAdapter;
-import com.darknet.bvw.order.ui.adapter.OrderGoodsAdapter;
 import com.darknet.bvw.order.vm.ConfirmOrderViewModel;
 import com.darknet.bvw.order.vm.MyAddressViewModel;
+import com.darknet.bvw.util.ToastUtils;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -31,6 +32,7 @@ import cn.hutool.core.collection.CollectionUtil;
 public class ConfirmOrderActivity extends BaseBindingActivity<ActivityOrderConfirmBinding> {
 
     private ShippingAddress mAddress;
+    private CouponBean mSelectCouponBean;
     private MyAddressViewModel mAddressViewModel;
     List<CartData.CartItemListBean> mCartItemListBeans = new ArrayList<>();
 
@@ -85,13 +87,21 @@ public class ConfirmOrderActivity extends BaseBindingActivity<ActivityOrderConfi
             }
         });
         mBinding.tvSubmitOrder.setOnClickListener(view -> {
-            if (selectSkuListBean == null) {
-                orderViewModel.submitCartOrder();
-            } else {
+            if (mAddress == null) {
+                ToastUtils.showToast("请选择收货地址");
+                return;
+            }
 
+            String remark = mBinding.etRemark.getText().toString().trim();
+
+
+            if (selectSkuListBean == null) {
+                orderViewModel.submitCartOrder(mAddress.getId(),remark,mSelectCouponBean);
+            } else {
+                orderViewModel.submitOrder(mAddress.getId(),remark,mSelectCouponBean, selectSkuListBean.getQuantity(),selectSkuListBean.getId());
             }
         });
-        orderViewModel.submitOrderLive.observe(this, submitOrderResps -> {
+        orderViewModel.submitCartOrderLive.observe(this, submitOrderResps -> {
             if (CollectionUtil.isNotEmpty(submitOrderResps) && submitOrderResps.size() > 1) {
                 OrderListActivity.start(this, 1);
             } else {

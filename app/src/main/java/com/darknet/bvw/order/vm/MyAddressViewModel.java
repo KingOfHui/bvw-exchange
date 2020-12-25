@@ -51,11 +51,13 @@ public class MyAddressViewModel extends BaseListViewModel<ShippingAddress> {
                                 }
                             }
                         }
+                        selectAddress.setValue(null);
                     }
 
                     @Override
                     public void onFailure(Throwable throwable) {
                         loadFailed(throwable.getMessage());
+                        selectAddress.setValue(null);
                     }
                 }));
     }
