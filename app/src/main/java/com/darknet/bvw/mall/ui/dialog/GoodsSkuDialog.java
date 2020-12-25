@@ -34,6 +34,7 @@ public class GoodsSkuDialog extends BottomDialog {
     private GoodsDetailBean.SkuListBean mSelectSkuBean;
     private QMUIFloatLayout mFloatLayout;
     private CustomCarCounterView mNumberView;
+    private TextView mTvSelectSku;
 
     public GoodsSkuDialog(@NonNull Context context, GoodsDetailBean goodsDetailBean, GoodsDetailBean.SkuListBean selectSkuListBean) {
         super(context);
@@ -48,7 +49,7 @@ public class GoodsSkuDialog extends BottomDialog {
         ImageView ivGoods = findViewById(R.id.ivGoods);
         TextView tvGoodsName = findViewById(R.id.tvGoodsName);
         TextView tvPrice = findViewById(R.id.tvPrice);
-        TextView tvSelectSku = findViewById(R.id.tvSelectSku);
+        mTvSelectSku = findViewById(R.id.tvSelectSku);
         mNumberView = findViewById(R.id.numberView);
         TextView tvSure = findViewById(R.id.tvSure);
         TextView tvStock = findViewById(R.id.tvStockNum);
@@ -61,9 +62,12 @@ public class GoodsSkuDialog extends BottomDialog {
             tvStock.setText(String.format(getContext().getString(R.string.goods_stock), String.valueOf(stock)));
             List<GoodsDetailBean.SkuListBean> sku_list = mGoodsDetailBean.getSku_list();
             tvGoodsName.setText(mGoodsDetailBean.getName());
-            mSelectSkuBean = sku_list.get(0);
+            if (mSelectSkuBean == null) {
+                mSelectSkuBean = sku_list.get(0);
+            }
             tvPrice.setText(sku_list.get(0).getPrice());
-            tvSelectSku.setText(String.format(getContext().getString(R.string.select_sku), mGoodsDetailBean.getName(), mGoodsDetailBean.getSku_list().get(0).getSp1()));
+            mTvSelectSku.setText(String.format(getContext().getString(R.string.select_sku), mGoodsDetailBean.getName(), mSelectSkuBean.getSp1()));
+            mNumberView.setNumber(BigDecimal.valueOf(mSelectSkuBean.getQuantity()));
             Glide.with(ivGoods.getContext())
                     .load(mGoodsDetailBean.getImg_url())
                     .apply(RequestOptions.centerCropTransform())
@@ -71,11 +75,7 @@ public class GoodsSkuDialog extends BottomDialog {
                     .into(ivGoods);
             for (GoodsDetailBean.SkuListBean skuListBean : sku_list) {
                 addGuiGeToLayout(skuListBean.getSp1(), mSelectSkuBean != null && mSelectSkuBean.getSp1().equals(skuListBean.getSp1()));
-                addGuiGeToLayout(skuListBean.getSp1(), false);
             }
-        }
-        if (mSelectSkuBean != null) {
-            mNumberView.setNumber(BigDecimal.valueOf(mSelectSkuBean.getQuantity()));
         }
 
         tvSure.setOnClickListener(new View.OnClickListener() {
@@ -95,13 +95,13 @@ public class GoodsSkuDialog extends BottomDialog {
 
     @Override
     public void dismiss() {
-        BigDecimal number = mNumberView.getNumber();
+       /* BigDecimal number = mNumberView.getNumber();
         if (number.compareTo(BigDecimal.ONE) >= 0) {
             if (mSkuListener != null && mSelectSkuBean != null) {
                 mSelectSkuBean.setQuantity(number.intValue());
                 mSkuListener.select(mSelectSkuBean);
             }
-        }
+        }*/
         super.dismiss();
     }
 
@@ -110,8 +110,8 @@ public class GoodsSkuDialog extends BottomDialog {
         tv.setCorner(DensityUtils.dip2px(2));
         tv.setTextColor(ContextCompat.getColorStateList(getContext(),R.color.selector_coupon_buy));
         tv.setBackground(getContext().getResources().getDrawable(R.drawable.selector_stroke_rect_sku));
-        int padding = DensityUtils.dip2px(10);
-        tv.setPadding(padding, padding, padding, padding);
+        int padding = DensityUtils.dip2px(8);
+        tv.setPadding(padding * 2, padding, padding * 2, padding);
         tv.setTextSize(12);
         tv.setSelected(isSelect);
         tv.setText(sp);
@@ -120,9 +120,11 @@ public class GoodsSkuDialog extends BottomDialog {
             for (int i = 0; i < childCount; i++) {
                 View view = mFloatLayout.getChildAt(i);
                 if (view == v) {
-                    v.setSelected(true);
+                    view.setSelected(true);
+                    mSelectSkuBean = mGoodsDetailBean.getSku_list().get(i);
+                    mTvSelectSku.setText(String.format(getContext().getString(R.string.select_sku), mGoodsDetailBean.getName(), mSelectSkuBean.getSp1()));
                 } else {
-                    v.setSelected(false);
+                    view.setSelected(false);
                 }
             }
         });

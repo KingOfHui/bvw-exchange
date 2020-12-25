@@ -10,6 +10,7 @@ import com.darknet.bvw.net.retrofit.errorhandler.HttpErrorHandler;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
@@ -74,6 +75,9 @@ public abstract class NetWorkApi implements IEnvironment {
             httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
             okHttpClientBuilder.addInterceptor(httpLoggingInterceptor);
         }
+        okHttpClientBuilder.connectTimeout(60, TimeUnit.SECONDS);
+        okHttpClientBuilder.readTimeout(60, TimeUnit.SECONDS);
+        okHttpClientBuilder.writeTimeout(60, TimeUnit.SECONDS);
         return okHttpClientBuilder.build();
     }
 

@@ -2,18 +2,11 @@ package com.darknet.bvw.order.ui.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.view.View;
-
-import androidx.core.content.ContextCompat;
 
 import com.darknet.bvw.R;
 import com.darknet.bvw.activity.BaseBindingActivity;
-import com.darknet.bvw.databinding.ActivityCouponListBinding;
 import com.darknet.bvw.databinding.ActivityMyCouponListBinding;
-import com.darknet.bvw.order.ui.adapter.CouponAdapter;
 import com.darknet.bvw.order.ui.adapter.MyCouponAdapter;
-import com.darknet.bvw.order.ui.dialog.BuyCouponDialog;
-import com.darknet.bvw.order.vm.CouponViewModel;
 import com.darknet.bvw.order.vm.MyCouponViewModel;
 import com.darknet.bvw.util.StatusBarUtil;
 

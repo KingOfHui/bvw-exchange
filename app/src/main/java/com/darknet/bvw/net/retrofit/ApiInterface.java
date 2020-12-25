@@ -11,6 +11,7 @@ import com.darknet.bvw.model.response.NoticeResponse;
 import com.darknet.bvw.model.response.SendTradeResponse;
 import com.darknet.bvw.order.bean.CartData;
 import com.darknet.bvw.order.bean.CouponBean;
+import com.darknet.bvw.order.bean.MyCouponBean;
 import com.darknet.bvw.order.bean.ShippingAddress;
 import com.darknet.bvw.order.bean.OrderResp;
 
@@ -27,14 +28,16 @@ import retrofit2.http.Query;
 public interface ApiInterface {
     @GET("api/v1/announcement/getTop")
     Observable<BaseResponse<NoticeResponse.NoticeData>> getTopic1();
+
     /***********              商城-首页            **********/
     //商城首页数据
     @GET("api/shop/home/data")
     Observable<BaseResponse<ShopHomeBean>> shopHome();
+
     /***********              商城-产品            **********/
-     //获取产品详情
+    //获取产品详情
     @GET("api/shop/product/detail/{id}")
-    Observable<BaseResponse<GoodsDetailBean>> getProductDetail(@Path("id")int id);
+    Observable<BaseResponse<GoodsDetailBean>> getProductDetail(@Path("id") int id);
 
     /***********              商城-购物车            **********/
     //添加商品到购物车
@@ -57,12 +60,15 @@ public interface ApiInterface {
     @POST("api/shop/cart/checkedByProduct")
     Observable<BaseResponse<Object>> checkCartByProduct(@Body RequestBody body);
 
+    @POST("api/shop/cart/checkedBySku")
+    Observable<BaseResponse<Object>> checkCartBySku(@Body RequestBody body);
+
     /***********              商城-优惠券            **********/
     @GET("api/shop/couponTemplate/list")
     Observable<BaseResponse<BaseListBean<CouponBean>>> getCouponList();
 
     @GET("api/shop/coupon/list")
-    Observable<BaseResponse<BaseListBean<CouponBean>>> getMyCouponList();
+    Observable<BaseResponse<BaseListBean<MyCouponBean>>> getMyCouponList();
 
     /***********              商城-订单            **********/
     //订单列表
@@ -158,5 +164,5 @@ public interface ApiInterface {
 
     //发送交易
     @POST("api/v1/wallet/sendRawTx")
-    Observable<BaseResponse<SendTradeResponse>> sendRawTx(@Body RequestBody body);
+    Observable<BaseResponse<Object>> sendRawTx(@Body RequestBody body);
 }

@@ -13,7 +13,7 @@ public class MyCouponBean {
      * name :
      * price : 0
      * remark :
-     * state : 0
+     * state : 0  使用状态 -1未支付 0未使用 1已使用 2已过期
      * tx_hash :
      * type : 0
      * user_id : 0
@@ -21,7 +21,7 @@ public class MyCouponBean {
 
     private int coupon_template_id;
     private String create_time;
-    private int discount;
+    private BigDecimal discount;
     private String end_time;
     private int id;
     private String name;
@@ -48,11 +48,11 @@ public class MyCouponBean {
         this.create_time = create_time;
     }
 
-    public int getDiscount() {
+    public BigDecimal getDiscount() {
         return discount;
     }
 
-    public void setDiscount(int discount) {
+    public void setDiscount(BigDecimal discount) {
         this.discount = discount;
     }
 

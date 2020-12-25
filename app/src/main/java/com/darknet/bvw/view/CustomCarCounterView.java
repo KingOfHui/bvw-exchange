@@ -36,6 +36,7 @@ public class CustomCarCounterView extends FrameLayout {
 
     private boolean mCanNegative = false; //是否允许为负数 默认为false
     private boolean mCanSwitch = true;
+    private boolean mMinOrMaxControlCanClick = true;
     private boolean mCanShowModify = true;
     private boolean mShowOperateBtn = true;
 
@@ -147,7 +148,9 @@ public class CustomCarCounterView extends FrameLayout {
      * @param canAdd true or false
      */
     public void setCanAdd(boolean canAdd) {
-        mImgAdd.setClickable(canAdd);
+        if (!mMinOrMaxControlCanClick) {
+            mImgAdd.setClickable(canAdd);
+        }
         mImgAdd.setBackgroundResource(canAdd ? R.mipmap.icon_plus
                                               : R.mipmap.icon_plus);
     }
@@ -158,7 +161,9 @@ public class CustomCarCounterView extends FrameLayout {
      * @param canSum true or false
      */
     public void setCanSum(boolean canSum) {
-        mImgSum.setClickable(canSum);
+        if (!mMinOrMaxControlCanClick) {
+            mImgSum.setClickable(canSum);
+        }
         mImgSum.setBackgroundResource(canSum ? R.mipmap.icon_sub
                                               : R.mipmap.icon_sub);
     }
@@ -206,6 +211,9 @@ public class CustomCarCounterView extends FrameLayout {
      * 数量加
      */
     public void addNumber() {
+        if (mGoodsNumber.compareTo(mMaxCount) >= 0) {
+            return;
+        }
         BigDecimal addResult = mGoodsNumber.add(getStep());
         if (addResult.compareTo(getMaxCount()) >= 0) {
             mGoodsNumber = getMaxCount();
@@ -224,6 +232,10 @@ public class CustomCarCounterView extends FrameLayout {
      * 数量减
      */
     public void subNumber() {
+        if (mGoodsNumber.compareTo(mMinCount) <= 0) {
+            return;
+        }
+        BigDecimal temp = mGoodsNumber;
         BigDecimal resultValue = mGoodsNumber.subtract(getStep());
         if (getCanNegative()) {// 可以为负数
             mGoodsNumber = resultValue;
@@ -232,9 +244,11 @@ public class CustomCarCounterView extends FrameLayout {
                 mGoodsNumber = getMinCount();
             } else {
                 mGoodsNumber = resultValue;
-                if (mAddOrSubListener != null) {
-                    mAddOrSubListener.onSub();
-                }
+            }
+        }
+        if (temp.compareTo(mGoodsNumber) != 0) {
+            if (mAddOrSubListener != null) {
+                mAddOrSubListener.onSub();
             }
         }
         if (mCanSwitch) {

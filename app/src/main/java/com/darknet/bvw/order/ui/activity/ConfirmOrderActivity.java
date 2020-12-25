@@ -29,9 +29,8 @@ public class ConfirmOrderActivity extends BaseBindingActivity<ActivityOrderConfi
     private ShippingAddress mAddress;
     private MyAddressViewModel mAddressViewModel;
 
-    public static void start(Context context, ArrayList<CartData.CartItemListBean> allSelected) {
+    public static void start(Context context) {
         Intent intent = new Intent(context, ConfirmOrderActivity.class);
-        intent.putParcelableArrayListExtra("allSelected", allSelected);
         context.startActivity(intent);
     }
 

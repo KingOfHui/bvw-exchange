@@ -66,19 +66,22 @@ public class PayViewModel extends BaseViewModel {
                 }));
     }
 
-    public void sendTrade(String afterSignVal,String price) {
+    public void sendTrade(String afterSignVal,String price, int coupon_template_id) {
+        showLoading();
         SendTradeRequest sendTradeRequest = new SendTradeRequest();
         sendTradeRequest.setAmount(price);
         sendTradeRequest.setRaw(afterSignVal);
         sendTradeRequest.setSymbol("BIW");
         sendTradeRequest.setTo_address(couponAddress.getValue());
         sendTradeRequest.setType(16);
+        sendTradeRequest.setCoupon_template_id(coupon_template_id);
         sendTradeRequest.setDemo("购买优惠券");
         apiService.sendRawTx(new RequestBodyBuilder().build(sendTradeRequest))
                 .compose(BIWNetworkApi.getInstance().applySchedulers())
-                .subscribe(new BaseObserver<>(this, new MvvmNetworkObserver<BaseResponse<SendTradeResponse>>() {
+                .subscribe(new BaseObserver<>(this, new MvvmNetworkObserver<BaseResponse<Object>>() {
                     @Override
-                    public void onSuccess(BaseResponse<SendTradeResponse> t, boolean isFromCache) {
+                    public void onSuccess(BaseResponse<Object> t, boolean isFromCache) {
+                        hideLoading();
                         tradeSuccessLive.setValue(true);
                     }
 

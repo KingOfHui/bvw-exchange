@@ -34,7 +34,6 @@
             android:id="@+id/tvGoodsCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{@string/goods_count(0)}"
             android:textColor="@color/white"
             android:textSize="@dimen/sp_12"
             app:layout_constraintStart_toStartOf="@id/tvCart"

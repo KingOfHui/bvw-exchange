@@ -6,6 +6,8 @@ import android.os.Parcelable;
 import java.math.BigDecimal;
 import java.util.List;
 
+import cn.hutool.core.collection.CollectionUtil;
+
 public class CartData {
 
     /**
@@ -17,18 +19,18 @@ public class CartData {
      * product_total_count : 0
      */
 
-    private int checked_product_amount;
+    private BigDecimal checked_product_amount;
     private int checked_product_count;
-    private int product_total_amount;
+    private BigDecimal product_total_amount;
     private int product_total_count;
     private List<CartItemListBean> cart_item_list;
     private List<MallListBean> mall_list;
 
-    public int getChecked_product_amount() {
+    public BigDecimal getChecked_product_amount() {
         return checked_product_amount;
     }
 
-    public void setChecked_product_amount(int checked_product_amount) {
+    public void setChecked_product_amount(BigDecimal checked_product_amount) {
         this.checked_product_amount = checked_product_amount;
     }
 
@@ -40,11 +42,11 @@ public class CartData {
         this.checked_product_count = checked_product_count;
     }
 
-    public int getProduct_total_amount() {
+    public BigDecimal getProduct_total_amount() {
         return product_total_amount;
     }
 
-    public void setProduct_total_amount(int product_total_amount) {
+    public void setProduct_total_amount(BigDecimal product_total_amount) {
         this.product_total_amount = product_total_amount;
     }
 
@@ -70,6 +72,21 @@ public class CartData {
 
     public void setMall_list(List<MallListBean> mall_list) {
         this.mall_list = mall_list;
+    }
+
+    public boolean isAllSelected() {
+        boolean isAllSelect = true;
+        if (CollectionUtil.isNotEmpty(cart_item_list)) {
+            for (CartData.CartItemListBean datum : cart_item_list) {
+                if (datum.getCheck() == 0) {
+                    isAllSelect = false;
+                    break;
+                }
+            }
+        } else {
+            isAllSelect = false;
+        }
+        return isAllSelect;
     }
 
     public static class CartItemListBean implements Parcelable {

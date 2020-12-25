@@ -3,6 +3,7 @@ package com.darknet.bvw.order.ui.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -51,6 +52,7 @@ public class CouponListActivity extends BaseBindingActivity<ActivityCouponListBi
     private PayViewModel mPayViewModel;
     private CouponBean mCouponBean;
     private BridgeWebView mWebview;
+    private BuyCouponDialog mCouponDialog;
 
     public static void start(Context context) {
         context.startActivity(new Intent(context, CouponListActivity.class));
@@ -78,9 +80,10 @@ public class CouponListActivity extends BaseBindingActivity<ActivityCouponListBi
         mBinding.setAdapter(adapter);
         adapter.setOnItemChildClickListener((adapter1, view, position) -> {
             mCouponBean = adapter.getItem(position);
-            new BuyCouponDialog(this, mCouponBean).setListener(() -> {
+            mCouponDialog = new BuyCouponDialog(this, mCouponBean).setListener(() -> {
                 mPayViewModel.getPayAddress("SHOP_PAY_COUPON");
-            }).show();
+            });
+            mCouponDialog.show();
         });
         mBinding.layoutTitle.titleRight.setOnClickListener(view -> MyCouponListActivity.start(this));
     }
@@ -88,7 +91,12 @@ public class CouponListActivity extends BaseBindingActivity<ActivityCouponListBi
     @Override
     public void initDatas() {
         mViewModel.refresh();
-        mPayViewModel.tradeSuccessLive.observe(this, a -> ToastUtils.showToast("恭喜您，购买成功"));
+        mPayViewModel.tradeSuccessLive.observe(this, a -> {
+            if (mCouponDialog != null && mCouponDialog.isShowing()) {
+                mCouponDialog.dismiss();
+            }
+            ToastUtils.showToast("恭喜您，购买成功");
+        });
         mPayViewModel.couponAddress.observe(this, this::showInputPwdDialog);
         mPayViewModel.mSendTxMutableLiveData.observe(this, this::callH5);
     }
@@ -104,16 +112,16 @@ public class CouponListActivity extends BaseBindingActivity<ActivityCouponListBi
         mWebview.callHandler("signTransaction", new Gson().toJson(signModel), new CallBackFunction() {
             @Override
             public void onCallBack(String data) {
+                Log.e("okhttp dhdhdh", "onCallBack: ---------------------");
                 try {
                     JSONObject jsonObject = new JSONObject(data);
                     String afterSignVal = jsonObject.getString("data");
-                    mPayViewModel.sendTrade(afterSignVal,String.valueOf(mCouponBean.getPrice()));
+                    mPayViewModel.sendTrade(afterSignVal, String.valueOf(mCouponBean.getPrice()), mCouponBean.getId());
                 } catch (Exception e) {
                     ToastUtils.showToast(getString(R.string.send_trade_state_fail));
                 }
             }
         });
-        mWebview.loadUrl(ConfigNetWork.WEB_URL);
     }
 
     private void showInputPwdDialog(String address) {
@@ -125,10 +133,10 @@ public class CouponListActivity extends BaseBindingActivity<ActivityCouponListBi
                     Toast.makeText(CouponListActivity.this, getString(R.string.empty_pwd), Toast.LENGTH_SHORT).show();
                 } else {
                     ETHWalletModel walletModel = getWalletModel();
-                    if (walletModel!=null && contentVal.equals(walletModel.getPassword())) {
+                    if (walletModel != null && contentVal.equals(walletModel.getPassword())) {
                         hintKeyBoard();
                         dialog.dismiss();
-                        mPayViewModel.createTrade(String.valueOf(mCouponBean.getPrice()),address,"BIW");
+                        mPayViewModel.createTrade(String.valueOf(mCouponBean.getPrice()), address, "BIW");
 
                     } else {
                         Toast.makeText(CouponListActivity.this, getString(R.string.wrong_pwd), Toast.LENGTH_SHORT).show();

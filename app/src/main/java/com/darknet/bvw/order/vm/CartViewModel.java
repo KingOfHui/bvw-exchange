@@ -16,83 +16,68 @@ import com.darknet.bvw.order.bean.CartData;
 
 import java.util.List;
 
+import io.reactivex.Observable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+
 public class CartViewModel extends BaseListViewModel<CartData.CartItemListBean> {
 
+    private Observable<BaseResponse<CartData>> getCartListObservable;
     public MutableLiveData<Boolean> checkCartSuccessLive = new MutableLiveData<>();
     public MutableLiveData<List<CartData.CartItemListBean>> cartItemListLive = new MutableLiveData<>();
+    public MutableLiveData<CartData> cartDataLive = new MutableLiveData<>();
+    private Disposable mDisposable;
 
     public CartViewModel(@NonNull Application application) {
         super(application);
     }
 
+    private Observable<BaseResponse<CartData>> getCartListObservable() {
+        if (getCartListObservable == null) {
+            getCartListObservable = apiService.getCartList().compose(BIWNetworkApi.getInstance().applySchedulers());
+        }
+        return getCartListObservable;
+    }
+
     @Override
     protected void loadData(int pageNum, boolean isClear) {
+        Observable<BaseResponse<CartData>> cartListObservable = getCartListObservable();
+        if (mDisposable != null) {
+            mDisposable.dispose();
+        }
         showLoading();
-        apiService.getCartList().compose(BIWNetworkApi.getInstance().applySchedulers())
-                .subscribe(new BaseObserver<>(this, new MvvmNetworkObserver<BaseResponse<CartData>>() {
-                    @Override
-                    public void onSuccess(BaseResponse<CartData> t, boolean isFromCache) {
-                        CartData data = t.getData();
-                        List<CartData.CartItemListBean> cart_item_list = data.getCart_item_list();
-                        notifyResultToTopViewModel(cart_item_list);
-                        cartItemListLive.setValue(cart_item_list);
-                        hideLoading();
-                    }
+        cartListObservable.subscribe(new BaseObserver<BaseResponse<CartData>>(this, new MvvmNetworkObserver<BaseResponse<CartData>>() {
+            @Override
+            public void onSuccess(BaseResponse<CartData> t, boolean isFromCache) {
+                CartData data = t.getData();
+                List<CartData.CartItemListBean> cart_item_list = data.getCart_item_list();
+                notifyResultToTopViewModel(cart_item_list);
+                cartDataLive.setValue(data);
+                cartItemListLive.setValue(cart_item_list);
+                hideLoading();
+            }
 
-                    @Override
-                    public void onFailure(Throwable throwable) {
-                        hideLoading();
-                    }
-                }));
+            @Override
+            public void onFailure(Throwable throwable) {
+                hideLoading();
+            }
+        }) {
+            @Override
+            public void onSubscribe(Disposable d) {
+                super.onSubscribe(d);
+                mDisposable = d;
+            }
+        });
     }
 
-    public void checkCartByProduct(String idsUnSelect, String idsSelect) {
-        showLoading();
-        apiService.checkCartByProduct(new RequestBodyBuilder().addParams("check", 1).addParams("ids", idsSelect).build())
-                .compose(BIWNetworkApi.getInstance().applySchedulers())
-                .subscribe(new BaseObserver<>(this, new MvvmNetworkObserver<Object>() {
-                    @Override
-                    public void onSuccess(Object t, boolean isFromCache) {
-                        if (TextUtils.isEmpty(idsUnSelect)) {
-                            checkCartSuccessLive.setValue(true);
-                            hideLoading();
-                        } else {
-                            uncheckCartByProduct(idsUnSelect);
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Throwable throwable) {
-                        hideLoading();
-                    }
-                }));
-    }
-
-    public void uncheckCartByProduct(String idsUnSelect) {
-        apiService.checkCartByProduct(new RequestBodyBuilder().addParams("check", 0).addParams("ids", idsUnSelect).build())
-                .compose(BIWNetworkApi.getInstance().applySchedulers())
-                .subscribe(new BaseObserver<>(this, new MvvmNetworkObserver<Object>() {
-                    @Override
-                    public void onSuccess(Object t, boolean isFromCache) {
-                        checkCartSuccessLive.setValue(true);
-                        hideLoading();
-                    }
-
-                    @Override
-                    public void onFailure(Throwable throwable) {
-                        hideLoading();
-                    }
-                }));
-
-    }
-
-    public void addToCart(int skuId, int quantity) {
+    public void addCartGoods(int skuId, int quantity) {
         showLoading();
         apiService.addToCart(new RequestBodyBuilder().addParams("product_sku_id", skuId).addParams("quantity", quantity).build())
                 .compose(BIWNetworkApi.getInstance().applySchedulers())
                 .subscribe(new BaseObserver<>(this, new MvvmNetworkObserver<BaseResponse<Object>>() {
                     @Override
                     public void onSuccess(BaseResponse<Object> t, boolean isFromCache) {
+                        refresh();
                         hideLoading();
                     }
 
@@ -110,6 +95,7 @@ public class CartViewModel extends BaseListViewModel<CartData.CartItemListBean> 
                 .subscribe(new BaseObserver<>(this, new MvvmNetworkObserver<BaseResponse<Object>>() {
                     @Override
                     public void onSuccess(BaseResponse<Object> t, boolean isFromCache) {
+                        refresh();
                         hideLoading();
                     }
 
@@ -117,6 +103,42 @@ public class CartViewModel extends BaseListViewModel<CartData.CartItemListBean> 
                     public void onFailure(Throwable throwable) {
                         hideLoading();
 
+                    }
+                }));
+    }
+
+    public void checkCartBySku(int check, String ids) {
+        showLoading();
+        apiService.checkCartBySku(new RequestBodyBuilder().addParams("check", check).addParams("ids", ids).build())
+                .compose(BIWNetworkApi.getInstance().applySchedulers())
+                .subscribe(new BaseObserver<>(this, new MvvmNetworkObserver<Object>() {
+                    @Override
+                    public void onSuccess(Object t, boolean isFromCache) {
+                        refresh();
+                        hideLoading();
+                    }
+
+                    @Override
+                    public void onFailure(Throwable throwable) {
+                        hideLoading();
+                    }
+                }));
+    }
+
+    public void checkCartByProduct(int check, String ids) {
+        showLoading();
+        apiService.checkCartByProduct(new RequestBodyBuilder().addParams("check", check).addParams("ids", ids).build())
+                .compose(BIWNetworkApi.getInstance().applySchedulers())
+                .subscribe(new BaseObserver<>(this, new MvvmNetworkObserver<Object>() {
+                    @Override
+                    public void onSuccess(Object t, boolean isFromCache) {
+                        refresh();
+                        hideLoading();
+                    }
+
+                    @Override
+                    public void onFailure(Throwable throwable) {
+                        hideLoading();
                     }
                 }));
     }

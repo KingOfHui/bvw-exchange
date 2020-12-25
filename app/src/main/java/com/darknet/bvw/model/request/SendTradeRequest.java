@@ -10,6 +10,15 @@ public class SendTradeRequest {
     private String withdraw_address;
     private String demo;
     private int miner_id;
+    private int coupon_template_id;
+
+    public int getCoupon_template_id() {
+        return coupon_template_id;
+    }
+
+    public void setCoupon_template_id(int coupon_template_id) {
+        this.coupon_template_id = coupon_template_id;
+    }
 
     public int getMiner_id() {
         return miner_id;
