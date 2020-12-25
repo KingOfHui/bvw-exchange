@@ -53,7 +53,7 @@ public class OrderListFragment extends BaseBindingFragment<OrderListViewModel, F
     @Override
     protected void initView() {
         OrderListAdapter orderListAdapter = new OrderListAdapter();
-        orderListAdapter.setOnItemClickListener((adapter, view, position) -> OrderDetailActivity.start(requireActivity()));
+        orderListAdapter.setOnItemClickListener((adapter, view, position) -> OrderDetailActivity.start(requireActivity(),orderListAdapter.getItem(position)));
         mDataBinding.setAdapter(orderListAdapter);
     }
 

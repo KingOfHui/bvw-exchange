@@ -12,6 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/shape_circle_rect_order"
+        android:focusableInTouchMode="false"
+        android:focusable="false"
+        android:clickable="false"
         android:paddingStart="@dimen/dimen_20dp"
         android:paddingTop="@dimen/dimen_15dp"
         android:paddingEnd="@dimen/dimen_20dp"
@@ -50,6 +53,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_15dp"
+            android:focusableInTouchMode="false"
+            android:focusable="false"
+            android:clickable="false"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintTop_toBottomOf="@id/view" />
         <!--
@@ -160,6 +166,7 @@
             tools:text="USDT 206" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clOperation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -207,6 +214,14 @@
                 app:layout_constraintTop_toTopOf="@id/tvOperationRight"
                 tools:text="取消订单" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="tvCount,tvTotalPrice,tvTotalTip"
+            tools:layout_editor_absoluteX="20dp"
+            tools:layout_editor_absoluteY="15dp" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

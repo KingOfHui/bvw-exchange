@@ -43,6 +43,7 @@ public class OrderListViewModel extends BaseListViewModel<OrderResp> {
     @Override
     @SuppressLint("CheckResult")
     protected void loadData(int pageNum, boolean isClear) {
+        showLoading();
         BIWNetworkApi.getService(ApiInterface.class).getOrderList(getTradeStateLive().getValue(), 20, pageNum)
                 .compose(BIWNetworkApi.getInstance()
                         .applySchedulers())
@@ -52,11 +53,13 @@ public class OrderListViewModel extends BaseListViewModel<OrderResp> {
                             public void onSuccess(BaseResponse<BaseListBean<OrderResp>> t, boolean isFromCache) {
                                 List<OrderResp> items = BaseListBean.getItems(t.getData());
                                 notifyResultToTopViewModel(items, 20);
+                                hideLoading();
                             }
 
                             @Override
                             public void onFailure(Throwable throwable) {
                                 loadFailed(throwable.getMessage());
+                                hideLoading();
                             }
                         }
                 ));

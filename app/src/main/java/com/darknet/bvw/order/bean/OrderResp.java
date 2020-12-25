@@ -1,5 +1,6 @@
 package com.darknet.bvw.order.bean;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -9,7 +10,7 @@ import java.util.List;
  * @Author dinghui
  * @Date 2020/12/21 0021 14:05
  */
-public class OrderResp {
+public class OrderResp implements Serializable {
 
     /**
      * auto_confirm_day : 0
@@ -485,7 +486,7 @@ public class OrderResp {
         this.order_item_list = order_item_list;
     }
 
-    public static class OrderHandleOptionBean {
+    public static class OrderHandleOptionBean implements Serializable{
         /**
          * address : 0
          * cancel : 0
@@ -561,7 +562,7 @@ public class OrderResp {
         }
     }
 
-    public static class OrderItemListBean {
+    public static class OrderItemListBean  implements Serializable{
         /**
          * amount : 0
          * coupon_amount : 0

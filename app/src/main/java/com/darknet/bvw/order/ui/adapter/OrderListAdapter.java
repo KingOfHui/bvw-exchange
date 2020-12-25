@@ -35,19 +35,21 @@ public class OrderListAdapter extends BaseDataBindingAdapter<OrderResp, ItemOrde
             binding.layoutOrder.tvCount.setText(String.format(context.getString(R.string.order_count_number), order_item_list.size() + ""));
         }
         binding.layoutOrder.tvOrderNum.setText(String.format(context.getString(R.string.order_number), item.getOrder_no()));
-        binding.layoutOrder.tvOrderStatus.setText(OrderStatusEnum.getOrderStatus(item.getState()).getText());
         binding.layoutOrder.tvTotalPrice.setText("USDT " + item.getPay_amount());
+        binding.layoutOrder.tvOrderStatus.setText(OrderStatusEnum.getOrderStatus(item.getState()).getText());
         //订单状态：0->待付款；1->待发货 2->已发货 3->已完成 4->已关闭 5->无效订单
         int state = item.getState();
         switch (state) {
             case 0:
+                binding.layoutOrder.clOperation.setVisibility(View.VISIBLE);
                 binding.layoutOrder.tvOperationLeft.setVisibility(View.VISIBLE);
                 binding.layoutOrder.tvOperationLeft.setText(context.getString(R.string.order_cancel));
                 binding.layoutOrder.tvOperationRight.setText(context.getString(R.string.to_pay));
                 break;
             case 1:
+                binding.layoutOrder.clOperation.setVisibility(View.VISIBLE);
                 binding.layoutOrder.tvOperationLeft.setVisibility(View.INVISIBLE);
-                binding.layoutOrder.tvOperationRight.setText("提醒发货");
+                binding.layoutOrder.tvOperationRight.setText(context.getString(R.string.remind_ship));
                 binding.layoutOrder.tvOperationLeft.setOnClickListener(v -> {
 
                 });
@@ -56,9 +58,10 @@ public class OrderListAdapter extends BaseDataBindingAdapter<OrderResp, ItemOrde
                 });
                 break;
             case 2:
+                binding.layoutOrder.clOperation.setVisibility(View.VISIBLE);
                 binding.layoutOrder.tvOperationLeft.setVisibility(View.VISIBLE);
-                binding.layoutOrder.tvOperationLeft.setText("查看物流");
-                binding.layoutOrder.tvOperationRight.setText("确认收货");
+                binding.layoutOrder.tvOperationLeft.setText(context.getString(R.string.view_logistics));
+                binding.layoutOrder.tvOperationRight.setText(context.getString(R.string.confirm_receipt));
                 binding.layoutOrder.tvOperationLeft.setOnClickListener(v -> {
 
                 });
@@ -67,8 +70,7 @@ public class OrderListAdapter extends BaseDataBindingAdapter<OrderResp, ItemOrde
                 });
                 break;
             case 3:
-                binding.layoutOrder.tvOperationLeft.setText("");
-                binding.layoutOrder.tvOperationRight.setText("");
+                binding.layoutOrder.clOperation.setVisibility(View.GONE);
                 binding.layoutOrder.tvOperationLeft.setOnClickListener(v -> {
 
                 });

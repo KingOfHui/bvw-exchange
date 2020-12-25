@@ -1041,4 +1041,7 @@
     <string name="buy_coupon_title">购买%s元无门槛现金券</string>
     <string name="buy_can_use_biw">本次购买将消耗%sBIW</string>
     <string name="validity_date">有效期：%s</string>
+    <string name="remind_ship">提醒发货</string>
+    <string name="view_logistics">查看物流</string>
+    <string name="confirm_receipt">确认收货</string>
 </resources>

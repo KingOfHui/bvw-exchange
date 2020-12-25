@@ -1,12 +1,9 @@
 package com.darknet.bvw.order.ui.activity;
 
 
-import android.app.job.JobInfo;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.text.TextUtils;
-import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -19,7 +16,6 @@ import com.darknet.bvw.databinding.ActivityCartBinding;
 import com.darknet.bvw.order.bean.CartData;
 import com.darknet.bvw.order.vm.CartViewModel;
 import com.darknet.bvw.util.StatusBarUtil;
-import com.darknet.bvw.util.ToastUtils;
 import com.darknet.bvw.util.ValueUtil;
 import com.darknet.bvw.util.view.ViewUtil;
 import com.darknet.bvw.view.CustomCarCounterView;
@@ -27,7 +23,6 @@ import com.darknet.bvw.view.CustomDividerItemDecoration;
 import com.jingui.lib.utils.DensityUtils;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -79,7 +74,7 @@ public class CartActivity extends BaseBindingActivity<ActivityCartBinding> {
             }
         });
         mBinding.tvSettle.setOnClickListener(view -> {
-            ConfirmOrderActivity.start(this);
+            ConfirmOrderActivity.start(this, null, null);
         });
         mBinding.ivAllSelected.setOnClickListener(view -> {
             viewModel.checkCartBySku(mCartAdapter.allSelectedOrNot() ? 0 : 1,mCartAdapter.getAllIds());
@@ -90,7 +85,7 @@ public class CartActivity extends BaseBindingActivity<ActivityCartBinding> {
 
         viewModel.checkCartSuccessLive.observe(this, aBoolean -> {
             if (aBoolean) {
-                ConfirmOrderActivity.start(this);
+                ConfirmOrderActivity.start(this, null, null);
             }
         });
         viewModel.cartDataLive.observe(this, this::updateBottomView);

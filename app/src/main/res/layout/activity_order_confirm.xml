@@ -7,7 +7,7 @@
 
         <variable
             name="adapter"
-            type="com.darknet.bvw.order.ui.adapter.OrderGoodsAdapter" />
+            type="com.darknet.bvw.order.ui.adapter.ConfirmGoodsAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,7 +27,8 @@
             app:layout_constraintBottom_toTopOf="@id/tvSubmitOrder"
             app:layout_constraintTop_toBottomOf="@id/layout_title">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -149,6 +150,8 @@
                     adapter="@{adapter}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_15dp"
+                    android:layout_marginEnd="@dimen/dimen_15dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintBottom_toTopOf="@id/clDiscounts"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -239,9 +242,11 @@
 
                 <com.darknet.bvw.view.HorizontalLineView
                     android:id="@+id/hlvDiscounts"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimen_20dp"
+                    android:layout_marginStart="@dimen/dimen_15dp"
+                    android:layout_marginEnd="@dimen/dimen_15dp"
                     app:layout_constraintLeft_toLeftOf="@id/clDiscounts"
                     app:layout_constraintRight_toRightOf="@id/clDiscounts"
                     app:layout_constraintTop_toBottomOf="@id/clDiscounts"
@@ -251,9 +256,11 @@
 
                 <com.darknet.bvw.view.HorizontalLineView
                     android:id="@+id/hlvFreight"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimen_10dp"
+                    android:layout_marginStart="@dimen/dimen_15dp"
+                    android:layout_marginEnd="@dimen/dimen_15dp"
                     app:layout_constraintLeft_toLeftOf="@id/hlvDiscounts"
                     app:layout_constraintRight_toRightOf="@id/hlvDiscounts"
                     app:layout_constraintTop_toBottomOf="@id/hlvDiscounts"
@@ -263,9 +270,11 @@
 
                 <com.darknet.bvw.view.HorizontalLineView
                     android:id="@+id/hlvTotalPrice"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimen_10dp"
+                    android:layout_marginStart="@dimen/dimen_15dp"
+                    android:layout_marginEnd="@dimen/dimen_15dp"
                     app:layout_constraintLeft_toLeftOf="@id/hlvFreight"
                     app:layout_constraintRight_toRightOf="@id/hlvFreight"
                     app:layout_constraintTop_toBottomOf="@id/hlvFreight"
@@ -276,7 +285,7 @@
                     app:right_text_color="@color/color_text_00FBD9"
                     app:right_text_size="5dp" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
         </androidx.core.widget.NestedScrollView>
 
         <TextView

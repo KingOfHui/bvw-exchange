@@ -5,25 +5,20 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.ImageView;
-
-import androidx.databinding.ViewDataBinding;
-import androidx.lifecycle.Observer;
 
 import com.darknet.bvw.R;
 import com.darknet.bvw.activity.BaseBindingActivity;
 import com.darknet.bvw.databinding.ActivityGoodsDetailBinding;
-import com.darknet.bvw.mall.bean.GoodsBannerBean;
 import com.darknet.bvw.mall.bean.GoodsDetailBean;
 import com.darknet.bvw.mall.ui.dialog.GoodsSkuDialog;
 import com.darknet.bvw.mall.vm.GoodsDetailViewModel;
 import com.darknet.bvw.order.ui.activity.CartActivity;
+import com.darknet.bvw.order.ui.activity.ConfirmOrderActivity;
 import com.darknet.bvw.order.vm.CartViewModel;
 import com.darknet.bvw.util.GlideImageLoader;
 import com.darknet.bvw.util.SpanHelper;
 import com.darknet.bvw.util.StatusBarUtil;
 import com.darknet.bvw.util.ToastUtils;
-import com.youth.banner.loader.ImageLoaderInterface;
 
 import java.util.Arrays;
 import java.util.List;
@@ -53,9 +48,10 @@ public class GoodsDetailActivity extends BaseBindingActivity<ActivityGoodsDetail
         mBinding.ivBack.setOnClickListener(v -> finish());
         mBinding.tvToCart.setOnClickListener(v -> CartActivity.start(this));
         mBinding.tvAddToCart.setOnClickListener(view -> {
-            showSkuDialog(mViewModel);
+            showSkuDialog(true);
         });
-        mBinding.tvSelectSkuTip.setOnClickListener(v -> showSkuDialog(mViewModel));
+        mBinding.tvBuyNow.setOnClickListener(v -> showSkuDialog( false));
+        mBinding.tvSelectSkuTip.setOnClickListener(v -> showSkuDialog( true));
 
     }
 
@@ -77,8 +73,8 @@ public class GoodsDetailActivity extends BaseBindingActivity<ActivityGoodsDetail
                 mBinding.shoppingNum.setText(String.valueOf(CollectionUtil.isNotEmpty(it)?it.size():0)));
     }
 
-    private void showSkuDialog(GoodsDetailViewModel viewModel) {
-        GoodsDetailBean value = viewModel.productDetailLive.getValue();
+    private void showSkuDialog(boolean isToCart) {
+        GoodsDetailBean value = mViewModel.productDetailLive.getValue();
         if (value != null) {
             List<GoodsDetailBean.SkuListBean> sku_list = value.getSku_list();
             if (CollectionUtil.isNotEmpty(sku_list)) {
@@ -89,7 +85,11 @@ public class GoodsDetailActivity extends BaseBindingActivity<ActivityGoodsDetail
                         mSelectSkuListBean = skuListBean;
                         mBinding.tvSelectSku.setText(String.format(getString(R.string.select_goods_sku), skuListBean.getSp1()));
                         if (mSelectSkuListBean != null) {
-                            mViewModel.addToCart(mSelectSkuListBean.getId(), mSelectSkuListBean.getQuantity());
+                            if (isToCart) {
+                                mViewModel.addToCart(mSelectSkuListBean.getId(), mSelectSkuListBean.getQuantity());
+                            }else {
+                                ConfirmOrderActivity.start(GoodsDetailActivity.this,mSelectSkuListBean,value);
+                            }
                         } else {
                             ToastUtils.showToast(getString(R.string.please_select_sku));
                         }

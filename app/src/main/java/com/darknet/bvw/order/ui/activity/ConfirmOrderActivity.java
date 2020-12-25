@@ -8,13 +8,17 @@ import androidx.annotation.Nullable;
 import com.darknet.bvw.R;
 import com.darknet.bvw.activity.BaseBindingActivity;
 import com.darknet.bvw.databinding.ActivityOrderConfirmBinding;
+import com.darknet.bvw.mall.bean.GoodsDetailBean;
 import com.darknet.bvw.order.bean.CartData;
 import com.darknet.bvw.order.bean.ShippingAddress;
+import com.darknet.bvw.order.ui.adapter.ConfirmGoodsAdapter;
 import com.darknet.bvw.order.ui.adapter.OrderGoodsAdapter;
 import com.darknet.bvw.order.vm.ConfirmOrderViewModel;
 import com.darknet.bvw.order.vm.MyAddressViewModel;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.List;
 
 import cn.hutool.core.collection.CollectionUtil;
 
@@ -28,9 +32,12 @@ public class ConfirmOrderActivity extends BaseBindingActivity<ActivityOrderConfi
 
     private ShippingAddress mAddress;
     private MyAddressViewModel mAddressViewModel;
+    List<CartData.CartItemListBean> mCartItemListBeans = new ArrayList<>();
 
-    public static void start(Context context) {
+    public static void start(Context context, GoodsDetailBean.SkuListBean selectSkuListBean, GoodsDetailBean goodsDetailBean) {
         Intent intent = new Intent(context, ConfirmOrderActivity.class);
+        intent.putExtra("selectSkuListBean", selectSkuListBean);
+        intent.putExtra("goodsDetailBean", goodsDetailBean);
         context.startActivity(intent);
     }
 
@@ -42,7 +49,30 @@ public class ConfirmOrderActivity extends BaseBindingActivity<ActivityOrderConfi
     @Override
     public void initView() {
         Intent data = getIntent();
-        ArrayList<CartData.CartItemListBean> allSelected = data.getParcelableArrayListExtra("allSelected");
+        GoodsDetailBean.SkuListBean selectSkuListBean = (GoodsDetailBean.SkuListBean) data.getSerializableExtra("selectSkuListBean");
+        GoodsDetailBean goodsDetailBean = (GoodsDetailBean) data.getSerializableExtra("goodsDetailBean");
+
+        if (selectSkuListBean != null && goodsDetailBean != null) {
+            CartData.CartItemListBean cartItemListBean = new CartData.CartItemListBean();
+            cartItemListBean.setProduct_name(goodsDetailBean.getName());
+            cartItemListBean.setSp1(selectSkuListBean.getSp1());
+            cartItemListBean.setPrice(new BigDecimal(selectSkuListBean.getPrice()));
+            cartItemListBean.setProduct_img_url(goodsDetailBean.getImg_url());
+            cartItemListBean.setOriginal_price(new BigDecimal(selectSkuListBean.getOriginal_price()));
+            cartItemListBean.setQuantity(selectSkuListBean.getQuantity());
+            mCartItemListBeans.add(cartItemListBean);
+        }
+        mBinding.layoutTitle.layBack.setOnClickListener(view -> finish());
+        mBinding.layoutTitle.title.setText(getString(R.string.confirm_order));
+        ConfirmGoodsAdapter adapter = new ConfirmGoodsAdapter();
+        adapter.setNewData(mCartItemListBeans);
+        mBinding.setAdapter(adapter);
+        mBinding.tvAddressTip.setOnClickListener(view -> {
+            Intent intent = new Intent(this, MyAddressesActivity.class);
+            intent.putExtra("selectId", mAddress.getId());
+            startActivityForResult(intent, 10000);
+        });
+        mBinding.ivEdit.setOnClickListener(view -> AddAddressActivity.start(this, mAddress, false));
         mAddressViewModel = getViewModel(MyAddressViewModel.class);
         ConfirmOrderViewModel orderViewModel = getViewModel(ConfirmOrderViewModel.class);
         mAddressViewModel.refresh();
@@ -54,17 +84,12 @@ public class ConfirmOrderActivity extends BaseBindingActivity<ActivityOrderConfi
                         mAddress.getNation(), mAddress.getProvince(), mAddress.getCity(), mAddress.getCounty(), mAddress.getDetail_info()));
             }
         });
-        mBinding.layoutTitle.layBack.setOnClickListener(view -> finish());
-        mBinding.layoutTitle.title.setText(getString(R.string.confirm_order));
-        mBinding.setAdapter(new OrderGoodsAdapter());
-        mBinding.tvAddressTip.setOnClickListener(view -> {
-            Intent intent = new Intent(this, MyAddressesActivity.class);
-            intent.putExtra("selectId", mAddress.getId());
-            startActivityForResult(intent, 10000);
-        });
-        mBinding.ivEdit.setOnClickListener(view -> AddAddressActivity.start(this, mAddress, false));
         mBinding.tvSubmitOrder.setOnClickListener(view -> {
-            orderViewModel.submitCartOrder();
+            if (selectSkuListBean == null) {
+                orderViewModel.submitCartOrder();
+            } else {
+
+            }
         });
         orderViewModel.submitOrderLive.observe(this, submitOrderResps -> {
             if (CollectionUtil.isNotEmpty(submitOrderResps) && submitOrderResps.size() > 1) {

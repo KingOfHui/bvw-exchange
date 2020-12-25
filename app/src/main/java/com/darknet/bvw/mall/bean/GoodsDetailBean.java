@@ -2,6 +2,7 @@ package com.darknet.bvw.mall.bean;
 
 import android.text.TextUtils;
 
+import java.io.Serializable;
 import java.util.List;
 
 import androidx.annotation.Keep;
@@ -16,7 +17,7 @@ import androidx.annotation.Keep;
  * 优惠券金额 就是 具体的  coupon_discount 值
  */
 @Keep
-public class GoodsDetailBean {
+public class GoodsDetailBean implements Serializable{
 
 	/**
 	 * attr_list : [{"category_id":0,"id":0,"input_list":"","name":"","orders":0,"product_id":0,"required":0,"show_type":0,"type":0,"value":""}]
@@ -334,7 +335,7 @@ public class GoodsDetailBean {
 		this.sku_list = sku_list;
 	}
 
-	public static class AttrListBean {
+	public static class AttrListBean implements Serializable{
 		/**
 		 * category_id : 0
 		 * id : 0
@@ -440,7 +441,7 @@ public class GoodsDetailBean {
 		}
 	}
 
-	public static class SkuListBean {
+	public static class SkuListBean implements Serializable {
 		/**
 		 * id : 0
 		 * img_url :
