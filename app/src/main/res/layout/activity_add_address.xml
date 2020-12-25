@@ -21,6 +21,17 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layout_title" />
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/scrollView"
+            app:layout_constraintTop_toBottomOf="@id/line"
+            >
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
         <TextView
             android:id="@+id/tvContract"
             android:layout_width="wrap_content"
@@ -31,7 +42,7 @@
             android:textColor="@color/white"
             android:textSize="@dimen/sp_14"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/line" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/etContact"
@@ -273,7 +284,8 @@
             app:layout_constraintBottom_toBottomOf="@id/tvSetDefault"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@id/tvSetDefault"/>
-
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
         <TextView
             android:id="@+id/tvSave"
             android:layout_width="match_parent"

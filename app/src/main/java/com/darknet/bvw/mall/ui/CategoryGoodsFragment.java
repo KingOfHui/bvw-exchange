@@ -152,7 +152,7 @@ public class CategoryGoodsFragment extends BaseFragment {
 			helper.setText(R.id.tv_price, "USTD "+item.getPrice());
 			helper.setText(R.id.tv_number, String.format(mContext.getString(R.string.paid_num), String.valueOf(item.getSale())));
 			helper.itemView.setOnClickListener(view -> {
-				GoodsDetailActivity.start(mContext,item.getMall_id());
+				GoodsDetailActivity.start(mContext,item.getId());
 			});
 		}
 	}

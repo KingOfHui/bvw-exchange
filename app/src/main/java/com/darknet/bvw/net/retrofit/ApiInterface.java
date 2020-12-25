@@ -87,6 +87,10 @@ public interface ApiInterface {
     @POST("api/shop/order/confirmReceive")
     Observable<BaseResponse<Object>> confirmReceive(@Body RequestBody body);
 
+    //提醒发货
+    @POST("api/shop/order/remind")
+    Observable<BaseResponse<Object>> tipDelivery(@Body RequestBody body);
+
     //提交订单
     @POST("api/shop/order/submit")
     Observable<BaseResponse<List<OrderResp>>> submitOrder(@Body RequestBody body);

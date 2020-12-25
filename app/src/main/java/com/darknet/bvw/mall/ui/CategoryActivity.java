@@ -14,10 +14,12 @@ import com.darknet.bvw.mall.bean.GoodsBannerBean;
 import com.darknet.bvw.mall.bean.GoodsBean;
 import com.darknet.bvw.mall.bean.ShopHomeBean;
 import com.darknet.bvw.mall.presenter.CategoryPresenter;
+import com.darknet.bvw.mall.ui.search.SearchActivity;
 import com.darknet.bvw.net.retrofit.ApiInterface;
 import com.darknet.bvw.net.retrofit.BIWNetworkApi;
 import com.darknet.bvw.net.retrofit.BaseObserver;
 import com.darknet.bvw.net.retrofit.MvvmNetworkObserver;
+import com.darknet.bvw.order.ui.activity.OrderListActivity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -66,6 +68,8 @@ public class CategoryActivity extends BaseActivity {
 		mBtnOrder = findViewById(R.id.btn_order);
 		mCategory = findViewById(R.id.category);
 		mVp2 = findViewById(R.id.vp2);
+		findViewById(R.id.search).setOnClickListener(view -> SearchActivity.start(this));
+		findViewById(R.id.btn_order).setOnClickListener(view -> OrderListActivity.start(this,0));
 		mBack.setOnClickListener(v -> finish());
 		mCategory.setLayoutManager(new LinearLayoutManager(this));
 		mCategory.setAdapter(mCategoryAdapter = new CategoryAdapter());

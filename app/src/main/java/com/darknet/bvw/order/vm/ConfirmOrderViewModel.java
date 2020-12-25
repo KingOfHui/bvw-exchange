@@ -29,6 +29,7 @@ public class ConfirmOrderViewModel extends BaseViewModel {
     public MutableLiveData<Boolean> submitOrderLive = new MutableLiveData<>();
     public MutableLiveData<OrderResp> mOrderDetailLiveData = new MutableLiveData<>();
     public MutableLiveData<List<CartData.CartItemListBean>> cartItemListLive = new MutableLiveData<>();
+    public MutableLiveData<CartData> cartDataLive = new MutableLiveData<>();
 
     public ConfirmOrderViewModel(@NonNull Application application) {
         super(application);
@@ -105,6 +106,7 @@ public class ConfirmOrderViewModel extends BaseViewModel {
                     @Override
                     public void onSuccess(BaseResponse<CartData> t, boolean isFromCache) {
                         CartData data = t.getData();
+                        cartDataLive.setValue(data);
                         List<CartData.CartItemListBean> cart_item_list = data.getCart_item_list();
                         ArrayList<CartData.CartItemListBean> cartItemListBeans = new ArrayList<>();
                         for (CartData.CartItemListBean cartItemListBean : cart_item_list) {

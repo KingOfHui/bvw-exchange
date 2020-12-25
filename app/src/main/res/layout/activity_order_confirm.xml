@@ -50,7 +50,7 @@
                         android:layout_height="44dp"
                         android:drawableEnd="@mipmap/ic_right_arrow"
                         android:gravity="center_vertical"
-                        android:text="收货地址"
+                        android:text="@string/shiping_address"
                         android:textColor="@color/white"
                         android:textSize="@dimen/sp_14"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -116,7 +116,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="支付方式"
+                        android:text="@string/pay_way"
                         android:textColor="@color/white"
                         android:textSize="@dimen/dp_14"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -150,8 +150,10 @@
                     adapter="@{adapter}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/shape_circle_rect_order"
                     android:layout_marginStart="@dimen/dimen_15dp"
                     android:layout_marginEnd="@dimen/dimen_15dp"
+                    android:layout_marginTop="@dimen/dp_10"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintBottom_toTopOf="@id/clDiscounts"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -172,7 +174,7 @@
                         android:id="@+id/tvRemarkTip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="订单备注"
+                        android:text="@string/order_remark"
                         android:textColor="@color/white"
                         android:textSize="@dimen/dp_14"
                         app:layout_constraintLeft_toLeftOf="parent"
@@ -184,8 +186,8 @@
                         android:layout_height="@dimen/dimen_70dp"
                         android:layout_marginTop="@dimen/dimen_10dp"
                         android:background="@color/color_bg_181523"
-                        android:gravity="top|left"
-                        android:hint="请输入备注内容"
+                        android:gravity="top|start"
+                        android:hint="@string/enter_remark_content"
                         android:padding="@dimen/dimen_5dp"
                         android:textColor="@color/white"
                         android:textColorHint="#77ffffff"
@@ -211,7 +213,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="使用优惠"
+                        android:text="@string/use_coupon"
                         android:textColor="@color/white"
                         android:textSize="@dimen/dp_14"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -252,9 +254,9 @@
                     app:layout_constraintLeft_toLeftOf="@id/clDiscounts"
                     app:layout_constraintRight_toRightOf="@id/clDiscounts"
                     app:layout_constraintTop_toBottomOf="@id/clDiscounts"
-                    app:left_text="优惠金额"
+                    app:left_text="@string/discounted_price"
                     app:left_text_color="@color/white"
-                    app:right_text="USDT 10" />
+                    />
 
                 <com.darknet.bvw.view.HorizontalLineView
                     android:id="@+id/hlvFreight"
@@ -268,7 +270,7 @@
                     app:layout_constraintTop_toBottomOf="@id/hlvDiscounts"
                     app:left_text="@string/order_freight"
                     app:left_text_color="@color/white"
-                    app:right_text="USDT 10" />
+                     />
 
                 <com.darknet.bvw.view.HorizontalLineView
                     android:id="@+id/hlvTotalPrice"
@@ -280,10 +282,9 @@
                     app:layout_constraintLeft_toLeftOf="@id/hlvFreight"
                     app:layout_constraintRight_toRightOf="@id/hlvFreight"
                     app:layout_constraintTop_toBottomOf="@id/hlvFreight"
-                    app:left_text="商品合计"
+                    app:left_text="@string/total_price"
                     app:left_text_color="@color/white"
                     app:left_text_size="5dp"
-                    app:right_text="USDT 10"
                     app:right_text_color="@color/color_text_00FBD9"
                     app:right_text_size="5dp" />
 
@@ -301,7 +302,7 @@
             android:background="@drawable/shape_circle_rect_black"
             android:backgroundTint="@color/_01FCDA"
             android:gravity="center"
-            android:text="提交订单"
+            android:text="@string/submit_order"
             android:textColor="@color/black"
             android:textSize="@dimen/sp_16"
             app:layout_constraintBottom_toBottomOf="parent"

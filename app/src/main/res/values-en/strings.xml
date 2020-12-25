@@ -1015,4 +1015,15 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="order_settle">订单结算</string>
     <string name="buy_success">恭喜您，购买成功</string>
     <string name="paid_num">%s人已付款</string>
+    <string name="total_price">商品合计</string>
+    <string name="submit_order">提交订单</string>
+    <string name="discounted_price">优惠金额</string>
+    <string name="use_coupon">使用优惠</string>
+    <string name="enter_remark_content">请输入备注内容</string>
+    <string name="order_remark">订单备注</string>
+    <string name="pay_way">支付方式</string>
+    <string name="shiping_address">收货地址</string>
+    <string name="cancel_order_success">取消订单成功</string>
+    <string name="order_complete">收货成功，订单完成</string>
+    <string name="tip_success">提醒成功</string>
 </resources>

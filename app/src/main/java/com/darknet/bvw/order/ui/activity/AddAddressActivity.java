@@ -56,6 +56,7 @@ public class AddAddressActivity extends BaseBindingActivity<ActivityAddAddressBi
             mBinding.etProvince.setText(mAddress.getProvince());
             mBinding.etCity.setText(mAddress.getCity());
             mBinding.etContry.setText(mAddress.getCounty());
+            mBinding.etPostal.setText(mAddress.getPostal());
         }
         MyAddressViewModel viewModel = getViewModel(MyAddressViewModel.class);
         mBinding.layoutTitle.layBack.setOnClickListener((view -> finish()));

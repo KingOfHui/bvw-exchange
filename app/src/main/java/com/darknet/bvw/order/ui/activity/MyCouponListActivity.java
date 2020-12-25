@@ -34,7 +34,6 @@ public class MyCouponListActivity extends BaseBindingActivity<ActivityMyCouponLi
 
     @Override
     public void initView() {
-        EventBus.getDefault().register(this);
         StatusBarUtil.setStatusBarColor(this, R.color.color_bg_181523);
         mBinding.layoutTitle.title.setText(getString(R.string.my_cash_coupon));
         MyCouponAdapter myCouponAdapter = new MyCouponAdapter();

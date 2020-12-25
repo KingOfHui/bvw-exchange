@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.darknet.bvw.R;
 import com.darknet.bvw.activity.BaseBindingActivity;
+import com.darknet.bvw.activity.XchainMainThreeActivity;
 import com.darknet.bvw.databinding.ActivityGoodsDetailBinding;
 import com.darknet.bvw.mall.bean.GoodsDetailBean;
 import com.darknet.bvw.mall.ui.dialog.GoodsSkuDialog;
@@ -52,7 +53,7 @@ public class GoodsDetailActivity extends BaseBindingActivity<ActivityGoodsDetail
         });
         mBinding.tvBuyNow.setOnClickListener(v -> showSkuDialog( false));
         mBinding.tvSelectSkuTip.setOnClickListener(v -> showSkuDialog( true));
-
+        mBinding.tvToHome.setOnClickListener(view -> startActivity(new Intent(this, XchainMainThreeActivity.class)));
     }
 
     @Override

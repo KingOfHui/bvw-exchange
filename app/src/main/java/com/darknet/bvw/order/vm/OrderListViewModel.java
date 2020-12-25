@@ -7,6 +7,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
+import com.darknet.bvw.R;
 import com.darknet.bvw.base.BaseListBean;
 import com.darknet.bvw.common.BaseListViewModel;
 import com.darknet.bvw.common.BaseResponse;
@@ -14,7 +15,9 @@ import com.darknet.bvw.net.retrofit.ApiInterface;
 import com.darknet.bvw.net.retrofit.BIWNetworkApi;
 import com.darknet.bvw.net.retrofit.BaseObserver;
 import com.darknet.bvw.net.retrofit.MvvmNetworkObserver;
+import com.darknet.bvw.net.retrofit.RequestBodyBuilder;
 import com.darknet.bvw.order.bean.OrderResp;
+import com.darknet.bvw.util.ToastUtils;
 
 import java.util.List;
 
@@ -63,5 +66,59 @@ public class OrderListViewModel extends BaseListViewModel<OrderResp> {
                             }
                         }
                 ));
+    }
+
+    public void cancelOrder(int id) {
+        showLoading();
+        apiService.cancelOrder(new RequestBodyBuilder().addParams("id",id).build())
+                .compose(BIWNetworkApi.getInstance().applySchedulers())
+                .subscribe(new BaseObserver<>(this, new MvvmNetworkObserver<BaseResponse<Object>>() {
+                    @Override
+                    public void onSuccess(BaseResponse<Object> t, boolean isFromCache) {
+                        refresh();
+                        ToastUtils.showToast(getApplication().getString(R.string.cancel_order_success));
+                    }
+
+                    @Override
+                    public void onFailure(Throwable throwable) {
+                        hideLoading();
+                    }
+                }));
+    }
+
+    public void tipDelivery(int id) {
+        showLoading();
+        apiService.tipDelivery(new RequestBodyBuilder().addParams("id",id).build())
+                .compose(BIWNetworkApi.getInstance().applySchedulers())
+                .subscribe(new BaseObserver<>(this, new MvvmNetworkObserver<BaseResponse<Object>>() {
+                    @Override
+                    public void onSuccess(BaseResponse<Object> t, boolean isFromCache) {
+                        refresh();
+                        ToastUtils.showToast(getApplication().getString(R.string.tip_success));
+                    }
+
+                    @Override
+                    public void onFailure(Throwable throwable) {
+                        hideLoading();
+                    }
+                }));
+    }
+
+    public void confirmReceive(int id) {
+        showLoading();
+        apiService.confirmReceive(new RequestBodyBuilder().addParams("id",id).build())
+                .compose(BIWNetworkApi.getInstance().applySchedulers())
+                .subscribe(new BaseObserver<>(this, new MvvmNetworkObserver<BaseResponse<Object>>() {
+                    @Override
+                    public void onSuccess(BaseResponse<Object> t, boolean isFromCache) {
+                        refresh();
+                        ToastUtils.showToast(getApplication().getString(R.string.order_complete));
+                    }
+
+                    @Override
+                    public void onFailure(Throwable throwable) {
+                        hideLoading();
+                    }
+                }));
     }
 }

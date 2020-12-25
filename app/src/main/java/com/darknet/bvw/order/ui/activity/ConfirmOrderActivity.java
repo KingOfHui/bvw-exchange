@@ -19,6 +19,7 @@ import com.darknet.bvw.order.ui.adapter.ConfirmGoodsAdapter;
 import com.darknet.bvw.order.vm.ConfirmOrderViewModel;
 import com.darknet.bvw.order.vm.MyAddressViewModel;
 import com.darknet.bvw.util.ToastUtils;
+import com.darknet.bvw.util.ValueUtil;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -85,6 +86,12 @@ public class ConfirmOrderActivity extends BaseBindingActivity<ActivityOrderConfi
         adapter.setNewData(mCartItemListBeans);
         mBinding.setAdapter(adapter);
         orderViewModel.cartItemListLive.observe(this, adapter::setNewData);
+        orderViewModel.cartDataLive.observe(this, new Observer<CartData>() {
+            @Override
+            public void onChanged(CartData cartData) {
+                mBinding.hlvTotalPrice.setRightText(ValueUtil.stripTrailingZeros(cartData.getChecked_product_amount()));
+            }
+        });
         mBinding.tvAddressTip.setOnClickListener(view -> {
             Intent intent = new Intent(this, MyAddressesActivity.class);
             intent.putExtra("selectId", mAddress.getId());
@@ -150,6 +157,7 @@ public class ConfirmOrderActivity extends BaseBindingActivity<ActivityOrderConfi
         mSelectCouponBean = couponBean;
         mBinding.tvDiscounts.setVisibility(View.VISIBLE);
         mBinding.tvDiscounts.setText(String.format("%s USDT", couponBean.getDiscount()));
+        mBinding.hlvDiscounts.setRightText(String.format("%s USDT", couponBean.getDiscount()));
     }
 
     @Override

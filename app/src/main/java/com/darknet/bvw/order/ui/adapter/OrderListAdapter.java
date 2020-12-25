@@ -45,16 +45,25 @@ public class OrderListAdapter extends BaseDataBindingAdapter<OrderResp, ItemOrde
                 binding.layoutOrder.tvOperationLeft.setVisibility(View.VISIBLE);
                 binding.layoutOrder.tvOperationLeft.setText(context.getString(R.string.order_cancel));
                 binding.layoutOrder.tvOperationRight.setText(context.getString(R.string.to_pay));
+                binding.layoutOrder.tvOperationLeft.setOnClickListener(v -> {
+                    if (mListener!=null) {
+                        mListener.cancelOrder(item.getId());
+                    }
+                });
+                binding.layoutOrder.tvOperationRight.setOnClickListener(v -> {
+
+                });
                 break;
             case 1:
                 binding.layoutOrder.clOperation.setVisibility(View.VISIBLE);
                 binding.layoutOrder.tvOperationLeft.setVisibility(View.INVISIBLE);
                 binding.layoutOrder.tvOperationRight.setText(context.getString(R.string.remind_ship));
                 binding.layoutOrder.tvOperationLeft.setOnClickListener(v -> {
-
                 });
                 binding.layoutOrder.tvOperationRight.setOnClickListener(v -> {
-
+                    if (mListener != null) {
+                        mListener.tipDelivery(item.getId());
+                    }
                 });
                 break;
             case 2:
@@ -63,50 +72,38 @@ public class OrderListAdapter extends BaseDataBindingAdapter<OrderResp, ItemOrde
                 binding.layoutOrder.tvOperationLeft.setText(context.getString(R.string.view_logistics));
                 binding.layoutOrder.tvOperationRight.setText(context.getString(R.string.confirm_receipt));
                 binding.layoutOrder.tvOperationLeft.setOnClickListener(v -> {
-
+                    if (mListener != null) {
+                        mListener.logistics(item.getId());
+                    }
                 });
                 binding.layoutOrder.tvOperationRight.setOnClickListener(v -> {
-
+                    if (mListener != null) {
+                        mListener.confirmReceive(item.getId());
+                    }
                 });
                 break;
             case 3:
-                binding.layoutOrder.clOperation.setVisibility(View.GONE);
-                binding.layoutOrder.tvOperationLeft.setOnClickListener(v -> {
-
-                });
-                binding.layoutOrder.tvOperationRight.setOnClickListener(v -> {
-
-                });
-                break;
             case 4:
-                binding.layoutOrder.tvOperationLeft.setText("");
-                binding.layoutOrder.tvOperationRight.setText("");
-                binding.layoutOrder.tvOperationLeft.setOnClickListener(v -> {
-
-                });
-                binding.layoutOrder.tvOperationRight.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                    }
-                });
-                break;
             case 5:
-                binding.layoutOrder.tvOperationLeft.setText("");
-                binding.layoutOrder.tvOperationRight.setText("");
-                binding.layoutOrder.tvOperationLeft.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                    }
-                });
-                binding.layoutOrder.tvOperationRight.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                    }
-                });
+            default:
+                binding.layoutOrder.clOperation.setVisibility(View.GONE);
                 break;
         }
+    }
+
+    private OnOrderOperationListener mListener;
+
+    public void setOnOrderOperationListener(OnOrderOperationListener listener) {
+        mListener = listener;
+    }
+
+    public interface OnOrderOperationListener{
+        void cancelOrder(int id);
+
+        void logistics(int id);
+
+        void tipDelivery(int id);
+
+        void confirmReceive(int id);
     }
 }
