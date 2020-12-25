@@ -24,7 +24,7 @@
         <TextView
             android:id="@+id/tvContract"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/dimen_70dp"
+            android:layout_height="65dp"
             android:layout_marginStart="@dimen/dimen_15dp"
             android:gravity="center"
             android:text="@string/contact"
@@ -58,7 +58,7 @@
         <TextView
             android:id="@+id/tvMobile"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/dimen_70dp"
+            android:layout_height="65dp"
             android:layout_marginStart="@dimen/dimen_15dp"
             android:gravity="center"
             android:text="@string/phone_number"
@@ -72,6 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:hint="@string/input_mobile"
+            android:inputType="number"
             android:maxLength="25"
             android:background="@null"
             android:textColor="@color/white"
@@ -90,7 +91,7 @@
         <TextView
             android:id="@+id/tvAreaLeft"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/dimen_70dp"
+            android:layout_height="50dp"
             android:layout_marginStart="@dimen/dimen_15dp"
             android:gravity="center"
             android:text="@string/yout_region"
@@ -111,16 +112,83 @@
             app:layout_constraintLeft_toLeftOf="@id/etContact"
             app:layout_constraintTop_toTopOf="@id/tvAreaLeft" />
 
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            app:layout_constraintTop_toBottomOf="@id/line3"
+            app:layout_constraintStart_toStartOf="@id/etContact"
+            android:id="@+id/etNation"
+            android:hint="请输入国家"
+            android:maxLength="25"
+            android:background="@null"
+            android:textColor="@color/white"
+            android:textColorHint="@color/result_minor_text"
+            android:textSize="@dimen/sp_14"/>
+        <View
+            style="@style/Line_White_02"
+            android:layout_width="0dp"
+            app:layout_constraintLeft_toLeftOf="@id/etContact"
+            app:layout_constraintTop_toBottomOf="@id/etNation" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            app:layout_constraintTop_toBottomOf="@id/etNation"
+            app:layout_constraintStart_toStartOf="@id/etContact"
+            android:id="@+id/etProvince"
+            android:hint="请输入省/州/地区"
+            android:maxLength="25"
+            android:background="@null"
+            android:textColor="@color/white"
+            android:textColorHint="@color/result_minor_text"
+            android:textSize="@dimen/sp_14"/>
+        <View
+            style="@style/Line_White_02"
+            android:layout_width="0dp"
+            app:layout_constraintLeft_toLeftOf="@id/etContact"
+            app:layout_constraintTop_toBottomOf="@id/etProvince" />
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            app:layout_constraintTop_toBottomOf="@id/etProvince"
+            app:layout_constraintStart_toStartOf="@id/etContact"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/etCity"
+            android:hint="请输入城市"
+            android:maxLength="25"
+            android:background="@null"
+            android:textColor="@color/white"
+            android:textColorHint="@color/result_minor_text"
+            android:textSize="@dimen/sp_14"/>
+        <View
+            android:id="@+id/line6"
+            style="@style/Line_White_02"
+            android:layout_width="0dp"
+            app:layout_constraintLeft_toLeftOf="@id/etContact"
+            app:layout_constraintTop_toBottomOf="@id/etCity" />
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            app:layout_constraintTop_toBottomOf="@id/etCity"
+            app:layout_constraintStart_toStartOf="@id/etContact"
+            android:id="@+id/etContry"
+            android:hint="请输入县"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:maxLength="25"
+            android:background="@null"
+            android:textColor="@color/white"
+            android:textColorHint="@color/result_minor_text"
+            android:textSize="@dimen/sp_14"/>
+
         <View
             android:id="@+id/line4"
             style="@style/Line_White_02"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvArea" />
+            app:layout_constraintTop_toBottomOf="@id/etContry" />
 
         <TextView
             android:id="@+id/tvAddress"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/dimen_70dp"
+            android:layout_height="65dp"
             android:layout_marginStart="@dimen/dimen_15dp"
             android:gravity="center"
             android:text="@string/detailed_address"
@@ -149,17 +217,50 @@
             style="@style/Line_White_02"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvAddress" />
+        <TextView
+            android:id="@+id/tvPostal"
+            android:layout_width="wrap_content"
+            android:layout_height="65dp"
+            android:layout_marginStart="@dimen/dimen_15dp"
+            android:gravity="center"
+            android:text="@string/postal_code"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_14"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line5" />
+
+        <EditText
+            android:id="@+id/etPostal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/input_postal"
+            android:inputType="number"
+            android:textColor="@color/white"
+            android:background="@null"
+            android:textColorHint="@color/result_minor_text"
+            android:textSize="@dimen/sp_14"
+            app:layout_constraintBottom_toTopOf="@id/line9"
+            app:layout_constraintLeft_toLeftOf="@id/etContact"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginEnd="@dimen/dimen_20dp"
+            app:layout_constraintTop_toTopOf="@id/tvPostal" />
+
+        <View
+            android:id="@+id/line9"
+            style="@style/Line_White_02"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvPostal" />
 
         <TextView
             android:id="@+id/tvSetDefault"
             android:layout_width="wrap_content"
-            android:layout_height="70dp"
+            android:layout_height="65dp"
             android:layout_marginStart="@dimen/dimen_15dp"
             android:gravity="center"
             android:text="@string/set_default_address"
             android:textColor="@color/white"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/line5" />
+            app:layout_constraintTop_toBottomOf="@id/line9" />
 
         <Switch
             android:id="@+id/switchDefault"
