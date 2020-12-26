@@ -48,7 +48,6 @@ public class OrderDetailActivity extends BaseBindingActivity<ActivityOrderDetail
     private void refreshUI(OrderResp order) {
         OrderStatusEnum orderStatus = OrderStatusEnum.getOrderStatus(order.getOrderState());
         mBinding.tvOrderStatus.setText(OrderStatusEnum.getOrderStatusText(this,order.getOrderState()));
-        mBinding.tvOrderTime.setText(order.getFinish_time());
         mBinding.ivOrderStatus.setImageResource(orderStatus.getDrawable());
         mBinding.tvOrderSubmitTime.setText(String.format(getString(R.string.order_submit_time), order.getCreate_time()));
         mBinding.tvContract.setText(String.format("%s   %s", order.getReceiver_name(), order.getReceiver_phone()));
@@ -81,11 +80,13 @@ public class OrderDetailActivity extends BaseBindingActivity<ActivityOrderDetail
                 mBinding.layoutOrderList.tvOperationLeft.setOnClickListener(v -> {
                     mViewModel.cancelOrder(order.getId());
                 });
+                mBinding.tvOrderTime.setText(String.format(getString(R.string.order_close_time), "23"));
                 break;
             case 1:
                 mBinding.layoutOrderList.tvOperationLeft.setVisibility(View.INVISIBLE);
                 mBinding.layoutOrderList.tvOperationRight.setText(getString(R.string.remind_ship));
                 mBinding.layoutOrderList.tvOperationRight.setOnClickListener(v -> mViewModel.tipDelivery(order.getId()));
+                mBinding.tvOrderTime.setText("您的包裹已准备完毕");
                 break;
             case 2:
                 mBinding.layoutOrderList.tvOperationLeft.setVisibility(View.VISIBLE);
@@ -93,9 +94,16 @@ public class OrderDetailActivity extends BaseBindingActivity<ActivityOrderDetail
                 mBinding.layoutOrderList.tvOperationRight.setText(getString(R.string.confirm_receipt));
                 mBinding.layoutOrderList.tvOperationLeft.setOnClickListener(v -> LogisticsTrackingActivity.start(this));
                 mBinding.layoutOrderList.tvOperationRight.setOnClickListener(v -> mViewModel.confirmReceive(order.getId()));
+                mBinding.tvOrderTime.setText("您的包裹正在配送中");
                 break;
             case 3:
+                mBinding.tvOrderTime.setText("您的包裹已签收");
+                mBinding.layoutOrderList.clOperation.setVisibility(View.GONE);
+                break;
             case 4:
+                mBinding.tvOrderTime.setText("您的订单被取消");
+                mBinding.layoutOrderList.clOperation.setVisibility(View.GONE);
+                break;
             case 5:
             default:
                 mBinding.layoutOrderList.clOperation.setVisibility(View.GONE);

@@ -44,7 +44,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_5dp"
-                android:text="@{@string/order_close_time(`23小时`)}"
                 android:textColor="@color/white"
                 android:textSize="@dimen/sp_12"
                 app:layout_constraintLeft_toLeftOf="@id/tvOrderStatus"
