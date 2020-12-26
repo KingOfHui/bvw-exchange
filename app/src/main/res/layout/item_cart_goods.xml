@@ -1,90 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<com.mcxtzhang.swipemenulib.SwipeMenuLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#1F1B2C"
-    android:paddingBottom="@dimen/dimen_15dp">
+    android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/ivSelected"
-        android:layout_width="17dp"
-        android:layout_height="17dp"
-        android:layout_marginStart="@dimen/dp_10"
-        android:background="@drawable/selector_box_selected"
-        app:layout_constraintBottom_toBottomOf="@id/sdvGoods"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/sdvGoods" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#1F1B2C"
+        android:paddingBottom="@dimen/dimen_15dp">
 
-    <com.darknet.bvw.view.RoundImageView
-        android:id="@+id/sdvGoods"
-        android:layout_width="@dimen/dimen_80dp"
-        android:layout_height="@dimen/dimen_80dp"
-        android:layout_marginStart="@dimen/dp_10"
-        android:layout_marginTop="@dimen/dimen_15dp"
-        app:layout_constraintStart_toEndOf="@id/ivSelected"
-        app:layout_constraintTop_toTopOf="parent"
-        app:placeholderImage="@mipmap/img_default"
-        app:roundedCornerRadius="5dp" />
 
+        <ImageView
+            android:id="@+id/ivSelected"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:layout_marginStart="@dimen/dp_10"
+            android:background="@drawable/selector_box_selected"
+            app:layout_constraintBottom_toBottomOf="@id/sdvGoods"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/sdvGoods" />
+
+        <com.darknet.bvw.view.RoundImageView
+            android:id="@+id/sdvGoods"
+            android:layout_width="@dimen/dimen_80dp"
+            android:layout_height="@dimen/dimen_80dp"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dimen_15dp"
+            app:layout_constraintStart_toEndOf="@id/ivSelected"
+            app:layout_constraintTop_toTopOf="parent"
+            app:placeholderImage="@mipmap/img_default"
+            app:roundedCornerRadius="5dp" />
+
+        <TextView
+            android:id="@+id/tvGoodsName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_20dp"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:layout_marginEnd="@dimen/dimen_20dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="牛仔短裤女2020夏新款韩版chin宽松牛仔短裤女2020夏新款韩版chin宽松"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_12"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/sdvGoods"
+            app:layout_constraintTop_toTopOf="@id/sdvGoods" />
+
+        <TextView
+            android:id="@+id/tvSku"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:alpha="0.5"
+            android:text="一次性口罩10个装"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_12"
+            app:layout_constraintStart_toStartOf="@id/tvGoodsName"
+            app:layout_constraintTop_toBottomOf="@id/tvGoodsName" />
+
+        <TextView
+            android:id="@+id/tvPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:text="USDT 126"
+            android:textColor="@color/_01FCDA"
+            android:textSize="@dimen/sp_12"
+            app:layout_constraintStart_toStartOf="@id/tvGoodsName"
+            app:layout_constraintTop_toBottomOf="@id/tvSku" />
+
+        <TextView
+            android:id="@+id/tvOriginPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:alpha="0.4"
+            android:text="USDT 138"
+            android:textColor="@color/white"
+            android:textSize="12dp"
+            app:layout_constraintStart_toStartOf="@id/tvPrice"
+            app:layout_constraintTop_toBottomOf="@id/tvPrice" />
+
+        <com.darknet.bvw.view.CustomCarCounterView
+            android:id="@+id/numView"
+            android:layout_width="@dimen/dimen_100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dimen_20dp"
+            app:layout_constraintBottom_toBottomOf="@id/tvPrice"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvPrice" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <TextView
-        android:id="@+id/tvGoodsName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dimen_20dp"
-        android:layout_marginTop="@dimen/dimen_5dp"
-        android:layout_marginEnd="@dimen/dimen_20dp"
-        android:ellipsize="end"
-        android:maxLines="2"
-        android:text="牛仔短裤女2020夏新款韩版chin宽松牛仔短裤女2020夏新款韩版chin宽松"
-        android:textColor="@color/white"
-        android:textSize="@dimen/sp_12"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/sdvGoods"
-        app:layout_constraintTop_toTopOf="@id/sdvGoods" />
+        android:id="@+id/tvDelete"
+        android:layout_width="@dimen/dimen_70dp"
+        android:layout_height="match_parent"
+        android:text="@string/delete"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_14"
+        android:background="@color/_01FCDA"
+        android:textStyle="bold"
+        android:gravity="center"
+        />
 
-    <TextView
-        android:id="@+id/tvSku"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_10"
-        android:alpha="0.5"
-        android:text="一次性口罩10个装"
-        android:textColor="@color/white"
-        android:textSize="@dimen/sp_12"
-        app:layout_constraintStart_toStartOf="@id/tvGoodsName"
-        app:layout_constraintTop_toBottomOf="@id/tvGoodsName" />
-
-    <TextView
-        android:id="@+id/tvPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_10"
-        android:text="USDT 126"
-        android:textColor="@color/_01FCDA"
-        android:textSize="@dimen/sp_12"
-        app:layout_constraintStart_toStartOf="@id/tvGoodsName"
-        app:layout_constraintTop_toBottomOf="@id/tvSku" />
-
-    <TextView
-        android:id="@+id/tvOriginPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_5dp"
-        android:alpha="0.4"
-        android:text="USDT 138"
-        android:textColor="@color/white"
-        android:textSize="12dp"
-        app:layout_constraintStart_toStartOf="@id/tvPrice"
-        app:layout_constraintTop_toBottomOf="@id/tvPrice" />
-
-    <com.darknet.bvw.view.CustomCarCounterView
-        android:id="@+id/numView"
-        android:layout_width="@dimen/dimen_100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/dimen_20dp"
-        app:layout_constraintBottom_toBottomOf="@id/tvPrice"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvPrice" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</com.mcxtzhang.swipemenulib.SwipeMenuLayout>

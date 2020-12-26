@@ -199,7 +199,7 @@
                         android:layout_marginLeft="20dp"
                         android:padding="5dp"
                         app:corner="2dp"
-                        app:color="#01FCDA"
+                        app:color="#8236FF"
                         android:textColor="@color/black"
                         android:textSize="12sp"
                         android:text="30现金券"

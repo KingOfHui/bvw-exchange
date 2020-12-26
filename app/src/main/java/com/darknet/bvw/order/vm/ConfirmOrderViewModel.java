@@ -7,13 +7,11 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.darknet.bvw.common.BaseResponse;
 import com.darknet.bvw.common.BaseViewModel;
-import com.darknet.bvw.mall.bean.GoodsDetailBean;
 import com.darknet.bvw.net.retrofit.BIWNetworkApi;
 import com.darknet.bvw.net.retrofit.BaseObserver;
 import com.darknet.bvw.net.retrofit.MvvmNetworkObserver;
 import com.darknet.bvw.net.retrofit.RequestBodyBuilder;
 import com.darknet.bvw.order.bean.CartData;
-import com.darknet.bvw.order.bean.CouponBean;
 import com.darknet.bvw.order.bean.MyCouponBean;
 import com.darknet.bvw.order.bean.SubmitOrderReq;
 import com.darknet.bvw.order.bean.OrderResp;
@@ -25,8 +23,7 @@ import okhttp3.RequestBody;
 
 public class ConfirmOrderViewModel extends BaseViewModel {
 
-    public MutableLiveData<List<OrderResp>> submitCartOrderLive = new MutableLiveData<>();
-    public MutableLiveData<Boolean> submitOrderLive = new MutableLiveData<>();
+    public MutableLiveData<List<OrderResp>> submitOrderLive = new MutableLiveData<>();
     public MutableLiveData<OrderResp> mOrderDetailLiveData = new MutableLiveData<>();
     public MutableLiveData<List<CartData.CartItemListBean>> cartItemListLive = new MutableLiveData<>();
     public MutableLiveData<CartData> cartDataLive = new MutableLiveData<>();
@@ -58,7 +55,7 @@ public class ConfirmOrderViewModel extends BaseViewModel {
                     @Override
                     public void onSuccess(BaseResponse<List<OrderResp>> t, boolean isFromCache) {
                         List<OrderResp> data = t.getData();
-                        submitCartOrderLive.setValue(data);
+                        submitOrderLive.setValue(data);
                         hideLoading();
                     }
 
@@ -87,8 +84,7 @@ public class ConfirmOrderViewModel extends BaseViewModel {
                     @Override
                     public void onSuccess(BaseResponse<List<OrderResp>> t, boolean isFromCache) {
                         List<OrderResp> data = t.getData();
-                        submitCartOrderLive.setValue(data);
-                        submitOrderLive.setValue(true);
+                        submitOrderLive.setValue(data);
                         hideLoading();
                     }
 

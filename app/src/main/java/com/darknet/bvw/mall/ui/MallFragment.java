@@ -16,9 +16,13 @@ import com.darknet.bvw.databinding.FragmentMallBindingImpl;
 import com.darknet.bvw.mall.bean.CategoryBean;
 import com.darknet.bvw.mall.ui.search.SearchActivity;
 import com.darknet.bvw.mall.vm.MallViewModel;
+import com.darknet.bvw.order.bean.event.CartEvent;
 import com.darknet.bvw.order.ui.activity.CartActivity;
 import com.darknet.bvw.order.vm.CartViewModel;
 import com.darknet.bvw.util.StatusBarUtil;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.List;
 
@@ -34,6 +38,7 @@ public class MallFragment extends BaseBindingFragment<MallViewModel, FragmentMal
 
     @Override
     protected void initView() {
+        EventBus.getDefault().register(this);
         mDataBinding.llSearch.setOnClickListener(v -> {
             SearchActivity.start(v.getContext());
         });
@@ -77,6 +82,17 @@ public class MallFragment extends BaseBindingFragment<MallViewModel, FragmentMal
             CategoryActivity.start(v.getContext(), category.get(position));
         });
         mDataBinding.ivCart.setOnClickListener(view -> CartActivity.start(requireActivity()));
+    }
+
+
+    @Subscribe
+    public void refreshCartData(CartEvent event) {
+        mCartViewModel.refresh();
+    }
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        EventBus.getDefault().unregister(this);
     }
 
     public static MallFragment newInstance() {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,8 +14,6 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
-
 
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/img_head"
@@ -123,7 +121,7 @@
             android:background="@drawable/zc_main_bg"
             android:padding="@dimen/dimen_10dp"
             android:orientation="horizontal">
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/llWaitPay"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
@@ -133,25 +131,48 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:id="@+id/iv0"
                     android:layout_width="@dimen/dimen_25dp"
                     android:layout_height="@dimen/dimen_25dp"
-                    android:layout_gravity="center_horizontal"
                     android:src="@mipmap/icon_wait_pay" />
-
+                <com.darknet.bvw.view.CornerTextView
+                    app:layout_constraintTop_toTopOf="@id/iv0"
+                    app:layout_constraintStart_toEndOf="@id/iv0"
+                    app:layout_constraintEnd_toEndOf="@id/iv0"
+                    android:id="@+id/ctvToBePaid"
+                    android:padding="2dp"
+                    app:corner="20dp"
+                    app:color="#8236FF"
+                    android:visibility="invisible"
+                    android:textColor="@color/white"
+                    android:textSize="9dp"
+                    android:gravity="center"
+                    android:text="30"
+                    android:minWidth="16dp"
+                    android:minHeight="@dimen/dimen_15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
                 <com.darknet.bvw.view.TypefaceTextView
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iv0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="@dimen/dimen_10dp"
+                    android:layout_below="@id/iv0"
                     android:text="@string/order_to_be_paid"
                     android:gravity="center"
                     android:textSize="@dimen/sp_12"
                     android:textColor="@color/white"
                     app:typeface="@string/universal_text_typeface" />
 
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/llWaitDelivered"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
@@ -161,24 +182,44 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:id="@+id/iv1"
                     android:layout_width="@dimen/dimen_25dp"
                     android:layout_height="@dimen/dimen_25dp"
                     android:layout_gravity="center_horizontal"
                     android:src="@mipmap/icon_wait_delivery" />
-
+                <com.darknet.bvw.view.CornerTextView
+                    app:layout_constraintTop_toTopOf="@id/iv1"
+                    app:layout_constraintStart_toEndOf="@id/iv1"
+                    app:layout_constraintEnd_toEndOf="@id/iv1"
+                    android:id="@+id/ctvToBeDelivery"
+                    android:padding="2dp"
+                    app:corner="10dp"
+                    app:color="#8236FF"
+                    android:visibility="invisible"
+                    android:textColor="@color/white"
+                    android:textSize="9dp"
+                    android:text="30"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
                 <com.darknet.bvw.view.TypefaceTextView
                     android:layout_width="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:text="@string/order_to_be_delivered"
+                    app:layout_constraintTop_toBottomOf="@id/iv1"
                     android:textSize="@dimen/sp_12"
                     android:gravity="center"
                     android:layout_marginTop="@dimen/dimen_10dp"
                     android:textColor="@color/white"
                     app:typeface="@string/universal_text_typeface" />
 
-            </LinearLayout>
-            <LinearLayout
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/llWaitTaken"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
@@ -189,23 +230,43 @@
 
                 <ImageView
                     android:layout_width="@dimen/dimen_25dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:id="@+id/iv2"
                     android:layout_height="@dimen/dimen_25dp"
                     android:layout_gravity="center_horizontal"
                     android:src="@mipmap/icon_wait_receive" />
-
+                <com.darknet.bvw.view.CornerTextView
+                    app:layout_constraintTop_toTopOf="@id/iv2"
+                    app:layout_constraintStart_toEndOf="@id/iv2"
+                    app:layout_constraintEnd_toEndOf="@id/iv2"
+                    android:id="@+id/ctvToBeToken"
+                    android:padding="2dp"
+                    android:visibility="invisible"
+                    app:corner="10dp"
+                    app:color="#8236FF"
+                    android:textColor="@color/white"
+                    android:textSize="9dp"
+                    android:text="30"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
                 <com.darknet.bvw.view.TypefaceTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:text="@string/order_to_be_taken"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iv2"
                     android:gravity="center"
                     android:textSize="@dimen/sp_12"
                     android:layout_marginTop="@dimen/dimen_10dp"
                     android:textColor="@color/white"
                     app:typeface="@string/universal_text_typeface" />
 
-            </LinearLayout>
-            <LinearLayout
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/llAllOrder"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
@@ -215,23 +276,43 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:id="@+id/iv3"
                     android:layout_width="@dimen/dimen_25dp"
                     android:layout_height="@dimen/dimen_25dp"
                     android:layout_gravity="center_horizontal"
                     android:src="@mipmap/icon_all_order" />
-
+                <com.darknet.bvw.view.CornerTextView
+                    android:id="@+id/ctvAll"
+                    app:layout_constraintTop_toTopOf="@id/iv3"
+                    app:layout_constraintStart_toEndOf="@id/iv3"
+                    app:layout_constraintEnd_toEndOf="@id/iv3"
+                    android:padding="2dp"
+                    android:visibility="invisible"
+                    app:corner="10dp"
+                    app:color="#8236FF"
+                    android:textColor="@color/white"
+                    android:textSize="9dp"
+                    android:text="30"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
                 <com.darknet.bvw.view.TypefaceTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     android:text="@string/order_all"
                     android:textSize="@dimen/sp_12"
                     android:gravity="center"
+                    app:layout_constraintTop_toBottomOf="@id/iv3"
                     android:layout_marginTop="@dimen/dimen_10dp"
                     android:textColor="@color/white"
                     app:typeface="@string/universal_text_typeface" />
 
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
         <include
             layout="@layout/lay_mine_items"

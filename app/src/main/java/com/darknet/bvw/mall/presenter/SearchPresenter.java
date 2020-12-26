@@ -49,6 +49,7 @@ public class SearchPresenter extends Presenter<SearchResultFragment> implements 
 
 	@Override
 	public void onRefresh(RefreshListener.Emitter<GoodsDetailBean> emitter) {
+		mView.showLoading();
 		BIWNetworkApi.getService(ApiInterface.class)
 				.search(keyword, 20, 1)
 				.compose(BIWNetworkApi.getInstance().applySchedulers())
@@ -58,11 +59,13 @@ public class SearchPresenter extends Presenter<SearchResultFragment> implements 
 						emitter.refreshFinish();
 						emitter.setMaxPage(response.getData().getTotalPage());
 						emitter.setNewData(BaseListBean.getItems(response.getData()));
+						mView.hideLoading();
 					}
 
 					@Override
 					public void onFailure(Throwable throwable) {
 						emitter.refreshFinish();
+						mView.hideLoading();
 					}
 				}));
 	}

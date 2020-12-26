@@ -16,9 +16,7 @@ public class LogisticsTrackingViewModel extends BaseListViewModel<String> {
     @Override
     protected void loadData(int pageNum, boolean isClear) {
         ArrayList<String> strings = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            strings.add("ffjdks" + i);
-        }
-        notifyResultToTopViewModel(strings,20);
+//        apiService.
+//        notifyResultToTopViewModel(strings,20);
     }
 }

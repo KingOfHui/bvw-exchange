@@ -13,6 +13,9 @@ import com.darknet.bvw.net.retrofit.BaseObserver;
 import com.darknet.bvw.net.retrofit.MvvmNetworkObserver;
 import com.darknet.bvw.net.retrofit.RequestBodyBuilder;
 import com.darknet.bvw.order.bean.CartData;
+import com.darknet.bvw.order.bean.event.CartEvent;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
@@ -103,6 +106,25 @@ public class CartViewModel extends BaseListViewModel<CartData.CartItemListBean> 
                     public void onFailure(Throwable throwable) {
                         hideLoading();
 
+                    }
+                }));
+    }
+
+    public void deleteBySku(int ids) {
+        showLoading();
+        apiService.deleteBySku(new RequestBodyBuilder().addParams("ids", ids).build())
+                .compose(BIWNetworkApi.getInstance().applySchedulers())
+                .subscribe(new BaseObserver<>(this, new MvvmNetworkObserver<BaseResponse<Object>>() {
+                    @Override
+                    public void onSuccess(BaseResponse<Object> t, boolean isFromCache) {
+                        EventBus.getDefault().post(new CartEvent());
+                        refresh();
+                        hideLoading();
+                    }
+
+                    @Override
+                    public void onFailure(Throwable throwable) {
+                        hideLoading();
                     }
                 }));
     }

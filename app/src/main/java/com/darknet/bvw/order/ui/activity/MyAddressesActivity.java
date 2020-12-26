@@ -4,13 +4,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.darknet.bvw.R;
 import com.darknet.bvw.activity.BaseBindingActivity;
+import com.darknet.bvw.base.BaseBindingViewHolder;
 import com.darknet.bvw.base.BaseDataBindingAdapter;
 import com.darknet.bvw.databinding.ActivityMyAddressesBinding;
 import com.darknet.bvw.databinding.ItemAddressBinding;
 import com.darknet.bvw.order.bean.ShippingAddress;
 import com.darknet.bvw.order.vm.MyAddressViewModel;
+
+import java.util.Objects;
 
 /**
  * @ClassName MyAddressesActivity
@@ -40,6 +46,8 @@ public class MyAddressesActivity extends BaseBindingActivity<ActivityMyAddresses
         mBinding.layoutTitle.title.setText(getString(R.string.my_shipping_address));
         mBinding.tvAddAddress.setOnClickListener((view -> AddAddressActivity.start(this, null, true)));
         AddressAdapter adapter = new AddressAdapter(selectId);
+        adapter.setOnItemChildClickListener((adapter1, view, position) ->
+                mViewModel.deleteAddress(Objects.requireNonNull(adapter.getItem(position)).getId()));
         mBinding.setAdapter(adapter);
         mBinding.getAdapter().setOnItemClickListener((adapter2, view, position) -> {
             ShippingAddress shippingAddress = adapter.getData().get(position);
@@ -67,6 +75,12 @@ public class MyAddressesActivity extends BaseBindingActivity<ActivityMyAddresses
         public AddressAdapter(int selectId) {
             super(R.layout.item_address);
             this.selectId = selectId;
+        }
+
+        @Override
+        protected void convert(@NonNull BaseBindingViewHolder<ItemAddressBinding> helper, ShippingAddress item) {
+            super.convert(helper, item);
+            helper.addOnClickListener(R.id.tvDelete);
         }
 
         @Override

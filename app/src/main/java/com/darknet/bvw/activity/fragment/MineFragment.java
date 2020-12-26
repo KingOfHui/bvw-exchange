@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import com.darknet.bvw.R;
@@ -22,11 +23,21 @@ import com.darknet.bvw.activity.AccountManageActivity;
 import com.darknet.bvw.activity.ContactPeopleActivity;
 import com.darknet.bvw.activity.MessageCenterActivity;
 import com.darknet.bvw.activity.SettingActivity;
+import com.darknet.bvw.common.BaseResponse;
+import com.darknet.bvw.net.retrofit.ApiInterface;
+import com.darknet.bvw.net.retrofit.BIWNetworkApi;
+import com.darknet.bvw.net.retrofit.BaseObserver;
+import com.darknet.bvw.net.retrofit.MvvmNetworkObserver;
 import com.darknet.bvw.order.ui.activity.ConfirmOrderActivity;
 import com.darknet.bvw.order.ui.activity.CouponListActivity;
 import com.darknet.bvw.order.ui.activity.MyAddressesActivity;
 import com.darknet.bvw.order.ui.activity.OrderListActivity;
 import com.darknet.bvw.util.UserSPHelper;
+
+import java.util.Map;
+import java.util.Objects;
+
+import io.reactivex.functions.Consumer;
 
 
 /**
@@ -49,6 +60,10 @@ public class MineFragment extends Fragment implements View.OnClickListener {
 
 
     private Activity activity;
+    private TextView mTvAll;
+    private TextView mCtvToBeDelivery;
+    private TextView mCtvToBeToken;
+    private TextView mCtvToBePaid;
 
     @Override
     public void onAttach(Context context) {
@@ -94,10 +109,15 @@ public class MineFragment extends Fragment implements View.OnClickListener {
         addressLayout = (LinearLayout) view.findViewById(R.id.lay_address_layout);
 
         clientIdLayout = (LinearLayout) view.findViewById(R.id.client_id);
-        LinearLayout llAllOrder = view.findViewById(R.id.llAllOrder);
-        LinearLayout llWaitPay = view.findViewById(R.id.llWaitPay);
-        LinearLayout llWaitTaken = view.findViewById(R.id.llWaitTaken);
-        LinearLayout llWaitDelivered = view.findViewById(R.id.llWaitDelivered);
+        ConstraintLayout llAllOrder = view.findViewById(R.id.llAllOrder);
+        ConstraintLayout llWaitPay = view.findViewById(R.id.llWaitPay);
+        ConstraintLayout llWaitTaken = view.findViewById(R.id.llWaitTaken);
+        ConstraintLayout llWaitDelivered = view.findViewById(R.id.llWaitDelivered);
+        mTvAll = view.findViewById(R.id.ctvAll);
+        mCtvToBeDelivery = view.findViewById(R.id.ctvToBeDelivery);
+        mCtvToBeToken = view.findViewById(R.id.ctvToBeToken);
+        mCtvToBePaid = view.findViewById(R.id.ctvToBePaid);
+
         llWaitPay.setOnClickListener(view1 -> OrderListActivity.start(requireContext(),1));
         llWaitDelivered.setOnClickListener(view1 -> OrderListActivity.start(requireContext(),2));
 //        llWaitTaken.setOnClickListener(view1 -> OrderListActivity.start(requireContext(),3));
@@ -129,6 +149,7 @@ public class MineFragment extends Fragment implements View.OnClickListener {
         systemLayout.setOnClickListener(this);
         addressLayout.setOnClickListener(this);
         clientIdLayout.setOnClickListener(this);
+        getOrderStateList();
     }
 
 
@@ -176,5 +197,36 @@ public class MineFragment extends Fragment implements View.OnClickListener {
                 startActivity(setIntent);
                 break;
         }
+    }
+
+    private void getOrderStateList() {
+        BIWNetworkApi.getService(ApiInterface.class).getOrderStateList()
+                .compose(BIWNetworkApi.getInstance().applySchedulers())
+                .subscribe(new BaseObserver<>(new MvvmNetworkObserver<BaseResponse<Map<String, String>>>() {
+                    @Override
+                    public void onSuccess(BaseResponse<Map<String, String>> t, boolean isFromCache) {
+                        Map<String, String> data = t.getData();
+                        int s1 = Integer.parseInt(Objects.requireNonNull(data.get("0")));
+                        int s2 = Integer.parseInt(Objects.requireNonNull(data.get("1")));
+                        int s3 = Integer.parseInt(Objects.requireNonNull(data.get("2")));
+                        if (s1 > 0) {
+                            mCtvToBePaid.setVisibility(View.VISIBLE);
+                            mCtvToBePaid.setText(String.valueOf(s1));
+                        }
+                        if (s2 > 0) {
+                            mCtvToBeDelivery.setVisibility(View.VISIBLE);
+                            mCtvToBeDelivery.setText(String.valueOf(s2));
+                        }
+                        if (s3 > 0) {
+                            mCtvToBeToken.setVisibility(View.VISIBLE);
+                            mCtvToBeToken.setText(String.valueOf(s3));
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Throwable throwable) {
+
+                    }
+                }));
     }
 }

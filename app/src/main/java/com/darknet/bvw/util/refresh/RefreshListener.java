@@ -1,6 +1,8 @@
 package com.darknet.bvw.util.refresh;
 
 
+import android.view.View;
+
 import java.util.List;
 
 /**

@@ -36,9 +36,9 @@ public class OrderListAdapter extends BaseDataBindingAdapter<OrderResp, ItemOrde
         }
         binding.layoutOrder.tvOrderNum.setText(String.format(context.getString(R.string.order_number), item.getOrder_no()));
         binding.layoutOrder.tvTotalPrice.setText("USDT " + item.getPay_amount());
-        binding.layoutOrder.tvOrderStatus.setText(OrderStatusEnum.getOrderStatus(item.getState()).getText());
+        binding.layoutOrder.tvOrderStatus.setText(OrderStatusEnum.getOrderStatusText(mContext,item.getOrderState()));
         //订单状态：0->待付款；1->待发货 2->已发货 3->已完成 4->已关闭 5->无效订单
-        int state = item.getState();
+        int state = item.getOrderState();
         switch (state) {
             case 0:
                 binding.layoutOrder.clOperation.setVisibility(View.VISIBLE);
@@ -46,12 +46,14 @@ public class OrderListAdapter extends BaseDataBindingAdapter<OrderResp, ItemOrde
                 binding.layoutOrder.tvOperationLeft.setText(context.getString(R.string.order_cancel));
                 binding.layoutOrder.tvOperationRight.setText(context.getString(R.string.to_pay));
                 binding.layoutOrder.tvOperationLeft.setOnClickListener(v -> {
-                    if (mListener!=null) {
+                    if (mListener != null) {
                         mListener.cancelOrder(item.getId());
                     }
                 });
                 binding.layoutOrder.tvOperationRight.setOnClickListener(v -> {
-
+                    if (mListener != null) {
+                        mListener.toPay(item.getId());
+                    }
                 });
                 break;
             case 1:
@@ -97,7 +99,10 @@ public class OrderListAdapter extends BaseDataBindingAdapter<OrderResp, ItemOrde
         mListener = listener;
     }
 
-    public interface OnOrderOperationListener{
+    public interface OnOrderOperationListener {
+
+        void toPay(int id);
+
         void cancelOrder(int id);
 
         void logistics(int id);

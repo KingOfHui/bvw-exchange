@@ -84,7 +84,7 @@ public class PayViewModel extends BaseViewModel {
         SendTradeRequest sendTradeRequest = new SendTradeRequest();
         sendTradeRequest.setAmount(price);
         sendTradeRequest.setRaw(afterSignVal);
-        sendTradeRequest.setSymbol("BIW");
+        sendTradeRequest.setSymbol("USDT");
         sendTradeRequest.setOrder_id(id);
         sendTradeRequest.setTo_address(address);
         sendTradeRequest.setType(15);

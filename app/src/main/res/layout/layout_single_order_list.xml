@@ -205,13 +205,14 @@
                 android:paddingBottom="8dp"
                 android:text="@string/order_cancel"
                 android:textColor="@color/white"
+                android:layout_marginTop="@dimen/dimen_15dp"
                 android:textSize="@dimen/sp_12"
                 app:drawable_radius="@{2}"
                 app:drawable_shapeMode="@{0}"
                 app:drawable_solidColor="@{@color/color_8236FF}"
                 app:drawable_strokeColor="@{@color/color_8236FF}"
                 app:layout_constraintRight_toLeftOf="@id/tvOperationRight"
-                app:layout_constraintTop_toTopOf="@id/tvOperationRight"
+                app:layout_constraintTop_toBottomOf="@id/line2"
                 tools:text="取消订单" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 

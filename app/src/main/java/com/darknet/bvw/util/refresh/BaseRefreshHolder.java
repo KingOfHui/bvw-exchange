@@ -1,13 +1,19 @@
 package com.darknet.bvw.util.refresh;
 
+import android.view.View;
+
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.darknet.bvw.MyApp;
+import com.darknet.bvw.R;
 import com.darknet.bvw.util.loadmore.BaseLoadMoreHolder;
 
 import androidx.annotation.NonNull;
 
 
 import java.util.List;
+
+import cn.hutool.core.collection.CollectionUtil;
 
 /**
  * <br>createBy guoshiwen
@@ -69,7 +75,12 @@ public abstract class BaseRefreshHolder<T, RefreshLayout> implements RefreshList
 	@Override
 	public final void setNewData(List<T> datas) {
 		if (mLoadmoreHolder != null) mLoadmoreHolder.refreshed();
-		mAdapter.setNewData(datas);
+		if (CollectionUtil.isNotEmpty(datas)) {
+			mAdapter.setNewData(datas);
+		} else {
+			mAdapter.setNewData(null);
+			mAdapter.setEmptyView(View.inflate(MyApp.getInstance(), R.layout.empty_view, null));
+		}
 	}
 
 	@Override

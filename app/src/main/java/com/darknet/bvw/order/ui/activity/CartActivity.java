@@ -14,13 +14,18 @@ import com.darknet.bvw.R;
 import com.darknet.bvw.activity.BaseBindingActivity;
 import com.darknet.bvw.databinding.ActivityCartBinding;
 import com.darknet.bvw.order.bean.CartData;
+import com.darknet.bvw.order.bean.event.CartEvent;
 import com.darknet.bvw.order.vm.CartViewModel;
 import com.darknet.bvw.util.StatusBarUtil;
+import com.darknet.bvw.util.ToastUtils;
 import com.darknet.bvw.util.ValueUtil;
 import com.darknet.bvw.util.view.ViewUtil;
 import com.darknet.bvw.view.CustomCarCounterView;
 import com.darknet.bvw.view.CustomDividerItemDecoration;
 import com.jingui.lib.utils.DensityUtils;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -34,6 +39,8 @@ import java.util.List;
 public class CartActivity extends BaseBindingActivity<ActivityCartBinding> {
 
     private CartAdapter mCartAdapter;
+    private CartViewModel mViewModel;
+    private CartData mCartData;
 
     public static void start(Context context) {
         context.startActivity(new Intent(context, CartActivity.class));
@@ -47,51 +54,62 @@ public class CartActivity extends BaseBindingActivity<ActivityCartBinding> {
     @Override
     public void initView() {
         StatusBarUtil.setStatusBarColor(this, R.color.color_bg_181523);
-        CartViewModel viewModel = getViewModel(CartViewModel.class);
-        mBinding.setVm(viewModel);
+        EventBus.getDefault().register(this);
+        mViewModel = getViewModel(CartViewModel.class);
+        mBinding.setVm(mViewModel);
         mCartAdapter = new CartAdapter();
         mBinding.setAdapter(mCartAdapter);
         mBinding.rvCartGoods.addItemDecoration(new CustomDividerItemDecoration.Builder()
                 .setColor(Color.parseColor("#33FFFFFF"))
                 .setSpace(DensityUtils.dip2px(1), DensityUtils.dip2px(30), DensityUtils.dip2px(15))
                 .build());
-        viewModel.refresh();
+        mViewModel.refresh();
         mCartAdapter.setOnItemClickListener((adapter, view, position) -> {
             CartData.CartItemListBean item = mCartAdapter.getItem(position);
             if (item!=null) {
-                viewModel.checkCartBySku(item.getCheck() == 1 ? 0 : 1, String.valueOf(item.getProduct_sku_id()));
+                mViewModel.checkCartBySku(item.getCheck() == 1 ? 0 : 1, String.valueOf(item.getProduct_sku_id()));
             }
         });
         mCartAdapter.setAddOrSubListener(new CartAdapter.AddOrSubListener() {
             @Override
             public void onAdd(int product_sku_id) {
-                viewModel.addCartGoods(product_sku_id, 1);
+                mViewModel.addCartGoods(product_sku_id, 1);
             }
 
             @Override
             public void onSub(int product_sku_id) {
-                viewModel.subCartGoods(product_sku_id, 1);
+                mViewModel.subCartGoods(product_sku_id, 1);
+            }
+
+            @Override
+            public void onDelete(int product_sku_id) {
+                mViewModel.deleteBySku(product_sku_id);
             }
         });
         mBinding.tvSettle.setOnClickListener(view -> {
-            ConfirmOrderActivity.start(this, null, null);
+            if (mCartData.getChecked_product_count() > 0) {
+                ConfirmOrderActivity.start(this);
+            } else {
+                ToastUtils.showToast(getString(R.string.first_check_goods));
+            }
         });
         mBinding.ivAllSelected.setOnClickListener(view -> {
-            viewModel.checkCartBySku(mCartAdapter.allSelectedOrNot() ? 0 : 1,mCartAdapter.getAllIds());
+            mViewModel.checkCartBySku(mCartAdapter.allSelectedOrNot() ? 0 : 1,mCartAdapter.getAllIds());
         });
         mBinding.tvAllSelect.setOnClickListener(view -> {
-            viewModel.checkCartBySku(mCartAdapter.allSelectedOrNot() ? 0 : 1,mCartAdapter.getAllIds());
+            mViewModel.checkCartBySku(mCartAdapter.allSelectedOrNot() ? 0 : 1,mCartAdapter.getAllIds());
         });
 
-        viewModel.checkCartSuccessLive.observe(this, aBoolean -> {
+        mViewModel.checkCartSuccessLive.observe(this, aBoolean -> {
             if (aBoolean) {
                 ConfirmOrderActivity.start(this, null, null);
             }
         });
-        viewModel.cartDataLive.observe(this, this::updateBottomView);
+        mViewModel.cartDataLive.observe(this, this::updateBottomView);
     }
 
     private void updateBottomView(CartData data) {
+        mCartData = data;
         mBinding.tvSettle.setText(String.format(getString(R.string.settle_s), String.valueOf(data.getChecked_product_count())));
         mBinding.tvTotalPrice.setText(String.format(getString(R.string.total_money), ValueUtil.stripTrailingZeros(data.getChecked_product_amount())));
         mBinding.tvGoodsCount.setText(String.format(getString(R.string.goods_count),String.valueOf(data.getProduct_total_count())));
@@ -101,6 +119,17 @@ public class CartActivity extends BaseBindingActivity<ActivityCartBinding> {
     @Override
     public void initDatas() {
 
+    }
+
+    @Subscribe
+    public void refreshCarts(CartEvent event) {
+        mViewModel.refresh();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 
     public static class CartAdapter extends BaseQuickAdapter<CartData.CartItemListBean, BaseViewHolder> {
@@ -139,6 +168,11 @@ public class CartActivity extends BaseBindingActivity<ActivityCartBinding> {
                     }
                 }
             });
+            helper.getView(R.id.tvDelete).setOnClickListener(view -> {
+                if (mAddOrSubListener != null) {
+                    mAddOrSubListener.onDelete(item.getProduct_sku_id());
+                }
+            });
             ViewUtil.setTextViewDeleteLine(helper.getView(R.id.tvOriginPrice));
         }
 
@@ -174,6 +208,8 @@ public class CartActivity extends BaseBindingActivity<ActivityCartBinding> {
             void onAdd(int product_sku_id);
 
             void onSub(int product_sku_id);
+
+            void onDelete(int product_sku_id);
         }
 
     }

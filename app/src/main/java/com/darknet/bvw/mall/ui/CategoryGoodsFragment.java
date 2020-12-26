@@ -2,6 +2,7 @@ package com.darknet.bvw.mall.ui;
 
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -23,8 +24,11 @@ import com.youth.banner.Banner;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import cn.hutool.core.collection.CollectionUtil;
 
 /**
  * <br>createBy guoshiwen
@@ -94,10 +98,18 @@ public class CategoryGoodsFragment extends BaseFragment {
 			mSale.setSelected(false);
 			mTvPrice.setSelected(true);
 			if("asc".equals(mPresenter.getSort())){
-				mTvPrice.setCompoundDrawables(null, null, v.getResources().getDrawable(R.mipmap.price_desc), null);
+				Drawable drawable = ContextCompat.getDrawable(requireActivity(), R.mipmap.price_desc);
+				if (drawable!=null) {
+					drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), (int) (drawable.getMinimumHeight()));
+				}
+				mTvPrice.setCompoundDrawables(null, null, drawable, null);
 				mPresenter.updateSortRule("price", "desc");
 			}else {
-				mTvPrice.setCompoundDrawables(null, null, v.getResources().getDrawable(R.mipmap.price_asc), null);
+				Drawable drawable = ContextCompat.getDrawable(requireActivity(), R.mipmap.price_asc);
+				if (drawable!=null) {
+					drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), (int) (drawable.getMinimumHeight()));
+				}
+				mTvPrice.setCompoundDrawables(null, null, drawable, null);
 				mPresenter.updateSortRule("price", "asc");
 			}
 		});
@@ -132,7 +144,11 @@ public class CategoryGoodsFragment extends BaseFragment {
 	}
 
 	public void refreshUI(List<GoodsDetailBean> data) {
-		mAdapter.setNewData(data);
+		if (CollectionUtil.isNotEmpty(data)) {
+			mAdapter.setNewData(data);
+		} else {
+			mAdapter.setEmptyView(View.inflate(requireActivity(), R.layout.empty_view, null));
+		}
 	}
 
 	private static class Adapter extends BaseQuickAdapter<GoodsDetailBean, BaseViewHolder> {

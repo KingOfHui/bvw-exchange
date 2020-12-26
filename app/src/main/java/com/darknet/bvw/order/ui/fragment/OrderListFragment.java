@@ -15,6 +15,7 @@ import com.darknet.bvw.order.bean.OrderResp;
 import com.darknet.bvw.order.bean.OrderStatusEnum;
 import com.darknet.bvw.order.ui.activity.LogisticsTrackingActivity;
 import com.darknet.bvw.order.ui.activity.OrderDetailActivity;
+import com.darknet.bvw.order.ui.activity.PayOrderActivity;
 import com.darknet.bvw.order.ui.adapter.OrderGoodsAdapter;
 import com.darknet.bvw.order.ui.adapter.OrderListAdapter;
 import com.darknet.bvw.order.vm.OrderListViewModel;
@@ -57,6 +58,11 @@ public class OrderListFragment extends BaseBindingFragment<OrderListViewModel, F
         orderListAdapter.setOnItemClickListener((adapter, view, position) -> OrderDetailActivity.start(requireActivity(),orderListAdapter.getItem(position)));
         mDataBinding.setAdapter(orderListAdapter);
         orderListAdapter.setOnOrderOperationListener(new OrderListAdapter.OnOrderOperationListener() {
+            @Override
+            public void toPay(int id) {
+                PayOrderActivity.start(requireActivity(), id);
+            }
+
             @Override
             public void cancelOrder(int id) {
                 mViewModel.cancelOrder(id);

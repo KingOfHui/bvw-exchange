@@ -36,7 +36,7 @@ import java.util.List;
 import cn.hutool.core.collection.CollectionUtil;
 
 /**
- * @ClassName ConfirmOrderActivity
+ * @ClassName PayOrderActivity
  * @Description
  * @Author dinghui
  * @Date 2020/12/15 0015 14:47
@@ -99,6 +99,7 @@ public class PayOrderActivity extends BasePayActivity<ActivityOrderPayBinding> {
                 mBinding.hlvTotalPrice.setRightText(orderResp.getTotal_amount());
                 mBinding.hlvFreight.setRightText(orderResp.getFreight_amount());
                 mBinding.tvDiscounts.setText(orderResp.getCoupon_amount());
+                mBinding.etRemark.setText(orderResp.getNote());
             }
         });
         mViewModel.tradeSuccessLive.observe(this, aBoolean -> {
@@ -107,7 +108,8 @@ public class PayOrderActivity extends BasePayActivity<ActivityOrderPayBinding> {
                     mPayOrderDialog.dismiss();
                 }
 
-                OrderListActivity.start(this, 2);
+                OrderListActivity.start(this, 0);
+                finish();
             }
         });
         mViewModel.mSendTxMutableLiveData.observe(this, new Observer<SendTx>() {
@@ -120,13 +122,13 @@ public class PayOrderActivity extends BasePayActivity<ActivityOrderPayBinding> {
 
     @Override
     protected void createTrade(String address) {
-        mViewModel.createTrade(String.valueOf(mOrderDetail.getPay_amount()), address, "BIW");
+        mViewModel.createTrade(String.valueOf(mOrderDetail.getPay_amount()), address, "USDT");
 
     }
 
     @Override
     protected void sendTrade(String afterSignVal) {
-        mViewModel.sendOrderTrade(afterSignVal,mOrderDetail.getPay_amount(),mOrderDetail.getUser_address(),mOrderDetail.getId());
+        mViewModel.sendOrderTrade(afterSignVal,mOrderDetail.getPay_amount(),mOrderDetail.getMall_pay_address(),mOrderDetail.getId());
     }
 
     private ETHWalletModel getWalletModel() {

@@ -50,14 +50,13 @@ public class CategoryGoodsPresenter extends Presenter<CategoryGoodsFragment> {
 	}
 
 	public void updateSortRule(String order, String sort) {
-		if(equals(order, mOrder)){
+		if(equals(mOrder, "price")){
+			mSort = sort;
+		} else if(equals(order, mOrder)){
 			return;
 		}
 		mOrder = order;
 
-		if(equals(mOrder, "price")){
-			mSort = sort;
-		}
 		loadById();
 	}
 

@@ -37,6 +37,7 @@ public class MyAddressViewModel extends BaseListViewModel<ShippingAddress> {
 
     @Override
     protected void loadData(int pageNum, boolean isClear) {
+        showLoading();
         apiService.getAddressList().compose(BIWNetworkApi.getInstance().applySchedulers())
                 .subscribe(new BaseObserver<>(this, new MvvmNetworkObserver<BaseResponse<List<ShippingAddress>>>() {
                     @Override
@@ -52,12 +53,14 @@ public class MyAddressViewModel extends BaseListViewModel<ShippingAddress> {
                             }
                         }
                         selectAddress.setValue(null);
+                        hideLoading();
                     }
 
                     @Override
                     public void onFailure(Throwable throwable) {
                         loadFailed(throwable.getMessage());
                         selectAddress.setValue(null);
+                        hideLoading();
                     }
                 }));
     }
@@ -95,5 +98,23 @@ public class MyAddressViewModel extends BaseListViewModel<ShippingAddress> {
                         ToastUtils.showToast(throwable.getMessage());
                     }
                 }));
+    }
+
+    public void deleteAddress(int id) {
+        showLoading();
+        apiService.deleteAddress(id).compose(BIWNetworkApi.getInstance().applySchedulers())
+                .subscribe(new BaseObserver<>(this, new MvvmNetworkObserver<BaseResponse<Object>>() {
+                    @Override
+                    public void onSuccess(BaseResponse<Object> t, boolean isFromCache) {
+                        refresh();
+                        hideLoading();
+                    }
+
+                    @Override
+                    public void onFailure(Throwable throwable) {
+                        hideLoading();
+                    }
+                }));
+
     }
 }

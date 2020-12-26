@@ -1,6 +1,7 @@
 package com.darknet.bvw.order.ui.adapter;
 
 import android.net.Uri;
+import android.view.View;
 import android.widget.ImageView;
 
 import androidx.databinding.ViewDataBinding;
@@ -9,7 +10,9 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.darknet.bvw.R;
 import com.darknet.bvw.base.BaseDataBindingAdapter;
+import com.darknet.bvw.mall.ui.GoodsDetailActivity;
 import com.darknet.bvw.order.bean.OrderResp;
+import com.darknet.bvw.order.ui.activity.OrderDetailActivity;
 import com.darknet.bvw.util.view.ViewUtil;
 
 public class OrderGoodsAdapter extends BaseQuickAdapter<OrderResp.OrderItemListBean, BaseViewHolder> {
@@ -27,5 +30,8 @@ public class OrderGoodsAdapter extends BaseQuickAdapter<OrderResp.OrderItemListB
         ivGoods.setImageURI(Uri.parse(item.getProduct_img_url()));
         ViewUtil.setTextViewDeleteLine(helper.getView(R.id.tvOriginPrice));
 //            binding.layoutOrder.ivGoodsImg.setImageURI(Uri.parse(""));
+        helper.itemView.setOnClickListener(view -> {
+            GoodsDetailActivity.start(mContext, item.getProduct_id());
+        });
     }
 }

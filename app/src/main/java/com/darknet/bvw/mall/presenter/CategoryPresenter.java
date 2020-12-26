@@ -23,6 +23,7 @@ public class CategoryPresenter extends Presenter<CategoryActivity> {
 	}
 
 	public void loadCategory(CategoryBean category) {
+		mView.showLoading();
 		if(CategoryBean.isHome(category)){
 			loadFirstCategory();
 		}else {
@@ -39,10 +40,12 @@ public class CategoryPresenter extends Presenter<CategoryActivity> {
 					@Override
 					public void onSuccess(BaseResponse<List<CategoryBean>> response, boolean isFromCache) {
 						mView.initViewPager(response);
+						mView.hideLoading();
 					}
 
 					@Override
 					public void onFailure(Throwable throwable) {
+						mView.hideLoading();
 					}
 				}));
 	}
@@ -55,10 +58,12 @@ public class CategoryPresenter extends Presenter<CategoryActivity> {
 					@Override
 					public void onSuccess(BaseResponse<List<CategoryBean>> response, boolean isFromCache) {
 						mView.initViewPager(response);
+						mView.hideLoading();
 					}
 
 					@Override
 					public void onFailure(Throwable throwable) {
+						mView.hideLoading();
 					}
 				}));
 	}

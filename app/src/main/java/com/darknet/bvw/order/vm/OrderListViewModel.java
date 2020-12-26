@@ -34,6 +34,7 @@ public class OrderListViewModel extends BaseListViewModel<OrderResp> {
 
     //类型 -1全部 0->待付款；1->待发货 2->已发货|待收货 3->已完成 4->已取消 8待评价,可用值:-1,0,1,2,3,8
     private MutableLiveData<Integer> tradeStateLive;
+    public MutableLiveData<OrderResp> mOrderDetailLiveData = new MutableLiveData<>();
 
     public MutableLiveData<Integer> getTradeStateLive() {
         if (tradeStateLive == null) {
@@ -68,6 +69,23 @@ public class OrderListViewModel extends BaseListViewModel<OrderResp> {
                 ));
     }
 
+    public void getOrderDetail(int id) {
+        showLoading();
+        apiService.getOrderDetail(id).compose(BIWNetworkApi.getInstance().applySchedulers())
+                .subscribe(new BaseObserver<>(this, new MvvmNetworkObserver<BaseResponse<OrderResp>>() {
+                    @Override
+                    public void onSuccess(BaseResponse<OrderResp> t, boolean isFromCache) {
+                        mOrderDetailLiveData.setValue(t.getData());
+                        hideLoading();
+                    }
+
+                    @Override
+                    public void onFailure(Throwable throwable) {
+                        hideLoading();
+                    }
+                }));
+    }
+
     public void cancelOrder(int id) {
         showLoading();
         apiService.cancelOrder(new RequestBodyBuilder().addParams("id",id).build())
@@ -76,6 +94,7 @@ public class OrderListViewModel extends BaseListViewModel<OrderResp> {
                     @Override
                     public void onSuccess(BaseResponse<Object> t, boolean isFromCache) {
                         refresh();
+
                         ToastUtils.showToast(getApplication().getString(R.string.cancel_order_success));
                     }
 

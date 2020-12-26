@@ -3,74 +3,89 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-    </data>
+    <data></data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.mcxtzhang.swipemenulib.SwipeMenuLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/color_bg_181523">
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/cbSelect"
-            android:layout_width="@dimen/dimen_20dp"
-            android:layout_height="@dimen/dimen_20dp"
-            android:layout_marginStart="@dimen/dimen_20dp"
-            android:background="@drawable/selector_box_selected"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_bg_181523">
+
+            <ImageView
+                android:id="@+id/cbSelect"
+                android:layout_width="@dimen/dimen_20dp"
+                android:layout_height="@dimen/dimen_20dp"
+                android:layout_marginStart="@dimen/dimen_20dp"
+                android:background="@drawable/selector_box_selected"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_15dp"
+                android:layout_marginTop="@dimen/dimen_30dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dp_18"
+                app:layout_constraintLeft_toRightOf="@id/cbSelect"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Harry" />
+
+            <TextView
+                android:id="@+id/tvMobile"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_10dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_14"
+                app:layout_constraintBaseline_toBaselineOf="@id/tvName"
+                app:layout_constraintBottom_toBottomOf="@id/tvName"
+                app:layout_constraintLeft_toRightOf="@id/tvName"
+                tools:text="126545135115" />
+
+            <TextView
+                android:id="@+id/tvEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dimen_20dp"
+                android:text="编辑"
+                android:textColor="#A4A4A4"
+                android:textSize="@dimen/sp_14"
+                app:layout_constraintBaseline_toBaselineOf="@id/tvName"
+                app:layout_constraintBottom_toBottomOf="@id/tvName"
+                app:layout_constraintRight_toRightOf="parent" />
+
+            <TextView
+                android:id="@+id/tvAddress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="@dimen/dimen_10dp"
+                android:layout_marginBottom="@dimen/dimen_30dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_14"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="@id/tvName"
+                app:layout_constraintRight_toLeftOf="@id/tvEdit"
+                app:layout_constraintTop_toBottomOf="@id/tvName"
+                tools:text="260 51651,11515 15154fsdafsdafdsafsdafasfsdafdasfdsa1515dsgdfgfsg" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            android:id="@+id/tvName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_30dp"
-            android:layout_marginStart="@dimen/dimen_15dp"
-            tools:text="Harry"
-            android:textColor="@color/white"
-            android:textSize="@dimen/dp_18"
-            app:layout_constraintLeft_toRightOf="@id/cbSelect"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tvMobile"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dimen_10dp"
-            tools:text="126545135115"
-            android:textColor="@color/white"
+            android:id="@+id/tvDelete"
+            android:layout_width="@dimen/dimen_70dp"
+            android:layout_height="match_parent"
+            android:background="@color/_01FCDA"
+            android:gravity="center"
+            android:text="@string/delete"
+            android:textColor="@color/black"
             android:textSize="@dimen/sp_14"
-            app:layout_constraintBaseline_toBaselineOf="@id/tvName"
-            app:layout_constraintBottom_toBottomOf="@id/tvName"
-            app:layout_constraintLeft_toRightOf="@id/tvName" />
-
-        <TextView
-            android:id="@+id/tvEdit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/dimen_20dp"
-            android:text="编辑"
-            android:textColor="#A4A4A4"
-            android:textSize="@dimen/sp_14"
-            app:layout_constraintBaseline_toBaselineOf="@id/tvName"
-            app:layout_constraintBottom_toBottomOf="@id/tvName"
-            app:layout_constraintRight_toRightOf="parent" />
-
-        <TextView
-            android:id="@+id/tvAddress"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="7dp"
-            android:layout_marginBottom="@dimen/dimen_30dp"
-            android:layout_marginEnd="@dimen/dimen_10dp"
-            tools:text="260 51651,11515 15154fsdafsdafdsafsdafasfsdafdasfdsa1515dsgdfgfsg"
-            android:textColor="@color/white"
-            android:textSize="@dimen/sp_14"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="@id/tvName"
-            app:layout_constraintRight_toLeftOf="@id/tvEdit"
-            app:layout_constraintTop_toBottomOf="@id/tvName" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:textStyle="bold" />
+    </com.mcxtzhang.swipemenulib.SwipeMenuLayout>
 </layout>

@@ -16,6 +16,7 @@ import com.darknet.bvw.order.bean.ShippingAddress;
 import com.darknet.bvw.order.bean.OrderResp;
 
 import java.util.List;
+import java.util.Map;
 
 import io.reactivex.Observable;
 import okhttp3.RequestBody;
@@ -63,6 +64,9 @@ public interface ApiInterface {
     @POST("api/shop/cart/checkedBySku")
     Observable<BaseResponse<Object>> checkCartBySku(@Body RequestBody body);
 
+    @POST("api/shop/cart/deleteBySku")
+    Observable<BaseResponse<Object>> deleteBySku(@Body RequestBody body);
+
     /***********              商城-优惠券            **********/
     @GET("api/shop/couponTemplate/list")
     Observable<BaseResponse<BaseListBean<CouponBean>>> getCouponList();
@@ -74,9 +78,12 @@ public interface ApiInterface {
     //订单列表
     @GET("api/shop/order/list")
     Observable<BaseResponse<BaseListBean<OrderResp>>> getOrderList(@Query("trade_state") int trade_state, @Query("limit") int limit, @Query("page") int pageNum);
+    //订单列表
+    @GET("api/shop/order/stateList")
+    Observable<BaseResponse<Map<String,String>>> getOrderStateList();
 
     //订单详情
-    @GET("api/order/detail/{id}")
+    @GET("api/shop/order/detail/{id}")
     Observable<BaseResponse<OrderResp>> getOrderDetail(@Path("id") int id);
 
     //取消订单
@@ -111,7 +118,7 @@ public interface ApiInterface {
 
     //删除地址
     @POST("api/shop/address/delete/{id}")
-    Observable<BaseResponse<Object>> deleteAddress(@Path("id") String id);
+    Observable<BaseResponse<Object>> deleteAddress(@Path("id") int id);
 
     //我的地址列表
     @GET("api/shop/address/list")

@@ -121,15 +121,14 @@ public class SearchResultFragment extends BaseFragment {
 					.placeholder(R.mipmap.default_item)
 					.into((ImageView)helper.getView(R.id.iv_icon));
 			helper.setGone(R.id.tag, item.getCoupon_discount() > 0);
-			helper.setText(R.id.tag, "现金卷"+item.getCoupon_discount());
+			helper.setText(R.id.tag, String.format(mContext.getString(R.string.goods_coupon), String.valueOf(item.getCoupon_discount())));
 			helper.setText(R.id.tv_name, item.getName());
 			helper.setText(R.id.tv_price, "USTD "+item.getPrice());
 			helper.setGone(R.id.tv_original_price, !item.getPrice().equals(item.getOriginal_price()));
 			helper.setText(R.id.tv_original_price, "USTD "+item.getOriginal_price());
 //            binding.tvNumber TODO 没字段
-			helper.itemView.setOnClickListener(v -> {
-				DetailActivity.start(v.getContext());
-			});
+			helper.setText(R.id.tv_number, String.format(mContext.getString(R.string.paid_num), String.valueOf(item.getSale())));
+			helper.itemView.setOnClickListener(v -> GoodsDetailActivity.start(v.getContext(),item.getId()));
 
 		}
 	}

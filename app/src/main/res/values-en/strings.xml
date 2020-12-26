@@ -1026,4 +1026,11 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="cancel_order_success">取消订单成功</string>
     <string name="order_complete">收货成功，订单完成</string>
     <string name="tip_success">提醒成功</string>
+    <string name="to_be_refunded">待退款</string>
+    <string name="refunded">已退款</string>
+    <string name="to_be_comment">待评价</string>
+    <string name="commened">已评价</string>
+    <string name="confirm_on_the_chain">链上确认中</string>
+    <string name="goods_coupon">现金券%s</string>
+    <string name="delete">删除</string>
 </resources>

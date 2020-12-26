@@ -12,6 +12,9 @@ import com.darknet.bvw.net.retrofit.BIWNetworkApi;
 import com.darknet.bvw.net.retrofit.BaseObserver;
 import com.darknet.bvw.net.retrofit.MvvmNetworkObserver;
 import com.darknet.bvw.net.retrofit.RequestBodyBuilder;
+import com.darknet.bvw.order.bean.event.CartEvent;
+
+import org.greenrobot.eventbus.EventBus;
 
 public class GoodsDetailViewModel extends BaseViewModel {
     public MutableLiveData<GoodsDetailBean> productDetailLive = new MutableLiveData<>();
@@ -44,6 +47,7 @@ public class GoodsDetailViewModel extends BaseViewModel {
                     @Override
                     public void onSuccess(BaseResponse<Object> t, boolean isFromCache) {
                         isAddSuccessLive.setValue(true);
+                        EventBus.getDefault().post(new CartEvent());
                     }
 
                     @Override

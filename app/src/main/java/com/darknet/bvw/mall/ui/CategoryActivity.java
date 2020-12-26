@@ -108,6 +108,7 @@ public class CategoryActivity extends BaseActivity {
 			@Override
 			public void onPageSelected(int position) {
 				mCategoryAdapter.select(position);
+				mCategory.scrollToPosition(position);
 			}
 		});
 //		mVp2.setUserInputEnabled(fa);
