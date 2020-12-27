@@ -69,7 +69,7 @@ public class SubmitOrderReq {
          */
 
         private int coupon_id;
-        private int mall_id;
+        private int product_id;
 
         public int getCoupon_id() {
             return coupon_id;
@@ -79,12 +79,12 @@ public class SubmitOrderReq {
             this.coupon_id = coupon_id;
         }
 
-        public int getMall_id() {
-            return mall_id;
+        public int getProduct_id() {
+            return product_id;
         }
 
-        public void setMall_id(int mall_id) {
-            this.mall_id = mall_id;
+        public void setProduct_id(int product_id) {
+            this.product_id = product_id;
         }
     }
 }

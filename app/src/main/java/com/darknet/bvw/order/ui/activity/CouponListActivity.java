@@ -35,6 +35,9 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.json.JSONObject;
 
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -54,6 +57,10 @@ public class CouponListActivity extends BaseBindingActivity<ActivityCouponListBi
     public static void start(Context context) {
         context.startActivity(new Intent(context, CouponListActivity.class));
     }
+    public static void start(Context context, ArrayList<String> selectList) {
+        Intent intent = new Intent(context, CouponListActivity.class);
+        intent.putStringArrayListExtra("selectList", selectList);
+        context.startActivity(intent);    }
 
     @Override
     public int getLayoutId() {
@@ -84,7 +91,8 @@ public class CouponListActivity extends BaseBindingActivity<ActivityCouponListBi
             });
             mCouponDialog.show();
         });
-        mBinding.layoutTitle.titleRight.setOnClickListener(view -> MyCouponListActivity.start(this));
+        mBinding.layoutTitle.titleRight.setOnClickListener(view ->
+                MyCouponListActivity.start(this, getIntent().getStringArrayListExtra("selectList")));
     }
 
     @Override

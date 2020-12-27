@@ -17,7 +17,10 @@ import com.darknet.bvw.net.retrofit.BaseObserver;
 import com.darknet.bvw.net.retrofit.MvvmNetworkObserver;
 import com.darknet.bvw.net.retrofit.RequestBodyBuilder;
 import com.darknet.bvw.order.bean.OrderResp;
+import com.darknet.bvw.order.bean.event.RefreshOrderListEvent;
 import com.darknet.bvw.util.ToastUtils;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
@@ -93,8 +96,7 @@ public class OrderListViewModel extends BaseListViewModel<OrderResp> {
                 .subscribe(new BaseObserver<>(this, new MvvmNetworkObserver<BaseResponse<Object>>() {
                     @Override
                     public void onSuccess(BaseResponse<Object> t, boolean isFromCache) {
-                        refresh();
-
+                        EventBus.getDefault().post(new RefreshOrderListEvent());
                         ToastUtils.showToast(getApplication().getString(R.string.cancel_order_success));
                     }
 
@@ -112,7 +114,6 @@ public class OrderListViewModel extends BaseListViewModel<OrderResp> {
                 .subscribe(new BaseObserver<>(this, new MvvmNetworkObserver<BaseResponse<Object>>() {
                     @Override
                     public void onSuccess(BaseResponse<Object> t, boolean isFromCache) {
-                        refresh();
                         ToastUtils.showToast(getApplication().getString(R.string.tip_success));
                     }
 
@@ -130,7 +131,7 @@ public class OrderListViewModel extends BaseListViewModel<OrderResp> {
                 .subscribe(new BaseObserver<>(this, new MvvmNetworkObserver<BaseResponse<Object>>() {
                     @Override
                     public void onSuccess(BaseResponse<Object> t, boolean isFromCache) {
-                        refresh();
+                        EventBus.getDefault().post(new RefreshOrderListEvent());
                         ToastUtils.showToast(getApplication().getString(R.string.order_complete));
                     }
 

@@ -64,10 +64,12 @@ public class CartActivity extends BaseBindingActivity<ActivityCartBinding> {
                 .setSpace(DensityUtils.dip2px(1), DensityUtils.dip2px(30), DensityUtils.dip2px(15))
                 .build());
         mViewModel.refresh();
-        mCartAdapter.setOnItemClickListener((adapter, view, position) -> {
-            CartData.CartItemListBean item = mCartAdapter.getItem(position);
-            if (item!=null) {
-                mViewModel.checkCartBySku(item.getCheck() == 1 ? 0 : 1, String.valueOf(item.getProduct_sku_id()));
+        mCartAdapter.setOnItemChildClickListener((adapter, view, position) -> {
+            if (view.getId() == R.id.clCartGoods) {
+                CartData.CartItemListBean item = mCartAdapter.getItem(position);
+                if (item != null) {
+                    mViewModel.checkCartBySku(item.getCheck() == 1 ? 0 : 1, String.valueOf(item.getProduct_sku_id()));
+                }
             }
         });
         mCartAdapter.setAddOrSubListener(new CartAdapter.AddOrSubListener() {
@@ -173,6 +175,7 @@ public class CartActivity extends BaseBindingActivity<ActivityCartBinding> {
                     mAddOrSubListener.onDelete(item.getProduct_sku_id());
                 }
             });
+            helper.addOnClickListener(R.id.clCartGoods);
             ViewUtil.setTextViewDeleteLine(helper.getView(R.id.tvOriginPrice));
         }
 

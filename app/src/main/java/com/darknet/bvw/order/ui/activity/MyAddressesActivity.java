@@ -46,16 +46,21 @@ public class MyAddressesActivity extends BaseBindingActivity<ActivityMyAddresses
         mBinding.layoutTitle.title.setText(getString(R.string.my_shipping_address));
         mBinding.tvAddAddress.setOnClickListener((view -> AddAddressActivity.start(this, null, true)));
         AddressAdapter adapter = new AddressAdapter(selectId);
-        adapter.setOnItemChildClickListener((adapter1, view, position) ->
-                mViewModel.deleteAddress(Objects.requireNonNull(adapter.getItem(position)).getId()));
-        mBinding.setAdapter(adapter);
-        mBinding.getAdapter().setOnItemClickListener((adapter2, view, position) -> {
-            ShippingAddress shippingAddress = adapter.getData().get(position);
-            Intent intent = new Intent();
-            intent.putExtra("address", shippingAddress);
-            setResult(RESULT_OK,intent);
-            finish();
+        adapter.setOnItemChildClickListener((adapter1, view, position) -> {
+            switch (view.getId()) {
+                case R.id.tvDelete:
+            mViewModel.deleteAddress(Objects.requireNonNull(adapter.getItem(position)).getId());
+                    break;
+                case R.id.clAddress:
+                    ShippingAddress shippingAddress = adapter.getData().get(position);
+                    Intent intent = new Intent();
+                    intent.putExtra("address", shippingAddress);
+                    setResult(RESULT_OK,intent);
+                    finish();
+                    break;
+            }
         });
+        mBinding.setAdapter(adapter);
     }
 
     @Override
@@ -81,6 +86,7 @@ public class MyAddressesActivity extends BaseBindingActivity<ActivityMyAddresses
         protected void convert(@NonNull BaseBindingViewHolder<ItemAddressBinding> helper, ShippingAddress item) {
             super.convert(helper, item);
             helper.addOnClickListener(R.id.tvDelete);
+            helper.addOnClickListener(R.id.clAddress);
         }
 
         @Override

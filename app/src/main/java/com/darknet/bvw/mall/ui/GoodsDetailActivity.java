@@ -3,16 +3,21 @@ package com.darknet.bvw.mall.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.darknet.bvw.R;
 import com.darknet.bvw.activity.BaseBindingActivity;
 import com.darknet.bvw.activity.XchainMainThreeActivity;
 import com.darknet.bvw.databinding.ActivityGoodsDetailBinding;
+import com.darknet.bvw.mall.bean.GoodsBannerBean;
 import com.darknet.bvw.mall.bean.GoodsDetailBean;
 import com.darknet.bvw.mall.ui.dialog.GoodsSkuDialog;
 import com.darknet.bvw.mall.vm.GoodsDetailViewModel;
+import com.darknet.bvw.order.bean.event.CartEvent;
 import com.darknet.bvw.order.ui.activity.CartActivity;
 import com.darknet.bvw.order.ui.activity.ConfirmOrderActivity;
 import com.darknet.bvw.order.vm.CartViewModel;
@@ -20,6 +25,9 @@ import com.darknet.bvw.util.GlideImageLoader;
 import com.darknet.bvw.util.SpanHelper;
 import com.darknet.bvw.util.StatusBarUtil;
 import com.darknet.bvw.util.ToastUtils;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.Arrays;
 import java.util.List;
@@ -30,6 +38,7 @@ public class GoodsDetailActivity extends BaseBindingActivity<ActivityGoodsDetail
 
     private GoodsDetailBean.SkuListBean mSelectSkuListBean;
     private GoodsDetailViewModel mViewModel;
+    private CartViewModel mCartViewModel;
 
     public static void start(Context context, int product_id) {
         Intent intent = new Intent(context, GoodsDetailActivity.class);
@@ -44,6 +53,7 @@ public class GoodsDetailActivity extends BaseBindingActivity<ActivityGoodsDetail
 
     @Override
     public void initView() {
+        EventBus.getDefault().register(this);
         StatusBarUtil.setStatusBarColor(this,R.color.color_bg_181523);
         mBinding.banner.setIndicatorGravity(Gravity.BOTTOM);
         mBinding.ivBack.setOnClickListener(v -> finish());
@@ -60,17 +70,17 @@ public class GoodsDetailActivity extends BaseBindingActivity<ActivityGoodsDetail
     public void initDatas() {
         int product_id = getIntent().getIntExtra("product_id", 0);
         mViewModel = getViewModel(GoodsDetailViewModel.class);
-        CartViewModel cartViewModel = getViewModel(CartViewModel.class);
+        mCartViewModel = getViewModel(CartViewModel.class);
         mViewModel.getGoodsDetail(product_id);
         mViewModel.productDetailLive.observe(this, productDetailResp -> refreshGoodsUI(productDetailResp));
         mViewModel.isAddSuccessLive.observe(this, aBoolean -> {
             if (aBoolean) {
                 ToastUtils.showToast(getString(R.string.add_to_cart_success));
             }
-            cartViewModel.refresh();
+            mCartViewModel.refresh();
         });
-        cartViewModel.refresh();
-        cartViewModel.cartItemListLive.observe(this,it->
+        mCartViewModel.refresh();
+        mCartViewModel.cartItemListLive.observe(this, it->
                 mBinding.shoppingNum.setText(String.valueOf(CollectionUtil.isNotEmpty(it)?it.size():0)));
     }
 
@@ -106,7 +116,17 @@ public class GoodsDetailActivity extends BaseBindingActivity<ActivityGoodsDetail
             String img_url_list = productDetailResp.getImg_url_list();
             String[] split = img_url_list.split(",");
             List<String> imageList = Arrays.asList(split);
-            mBinding.banner.setImageLoader(new GlideImageLoader());
+            mBinding.banner.setImageLoader(new GlideImageLoader() {
+                @Override
+                public void displayImage(Context context, Object path, ImageView imageView) {
+                    String data = (String) path;
+                    Glide.with(context)
+                            .load(data)
+                            .placeholder(R.mipmap.default_banner)
+                            .fitCenter()
+                            .into(imageView);
+                }
+            });
             mBinding.banner.setImages(imageList);
             mBinding.banner.start();
             mBinding.banner.setDelayTime(20000);
@@ -121,7 +141,11 @@ public class GoodsDetailActivity extends BaseBindingActivity<ActivityGoodsDetail
                     .next(productDetailResp.getPrice())
                     .setTextSize(16)
                     .get());
-            mBinding.webview.loadData(productDetailResp.getDetail_html(), "", "");
+            String detail_html = productDetailResp.getDetail_html();
+            if (!TextUtils.isEmpty(detail_html)) {
+                mBinding.webview.setVisibility(View.VISIBLE);
+                mBinding.webview.loadData(detail_html, "", "");
+            }
 
             List<GoodsDetailBean.SkuListBean> sku_list = productDetailResp.getSku_list();
             mBinding.tvSelectSku.setVisibility(CollectionUtil.isEmpty(sku_list) ? View.GONE : View.VISIBLE);
@@ -145,4 +169,14 @@ public class GoodsDetailActivity extends BaseBindingActivity<ActivityGoodsDetail
         }
     }
 
+    @Subscribe
+    public void onRefreshCartEvent(CartEvent cartEvent) {
+        mCartViewModel.refresh();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
 }

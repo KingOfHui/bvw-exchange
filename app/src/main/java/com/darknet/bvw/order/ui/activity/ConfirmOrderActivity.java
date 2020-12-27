@@ -7,6 +7,7 @@ import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.darknet.bvw.R;
 import com.darknet.bvw.activity.BaseBindingActivity;
 import com.darknet.bvw.databinding.ActivityOrderConfirmBinding;
@@ -42,6 +43,8 @@ public class ConfirmOrderActivity extends BaseBindingActivity<ActivityOrderConfi
     private MyCouponBean mSelectCouponBean;
     private MyAddressViewModel mAddressViewModel;
     List<CartData.CartItemListBean> mCartItemListBeans = new ArrayList<>();
+    private ConfirmGoodsAdapter mAdapter;
+    private CartData.CartItemListBean mSelectCartItemListBean;
 
     public static void start(Context context, GoodsDetailBean.SkuListBean selectSkuListBean, GoodsDetailBean goodsDetailBean) {
         Intent intent = new Intent(context, ConfirmOrderActivity.class);
@@ -63,37 +66,46 @@ public class ConfirmOrderActivity extends BaseBindingActivity<ActivityOrderConfi
     @Override
     public void initView() {
         EventBus.getDefault().register(this);
+
+        mBinding.hlvDiscounts.setRightText(String.format("%s USDT", "0"));
+        mBinding.hlvFreight.setRightText(String.format("%s USDT", "0"));
+        mBinding.layoutTitle.layBack.setOnClickListener(view -> finish());
+        mBinding.layoutTitle.title.setText(getString(R.string.confirm_order));
+        mBinding.ivEdit.setOnClickListener(view -> AddAddressActivity.start(this, mAddress, false));
+
         Intent data = getIntent();
         GoodsDetailBean.SkuListBean selectSkuListBean = (GoodsDetailBean.SkuListBean) data.getSerializableExtra("selectSkuListBean");
         GoodsDetailBean goodsDetailBean = (GoodsDetailBean) data.getSerializableExtra("goodsDetailBean");
         mAddressViewModel = getViewModel(MyAddressViewModel.class);
         ConfirmOrderViewModel orderViewModel = getViewModel(ConfirmOrderViewModel.class);
 
-        mBinding.hlvDiscounts.setRightText(String.format("%s USDT", "0"));
-        mBinding.hlvFreight.setRightText(String.format("%s USDT", "0"));
-        if (selectSkuListBean != null && goodsDetailBean != null) {
-            mBinding.hlvTotalPrice.setRightText(String.format("%s USDT", goodsDetailBean.getPrice()));
-            CartData.CartItemListBean cartItemListBean = new CartData.CartItemListBean();
-            cartItemListBean.setProduct_name(goodsDetailBean.getName());
-            cartItemListBean.setSp1(selectSkuListBean.getSp1());
-            cartItemListBean.setPrice(new BigDecimal(selectSkuListBean.getPrice()));
-            cartItemListBean.setProduct_img_url(goodsDetailBean.getImg_url());
-            cartItemListBean.setOriginal_price(new BigDecimal(selectSkuListBean.getOriginal_price()));
-            cartItemListBean.setQuantity(selectSkuListBean.getQuantity());
-            mCartItemListBeans.add(cartItemListBean);
-        } else {
-            orderViewModel.getCartList();
-        }
-        mBinding.layoutTitle.layBack.setOnClickListener(view -> finish());
-        mBinding.layoutTitle.title.setText(getString(R.string.confirm_order));
-        ConfirmGoodsAdapter adapter = new ConfirmGoodsAdapter();
-        adapter.setNewData(mCartItemListBeans);
-        mBinding.setAdapter(adapter);
-        orderViewModel.cartItemListLive.observe(this, adapter::setNewData);
+        mAdapter = new ConfirmGoodsAdapter();
+        initRvData(selectSkuListBean, goodsDetailBean, orderViewModel);
+        mAdapter.setNewData(mCartItemListBeans);
+        mBinding.setAdapter(mAdapter);
+        mAdapter.setOnItemChildClickListener((adapter, view, position) -> {
+            if (view.getId() == R.id.tvSelectDiscounts) {
+                List<CartData.CartItemListBean> list = mAdapter.getData();
+                mSelectCartItemListBean = list.get(position);
+                ArrayList<String> selectList = new ArrayList<>();
+                for (CartData.CartItemListBean cartItemListBean : list) {
+                    MyCouponBean selectCouponBean = cartItemListBean.getSelectCouponBean();
+                    if (selectCouponBean != null) {
+                        selectList.add(selectCouponBean.getTx_hash());
+                    }
+                }
+                CouponListActivity.start(this, selectList);
+            }
+        });
+
+        orderViewModel.cartItemListLive.observe(this, mAdapter::setNewData);
         orderViewModel.cartDataLive.observe(this, new Observer<CartData>() {
             @Override
             public void onChanged(CartData cartData) {
                 mBinding.hlvTotalPrice.setRightText(ValueUtil.stripTrailingZeros(cartData.getChecked_product_amount()));
+                mBinding.clDiscounts.setOnClickListener(view -> {
+                    startActivity(new Intent(ConfirmOrderActivity.this, CouponListActivity.class));
+                });
             }
         });
         mBinding.tvAddressTip.setOnClickListener(view -> {
@@ -101,10 +113,6 @@ public class ConfirmOrderActivity extends BaseBindingActivity<ActivityOrderConfi
             intent.putExtra("selectId", mAddress != null ? mAddress.getId() : -1);
             startActivityForResult(intent, 10000);
         });
-        mBinding.clDiscounts.setOnClickListener(view -> {
-            startActivity(new Intent(this, CouponListActivity.class));
-        });
-        mBinding.ivEdit.setOnClickListener(view -> AddAddressActivity.start(this, mAddress, false));
         mAddressViewModel.refresh();
         mAddressViewModel.selectAddress.observe(this, shippingAddress -> {
             if (shippingAddress != null) {
@@ -119,12 +127,9 @@ public class ConfirmOrderActivity extends BaseBindingActivity<ActivityOrderConfi
                 ToastUtils.showToast(getString(R.string.select_address_first));
                 return;
             }
-
             String remark = mBinding.etRemark.getText().toString().trim();
-
-
             if (selectSkuListBean == null) {
-                orderViewModel.submitCartOrder(mAddress.getId(), remark, mSelectCouponBean, orderViewModel.cartItemListLive.getValue().get(0).getProduct_id());
+                orderViewModel.submitCartOrder(mAddress.getId(), remark, mAdapter.getData());
             } else {
                 orderViewModel.submitOrder(mAddress.getId(), remark, mSelectCouponBean,
                         selectSkuListBean.getQuantity(), selectSkuListBean.getId(), selectSkuListBean.getProduct_id());
@@ -139,6 +144,34 @@ public class ConfirmOrderActivity extends BaseBindingActivity<ActivityOrderConfi
             EventBus.getDefault().post(new CartEvent());
             finish();
         });
+    }
+
+    private void initRvData(GoodsDetailBean.SkuListBean selectSkuListBean, GoodsDetailBean goodsDetailBean, ConfirmOrderViewModel orderViewModel) {
+        if (selectSkuListBean != null && goodsDetailBean != null) {
+            mBinding.hlvTotalPrice.setRightText(String.format("%s USDT", goodsDetailBean.getPrice()));
+//            float coupon_discount = goodsDetailBean.getCoupon_discount();
+//            if (coupon_discount > 0) {
+//                mBinding.tvDiscounts.setVisibility(View.VISIBLE);
+//                mBinding.tvDiscounts.setText("请选择优惠券");
+//                mBinding.clDiscounts.setOnClickListener(view -> {
+//                    startActivity(new Intent(this, CouponListActivity.class));
+//                });
+//            } else {
+//                mBinding.tvDiscounts.setVisibility(View.VISIBLE);
+//                mBinding.tvDiscounts.setText(R.string.no_used_coupon);
+//            }
+            CartData.CartItemListBean cartItemListBean = new CartData.CartItemListBean();
+            cartItemListBean.setProduct_name(goodsDetailBean.getName());
+            cartItemListBean.setSp1(selectSkuListBean.getSp1());
+            cartItemListBean.setPrice(new BigDecimal(selectSkuListBean.getPrice()));
+            cartItemListBean.setProduct_img_url(goodsDetailBean.getImg_url());
+            cartItemListBean.setOriginal_price(new BigDecimal(selectSkuListBean.getOriginal_price()));
+            cartItemListBean.setQuantity(selectSkuListBean.getQuantity());
+            cartItemListBean.setCoupon_discount(BigDecimal.valueOf(goodsDetailBean.getCoupon_discount()));
+            mCartItemListBeans.add(cartItemListBean);
+        } else {
+            orderViewModel.getCartList();
+        }
     }
 
     @Override
@@ -159,10 +192,19 @@ public class ConfirmOrderActivity extends BaseBindingActivity<ActivityOrderConfi
 
     @Subscribe()
     public void onEvent(MyCouponBean couponBean) {
+        if (mSelectCartItemListBean != null) {
+            BigDecimal coupon_discount = mSelectCartItemListBean.getCoupon_discount();
+            BigDecimal discount = couponBean.getDiscount();
+            if (discount.compareTo(coupon_discount) < 0) {
+                ToastUtils.showToast(String.format(getString(R.string.select_coupon_top), ValueUtil.stripTrailingZeros(coupon_discount)));
+                return;
+            }
+            mSelectCartItemListBean.setSelectCouponBean(couponBean);
+            mAdapter.notifyDataSetChanged();
+            mBinding.hlvDiscounts.setRightText(String.format("%s USDT", ValueUtil.stripTrailingZeros(mAdapter.getCouponAmount())));
+        }
         mSelectCouponBean = couponBean;
-        mBinding.tvDiscounts.setVisibility(View.VISIBLE);
-        mBinding.tvDiscounts.setText(String.format("%s USDT", couponBean.getDiscount()));
-        mBinding.hlvDiscounts.setRightText(String.format("%s USDT", couponBean.getDiscount()));
+//        mBinding.tvDiscounts.setText(String.format("%s USDT", couponBean.getDiscount()));
     }
 
     @Override

@@ -13,6 +13,7 @@ import com.darknet.bvw.databinding.FragmentOrderListBinding;
 import com.darknet.bvw.databinding.ItemOrderListBinding;
 import com.darknet.bvw.order.bean.OrderResp;
 import com.darknet.bvw.order.bean.OrderStatusEnum;
+import com.darknet.bvw.order.bean.event.RefreshOrderListEvent;
 import com.darknet.bvw.order.ui.activity.LogisticsTrackingActivity;
 import com.darknet.bvw.order.ui.activity.OrderDetailActivity;
 import com.darknet.bvw.order.ui.activity.PayOrderActivity;
@@ -21,6 +22,9 @@ import com.darknet.bvw.order.ui.adapter.OrderListAdapter;
 import com.darknet.bvw.order.vm.OrderListViewModel;
 import com.darknet.bvw.util.ValueUtil;
 import com.darknet.bvw.util.view.ViewUtil;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.List;
 
@@ -54,6 +58,7 @@ public class OrderListFragment extends BaseBindingFragment<OrderListViewModel, F
 
     @Override
     protected void initView() {
+        EventBus.getDefault().register(this);
         OrderListAdapter orderListAdapter = new OrderListAdapter();
         orderListAdapter.setOnItemClickListener((adapter, view, position) -> OrderDetailActivity.start(requireActivity(),orderListAdapter.getItem(position)));
         mDataBinding.setAdapter(orderListAdapter);
@@ -96,4 +101,14 @@ public class OrderListFragment extends BaseBindingFragment<OrderListViewModel, F
 
     }
 
+    @Subscribe
+    public void onRefreshListEvent(RefreshOrderListEvent event) {
+        mViewModel.refresh();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        EventBus.getDefault().unregister(this);
+    }
 }

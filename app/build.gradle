@@ -24,8 +24,8 @@ android {
         applicationId "com.darknet.bvw"
         minSdkVersion 19
         targetSdkVersion 29
-        versionCode 20201110
-        versionName "2.4.0"
+        versionCode 20201227
+        versionName "2.5.0"
         multiDexEnabled true
         javaCompileOptions {
             annotationProcessorOptions {
@@ -77,7 +77,7 @@ android {
         }
         applicationVariants.all { variant ->
             variant.outputs.all {
-                if (variant.name.contains("debug")) {
+                if (!Boolean.parseBoolean(project.releaseApi)) {
                     outputFileName = new File("BIW-test-${variant.versionName}.apk")
                 } else {
                     outputFileName = new File("BIW-${variant.name}-${variant.versionName}.apk")

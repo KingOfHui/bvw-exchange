@@ -690,6 +690,7 @@
         <activity android:name=".mall.ui.DetailActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".order.ui.activity.CouponListActivity"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait"/>
         <activity android:name=".order.ui.activity.MyCouponListActivity"
             android:launchMode="singleTop"

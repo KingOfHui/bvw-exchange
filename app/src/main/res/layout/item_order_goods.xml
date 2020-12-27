@@ -40,13 +40,32 @@
             android:id="@+id/tvSelectSku"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dimen_10dp"
-            android:layout_marginTop="@dimen/dimen_5dp"
+            android:layout_marginStart="@dimen/dimen_10dp"
+            android:layout_marginTop="7dp"
             android:textColor="@color/white"
             android:textSize="11dp"
-            app:layout_constraintLeft_toRightOf="@id/ivGoodsImg"
+            android:layout_marginEnd="@dimen/dimen_5dp"
+            app:layout_constraintEnd_toStartOf="@id/tvSelectDiscounts"
+            app:layout_constraintStart_toEndOf="@id/ivGoodsImg"
             app:layout_constraintTop_toBottomOf="@id/tvGoodsName"
-            tools:text="一次性口罩 10只装" />
+            android:text="一次性口罩 10只装" />
+
+        <com.darknet.bvw.view.CornerTextView
+            android:id="@+id/tvSelectDiscounts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="使用优惠券"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@id/tvGoodsName"
+            app:layout_constraintTop_toBottomOf="@id/tvGoodsName"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            app:color="@color/_01FCDA"
+            app:corner="@dimen/dimen_5dp"
+            android:paddingStart="@dimen/dimen_5dp"
+            android:paddingEnd="@dimen/dimen_5dp"
+            android:paddingTop="1dp"
+            android:paddingBottom="1dp"/>
+
 
         <TextView
             android:id="@+id/tvPrice"

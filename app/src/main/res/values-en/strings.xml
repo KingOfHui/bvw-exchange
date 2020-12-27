@@ -946,7 +946,7 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="order_freight">Freight</string>
     <string name="order_discounts">Discounts</string>
     <string name="order_money_off">满减</string>
-    <string name="order_total_price">Total</string>
+    <string name="order_total_price">Total：</string>
     <string name="order_to_pay">Pay now</string>
     <string name="order_count_number">共 %s 件商品</string>
     <string name="to_pay">Pay</string>
@@ -1033,4 +1033,7 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="confirm_on_the_chain">链上确认中</string>
     <string name="goods_coupon">现金券%s</string>
     <string name="delete">删除</string>
+    <string name="no_used_coupon">无可用优惠券</string>
+    <string name="select_coupon_top">请选择%s以上的优惠券</string>
+    <string name="select_coupon_amount">已选：%s优惠券</string>
 </resources>

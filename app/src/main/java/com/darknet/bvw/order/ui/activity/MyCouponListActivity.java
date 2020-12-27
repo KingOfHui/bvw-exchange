@@ -16,6 +16,8 @@ import com.darknet.bvw.util.StatusBarUtil;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
+import java.util.ArrayList;
+
 /**
  * @ClassName CouponListActivity
  * @Description
@@ -23,8 +25,10 @@ import org.greenrobot.eventbus.Subscribe;
  * @Date 2020/12/24 0024 10:29
  */
 public class MyCouponListActivity extends BaseBindingActivity<ActivityMyCouponListBinding> {
-    public static void start(Context context) {
-        context.startActivity(new Intent(context, MyCouponListActivity.class));
+    public static void start(Context context, ArrayList<String> selectList) {
+        Intent intent = new Intent(context, MyCouponListActivity.class);
+        intent.putStringArrayListExtra("selectList", selectList);
+        context.startActivity(intent);
     }
 
     @Override
@@ -53,6 +57,7 @@ public class MyCouponListActivity extends BaseBindingActivity<ActivityMyCouponLi
     @Override
     public void initDatas() {
         MyCouponViewModel viewModel = getViewModel(MyCouponViewModel.class);
+        viewModel.selectCouponList.setValue(getIntent().getStringArrayListExtra("selectList"));
         mBinding.setVm(viewModel);
         viewModel.refresh();
     }

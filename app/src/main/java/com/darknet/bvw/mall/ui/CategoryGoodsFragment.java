@@ -163,13 +163,12 @@ public class CategoryGoodsFragment extends BaseFragment {
 					.load(item.getImg_url())
 					.apply(RequestOptions.centerCropTransform())
 					.into((ImageView) helper.getView(R.id.iv_icon));
-//            binding.tag TODO 没字段
+			helper.setVisible(R.id.tag, item.getCoupon_discount() > 0);
+			helper.setText(R.id.tag, mContext.getString(R.string.goods_coupon, String.valueOf(item.getCoupon_discount())));
 			helper.setText(R.id.tv_name, item.getName());
 			helper.setText(R.id.tv_price, "USTD "+item.getPrice());
 			helper.setText(R.id.tv_number, String.format(mContext.getString(R.string.paid_num), String.valueOf(item.getSale())));
-			helper.itemView.setOnClickListener(view -> {
-				GoodsDetailActivity.start(mContext,item.getId());
-			});
+			helper.itemView.setOnClickListener(view -> GoodsDetailActivity.start(mContext,item.getId()));
 		}
 	}
 }

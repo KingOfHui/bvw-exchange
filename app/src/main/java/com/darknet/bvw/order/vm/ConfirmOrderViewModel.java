@@ -19,6 +19,7 @@ import com.darknet.bvw.order.bean.OrderResp;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.hutool.core.collection.CollectionUtil;
 import okhttp3.RequestBody;
 
 public class ConfirmOrderViewModel extends BaseViewModel {
@@ -38,15 +39,20 @@ public class ConfirmOrderViewModel extends BaseViewModel {
         apiService.updateOrderAddress(params);
     }
 
-    public void submitCartOrder(int addressId, String remark, MyCouponBean selectCouponBean, int productId) {
+    public void submitCartOrder(int addressId, String remark, List<CartData.CartItemListBean> data) {
         showLoading();
         SubmitOrderReq req = new SubmitOrderReq();
         req.setAddress_id(addressId);
         req.setNote(remark);
         SubmitOrderReq.CouponBean couponBean = new SubmitOrderReq.CouponBean();
-        if (selectCouponBean != null) {
-            couponBean.setCoupon_id(selectCouponBean.getId());
-            couponBean.setMall_id(productId);
+        if (CollectionUtil.isNotEmpty(data)) {
+            for (CartData.CartItemListBean datum : data) {
+                MyCouponBean selectCouponBean = datum.getSelectCouponBean();
+                if (selectCouponBean != null) {
+                    couponBean.setCoupon_id(selectCouponBean.getId());
+                    couponBean.setProduct_id(datum.getProduct_id());
+                }
+            }
         }
         req.setCoupon(couponBean);
         apiService.submitCart(new RequestBodyBuilder().build(req))
@@ -76,7 +82,7 @@ public class ConfirmOrderViewModel extends BaseViewModel {
         SubmitOrderReq.CouponBean couponBean = new SubmitOrderReq.CouponBean();
         if (selectCouponBean != null) {
             couponBean.setCoupon_id(selectCouponBean.getId());
-            couponBean.setMall_id(productId);
+            couponBean.setProduct_id(productId);
         }
         req.setCoupon(couponBean);
         apiService.submitOrder(new RequestBodyBuilder().build(req)).compose(BIWNetworkApi.getInstance().applySchedulers())

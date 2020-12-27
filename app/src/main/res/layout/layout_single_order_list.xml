@@ -160,8 +160,9 @@
             android:textColor="@color/white"
             android:textSize="@dimen/dp_18"
             android:textStyle="bold"
-            app:layout_constraintBaseline_toBaselineOf="@id/tvCount"
-            app:layout_constraintBottom_toBottomOf="@id/tvCount"
+            android:includeFontPadding="false"
+            app:layout_constraintBottom_toBottomOf="@id/tvTotalTip"
+            app:layout_constraintTop_toTopOf="@id/tvTotalTip"
             app:layout_constraintRight_toRightOf="parent"
             tools:text="USDT 206" />
 
