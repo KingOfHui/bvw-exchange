@@ -29,7 +29,8 @@
             app:layout_constraintBottom_toTopOf="@id/clBottom"
             app:layout_constraintTop_toBottomOf="@id/ivBack">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -91,6 +92,7 @@
                         android:id="@+id/ivShare"
                         android:layout_width="@dimen/dp_18"
                         android:layout_height="@dimen/dp_18"
+                        android:visibility="invisible"
                         android:layout_marginEnd="@dimen/dimen_30dp"
                         android:layout_marginBottom="@dimen/dp_10"
                         android:src="@mipmap/icon_share"
@@ -103,6 +105,7 @@
                         android:layout_marginTop="@dimen/dimen_5dp"
                         android:textColor="@color/white"
                         android:textSize="9dp"
+                        android:visibility="invisible"
                         app:layout_constraintEnd_toEndOf="@id/ivShare"
                         app:layout_constraintStart_toStartOf="@id/ivShare"
                         app:layout_constraintTop_toBottomOf="@id/ivShare"
@@ -144,6 +147,7 @@
                         app:layout_constraintStart_toEndOf="@id/tvCanUsedDiscountsTip"
                         app:layout_constraintTop_toTopOf="@id/tvCanUsedDiscountsTip"
                         tools:text="30现金券" />
+<!--
 
                     <ImageView
                         android:id="@+id/ivDiscountsMore"
@@ -151,9 +155,11 @@
                         android:layout_height="3dp"
                         android:layout_marginEnd="@dimen/dimen_15dp"
                         android:src="@mipmap/icon_more"
+                        android:visibility="invisible"
                         app:layout_constraintBottom_toBottomOf="@id/tvCanUsedDiscountsTip"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@id/tvCanUsedDiscountsTip" />
+-->
 
                     <View
                         android:id="@+id/line2"
@@ -192,30 +198,32 @@
 
                     <androidx.constraintlayout.widget.Group
                         android:id="@+id/groupDiscounts"
+                        android:visibility="gone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:constraint_referenced_ids="tvCanUsedDiscounts,line2,ivDiscountsMore,tvCanUsedDiscountsTip" />
+                        app:constraint_referenced_ids="tvCanUsedDiscounts,line2,tvCanUsedDiscountsTip" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_margin="@dimen/dimen_15dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/clGoodsInfo">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:orientation="vertical">-->
 
                     <com.darknet.bvw.view.NoScrollWebView
+                        android:visibility="invisible"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:background="@color/color_bg_181523"
                         android:id="@+id/webview"
+                        android:layout_margin="@dimen/dimen_15dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/clGoodsInfo"
                         />
-                </LinearLayout>
+<!--                </LinearLayout>-->
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
         </androidx.core.widget.NestedScrollView>
 
         <androidx.constraintlayout.widget.ConstraintLayout
