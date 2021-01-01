@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:gravity="center"
-                android:text="@string/main_tab_wallet"
+                android:text="@string/xmain_table_shouye"
                 android:textSize="10dp" />
 
         </LinearLayout>
@@ -88,7 +88,7 @@
                 android:layout_marginTop="5dp"
                 android:gravity="center"
                 android:textColor="@color/_807e8c"
-                android:text="@string/xmain_tab_mall"
+                android:text="@string/find_jiaoyi"
                 android:textSize="10dp" />
 
         </LinearLayout>

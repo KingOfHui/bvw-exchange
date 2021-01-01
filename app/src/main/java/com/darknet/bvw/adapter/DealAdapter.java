@@ -11,17 +11,17 @@ import com.darknet.bvw.util.language.SPUtil;
 import java.math.BigDecimal;
 import java.util.List;
 
-public class DealAdapter extends BAdapter<JiaoYiResponse.JiaoYiModel> {
+public class DealAdapter extends BAdapter<JiaoYiResponse.JiaoYiData> {
 
 
     private Context context;
 
-    public DealAdapter(Context context, List<JiaoYiResponse.JiaoYiModel> list) {
+    public DealAdapter(Context context, List<JiaoYiResponse.JiaoYiData> list) {
         super(context, list);
         this.context = context;
     }
 
-    public void addAllJiaoYiData(List<JiaoYiResponse.JiaoYiModel> list) {
+    public void addAllJiaoYiData(List<JiaoYiResponse.JiaoYiData> list) {
         getList().clear();
         getList().addAll(list);
         notifyDataSetChanged();
@@ -36,16 +36,16 @@ public class DealAdapter extends BAdapter<JiaoYiResponse.JiaoYiModel> {
     @Override
     public void onInitView(View view, int position) {
 
-        JiaoYiResponse.JiaoYiModel jiaoYiModel = getList().get(position);
+        JiaoYiResponse.JiaoYiData jiaoYiModel = getList().get(position);
 
         TextView timeView = view.findViewById(R.id.deal_item_time_view);
         TextView statusView = view.findViewById(R.id.deal_item_status_view);
         TextView priceView = view.findViewById(R.id.deal_item_price_view);
         TextView showView = view.findViewById(R.id.deal_item_show_view);
 
-        timeView.setText(jiaoYiModel.getCreated_at());
+        timeView.setText(jiaoYiModel.getTime());
 
-        if (jiaoYiModel.getTaker_side().equalsIgnoreCase("sell")) {
+        if (jiaoYiModel.getDirection() == 1) {
             statusView.setText(context.getResources().getString(R.string.deal_type_sell_sign));
             statusView.setTextColor(context.getResources().getColor(R.color._FC6767));
 //            int lanType = SPUtil.getInstance(context).getSelectLanguage();
@@ -61,9 +61,8 @@ public class DealAdapter extends BAdapter<JiaoYiResponse.JiaoYiModel> {
             statusView.setTextColor(context.getResources().getColor(R.color._01FCDA));
         }
 
-        priceView.setText(jiaoYiModel.getPrice().stripTrailingZeros().toPlainString());
-
-        showView.setText(jiaoYiModel.getAmount().stripTrailingZeros().setScale(1, BigDecimal.ROUND_DOWN).toPlainString());
+        priceView.setText(jiaoYiModel.getPrice());
+        showView.setText(jiaoYiModel.getAmount().setScale(4, BigDecimal.ROUND_DOWN).toPlainString());
 
 
     }

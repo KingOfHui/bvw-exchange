@@ -60,7 +60,7 @@ public class MarketFragment extends Fragment implements View.OnClickListener {
 
     private List<MarketModel> mList = new ArrayList<>();
 
-    private List<TradeZxResponse.ZxDataModel> zfList = new ArrayList<>();
+    private List<TradeZxResponse.ZxModel> zfList = new ArrayList<>();
 
     private TextView zxContentView;
     private View zxLineView;
@@ -291,7 +291,7 @@ public class MarketFragment extends Fragment implements View.OnClickListener {
         String msg = "" + System.currentTimeMillis();
         String signVal = BitcoinjKit.signMessageBy58(msg, privateKey);
 
-        OkGo.<String>post(ConfigNetWork.JAVA_API_URL + UrlPath.HANGQING_ZFB_URL)
+        OkGo.<String>get(ConfigNetWork.JAVA_API_URL + UrlPath.HANGQING_ZFB_URL)
                 .tag(activity)
                 .headers("Chain-Authentication", addressVals + "#" + msg + "#" + signVal)
                 .execute(new StringCallback() {
@@ -354,8 +354,8 @@ public class MarketFragment extends Fragment implements View.OnClickListener {
             int tmpCollection = 0;
 
             for (int i = 0; i < zfList.size(); i++) {
-                TradeZxResponse.ZxDataModel tempZxDataModel = zfList.get(i);
-                if (tempZxDataModel.getMarket_id().equalsIgnoreCase(zfModel.getMarketId())) {
+                TradeZxResponse.ZxModel tempZxDataModel = zfList.get(i);
+                if (tempZxDataModel.getMarketId().equalsIgnoreCase(zfModel.getMarketId())) {
                     tmpCollection = 1;
                 }
             }
@@ -373,7 +373,7 @@ public class MarketFragment extends Fragment implements View.OnClickListener {
     }
 
 
-    private void setZxData(List<TradeZxResponse.ZxDataModel> list) {
+    private void setZxData(List<TradeZxResponse.ZxModel> list) {
         zfList.addAll(list);
         mAdapter = new MarketAdapter(getActivity(), list);
         mListView.setAdapter(mAdapter);
@@ -383,13 +383,13 @@ public class MarketFragment extends Fragment implements View.OnClickListener {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
 
-                TradeZxResponse.ZxDataModel zxDataModel = (TradeZxResponse.ZxDataModel) parent.getItemAtPosition(position);
+                TradeZxResponse.ZxModel zxDataModel = (TradeZxResponse.ZxModel) parent.getItemAtPosition(position);
                 Bundle data = new Bundle();
-                data.putString(WorkManagerService.EXTRA_DATA, zxDataModel.getMarket_id());
+                data.putString(WorkManagerService.EXTRA_DATA, zxDataModel.getMarketId());
                 WorkManagerService.startService(activity, data);
 
                 Intent kLineIntent = new Intent(getActivity(), KlineActivity.class);
-                kLineIntent.putExtra("markid", zxDataModel.getMarket_id());
+                kLineIntent.putExtra("markid", zxDataModel.getMarketId());
                 kLineIntent.putExtra("shoucang", 1);
                 startActivity(kLineIntent);
             }

@@ -12,11 +12,11 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.List;
 
-public class MarketAdapter extends BAdapter<TradeZxResponse.ZxDataModel> {
+public class MarketAdapter extends BAdapter<TradeZxResponse.ZxModel> {
 
     private Context context;
 
-    public MarketAdapter(Context context, List<TradeZxResponse.ZxDataModel> list) {
+    public MarketAdapter(Context context, List<TradeZxResponse.ZxModel> list) {
         super(context, list);
         this.context = context;
     }
@@ -29,9 +29,9 @@ public class MarketAdapter extends BAdapter<TradeZxResponse.ZxDataModel> {
     @Override
     public void onInitView(View view, int position) {
 
-        TradeZxResponse.ZxDataModel zxModel = getList().get(position);
+        TradeZxResponse.ZxModel marketModel = getList().get(position);
 
-        TradeZxResponse.ZxModel marketModel = zxModel.getRecommend();
+//        TradeZxResponse.ZxModel marketModel = zxModel.getRecommend();
 
         TextView moneyType = (TextView) view.findViewById(R.id.item_coins_money_type);
         TextView usdtType = (TextView) view.findViewById(R.id.item_coins_money_usdt);

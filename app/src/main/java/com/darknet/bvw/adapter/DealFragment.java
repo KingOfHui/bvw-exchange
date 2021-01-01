@@ -50,7 +50,7 @@ public class DealFragment extends Fragment {
 
     private MyListView mListView;
     private DealAdapter mDealAdapter;
-    private List<JiaoYiResponse.JiaoYiModel> mList = new ArrayList<>();
+    private List<JiaoYiResponse.JiaoYiData> mList = new ArrayList<>();
 
     private TextView priceTypeView;
     private TextView biTypeView;
@@ -117,10 +117,11 @@ public class DealFragment extends Fragment {
 
         RequestBody requestBody = RequestBody.create(JSON, jsonVal);
 
-        OkGo.<String>post(ConfigNetWork.JAVA_API_URL + UrlPath.DEAL_LIST_URL)
+        OkGo.<String>get(ConfigNetWork.JAVA_API_URL + UrlPath.DEAL_LIST_URL + markId)
                 .tag(getActivity())
-                .upRequestBody(requestBody)
+//                .upRequestBody(requestBody)
                 .headers("Chain-Authentication", addressVals + "#" + msg + "#" + signVal)
+                .params("limit",50)
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(Response<String> backresponse) {
@@ -131,8 +132,8 @@ public class DealFragment extends Fragment {
                                 try {
                                     Gson gson = new Gson();
                                     JiaoYiResponse response = gson.fromJson(backVal, JiaoYiResponse.class);
-                                    if (response != null && response.getCode() == 0 && response.getData() != null && response.getData().getItems() != null && response.getData().getItems().size() > 0) {
-                                        setVal(response.getData().getItems());
+                                    if (response != null && response.getCode() == 0 && response.getData() != null && response.getData().size() > 0) {
+                                        setVal(response.getData());
                                     }
                                 } catch (Exception e) {
                                     e.printStackTrace();
@@ -155,7 +156,7 @@ public class DealFragment extends Fragment {
     }
 
 
-    private void setVal(List<JiaoYiResponse.JiaoYiModel> items) {
+    private void setVal(List<JiaoYiResponse.JiaoYiData> items) {
         mDealAdapter.addAllJiaoYiData(items);
     }
 

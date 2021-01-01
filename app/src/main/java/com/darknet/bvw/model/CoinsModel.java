@@ -70,29 +70,38 @@ public class CoinsModel implements Serializable {
          * thumb : {"change":0,"chg":0,"close":0,"closeStr":"0.00000","high":0,"lastDayClose":0,"low":0,"marketId":"BTC-USDT","open":0,"quoteUsdRate":null,"trend":null,"turnover":0,"usdRate":1,"volume":0}
          */
 
-        private String amount_decimals;
+//        private String amount_decimals;
         private String base_token_decimals;
-        private String base_token_symbol;
+        private String trade_symbol;
         private String created_at;
         private String id;
         private boolean is_favor_market;
+        private int fav;
         private String is_published;
         private String maker_fee_rate;
         private String min_order_size;
         private String orders;
-        private String price_decimals;
+//        private String price_decimals;
         private String price_precision;
-        private String quote_token_decimals;
-        private String quote_token_symbol;
+        private String quote_symbol_scale;
+        private String quote_symbol;
         private String taker_fee_rate;
-        private ThumbBean thumb;
+        private ThumbBean coinThumb;
 
-        public String getAmount_decimals() {
-            return amount_decimals;
+//        public String getAmount_decimals() {
+//            return amount_decimals;
+//        }
+//
+//        public void setAmount_decimals(String amount_decimals) {
+//            this.amount_decimals = amount_decimals;
+//        }
+
+        public int getFav() {
+            return fav;
         }
 
-        public void setAmount_decimals(String amount_decimals) {
-            this.amount_decimals = amount_decimals;
+        public void setFav(int fav) {
+            this.fav = fav;
         }
 
         public String getBase_token_decimals() {
@@ -103,12 +112,12 @@ public class CoinsModel implements Serializable {
             this.base_token_decimals = base_token_decimals;
         }
 
-        public String getBase_token_symbol() {
-            return base_token_symbol;
+        public String getTrade_symbol() {
+            return trade_symbol;
         }
 
-        public void setBase_token_symbol(String base_token_symbol) {
-            this.base_token_symbol = base_token_symbol;
+        public void setTrade_symbol(String trade_symbol) {
+            this.trade_symbol = trade_symbol;
         }
 
         public String getCreated_at() {
@@ -167,13 +176,13 @@ public class CoinsModel implements Serializable {
             this.orders = orders;
         }
 
-        public String getPrice_decimals() {
-            return price_decimals;
-        }
-
-        public void setPrice_decimals(String price_decimals) {
-            this.price_decimals = price_decimals;
-        }
+//        public String getPrice_decimals() {
+//            return price_decimals;
+//        }
+//
+//        public void setPrice_decimals(String price_decimals) {
+//            this.price_decimals = price_decimals;
+//        }
 
         public String getPrice_precision() {
             return price_precision;
@@ -183,20 +192,20 @@ public class CoinsModel implements Serializable {
             this.price_precision = price_precision;
         }
 
-        public String getQuote_token_decimals() {
-            return quote_token_decimals;
+        public String getQuote_symbol_scale() {
+            return quote_symbol_scale;
         }
 
-        public void setQuote_token_decimals(String quote_token_decimals) {
-            this.quote_token_decimals = quote_token_decimals;
+        public void setQuote_symbol_scale(String quote_symbol_scale) {
+            this.quote_symbol_scale = quote_symbol_scale;
         }
 
-        public String getQuote_token_symbol() {
-            return quote_token_symbol;
+        public String getQuote_symbol() {
+            return quote_symbol;
         }
 
-        public void setQuote_token_symbol(String quote_token_symbol) {
-            this.quote_token_symbol = quote_token_symbol;
+        public void setQuote_symbol(String quote_symbol) {
+            this.quote_symbol = quote_symbol;
         }
 
         public String getTaker_fee_rate() {
@@ -207,12 +216,12 @@ public class CoinsModel implements Serializable {
             this.taker_fee_rate = taker_fee_rate;
         }
 
-        public ThumbBean getThumb() {
-            return thumb;
+        public ThumbBean getCoinThumb() {
+            return coinThumb;
         }
 
-        public void setThumb(ThumbBean thumb) {
-            this.thumb = thumb;
+        public void setCoinThumb(ThumbBean coinThumb) {
+            this.coinThumb = coinThumb;
         }
 
         public static class ThumbBean {
@@ -243,7 +252,6 @@ public class CoinsModel implements Serializable {
             private String marketId;
             private String open;
             private String quoteUsdRate;
-            private String trend;
             private String turnover;
             private String usdRate;
             private String volume;
@@ -326,14 +334,6 @@ public class CoinsModel implements Serializable {
 
             public void setQuoteUsdRate(String quoteUsdRate) {
                 this.quoteUsdRate = quoteUsdRate;
-            }
-
-            public String getTrend() {
-                return trend;
-            }
-
-            public void setTrend(String trend) {
-                this.trend = trend;
             }
 
             public String getTurnover() {

@@ -49,12 +49,10 @@ public class CurrentOrderAdapter extends BAdapter<CurrentOrderModel.DataBean.Ite
 
         CurrentOrderModel.DataBean.ItemsBean bean = getList().get(position);
 
-        if (bean.getSide() != null) {
-            if (bean.getSide().equals("buy")) {
-                mBuySellTV.setText(mContext.getString(R.string.trade_trade_buy));
-            } else {
-                mBuySellTV.setText(mContext.getString(R.string.trade_trade_sell));
-            }
+        if (bean.getDirection() == 0) {
+            mBuySellTV.setText(mContext.getString(R.string.trade_trade_buy));
+        } else {
+            mBuySellTV.setText(mContext.getString(R.string.trade_trade_sell));
         }
 
         try {
@@ -69,10 +67,10 @@ public class CurrentOrderAdapter extends BAdapter<CurrentOrderModel.DataBean.Ite
             e.printStackTrace();
         }
 
-        mCreateTimeTv.setText(bean.getCreated_at());
+        mCreateTimeTv.setText(bean.getTime());
         mPriceTv.setText(bean.getPrice().stripTrailingZeros().toPlainString());
         mNumberTv.setText(bean.getAmount().stripTrailingZeros().toPlainString());
-        mTotalTv.setText(bean.getTotal().stripTrailingZeros().toPlainString());
+        mTotalTv.setText(bean.getPrice().multiply(bean.getAmount()).stripTrailingZeros().toPlainString());
 
 
         cancelLayout.setOnClickListener(new View.OnClickListener() {

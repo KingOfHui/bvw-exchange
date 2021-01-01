@@ -25,7 +25,7 @@ public class UrlPath {
     public static String PUBLIC_ADDRESS_URL = "api/v1/dictByType"; //获取官方地址
     public static String PUBLIC_DICT_BY_KEY_URL = "api/v1/dictByKey"; //获取官方地址
 
-    public static String FIND_BID_STATE_URL = "api/v1/user/bidInfo"; //查询bid状态
+    public static String FIND_BID_STATE_URL = "api/v1/user/info"; //查询bid状态
     public static String USER_BID_INFO_URL = "api/v1/user/info"; //查询bid状态新街口
 
     public static String REAL_PAY_BID_PRICE_URL = "api/v1/user/bidPrice"; //查询bid状态
@@ -50,29 +50,30 @@ public class UrlPath {
 
     public static String FENLIE_TOP_URL = "api/v1/fl/topN"; //top30
 
-    public static String EXCHANGE_ACCOUNT_URL = "api/v1/exchange/account/list"; //交易所资产
+    public static String EXCHANGE_ACCOUNT_URL = "api/ex/wallet/list"; //交易所资产
 
     public static String TRADE_MYLIST_URL = "api/v1/exchange/trade/myList"; //我的交易列表
 
     public static String TRADE_DEPTH_URL = "api/v1/exchange/orderBook/";// 深度
-    public static String TRADE_DEPTH_TWO_URL = "api/v1/exchange/orderBook2/";// 深度2
-    public static String CREATE_ORDER_URL = "api/v1/exchange/order/create";//创建订单
-    public static String GET_ACCOUNT_LIST_URL = "api/v1/exchange/account/list";//资产列表
-    public static String HUAZHANG_FROM_SUO_TO_BAO = "api/v1/exchange/account/transferToBRC20"; //划账，交易所到钱包
-    public static String HANGQING_ZIXUAN_URL = "api/v1/exchange/favor/list"; //行情，自选列表
-    public static String HANGQING_ZFB_URL = "api/v1/exchange/ticker"; //行情，涨幅榜
+    public static String TRADE_DEPTH_TWO_URL = "api/ex/order/orderBook/";// 深度2
+    public static String CREATE_ORDER_URL = "api/ex/order/create";//创建订单
+    public static String GET_ACCOUNT_LIST_URL = "api/ex/wallet/list";//资产列表
+    public static String HUAZHANG_FROM_SUO_TO_BAO = "api/ex/account/transferToBRC20"; //划账，交易所到钱包
+    public static String HANGQING_ZIXUAN_URL = "api/ex/market/favor/list"; //行情，自选列表
+//    public static String HANGQING_ZFB_URL = "api/ex/market/list"; //行情，涨幅榜
+    public static String HANGQING_ZFB_URL = "api/ex/market/thumbList"; //行情，涨幅榜
     public static String SIGN_CHECK_URL = "api/v1/user/checkSign"; //验证，是否签到
-    public static String WEITUO_URL = "api/v1/exchange/order/myList"; //当前委托
-    public static String HISTORY_WEITUO_URL = "api/v1/exchange/order/historyEntrustOrderList"; //历史委托
-    public static String CANCEL_WEITUO_URL = "api/v1/exchange/order/cancel"; //历史委托
-    public static String TOKEN_LIST_URL = "api/v1/exchange/market/quoteTokenList"; //获取计价币列表
-    public static String COIN_LIST_URL = "api/v1/exchange/market/list/v2"; //获取计价币列表
-    public static String ADD_ZIXUAN_URL = "api/v1/exchange/favor/add/"; //添加自选
-    public static String DEL_ZIXUAN_URL = "api/v1/exchange/favor/delete/"; //删除自选
-    public static String DEAL_LIST_URL = "api/v1/exchange/trade/list"; //交易列表
-    public static String KLINE_ALL_DATA_URL = "api/v1/exchange/kline/";// 获取K线历史数据
+    public static String WEITUO_URL = "api/ex/order/list"; //当前委托
+    public static String HISTORY_WEITUO_URL = "api/ex/order/list/1"; //历史委托
+    public static String CANCEL_WEITUO_URL = "api/ex/order/cancel"; //历史委托
+    public static String TOKEN_LIST_URL = "api/ex/market/quoteSymbolList"; //获取计价币列表
+    public static String COIN_LIST_URL = "api/ex/market/list"; //获取计价币列表.
+    public static String ADD_ZIXUAN_URL = "api/ex/market/favor/add/"; //添加自选
+    public static String DEL_ZIXUAN_URL = "api/ex/market/favor/delete/"; //删除自选
+    public static String DEAL_LIST_URL = "api/ex/trade/list/"; //交易列表
+    public static String KLINE_ALL_DATA_URL = "api/ex/market/kline/";// 获取K线历史数据
     public static String SYMBOL_TICKER_URL = "api/v1/exchange/ticker";
-    public static String BIW_USDT_URL = "api/v1/exchange/market/detail/";
+    public static String BIW_USDT_URL = "api/ex/market/detail/"; //交易对详情
     /**
      * 我的业绩聚合接口
      */

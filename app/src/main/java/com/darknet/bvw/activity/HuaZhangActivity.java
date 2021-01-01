@@ -42,6 +42,7 @@ import com.darknet.bvw.model.response.DayLeftMoneyResponse;
 import com.darknet.bvw.model.response.HZLeftMoneyResponse;
 import com.darknet.bvw.model.response.LeftMoneyResponse;
 import com.darknet.bvw.model.response.PublicAddressResponse;
+import com.darknet.bvw.model.response.PublicAddressResponseV2;
 import com.darknet.bvw.model.response.SendTradeResponse;
 import com.darknet.bvw.util.ArithmeticUtils;
 import com.darknet.bvw.util.DecimalInputTextWatcher;
@@ -236,7 +237,7 @@ public class HuaZhangActivity extends BaseActivity implements View.OnClickListen
     @Override
     public void initDatas() {
         getPublicAddress();
-        getMoneyLeftData();
+//        getMoneyLeftData();
 
     }
 
@@ -297,11 +298,11 @@ public class HuaZhangActivity extends BaseActivity implements View.OnClickListen
 
 
     private void setLeftMoneyVal(HZLeftMoneyResponse.HzLeftMoneyModel hzLeftMoneyModel){
-        if(!TextUtils.isEmpty(hzLeftMoneyModel.getMsg())){
-            leftMoneySignNotice.setText(hzLeftMoneyModel.getMsg());
-        }else {
-            leftMoneySignNotice.setVisibility(View.GONE);
-        }
+//        if(!TextUtils.isEmpty(hzLeftMoneyModel.getMsg())){
+//            leftMoneySignNotice.setText(hzLeftMoneyModel.getMsg());
+//        }else {
+//            leftMoneySignNotice.setVisibility(View.GONE);
+//        }
     }
 
 
@@ -368,15 +369,15 @@ public class HuaZhangActivity extends BaseActivity implements View.OnClickListen
                 if (type == 0) {
                     type = 1;
 
-                    if(zcModel.getSymbol().equalsIgnoreCase("BIW")){
+                    /*if(zcModel.getSymbol().equalsIgnoreCase("BIW")){
                         leftMoneySignNotice.setVisibility(View.VISIBLE);
                     }else {
                         leftMoneySignNotice.setVisibility(View.GONE);
-                    }
+                    }*/
 
                 } else {
                     type = 0;
-                    leftMoneySignNotice.setVisibility(View.GONE);
+//                    leftMoneySignNotice.setVisibility(View.GONE);
                 }
                 changeHzType();
                 break;
@@ -959,11 +960,11 @@ public class HuaZhangActivity extends BaseActivity implements View.OnClickListen
             leftMoneyView.setText(qianbaoLeftMoney + zcModel.getSymbol());
             leftMoneyNoticeView.setText(getResources().getString(R.string.hz_jiaoyisuo_left_money_two));
 
-            if(zcModel.getSymbol().equalsIgnoreCase("BIW")){
-                leftMoneySignNotice.setVisibility(View.VISIBLE);
-            }else {
-                leftMoneySignNotice.setVisibility(View.GONE);
-            }
+//            if(zcModel.getSymbol().equalsIgnoreCase("BIW")){
+//                leftMoneySignNotice.setVisibility(View.VISIBLE);
+//            }else {
+//                leftMoneySignNotice.setVisibility(View.GONE);
+//            }
 
         }
 
@@ -984,7 +985,7 @@ public class HuaZhangActivity extends BaseActivity implements View.OnClickListen
 
 //        showDialog(getString(R.string.load_data));
 
-        OkGo.<String>get(ConfigNetWork.JAVA_API_URL + UrlPath.PUBLIC_ADDRESS_URL + "/org_address")
+        OkGo.<String>get(ConfigNetWork.JAVA_API_URL + UrlPath.PUBLIC_DICT_BY_KEY_URL + "/org_address_hz2ex")
                 .tag(HuaZhangActivity.this)
                 .headers("Chain-Authentication", addressVals + "#" + msg + "#" + signVal)
                 .execute(new StringCallback() {
@@ -996,9 +997,9 @@ public class HuaZhangActivity extends BaseActivity implements View.OnClickListen
                             if (backVal != null) {
                                 Gson gson = new Gson();
                                 try {
-                                    PublicAddressResponse response = gson.fromJson(backVal, PublicAddressResponse.class);
+                                    PublicAddressResponseV2 response = gson.fromJson(backVal, PublicAddressResponseV2.class);
                                     if (response != null && response.getCode() == 0) {
-                                        if (response.getData() != null && response.getData().size() > 0) {
+                                        if (response.getData() != null) {
                                             setAddress(response.getData());
                                         }
                                     }
@@ -1018,16 +1019,8 @@ public class HuaZhangActivity extends BaseActivity implements View.OnClickListen
     }
 
 
-    private void setAddress(List<PublicAddressResponse.PublicAddressModel> data) {
-        for (int i = 0; i < data.size(); i++) {
-            PublicAddressResponse.PublicAddressModel addressModel = data.get(i);
-            if (addressModel != null) {
-                if (addressModel.getK().equalsIgnoreCase("org_address_hz2ex")) {
-                    publicAddressVal = addressModel.getV();
-                    break;
-                }
-            }
-        }
+    private void setAddress(PublicAddressResponseV2.PublicAddressModel data) {
+        publicAddressVal = data.getV();
 
         ETHWalletModel walletModel = WalletDaoUtils.getCurrent();
         qianbaoAddressVal = walletModel.getAddress();

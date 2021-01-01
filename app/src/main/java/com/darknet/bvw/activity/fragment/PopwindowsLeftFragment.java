@@ -17,7 +17,6 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
@@ -34,7 +33,6 @@ import com.darknet.bvw.model.CoinsModel;
 import com.darknet.bvw.model.LeftBean;
 import com.darknet.bvw.model.TokenCoinResponse;
 import com.darknet.bvw.util.bitcoinj.BitcoinjKit;
-import com.darknet.bvw.view.DialogLoadding;
 import com.darknet.bvw.view.HorizontalListView;
 import com.google.gson.Gson;
 import com.lzy.okgo.OkGo;
@@ -190,7 +188,7 @@ public class PopwindowsLeftFragment extends DialogFragment {
             mListView.setOnItemClickListener((AdapterView<?> parent, View v, int position, long id) -> {
 
                 try {
-                    mCoinsListener.onChose(mList.get(position).getBase_token_symbol() + "-" + mList.get(position).getQuote_token_symbol(), mList.get(position).getThumb().getCloseStr(), mList.get(position).getThumb().getClose(), mList.get(position).isIs_favor_market(), mList.get(position).getThumb().getUsdRate(), mList.get(position));
+                    mCoinsListener.onChose(mList.get(position).getTrade_symbol() + "-" + mList.get(position).getQuote_symbol(), mList.get(position).getCoinThumb().getCloseStr(), mList.get(position).getCoinThumb().getClose(), mList.get(position).getFav() == 1, mList.get(position).getCoinThumb().getUsdRate(), mList.get(position));
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -277,7 +275,7 @@ public class PopwindowsLeftFragment extends DialogFragment {
                                 mAdapter.notifyDataSetChanged();
                                 Log.e("TAG", "getCoinsList: " + choseCoin);
                                 for (CoinsModel.DataBean datum : model.getData()) {
-                                    if (datum.getQuote_token_symbol().equals(choseCoin)) {
+                                    if (datum.getQuote_symbol().equals(choseCoin)) {
                                         mList.add(datum);
                                     }
                                 }

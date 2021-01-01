@@ -32,11 +32,11 @@ public class CoinsAdapter extends BAdapter<CoinsModel.DataBean> {
         TextView symbleTv = view.findViewById(R.id.symble_tv);
         TextView priceTv = view.findViewById(R.id.price_tv);
         CoinsModel.DataBean coinsModel = getList().get(position);
-        moneyType.setText(coinsModel.getBase_token_symbol());
-        symbleTv.setText(coinsModel.getQuote_token_symbol());
+        moneyType.setText(coinsModel.getTrade_symbol());
+        symbleTv.setText(coinsModel.getQuote_symbol());
 
-        priceTv.setText(coinsModel.getThumb().getCloseStr());
-        BigDecimal bigDecimal = ArithmeticUtils.minus(coinsModel.getThumb().getClose(), coinsModel.getThumb().getLastDayClose());
+        priceTv.setText(coinsModel.getCoinThumb().getCloseStr());
+        BigDecimal bigDecimal = ArithmeticUtils.minus(coinsModel.getCoinThumb().getClose(), coinsModel.getCoinThumb().getLastDayClose());
         if (bigDecimal.toBigInteger().compareTo(BigInteger.ZERO) < -1) {
             //小于0  红色
             priceTv.setTextColor(Color.parseColor("#41b37d"));

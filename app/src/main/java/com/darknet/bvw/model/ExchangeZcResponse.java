@@ -26,14 +26,23 @@ public class ExchangeZcResponse extends BaseResponse {
         private String id;
         private String user_id;
         private String symbol;
+        private BigDecimal usd_rate;
         private BigDecimal balance;
-        private BigDecimal lock_balance;
+        private BigDecimal frozen_balance;
         private String create_at;
         private String update_at;
         private String is_lock;
         private BigDecimal price;
         private BigDecimal value_usd;
         private BigDecimal lock_value_usd;
+
+        public BigDecimal getUsd_rate() {
+            return usd_rate;
+        }
+
+        public void setUsd_rate(BigDecimal usd_rate) {
+            this.usd_rate = usd_rate;
+        }
 
         public String getId() {
             return id;
@@ -67,12 +76,12 @@ public class ExchangeZcResponse extends BaseResponse {
             this.balance = balance;
         }
 
-        public BigDecimal getLock_balance() {
-            return lock_balance;
+        public BigDecimal getFrozen_balance() {
+            return frozen_balance;
         }
 
-        public void setLock_balance(BigDecimal lock_balance) {
-            this.lock_balance = lock_balance;
+        public void setFrozen_balance(BigDecimal frozen_balance) {
+            this.frozen_balance = frozen_balance;
         }
 
         public String getCreate_at() {
@@ -131,7 +140,7 @@ public class ExchangeZcResponse extends BaseResponse {
                     ", user_id='" + user_id + '\'' +
                     ", symbol='" + symbol + '\'' +
                     ", balance=" + balance +
-                    ", lock_balance=" + lock_balance +
+                    ", lock_balance=" + frozen_balance +
                     ", create_at='" + create_at + '\'' +
                     ", update_at='" + update_at + '\'' +
                     ", is_lock='" + is_lock + '\'' +

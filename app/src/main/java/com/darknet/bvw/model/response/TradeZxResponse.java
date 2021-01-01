@@ -5,13 +5,13 @@ import java.util.List;
 
 public class TradeZxResponse extends BaseResponse {
 
-    private List<ZxDataModel> data;
+    private List<ZxModel> data;
 
-    public List<ZxDataModel> getData() {
+    public List<ZxModel> getData() {
         return data;
     }
 
-    public void setData(List<ZxDataModel> data) {
+    public void setData(List<ZxModel> data) {
         this.data = data;
     }
 

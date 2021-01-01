@@ -145,10 +145,9 @@ public class DepthFragment extends Fragment {
 
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonVal);
 
-        OkGo.<String>post(ConfigNetWork.JAVA_API_URL + UrlPath.TRADE_DEPTH_TWO_URL + marketId + "/50")
+        OkGo.<String>get(ConfigNetWork.JAVA_API_URL + UrlPath.TRADE_DEPTH_TWO_URL + marketId + "/50")
                 .tag(getActivity())
                 .headers("Chain-Authentication", addressVals + "#" + msg + "#" + signVal)
-                .upRequestBody(requestBody)
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(Response<String> response) {

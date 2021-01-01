@@ -118,6 +118,7 @@
             android:layout_marginLeft="@dimen/dimen_15dp"
             android:layout_marginRight="@dimen/dimen_15dp"
             android:alpha="0.9"
+            android:visibility="gone"
             android:background="@drawable/zc_main_bg"
             android:padding="@dimen/dimen_10dp"
             android:orientation="horizontal">

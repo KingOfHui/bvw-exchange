@@ -92,7 +92,8 @@ public class XchainMainThreeActivity extends BaseActivity implements View.OnClic
         Fragment mineFragment = new MineFragment();
 
         fragmentList.add(moneyFragment);
-        fragmentList.add(MallFragment.newInstance());
+//        fragmentList.add(MallFragment.newInstance());
+        fragmentList.add(new ExchangeFragment());
         fragmentList.add(findFragment);
 //        fragmentList.add(academicFragment);
         fragmentList.add(mineFragment);

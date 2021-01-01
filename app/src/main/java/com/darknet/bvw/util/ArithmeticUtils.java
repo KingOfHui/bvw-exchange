@@ -1,5 +1,7 @@
 package com.darknet.bvw.util;
 
+import android.text.TextUtils;
+
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
@@ -43,6 +45,12 @@ public class ArithmeticUtils {
      * @return 两个参数的和
      */
     public static BigDecimal plus(String v1, String v2) {
+        if (TextUtils.isEmpty(v1)) {
+            v1 = "0";
+        }
+        if (TextUtils.isEmpty(v2)) {
+            v2 = "0";
+        }
         BigDecimal b1 = new BigDecimal(v1);
         BigDecimal b2 = new BigDecimal(v2);
         return b1.add(b2);

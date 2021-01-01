@@ -46,14 +46,41 @@ public class WeiTuoHisResponse extends BaseResponse {
 
     public static class WeiHisModel{
         private int id;
-        private String market_id;
+        private String marketId;
         private BigDecimal price;
-        private BigDecimal confirmed_amount;
+        private BigDecimal amount;
+        private BigDecimal traded_amount;
         private BigDecimal fee;
         private BigDecimal turnover;
         private String side;
-        private String status;
+        private String state;
         private String created_at;
+        private int direction;
+        private String time;
+
+        public BigDecimal getTraded_amount() {
+            return traded_amount;
+        }
+
+        public void setTraded_amount(BigDecimal traded_amount) {
+            this.traded_amount = traded_amount;
+        }
+
+        public String getTime() {
+            return time;
+        }
+
+        public void setTime(String time) {
+            this.time = time;
+        }
+
+        public int getDirection() {
+            return direction;
+        }
+
+        public void setDirection(int direction) {
+            this.direction = direction;
+        }
 
         public int getId() {
             return id;
@@ -63,12 +90,12 @@ public class WeiTuoHisResponse extends BaseResponse {
             this.id = id;
         }
 
-        public String getMarket_id() {
-            return market_id;
+        public String getMarketId() {
+            return marketId;
         }
 
-        public void setMarket_id(String market_id) {
-            this.market_id = market_id;
+        public void setMarketId(String marketId) {
+            this.marketId = marketId;
         }
 
         public BigDecimal getPrice() {
@@ -79,12 +106,12 @@ public class WeiTuoHisResponse extends BaseResponse {
             this.price = price;
         }
 
-        public BigDecimal getConfirmed_amount() {
-            return confirmed_amount;
+        public BigDecimal getAmount() {
+            return amount;
         }
 
-        public void setConfirmed_amount(BigDecimal confirmed_amount) {
-            this.confirmed_amount = confirmed_amount;
+        public void setAmount(BigDecimal amount) {
+            this.amount = amount;
         }
 
         public BigDecimal getFee() {
@@ -111,12 +138,12 @@ public class WeiTuoHisResponse extends BaseResponse {
             this.side = side;
         }
 
-        public String getStatus() {
-            return status;
+        public String getState() {
+            return state;
         }
 
-        public void setStatus(String status) {
-            this.status = status;
+        public void setState(String state) {
+            this.state = state;
         }
 
         public String getCreated_at() {

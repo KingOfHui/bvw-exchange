@@ -686,7 +686,9 @@
                         android:layout_centerVertical="true"
                         android:layout_marginRight="10dp"
                         android:gravity="center"
-                        android:padding="10dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="@dimen/dimen_10dp"
+                        android:paddingStart="@dimen/dimen_20dp"
                         android:text="@string/trade_trade_more"
                         android:textColor="#ffc3c1c9"
                         android:textSize="12dp" />

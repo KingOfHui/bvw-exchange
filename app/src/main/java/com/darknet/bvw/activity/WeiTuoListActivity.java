@@ -166,7 +166,7 @@ public class WeiTuoListActivity extends BaseActivity implements View.OnClickList
 
 //        showDialog(getString(R.string.load_data));
 
-        OkGo.<String>post(ConfigNetWork.JAVA_API_URL + UrlPath.HISTORY_WEITUO_URL)
+        OkGo.<String>post(ConfigNetWork.JAVA_API_URL + UrlPath.WEITUO_URL)
                 .tag(WeiTuoListActivity.this)
                 .upRequestBody(requestBody)
                 .headers("Chain-Authentication", addressVals + "#" + msg + "#" + signVal)

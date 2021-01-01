@@ -39,7 +39,7 @@ android {
             buildConfigField("String", "WORK", "\"line\"")
         } else {
             buildConfigField("String", "JAVA_API_URL", "\"https://t.bvw.im/\"")
-            buildConfigField("String", "JAVA_SOCKET_URL", "\"wss://ws-test.bvw.im/websocket\"")
+            buildConfigField("String", "JAVA_SOCKET_URL", "\"wss://ws-test.bvw.im/websocket/websocket\"")
             buildConfigField("String", "WORK", "\"test\"")
         }
 //        ndk {

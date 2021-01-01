@@ -51,13 +51,14 @@ public class AmountTwoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
             ((MsgViewHolder) holder).moneyType.setText(tradeListModel.getSymbol());
 
-            String aaa =  ArithmeticUtils.multiply(tradeListModel.getBalance().toPlainString(),"1").setScale(5,BigDecimal.ROUND_DOWN).toPlainString();
+            String aaa =  ArithmeticUtils.multiply(tradeListModel.getBalance().toPlainString(),"1").toPlainString();
 
 //            ((MsgViewHolder) holder).canUseView.setText(tradeListModel.getBalance().stripTrailingZeros().setScale(5, BigDecimal.ROUND_DOWN).doubleValue()+"");
             ((MsgViewHolder) holder).canUseView.setText(aaa);
 
-            ((MsgViewHolder) holder).dongjieView.setText(tradeListModel.getLock_balance().stripTrailingZeros().setScale(5, BigDecimal.ROUND_DOWN).doubleValue()+"");
-            ((MsgViewHolder) holder).zheSuanView.setText(tradeListModel.getValue_usd().stripTrailingZeros().setScale(2, BigDecimal.ROUND_DOWN).doubleValue()+"");
+            ((MsgViewHolder) holder).dongjieView.setText(tradeListModel.getFrozen_balance().doubleValue()+"");
+            ((MsgViewHolder) holder).zheSuanView.setText(tradeListModel.getFrozen_balance().add(tradeListModel.getBalance()).multiply(tradeListModel.getUsd_rate())
+                    .setScale(2,BigDecimal.ROUND_DOWN).toPlainString());
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -613,7 +613,7 @@ public class TradingFragment extends Fragment {
 //                                Log.e("TAG", "getCoinsList: " + choseCoin);choseCoin
                                 for (CoinsModel.DataBean datum : model.getData()) {
                                     if (choseCoin != null) {
-                                        if (datum.getQuote_token_symbol().equals(choseCoin)) {
+                                        if (datum.getQuote_symbol().equals(choseCoin)) {
                                             panKouRight = datum;
 
                                             setPanKouSignData();
@@ -635,8 +635,8 @@ public class TradingFragment extends Fragment {
         if (panKouRight != null) {
 
             try {
-                xiaoshuPriceLimit = panKouRight.getPrice_decimals();
-                xiaoshuNumLimit = panKouRight.getAmount_decimals();
+                xiaoshuPriceLimit = panKouRight.getQuote_symbol_scale();
+                xiaoshuNumLimit = panKouRight.getQuote_symbol_scale();
 
                 mPriceEt.addTextChangedListener(new DecimalInputTextWatcher(mPriceEt, 20, Integer.parseInt(xiaoshuPriceLimit)));
                 mCountNumETv.addTextChangedListener(new DecimalInputTextWatcher(mCountNumETv, 20, Integer.parseInt(xiaoshuNumLimit)));
@@ -654,7 +654,7 @@ public class TradingFragment extends Fragment {
         try {
             if (panKouRight != null) {
                 isPrice = true;
-                marketId = panKouRight.getBase_token_symbol() + "-" + panKouRight.getQuote_token_symbol();
+                marketId = panKouRight.getTrade_symbol() + "-" + panKouRight.getQuote_symbol();
 
                 //通知socket订阅
                 Bundle data = new Bundle();
@@ -663,20 +663,19 @@ public class TradingFragment extends Fragment {
 
                 initData();
 
-                lastPriceView.setText(panKouRight.getThumb().getCloseStr());
+                lastPriceView.setText(panKouRight.getCoinThumb().getCloseStr());
 //                yueDengyuPriceView.setText("" + panKouRight.getThumb().getCloseStr());
 
-                yueDengyuPriceView.setText(ArithmeticUtils.multiply(panKouRight.getThumb().getUsdRate(), panKouRight.getThumb().getCloseStr()).stripTrailingZeros().toPlainString());
+                yueDengyuPriceView.setText(ArithmeticUtils.multiply(panKouRight.getCoinThumb().getUsdRate(), panKouRight.getCoinThumb().getCloseStr()).stripTrailingZeros().toPlainString());
 
 
-                inputNumMoneyTypeView.setText(panKouRight.getBase_token_symbol());
-                mCoinsType.setText(panKouRight.getBase_token_symbol());
-                mCoinsUsdtType.setText(panKouRight.getQuote_token_symbol());
+                inputNumMoneyTypeView.setText(panKouRight.getTrade_symbol());
+                mCoinsType.setText(panKouRight.getTrade_symbol());
+                mCoinsUsdtType.setText(panKouRight.getQuote_symbol());
 
-                usdRateVal = panKouRight.getThumb().getUsdRate();
+                usdRateVal = panKouRight.getCoinThumb().getUsdRate();
 
-                if (panKouRight.isIs_favor_market()) {
-
+                if (panKouRight.getFav() == 1) {
                     isCollection = 1;
                     addZixuanView.setImageResource(R.mipmap.shoucang_select_img);
                 } else {
@@ -1458,7 +1457,7 @@ public class TradingFragment extends Fragment {
                                     BidStateResponse response = gson.fromJson(backVal, BidStateResponse.class);
                                     if (response != null && response.getCode() == 0) {
                                         if (response.getData() != null) {
-                                            setStateVal(response.getData().getStatus());
+                                            setStateVal(!TextUtils.isEmpty(response.getData().getReferer_id()));
                                         }
                                     }
                                 } catch (Exception e) {
@@ -1477,13 +1476,13 @@ public class TradingFragment extends Fragment {
     }
 
 
-    private void setStateVal(int stateVal) {
-        if (stateVal == 0) {
+    private void setStateVal(boolean isOpen) {
+        if (!isOpen) {
             //未开通
             new BidDialogView().showTips(getActivity(), getString(R.string.find_invest_notice));
 //            Intent suanLiIntent = new Intent(activity, SuanLiWaKuangActivity.class);
 //            startActivity(suanLiIntent);
-        } else if (stateVal == 1) {
+        } else {
 
             if (marketId != null) {
                 //已开通
@@ -1498,10 +1497,6 @@ public class TradingFragment extends Fragment {
                     Toast.makeText(getActivity(), getString(R.string.trade_num_trade_sign), Toast.LENGTH_SHORT).show();
                 }
             }
-        } else if (stateVal == 2) {
-            //开通中
-//            Intent suanLiIntent = new Intent(activity, SuanLiWaKuangActivity.class);
-//            startActivity(suanLiIntent);
         }
     }
 
@@ -1558,14 +1553,22 @@ public class TradingFragment extends Fragment {
                                         if (response.getCode() == 0) {
                                             getAccount();
                                             getCurrentWeiTuo();
+                                            hideLoading();
                                         }
                                         Toast.makeText(getActivity(), response.getMsg(), Toast.LENGTH_SHORT).show();
                                     }
                                 } catch (Exception e) {
                                     e.printStackTrace();
+                                    hideLoading();
                                 }
                             }
                         }
+                    }
+
+                    @Override
+                    public void onError(Response<String> response) {
+                        super.onError(response);
+                        hideLoading();
                     }
                 });
     }
@@ -1594,10 +1597,10 @@ public class TradingFragment extends Fragment {
 
 
 //        OkGo.<String>post(ConfigNetWork.JAVA_API_URL + UrlPath.TRADE_DEPTH_URL + marketId)
-        OkGo.<String>post(ConfigNetWork.JAVA_API_URL + UrlPath.TRADE_DEPTH_TWO_URL + marketId + "/7")
+        OkGo.<String>get(ConfigNetWork.JAVA_API_URL + UrlPath.TRADE_DEPTH_TWO_URL + marketId + "/7")
                 .tag(getActivity())
                 .headers("Chain-Authentication", addressVals + "#" + msg + "#" + signVal)
-                .upRequestBody(requestBody)
+//                .upRequestBody(requestBody)
                 .execute(new StringCallback() {
 
                     @Override
@@ -1648,7 +1651,8 @@ public class TradingFragment extends Fragment {
         tradeRequest.setLimit(100);
         tradeRequest.setPage(1);
         tradeRequest.setMarketId(marketId);
-        tradeRequest.setStatus("pending");
+        tradeRequest.setStatus("0");
+//        tradeRequest.setDirection(0);
 
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();

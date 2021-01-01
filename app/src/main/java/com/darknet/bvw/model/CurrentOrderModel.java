@@ -140,7 +140,33 @@ public class CurrentOrderModel {
             private BigDecimal total;
             private String updated_at;
             private String side;
+            private int direction;
+            private int state;
+            private String time;
 
+            public String getTime() {
+                return time;
+            }
+
+            public void setTime(String time) {
+                this.time = time;
+            }
+
+            public int getDirection() {
+                return direction;
+            }
+
+            public void setDirection(int direction) {
+                this.direction = direction;
+            }
+
+            public int getState() {
+                return state;
+            }
+
+            public void setState(int state) {
+                this.state = state;
+            }
 
             public BigDecimal getAmount() {
                 return amount;

@@ -5,6 +5,15 @@ public class CurrentWeiTuoRequest {
     private String status;
     private int limit;
     private int page;
+    private int direction;
+
+    public int getDirection() {
+        return direction;
+    }
+
+    public void setDirection(int direction) {
+        this.direction = direction;
+    }
 
     public String getMarketId() {
         return marketId;
