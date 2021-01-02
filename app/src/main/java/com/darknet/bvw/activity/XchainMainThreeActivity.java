@@ -358,7 +358,7 @@ public class XchainMainThreeActivity extends BaseActivity implements View.OnClic
     private void switchTab(int position) {
         viewPager.setCurrentItem(position);
         firstImg.setImageResource(position == 0 ? R.mipmap.img_home_pressed : R.mipmap.img_home_unpressed);
-        mMallImg.setImageResource(position == 1 ? R.mipmap.icon_mall_pressed : R.mipmap.icon_mall_unpressed);
+        mMallImg.setImageResource(position == 1 ? R.mipmap.home_trade_press : R.mipmap.home_trade_normal);
         secImg.setImageResource(position == 2 ? R.mipmap.img_fill : R.mipmap.img_fill_unpressed);
         fourImg.setImageResource(position == 3 ? R.mipmap.img_mine_pressed : R.mipmap.img_mine_unpressed);
 

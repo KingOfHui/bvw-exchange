@@ -26,7 +26,7 @@ public class ResourceUtils {
      * @param resId   资源ID
      */
     public static String getString(Context context, @StringRes int resId) {
-        return getResources(context).getString(resId);
+        return context.getString(resId);
     }
 
     /**

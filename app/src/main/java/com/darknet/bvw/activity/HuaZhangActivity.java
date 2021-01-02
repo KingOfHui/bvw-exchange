@@ -957,6 +957,9 @@ public class HuaZhangActivity extends BaseActivity implements View.OnClickListen
             hzToSign.setText(getResources().getString(R.string.hz_jiaoyi_suo_sign));
             hzFromAddress.setText(sbQB.toString());
             hzToAddress.setText(sbPub.toString());
+            if (TextUtils.isEmpty(qianbaoLeftMoney)) {
+                qianbaoLeftMoney = "0";
+            }
             leftMoneyView.setText(qianbaoLeftMoney + zcModel.getSymbol());
             leftMoneyNoticeView.setText(getResources().getString(R.string.hz_jiaoyisuo_left_money_two));
 

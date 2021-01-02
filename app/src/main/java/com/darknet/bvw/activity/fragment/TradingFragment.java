@@ -276,7 +276,7 @@ public class TradingFragment extends Fragment {
             }
 
 
-            mPriceEt.setSelection(mPriceEt.getText().length());
+//            mPriceEt.setSelection(mPriceEt.getText().length());
 
             if (askSize > 0) {
                 defaultMairu = depth.getData().getAsks().get(0).getPrice();
@@ -716,6 +716,7 @@ public class TradingFragment extends Fragment {
                 DepthResponse.DataBean.AsksBean asksBean = mInList.get(position);
                 if (!TextUtils.isEmpty(asksBean.getPrice())) {
                     mPriceEt.setText(asksBean.getPrice());
+                    setEtSelection(mPriceEt);
                 }
             }
         });
@@ -726,11 +727,17 @@ public class TradingFragment extends Fragment {
                 DepthResponse.DataBean.BidsBean bidsBean = mOutList.get(position);
                 if (!TextUtils.isEmpty(bidsBean.getPrice())) {
                     mPriceEt.setText(bidsBean.getPrice());
+                    setEtSelection(mPriceEt);
                 }
             }
         });
 
         mHandler.sendEmptyMessage(1);
+    }
+
+    private void setEtSelection(EditText et) {
+        String trim = et.getText().toString().trim();
+        et.setSelection(TextUtils.isEmpty(trim) ? 0 : trim.length());
     }
 
     private void initView(View view) {
@@ -837,6 +844,8 @@ public class TradingFragment extends Fragment {
             }
             price = tempPrice.toPlainString();
             mPriceEt.setText(price);
+            String trim = mPriceEt.getText().toString().trim();
+            mPriceEt.setSelection(TextUtils.isEmpty(trim) ? 0 : trim.length());
 //            mPirceUsdtTv.setText(price);
             setRateViewContent();
             String priceViewVal = mPriceEt.getText().toString().trim();
@@ -872,6 +881,8 @@ public class TradingFragment extends Fragment {
             }
             mPriceEt.setText(price);
 //            mPirceUsdtTv.setText(price);
+            String trim = mPriceEt.getText().toString().trim();
+            mPriceEt.setSelection(TextUtils.isEmpty(trim) ? 0 : trim.length());
             setRateViewContent();
             //todo 设置联动总额
             String priceViewVal = mPriceEt.getText().toString().trim();
@@ -1400,7 +1411,7 @@ public class TradingFragment extends Fragment {
 
         mPriceEt.setText(defaultMairuVal);
 //        mPriceEt.setText(defaultMairu);
-        mPriceEt.setSelection(mPriceEt.getText().length());
+//        mPriceEt.setSelection(mPriceEt.getText().length());
 
         mCountNumETv.setText("0");
         mCountNumETv.setSelection(mCountNumETv.getText().length());
@@ -1428,7 +1439,7 @@ public class TradingFragment extends Fragment {
 
 //        mPriceEt.setText(defaultMaiChu);
         mPriceEt.setText(defaultMaichuVal);
-        mPriceEt.setSelection(mPriceEt.getText().length());
+//        mPriceEt.setSelection(mPriceEt.getText().length());
 
         mCountNumETv.setText("0");
         mCountNumETv.setSelection(mCountNumETv.getText().length());
