@@ -18,7 +18,7 @@ public class JiaoYiResponse extends BaseResponse {
     public static class JiaoYiData{
         private BigDecimal amount;//成交数量
         private String amountStr;
-        private String time;
+        private long time;
         private int direction; //buy 0 sell 1
         private String price;//成交价格
         private String priceStr;
@@ -39,11 +39,11 @@ public class JiaoYiResponse extends BaseResponse {
             this.amountStr = amountStr;
         }
 
-        public String getTime() {
+        public long getTime() {
             return time;
         }
 
-        public void setTime(String time) {
+        public void setTime(long time) {
             this.time = time;
         }
 

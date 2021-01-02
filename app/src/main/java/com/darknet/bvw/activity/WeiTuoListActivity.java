@@ -156,6 +156,7 @@ public class WeiTuoListActivity extends BaseActivity implements View.OnClickList
         tradeRequest.setLimit(10);
         tradeRequest.setPage(1);
         tradeRequest.setMarketId(markId);
+        tradeRequest.setState("1");
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
         String jsonVal = gson.toJson(tradeRequest);

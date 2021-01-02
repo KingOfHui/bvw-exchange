@@ -2,18 +2,18 @@ package com.darknet.bvw.model.request;
 
 public class CurrentWeiTuoRequest {
     private String marketId;
-    private String status;
+    private String state;
     private int limit;
     private int page;
-    private int direction;
+//    private int direction;
 
-    public int getDirection() {
-        return direction;
-    }
-
-    public void setDirection(int direction) {
-        this.direction = direction;
-    }
+//    public int getDirection() {
+//        return direction;
+//    }
+//
+//    public void setDirection(int direction) {
+//        this.direction = direction;
+//    }
 
     public String getMarketId() {
         return marketId;
@@ -23,12 +23,12 @@ public class CurrentWeiTuoRequest {
         this.marketId = marketId;
     }
 
-    public String getStatus() {
-        return status;
+    public String getState() {
+        return state;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setState(String state) {
+        this.state = state;
     }
 
     public int getLimit() {

@@ -124,7 +124,7 @@ public class SocketTool {
 
 
         //K线订阅
-        Disposable dispTopic1 = mStompClient.topic("/topic/ex/market/kline/" + coinSymbol)
+        Disposable dispTopic1 = mStompClient.topic("/topic/market/kline/" + coinSymbol)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(topicMessage -> {
@@ -138,7 +138,7 @@ public class SocketTool {
 
 
         //盘口订阅  ex/market/plate/
-        Disposable tradeDispTopic = mStompClient.topic("/topic/ex/market/plate/" + coinSymbol)
+        Disposable tradeDispTopic = mStompClient.topic("/topic/market/plate/" + coinSymbol)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(topicMessage -> {
@@ -162,7 +162,7 @@ public class SocketTool {
 
 
         //24K行情数据
-        Disposable twoFourTopic = mStompClient.topic("/topic/ex/market/thumb")
+        Disposable twoFourTopic = mStompClient.topic("/topic/market/thumb")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(topicMessage -> {
@@ -186,7 +186,7 @@ public class SocketTool {
 
 
         //交易明细
-        Disposable tradeDetailTopic = mStompClient.topic("/topic/ex/market/trade/" + coinSymbol)
+        Disposable tradeDetailTopic = mStompClient.topic("/topic/market/trade/" + coinSymbol)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(topicMessage -> {

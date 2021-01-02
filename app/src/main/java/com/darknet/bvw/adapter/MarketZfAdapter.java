@@ -1,12 +1,14 @@
 package com.darknet.bvw.adapter;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
 import com.darknet.bvw.R;
 import com.darknet.bvw.model.response.TradeZfResponse;
 import com.darknet.bvw.util.ArithmeticUtils;
+import com.jingui.lib.utils.DensityUtils;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -57,6 +59,7 @@ public class MarketZfAdapter extends BAdapter<TradeZfResponse.ZfModel> {
 
 
             stateView.setText(ArithmeticUtils.multiply(marketModel.getChg().toPlainString(), "100").stripTrailingZeros().setScale(1, BigDecimal.ROUND_DOWN).toPlainString() + "%");
+
         } else {
             //green
             stateView.setBackgroundResource(R.drawable.common_green_bg);

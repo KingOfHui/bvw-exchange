@@ -255,13 +255,16 @@ public class MarketFragment extends Fragment implements View.OnClickListener {
                                         } else {
 //                                            Toast.makeText(activity, response.getMsg(), Toast.LENGTH_SHORT).show();
 //                                            setNoData();
+                                            setZxData(new ArrayList<>());
                                         }
                                     } else {
 //                                        setNoData();
+                                        setZxData(new ArrayList<>());
                                     }
                                 } catch (Exception e) {
                                     e.printStackTrace();
 //                                    setNoData();
+                                    setZxData(new ArrayList<>());
                                 }
 
                             }
@@ -333,7 +336,6 @@ public class MarketFragment extends Fragment implements View.OnClickListener {
     private void setZfData(List<TradeZfResponse.ZfModel> list) {
         zfAdapter = new MarketZfAdapter(getActivity(), list);
         zfListView.setAdapter(zfAdapter);
-
         zfListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -374,6 +376,7 @@ public class MarketFragment extends Fragment implements View.OnClickListener {
 
 
     private void setZxData(List<TradeZxResponse.ZxModel> list) {
+        zfList.clear();
         zfList.addAll(list);
         mAdapter = new MarketAdapter(getActivity(), list);
         mListView.setAdapter(mAdapter);

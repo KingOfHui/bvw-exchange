@@ -9,7 +9,10 @@ import com.darknet.bvw.model.response.JiaoYiResponse;
 import com.darknet.bvw.util.language.SPUtil;
 
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.SimpleFormatter;
 
 public class DealAdapter extends BAdapter<JiaoYiResponse.JiaoYiData> {
 
@@ -43,7 +46,9 @@ public class DealAdapter extends BAdapter<JiaoYiResponse.JiaoYiData> {
         TextView priceView = view.findViewById(R.id.deal_item_price_view);
         TextView showView = view.findViewById(R.id.deal_item_show_view);
 
-        timeView.setText(jiaoYiModel.getTime());
+        Date date = new Date(jiaoYiModel.getTime());
+        SimpleDateFormat simpleFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        timeView.setText(simpleFormatter.format(date));
 
         if (jiaoYiModel.getDirection() == 1) {
             statusView.setText(context.getResources().getString(R.string.deal_type_sell_sign));

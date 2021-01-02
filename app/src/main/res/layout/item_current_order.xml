@@ -24,9 +24,20 @@
             android:id="@+id/my_order_createtime_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:layout_marginLeft="@dimen/dimen_20dp"
             android:text="2019.07.18 20:31:00"
             android:textColor="#ffffffff"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/weituo_item_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_centerVertical="true"
+            android:text="@string/weituo_item_finish"
+            android:textColor="#FF01FCDA"
             android:textSize="12dp" />
 
     </LinearLayout>

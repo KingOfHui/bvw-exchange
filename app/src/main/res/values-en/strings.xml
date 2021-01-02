@@ -1036,7 +1036,7 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="no_used_coupon">无可用优惠券</string>
     <string name="select_coupon_top">请选择%s以上的优惠券</string>
     <string name="select_coupon_amount">已选：%s优惠券</string>
-    <string name="in_transation">交易中</string>
-    <string name="timeout">超时</string>
-    <string name="part_of_transation">部分成交</string>
+    <string name="in_transation">In Transaction</string>
+    <string name="timeout">Timeout</string>成交
+    <string name="part_of_transation">Part Transaction</string>
 </resources>

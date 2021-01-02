@@ -800,10 +800,11 @@ public class TradingFragment extends Fragment {
             //todo 减法
             String price = mPriceEt.getText().toString();
 
+                BigDecimal tempPrice = BigDecimal.ZERO;
             if (isDigits(price)) {
                 //整数
-                price = ArithmeticUtils.minus(price, "1").toPlainString();
-                if (price.equals("0")) {
+                tempPrice = ArithmeticUtils.minus(price, "1");
+                if (tempPrice.compareTo(BigDecimal.ZERO) <= 0) {
                     mPriceEt.setText("0");
                     mPirceUsdtTv.setText("0");
                     return;
@@ -812,25 +813,32 @@ public class TradingFragment extends Fragment {
                 //不是整数
                 int length = price.split("\\.")[1].length();
                 if (length == NumberEnum.Zero1.getI()) {
-                    price = ArithmeticUtils.minus(price, NumberEnum.Zero1.getS()).toPlainString();
+                    tempPrice = ArithmeticUtils.minus(price, NumberEnum.Zero1.getS());
                 } else if (length == NumberEnum.Zero2.getI()) {
-                    price = ArithmeticUtils.minus(price, NumberEnum.Zero2.getS()).toPlainString();
+                    tempPrice = ArithmeticUtils.minus(price, NumberEnum.Zero2.getS());
                 } else if (length == NumberEnum.Zero3.getI()) {
-                    price = ArithmeticUtils.minus(price, NumberEnum.Zero3.getS()).toPlainString();
+                    tempPrice = ArithmeticUtils.minus(price, NumberEnum.Zero3.getS());
                 } else if (length == NumberEnum.Zero4.getI()) {
-                    price = ArithmeticUtils.minus(price, NumberEnum.Zero4.getS()).toPlainString();
+                    tempPrice = ArithmeticUtils.minus(price, NumberEnum.Zero4.getS());
                 } else if (length == NumberEnum.Zero5.getI()) {
-                    price = ArithmeticUtils.minus(price, NumberEnum.Zero5.getS()).toPlainString();
+                    tempPrice = ArithmeticUtils.minus(price, NumberEnum.Zero5.getS());
                 } else if (length == NumberEnum.Zero6.getI()) {
-                    price = ArithmeticUtils.minus(price, NumberEnum.Zero6.getS()).toPlainString();
+                    tempPrice = ArithmeticUtils.minus(price, NumberEnum.Zero6.getS());
                 } else if (length == NumberEnum.Zero7.getI()) {
-                    price = ArithmeticUtils.minus(price, NumberEnum.Zero7.getS()).toPlainString();
+                    tempPrice = ArithmeticUtils.minus(price, NumberEnum.Zero7.getS());
                 } else {
-                    price = ArithmeticUtils.minus(price, NumberEnum.Zero8.getS()).toPlainString();
+                    tempPrice = ArithmeticUtils.minus(price, NumberEnum.Zero8.getS());
                 }
             }
+            if (tempPrice.compareTo(BigDecimal.ZERO) <= 0) {
+                mPriceEt.setText("0");
+                mPirceUsdtTv.setText("0");
+                return;
+            }
+            price = tempPrice.toPlainString();
             mPriceEt.setText(price);
-            mPirceUsdtTv.setText(price);
+//            mPirceUsdtTv.setText(price);
+            setRateViewContent();
             String priceViewVal = mPriceEt.getText().toString().trim();
             String numViewVal = mCountNumETv.getText().toString().trim();
             setTotalValues(priceViewVal, numViewVal);
@@ -863,7 +871,8 @@ public class TradingFragment extends Fragment {
                 }
             }
             mPriceEt.setText(price);
-            mPirceUsdtTv.setText(price);
+//            mPirceUsdtTv.setText(price);
+            setRateViewContent();
             //todo 设置联动总额
             String priceViewVal = mPriceEt.getText().toString().trim();
             String numViewVal = mCountNumETv.getText().toString().trim();
@@ -1110,7 +1119,8 @@ public class TradingFragment extends Fragment {
         maichuLayout.setOnClickListener(v -> changeMaichu());
 
         mBtnBuyOrSell.setOnClickListener(v -> {
-            getBidStateData();
+//            getBidStateData();
+            setStateVal(true);
         });
 
 
@@ -1651,7 +1661,7 @@ public class TradingFragment extends Fragment {
         tradeRequest.setLimit(100);
         tradeRequest.setPage(1);
         tradeRequest.setMarketId(marketId);
-        tradeRequest.setStatus("0");
+        tradeRequest.setState("0");
 //        tradeRequest.setDirection(0);
 
         GsonBuilder builder = new GsonBuilder();

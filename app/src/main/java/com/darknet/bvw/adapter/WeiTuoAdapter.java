@@ -82,7 +82,7 @@ public class WeiTuoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 ((MsgViewHolder) holder).weituoStateView.setText(context.getString(R.string.completed));
                 ((MsgViewHolder) holder).weituoStateView.setTextColor(context.getResources().getColor(R.color._01FCDA));
             } else if (weiHisModel.getState().equalsIgnoreCase("2")) {
-                ((MsgViewHolder) holder).weituoStateView.setText(context.getString(R.string.cancel));
+                ((MsgViewHolder) holder).weituoStateView.setText(context.getString(R.string.cancelled));
                 ((MsgViewHolder) holder).weituoStateView.setTextColor(context.getResources().getColor(R.color.red7));
             } else if (weiHisModel.getState().equalsIgnoreCase("3")) {
                 ((MsgViewHolder) holder).weituoStateView.setText(context.getString(R.string.timeout));

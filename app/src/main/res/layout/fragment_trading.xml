@@ -220,7 +220,7 @@
                                 android:maxEms="8"
                                 android:padding="8dp"
                                 android:textColor="#ffffff"
-                                android:textColorHint="#ffffff"
+                                android:textColorHint="#ff979fa7"
                                 android:textSize="14dp" />
 
 

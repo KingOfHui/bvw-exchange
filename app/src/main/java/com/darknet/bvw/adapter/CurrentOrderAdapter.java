@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.darknet.bvw.R;
 import com.darknet.bvw.model.CurrentOrderModel;
+import com.darknet.bvw.model.response.CreateTradeResponse.Item;
 
 import java.util.List;
 
@@ -41,6 +42,7 @@ public class CurrentOrderAdapter extends BAdapter<CurrentOrderModel.DataBean.Ite
         TextView mPriceTv = view.findViewById(R.id.my_order_price_tv);
         TextView mNumberTv = view.findViewById(R.id.my_order_number_tv);
         TextView mTotalTv = view.findViewById(R.id.my_order_total_tv);
+        TextView mTvState = view.findViewById(R.id.weituo_item_state);
 
         TextView priceType = view.findViewById(R.id.weituo_item_price_view);
         TextView numType = view.findViewById(R.id.weituo_item_num_view);
@@ -73,6 +75,36 @@ public class CurrentOrderAdapter extends BAdapter<CurrentOrderModel.DataBean.Ite
         mTotalTv.setText(bean.getPrice().multiply(bean.getAmount()).stripTrailingZeros().toPlainString());
 
 
+        switch (bean.getState()) {
+            case 0:
+                cancelLayout.setVisibility(View.VISIBLE);
+                mTvState.setVisibility(View.GONE);
+                break;
+            case 1:
+                cancelLayout.setVisibility(View.GONE);
+                mTvState.setVisibility(View.VISIBLE);
+                mTvState.setText(mContext.getString(R.string.completed));
+                mTvState.setTextColor(mContext.getResources().getColor(R.color._01FCDA));
+                break;
+            case 2:
+                cancelLayout.setVisibility(View.GONE);
+                mTvState.setVisibility(View.VISIBLE);
+                mTvState.setText(mContext.getString(R.string.cancelled));
+                mTvState.setTextColor(mContext.getResources().getColor(R.color.colorRed));
+                break;
+            case 3:
+                cancelLayout.setVisibility(View.GONE);
+                mTvState.setVisibility(View.VISIBLE);
+                mTvState.setText(mContext.getString(R.string.timeout));
+                mTvState.setTextColor(mContext.getResources().getColor(R.color._01FCDA));
+                break;
+            case 4:
+                cancelLayout.setVisibility(View.GONE);
+                mTvState.setVisibility(View.VISIBLE);
+                mTvState.setText(mContext.getString(R.string.part_of_transation));
+                mTvState.setTextColor(mContext.getResources().getColor(R.color._01FCDA));
+                break;
+        }
         cancelLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
