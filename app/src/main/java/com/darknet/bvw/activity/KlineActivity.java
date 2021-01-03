@@ -379,21 +379,21 @@ public class KlineActivity extends BaseActivity implements View.OnClickListener 
 
                                     int i = new BigDecimal(coinThumb.getChg()).compareTo(BigDecimal.ZERO);
                                     if (i == -1) {
-                                        change.setText(ArithmeticUtils.multiply(coinThumb.getChg(), "100").stripTrailingZeros().setScale(2, BigDecimal.ROUND_DOWN).toPlainString() + "%");
+                                        change.setText(ArithmeticUtils.multiply(coinThumb.getChg(), "100").stripTrailingZeros().setScale(3, BigDecimal.ROUND_DOWN).toPlainString() + "%");
                                         //red
                                         change.setTextColor(getResources().getColor(R.color._FFFC6767));
                                     } else {
                                         //green
                                         change.setTextColor(getResources().getColor(R.color._01FCDA));
-                                        change.setText("+" + ArithmeticUtils.multiply(coinThumb.getChg(), "100").stripTrailingZeros().setScale(2, BigDecimal.ROUND_DOWN).toPlainString() + "%");
+                                        change.setText("+" + ArithmeticUtils.multiply(coinThumb.getChg(), "100").stripTrailingZeros().setScale(3, BigDecimal.ROUND_DOWN).toPlainString() + "%");
                                     }
 
                                     rmbPrice.setText(
-                                            "≈$" + ArithmeticUtils.multiply(coinThumb.getClose(), coinThumb.getUsdRate()).stripTrailingZeros().setScale(2, BigDecimal.ROUND_DOWN).toPlainString());
+                                            "≈$" + ArithmeticUtils.multiply(coinThumb.getClose(), coinThumb.getQuoteUsdRate()).stripTrailingZeros().setScale(2, BigDecimal.ROUND_DOWN).toPlainString());
 
                                     change.setText(coinThumb.getChange() + "%");
-                                    high.setText(NumberFormatUtil.getNumber("0.00", coinThumb.getHigh()));
-                                    low.setText(NumberFormatUtil.getNumber("0.00", coinThumb.getLow()));
+                                    high.setText(NumberFormatUtil.getNumber("0.000", coinThumb.getHigh()));
+                                    low.setText(NumberFormatUtil.getNumber("0.000", coinThumb.getLow()));
 
                                     String amount = ArithmeticUtils.divide(coinThumb.getVolume(), "1000", 2);
                                     if (Double.valueOf(amount) > 1) {

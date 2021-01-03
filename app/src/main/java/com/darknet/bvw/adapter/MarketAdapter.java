@@ -47,7 +47,7 @@ public class MarketAdapter extends BAdapter<TradeZxResponse.ZxModel> {
         closeView.setText(marketModel.getCloseStr());
 //        priceView.setText("" + marketModel.getClose().multiply(marketModel.getUsdRate()));
 
-        priceView.setText("$"+ArithmeticUtils.multiply(marketModel.getClose().toPlainString(),marketModel.getUsdRate().toPlainString()).stripTrailingZeros().toPlainString());
+        priceView.setText("$"+ArithmeticUtils.multiply(marketModel.getClose().toPlainString(),marketModel.getQuoteUsdRate().toPlainString()).stripTrailingZeros().toPlainString());
 
 
         int i = marketModel.getChg().compareTo(BigDecimal.ZERO);

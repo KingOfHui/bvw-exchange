@@ -666,14 +666,14 @@ public class TradingFragment extends Fragment {
                 lastPriceView.setText(panKouRight.getCoinThumb().getCloseStr());
 //                yueDengyuPriceView.setText("" + panKouRight.getThumb().getCloseStr());
 
-                yueDengyuPriceView.setText(ArithmeticUtils.multiply(panKouRight.getCoinThumb().getUsdRate(), panKouRight.getCoinThumb().getCloseStr()).stripTrailingZeros().toPlainString());
+                yueDengyuPriceView.setText(ArithmeticUtils.multiply(panKouRight.getCoinThumb().getQuoteUsdRate(), panKouRight.getCoinThumb().getCloseStr()).stripTrailingZeros().toPlainString());
 
 
                 inputNumMoneyTypeView.setText(panKouRight.getTrade_symbol());
                 mCoinsType.setText(panKouRight.getTrade_symbol());
                 mCoinsUsdtType.setText(panKouRight.getQuote_symbol());
 
-                usdRateVal = panKouRight.getCoinThumb().getUsdRate();
+                usdRateVal = panKouRight.getCoinThumb().getQuoteUsdRate();
 
                 if (panKouRight.getFav() == 1) {
                     isCollection = 1;

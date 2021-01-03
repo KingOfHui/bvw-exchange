@@ -158,6 +158,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="usdt"
+                    android:visibility="gone"
                     android:textColor="@color/gray1"
                     android:textSize="10dp" />
             </LinearLayout>

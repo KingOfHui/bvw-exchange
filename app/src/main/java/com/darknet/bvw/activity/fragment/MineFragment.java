@@ -149,7 +149,7 @@ public class MineFragment extends Fragment implements View.OnClickListener {
         systemLayout.setOnClickListener(this);
         addressLayout.setOnClickListener(this);
         clientIdLayout.setOnClickListener(this);
-        getOrderStateList();
+//        getOrderStateList();
     }
 
 
