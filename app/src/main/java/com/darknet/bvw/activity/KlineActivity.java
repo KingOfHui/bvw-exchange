@@ -1,6 +1,7 @@
 package com.darknet.bvw.activity;
 
 
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.darknet.bvw.R;
+import com.darknet.bvw.activity.fragment.PopwindowsLeftFragment;
 import com.darknet.bvw.adapter.DealFragment;
 import com.darknet.bvw.adapter.DepthFragment;
 import com.darknet.bvw.commonlib.util.ResourceUtils;
@@ -23,6 +25,7 @@ import com.darknet.bvw.config.UrlPath;
 import com.darknet.bvw.config.constant.KLineTypeEnum;
 import com.darknet.bvw.db.Entity.ETHWalletModel;
 import com.darknet.bvw.db.WalletDaoUtils;
+import com.darknet.bvw.model.CoinsModel;
 import com.darknet.bvw.model.KLineDataModel;
 import com.darknet.bvw.model.event.KLineEvent;
 import com.darknet.bvw.model.event.RefreshEvent;
@@ -30,6 +33,7 @@ import com.darknet.bvw.model.event.SellAndBuyEvent;
 import com.darknet.bvw.model.kLineHisResponse;
 import com.darknet.bvw.model.response.BaseResponse;
 import com.darknet.bvw.model.response.JiaoYiDuiResponse;
+import com.darknet.bvw.service.WorkManagerService;
 import com.darknet.bvw.util.AppUtil;
 import com.darknet.bvw.util.ArithmeticUtils;
 import com.darknet.bvw.util.KlineAutoUtil;
@@ -147,6 +151,9 @@ public class KlineActivity extends BaseActivity implements View.OnClickListener 
     TextView tv30Min;
     @BindView(R.id.tv_5_min)
     TextView tv5Min;
+
+    @BindView(R.id.ivSwitchMarket)
+    ImageView ivSwitchMarket;
     /**
      * 0 为分时，1为15分钟，2为1小时，3为日线, 4周线
      */
@@ -304,6 +311,7 @@ public class KlineActivity extends BaseActivity implements View.OnClickListener 
 
                 SellAndBuyEvent kLineEvent = new SellAndBuyEvent();
                 kLineEvent.setType(SellAndBuyEvent.BUY);
+                kLineEvent.setMarketId(markID);
                 EventBus.getDefault().post(kLineEvent);
                 finish();
             }
@@ -312,8 +320,28 @@ public class KlineActivity extends BaseActivity implements View.OnClickListener 
         sellView.setOnClickListener(v -> {
             SellAndBuyEvent kLineEvent = new SellAndBuyEvent();
             kLineEvent.setType(SellAndBuyEvent.SELL);
+            kLineEvent.setMarketId(markID);
             EventBus.getDefault().post(kLineEvent);
             finish();
+        });
+        ivSwitchMarket.setOnClickListener(view -> {
+            PopwindowsLeftFragment fragment = new PopwindowsLeftFragment();
+
+            fragment.setCoinsListener((String coinsSyblm, String closeStr, String close, boolean isSel, String usdRa, CoinsModel.DataBean dataBean) -> {
+                markID = coinsSyblm;
+                initStarView();
+                if (!StringUtil.isEmpty(markID)) {
+                    countCoinTxtView.setText(markID.split("-")[0]);
+                    priceCoinTxtView.setText(markID.split("-")[1]);
+                }
+                setFragment(0);
+                initKLineChartView();
+                initViewPager();
+                getSymbolTicker();
+                getDataBytype(type);
+                fragment.dismiss();
+            });
+            fragment.show(getSupportFragmentManager(), "pop");
         });
     }
 

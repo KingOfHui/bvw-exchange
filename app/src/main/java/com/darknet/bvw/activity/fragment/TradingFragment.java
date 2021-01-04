@@ -175,6 +175,7 @@ public class TradingFragment extends Fragment {
 
     private String xiaoshuPriceLimit;
     private String xiaoshuNumLimit;
+    private CoinsModel mModel;
 
 
     @SuppressLint("HandlerLeak")
@@ -461,6 +462,18 @@ public class TradingFragment extends Fragment {
         if (event == null) {
             return;
         }
+        String marketId = event.getMarketId();
+        if (mModel != null) {
+            List<CoinsModel.DataBean> data = mModel.getData();
+            for (CoinsModel.DataBean datum : data) {
+                if (datum.getId() != null && datum.getId().equalsIgnoreCase(marketId)) {
+                    panKouRight = datum;
+                    setPanKouSignData();
+                    setInputLimit();
+                    break;
+                }
+            }
+        }
         if (event.getType()==SellAndBuyEvent.BUY){
             changeMaiRu();
         }else {
@@ -609,9 +622,9 @@ public class TradingFragment extends Fragment {
 
                             try {
                                 Gson gson = new Gson();
-                                CoinsModel model = gson.fromJson(response.body(), CoinsModel.class);
+                                mModel = gson.fromJson(response.body(), CoinsModel.class);
 //                                Log.e("TAG", "getCoinsList: " + choseCoin);choseCoin
-                                for (CoinsModel.DataBean datum : model.getData()) {
+                                for (CoinsModel.DataBean datum : mModel.getData()) {
                                     if (choseCoin != null) {
                                         if (datum.getQuote_symbol().equals(choseCoin)) {
                                             panKouRight = datum;

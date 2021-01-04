@@ -10,6 +10,16 @@ public class SellAndBuyEvent {
      */
     private int type;
 
+    private String marketId;
+
+    public String getMarketId() {
+        return marketId;
+    }
+
+    public void setMarketId(String marketId) {
+        this.marketId = marketId;
+    }
+
     public int getType() {
         return type;
     }
