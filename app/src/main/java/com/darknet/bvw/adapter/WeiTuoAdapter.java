@@ -78,13 +78,17 @@ public class WeiTuoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             if (weiHisModel.getState().equalsIgnoreCase("0")) {
                 ((MsgViewHolder) holder).weituoStateView.setText(context.getString(R.string.in_transation));
                 ((MsgViewHolder) holder).weituoStateView.setTextColor(context.getResources().getColor(R.color._01FCDA));
+                ((MsgViewHolder) holder).createTimeView.setText(weiHisModel.getTime());
             } else if (weiHisModel.getState().equalsIgnoreCase("1")) {
+                ((MsgViewHolder) holder).createTimeView.setText(weiHisModel.getCompleted_time());
                 ((MsgViewHolder) holder).weituoStateView.setText(context.getString(R.string.completed));
                 ((MsgViewHolder) holder).weituoStateView.setTextColor(context.getResources().getColor(R.color._01FCDA));
             } else if (weiHisModel.getState().equalsIgnoreCase("2")) {
+                ((MsgViewHolder) holder).createTimeView.setText(weiHisModel.getCanceled_time());
                 ((MsgViewHolder) holder).weituoStateView.setText(context.getString(R.string.cancelled));
                 ((MsgViewHolder) holder).weituoStateView.setTextColor(context.getResources().getColor(R.color.red7));
             } else if (weiHisModel.getState().equalsIgnoreCase("3")) {
+                ((MsgViewHolder) holder).createTimeView.setText(weiHisModel.getTime());
                 ((MsgViewHolder) holder).weituoStateView.setText(context.getString(R.string.timeout));
                 ((MsgViewHolder) holder).weituoStateView.setTextColor(context.getResources().getColor(R.color._01FCDA));
             } else if (weiHisModel.getState().equalsIgnoreCase("4")) {
@@ -92,7 +96,6 @@ public class WeiTuoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 ((MsgViewHolder) holder).weituoStateView.setTextColor(context.getResources().getColor(R.color._01FCDA));
             }
 
-            ((MsgViewHolder) holder).createTimeView.setText(weiHisModel.getTime());
 
             ((MsgViewHolder) holder).moneyNumView.setText(weiHisModel.getPrice().stripTrailingZeros().toPlainString());
 

@@ -25,7 +25,7 @@ public class WeiTuoHisResponse extends BaseResponse {
         this.data = data;
     }
 
-    public static class WeiHisData{
+    public static class WeiHisData {
         private List<WeiHisModel> items;
 
         public List<WeiHisModel> getItems() {
@@ -44,7 +44,7 @@ public class WeiTuoHisResponse extends BaseResponse {
         }
     }
 
-    public static class WeiHisModel{
+    public static class WeiHisModel {
         private int id;
         private String marketId;
         private BigDecimal price;
@@ -57,6 +57,24 @@ public class WeiTuoHisResponse extends BaseResponse {
         private String created_at;
         private int direction;
         private String time;
+        private String completed_time;
+        private String canceled_time;
+
+        public String getCompleted_time() {
+            return completed_time;
+        }
+
+        public void setCompleted_time(String completed_time) {
+            this.completed_time = completed_time;
+        }
+
+        public String getCanceled_time() {
+            return canceled_time;
+        }
+
+        public void setCanceled_time(String canceled_time) {
+            this.canceled_time = canceled_time;
+        }
 
         public BigDecimal getTraded_amount() {
             return traded_amount;

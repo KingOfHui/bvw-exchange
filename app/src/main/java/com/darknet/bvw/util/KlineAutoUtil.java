@@ -147,9 +147,9 @@ public class KlineAutoUtil {
 //            group.add(5, BigDecimal.ZERO); // 成交量
 
             group.add(0, time); // 时间
-            group.add(1, item.getOpen()); // 开盘价
-            group.add(2, item.getHigh()); // 最高价
-            group.add(3, item.getLow()); // 最低价
+            group.add(1, item.getClose()); // 开盘价
+            group.add(2, item.getClose()); // 最高价
+            group.add(3, item.getClose()); // 最低价
             group.add(4, item.getClose()); // 最新价
             group.add(5, BigDecimal.ZERO); // 成交量
         }
