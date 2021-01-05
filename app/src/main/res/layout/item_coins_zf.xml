@@ -15,7 +15,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:layout_weight="1.5"
+            android:layout_weight="1.3"
             android:orientation="vertical">
 
             <LinearLayout
@@ -114,12 +114,11 @@
                 android:layout_marginLeft="20dp"
                 android:background="@drawable/common_green_bg"
                 android:gravity="center"
-                android:paddingLeft="3dp"
+                android:lines="1"
                 android:paddingTop="@dimen/dimen_5dp"
-                android:paddingRight="3dp"
                 android:paddingBottom="@dimen/dimen_5dp"
                 android:textColor="#FFFFFFFF"
-                android:textSize="15dp"
+                android:textSize="14dp"
                 android:textStyle="bold" />
 
         </LinearLayout>

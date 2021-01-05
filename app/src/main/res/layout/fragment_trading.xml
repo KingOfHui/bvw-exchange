@@ -594,7 +594,8 @@
                             <com.darknet.bvw.view.MyListView
                                 android:id="@+id/my_exchage_lv_01"
                                 android:layout_width="match_parent"
-                                android:layout_height="@dimen/dimen_110dp"
+                                android:layout_height="wrap_content"
+                                android:minHeight="@dimen/dimen_110dp"
                                 android:layout_marginLeft="10dp"
                                 android:background="@android:color/transparent"
                                 android:divider="@null" />
@@ -645,7 +646,8 @@
                             <com.darknet.bvw.view.MyListView
                                 android:id="@+id/my_exchage_lv_02"
                                 android:layout_width="match_parent"
-                                android:layout_height="@dimen/dimen_110dp"
+                                android:layout_height="wrap_content"
+                                android:minHeight="@dimen/dimen_110dp"
                                 android:layout_marginLeft="10dp"
                                 android:layout_marginTop="@dimen/dimen_10dp"
                                 android:background="@android:color/transparent"

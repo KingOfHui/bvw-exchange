@@ -58,7 +58,7 @@ public class MarketZfAdapter extends BAdapter<TradeZfResponse.ZfModel> {
 //            stateView.setText(marketModel.getChange().stripTrailingZeros().multiply(new BigDecimal(100)).stripTrailingZeros()+"%");
 
 
-            stateView.setText(ArithmeticUtils.multiply(marketModel.getChg().toPlainString(), "100").stripTrailingZeros().setScale(1, BigDecimal.ROUND_DOWN).toPlainString() + "%");
+            stateView.setText(ArithmeticUtils.multiply(marketModel.getChg().toPlainString(), "100").stripTrailingZeros().setScale(2, BigDecimal.ROUND_DOWN).toPlainString() + "%");
 
         } else {
             //green
@@ -69,7 +69,7 @@ public class MarketZfAdapter extends BAdapter<TradeZfResponse.ZfModel> {
             if (v == 0) {
                 stateView.setText("+100%");
             } else {
-                stateView.setText("+" + ArithmeticUtils.multiply(marketModel.getChg().toPlainString(), "100").stripTrailingZeros().setScale(1, BigDecimal.ROUND_DOWN).toPlainString() + "%");
+                stateView.setText("+" + ArithmeticUtils.multiply(marketModel.getChg().toPlainString(), "100").stripTrailingZeros().setScale(2, BigDecimal.ROUND_DOWN).toPlainString() + "%");
             }
 //            stateView.setText("+"+marketModel.getChange().stripTrailingZeros().multiply(new BigDecimal(100)).stripTrailingZeros()+"%");
         }

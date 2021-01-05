@@ -64,6 +64,7 @@ import com.google.gson.GsonBuilder;
 import com.handmark.pulltorefresh.library.ILoadingLayout;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
+import com.jingui.lib.utils.ViewUtil;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
@@ -488,7 +489,7 @@ public class TradingFragment extends Fragment {
         initView(view);
         initAdapter();
         getTokenList();
-        getAccount();
+//        getAccount();
         //当前委托
         getCurrentWeiTuo();
         EventBus.getDefault().register(this);
@@ -643,6 +644,8 @@ public class TradingFragment extends Fragment {
                 });
     }
 
+    DecimalInputTextWatcher watcher;
+    DecimalInputTextWatcher watcherNum;
 
     private void setInputLimit() {
         if (panKouRight != null) {
@@ -650,9 +653,19 @@ public class TradingFragment extends Fragment {
             try {
                 xiaoshuPriceLimit = panKouRight.getQuote_symbol_scale();
                 xiaoshuNumLimit = panKouRight.getQuote_symbol_scale();
-
-                mPriceEt.addTextChangedListener(new DecimalInputTextWatcher(mPriceEt, 20, Integer.parseInt(xiaoshuPriceLimit)));
-                mCountNumETv.addTextChangedListener(new DecimalInputTextWatcher(mCountNumETv, 20, Integer.parseInt(xiaoshuNumLimit)));
+                ViewUtil.addFilter(mPriceEt,ViewUtil.get2NumPoint(Integer.parseInt(panKouRight.getQuote_symbol_scale()),20));
+                ViewUtil.addFilter(mCountNumETv,ViewUtil.get2NumPoint(Integer.parseInt(panKouRight.getTrade_symbol_scale()),20));
+                if (watcher == null) {
+                    watcher = new DecimalInputTextWatcher(mPriceEt, 20, Integer.parseInt(panKouRight.getQuote_symbol_scale()));
+                }
+                if (watcherNum == null) {
+                    watcherNum = new DecimalInputTextWatcher(mCountNumETv, 20, Integer.parseInt(panKouRight.getTrade_symbol_scale()));
+                }
+                mPriceEt.removeTextChangedListener(watcher);
+                watcher.setXiaoshuPriceLimit(Integer.parseInt(xiaoshuPriceLimit));
+                mPriceEt.addTextChangedListener(watcher);
+                watcherNum.setXiaoshuPriceLimit(Integer.parseInt(xiaoshuNumLimit));
+                mCountNumETv.addTextChangedListener(watcherNum);
             } catch (Exception e) {
                 e.printStackTrace();
                 mPriceEt.addTextChangedListener(new DecimalInputTextWatcher(mPriceEt, 20, 5));
@@ -674,6 +687,12 @@ public class TradingFragment extends Fragment {
                 data.putString(WorkManagerService.EXTRA_DATA, marketId);
                 WorkManagerService.startService(getActivity(), data);
 
+                if (mInAdapter != null) {
+                    mInAdapter.setLimit(Integer.parseInt(panKouRight.getQuote_symbol_scale()));
+                }
+                if (mOutAdapter != null) {
+                    mOutAdapter.setLimit(Integer.parseInt(panKouRight.getQuote_symbol_scale()));
+                }
                 initData();
 
                 lastPriceView.setText(panKouRight.getCoinThumb().getCloseStr());
@@ -701,6 +720,7 @@ public class TradingFragment extends Fragment {
                     shenduNumType.setText("(" + marketId.split("-")[0] + ")");
                 }
 
+                getAccount();
                 getCurrentWeiTuo();
             }
         } catch (Exception e) {
@@ -819,7 +839,9 @@ public class TradingFragment extends Fragment {
         view.findViewById(R.id.fragment_exchange_subtraction_iv).setOnClickListener(v -> {
             //todo 减法
             String price = mPriceEt.getText().toString();
-
+            if (!TextUtils.isEmpty(price) && price.endsWith(".")) {
+                price = price.replace(".", "");
+            }
                 BigDecimal tempPrice = BigDecimal.ZERO;
             if (isDigits(price)) {
                 //整数
@@ -868,6 +890,9 @@ public class TradingFragment extends Fragment {
         view.findViewById(R.id.fragment_exchange_add_iv).setOnClickListener(v -> {
             //todo 加法
             String price = mPriceEt.getText().toString();
+            if (!TextUtils.isEmpty(price) && price.endsWith(".")) {
+                price = price.replace(".", "");
+            }
             if (isDigits(price)) {
                 //整数
                 price = ArithmeticUtils.plus(price, "1").toPlainString();

@@ -56,7 +56,7 @@ public class MarketAdapter extends BAdapter<TradeZxResponse.ZxModel> {
             stateView.setBackgroundResource(R.drawable.common_red_bg);
             stateView.setTextColor(context.getResources().getColor(R.color.white));
 //            stateView.setText(marketModel.getChange().multiply(new BigDecimal(100)).stripTrailingZeros()+"%");
-            stateView.setText(ArithmeticUtils.multiply(marketModel.getChg().toPlainString(),"100").stripTrailingZeros().setScale(1, BigDecimal.ROUND_DOWN).toPlainString()+"%");
+            stateView.setText(ArithmeticUtils.multiply(marketModel.getChg().toPlainString(),"100").stripTrailingZeros().setScale(2, BigDecimal.ROUND_DOWN).toPlainString()+"%");
 
 
 
@@ -70,7 +70,7 @@ public class MarketAdapter extends BAdapter<TradeZxResponse.ZxModel> {
             if (v == 0) {
                 stateView.setText("+100%");
             }else {
-                stateView.setText("+"+ArithmeticUtils.multiply(marketModel.getChg().toPlainString(),"100").stripTrailingZeros().setScale(1, BigDecimal.ROUND_DOWN).toPlainString()+"%");
+                stateView.setText("+"+ArithmeticUtils.multiply(marketModel.getChg().toPlainString(),"100").stripTrailingZeros().setScale(2, BigDecimal.ROUND_DOWN).toPlainString()+"%");
             }
 //            stateView.setText("+"+marketModel.getChange().multiply(new BigDecimal(100)).stripTrailingZeros()+"%");
         }

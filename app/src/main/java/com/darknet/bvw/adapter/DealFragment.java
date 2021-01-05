@@ -172,4 +172,13 @@ public class DealFragment extends Fragment {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
     }
+
+    public void setMarketId(String markID) {
+        markId = markID;
+        if (markId != null) {
+            priceTypeView.setText("("+markId.split("-")[1]+")");
+            biTypeView.setText("("+markId.split("-")[0]+")");
+        }
+        getDealData();
+    }
 }

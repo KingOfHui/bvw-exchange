@@ -89,4 +89,8 @@ public class DecimalInputTextWatcher implements TextWatcher {
         }
 
     }
+
+    public void setXiaoshuPriceLimit(int xiaoshuPriceLimit) {
+        this.decimalDigits = xiaoshuPriceLimit;
+    }
 }

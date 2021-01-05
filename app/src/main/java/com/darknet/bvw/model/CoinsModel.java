@@ -84,10 +84,18 @@ public class CoinsModel implements Serializable {
 //        private String price_decimals;
         private String price_precision;
         private String quote_symbol_scale;
+        private String trade_symbol_scale;
         private String quote_symbol;
         private String taker_fee_rate;
         private ThumbBean coinThumb;
 
+        public String getTrade_symbol_scale() {
+            return trade_symbol_scale;
+        }
+
+        public void setTrade_symbol_scale(String trade_symbol_scale) {
+            this.trade_symbol_scale = trade_symbol_scale;
+        }
 //        public String getAmount_decimals() {
 //            return amount_decimals;
 //        }

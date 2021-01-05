@@ -334,6 +334,12 @@ public class KlineActivity extends BaseActivity implements View.OnClickListener 
                     countCoinTxtView.setText(markID.split("-")[0]);
                     priceCoinTxtView.setText(markID.split("-")[1]);
                 }
+                if (depthFragment != null) {
+                    depthFragment.setMarketId(markID);
+                }
+                if (dealFragment != null) {
+                    dealFragment.setMarketId(markID);
+                }
                 setFragment(0);
                 initKLineChartView();
                 initViewPager();
@@ -407,19 +413,18 @@ public class KlineActivity extends BaseActivity implements View.OnClickListener 
 
                                     int i = new BigDecimal(coinThumb.getChg()).compareTo(BigDecimal.ZERO);
                                     if (i == -1) {
-                                        change.setText(ArithmeticUtils.multiply(coinThumb.getChg(), "100").stripTrailingZeros().setScale(3, BigDecimal.ROUND_DOWN).toPlainString() + "%");
+                                        change.setText(ArithmeticUtils.multiply(coinThumb.getChg(), "100").stripTrailingZeros().setScale(2, BigDecimal.ROUND_DOWN).toPlainString() + "%");
                                         //red
                                         change.setTextColor(getResources().getColor(R.color._FFFC6767));
                                     } else {
                                         //green
                                         change.setTextColor(getResources().getColor(R.color._01FCDA));
-                                        change.setText("+" + ArithmeticUtils.multiply(coinThumb.getChg(), "100").stripTrailingZeros().setScale(3, BigDecimal.ROUND_DOWN).toPlainString() + "%");
+                                        change.setText("+" + ArithmeticUtils.multiply(coinThumb.getChg(), "100").stripTrailingZeros().setScale(2, BigDecimal.ROUND_DOWN).toPlainString() + "%");
                                     }
 
                                     rmbPrice.setText(
                                             "≈$" + ArithmeticUtils.multiply(coinThumb.getClose(), coinThumb.getQuoteUsdRate()).stripTrailingZeros().setScale(2, BigDecimal.ROUND_DOWN).toPlainString());
 
-                                    change.setText(coinThumb.getChange() + "%");
                                     high.setText(NumberFormatUtil.getNumber("0.000", coinThumb.getHigh()));
                                     low.setText(NumberFormatUtil.getNumber("0.000", coinThumb.getLow()));
 
@@ -582,14 +587,14 @@ public class KlineActivity extends BaseActivity implements View.OnClickListener 
             case LINE:
                 type = LINE;
                 to = System.currentTimeMillis();
-                from = to - MAX_COUNT * MIN_SECOND;
+                from = to - MAX_COUNT * MIN_SECOND * 3;
                 isLine = true;
                 getKlineAllData(String.valueOf(to), String.valueOf(from), min1.getValue());
                 break;
             case min1:
                 type = min1;
                 to = System.currentTimeMillis();
-                from = to - MAX_COUNT * MIN_SECOND;
+                from = to - MAX_COUNT * MIN_SECOND * 3;
                 isLine = false;
                 getKlineAllData(String.valueOf(to), String.valueOf(from), min1.getValue());
                 break;

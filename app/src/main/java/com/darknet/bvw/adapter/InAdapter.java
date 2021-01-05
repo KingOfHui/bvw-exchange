@@ -30,10 +30,15 @@ public class InAdapter extends BAdapter<DepthResponse.DataBean.AsksBean> {
         this.bigFenMuVal = muVal;
     }
 
-
+    private int limit = 5;
 
     public InAdapter(Context context, List<DepthResponse.DataBean.AsksBean> list) {
         super(context, list);
+    }
+
+    public void setLimit(int limit) {
+        this.limit = limit;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -49,7 +54,7 @@ public class InAdapter extends BAdapter<DepthResponse.DataBean.AsksBean> {
         TextView mPrice = view.findViewById(R.id.item_change_price);
 
         if (!TextUtils.isEmpty(bean.getPrice())) {
-            mPrice.setText(new BigDecimal(bean.getPrice()).setScale(5, BigDecimal.ROUND_DOWN).toPlainString());
+            mPrice.setText(new BigDecimal(bean.getPrice()).setScale(limit, BigDecimal.ROUND_DOWN).toPlainString());
         } else {
             mPrice.setText("-");
         }

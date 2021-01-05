@@ -93,8 +93,8 @@ public class XchainMainThreeActivity extends BaseActivity implements View.OnClic
 
         fragmentList.add(moneyFragment);
 //        fragmentList.add(MallFragment.newInstance());
-        fragmentList.add(new ExchangeFragment());
         fragmentList.add(findFragment);
+        fragmentList.add(new ExchangeFragment());
 //        fragmentList.add(academicFragment);
         fragmentList.add(mineFragment);
 
@@ -341,10 +341,10 @@ public class XchainMainThreeActivity extends BaseActivity implements View.OnClic
             case R.id.main_first_layout:
                 switchTab(0);
                 break;
-            case R.id.main_mall_layout:
+            case R.id.main_second_layout:
                 switchTab(1);
                 break;
-            case R.id.main_second_layout:
+            case R.id.main_mall_layout:
                 switchTab(2);
                 break;
             case R.id.main_four_layout:
@@ -358,13 +358,13 @@ public class XchainMainThreeActivity extends BaseActivity implements View.OnClic
     private void switchTab(int position) {
         viewPager.setCurrentItem(position);
         firstImg.setImageResource(position == 0 ? R.mipmap.img_home_pressed : R.mipmap.img_home_unpressed);
-        mMallImg.setImageResource(position == 1 ? R.mipmap.home_trade_press : R.mipmap.home_trade_normal);
-        secImg.setImageResource(position == 2 ? R.mipmap.img_fill : R.mipmap.img_fill_unpressed);
+        secImg.setImageResource(position == 1 ? R.mipmap.img_fill : R.mipmap.img_fill_unpressed);
+        mMallImg.setImageResource(position == 2 ? R.mipmap.home_trade_press : R.mipmap.home_trade_normal);
         fourImg.setImageResource(position == 3 ? R.mipmap.img_mine_pressed : R.mipmap.img_mine_unpressed);
 
         firstTxt.setTextColor(getResources().getColor(position == 0 ? R.color._72f8db : R.color._807e8c));
-        mMallTxt.setTextColor(getResources().getColor(position == 1 ? R.color._72f8db : R.color._807e8c));
-        secTxt.setTextColor(getResources().getColor(position == 2 ? R.color._72f8db : R.color._807e8c));
+        secTxt.setTextColor(getResources().getColor(position == 1 ? R.color._72f8db : R.color._807e8c));
+        mMallTxt.setTextColor(getResources().getColor(position == 2 ? R.color._72f8db : R.color._807e8c));
         fourTxt.setTextColor(getResources().getColor(position == 3 ? R.color._72f8db : R.color._807e8c));
 
     }

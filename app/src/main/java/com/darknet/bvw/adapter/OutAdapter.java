@@ -22,6 +22,7 @@ public class OutAdapter extends BAdapter<DepthResponse.DataBean.BidsBean> {
 //    }
 
     private BigDecimal bigFenMuVal;
+    private int limit = 5;
 
     public void setFenMu(BigDecimal muVal) {
         this.bigFenMuVal = muVal;
@@ -31,6 +32,10 @@ public class OutAdapter extends BAdapter<DepthResponse.DataBean.BidsBean> {
         super(context, list);
     }
 
+    public void setLimit(int limit) {
+        this.limit = limit;
+        notifyDataSetChanged();
+    }
     @Override
     public int getContentView() {
         return R.layout.item_change_out;
@@ -45,7 +50,7 @@ public class OutAdapter extends BAdapter<DepthResponse.DataBean.BidsBean> {
 
 
         if (!TextUtils.isEmpty(bean.getPrice())) {
-            mPrice.setText(new BigDecimal(bean.getPrice()).setScale(5, BigDecimal.ROUND_DOWN).toPlainString());
+            mPrice.setText(new BigDecimal(bean.getPrice()).setScale(limit, BigDecimal.ROUND_DOWN).toPlainString());
         } else {
             mPrice.setText("--");
         }

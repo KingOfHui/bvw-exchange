@@ -193,6 +193,8 @@ public class DepthFragment extends Fragment {
         bigFenMu = "0";
 
         if (data.getBids().size() == 0 && data.getAsks().size() == 0) {
+            mInAdapter.clear();
+            mOutAdapter.clear();
             return;
         }
 
@@ -297,6 +299,18 @@ public class DepthFragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
+    }
+
+    public void setMarketId(String markID) {
+        marketId = markID;
+        try {
+            biTypeView.setText("("+marketId.split("-")[0]+")");
+            priceTypeView.setText("("+marketId.split("-")[1]+")");
+            biTypeTwoView.setText("("+marketId.split("-")[0]+")");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        initDataDeapData();
     }
 
 
