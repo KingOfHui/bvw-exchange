@@ -516,14 +516,12 @@ public class TradingFragment extends Fragment {
         pullToRefreshScrollView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ScrollView>() {
             @Override
             public void onPullDownToRefresh(PullToRefreshBase<ScrollView> refreshView) {
+
                 getAccount();
 
-                if (marketId != null) {
+                getTokenList();
 
-                } else {
-                    getTokenList();
-                }
-
+                initData();
                 getCurrentWeiTuo();
                 checkShouCang();
 
@@ -626,6 +624,14 @@ public class TradingFragment extends Fragment {
                                 mModel = gson.fromJson(response.body(), CoinsModel.class);
 //                                Log.e("TAG", "getCoinsList: " + choseCoin);choseCoin
                                 for (CoinsModel.DataBean datum : mModel.getData()) {
+                                    if (!TextUtils.isEmpty(marketId)){
+                                        if (marketId.equalsIgnoreCase(datum.getId())) {
+                                            panKouRight = datum;
+                                            setPanKouSignData();
+                                            setInputLimit();
+                                            break;
+                                        }
+                                    } else {
                                     if (choseCoin != null) {
                                         if (datum.getQuote_symbol().equals(choseCoin)) {
                                             panKouRight = datum;
@@ -634,7 +640,7 @@ public class TradingFragment extends Fragment {
                                             setInputLimit();
                                             break;
                                         }
-                                    }
+                                    }}
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -652,7 +658,7 @@ public class TradingFragment extends Fragment {
 
             try {
                 xiaoshuPriceLimit = panKouRight.getQuote_symbol_scale();
-                xiaoshuNumLimit = panKouRight.getQuote_symbol_scale();
+                xiaoshuNumLimit = panKouRight.getTrade_symbol_scale();
                 ViewUtil.addFilter(mPriceEt,ViewUtil.get2NumPoint(Integer.parseInt(panKouRight.getQuote_symbol_scale()),20));
                 ViewUtil.addFilter(mCountNumETv,ViewUtil.get2NumPoint(Integer.parseInt(panKouRight.getTrade_symbol_scale()),20));
                 if (watcher == null) {
@@ -1065,7 +1071,7 @@ public class TradingFragment extends Fragment {
 
                 try {
                     panKouRight = dataBean;
-
+                    setPanKouSignData();
                     setInputLimit();
 
                     marketId = coinsSyblm;

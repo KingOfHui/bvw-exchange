@@ -134,13 +134,13 @@ public class MarketFragment extends Fragment implements View.OnClickListener {
 
         if (lanType == 1) {
             //中文
-            urls.add(R.mipmap.hq_banner_one);
-            urls.add(R.mipmap.hq_banner_two);
-            urls.add(R.mipmap.hq_banner_three);
+            urls.add(R.mipmap.market_banner_one);
+            urls.add(R.mipmap.market_banner_two);
+            urls.add(R.mipmap.market_banner_three);
         } else {
-            urls.add(R.mipmap.hq_banner_one_en);
-            urls.add(R.mipmap.hq_banner_two_en);
-            urls.add(R.mipmap.hq_banner_three_en);
+            urls.add(R.mipmap.market_banner_one_en);
+            urls.add(R.mipmap.market_banner_two_en);
+            urls.add(R.mipmap.market_banner_three_en);
         }
 
         bannerLayout.setBannerAnimation(Transformer.Default);

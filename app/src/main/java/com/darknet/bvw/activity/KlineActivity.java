@@ -2,6 +2,7 @@ package com.darknet.bvw.activity;
 
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -741,6 +742,9 @@ public class KlineActivity extends BaseActivity implements View.OnClickListener 
             return;
         }
         if (!type.getPeriod().equals(event.getPeriod())) {
+            return;
+        }
+        if (TextUtils.isEmpty(markID) || (!TextUtils.isEmpty(event.getMarketId())&&!markID.equalsIgnoreCase(event.getMarketId()))) {
             return;
         }
         KLineEntity entity = new KLineEntity();
