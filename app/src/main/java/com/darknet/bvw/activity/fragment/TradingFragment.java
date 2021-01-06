@@ -275,6 +275,8 @@ public class TradingFragment extends Fragment {
                     }
 //                hideLoading();
                 }
+            } else {
+                mPriceEt.setText("0");
             }
 
 
@@ -463,6 +465,24 @@ public class TradingFragment extends Fragment {
         if (event == null) {
             return;
         }
+        mInAdapter.clear();
+        mOutAdapter.clear();
+        List<DepthResponse.DataBean.AsksBean> asksBeanList = new ArrayList<>();
+        List<DepthResponse.DataBean.BidsBean> bidsBeanList = new ArrayList<>();
+        for (int i = 0; i < 7; i++) {
+            DepthResponse.DataBean.AsksBean askBeanTemp = new DepthResponse.DataBean.AsksBean();
+            askBeanTemp.setCurrentCount("0");
+            asksBeanList.add(askBeanTemp);
+        }
+        mInList.addAll(asksBeanList);
+        mInAdapter.notifyDataSetChanged();
+        for (int i = 0; i < 7; i++) {
+            DepthResponse.DataBean.BidsBean tempBidsBean = new DepthResponse.DataBean.BidsBean();
+            tempBidsBean.setCurrentCount("0");
+            bidsBeanList.add(tempBidsBean);
+        }
+        mOutList.addAll(bidsBeanList);
+        mOutAdapter.notifyDataSetChanged();
         String marketId = event.getMarketId();
         if (mModel != null) {
             List<CoinsModel.DataBean> data = mModel.getData();
@@ -475,6 +495,7 @@ public class TradingFragment extends Fragment {
                 }
             }
         }
+        initData();
         if (event.getType()==SellAndBuyEvent.BUY){
             changeMaiRu();
         }else {
@@ -524,6 +545,10 @@ public class TradingFragment extends Fragment {
                 initData();
                 getCurrentWeiTuo();
                 checkShouCang();
+                //通知socket订阅
+                Bundle data = new Bundle();
+                data.putString(WorkManagerService.EXTRA_DATA, marketId);
+                WorkManagerService.startService(getActivity(), data);
 
             }
 
@@ -687,11 +712,6 @@ public class TradingFragment extends Fragment {
             if (panKouRight != null) {
                 isPrice = true;
                 marketId = panKouRight.getTrade_symbol() + "-" + panKouRight.getQuote_symbol();
-
-                //通知socket订阅
-                Bundle data = new Bundle();
-                data.putString(WorkManagerService.EXTRA_DATA, marketId);
-                WorkManagerService.startService(getActivity(), data);
 
                 if (mInAdapter != null) {
                     mInAdapter.setLimit(Integer.parseInt(panKouRight.getQuote_symbol_scale()));
@@ -1076,7 +1096,7 @@ public class TradingFragment extends Fragment {
 
                     marketId = coinsSyblm;
 
-                    //通知socket订阅
+                    //切换交易对通知socket重新订阅
                     Bundle data = new Bundle();
                     data.putString(WorkManagerService.EXTRA_DATA, marketId);
                     WorkManagerService.startService(getActivity(), data);
@@ -1893,7 +1913,7 @@ public class TradingFragment extends Fragment {
     public void receiveAddress(TradePanKouEvent panKouEvent) {
 
         Log.e("SocketTool", "...pankou.trade...receive....");
-
+        getCoinsList();
         initData();
 
 

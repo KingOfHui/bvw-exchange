@@ -35,6 +35,7 @@ import com.darknet.bvw.model.kLineHisResponse;
 import com.darknet.bvw.model.response.BaseResponse;
 import com.darknet.bvw.model.response.JiaoYiDuiResponse;
 import com.darknet.bvw.service.WorkManagerService;
+import com.darknet.bvw.socket.SocketTool;
 import com.darknet.bvw.util.AppUtil;
 import com.darknet.bvw.util.ArithmeticUtils;
 import com.darknet.bvw.util.KlineAutoUtil;
@@ -332,6 +333,8 @@ public class KlineActivity extends BaseActivity implements View.OnClickListener 
                 markID = coinsSyblm;
                 initStarView();
                 if (!StringUtil.isEmpty(markID)) {
+                    //切换交易对通知socket重新订阅
+                    SocketTool.getInstance().connectStomp(markID);
                     countCoinTxtView.setText(markID.split("-")[0]);
                     priceCoinTxtView.setText(markID.split("-")[1]);
                 }
@@ -557,6 +560,10 @@ public class KlineActivity extends BaseActivity implements View.OnClickListener 
         }
         switch (v.getId()) {
             case R.id.kiline_back_iv:
+                SellAndBuyEvent kLineEvent = new SellAndBuyEvent();
+                kLineEvent.setType(SellAndBuyEvent.BUY);
+                kLineEvent.setMarketId(markID);
+                EventBus.getDefault().post(kLineEvent);
                 finish();
                 break;
             case R.id.tv_1_min:
@@ -580,6 +587,15 @@ public class KlineActivity extends BaseActivity implements View.OnClickListener 
                 llPeriodLayout.setVisibility(View.GONE);
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        SellAndBuyEvent kLineEvent = new SellAndBuyEvent();
+        kLineEvent.setType(SellAndBuyEvent.BUY);
+        kLineEvent.setMarketId(markID);
+        EventBus.getDefault().post(kLineEvent);
+        super.onBackPressed();
     }
 
     private void getDataBytype(KLineTypeEnum kLineTypeEnum) {
@@ -747,6 +763,7 @@ public class KlineActivity extends BaseActivity implements View.OnClickListener 
         if (TextUtils.isEmpty(markID) || (!TextUtils.isEmpty(event.getMarketId())&&!markID.equalsIgnoreCase(event.getMarketId()))) {
             return;
         }
+        getSymbolTicker();
         KLineEntity entity = new KLineEntity();
         entity.Volume = event.getVolume();
         entity.High = event.getHighestPrice();
@@ -771,7 +788,6 @@ public class KlineActivity extends BaseActivity implements View.OnClickListener 
         DataHelper.calculate(mKLineEntities);
         mAdapter.addOneData(entity);
         mAdapter.notifyDataSetChanged();
-
     }
 
 }

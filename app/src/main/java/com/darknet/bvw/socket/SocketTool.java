@@ -75,7 +75,7 @@ public class SocketTool {
     }
 
     public void connectStomp(String coinSymbol) {
-
+        resetSubscriptions();
         mStompClient.withClientHeartbeat(1000).withServerHeartbeat(1000);
 
         Log.e(TAG, "...enter...socket....connectStomp");
