@@ -467,6 +467,7 @@ public class TradingFragment extends Fragment {
         }
         mInAdapter.clear();
         mOutAdapter.clear();
+        mPriceEt.setText("0");
         List<DepthResponse.DataBean.AsksBean> asksBeanList = new ArrayList<>();
         List<DepthResponse.DataBean.BidsBean> bidsBeanList = new ArrayList<>();
         for (int i = 0; i < 7; i++) {
