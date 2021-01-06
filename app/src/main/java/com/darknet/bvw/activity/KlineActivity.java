@@ -413,7 +413,7 @@ public class KlineActivity extends BaseActivity implements View.OnClickListener 
                                 JiaoYiDuiResponse.KLineTicker coinThumb = data.getCoinThumb();
                                 if (coinThumb != null) {
                                     BigDecimal bd2 = new BigDecimal(coinThumb.getClose());
-                                    usdPrice.setText(bd2.setScale(3, BigDecimal.ROUND_HALF_UP).toPlainString());
+                                    usdPrice.setText(bd2.setScale(data.getQuote_symbol_scale(), BigDecimal.ROUND_DOWN).toPlainString());
 
                                     int i = new BigDecimal(coinThumb.getChg()).compareTo(BigDecimal.ZERO);
                                     if (i == -1) {
@@ -438,6 +438,10 @@ public class KlineActivity extends BaseActivity implements View.OnClickListener 
                                     } else {
                                         kline_24h.setText(ArithmeticUtils.divide(coinThumb.getVolume(), "1", 1));
                                     }
+                                    if (depthFragment != null) {
+                                        depthFragment.setLimit(data.getQuote_symbol_scale());
+                                    }
+                                    mKLineChartView.setValueLimit(data.getQuote_symbol_scale());
                                 }
                             }
                         } catch (Exception e) {

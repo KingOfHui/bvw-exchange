@@ -27,6 +27,12 @@ public class InDepthAdapter extends BAdapter<DepthResponse.DataBean.AsksBean> {
     private Context context;
 
     private BigDecimal bigFenMuVal;
+    private int mLimit = 5;
+
+    public void setLimit(int limit) {
+        mLimit = limit;
+        notifyDataSetChanged();
+    }
 
     public InDepthAdapter(Context context, List<DepthResponse.DataBean.AsksBean> list) {
         super(context, list);
@@ -66,7 +72,7 @@ public class InDepthAdapter extends BAdapter<DepthResponse.DataBean.AsksBean> {
 //            BigDecimal bd2 = new BigDecimal(bean.getAmount());
 //            mAmount.setText(bd2.setScale(5, BigDecimal.ROUND_HALF_UP).toPlainString()+"2222");
 
-            mAmount.setText(new BigDecimal(bean.getAmount()).setScale(5, BigDecimal.ROUND_DOWN).toPlainString());
+            mAmount.setText(new BigDecimal(bean.getAmount()).setScale(mLimit, BigDecimal.ROUND_DOWN).toPlainString());
 
 //            mAmount.setText(new BigDecimal(bean.getAmount()).stripTrailingZeros().setScale(5, BigDecimal.ROUND_DOWN).toPlainString());
         }
@@ -75,7 +81,7 @@ public class InDepthAdapter extends BAdapter<DepthResponse.DataBean.AsksBean> {
         if(bean.getPrice().contains("-")){
             mPrice.setText(bean.getPrice());
         }else {
-            mPrice.setText(new BigDecimal(bean.getPrice()).setScale(5, BigDecimal.ROUND_DOWN).toPlainString());
+            mPrice.setText(new BigDecimal(bean.getPrice()).setScale(mLimit, BigDecimal.ROUND_DOWN).toPlainString());
 
 //            mPrice.setText(new BigDecimal(bean.getPrice()).stripTrailingZeros().setScale(5, BigDecimal.ROUND_DOWN).toPlainString());
         }

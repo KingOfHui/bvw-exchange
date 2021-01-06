@@ -33,7 +33,16 @@ public class JiaoYiDuiResponse extends BaseResponse {
         private String orders;
         private String created_at;
         private String updated_at;
+        private int quote_symbol_scale;
         private KLineTicker coinThumb;
+
+        public int getQuote_symbol_scale() {
+            return quote_symbol_scale;
+        }
+
+        public void setQuote_symbol_scale(int quote_symbol_scale) {
+            this.quote_symbol_scale = quote_symbol_scale;
+        }
 
         public KLineTicker getCoinThumb() {
             return coinThumb;

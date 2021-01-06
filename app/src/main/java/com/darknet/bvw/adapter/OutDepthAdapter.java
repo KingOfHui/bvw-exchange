@@ -26,7 +26,12 @@ public class OutDepthAdapter extends BAdapter<DepthResponse.DataBean.BidsBean> {
     private Context context;
 
     private BigDecimal bigFenMuVal;
+    private int mLimit = 5;
 
+    public void setLimit(int limit) {
+        mLimit = limit;
+        notifyDataSetChanged();
+    }
 //    private BigDecimal tempCountVal=new BigDecimal(0);
 
     public OutDepthAdapter(Context context, List<DepthResponse.DataBean.BidsBean> list) {
@@ -63,7 +68,7 @@ public class OutDepthAdapter extends BAdapter<DepthResponse.DataBean.BidsBean> {
             mPrice.setText(bean.getAmount());
         } else {
 //            Log.e("deapthval","bean.getAmount()2="+bean.getAmount());
-            mPrice.setText(new BigDecimal(bean.getAmount()).setScale(5, BigDecimal.ROUND_DOWN).toPlainString());
+            mPrice.setText(new BigDecimal(bean.getAmount()).setScale(mLimit, BigDecimal.ROUND_DOWN).toPlainString());
 //            mPrice.setText(new BigDecimal(bean.getAmount()).stripTrailingZeros().setScale(5, BigDecimal.ROUND_DOWN).toPlainString());
         }
 
@@ -71,7 +76,7 @@ public class OutDepthAdapter extends BAdapter<DepthResponse.DataBean.BidsBean> {
         if (bean.getPrice().contains("-")) {
             mAmount.setText(bean.getPrice());
         } else {
-            mAmount.setText(new BigDecimal(bean.getPrice()).setScale(5, BigDecimal.ROUND_DOWN).toPlainString());
+            mAmount.setText(new BigDecimal(bean.getPrice()).setScale(mLimit, BigDecimal.ROUND_DOWN).toPlainString());
 //            mAmount.setText(new BigDecimal(bean.getPrice()).stripTrailingZeros().setScale(5, BigDecimal.ROUND_DOWN).toPlainString());
         }
 

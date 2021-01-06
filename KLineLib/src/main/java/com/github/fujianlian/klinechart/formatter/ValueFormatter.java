@@ -8,8 +8,15 @@ import com.github.fujianlian.klinechart.base.IValueFormatter;
  */
 
 public class ValueFormatter implements IValueFormatter {
+
+    private int mLimit = 3;
+
+    public void setLimit(int limit) {
+        mLimit = limit;
+    }
+
     @Override
     public String format(float value) {
-        return String.format("%.3f", value);
+        return String.format("%." + mLimit + "f", value);
     }
 }

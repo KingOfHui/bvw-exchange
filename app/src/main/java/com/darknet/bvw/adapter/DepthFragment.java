@@ -64,6 +64,7 @@ public class DepthFragment extends Fragment {
     private TextView biTypeView;
     private TextView biTypeTwoView;
     private TextView priceTypeView;
+    private int mLimit = 5;
 
 //    private LinearLayout leftContentView;
 //    private LinearLayout rightContentView;
@@ -311,6 +312,16 @@ public class DepthFragment extends Fragment {
             e.printStackTrace();
         }
         initDataDeapData();
+    }
+
+    public void setLimit(int quote_symbol_scale) {
+        mLimit = quote_symbol_scale;
+        if (mInAdapter != null) {
+            mInAdapter.setLimit(quote_symbol_scale);
+        }
+        if (mOutAdapter != null) {
+            mOutAdapter.setLimit(quote_symbol_scale);
+        }
     }
 
 
