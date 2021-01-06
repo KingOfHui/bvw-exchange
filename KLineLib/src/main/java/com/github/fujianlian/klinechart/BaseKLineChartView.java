@@ -661,12 +661,21 @@ public abstract class BaseKLineChartView extends ScrollAndScaleView {
         return (int) (spValue * fontScale + 0.5f);
     }
 
+    private int mLimit = 3;
+    public void setValueLimit(int limit) {
+        mLimit = limit;
+    }
     /**
      * 格式化值
      */
     public String formatValue(float value) {
         if (getValueFormatter() == null) {
-            setValueFormatter(new ValueFormatter());
+            ValueFormatter valueFormatter = new ValueFormatter();
+            setValueFormatter(valueFormatter);
+        }
+        IValueFormatter valueFormatter = getValueFormatter();
+        if (valueFormatter instanceof ValueFormatter) {
+            ((ValueFormatter) valueFormatter).setLimit(mLimit);
         }
         return getValueFormatter().format(value);
     }
