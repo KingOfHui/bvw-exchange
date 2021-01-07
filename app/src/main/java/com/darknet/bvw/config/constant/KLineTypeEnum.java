@@ -12,58 +12,60 @@ public enum KLineTypeEnum {
     /**
      * 时分
      */
-    LINE("1min", "1", 0),
+    LINE("1min", "1", 0, 60*1000),
     /**
      * 1分
      */
-    min1("1min", "1", 1),
+    min1("1min", "1", 1, 60*1000),
     /**
      * 5分
      */
-    min5("5min", "5", 2),
+    min5("5min", "5", 2,5*60*1000),
     /**
      * 10分
      */
-    min10("10min", "10", 3),
+    min10("10min", "10", 3,10*60*1000),
     /**
      * 15分
      */
-    min15("15min", "15", 4),
+    min15("15min", "15", 4,15*60*1000),
     /**
      * 15分
      */
-    min30("30min", "30", 5),
+    min30("30min", "30", 5,30*60*1000),
     /**
      * 1小时
      */
-    hour1("1hour", "1h", 6),
+    hour1("1hour", "1h", 6,60*60*1000),
     /**
      * 1d
      */
-    daily("1day", "1d", 7),
+    daily("1day", "1d", 7,24*60*60*1000),
     /**
      * 1w
      */
-    week("1week", "1w", 8),
+    week("1week", "1w", 8,7*24*60*60*1000),
     /**
      * 月
      */
-    month("1month", "1m", 9),
+    month("1month", "1m", 9,0),
 
     /**
      * 更多
      */
-    more("more", "more", 10);
+    more("more", "more", 10,0);
 
     private String period;
     private String value;
 
     private int type;
+    private long time;
 
-    KLineTypeEnum(String period, String value, int type) {
+    KLineTypeEnum(String period, String value, int type, long time) {
         this.period = period;
         this.value = value;
         this.type = type;
+        this.time = time;
     }
 
     public String getPeriod() {
@@ -76,5 +78,9 @@ public enum KLineTypeEnum {
 
     public int getType() {
         return type;
+    }
+
+    public long getTime() {
+        return time;
     }
 }

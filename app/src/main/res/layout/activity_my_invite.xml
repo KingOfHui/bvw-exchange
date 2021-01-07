@@ -47,7 +47,7 @@
 
                     <com.darknet.bvw.view.TypefaceTextView
                         android:id="@+id/tv_count"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/dimen_15dp"
                         android:textColor="@color/_01FCDA"
@@ -80,11 +80,11 @@
                         android:id="@+id/tv_join_num"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/dimen_15dp"
                         android:textColor="@color/_01FCDA"
                         android:textSize="28dp"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/view1"
+                        app:layout_constraintLeft_toRightOf="@id/tv_count"
+                        app:layout_constraintRight_toLeftOf="@id/tv_invite_num"
+                        app:layout_constraintTop_toTopOf="@id/tv_count"
                         app:typeface="@string/DINProRegular"
                         android:text="@{String.valueOf(data.lowerLevel1Num)}"
                         tools:text="22" />
@@ -92,11 +92,9 @@
                     <com.darknet.bvw.view.TypefaceTextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/dimen_15dp"
                         android:textColor="#BEBDC3"
                         android:textSize="14dp"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toLeftOf="@id/tv_invite_num"
+                        app:layout_constraintLeft_toLeftOf="@id/tv_join_num"
                         app:layout_constraintTop_toBottomOf="@id/tv_join_num"
                         android:text="@string/first_join_person_no" />
 
@@ -113,7 +111,9 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/_01FCDA"
                         android:textSize="28dp"
+                        app:typeface="@string/DINProRegular"
                         app:layout_constraintLeft_toRightOf="@id/guideline"
+                        app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="@id/tv_join_num"
                         android:text="@{String.valueOf(data.lowerLevelGt1Num)}"
                         tools:text="12" />
@@ -123,11 +123,60 @@
                         android:layout_height="wrap_content"
                         android:textColor="#BEBDC3"
                         android:textSize="14dp"
-                        app:layout_constraintLeft_toRightOf="@id/guideline"
-                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintLeft_toLeftOf="@id/tv_invite_num"
                         app:layout_constraintTop_toBottomOf="@id/tv_invite_num"
                         android:text="@string/second_join_person_no" />
+                    <com.darknet.bvw.view.TypefaceTextView
+                        android:id="@+id/tvBottom1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dimen_15dp"
+                        android:textColor="@color/_01FCDA"
+                        android:textSize="28dp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/view1"
+                        app:typeface="@string/DINProRegular"
+                        android:text="@{String.valueOf(data.lowerLevel1MinerNum)}"
+                        tools:text="22" />
 
+                    <com.darknet.bvw.view.TypefaceTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dimen_15dp"
+                        android:textColor="#BEBDC3"
+                        android:textSize="14dp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/tv_invite_num"
+                        app:layout_constraintTop_toBottomOf="@id/tvBottom1"
+                        android:text="@string/zhituitaishu" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.5" />
+
+                    <com.darknet.bvw.view.TypefaceTextView
+                        android:id="@+id/tvBottom2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/_01FCDA"
+                        android:textSize="28dp"
+                        app:typeface="@string/DINProRegular"
+                        app:layout_constraintLeft_toLeftOf="@id/tv_join_num"
+                        app:layout_constraintTop_toTopOf="@id/tvBottom1"
+                        android:text="@{data.lowerMinerPower.toPlainString()}"
+                        tools:text="12" />
+
+                    <com.darknet.bvw.view.TypefaceTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="#BEBDC3"
+                        android:textSize="14dp"
+                        app:layout_constraintLeft_toLeftOf="@id/tv_join_num"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvBottom2"
+                        android:text="@string/zishuzongsuanli" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout

@@ -1,5 +1,6 @@
 package com.darknet.bvw.model.response;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class InviteDataResponse {
@@ -12,9 +13,27 @@ public class InviteDataResponse {
      */
 
     private LowerLevel1ListBean lowerLevel1List;
-    private int lowerLevel1Num;
-    private int lowerLevelGt1Num;
-    private int lowerNum;
+    private int lowerLevel1Num; //直推人数
+    private int lowerLevelGt1Num; //间接推人数
+    private int lowerNum; // 子属总人数
+    private int lowerLevel1MinerNum; // 直推矿机台数
+    private BigDecimal lowerMinerPower; //子属矿机总算力T
+
+    public int getLowerLevel1MinerNum() {
+        return lowerLevel1MinerNum;
+    }
+
+    public void setLowerLevel1MinerNum(int lowerLevel1MinerNum) {
+        this.lowerLevel1MinerNum = lowerLevel1MinerNum;
+    }
+
+    public BigDecimal getLowerMinerPower() {
+        return lowerMinerPower;
+    }
+
+    public void setLowerMinerPower(BigDecimal lowerMinerPower) {
+        this.lowerMinerPower = lowerMinerPower;
+    }
 
     public LowerLevel1ListBean getLowerLevel1List() {
         return lowerLevel1List;

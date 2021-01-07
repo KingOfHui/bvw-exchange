@@ -531,6 +531,7 @@ public class KlineActivity extends BaseActivity implements View.OnClickListener 
             } else {
                 kLineEntity.Date = DateUtil.DateTimeFormat.format(new Date(itemsBean.getTime()));
             }
+            kLineEntity.time = itemsBean.getTime();
             kLineEntity.Close = itemsBean.getClose();
             kLineEntity.Open = itemsBean.getOpen();
             mKLineEntities.add(kLineEntity);
@@ -761,13 +762,13 @@ public class KlineActivity extends BaseActivity implements View.OnClickListener 
         if (isFirstLoad) {
             return;
         }
-        if (!type.getPeriod().equals(event.getPeriod())) {
-            return;
-        }
         if (TextUtils.isEmpty(markID) || (!TextUtils.isEmpty(event.getMarketId())&&!markID.equalsIgnoreCase(event.getMarketId()))) {
             return;
         }
         getSymbolTicker();
+        if (!type.getPeriod().equals(event.getPeriod())) {
+            return;
+        }
         KLineEntity entity = new KLineEntity();
         entity.Volume = event.getVolume();
         entity.High = event.getHighestPrice();
@@ -777,11 +778,13 @@ public class KlineActivity extends BaseActivity implements View.OnClickListener 
         } else {
             entity.Date = DateUtil.DateTimeFormat.format(new Date(event.getTime()));
         }
+        entity.time = event.getTime();
         entity.Close = event.getClosePrice();
         entity.Open = event.getOpenPrice();
         if (mKLineEntities.size() > 0) {
             KLineEntity oldKLineEntity = mKLineEntities.get(mKLineEntities.size() - 1);
-            if (oldKLineEntity.getDate().equals(entity.getDate())) {
+            if (entity.time - oldKLineEntity.time< type.getTime()){
+//            if (oldKLineEntity.getDate().equals(entity.getDate())) {
                 mKLineEntities.set(mKLineEntities.size() - 1, entity);
                 DataHelper.calculate(mKLineEntities);
                 mAdapter.changeItem(mKLineEntities.size() - 1, entity);

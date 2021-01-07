@@ -128,6 +128,7 @@ public class KLineEntity implements IKLine ,Comparable<BigDecimal> {
         return MA10Volume;
     }
 
+    public long time;
     public String Date;
     public float Open;
     public float High;

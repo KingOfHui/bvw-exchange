@@ -885,8 +885,8 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="mineral_no">Miner No</string>
     <string name="my_invite_no_data">There are no data currently invited</string>
     <string name="total_person_no">Total number</string>
-    <string name="first_join_person_no">Number of direct participants</string>
-    <string name="second_join_person_no">Number of indirect participants</string>
+    <string name="first_join_person_no">Direct Num</string>
+    <string name="second_join_person_no">Indirect Num</string>
     <string name="tip_invitee">Invitees</string>
     <string name="tip_daily_capacity">daily capacity</string>
     <string name="tip_invite_time">Invitation time</string>
@@ -1039,4 +1039,6 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="in_transation">In Transaction</string>
     <string name="timeout">Timeout</string>成交
     <string name="part_of_transation">Part Transaction</string>
+    <string name="zhituitaishu">Join Desk Num</string>台数
+    <string name="zishuzongsuanli">Sub Total Hashrate (T)</string>
 </resources>

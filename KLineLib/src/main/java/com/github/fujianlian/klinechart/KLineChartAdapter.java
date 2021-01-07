@@ -71,6 +71,8 @@ public class KLineChartAdapter extends BaseKLineChartAdapter {
      * 向头部添加数据
      */
     public void addOneData(KLineEntity kLineEntity) {
-        datas.add(0, kLineEntity);
+        if (datas != null) {
+            datas.add(kLineEntity);
+        }
     }
 }
