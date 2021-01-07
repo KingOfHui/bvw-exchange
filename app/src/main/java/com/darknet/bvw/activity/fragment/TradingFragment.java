@@ -217,6 +217,7 @@ public class TradingFragment extends Fragment {
 
     private String defaultMairuVal;
     private String defaultMaichuVal;
+    private boolean isNeedEnterPrice = true;
 
 
     /**
@@ -249,9 +250,10 @@ public class TradingFragment extends Fragment {
 
 
             if (askSize > 0 || bidsSize > 0) {
-                if (isPrice) {
+            if (isNeedEnterPrice) {
+                isNeedEnterPrice = false;
+//                if (isPrice) {
                     isPrice = false;
-
                     if (buyOrsell.equals("buy")) {
                         if (askSize > 0) {
 //                        mPriceEt.setText(depth.getData().getAsks().get(askSize - 1).getPrice());
@@ -259,29 +261,19 @@ public class TradingFragment extends Fragment {
                         } else {
                             mPriceEt.setText("0");
                         }
-
-//                        Log.e("xxxxxxxxxxxx","mPriceEt="+mPriceEt.getText().toString());
-
                     } else {
                         if (bidsSize > 0) {
-//                        defaultMaiChu = depth.getData().getBids().get(0).getPrice();
-
                             mPriceEt.setText(depth.getData().getBids().get(0).getPrice());
                         } else {
                             mPriceEt.setText("0");
                         }
-
-//                        Log.e("xxxxxxxxxxxx","mPriceEt="+mPriceEt.getText().toString());
                     }
-//                hideLoading();
-                }
-            } else {
-                mPriceEt.setText("0");
+//                }
             }
-
-
+            }/* else {
+                mPriceEt.setText("0");
+            }*/
 //            mPriceEt.setSelection(mPriceEt.getText().length());
-
             if (askSize > 0) {
                 defaultMairu = depth.getData().getAsks().get(0).getPrice();
             }
@@ -465,6 +457,7 @@ public class TradingFragment extends Fragment {
         if (event == null) {
             return;
         }
+        isNeedEnterPrice = true;
         mInAdapter.clear();
         mOutAdapter.clear();
         mPriceEt.setText("0");
@@ -1089,7 +1082,7 @@ public class TradingFragment extends Fragment {
             PopwindowsLeftFragment fragment = new PopwindowsLeftFragment();
 
             fragment.setCoinsListener((String coinsSyblm, String closeStr, String close, boolean isSel, String usdRa, CoinsModel.DataBean dataBean) -> {
-
+                isNeedEnterPrice = true;
                 try {
                     panKouRight = dataBean;
                     setPanKouSignData();
@@ -1142,7 +1135,7 @@ public class TradingFragment extends Fragment {
                     getCurrentWeiTuo();
                     initPresentBackGroudResource();
 
-                    mHandler.sendEmptyMessage(1);
+//                    mHandler.sendEmptyMessage(1);
                     fragment.dismiss();
                     setRateViewContent();
                 } catch (Exception e) {
