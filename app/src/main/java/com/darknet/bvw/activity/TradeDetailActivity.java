@@ -96,9 +96,9 @@ public class TradeDetailActivity extends BaseActivity implements View.OnClickLis
 
                 if (tradeListModel.getService_fee() != null) {
                     if (tradeListModel.getService_fee().compareTo(BigDecimal.ZERO) == 0) {
-                        tvOutFee.setText("0 BTC");
+                        tvOutFee.setText("0 " + tradeListModel.getSymbol());
                     } else {
-                        tvOutFee.setText(tradeListModel.getService_fee().stripTrailingZeros().toPlainString() + "BTC");
+                        tvOutFee.setText(tradeListModel.getService_fee().stripTrailingZeros().toPlainString() + tradeListModel.getSymbol());
                     }
                 } else {
                     tvOutFee.setText("");
