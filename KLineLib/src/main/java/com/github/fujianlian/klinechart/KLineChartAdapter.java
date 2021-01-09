@@ -55,8 +55,10 @@ public class KLineChartAdapter extends BaseKLineChartAdapter {
      * @param position 索引值
      */
     public void changeItem(int position, KLineEntity data) {
-        datas.set(position, data);
-        notifyDataSetChanged();
+        if (datas != null && position >= 0 && position < datas.size()) {
+            datas.set(position, data);
+            notifyDataSetChanged();
+        }
     }
 
     /**

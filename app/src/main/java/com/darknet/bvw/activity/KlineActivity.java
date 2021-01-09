@@ -752,6 +752,7 @@ public class KlineActivity extends BaseActivity implements View.OnClickListener 
                     }
                 });
     }
+    private long mKlineLastClickTime = 0;
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void kLineEvent(KLineEvent event) {
@@ -765,7 +766,11 @@ public class KlineActivity extends BaseActivity implements View.OnClickListener 
         if (TextUtils.isEmpty(markID) || (!TextUtils.isEmpty(event.getMarketId())&&!markID.equalsIgnoreCase(event.getMarketId()))) {
             return;
         }
-        getSymbolTicker();
+        long nowTime = System.currentTimeMillis();
+        if (nowTime - mKlineLastClickTime > 1000L) {
+            mKlineLastClickTime = nowTime;
+            getSymbolTicker();
+        }
         if (!type.getPeriod().equals(event.getPeriod())) {
             return;
         }

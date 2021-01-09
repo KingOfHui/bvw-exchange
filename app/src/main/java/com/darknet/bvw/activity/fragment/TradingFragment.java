@@ -480,12 +480,14 @@ public class TradingFragment extends Fragment {
         String marketId = event.getMarketId();
         if (mModel != null) {
             List<CoinsModel.DataBean> data = mModel.getData();
-            for (CoinsModel.DataBean datum : data) {
-                if (datum.getId() != null && datum.getId().equalsIgnoreCase(marketId)) {
-                    panKouRight = datum;
-                    setPanKouSignData();
-                    setInputLimit();
-                    break;
+            if (data!=null) {
+                for (CoinsModel.DataBean datum : data) {
+                    if (datum.getId() != null && datum.getId().equalsIgnoreCase(marketId)) {
+                        panKouRight = datum;
+                        setPanKouSignData();
+                        setInputLimit();
+                        break;
+                    }
                 }
             }
         }
