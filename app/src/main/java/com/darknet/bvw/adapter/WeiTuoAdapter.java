@@ -58,11 +58,11 @@ public class WeiTuoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             }
 
             try {
-                if (weiHisModel.getMarketId() != null) {
-                    ((MsgViewHolder) holder).moneyTypeView.setText(" " + weiHisModel.getMarketId().split("-")[0]);
-                    ((MsgViewHolder) holder).priceTypeOneView.setText(" " + weiHisModel.getMarketId().split("-")[1]);
-                    ((MsgViewHolder) holder).priceTypeTwoView.setText(" " + weiHisModel.getMarketId().split("-")[0]);
-                    ((MsgViewHolder) holder).priceTypeThreeView.setText(" " + weiHisModel.getMarketId().split("-")[1]);
+                if (weiHisModel.getMarket_id() != null) {
+                    ((MsgViewHolder) holder).moneyTypeView.setText(" " + weiHisModel.getTrade_symbol());
+                    ((MsgViewHolder) holder).priceTypeOneView.setText(" " + weiHisModel.getQuote_symbol());
+                    ((MsgViewHolder) holder).priceTypeTwoView.setText(" " + weiHisModel.getTrade_symbol());
+                    ((MsgViewHolder) holder).priceTypeThreeView.setText(" " + weiHisModel.getQuote_symbol());
                 } else {
                     ((MsgViewHolder) holder).moneyTypeView.setText(" " + "BIW");
                     ((MsgViewHolder) holder).priceTypeOneView.setText(" " + "USDT");

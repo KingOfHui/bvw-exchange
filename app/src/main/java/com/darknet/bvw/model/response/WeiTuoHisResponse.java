@@ -46,7 +46,7 @@ public class WeiTuoHisResponse extends BaseResponse {
 
     public static class WeiHisModel {
         private int id;
-        private String marketId;
+        private String market_id;
         private BigDecimal price;
         private BigDecimal amount;
         private BigDecimal traded_amount;
@@ -59,6 +59,24 @@ public class WeiTuoHisResponse extends BaseResponse {
         private String time;
         private String completed_time;
         private String canceled_time;
+        private String trade_symbol;
+        private String quote_symbol;
+
+        public String getTrade_symbol() {
+            return trade_symbol;
+        }
+
+        public void setTrade_symbol(String trade_symbol) {
+            this.trade_symbol = trade_symbol;
+        }
+
+        public String getQuote_symbol() {
+            return quote_symbol;
+        }
+
+        public void setQuote_symbol(String quote_symbol) {
+            this.quote_symbol = quote_symbol;
+        }
 
         public String getCompleted_time() {
             return completed_time;
@@ -108,12 +126,12 @@ public class WeiTuoHisResponse extends BaseResponse {
             this.id = id;
         }
 
-        public String getMarketId() {
-            return marketId;
+        public String getMarket_id() {
+            return market_id;
         }
 
-        public void setMarketId(String marketId) {
-            this.marketId = marketId;
+        public void setMarket_id(String market_id) {
+            this.market_id = market_id;
         }
 
         public BigDecimal getPrice() {
