@@ -27,6 +27,7 @@ import com.darknet.bvw.config.ConfigNetWork;
 import com.darknet.bvw.config.UrlPath;
 import com.darknet.bvw.db.Entity.ETHWalletModel;
 import com.darknet.bvw.db.WalletDaoUtils;
+import com.darknet.bvw.mall.ui.MallActivity;
 import com.darknet.bvw.model.Event;
 import com.darknet.bvw.model.event.BidSuccessEvent;
 import com.darknet.bvw.model.response.BidStateResponse;
@@ -245,6 +246,8 @@ public class FindFragment extends Fragment implements View.OnClickListener {
 				Toast.makeText(activity, getString(R.string.find_no_open), Toast.LENGTH_SHORT).show();
 				break;
 			case R.id.find_six_layout:
+				startActivity(new Intent(requireActivity(), MallActivity.class));
+				break;
 			case R.id.find_seven_layout:
 			case R.id.find_eight_layout:
 				Toast.makeText(activity, getString(R.string.find_no_open), Toast.LENGTH_SHORT).show();

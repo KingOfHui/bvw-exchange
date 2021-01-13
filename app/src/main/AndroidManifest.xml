@@ -698,6 +698,9 @@
         <activity android:name=".order.ui.activity.PayOrderActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"/>
+        <activity android:name=".mall.ui.MallActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"/>
 
         <receiver
             android:name=".receiver.PushReceiver"
