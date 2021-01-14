@@ -41,7 +41,7 @@
             android:background="@drawable/shape_circle_rect_black"
             android:backgroundTint="@color/_01FCDA"
             android:gravity="center"
-            android:text="+ 添加新地址"
+            android:text="@string/add_new_address"
             android:textColor="@color/black"
             android:textSize="@dimen/sp_16"
             android:textStyle="bold"

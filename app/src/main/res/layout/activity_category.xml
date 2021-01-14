@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"/>
             <TextView
                 android:layout_weight="1"
-                android:text="商城"
+                android:text="@string/xmain_tab_mall"
                 android:textColor="@color/white"
                 android:gravity="center"
                 android:textSize="22sp"
@@ -40,7 +40,7 @@
                 android:textStyle="bold"
                 app:corner="2dp"
                 app:color="#01FCDA"
-                android:text="订单"
+                android:text="@string/fenlie_order_title"
                 android:layout_marginRight="10dp"
                 android:textColor="@color/black"
                 android:gravity="center"

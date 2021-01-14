@@ -56,7 +56,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/dimen_20dp"
-                android:text="编辑"
+                android:text="@string/edit"
                 android:textColor="#A4A4A4"
                 android:textSize="@dimen/sp_14"
                 app:layout_constraintBaseline_toBaselineOf="@id/tvName"

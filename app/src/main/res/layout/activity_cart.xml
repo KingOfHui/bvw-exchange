@@ -78,7 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dimen_5dp"
-                android:text="全选"
+                android:text="@string/select_all"
                 android:paddingTop="@dimen/dimen_15dp"
                 android:paddingBottom="@dimen/dimen_15dp"
                 android:paddingEnd="@dimen/dimen_35dp"
@@ -97,6 +97,7 @@
                 android:text="@{@string/total_money(`0`)}"
                 android:layout_marginEnd="@dimen/dp_10"
                 android:textColor="@color/_01FCDA"
+                android:textSize="12dp"
                 app:layout_constraintBottom_toBottomOf="@id/ivAllSelected"
                 app:layout_constraintEnd_toStartOf="@+id/tvSettle"
                 app:layout_constraintTop_toTopOf="@id/ivAllSelected" />

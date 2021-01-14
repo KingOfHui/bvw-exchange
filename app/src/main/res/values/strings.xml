@@ -1079,4 +1079,7 @@
     <string name="part_of_transation">部分成交</string>
     <string name="zhituitaishu">直推台数</string>
     <string name="zishuzongsuanli">子属总算力(T)</string>
+    <string name="add_new_address">+ 添加新地址</string>
+    <string name="edit">编辑</string>
+    <string name="select_all">全选</string>
 </resources>
