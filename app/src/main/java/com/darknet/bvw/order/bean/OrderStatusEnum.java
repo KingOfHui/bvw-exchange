@@ -76,13 +76,13 @@ public enum OrderStatusEnum {
         String text = "";
         switch (orderStatus) {
             case 0:
-                text = context.getString(R.string.order_to_be_paid);
+                text = context.getString(R.string.status_to_be_paid);
                 break;
             case 1:
-                text = context.getString(R.string.order_to_be_delivered);
+                text = context.getString(R.string.status_to_be_delivered);
                 break;
             case 2:
-                text = context.getString(R.string.order_to_be_taken);
+                text = context.getString(R.string.status_to_be_taken);
                 break;
             case 3:
                 text = context.getString(R.string.completed);

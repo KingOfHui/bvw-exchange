@@ -46,7 +46,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/dimen_5dp"
-                android:text="零食、饮品"
+                tools:text="零食、饮品"
                 android:textColor="@color/color_text_686672" />
         </LinearLayout>
 
