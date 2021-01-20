@@ -302,9 +302,9 @@ public class FirstFragment extends Fragment {
 
         int lanType = SPUtil.getInstance(activity).getSelectLanguage();
         if (lanType == 1) {
-            yubiBaoView.setImageResource(R.mipmap.yubi_bao_sign);
+            yubiBaoView.setImageResource(R.mipmap.ic_qv_kuai_bao_cn);
         } else {
-            yubiBaoView.setImageResource(R.mipmap.yubi_bao_sign_en);
+            yubiBaoView.setImageResource(R.mipmap.ic_qv_kuai_bao_en);
         }
 
 

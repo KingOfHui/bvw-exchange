@@ -13,13 +13,13 @@
         android:background="@mipmap/first_bg_img" />
 
 
-    <com.handmark.pulltorefresh.library.PullToRefreshScrollView
-        android:id="@+id/pull_refresh_scrollview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="none"
-        ptr:ptrAnimationStyle="flip"
-        ptr:ptrMode="both">
+<!--    <com.handmark.pulltorefresh.library.PullToRefreshScrollView-->
+<!--        android:id="@+id/pull_refresh_scrollview"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:scrollbars="none"-->
+<!--        ptr:ptrAnimationStyle="flip"-->
+<!--        ptr:ptrMode="both">-->
 
 
         <com.darknet.bvw.view.CustomScrollview
@@ -175,8 +175,7 @@
                             android:layout_alignParentRight="true"
                             android:layout_marginRight="20dp"
                             android:padding="10dp"
-                            android:visibility="invisible"
-                            android:src="@mipmap/yubi_bao_sign"></ImageView>
+                            android:src="@mipmap/ic_qv_kuai_bao_cn"></ImageView>
 
                     </RelativeLayout>
 
@@ -304,7 +303,7 @@
 
             </RelativeLayout>
         </com.darknet.bvw.view.CustomScrollview>
-    </com.handmark.pulltorefresh.library.PullToRefreshScrollView>
+<!--    </com.handmark.pulltorefresh.library.PullToRefreshScrollView>-->
 
 </FrameLayout>
 
