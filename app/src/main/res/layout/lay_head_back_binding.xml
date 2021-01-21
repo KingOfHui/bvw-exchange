@@ -54,6 +54,13 @@
             android:visibility="gone"
             app:typeface="@string/universal_text_typeface" />
 
+        <ImageView
+            android:layout_width="@dimen/dimen_20dp"
+            android:layout_height="@dimen/dimen_25dp"
+            android:id="@+id/ivRight"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/dimen_15dp"
+            android:layout_centerVertical="true"/>
     </RelativeLayout>
 </layout>
 <!--

@@ -704,6 +704,9 @@
         <activity android:name=".activity.qvkuaibao.QvKuaiBaoCoinListActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"/>
+        <activity android:name=".activity.qvkuaibao.CoinDetailActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"/>
 
         <receiver
             android:name=".receiver.PushReceiver"

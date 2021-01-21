@@ -29,6 +29,7 @@ import com.darknet.bvw.activity.NoticeActivity;
 import com.darknet.bvw.activity.SuanLiWaKuangActivity;
 import com.darknet.bvw.activity.TradeListActivity;
 import com.darknet.bvw.activity.YuBiBaoDetailActivity;
+import com.darknet.bvw.activity.qvkuaibao.CoinDetailActivity;
 import com.darknet.bvw.config.ConfigNetWork;
 import com.darknet.bvw.config.UrlPath;
 import com.darknet.bvw.db.Entity.ETHWalletModel;
@@ -471,6 +472,7 @@ public class FirstFragment extends Fragment {
 
 
     private void setYbStateVal(int stateVal) {
+        CoinDetailActivity.startSelf(requireContext());
         if (stateVal == 0) {
             //未开通
 //            qianDaoDialog.dissDia();

@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
 
     <data>
 
+        <variable
+            name="vm"
+            type="com.darknet.bvw.viewmodel.CoinDetailViewModel" />
+        <variable
+            name="adapter"
+            type="com.darknet.bvw.order.ui.adapter.MyCouponAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:background="#181523"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#181523">
 
         <include
             android:id="@+id/title_layout"
@@ -36,8 +43,8 @@
 
             <ImageView
                 android:id="@+id/ivVisible"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/dp_22"
+                android:layout_height="@dimen/dimen_13dp"
                 android:layout_marginEnd="@dimen/dimen_30dp"
                 android:src="@mipmap/icon_invisible"
                 app:layout_constraintBottom_toBottomOf="@id/tvCoinName"
@@ -158,13 +165,13 @@
             <TextView
                 android:id="@+id/tvIn"
                 android:layout_width="0dp"
-                android:layout_marginTop="@dimen/dimen_20dp"
                 android:layout_height="@dimen/dp_40"
-                android:layout_marginBottom="@dimen/dimen_20dp"
-                android:text="转入"
+                android:layout_marginTop="@dimen/dimen_20dp"
                 android:layout_marginEnd="2.5dp"
+                android:layout_marginBottom="@dimen/dimen_20dp"
                 android:background="#8236FF"
                 android:gravity="center"
+                android:text="转入"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/tvOut"
                 app:layout_constraintStart_toStartOf="@id/tvCoinName"
@@ -173,25 +180,30 @@
             <TextView
                 android:id="@+id/tvOut"
                 android:layout_width="0dp"
-                android:layout_marginStart="2.5dp"
-                android:layout_marginBottom="@dimen/dimen_20dp"
                 android:layout_height="@dimen/dp_40"
+                android:layout_marginStart="2.5dp"
                 android:layout_marginTop="@dimen/dimen_20dp"
-                android:text="转出"
-                android:gravity="center"
+                android:layout_marginBottom="@dimen/dimen_20dp"
                 android:background="#00FFD6"
+                android:gravity="center"
+                android:text="转出"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/ivVisible"
                 app:layout_constraintStart_toEndOf="@id/tvIn"
                 app:layout_constraintTop_toBottomOf="@id/llCoinInfo" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/clTop"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/dimen_15dp"
+            android:layout_marginEnd="@dimen/dimen_15dp"
+            android:background="#272436"
             android:padding="@dimen/dimen_20dp"
-            android:background="#272436">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/clTop">
+
             <TextView
                 android:id="@+id/tvLeft"
                 android:layout_width="wrap_content"
@@ -199,19 +211,39 @@
                 android:text="收益记录"
                 android:textColor="#00FFD4"
                 android:textSize="@dimen/dp_18"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                />
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
+                android:id="@+id/tvAll"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="查看全部"
-                android:textSize="@dimen/sp_12"
                 android:textColor="#00FFD4"
-                app:layout_constraintTop_toTopOf="@id/tvLeft"
+                android:textSize="@dimen/sp_12"
                 app:layout_constraintBottom_toBottomOf="@id/tvLeft"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvLeft" />
 
+            <View
+                android:id="@+id/line2"
+                style="@style/Line_White_02"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                app:layout_constraintEnd_toEndOf="@id/tvAll"
+                app:layout_constraintStart_toStartOf="@id/tvLeft"
+                app:layout_constraintTop_toBottomOf="@id/tvLeft" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvBonusList"
+                bind:adapter="@{adapter}"
+                bind:submitList="@{vm.listLive}"
+                bind:emptyImageResource="@{@drawable/img_order_no_data}"
+                bind:emptyText="@{`暂无收益记录`}"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/line2"
+                app:layout_constraintBottom_toBottomOf="parent"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
