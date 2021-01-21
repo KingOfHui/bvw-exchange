@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="#181523"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/title_layout"
+            layout="@layout/lay_head_back_binding" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clTop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/bg_qvkuaibao_coin"
+            android:padding="@dimen/dimen_20dp"
+            app:layout_constraintTop_toBottomOf="@id/title_layout">
+
+            <TextView
+                android:id="@+id/tvCoinName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_20dp"
+                android:text="折合总资产（BTC）"
+                android:textColor="#00FFD2"
+                android:textSize="@dimen/dp_18"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivVisible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dimen_30dp"
+                android:src="@mipmap/icon_invisible"
+                app:layout_constraintBottom_toBottomOf="@id/tvCoinName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvCoinName" />
+
+            <TextView
+                android:id="@+id/tvCoinCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="****"
+                android:textColor="#00FFD2"
+                android:textSize="32dp"
+                app:layout_constraintStart_toStartOf="@id/tvCoinName"
+                app:layout_constraintTop_toBottomOf="@id/tvCoinName" />
+
+            <TextView
+                android:id="@+id/tvCoinCny"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="****"
+                android:textColor="#00FFD2"
+                android:textSize="@dimen/dp_18"
+                app:layout_constraintStart_toStartOf="@id/tvCoinCount"
+                app:layout_constraintTop_toBottomOf="@id/tvCoinCount" />
+
+            <View
+                android:id="@+id/line1"
+                style="@style/Line_White_02"
+                android:layout_marginTop="@dimen/dimen_20dp"
+                app:layout_constraintEnd_toEndOf="@id/ivVisible"
+                app:layout_constraintStart_toStartOf="@id/tvCoinName"
+                app:layout_constraintTop_toBottomOf="@id/tvCoinCny" />
+
+            <LinearLayout
+                android:id="@+id/llCoinInfo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@id/ivVisible"
+                app:layout_constraintStart_toStartOf="@id/tvCoinName"
+                app:layout_constraintTop_toBottomOf="@id/line1">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvDailyBonus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="****"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp_16" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="日化收益率 (%)"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/dp_10" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="****"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp_16" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="日化收益率 (%)"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/dp_10" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="****"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp_16" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="日化收益率 (%)"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/dp_10" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvIn"
+                android:layout_width="0dp"
+                android:layout_marginTop="@dimen/dimen_20dp"
+                android:layout_height="@dimen/dp_40"
+                android:layout_marginBottom="@dimen/dimen_20dp"
+                android:text="转入"
+                android:layout_marginEnd="2.5dp"
+                android:background="#8236FF"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tvOut"
+                app:layout_constraintStart_toStartOf="@id/tvCoinName"
+                app:layout_constraintTop_toBottomOf="@id/llCoinInfo" />
+
+            <TextView
+                android:id="@+id/tvOut"
+                android:layout_width="0dp"
+                android:layout_marginStart="2.5dp"
+                android:layout_marginBottom="@dimen/dimen_20dp"
+                android:layout_height="@dimen/dp_40"
+                android:layout_marginTop="@dimen/dimen_20dp"
+                android:text="转出"
+                android:gravity="center"
+                android:background="#00FFD6"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/ivVisible"
+                app:layout_constraintStart_toEndOf="@id/tvIn"
+                app:layout_constraintTop_toBottomOf="@id/llCoinInfo" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/clTop"
+            android:padding="@dimen/dimen_20dp"
+            android:background="#272436">
+            <TextView
+                android:id="@+id/tvLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="收益记录"
+                android:textColor="#00FFD4"
+                android:textSize="@dimen/dp_18"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="查看全部"
+                android:textSize="@dimen/sp_12"
+                android:textColor="#00FFD4"
+                app:layout_constraintTop_toTopOf="@id/tvLeft"
+                app:layout_constraintBottom_toBottomOf="@id/tvLeft"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

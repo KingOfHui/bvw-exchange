@@ -701,7 +701,7 @@
         <activity android:name=".mall.ui.MallActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"/>
-        <activity android:name=".activity.QvKuaiBaoCoinListActivity"
+        <activity android:name=".activity.qvkuaibao.QvKuaiBaoCoinListActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"/>
 
