@@ -60,7 +60,7 @@ public class UrlPath {
     public static String GET_ACCOUNT_LIST_URL = "api/ex/wallet/list";//资产列表
     public static String HUAZHANG_FROM_SUO_TO_BAO = "api/ex/account/transferToBRC20"; //划账，交易所到钱包
     public static String HANGQING_ZIXUAN_URL = "api/ex/market/favor/list"; //行情，自选列表
-//    public static String HANGQING_ZFB_URL = "api/ex/market/list"; //行情，涨幅榜
+    //    public static String HANGQING_ZFB_URL = "api/ex/market/list"; //行情，涨幅榜
     public static String HANGQING_ZFB_URL = "api/ex/market/thumbList"; //行情，涨幅榜
     public static String SIGN_CHECK_URL = "api/v1/user/checkSign"; //验证，是否签到
     public static String WEITUO_URL = "api/ex/order/list"; //当前委托
@@ -99,4 +99,11 @@ public class UrlPath {
     public static final String SEND_RAW_TX = "api/v1/wallet/sendRawTx";//发送交易
     public static final String OPEN_BID = "api/v1/user/openBid";//开通Bid
     public static final String GET_ADDRESS_WITHDRAW = "api/v1/wallet/resetAddress/";//激活钱包
+
+    public static final String  GET_POS_PRODUCT_LIST="/api/v1/pos/productList";//获取区块宝产品列表
+    public static final String  GET_POS_BONUS_LIST="/api/v1/pos/bonusList";//获取收益列表
+    public static final String  GET_POS_IN_OUT_LIST="/api/v1/pos/inOutList";//获取转出转入记录
+    public static final String  GET_POS_WALLET_DATA="/api/v1/pos/walletData";//获取区块宝账户数据统计
+    public static final String  GET_POS_WALLET_LIST="/api/v1/pos/walletList";//获取区块宝账户列表
+    public static final String  GET_POS_OUT_BY_AMOUNT="/api/v2/pos/outByAmount";//质押手动解仓-任意数量
 }

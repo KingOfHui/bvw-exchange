@@ -122,6 +122,7 @@
                     android:layout_marginTop="20dp"
                     android:text="@string/yb_txt_new_one"
                     android:textColor="#FF01FCDA"
+                    android:visibility="gone"
                     android:textSize="18dp"></TextView>
 
             </LinearLayout>
@@ -166,6 +167,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/shense_bg_fang"
                 android:orientation="vertical"
+                android:visibility="gone"
                 android:padding="15dp">
 
                 <TextView
@@ -199,6 +201,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/shense_bg_fang"
                 android:orientation="vertical"
+                android:visibility="gone"
                 android:padding="15dp">
 
                 <TextView
@@ -263,6 +266,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/shense_bg_fang"
                 android:orientation="vertical"
+                android:visibility="gone"
                 android:padding="15dp">
 
                 <LinearLayout
@@ -504,6 +508,7 @@
             </LinearLayout>
 
             <TextView
+                android:visibility="gone"
                 android:id="@+id/ybb_josin_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

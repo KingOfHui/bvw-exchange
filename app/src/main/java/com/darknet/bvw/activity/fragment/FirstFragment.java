@@ -17,7 +17,6 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -29,7 +28,7 @@ import com.darknet.bvw.activity.NoticeActivity;
 import com.darknet.bvw.activity.SuanLiWaKuangActivity;
 import com.darknet.bvw.activity.TradeListActivity;
 import com.darknet.bvw.activity.YuBiBaoDetailActivity;
-import com.darknet.bvw.activity.qvkuaibao.CoinDetailActivity;
+import com.darknet.bvw.qvkuaibao.CoinDetailActivity;
 import com.darknet.bvw.config.ConfigNetWork;
 import com.darknet.bvw.config.UrlPath;
 import com.darknet.bvw.db.Entity.ETHWalletModel;
@@ -47,6 +46,7 @@ import com.darknet.bvw.net.retrofit.ApiInterface;
 import com.darknet.bvw.net.retrofit.BIWNetworkApi;
 import com.darknet.bvw.net.retrofit.BaseObserver;
 import com.darknet.bvw.net.retrofit.MvvmNetworkObserver;
+import com.darknet.bvw.qvkuaibao.QvKuaiBaoCoinListActivity;
 import com.darknet.bvw.util.HandleTimeUtil;
 import com.darknet.bvw.util.TimeUtil;
 import com.darknet.bvw.util.bitcoinj.BitcoinjKit;
@@ -57,7 +57,6 @@ import com.darknet.bvw.view.QianDaoSuccessDialogView;
 import com.darknet.bvw.view.TypefaceTextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.Gson;
-import com.google.gson.JsonSyntaxException;
 import com.handmark.pulltorefresh.library.ILoadingLayout;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
@@ -472,7 +471,7 @@ public class FirstFragment extends Fragment {
 
 
     private void setYbStateVal(int stateVal) {
-        CoinDetailActivity.startSelf(requireContext());
+        QvKuaiBaoCoinListActivity.startSelf(requireContext());
         if (stateVal == 0) {
             //未开通
 //            qianDaoDialog.dissDia();

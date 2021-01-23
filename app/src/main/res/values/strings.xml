@@ -800,27 +800,27 @@
     <string name="unit_price">单价：%s</string>
     <string name="fast_photo">%s&#160;快照</string>
 
-    <string name="yb_header_one">存入≥201枚BIW</string>
+    <string name="yb_header_one">存入≥300枚BIW</string>
     <string name="yb_header_two">即可加入余币宝计划</string>
 
     <string name="yb_txt_one">一、6个月合约期</string>
-    <string name="yb_txt_two">保证本金100%，每日挖矿BIW可自由交易提现，到期挖矿收益约100%！
+    <string name="yb_txt_two">保证本金 · 每日挖矿BIW可自由交易提现，到期挖矿收益约150-200%！
 </string>
     <string name="yb_txt_three">二、12个月合约期</string>
-    <string name="yb_txt_four">保证本金100%，每日挖矿BIW可自由交易提现，到期挖矿收益约150%！</string>
+    <string name="yb_txt_four">保证本金 · 每日挖矿BIW可自由交易提现，到期挖矿收益约200-250%！</string>
     <string name="yb_txt_five">三、24个月合约期</string>
-    <string name="yb_txt_six">保证本金100%，每日挖矿BIW可自由交易提现，到期挖矿收益约200%！</string>
+    <string name="yb_txt_six">保证本金 · 每日挖矿BIW可自由交易提现，到期挖矿收益约250-300%！</string>
 
     <string name="yb_md_one">例如：</string>
-    <string name="yb_md_two">用户3月3日后通过交易所或者分裂池购入3001枚BIW加入余币宝，
-并选择6个月的合约期。单价为1USDT/BIW.
+    <string name="yb_md_two">用户2.20日购入3000枚BIW加入余币宝，
+并选择6个月的合约期。单价为1.2USDT/BIW.
 用户余币宝总合约价值为：
-3001x1USDT=3001USDT。
-假如：用户每日产币为10枚BIW，BIW价格
-一直恒定为1USDT，用户6个月可以获得
-额外挖矿收益为：10x1x180=1800USDT。
-合约到期，用户把本金BIW转回给合约后，即可返还3001USDT（100%本金）
-，总金额为：3001+1800=4801USDT，总收益率为：160%
+3000x1.2USDT=3600USDT。
+假如：用户每日产币15枚，假设BIW价值
+一直恒定1.2USDT，用户6个月可以获得
+额外的利润收益为：10x1.2x180=2160USDT。
+合约到期，用户还可以获得除去本金100%的合约收益，为3000x1.2=3600USDT.
+那么用户投入3000枚币，6个月总的收益为3600+2160=5760USDT，收益率为160%
 </string>
     <string name="yb_md_three">五、加入余币宝和普通挖矿用户有什么区别？
 </string>
@@ -1091,4 +1091,5 @@
     <string name="enter_search_content">请输入搜索内容</string>
     <string name="cancel">取消</string>
     <string name="hot_search">热门搜索</string>
+    <string name="pay_detail">付款详情</string>
 </resources>

@@ -7,10 +7,10 @@
 
         <variable
             name="vm"
-            type="com.darknet.bvw.viewmodel.CoinDetailViewModel" />
+            type="com.darknet.bvw.qvkuaibao.vm.PosCoinDetailViewModel" />
         <variable
             name="adapter"
-            type="com.darknet.bvw.order.ui.adapter.MyCouponAdapter" />
+            type="com.darknet.bvw.qvkuaibao.adapter.BonusListAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -80,6 +80,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tvCoinCny" />
 
             <LinearLayout
+                android:layout_marginTop="@dimen/dimen_20dp"
                 android:id="@+id/llCoinInfo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -120,6 +121,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tvYesterdayBonus"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
@@ -131,7 +133,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:text="日化收益率 (%)"
+                        android:text="昨日收益 (USDT)"
                         android:textColor="@color/white"
                         android:textSize="@dimen/dp_10" />
 
@@ -144,6 +146,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tvTotalBonus"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
@@ -155,7 +158,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:text="日化收益率 (%)"
+                        android:text="累计收益 (USDT)"
                         android:textColor="@color/white"
                         android:textSize="@dimen/dp_10" />
 
@@ -169,7 +172,8 @@
                 android:layout_marginTop="@dimen/dimen_20dp"
                 android:layout_marginEnd="2.5dp"
                 android:layout_marginBottom="@dimen/dimen_20dp"
-                android:background="#8236FF"
+                android:background="@drawable/shape_circle_rect_white"
+                android:backgroundTint="#8236FF"
                 android:gravity="center"
                 android:text="转入"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -184,7 +188,8 @@
                 android:layout_marginStart="2.5dp"
                 android:layout_marginTop="@dimen/dimen_20dp"
                 android:layout_marginBottom="@dimen/dimen_20dp"
-                android:background="#00FFD6"
+                android:background="@drawable/shape_circle_rect_white"
+                android:backgroundTint="#00FFD6"
                 android:gravity="center"
                 android:text="转出"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -199,8 +204,9 @@
             android:layout_height="0dp"
             android:layout_marginStart="@dimen/dimen_15dp"
             android:layout_marginEnd="@dimen/dimen_15dp"
-            android:background="#272436"
+            android:background="@drawable/shape_circle_rect_white"
             android:padding="@dimen/dimen_20dp"
+            android:backgroundTint="#272436"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/clTop">
 

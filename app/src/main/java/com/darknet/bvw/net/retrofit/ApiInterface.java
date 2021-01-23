@@ -2,6 +2,7 @@ package com.darknet.bvw.net.retrofit;
 
 import com.darknet.bvw.base.BaseListBean;
 import com.darknet.bvw.common.BaseResponse;
+import com.darknet.bvw.config.UrlPath;
 import com.darknet.bvw.mall.bean.CategoryBean;
 import com.darknet.bvw.mall.bean.GoodsDetailBean;
 import com.darknet.bvw.mall.bean.ShopHomeBean;
@@ -14,6 +15,10 @@ import com.darknet.bvw.order.bean.CouponBean;
 import com.darknet.bvw.order.bean.MyCouponBean;
 import com.darknet.bvw.order.bean.ShippingAddress;
 import com.darknet.bvw.order.bean.OrderResp;
+import com.darknet.bvw.qvkuaibao.bean.PosBonus;
+import com.darknet.bvw.qvkuaibao.bean.PosProduct;
+import com.darknet.bvw.qvkuaibao.bean.PosWallet;
+import com.darknet.bvw.qvkuaibao.bean.PosWalletData;
 
 import java.util.List;
 import java.util.Map;
@@ -78,9 +83,10 @@ public interface ApiInterface {
     //订单列表
     @GET("api/shop/order/list")
     Observable<BaseResponse<BaseListBean<OrderResp>>> getOrderList(@Query("trade_state") int trade_state, @Query("limit") int limit, @Query("page") int pageNum);
+
     //订单列表
     @GET("api/shop/order/stateList")
-    Observable<BaseResponse<Map<String,String>>> getOrderStateList();
+    Observable<BaseResponse<Map<String, String>>> getOrderStateList();
 
     //订单详情
     @GET("api/shop/order/detail/{id}")
@@ -176,4 +182,25 @@ public interface ApiInterface {
     //发送交易
     @POST("api/v1/wallet/sendRawTx")
     Observable<BaseResponse<Object>> sendRawTx(@Body RequestBody body);
+
+    @GET(UrlPath.GET_POS_WALLET_LIST)
+    Observable<BaseResponse<List<PosWallet>>> getWalletList();
+
+    @GET(UrlPath.GET_POS_PRODUCT_LIST)
+    Observable<BaseResponse<BaseListBean<PosProduct>>> getProductList(@Query("limit") Integer limit
+            , @Query("page") Integer page);
+
+    @GET(UrlPath.GET_POS_BONUS_LIST)
+    Observable<BaseResponse<BaseListBean<PosBonus>>> getBonusList(
+            @Query("symbol") String symbol
+            , @Query("limit") Integer limit
+            , @Query("page") Integer page);
+
+    @GET(UrlPath.GET_POS_IN_OUT_LIST)
+    Observable<BaseResponse<BaseListBean<String>>> getInOutList(@Query("symbol") String symbol, @Query("limit") Integer limit
+            , @Query("page") Integer page);
+
+    @GET(UrlPath.GET_POS_WALLET_DATA)
+    Observable<BaseResponse<PosWalletData>> getWalletData(@Query("symbol") String symbol);
+
 }

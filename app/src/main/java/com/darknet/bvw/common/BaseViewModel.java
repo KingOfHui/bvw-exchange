@@ -8,7 +8,9 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.darknet.bvw.net.retrofit.ApiInterface;
 import com.darknet.bvw.net.retrofit.BIWNetworkApi;
+import com.darknet.bvw.qvkuaibao.bean.PosWalletData;
 
+import io.reactivex.ObservableTransformer;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
@@ -27,6 +29,11 @@ public class BaseViewModel extends AndroidViewModel{
         super(application);
         mDisposableContainer = new CompositeDisposable();
         apiService = BIWNetworkApi.getService(ApiInterface.class);
+        ObservableTransformer<BaseResponse<PosWalletData>, BaseResponse<PosWalletData>> composer = BIWNetworkApi.getInstance().applySchedulers();
+    }
+
+    public <M> ObservableTransformer<M, M> getCompose() {
+        return BIWNetworkApi.getInstance().applySchedulers();
     }
 
     protected void showLoading() {

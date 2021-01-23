@@ -701,10 +701,13 @@
         <activity android:name=".mall.ui.MallActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"/>
-        <activity android:name=".activity.qvkuaibao.QvKuaiBaoCoinListActivity"
+        <activity android:name=".qvkuaibao.QvKuaiBaoCoinListActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"/>
-        <activity android:name=".activity.qvkuaibao.CoinDetailActivity"
+        <activity android:name=".qvkuaibao.CoinDetailActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".qvkuaibao.BonusActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"/>
 
