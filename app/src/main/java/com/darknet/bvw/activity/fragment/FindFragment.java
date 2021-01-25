@@ -21,6 +21,7 @@ import com.darknet.bvw.activity.BidZhenMaActivity;
 import com.darknet.bvw.activity.BidZhenMaTwoActivity;
 import com.darknet.bvw.activity.HardwareMineralActivity;
 import com.darknet.bvw.activity.ImageActivity;
+import com.darknet.bvw.activity.ShareInviteActivity;
 import com.darknet.bvw.activity.ZhenLieActivity;
 import com.darknet.bvw.common.BaseResponse;
 import com.darknet.bvw.config.ConfigNetWork;
@@ -493,13 +494,13 @@ public class FindFragment extends Fragment implements View.OnClickListener {
 		tizhenLayout.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-
 				String referer_id = mResponse.getData().getReferer_id();
 				String invite_code = mResponse.getData().getInvite_code();
 				if (!TextUtils.isEmpty(referer_id)) {
-					Intent tiIntent = new Intent(activity, BidZhenMaActivity.class);
-					tiIntent.putExtra("lid", invite_code);
-					startActivity(tiIntent);
+					ShareInviteActivity.start(requireContext(),invite_code);
+//					Intent tiIntent = new Intent(activity, BidZhenMaActivity.class);
+//					tiIntent.putExtra("lid", invite_code);
+//					startActivity(tiIntent);
 					window.dismiss();
 
 				} else {

@@ -710,6 +710,7 @@
         <activity android:name=".qvkuaibao.BonusActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"/>
+        <activity android:name=".activity.ShareInviteActivity" />
 
         <receiver
             android:name=".receiver.PushReceiver"

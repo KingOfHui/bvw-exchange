@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#181523">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/fund_bg" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="@dimen/dimen_15dp"
+        android:layout_marginRight="@dimen/dimen_15dp">
+
+        <ImageView
+            android:id="@+id/back_sign_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:src="@mipmap/img_back" />
+
+        <com.darknet.bvw.view.TypefaceTextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_18dp"
+            android:textStyle="bold"
+            app:typeface="@string/universal_text_typeface" />
+
+    </RelativeLayout>
+
+<!--    <ScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
+
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/dimen_30dp"
+        android:layout_marginTop="@dimen/dimen_70dp"
+        android:layout_marginEnd="@dimen/dimen_30dp"
+        android:background="@drawable/shape_circle_rect_white"
+        android:backgroundTint="#af232233" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/llInviteInof"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="70dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dimen_30dp"
+            android:text="@string/invite_code_is"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dp_18"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            />
+
+        <TextView
+            android:id="@+id/tv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:text="037431"
+            android:textColor="@color/_01FCDA"
+            android:textSize="@dimen/dp_36"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv1" />
+
+        <TextView
+            android:id="@+id/tv3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:alpha="0.5"
+            android:text="@string/copy_invite_code"
+            android:textColor="#FEFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv2"
+            android:background="@drawable/shape_circle_rect_white"
+            android:backgroundTint="#5501FCDA"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            />
+
+        <TextView
+            android:id="@+id/tv4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:alpha="0.5"
+            android:gravity="center_horizontal"
+            android:text="@string/invite_tip1"
+            android:textColor="#FEFFFF"
+            android:textSize="@dimen/sp_14"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv3" />
+
+        <View
+            android:id="@+id/line"
+            style="@style/Line_White_02"
+            android:layout_marginStart="@dimen/dimen_80dp"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:layout_marginEnd="@dimen/dimen_80dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv4" />
+
+        <RelativeLayout
+            android:id="@+id/rl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:background="@color/white"
+            android:padding="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line">
+
+            <ImageView
+                android:id="@+id/zhenma_img_view"
+                android:layout_width="@dimen/dimen_130dp"
+                android:layout_height="@dimen/dimen_130dp"
+                android:layout_centerHorizontal="true"
+                android:scaleType="fitXY"
+                android:padding="2dp"></ImageView>
+        </RelativeLayout>
+        <!--            android:background="@drawable/shense_bg"-->
+
+        <TextView
+            android:id="@+id/zhenma_val_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rl"
+            android:layout_marginTop="@dimen/dimen_25dp"
+            android:alpha="0.5"
+            android:gravity="center"
+            android:text="@string/invite_tip2"
+            android:textColor="#FEFFFE"
+            android:textSize="14dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rl"></TextView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:background="@mipmap/img_invite_bg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rl">
+
+            <TextView
+                android:id="@+id/tvB1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="70dp"
+                android:gravity="center_horizontal"
+                android:text="@string/invite_tip3"
+                android:textColor="@color/_01FCDA"
+                android:textSize="@dimen/dp12"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvB1"
+                android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvB2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/invite_tip4"
+                android:includeFontPadding="true"
+                android:textColor="@color/_01FCDA"
+                android:textSize="@dimen/dp12"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tvRight"
+                app:layout_constraintBaseline_toBaselineOf="@id/tvRight"
+                />
+
+            <TextView
+                android:id="@+id/tvRight"
+                app:layout_constraintStart_toEndOf="@id/tvB2"
+                android:includeFontPadding="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/invite_tip5"
+                android:textColor="@color/_01FCDA"
+                android:textSize="@dimen/dp_18"
+                app:layout_constraintTop_toTopOf="parent"
+
+                />
+                <TextView
+                    android:id="@+id/tvRight2"
+                    app:layout_constraintStart_toEndOf="@id/tvRight"
+                    android:includeFontPadding="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text=" for free"
+                    android:visibility="gone"
+                    android:textColor="@color/_01FCDA"
+                    android:textSize="@dimen/dp12"
+                    app:layout_constraintBaseline_toBaselineOf="@id/tvRight"
+                    />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cl1">
+
+                <TextView
+                    android:id="@+id/tv15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.5"
+                    android:text="Share screenshots of social app with friends and enjoy"
+                    android:textColor="#FEFFFF"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:includeFontPadding="true"
+                    android:text="@string/invite_tip6"
+                    android:textColor="#88888D"
+                    android:textSize="@dimen/dp12"
+                    app:layout_constraintBaseline_toBaselineOf="@id/tv7"
+                    app:layout_constraintEnd_toStartOf="@id/tv7"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv15" />
+
+                <TextView
+                    android:id="@+id/tv7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:includeFontPadding="false"
+                    android:text="10%"
+                    android:textColor="@color/_01FCDA"
+                    android:textSize="@dimen/dp_18"
+                    app:layout_constraintEnd_toStartOf="@id/tv16"
+                    app:layout_constraintStart_toEndOf="@id/tv6"
+                    app:layout_constraintTop_toBottomOf="@id/tv15"
+
+                    />
+
+                <TextView
+                    android:id="@+id/tv16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:includeFontPadding="true"
+                    android:text=" of recommended friend airdrop"
+                    android:textColor="#88888D"
+                    android:textSize="@dimen/dp12"
+                    android:visibility="gone"
+                    app:layout_constraintBaseline_toBaselineOf="@id/tv7"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toEndOf="@id/tv7"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#88888D"
+                app:layout_constraintTop_toBottomOf="@id/cl2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:gravity="center_horizontal"
+                android:text="@string/invite_tip7"
+                android:layout_marginTop="@dimen/dp_10"
+                android:lineHeight="@dimen/dimen_20dp"
+                android:id="@+id/tv8"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#88888D"
+                android:gravity="center_horizontal"
+                app:layout_constraintTop_toBottomOf="@id/tv8"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="Telegram：@biw_blockchain"
+                android:layout_marginTop="@dimen/dp_10"
+                android:id="@+id/tv9"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#88888D"
+                app:layout_constraintTop_toBottomOf="@id/tv9"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="@string/invite_tip9"
+                android:layout_marginTop="@dimen/dp_10"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--    </RelativeLayout>-->
+<!--    </ScrollView>-->
+
+</RelativeLayout>

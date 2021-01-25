@@ -1093,4 +1093,15 @@
     <string name="cancel">取消</string>
     <string name="hot_search">热门搜索</string>
     <string name="pay_detail">付款详情</string>
+    <string name="invite_friends">邀请好友</string>
+    <string name="invite_code_is">您的邀请码为</string>
+    <string name="copy_invite_code">复制邀请码</string>
+    <string name="invite_tip1">好友也可在注册时直接填写邀请码</string>
+    <string name="invite_tip2">长按二维码下载BIW APP</string>
+    <string name="invite_tip3">新用户使用该邀请码申请钱包</string>
+    <string name="invite_tip4">下载注册免费获得</string>
+    <string name="invite_tip5">300枚BIW</string>
+    <string name="invite_tip6">截图社交APP分享给好友，享受推荐好友空投的</string>
+    <string name="invite_tip7">下载和分享后，添加好友提交证明和地址，等待空投</string>
+    <string name="invite_tip9">微信：biw1688、biw1788</string>
 </resources>

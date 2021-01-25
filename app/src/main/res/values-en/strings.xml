@@ -1047,5 +1047,16 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="enter_search_content">Please enter search content</string>
     <string name="cancel">Cancel</string>
     <string name="hot_search">Hot Search</string>
-    <string name="pay_detail">付款详情</string>
+    <string name="pay_detail">Pay Detail</string>
+    <string name="invite_friends">Invite Friends</string>
+    <string name="invite_code_is">Your invitation code is</string>
+    <string name="copy_invite_code">Copy invitation code</string>
+    <string name="invite_tip1">Friends can also fill in the invitation\n code directly when registering</string>
+    <string name="invite_tip2">Long press QR code to download BIW APP</string>
+    <string name="invite_tip3">New users use the invitation code to apply for wallets </string>
+    <string name="invite_tip4">Download and register to get &#160;</string>
+    <string name="invite_tip5"> 300 biws</string>
+    <string name="invite_tip6">截图社交APP分享给好友，享受推荐好友空投的</string>
+    <string name="invite_tip7">After downloading and sharing, add friends, submit proot\n  and address,wait for airdrop!</string>
+    <string name="invite_tip9">WeChat：biw1688、biw1788</string>
 </resources>
