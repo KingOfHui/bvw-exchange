@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    xmlns:app1="http://schemas.android.com/apk/res-auto"
     android:layout_marginRight="20dp"
     android:background="@drawable/pop_select_bg3"
     android:gravity="center|left"
@@ -19,18 +20,26 @@
         android:layout_gravity="center"
         android:orientation="vertical">
 
-        <com.darknet.bvw.view.TypefaceTextView
+        <com.darknet.bvw.view.DrawableTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center"
-            android:drawableLeft="@mipmap/tizhen_sign_img"
+            app1:drawableLeft="@mipmap/ic_share"
+            app1:drawableWidth="@dimen/dimen_20dp"
+            app1:drawableHeight="@dimen/dimen_20dp"
             android:drawablePadding="20dp"
             android:gravity="center"
-            android:text="@string/find_bid_pop_one"
+            android:text="@string/find_bid_pop_share"
             android:textColor="@color/white"
             android:textSize="18dp"
             android:textStyle="bold"
-            app:typeface="@string/universal_text_typeface" />
+            android:layout_gravity="bottom|center"/>
+<!--        <com.darknet.bvw.view.TypefaceTextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="bottom|center"-->
+<!--            android:drawableLeft="@mipmap/ic_share"-->
+<!--            -->
+<!--            app:typeface="@string/universal_text_typeface" />-->
     </LinearLayout>
 
 

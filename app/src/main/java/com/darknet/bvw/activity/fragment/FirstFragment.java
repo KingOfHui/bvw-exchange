@@ -302,9 +302,9 @@ public class FirstFragment extends Fragment {
 
         int lanType = SPUtil.getInstance(activity).getSelectLanguage();
         if (lanType == 1) {
-            yubiBaoView.setImageResource(R.mipmap.ic_qv_kuai_bao_cn);
+            yubiBaoView.setImageResource(R.mipmap.yubi_bao_sign);
         } else {
-            yubiBaoView.setImageResource(R.mipmap.ic_qv_kuai_bao_en);
+            yubiBaoView.setImageResource(R.mipmap.yubi_bao_sign_en);
         }
 
 
@@ -360,8 +360,8 @@ public class FirstFragment extends Fragment {
         yubiBaoView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getBidStateTwoData();
-
+//                getBidStateTwoData();
+                QvKuaiBaoCoinListActivity.startSelf(requireContext());
             }
         });
 
@@ -471,7 +471,7 @@ public class FirstFragment extends Fragment {
 
 
     private void setYbStateVal(int stateVal) {
-        QvKuaiBaoCoinListActivity.startSelf(requireContext());
+//        QvKuaiBaoCoinListActivity.startSelf(requireContext());
         if (stateVal == 0) {
             //未开通
 //            qianDaoDialog.dissDia();

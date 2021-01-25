@@ -17,6 +17,15 @@ public class PosWallet {
     private String invest_amount_str;
     private String symbol;
     private BigDecimal usd_rate;
+    private String yesterdayPosBonusAmount;
+
+    public String getYesterdayPosBonusAmount() {
+        return yesterdayPosBonusAmount;
+    }
+
+    public void setYesterdayPosBonusAmount(String yesterdayPosBonusAmount) {
+        this.yesterdayPosBonusAmount = yesterdayPosBonusAmount;
+    }
 
     public BigDecimal getCny_rate() {
         return cny_rate;
