@@ -333,7 +333,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tv8"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:text="Telegram：@biw_blockchain"
+                android:text="Tel：+971522264494"
                 android:layout_marginTop="@dimen/dp_10"
                 android:id="@+id/tv9"
                 />
