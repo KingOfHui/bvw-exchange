@@ -203,4 +203,7 @@ public interface ApiInterface {
     @GET(UrlPath.GET_POS_WALLET_DATA)
     Observable<BaseResponse<PosWalletData>> getWalletData(@Query("symbol") String symbol);
 
+    @GET(UrlPath.CHECK_CAN_SHOW)
+    Observable<BaseResponse<Boolean>> checkCanShow();
+
 }
