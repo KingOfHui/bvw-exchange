@@ -104,6 +104,7 @@ public class UrlPath {
     public static final String  GET_POS_BONUS_LIST="/api/v1/pos/bonusList";//获取收益列表
     public static final String  GET_POS_IN_OUT_LIST="/api/v1/pos/inOutList";//获取转出转入记录
     public static final String  GET_POS_WALLET_DATA="/api/v1/pos/walletData";//获取区块宝账户数据统计
+    public static final String  POST_POS_OUT_BY_AMOUNT = "/api/v2/pos/outByAmount";//区块宝-质押手动解仓-任意数量
     public static final String  GET_POS_WALLET_LIST="/api/v1/pos/walletList";//获取区块宝账户列表
     public static final String  CHECK_CAN_SHOW = "/api/v1/share/checkCanShow";//是否展示分享空投按钮
 }

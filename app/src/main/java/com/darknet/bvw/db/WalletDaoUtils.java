@@ -257,4 +257,10 @@ public class WalletDaoUtils {
             ethWalletDao.update(ethWallet);
         }
     }
+
+    public static boolean checkPassword(String password) {
+        ETHWalletModel current = getCurrent();
+        if(current == null || password == null) return false;
+        return password.equals(current.getPassword());
+    }
 }

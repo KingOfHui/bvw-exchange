@@ -1,5 +1,7 @@
 package com.darknet.bvw.qvkuaibao.bean;
 
+import java.math.BigDecimal;
+
 public class PosWalletData {
 
     /**
@@ -13,7 +15,7 @@ public class PosWalletData {
 
     private String dayRate;  //日利率
     private String posBonusAmount;  //个人历史总收益=利息收益+返佣收益
-    private String posInvestAmount;  //个人质押总金额
+    private BigDecimal posInvestAmount;  //个人质押总金额
     private String symbol;  //质押币种
     private int vipDegree;  //会员等级
     private String yesterdayPosBonusAmount;  //昨日收益
@@ -34,12 +36,8 @@ public class PosWalletData {
         this.posBonusAmount = posBonusAmount;
     }
 
-    public String getPosInvestAmount() {
+    public BigDecimal getPosInvestAmount() {
         return posInvestAmount;
-    }
-
-    public void setPosInvestAmount(String posInvestAmount) {
-        this.posInvestAmount = posInvestAmount;
     }
 
     public String getSymbol() {

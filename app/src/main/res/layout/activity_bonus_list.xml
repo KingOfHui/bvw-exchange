@@ -4,6 +4,12 @@
 
     <data>
 
+        <variable
+            name="vm"
+            type="com.darknet.bvw.qvkuaibao.vm.PosCoinDetailViewModel" />
+        <variable
+            name="adapter"
+            type="com.darknet.bvw.qvkuaibao.adapter.BonusListAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -97,6 +103,11 @@
             android:layout_marginTop="@dimen/dimen_20dp"
             />
         <androidx.recyclerview.widget.RecyclerView
+            xmlns:bind="http://schemas.android.com/tools"
+            bind:adapter="@{adapter}"
+            bind:submitList="@{vm.listLive}"
+            bind:emptyImageResource="@{@drawable/img_order_no_data}"
+            bind:emptyText="@{`暂无收益记录`}"
             android:layout_width="match_parent"
             android:layout_marginStart="@dimen/dimen_20dp"
             android:layout_marginEnd="@dimen/dimen_20dp"

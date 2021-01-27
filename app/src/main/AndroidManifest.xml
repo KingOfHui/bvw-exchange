@@ -711,6 +711,7 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait"/>
         <activity android:name=".activity.ShareInviteActivity" />
+        <activity android:name=".qvkuaibao.YubibaoHistoryListActivity" />
 
         <receiver
             android:name=".receiver.PushReceiver"

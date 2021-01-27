@@ -46,7 +46,7 @@
                 android:layout_width="@dimen/dp_22"
                 android:layout_height="@dimen/dimen_13dp"
                 android:layout_marginEnd="@dimen/dimen_30dp"
-                android:src="@mipmap/icon_invisible"
+                android:src="@drawable/ybb_detail_eye"
                 app:layout_constraintBottom_toBottomOf="@id/tvCoinName"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/tvCoinName" />
