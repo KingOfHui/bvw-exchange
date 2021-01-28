@@ -346,6 +346,7 @@
 
     <string name="bid_info_sign">BID身份</string>
     <string name="bid_info_sign_intro">成为BID即可享受各种收益</string>
+    <string name="bid_info_yu_bi_bao">开通BID才能使用余币宝</string>
     <string name="bid_info_open_sign">开通价格</string>
     <string name="bid_info_sub_content">立即开通BID身份</string>
     <string name="bid_info_sub_content_two">您已经是BID身份</string>
