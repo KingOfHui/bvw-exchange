@@ -30,7 +30,7 @@ public class BonusActivity extends BaseBindingActivity<ActivityBonusListBinding>
         viewModel.mPosWalletDataMutableLiveData.observe(this, new Observer<PosWalletData>() {
             @Override
             public void onChanged(PosWalletData posWalletData) {
-//                mBinding.tvBonusToday.setText(posWalletData.getYesterdayPosBonusAmount());
+                mBinding.tvBonusToday.setText(posWalletData.getYesterdayPosBonusAmount());
                 mBinding.tvAllBonus.setText(posWalletData.getPosBonusAmount());
             }
         });
