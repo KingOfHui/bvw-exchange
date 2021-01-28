@@ -245,7 +245,7 @@
                 android:id="@+id/rvBonusList"
                 bind:adapter="@{adapter}"
                 bind:submitList="@{vm.listLive}"
-                bind:emptyImageResource="@{@drawable/img_order_no_data}"
+                bind:emptyImageResource="@{@drawable/img_history_empty}"
                 bind:emptyText="@{`暂无收益记录`}"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
