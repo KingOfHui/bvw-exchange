@@ -43,8 +43,9 @@
 
             <ImageView
                 android:id="@+id/ivVisible"
-                android:layout_width="@dimen/dp_22"
-                android:layout_height="@dimen/dimen_13dp"
+                android:padding="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/dimen_30dp"
                 android:src="@drawable/ybb_detail_eye"
                 app:layout_constraintBottom_toBottomOf="@id/tvCoinName"
@@ -102,7 +103,6 @@
                         android:layout_gravity="center_horizontal"
                         android:text="****"
                         android:lines="1"
-                        android:ellipsize="end"
                         android:textColor="@color/white"
                         android:textSize="@dimen/sp_16" />
 

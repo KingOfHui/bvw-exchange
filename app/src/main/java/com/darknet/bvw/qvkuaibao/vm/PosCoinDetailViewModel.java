@@ -14,6 +14,7 @@ import com.darknet.bvw.net.retrofit.BIWNetworkApi;
 import com.darknet.bvw.net.retrofit.BaseObserver;
 import com.darknet.bvw.net.retrofit.MvvmNetworkObserver;
 import com.darknet.bvw.net.retrofit.RequestBodyBuilder;
+import com.darknet.bvw.order.vm.PayViewModel;
 import com.darknet.bvw.qvkuaibao.bean.PosBonus;
 import com.darknet.bvw.qvkuaibao.bean.PosWalletData;
 import com.darknet.bvw.util.ToastUtils;
@@ -49,14 +50,6 @@ public class PosCoinDetailViewModel extends BaseListViewModel<PosBonus> {
 
 	public String getSymbol(){
 		return symbolLive.getValue();
-	}
-
-	public void in(String amount, String password, Runnable successCallback) {
-		if (!WalletDaoUtils.checkPassword(password)) {
-			ToastUtils.showToast(R.string.wrong_pwd);
-			return;
-		}
-		// TODO 还没有接口
 	}
 
 	public void out(String amount, String password, Runnable successCallback) {

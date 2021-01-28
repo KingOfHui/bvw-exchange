@@ -37,6 +37,7 @@ public class YubibaoHistoryListActivity extends BaseBindingActivity<YbbInOutHist
 		mBinding.setAdapter(new YbbHistoryAdapter());
 		YbbHistoryViewModel viewModel = getViewModel(YbbHistoryViewModel.class);
 		viewModel.symbolLive.setValue(symbol);
+		mBinding.setVm(viewModel);
 		viewModel.refresh();
 	}
 

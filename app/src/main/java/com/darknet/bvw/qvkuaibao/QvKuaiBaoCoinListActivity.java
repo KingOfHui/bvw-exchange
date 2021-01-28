@@ -39,7 +39,7 @@ public class QvKuaiBaoCoinListActivity extends BaseBindingActivity<ActivityQvkua
         adapter.setOnItemClickListener((adapter1, view, position) -> {
             PosWallet item = adapter.getItem(position);
             if (item!=null) {
-                CoinDetailActivity.startSelf(this, item.getSymbol());
+                CoinDetailActivity.startSelf(this, item.getSymbol(), item.getUsd_rate());
             }
         });
         mBinding.setAdapter(adapter);

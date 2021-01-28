@@ -15,7 +15,10 @@ import com.darknet.bvw.net.retrofit.BIWNetworkApi;
 import com.darknet.bvw.net.retrofit.BaseObserver;
 import com.darknet.bvw.net.retrofit.MvvmNetworkObserver;
 import com.darknet.bvw.net.retrofit.RequestBodyBuilder;
+import com.darknet.bvw.net.retrofit.errorhandler.ExceptionHandlerUtil;
 import com.darknet.bvw.order.bean.OrderResp;
+import com.darknet.bvw.util.ToastUtils;
+import com.vector.update_app.listener.ExceptionHandler;
 
 public class PayViewModel extends BaseViewModel {
     public MutableLiveData<String> couponAddress = new MutableLiveData<>();
@@ -89,6 +92,20 @@ public class PayViewModel extends BaseViewModel {
         sendTradeRequest.setTo_address(address);
         sendTradeRequest.setType(15);
         sendTradeRequest.setDemo("订单支付");
+        senTradeRequest(sendTradeRequest);
+    }
+
+    //余币宝转入
+    public void sendTransferInTrade(String afterSignVal, String price, String address, String symbol) {
+        showLoading();
+        SendTradeRequest sendTradeRequest = new SendTradeRequest();
+        sendTradeRequest.setAmount(price);
+        sendTradeRequest.setRaw(afterSignVal);
+        sendTradeRequest.setSymbol(symbol);
+        sendTradeRequest.setOrder_id(0);
+        sendTradeRequest.setTo_address(address);
+        sendTradeRequest.setType(17);
+        sendTradeRequest.setDemo("余币宝转入");
         senTradeRequest(sendTradeRequest);
     }
     private void senTradeRequest(SendTradeRequest sendTradeRequest) {
