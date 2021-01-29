@@ -85,9 +85,6 @@ public class PosCoinDetailViewModel extends BaseListViewModel<PosBonus> {
 
 	public void toggleVisible() {
 		PosWalletData value = mPosWalletDataMutableLiveData.getValue();
-		if (value == null) {
-			value = new PosWalletData();
-		}
 		mPosWalletDataMutableLiveData.setValue(value);
 	}
 

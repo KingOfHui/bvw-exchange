@@ -14,6 +14,7 @@ import com.darknet.bvw.order.vm.PayViewModel;
 import com.darknet.bvw.qvkuaibao.adapter.BonusListAdapter;
 import com.darknet.bvw.qvkuaibao.dialog.PoszhuanZhangDialog;
 import com.darknet.bvw.qvkuaibao.vm.PosCoinDetailViewModel;
+import com.darknet.bvw.util.SharedPreferencesUtil;
 import com.darknet.bvw.util.ToastUtils;
 
 import java.math.BigDecimal;
@@ -60,8 +61,8 @@ public class CoinDetailActivity extends BasePayActivity<ActivityCoinDetailBindin
         mBinding.tvIn.setOnClickListener(view -> {
             PoszhuanZhangDialog zhangDialog = new PoszhuanZhangDialog(this, null);
             zhangDialog.setOnPayClickListener((amount, pwd) -> {
+                zhangDialog.dismiss();
                 in(mPayViewModel, amount, pwd, () -> {
-                    zhangDialog.dismiss();
                     ToastUtils.showToast("转入成功");
                     mViewModel.getWalletData(mViewModel.getSymbol());
                 });
@@ -71,13 +72,17 @@ public class CoinDetailActivity extends BasePayActivity<ActivityCoinDetailBindin
         mBinding.tvOut.setOnClickListener(view -> {
             PoszhuanZhangDialog zhangDialog = new PoszhuanZhangDialog(this, null);
             zhangDialog.setOnPayClickListener((amount, pwd) -> {
-                mViewModel.out(amount, pwd, zhangDialog::dismiss);
+                zhangDialog.dismiss();
+                mViewModel.out(amount, pwd, ()->{/*zhangDialog.dismiss()*/});
             });
             zhangDialog.show();
         });
         mBinding.tvAll.setOnClickListener(view -> BonusActivity.start(this, getIntent().getStringExtra("symbol")));
+        boolean ybbEyes = (boolean) SharedPreferencesUtil.getData("ybbEyes", true);
+        mBinding.ivVisible.setActivated(ybbEyes);
         mBinding.ivVisible.setOnClickListener(v -> {
             v.setActivated(!v.isActivated());
+            SharedPreferencesUtil.putData("ybbEyes", v.isActivated());
             mViewModel.toggleVisible();
         });
     }
@@ -127,6 +132,14 @@ public class CoinDetailActivity extends BasePayActivity<ActivityCoinDetailBindin
         mViewModel.getWalletData(symbol);
         mViewModel.mPosWalletDataMutableLiveData.observe(this, posWalletData -> {
             if(mBinding.ivVisible.isActivated()) {
+                if(posWalletData == null) {
+                    mBinding.tvCoinCount.setText("0");
+                    mBinding.tvCoinCny.setText("≈$0");
+                    mBinding.tvDailyBonus.setText("0");
+                    mBinding.tvYesterdayBonus.setText("0");
+                    mBinding.tvTotalBonus.setText("0");
+                    return;
+                }
                 mBinding.tvCoinCount.setText(String.format("%s", posWalletData.getPosInvestAmount()));
                 mBinding.tvCoinCny.setText("≈$"+posWalletData.getPosInvestAmount().multiply(usdRange).setScale(2, BigDecimal.ROUND_DOWN).toEngineeringString());
                 mBinding.tvDailyBonus.setText(posWalletData.getDayRate());

@@ -762,11 +762,11 @@
     <string name="yb_header_two">You can apply to join the YuBi Bank</string>
 
     <string name="yb_txt_one">(1) 6-months contract period.</string>
-    <string name="yb_txt_two">Guaranteed the principal · daily mining BIW can be freely traded to withdraw, and the mining income due is about 150-200%!</string>
+    <string name="yb_txt_two">Guaranteed the principal, daily mining BIW can be freely traded to withdraw, and the mining income due is about 150-200%!</string>
     <string name="yb_txt_three">(2) 12-month contract period.</string>
-    <string name="yb_txt_four">Guaranteed the principal · daily mining BIW can be freely traded to withdraw, and the mining income due is about 200-250%!</string>
+    <string name="yb_txt_four">Guaranteed the principal, daily mining BIW can be freely traded to withdraw, and the mining income due is about 200-250%!</string>
     <string name="yb_txt_five">(3) 24-month contract period.</string>
-    <string name="yb_txt_six">Guaranteed the principal · daily mining BIW can be freely traded to withdraw, and the mining income due is about 250-300%!</string>
+    <string name="yb_txt_six">Guaranteed the principal, daily mining BIW can be freely traded to withdraw, and the mining income due is about 250-300%!</string>
 
     <string name="yb_md_one">E.g:</string>
     <string name="yb_md_two">You purchased 3,000 BIWs on the 2.20 to join the babble and chose a 6-month contract period. The unit price is 1.2 USDT / BIW. The total contract value of the user\'s annual bank is: 3000x1.2 USDT = 3600 USDT. If the user has 15 yuan per day, it is assumed that the value of BiW has been constant 1.2 USDT, and the user can get additional profit revenue from 6 months: 10x1.2x180 = 2160 USDT. The contract expires, users can also get 100% contract income of the principal, 3000x1.2 = 3600 USDT. So users put 3,000 coins, 6 months total revenue is 3600 + 2160 = 5760 USDT, the yield is 160 %
