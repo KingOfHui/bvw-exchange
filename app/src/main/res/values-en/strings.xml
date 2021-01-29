@@ -267,6 +267,7 @@
 
     <string name="bid_info_sign">BID ID</string>
     <string name="bid_info_sign_intro">BID can enjoy various benefits</string>
+    <string name="bid_info_yu_bi_bao">You can use YuBi Bank only after you open BID</string>
     <string name="bid_info_open_sign">Open price</string>
     <string name="bid_info_sub_content">Activate BID identity immediately</string>
     <string name="bid_info_sub_content_two">You are already BID</string>
