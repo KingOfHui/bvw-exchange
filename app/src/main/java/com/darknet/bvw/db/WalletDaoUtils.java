@@ -149,6 +149,20 @@ public class WalletDaoUtils {
         return false;
     }
 
+    public static ETHWalletModel getETHWalletByPrivateKey(String privateKey) {
+        privateKey = privateKey.trim();
+        List<ETHWalletModel> ethWallets = loadAll();
+        for (ETHWalletModel ethWallet : ethWallets) {
+            if (TextUtils.isEmpty(ethWallet.getPrivateKey())) {
+                continue;
+            }
+            if (TextUtils.equals(ethWallet.getPrivateKey().trim(), privateKey)) {
+                return ethWallet;
+            }
+        }
+        return null;
+    }
+
 
     /**
      * 根据钱包名，查找钱包信息

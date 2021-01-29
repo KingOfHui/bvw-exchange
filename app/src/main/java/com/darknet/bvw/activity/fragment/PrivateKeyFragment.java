@@ -102,12 +102,19 @@ public class PrivateKeyFragment extends Fragment {
             Toast.makeText(getActivity(), getString(R.string.wrong_private_key), Toast.LENGTH_SHORT).show();
             return;
         }
+        String password = pwdContent.getText().toString();
 
+        boolean isRepeat = WalletDaoUtils.checkRepeatByPrivateKey(btcDo.getPrivateKey());
 
-        boolean checkVal = WalletDaoUtils.checkRepeatByPrivateKey(btcDo.getPrivateKey());
+        if(isRepeat){
+//            Toast.makeText(getActivity(), getString(R.string.repeat_wallet_val), Toast.LENGTH_SHORT).show();
+            ETHWalletModel wallet = WalletDaoUtils.getETHWalletByPrivateKey(btcDo.getPrivateKey());
+            if(wallet == null) return;
+            wallet.setPassword(password);
+            EventBus.getDefault().post(wallet);
 
-        if(checkVal){
-            Toast.makeText(getActivity(), getString(R.string.repeat_wallet_val), Toast.LENGTH_SHORT).show();
+            Intent mainIntent = new Intent(getActivity(), StopActivity.class);
+            startActivity(mainIntent);
             return;
         }
 //        List<ETHWalletModel> ethWalletModels = WalletDaoUtils.loadAll();
@@ -122,7 +129,6 @@ public class PrivateKeyFragment extends Fragment {
         }
 
 //        String walletNameVal = walletName.getText().toString();
-        String pwdVal = pwdContent.getText().toString();
 
         ETHWalletModel walletModel = new ETHWalletModel();
         walletModel.setAddress(btcDo.getAddress());
@@ -131,7 +137,7 @@ public class PrivateKeyFragment extends Fragment {
         walletModel.setPrivateKey(btcDo.getPrivateKey());
         walletModel.setPublicKey(btcDo.getPublicKey());
         walletModel.setName(name);
-        walletModel.setPassword(pwdVal);
+        walletModel.setPassword(password);
 
 
 

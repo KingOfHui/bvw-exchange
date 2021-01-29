@@ -217,7 +217,14 @@ public class FirstFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-
+        try {
+            ETHWalletModel allWallets = WalletDaoUtils.getCurrent();
+            if(allWallets != null) {
+                nameView.setText(allWallets.getName());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 //        initData();
     }
