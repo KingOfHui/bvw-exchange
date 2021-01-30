@@ -78,6 +78,13 @@ public abstract class BasePayActivity<BINDING extends ViewDataBinding>  extends 
     }
 
     protected void callH5(SendTx sendTx, Function<String, Void> callback) {
+        callH5CanNull(sendTx, sign -> {
+            if(sign != null) callback.apply(sign);
+            return null;
+        });
+    }
+
+    protected void callH5CanNull(SendTx sendTx, Function<String, Void> callback) {
         List<Unspent> unspent = sendTx.getUnspent();
         TransactionRAW decodeRawTx = sendTx.getDecodeRawTx();
         String privateKey = getWalletModel().getPrivateKey();
@@ -95,6 +102,7 @@ public abstract class BasePayActivity<BINDING extends ViewDataBinding>  extends 
                     callback.apply(afterSignVal);
                 } catch (Exception e) {
                     ToastUtils.showToast(getString(R.string.send_trade_state_fail));
+                    callback.apply(null);
                 }
             }
         });

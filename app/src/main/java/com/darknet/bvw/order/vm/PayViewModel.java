@@ -37,8 +37,8 @@ public class PayViewModel extends BaseViewModel {
                 .subscribe(new BaseObserver<>(this, new MvvmNetworkObserver<BaseResponse<DictByKeyResponse>>() {
                     @Override
                     public void onSuccess(BaseResponse<DictByKeyResponse> t, boolean isFromCache) {
-                        couponAddress.setValue(t.getData().getV());
                         hideLoading();
+                        couponAddress.setValue(t.getData().getV());
                     }
 
                     @Override

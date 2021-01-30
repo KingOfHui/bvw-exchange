@@ -61,6 +61,11 @@ public class CoinDetailActivity extends BasePayActivity<ActivityCoinDetailBindin
         mBinding.tvIn.setOnClickListener(view -> {
             PoszhuanZhangDialog zhangDialog = new PoszhuanZhangDialog(this, null);
             zhangDialog.setOnPayClickListener((amount, pwd) -> {
+
+                if (!WalletDaoUtils.checkPassword(pwd)) {
+                    ToastUtils.showToast(R.string.wrong_pwd);
+                    return;
+                }
                 zhangDialog.dismiss();
                 in(mPayViewModel, amount, pwd, () -> {
                     ToastUtils.showToast("转入成功");
@@ -72,6 +77,10 @@ public class CoinDetailActivity extends BasePayActivity<ActivityCoinDetailBindin
         mBinding.tvOut.setOnClickListener(view -> {
             PoszhuanZhangDialog zhangDialog = new PoszhuanZhangDialog(this, null);
             zhangDialog.setOnPayClickListener((amount, pwd) -> {
+                if (!WalletDaoUtils.checkPassword(pwd)) {
+                    ToastUtils.showToast(R.string.wrong_pwd);
+                    return;
+                }
                 zhangDialog.dismiss();
                 mViewModel.out(amount, pwd, ()->{/*zhangDialog.dismiss()*/});
             });
@@ -88,10 +97,6 @@ public class CoinDetailActivity extends BasePayActivity<ActivityCoinDetailBindin
     }
 
     public void in(PayViewModel payVM, String amount, String password, Runnable successCallback) {
-        if (!WalletDaoUtils.checkPassword(password)) {
-            ToastUtils.showToast(R.string.wrong_pwd);
-            return;
-        }
         payVM.tradeSuccessLive.observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean success) {
@@ -106,7 +111,8 @@ public class CoinDetailActivity extends BasePayActivity<ActivityCoinDetailBindin
             @Override
             public void onChanged(SendTx sendTx) {
                 payVM.mSendTxMutableLiveData.removeObserver(this);
-                callH5(sendTx, afterSignVal -> {
+                callH5CanNull(sendTx, afterSignVal -> {
+                    if(afterSignVal == null) return null;
                     mPayViewModel.sendTransferInTrade(afterSignVal, amount, payVM.couponAddress.getValue(), symbol);
                     return null;
                 });

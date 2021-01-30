@@ -53,10 +53,7 @@ public class PosCoinDetailViewModel extends BaseListViewModel<PosBonus> {
 	}
 
 	public void out(String amount, String password, Runnable successCallback) {
-		if (!WalletDaoUtils.checkPassword(password)) {
-			ToastUtils.showToast(R.string.wrong_pwd);
-			return;
-		}
+		showLoading();
 		apiService.outBySymbol(
 				new RequestBodyBuilder()
 						.addParams("amount", amount)
@@ -73,11 +70,13 @@ public class PosCoinDetailViewModel extends BaseListViewModel<PosBonus> {
                 }else {
 			        ToastUtils.showToast(t.getMsg());
                 }
+			    hideLoading();
 			}
 
 			@Override
 			public void onFailure(Throwable throwable) {
 				ToastUtils.showToast(throwable.getMessage());
+				hideLoading();
 			}
 		}));
 
