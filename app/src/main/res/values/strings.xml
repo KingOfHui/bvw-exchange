@@ -1111,7 +1111,7 @@
     <string name="rule">规则</string>
     <string name="tran_in_success">Transfer in succeeded</string>
     <string name="total_assets_equivalent">折合总资产</string>
-    <string name="daily_chemical_yield">日化收益率 (%)</string>
+    <string name="daily_chemical_yield">日化收益率</string>
     <string name="usdt_yesterday_s_earnings">昨日收益 (USDT)</string>
     <string name="cumulative_revenue">累计收益 (USDT)</string>
     <string name="view_all">查看全部</string>

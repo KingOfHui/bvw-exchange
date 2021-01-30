@@ -6,18 +6,29 @@ import android.graphics.Paint;
 
 import com.darknet.bvw.R;
 import com.darknet.bvw.activity.BaseBindingActivity;
+import com.darknet.bvw.activity.BidBuyActivity;
 import com.darknet.bvw.base.BasePayActivity;
+import com.darknet.bvw.config.ConfigNetWork;
+import com.darknet.bvw.config.UrlPath;
 import com.darknet.bvw.databinding.ActivityCoinDetailBinding;
+import com.darknet.bvw.db.Entity.ETHWalletModel;
 import com.darknet.bvw.db.WalletDaoUtils;
 import com.darknet.bvw.model.response.CreateTradeResponse.SendTx;
+import com.darknet.bvw.model.response.LeftMoneyResponse;
 import com.darknet.bvw.order.vm.PayViewModel;
 import com.darknet.bvw.qvkuaibao.adapter.BonusListAdapter;
 import com.darknet.bvw.qvkuaibao.dialog.PoszhuanZhangDialog;
 import com.darknet.bvw.qvkuaibao.vm.PosCoinDetailViewModel;
 import com.darknet.bvw.util.SharedPreferencesUtil;
 import com.darknet.bvw.util.ToastUtils;
+import com.darknet.bvw.util.bitcoinj.BitcoinjKit;
+import com.google.gson.Gson;
+import com.lzy.okgo.OkGo;
+import com.lzy.okgo.callback.StringCallback;
+import com.lzy.okgo.model.Response;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import androidx.arch.core.util.Function;
 import androidx.lifecycle.Observer;
@@ -66,10 +77,13 @@ public class CoinDetailActivity extends BasePayActivity<ActivityCoinDetailBindin
                     ToastUtils.showToast(R.string.wrong_pwd);
                     return;
                 }
-                zhangDialog.dismiss();
-                in(mPayViewModel, amount, pwd, () -> {
-                    ToastUtils.showToast(getString(R.string.tran_in_success));
-                    mViewModel.getWalletData(mViewModel.getSymbol());
+
+                checkWallet(amount, () -> {
+                    zhangDialog.dismiss();
+                    in(mPayViewModel, amount, pwd, () -> {
+                        ToastUtils.showToast(getString(R.string.tran_in_success));
+                        mViewModel.getWalletData(mViewModel.getSymbol());
+                    });
                 });
             });
             zhangDialog.show();
@@ -94,6 +108,62 @@ public class CoinDetailActivity extends BasePayActivity<ActivityCoinDetailBindin
             SharedPreferencesUtil.putData("ybbEyes", v.isActivated());
             mViewModel.toggleVisible();
         });
+    }
+
+    private void checkWallet(String amount, Runnable after) {
+        ETHWalletModel walletModel = WalletDaoUtils.getCurrent();
+        String privateKey = walletModel.getPrivateKey();
+        String addressVals = walletModel.getAddress();
+        String msg = "" + System.currentTimeMillis();
+        String signVal = BitcoinjKit.signMessageBy58(msg, privateKey);
+        String symbol = mViewModel.getSymbol();
+
+        OkGo.<String>get(ConfigNetWork.JAVA_API_URL + UrlPath.CHECK_MONEY_URL)
+                .tag(CoinDetailActivity.this)
+                .headers("Chain-Authentication", addressVals + "#" + msg + "#" + signVal)
+                .execute(new StringCallback() {
+                    @Override
+                    public void onSuccess(Response<String> backresponse) {
+                        if(backresponse == null) return;
+                        String json = backresponse.body();
+                        if(json == null) return;
+                        try {
+                            Gson gson = new Gson();
+                            LeftMoneyResponse response = gson.fromJson(json, LeftMoneyResponse.class);
+                            if (response != null && response.getCode() == 0 && response.getData() != null
+                                    && response.getData().size() > 0) {
+                                List<LeftMoneyResponse.LeftMoneyModel> list = response.getData();
+                                for (LeftMoneyResponse.LeftMoneyModel model : list) {
+                                    if(symbol.equals(model.getName())){
+                                        BigDecimal money = new BigDecimal(model.getValue_qty());
+                                        BigDecimal targetMoney = new BigDecimal(amount);
+                                        if(targetMoney.compareTo(money) > 0) {
+                                            ToastUtils.showToast(R.string.bid_yue_not_encough);
+                                        }else {
+                                            after.run();
+                                        }
+                                        return;
+                                    }
+                                }
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+
+                    @Override
+                    public void onError(Response<String> response) {
+                        super.onError(response);
+                        ToastUtils.showToast(response.message());
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        super.onFinish();
+                        dismissDialog();
+                    }
+                });
     }
 
     public void in(PayViewModel payVM, String amount, String password, Runnable successCallback) {

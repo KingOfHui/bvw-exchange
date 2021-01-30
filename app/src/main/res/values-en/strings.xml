@@ -1065,7 +1065,7 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="historical_total_revenue">Historical total revenue</string>
     <string name="rule">Rule</string>
     <string name="total_assets_equivalent">Total assets equivalent</string>
-    <string name="daily_chemical_yield">Daily chemical yield (%)</string>
+    <string name="daily_chemical_yield">Daily chemical yield</string>
     <string name="usdt_yesterday_s_earnings">Yesterday\'s earnings (USDT)</string>
     <string name="cumulative_revenue">Cumulative revenue (USDT)</string>
     <string name="view_all">View all</string>
