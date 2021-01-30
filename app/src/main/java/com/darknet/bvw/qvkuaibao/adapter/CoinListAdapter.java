@@ -15,7 +15,7 @@ public class CoinListAdapter extends BaseQuickAdapter<PosWallet, BaseViewHolder>
     @Override
     protected void convert(BaseViewHolder helper, PosWallet item) {
         helper.setText(R.id.tvCoinName, item.getSymbol());
-        helper.setText(R.id.tvBonusToday, String.format("昨日收益：%s %s", item.getYesterdayPosBonusAmount(), item.getSymbol()));
+        helper.setText(R.id.tvBonusToday, String.format(helper.itemView.getContext().getString(R.string.yesterday_earnings) + "：%s %s", item.getYesterdayPosBonusAmount(), item.getSymbol()));
         helper.setText(R.id.tvBalance, item.getInvest_amount_str());
         helper.setText(R.id.tvCny, "≈$"+item.getInvest_amount().multiply(item.getUsd_rate()).setScale(2, BigDecimal.ROUND_DOWN).toEngineeringString());
     }

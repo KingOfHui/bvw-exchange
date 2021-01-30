@@ -1071,4 +1071,5 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="view_all">View all</string>
     <string name="transfer_in">Transfer in</string>
     <string name="transfer_out">Transfer out</string>
+    <string name="incomes">Incomes</string>
 </resources>
