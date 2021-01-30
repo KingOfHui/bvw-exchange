@@ -35,7 +35,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dimen_20dp"
-                android:text="折合总资产（BTC）"
+                android:text="@string/total_assets_equivalent"
                 android:textColor="#00FFD2"
                 android:textSize="@dimen/dp_18"
                 app:layout_constraintStart_toStartOf="parent"
@@ -107,10 +107,11 @@
                         android:textSize="@dimen/sp_16" />
 
                     <TextView
+                        android:gravity="center"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:text="日化收益率 (%)"
+                        android:text="@string/daily_chemical_yield"
                         android:textColor="@color/white"
                         android:textSize="@dimen/dp_10" />
 
@@ -132,10 +133,11 @@
                         android:textSize="@dimen/sp_16" />
 
                     <TextView
+                        android:gravity="center"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:text="昨日收益 (USDT)"
+                        android:text="@string/usdt_yesterday_s_earnings"
                         android:textColor="@color/white"
                         android:textSize="@dimen/dp_10" />
 
@@ -158,9 +160,10 @@
 
                     <TextView
                         android:layout_width="wrap_content"
+                        android:gravity="center"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:text="累计收益 (USDT)"
+                        android:text="@string/cumulative_revenue"
                         android:textColor="@color/white"
                         android:textSize="@dimen/dp_10" />
 
@@ -216,7 +219,7 @@
                 android:id="@+id/tvLeft"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="收益记录"
+                android:text="@string/income_record"
                 android:textColor="#00FFD4"
                 android:textSize="@dimen/dp_18"
                 app:layout_constraintStart_toStartOf="parent"
@@ -226,7 +229,7 @@
                 android:id="@+id/tvAll"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="查看全部"
+                android:text="@string/view_all"
                 android:textColor="#00FFD4"
                 android:textSize="@dimen/sp_12"
                 app:layout_constraintBottom_toBottomOf="@id/tvLeft"

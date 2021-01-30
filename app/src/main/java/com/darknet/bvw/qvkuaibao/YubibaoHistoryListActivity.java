@@ -33,7 +33,7 @@ public class YubibaoHistoryListActivity extends BaseBindingActivity<YbbInOutHist
 		String symbol = getIntent().getStringExtra("symbol");
 
 		mBinding.titleLayout.layBack.setOnClickListener(view -> finish());
-		mBinding.titleLayout.title.setText("历史记录");
+		mBinding.titleLayout.title.setText(R.string.fenlie_header_nine);
 		mBinding.setAdapter(new YbbHistoryAdapter());
 		YbbHistoryViewModel viewModel = getViewModel(YbbHistoryViewModel.class);
 		viewModel.symbolLive.setValue(symbol);

@@ -21,7 +21,7 @@ public class BonusActivity extends BaseBindingActivity<ActivityBonusListBinding>
     @Override
     public void initView() {
         mBinding.titleLayout.layBack.setOnClickListener(view -> finish());
-        mBinding.titleLayout.title.setText("收益记录");
+        mBinding.titleLayout.title.setText(R.string.revenue_record);
         mBinding.setAdapter(new BonusListAdapter());
         PosCoinDetailViewModel viewModel = getViewModel(PosCoinDetailViewModel.class);
         String symbol = getIntent().getStringExtra("symbol");

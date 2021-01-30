@@ -26,8 +26,8 @@ public class QvKuaiBaoCoinListActivity extends BaseBindingActivity<ActivityQvkua
     @Override
     public void initView() {
         mBinding.titleLayout.layBack.setOnClickListener(view -> finish());
-        mBinding.titleLayout.title.setText("余币宝");
-        mBinding.titleLayout.titleRight.setText("规则");
+        mBinding.titleLayout.title.setText(getString(R.string.yb_title_val));
+        mBinding.titleLayout.titleRight.setText(R.string.rule);
         mBinding.titleLayout.titleRight.setVisibility(View.VISIBLE);
         mBinding.titleLayout.titleRight.setOnClickListener(view -> {
             Intent yubiIntent = new Intent(this, YuBiBaoDetailActivity.class);

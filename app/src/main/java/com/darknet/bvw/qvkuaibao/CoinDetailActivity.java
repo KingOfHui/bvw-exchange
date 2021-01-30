@@ -52,7 +52,7 @@ public class CoinDetailActivity extends BasePayActivity<ActivityCoinDetailBindin
     public void initView() {
         usdRange = (BigDecimal) getIntent().getSerializableExtra("usdRange");
         mBinding.titleLayout.layBack.setOnClickListener(view -> finish());
-        mBinding.titleLayout.title.setText("余币宝");
+        mBinding.titleLayout.title.setText(R.string.yb_title_val);
         mBinding.titleLayout.ivRight.setImageResource(R.mipmap.ic_qvkuaibao_record);
         mBinding.titleLayout.ivRight.setOnClickListener(v -> {
             YubibaoHistoryListActivity.start(v.getContext(), mViewModel.getSymbol());
@@ -68,7 +68,7 @@ public class CoinDetailActivity extends BasePayActivity<ActivityCoinDetailBindin
                 }
                 zhangDialog.dismiss();
                 in(mPayViewModel, amount, pwd, () -> {
-                    ToastUtils.showToast("转入成功");
+                    ToastUtils.showToast(getString(R.string.tran_in_success));
                     mViewModel.getWalletData(mViewModel.getSymbol());
                 });
             });
@@ -133,7 +133,7 @@ public class CoinDetailActivity extends BasePayActivity<ActivityCoinDetailBindin
     @Override
     public void initDatas() {
         String symbol = getIntent().getStringExtra("symbol");
-        mBinding.tvCoinName.setText(String.format("折合总资产（%s）", symbol));
+        mBinding.tvCoinName.setText(String.format(getString(R.string.total_assets_equivalent) + "（%s）", symbol));
         mViewModel = getViewModel(PosCoinDetailViewModel.class);
         mViewModel.getWalletData(symbol);
         mViewModel.mPosWalletDataMutableLiveData.observe(this, posWalletData -> {

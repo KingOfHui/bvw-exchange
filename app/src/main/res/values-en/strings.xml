@@ -1060,4 +1060,13 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="invite_tip6">截图社交APP分享给好友，享受推荐好友空投的</string>
     <string name="invite_tip7">After downloading and sharing, add friends, submit proot\n  and address,wait for airdrop!</string>
     <string name="invite_tip9">WeChat：biw1688、biw1788</string>
+    <string name="revenue_record">Revenue record</string>
+    <string name="yesterday_earnings">Yesterday\'s earnings</string>
+    <string name="historical_total_revenue">Historical total revenue</string>
+    <string name="rule">Rule</string>
+    <string name="total_assets_equivalent">Total assets equivalent</string>
+    <string name="daily_chemical_yield">Daily chemical yield (%)</string>
+    <string name="usdt_yesterday_s_earnings">Yesterday\'s earnings (USDT)</string>
+    <string name="cumulative_revenue">Cumulative revenue (USDT)</string>
+    <string name="view_all">View all</string>
 </resources>

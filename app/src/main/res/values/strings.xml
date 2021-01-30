@@ -1105,4 +1105,14 @@
     <string name="invite_tip6">截图社交APP分享给好友，享受推荐好友空投的</string>
     <string name="invite_tip7">下载和分享后，添加好友提交证明和地址，等待空投</string>
     <string name="invite_tip9">微信：biw1688、biw1788</string>
+    <string name="revenue_record">收益记录</string>
+    <string name="yesterday_earnings">昨日收益</string>
+    <string name="historical_total_revenue">历史总收益</string>
+    <string name="rule">规则</string>
+    <string name="tran_in_success">Transfer in succeeded</string>
+    <string name="total_assets_equivalent">折合总资产</string>
+    <string name="daily_chemical_yield">日化收益率 (%)</string>
+    <string name="usdt_yesterday_s_earnings">昨日收益 (USDT)</string>
+    <string name="cumulative_revenue">累计收益 (USDT)</string>
+    <string name="view_all">查看全部</string>
 </resources>
