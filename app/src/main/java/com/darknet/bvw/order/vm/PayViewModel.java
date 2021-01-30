@@ -105,7 +105,6 @@ public class PayViewModel extends BaseViewModel {
         sendTradeRequest.setOrder_id(0);
         sendTradeRequest.setTo_address(address);
         sendTradeRequest.setType(17);
-        sendTradeRequest.setDemo("余币宝转入");
         senTradeRequest(sendTradeRequest);
     }
     private void senTradeRequest(SendTradeRequest sendTradeRequest) {

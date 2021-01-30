@@ -1115,4 +1115,6 @@
     <string name="usdt_yesterday_s_earnings">昨日收益 (USDT)</string>
     <string name="cumulative_revenue">累计收益 (USDT)</string>
     <string name="view_all">查看全部</string>
+    <string name="transfer_in">转入</string>
+    <string name="transfer_out">转出</string>
 </resources>

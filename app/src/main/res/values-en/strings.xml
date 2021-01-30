@@ -1069,4 +1069,6 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="usdt_yesterday_s_earnings">Yesterday\'s earnings (USDT)</string>
     <string name="cumulative_revenue">Cumulative revenue (USDT)</string>
     <string name="view_all">View all</string>
+    <string name="transfer_in">Transfer in</string>
+    <string name="transfer_out">Transfer out</string>
 </resources>

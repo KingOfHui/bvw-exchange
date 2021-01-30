@@ -17,7 +17,7 @@ public class YbbHistoryAdapter extends BaseQuickAdapter<PosBonus, BaseViewHolder
 	protected void convert(BaseViewHolder helper, PosBonus item) {
 		String amount = item.getAmount();
 		boolean isOut = amount.startsWith("-");
-		helper.setText(R.id.tvInOutType, isOut ? "转出" : "转入");
+		helper.setText(R.id.tvInOutType, isOut ? R.string.transfer_out : R.string.transfer_in);
 		helper.setText(R.id.tvNumber, (isOut ? amount.substring(1) : amount) + " " + item.getSymbol());
 		helper.setText(R.id.tvTime, item.getCreate_time());
 	}

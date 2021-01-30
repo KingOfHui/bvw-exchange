@@ -25,7 +25,7 @@
             bind:adapter="@{adapter}"
             bind:submitList="@{vm.listLive}"
             bind:emptyImageResource="@{@drawable/img_history_empty}"
-            bind:emptyText="@{`暂无历史记录`}"
+            bind:emptyText="@{@string/no_data_two}"
             android:layout_width="match_parent"
             android:layout_marginStart="@dimen/dimen_20dp"
             android:layout_marginEnd="@dimen/dimen_20dp"
