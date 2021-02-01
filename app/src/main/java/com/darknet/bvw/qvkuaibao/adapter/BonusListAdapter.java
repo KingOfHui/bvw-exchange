@@ -12,7 +12,7 @@ public class BonusListAdapter extends BaseQuickAdapter<PosBonus, BaseViewHolder>
 
     @Override
     protected void convert(BaseViewHolder helper, PosBonus item) {
-        helper.setText(R.id.tvBonus, item.getBonus_invest());
+        helper.setText(R.id.tvBonus, item.getAmount());
         helper.setText(R.id.tvTime, item.getBonus_date());
     }
 }
