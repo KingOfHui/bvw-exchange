@@ -6,6 +6,7 @@ import android.content.Intent;
 import com.darknet.bvw.R;
 import com.darknet.bvw.activity.BaseBindingActivity;
 import com.darknet.bvw.databinding.ActivityBonusListBinding;
+import com.darknet.bvw.mall.vm.MallViewModel;
 import com.darknet.bvw.qvkuaibao.adapter.BonusListAdapter;
 import com.darknet.bvw.qvkuaibao.bean.PosWalletData;
 import com.darknet.bvw.qvkuaibao.vm.PosCoinDetailViewModel;
@@ -26,6 +27,7 @@ public class BonusActivity extends BaseBindingActivity<ActivityBonusListBinding>
         PosCoinDetailViewModel viewModel = getViewModel(PosCoinDetailViewModel.class);
         String symbol = getIntent().getStringExtra("symbol");
         mBinding.tvSymbol.setText(symbol);
+        mBinding.setVm(viewModel);
         viewModel.getWalletData(symbol);
         viewModel.mPosWalletDataMutableLiveData.observe(this, new Observer<PosWalletData>() {
             @Override

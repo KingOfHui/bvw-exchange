@@ -68,7 +68,9 @@ public class CoinDetailActivity extends BasePayActivity<ActivityCoinDetailBindin
         mBinding.titleLayout.ivRight.setOnClickListener(v -> {
             YubibaoHistoryListActivity.start(v.getContext(), mViewModel.getSymbol());
         });
+        mViewModel = getViewModel(PosCoinDetailViewModel.class);
         mBinding.setAdapter(new BonusListAdapter());
+        mBinding.setVm(mViewModel);
         mBinding.tvIn.setOnClickListener(view -> {
             PoszhuanZhangDialog zhangDialog = new PoszhuanZhangDialog(this, null);
             zhangDialog.setOnPayClickListener((amount, pwd) -> {
@@ -204,7 +206,6 @@ public class CoinDetailActivity extends BasePayActivity<ActivityCoinDetailBindin
     public void initDatas() {
         String symbol = getIntent().getStringExtra("symbol");
         mBinding.tvCoinName.setText(String.format(getString(R.string.total_assets_equivalent) + "（%s）", symbol));
-        mViewModel = getViewModel(PosCoinDetailViewModel.class);
         mViewModel.getWalletData(symbol);
         mViewModel.mPosWalletDataMutableLiveData.observe(this, posWalletData -> {
             if(mBinding.ivVisible.isActivated()) {
