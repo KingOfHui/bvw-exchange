@@ -283,4 +283,30 @@
         <attr name="drawableWidth" format="dimension"/>
         <attr name="drawableHeight" format="dimension"/>
     </declare-styleable>
+    <!--RItem自定义属性-->
+    <declare-styleable name="RItem">
+        <attr name="rTopTitle" format="string" />
+        <attr name="rRightText" format="string" />
+        <attr name="rTopTitleTextStyle" format="flags"><!-- 上部字体样式 0正常，1加粗，2斜体-->
+            <flag name="normal" value="0" />
+            <flag name="bold" value="1" />
+            <flag name="italic" value="2" />
+        </attr>
+        <attr name="rBottomDescription" format="string" />
+        <attr name="rRightArrowIcon" format="reference" />
+        <attr name="rRightOffset" format="dimension" />
+        <attr name="rShowRightArrow" format="boolean" />
+        <attr name="rShowBottomLine" format="boolean" />
+    </declare-styleable>
+
+    <attr name="topStr" format="string" />
+    <attr name="topStrLittle" format="string" />
+    <attr name="topStrLittleVisible" format="boolean" />
+    <attr name="bottom_textStr" format="string" />
+    <declare-styleable name="CustomVerticalView">
+        <attr name="topStr" />
+        <attr name="topStrLittle" />
+        <attr name="topStrLittleVisible" />
+        <attr name="bottom_textStr" />
+    </declare-styleable>
 </resources>

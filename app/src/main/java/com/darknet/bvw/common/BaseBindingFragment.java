@@ -79,8 +79,6 @@ public abstract class BaseBindingFragment<VM extends BaseViewModel, DB extends V
         isLoaded = false;
     }
 
-    protected abstract void initView();
-
     private void onFragmentFirstVisible() {
         initData();
     }
@@ -88,6 +86,8 @@ public abstract class BaseBindingFragment<VM extends BaseViewModel, DB extends V
     public abstract int setLayoutResId();
 
     protected abstract VM initViewModel();
+
+    protected abstract void initView();
 
     protected abstract void initData();
 

@@ -87,6 +87,7 @@
         android:layout_width="0dp"
         android:layout_height="@dimen/dimen_40dp"
         android:id="@+id/etPwd"
+        android:inputType="textPassword"
         android:textColor="@color/white"
         android:textSize="@dimen/sp_14"
         app:layout_constraintStart_toStartOf="@id/tvAmountTip"

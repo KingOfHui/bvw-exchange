@@ -20,7 +20,6 @@ import com.darknet.bvw.activity.BidIntroActivity;
 import com.darknet.bvw.activity.BidZhenMaActivity;
 import com.darknet.bvw.activity.BidZhenMaTwoActivity;
 import com.darknet.bvw.activity.HardwareMineralActivity;
-import com.darknet.bvw.activity.ImageActivity;
 import com.darknet.bvw.activity.ShareInviteActivity;
 import com.darknet.bvw.activity.ZhenLieActivity;
 import com.darknet.bvw.common.BaseResponse;
@@ -28,18 +27,20 @@ import com.darknet.bvw.config.ConfigNetWork;
 import com.darknet.bvw.config.UrlPath;
 import com.darknet.bvw.db.Entity.ETHWalletModel;
 import com.darknet.bvw.db.WalletDaoUtils;
-import com.darknet.bvw.mall.ui.MallActivity;
-import com.darknet.bvw.model.Event;
+import com.darknet.bvw.fund.ui.activity.AboutBTDActivity;
+import com.darknet.bvw.fund.ui.activity.PledgeDetailActivity;
 import com.darknet.bvw.model.event.BidSuccessEvent;
 import com.darknet.bvw.model.response.BidStateResponse;
-import com.darknet.bvw.util.Language;
+import com.darknet.bvw.net.retrofit.ApiInterface;
+import com.darknet.bvw.net.retrofit.BIWNetworkApi;
+import com.darknet.bvw.net.retrofit.BaseObserver;
+import com.darknet.bvw.net.retrofit.MvvmNetworkObserver;
 import com.darknet.bvw.util.bitcoinj.BitcoinjKit;
 import com.darknet.bvw.util.language.SPUtil;
 import com.darknet.bvw.view.BidDialogView;
 import com.darknet.bvw.view.BidTwoDialogView;
 import com.darknet.bvw.view.ZhenPopWindow;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
@@ -138,6 +139,10 @@ public class FindFragment extends Fragment implements View.OnClickListener {
 		}
 	}
 
+	@Override
+	public void onResume() {
+		super.onResume();
+	}
 
 	private void initView(View view) {
 		EventBus.getDefault().register(this);
@@ -238,6 +243,7 @@ public class FindFragment extends Fragment implements View.OnClickListener {
 				Toast.makeText(activity, getString(R.string.find_no_open), Toast.LENGTH_SHORT).show();
 				break;*/
 			case R.id.find_three_layout:
+				PledgeDetailActivity.start(requireContext());
 				Toast.makeText(activity, getString(R.string.find_no_open), Toast.LENGTH_SHORT).show();
 				break;
 			case R.id.find_four_layout:
@@ -247,7 +253,8 @@ public class FindFragment extends Fragment implements View.OnClickListener {
 				Toast.makeText(activity, getString(R.string.find_no_open), Toast.LENGTH_SHORT).show();
 				break;
 			case R.id.find_six_layout:
-				startActivity(new Intent(requireActivity(), MallActivity.class));
+				Toast.makeText(activity, getString(R.string.find_no_open), Toast.LENGTH_SHORT).show();
+//				startActivity(new Intent(requireActivity(), MallActivity.class));
 				break;
 			case R.id.find_seven_layout:
 			case R.id.find_eight_layout:
@@ -478,9 +485,10 @@ public class FindFragment extends Fragment implements View.OnClickListener {
 		window = new PopupWindow(inflate, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, false);
 
 		LinearLayout tizhenLayout = (LinearLayout) inflate.findViewById(R.id.tizhen_layout);
+		LinearLayout yaoqing_layout = (LinearLayout) inflate.findViewById(R.id.yaoqing_layout);
 		LinearLayout xiangzhenLayout = (LinearLayout) inflate.findViewById(R.id.xiangzhen_layout);
 		LinearLayout liezhenLayout = (LinearLayout) inflate.findViewById(R.id.liezhen_layout);
-
+		tizhenLayout.setVisibility(View.GONE);
 
 //        window.setAnimationStyle(R.style.pop_shop_anim);
 		// 实例化一个ColorDrawable颜色为半透明
@@ -508,6 +516,23 @@ public class FindFragment extends Fragment implements View.OnClickListener {
 					window.dismiss();
 				}
 
+			}
+		});
+
+		yaoqing_layout.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				String referer_id = mResponse.getData().getReferer_id();
+				String invite_code = mResponse.getData().getInvite_code();
+				if (!TextUtils.isEmpty(referer_id)) {
+					Intent tiIntent = new Intent(activity, BidZhenMaActivity.class);
+					tiIntent.putExtra("lid", invite_code);
+					startActivity(tiIntent);
+					window.dismiss();
+				} else {
+					new BidDialogView().showTips(activity, getString(R.string.find_invest_notice));
+					window.dismiss();
+				}
 			}
 		});
 
@@ -559,6 +584,20 @@ public class FindFragment extends Fragment implements View.OnClickListener {
 			}
 		});
 
+		BIWNetworkApi.getService(ApiInterface.class)
+				.checkCanShow()
+				.compose(BIWNetworkApi.getInstance().applySchedulers())
+				.subscribe(new BaseObserver<>(new MvvmNetworkObserver<BaseResponse<Boolean>>() {
+					@Override
+					public void onSuccess(BaseResponse<Boolean> response, boolean isFromCache) {
+						Log.i("aaaaaaaaaaaaaa", response.toString());
+						tizhenLayout.setVisibility(response.getData() ? View.VISIBLE : View.GONE);
+					}
+
+					@Override
+					public void onFailure(Throwable throwable) {
+					}
+				}));
 	}
 
 

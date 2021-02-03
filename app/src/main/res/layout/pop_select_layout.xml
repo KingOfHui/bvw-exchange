@@ -11,7 +11,39 @@
     app:ignore="NamespaceTypo">
 
     <LinearLayout
+        android:id="@+id/yaoqing_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical">
+
+        <com.darknet.bvw.view.TypefaceTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:drawableLeft="@mipmap/tizhen_sign_img"
+            android:drawablePadding="20dp"
+            android:gravity="center"
+            android:text="@string/find_bid_pop_one"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:typeface="@string/universal_text_typeface" />
+        <!--        <com.darknet.bvw.view.TypefaceTextView-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_gravity="bottom|center"-->
+        <!--            android:drawableLeft="@mipmap/ic_share"-->
+        <!--            -->
+        <!--            app:typeface="@string/universal_text_typeface" />-->
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/tizhen_layout"
+        android:paddingTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
@@ -41,8 +73,6 @@
 <!--            -->
 <!--            app:typeface="@string/universal_text_typeface" />-->
     </LinearLayout>
-
-
     <View
         android:visibility="gone"
         android:layout_width="match_parent"

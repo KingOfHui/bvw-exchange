@@ -75,6 +75,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import io.reactivex.Observable;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
@@ -216,7 +217,14 @@ public class FirstFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-
+        try {
+            ETHWalletModel allWallets = WalletDaoUtils.getCurrent();
+            if(allWallets != null) {
+                nameView.setText(allWallets.getName());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 //        initData();
     }
@@ -361,7 +369,9 @@ public class FirstFragment extends Fragment {
             @Override
             public void onClick(View v) {
 //                getBidStateTwoData();
-                QvKuaiBaoCoinListActivity.startSelf(requireContext());
+                checkBidState(() -> {
+                    QvKuaiBaoCoinListActivity.startSelf(requireContext());
+                });
             }
         });
 
@@ -422,6 +432,49 @@ public class FirstFragment extends Fragment {
 
     }
 
+    private void checkBidState(Runnable callback){
+        ETHWalletModel walletModel = WalletDaoUtils.getCurrent();
+        String privateKey = walletModel.getPrivateKey();
+        String addressVals = walletModel.getAddress();
+        String msg = "" + System.currentTimeMillis();
+        String signVal = BitcoinjKit.signMessageBy58(msg, privateKey);
+
+//        showDialog(getString(R.string.load_data));
+
+        OkGo.<String>get(ConfigNetWork.JAVA_API_URL + UrlPath.FIND_BID_STATE_URL)
+                .tag(activity)
+                .headers("Chain-Authentication", addressVals + "#" + msg + "#" + signVal)
+                .execute(new StringCallback() {
+                    @Override
+                    public void onSuccess(Response<String> backresponse) {
+                        if(backresponse == null) return;
+                        String json = backresponse.body();
+                        if(json == null) return;
+
+                        try {
+                            Gson gson = new Gson();
+                            BidStateResponse response = gson.fromJson(json, BidStateResponse.class);
+                            BidStateResponse.BidStateModel data;
+                            if(response == null || (data= response.getData()) == null) return;
+                            String referer_id = data.getReferer_id();
+
+                            if(TextUtils.isEmpty(referer_id)) {
+                                new BidDialogView().showTips(activity, getString(R.string.bid_info_yu_bi_bao));
+                            }else {
+                                callback.run();
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        super.onFinish();
+//                        dismissDialog();
+                    }
+                });
+    }
 
 
     //获取bid状态

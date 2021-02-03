@@ -81,7 +81,6 @@
         android:textColor="@color/selector_coupon_buy"
         android:textSize="@dimen/sp_14"
         app:layout_constraintTop_toTopOf="@id/tvCouponName"
-        app:layout_constraintBottom_toBottomOf="@id/ivBiw"
         app:layout_constraintEnd_toEndOf="parent"
         android:paddingTop="@dimen/dimen_5dp"
         android:paddingBottom="@dimen/dimen_5dp"

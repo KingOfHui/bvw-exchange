@@ -26,6 +26,7 @@ import java.util.Map;
 import io.reactivex.Observable;
 import okhttp3.RequestBody;
 import retrofit2.http.Body;
+import retrofit2.http.Field;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
@@ -197,10 +198,19 @@ public interface ApiInterface {
             , @Query("page") Integer page);
 
     @GET(UrlPath.GET_POS_IN_OUT_LIST)
-    Observable<BaseResponse<BaseListBean<String>>> getInOutList(@Query("symbol") String symbol, @Query("limit") Integer limit
+    Observable<BaseResponse<BaseListBean<PosBonus>>> getInOutList(@Query("symbol") String symbol, @Query("limit") Integer limit
             , @Query("page") Integer page);
 
     @GET(UrlPath.GET_POS_WALLET_DATA)
     Observable<BaseResponse<PosWalletData>> getWalletData(@Query("symbol") String symbol);
+
+    @GET(UrlPath.CHECK_CAN_SHOW)
+    Observable<BaseResponse<Boolean>> checkCanShow();
+
+    /**
+     * 区块宝-转出功能
+     */
+    @POST(UrlPath.POST_POS_OUT_BY_AMOUNT)
+    Observable<BaseResponse<Boolean>> outBySymbol(@Body RequestBody body);
 
 }

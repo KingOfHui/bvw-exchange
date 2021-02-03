@@ -710,7 +710,21 @@
         <activity android:name=".qvkuaibao.BonusActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"/>
-        <activity android:name=".activity.ShareInviteActivity" />
+        <activity android:name=".activity.ShareInviteActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".qvkuaibao.YubibaoHistoryListActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".fund.ui.activity.AboutBTDActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".fund.ui.activity.IncomeFundActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".fund.ui.activity.PledgeDetailActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
 
         <receiver
             android:name=".receiver.PushReceiver"

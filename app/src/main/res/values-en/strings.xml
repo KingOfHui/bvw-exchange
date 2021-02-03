@@ -267,6 +267,7 @@
 
     <string name="bid_info_sign">BID ID</string>
     <string name="bid_info_sign_intro">BID can enjoy various benefits</string>
+    <string name="bid_info_yu_bi_bao">You can use YuBi Bank only after you open BID</string>
     <string name="bid_info_open_sign">Open price</string>
     <string name="bid_info_sub_content">Activate BID identity immediately</string>
     <string name="bid_info_sub_content_two">You are already BID</string>
@@ -762,11 +763,11 @@
     <string name="yb_header_two">You can apply to join the YuBi Bank</string>
 
     <string name="yb_txt_one">(1) 6-months contract period.</string>
-    <string name="yb_txt_two">Guaranteed the principal · daily mining BIW can be freely traded to withdraw, and the mining income due is about 150-200%!</string>
+    <string name="yb_txt_two">Guaranteed the principal, daily mining BIW can be freely traded to withdraw, and the mining income due is about 150-200%!</string>
     <string name="yb_txt_three">(2) 12-month contract period.</string>
-    <string name="yb_txt_four">Guaranteed the principal · daily mining BIW can be freely traded to withdraw, and the mining income due is about 200-250%!</string>
+    <string name="yb_txt_four">Guaranteed the principal, daily mining BIW can be freely traded to withdraw, and the mining income due is about 200-250%!</string>
     <string name="yb_txt_five">(3) 24-month contract period.</string>
-    <string name="yb_txt_six">Guaranteed the principal · daily mining BIW can be freely traded to withdraw, and the mining income due is about 250-300%!</string>
+    <string name="yb_txt_six">Guaranteed the principal, daily mining BIW can be freely traded to withdraw, and the mining income due is about 250-300%!</string>
 
     <string name="yb_md_one">E.g:</string>
     <string name="yb_md_two">You purchased 3,000 BIWs on the 2.20 to join the babble and chose a 6-month contract period. The unit price is 1.2 USDT / BIW. The total contract value of the user\'s annual bank is: 3000x1.2 USDT = 3600 USDT. If the user has 15 yuan per day, it is assumed that the value of BiW has been constant 1.2 USDT, and the user can get additional profit revenue from 6 months: 10x1.2x180 = 2160 USDT. The contract expires, users can also get 100% contract income of the principal, 3000x1.2 = 3600 USDT. So users put 3,000 coins, 6 months total revenue is 3600 + 2160 = 5760 USDT, the yield is 160 %
@@ -1055,9 +1056,29 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="invite_tip2">Long press QR code to download BIW APP</string>
     <string name="invite_tip3">New users use the invitation code to apply for wallets </string>
     <string name="invite_tip4">Download and register to get &#160;</string>
-    <string name="invite_tip5"> 300 biws</string>
+    <string name="invite_tip5"> 300 BIW</string>
     <string name="invite_tip6">截图社交APP分享给好友，享受推荐好友空投的</string>
     <string name="invite_tip7">After downloading and sharing, add friends, submit proot\n  and address,wait for airdrop!</string>
     <string name="invite_tip9">WeChat：biw1688、biw1788</string>
+    <string name="revenue_record">Revenue record</string>
+    <string name="yesterday_earnings">Yesterday\'s earnings</string>
+    <string name="historical_total_revenue">Historical total revenue</string>
+    <string name="rule">Rule</string>
+    <string name="total_assets_equivalent">Total assets equivalent</string>
+    <string name="daily_chemical_yield">Daily chemical yield</string>
+    <string name="usdt_yesterday_s_earnings">Yesterday\'s earnings (USDT)</string>
+    <string name="cumulative_revenue">Cumulative revenue (USDT)</string>
+    <string name="view_all">View all</string>
+    <string name="transfer_in">Transfer in</string>
+    <string name="transfer_out">Transfer out</string>
+    <string name="incomes">Incomes</string>
+    <string name="online_plan_btd">Online Plan About BTD</string>
+    <string name="income_detail">Income</string>
+    <string name="withdraw_record">提币记录</string>
+    <string name="net_amount">全网总持仓(BTD)</string>
+    <string name="history_bonus">历史总收益(BTD)</string>
+    <string name="withdraw_balance">可提币余额(BTD)</string>
+    <string name="pledge_number">质押数量(BTD)</string>
+    <string name="all">全部</string>
     <string name="defi_liquid_mining">Defi流动性挖矿</string>
 </resources>

@@ -4,8 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
-import androidx.databinding.ViewDataBinding;
-
+import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.darknet.bvw.R;
 import com.darknet.bvw.activity.BaseBindingActivity;
 import com.darknet.bvw.config.ConfigNetWork;
@@ -15,7 +14,6 @@ import com.darknet.bvw.model.SignModelTwo;
 import com.darknet.bvw.model.response.CreateTradeResponse.SendTx;
 import com.darknet.bvw.model.response.CreateTradeResponse.TransactionRAW;
 import com.darknet.bvw.model.response.CreateTradeResponse.Unspent;
-import com.darknet.bvw.order.ui.activity.CouponListActivity;
 import com.darknet.bvw.order.vm.PayViewModel;
 import com.darknet.bvw.util.ToastUtils;
 import com.darknet.bvw.view.InputPasswordDialog;
@@ -27,9 +25,12 @@ import org.json.JSONObject;
 
 import java.util.List;
 
+import androidx.arch.core.util.Function;
+import androidx.databinding.ViewDataBinding;
+
 public abstract class BasePayActivity<BINDING extends ViewDataBinding>  extends BaseBindingActivity<BINDING> {
     private BridgeWebView mWebview;
-    private PayViewModel mPayViewModel;
+    protected PayViewModel mPayViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +71,20 @@ public abstract class BasePayActivity<BINDING extends ViewDataBinding>  extends 
     }
 
     protected void callH5(SendTx sendTx) {
+        callH5(sendTx, after -> {
+            sendTrade(after);
+            return null;
+        });
+    }
+
+    protected void callH5(SendTx sendTx, Function<String, Void> callback) {
+        callH5CanNull(sendTx, sign -> {
+            if(sign != null) callback.apply(sign);
+            return null;
+        });
+    }
+
+    protected void callH5CanNull(SendTx sendTx, Function<String, Void> callback) {
         List<Unspent> unspent = sendTx.getUnspent();
         TransactionRAW decodeRawTx = sendTx.getDecodeRawTx();
         String privateKey = getWalletModel().getPrivateKey();
@@ -84,9 +99,10 @@ public abstract class BasePayActivity<BINDING extends ViewDataBinding>  extends 
                 try {
                     JSONObject jsonObject = new JSONObject(data);
                     String afterSignVal = jsonObject.getString("data");
-                    sendTrade(afterSignVal);
+                    callback.apply(afterSignVal);
                 } catch (Exception e) {
                     ToastUtils.showToast(getString(R.string.send_trade_state_fail));
+                    callback.apply(null);
                 }
             }
         });

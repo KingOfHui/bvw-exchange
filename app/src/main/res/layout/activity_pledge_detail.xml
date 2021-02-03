@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#141624">
+
+        <include layout="@layout/lay_head_back_binding"
+            android:id="@+id/title_layout"
+            />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_20dp"
+            android:background="@mipmap/img_btd_detail_bg"
+            app:layout_constraintTop_toBottomOf="@id/title_layout"
+            >
+
+            <com.darknet.bvw.view.CustomVerticalView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:topStrLittleVisible="false"
+                android:layout_marginTop="@dimen/dimen_15dp"
+                android:layout_marginStart="@dimen/dimen_15dp"
+                app:bottom_textStr="@string/net_amount"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/cvv_history_bonus"
+                android:id="@+id/cvv_net_amount"
+                />
+            <com.darknet.bvw.view.CustomVerticalView
+                android:layout_width="0dp"
+                android:layout_marginTop="@dimen/dimen_15dp"
+                android:layout_height="wrap_content"
+                app:topStrLittleVisible="false"
+                app:bottom_textStr="@string/history_bonus"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/cvv_net_amount"
+                android:id="@+id/cvv_history_bonus"
+                />
+            <com.darknet.bvw.view.CustomVerticalView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:topStrLittleVisible="false"
+                app:bottom_textStr="@string/withdraw_balance"
+                android:layout_marginTop="@dimen/dimen_15dp"
+                android:layout_marginStart="@dimen/dimen_15dp"
+                app:layout_constraintTop_toBottomOf="@id/cvv_net_amount"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/cvv_history_bonus"
+                android:id="@+id/cvv_withdraw"
+                />
+            <com.darknet.bvw.view.CustomVerticalView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:topStrLittleVisible="false"
+                android:layout_marginTop="@dimen/dimen_15dp"
+                android:layout_marginStart="@dimen/dimen_15dp"
+                android:layout_marginBottom="@dimen/dimen_15dp"
+                app:layout_constraintBottom_toTopOf="@id/tv_withdraw"
+                app:bottom_textStr="@string/pledge_number"
+                app:layout_constraintTop_toBottomOf="@id/cvv_net_amount"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/cvv_net_amount"
+                android:id="@+id/cvv_pledge_amount"
+                />
+            <TextView
+                android:id="@+id/tv_withdraw"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dimen_50dp"
+                android:text="提取"
+                android:textSize="@dimen/sp_16"
+                android:textColor="@color/black"
+                android:background="@drawable/shape_circle_rect_order"
+                android:backgroundTint="#15D496"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="@dimen/dimen_20dp"
+                android:layout_marginEnd="@dimen/dimen_20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="@dimen/dimen_15dp"
+                android:gravity="center"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/withdraw_record"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:layout_marginStart="@dimen/dimen_20dp"
+            app:layout_constraintTop_toBottomOf="@id/clTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="@dimen/dp_18"
+            android:textColor="#15D496"
+            android:id="@+id/tvRecordTip"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/all"
+            android:textSize="@dimen/dimen_15dp"
+            app:layout_constraintTop_toTopOf="@id/tvRecordTip"
+            app:layout_constraintBottom_toBottomOf="@id/tvRecordTip"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toStartOf="@id/ivArrow"
+            />
+        <ImageView
+            android:layout_width="@dimen/dp12"
+            android:layout_height="@dimen/dp12"
+            android:src="@mipmap/ic_right_arrow"
+            app:layout_constraintTop_toTopOf="@id/tvRecordTip"
+            app:layout_constraintBottom_toBottomOf="@id/tvRecordTip"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="@dimen/dimen_20dp"
+            android:id="@+id/ivArrow"
+            app:tint="@color/white"
+            />
+
+        <View
+            android:id="@+id/line"
+            style="@style/Line_White_02"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            app:layout_constraintTop_toBottomOf="@id/tvRecordTip"
+            app:layout_constraintStart_toStartOf="parent" />
+        
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/line"
+            android:layout_marginStart="@dimen/dimen_20dp"
+            android:layout_marginEnd="@dimen/dimen_20dp"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
