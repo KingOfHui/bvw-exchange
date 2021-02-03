@@ -28,7 +28,12 @@ public class PledgeRecordActivity extends BaseBindingActivity<ActivityPledgeReco
         PledgeRecordViewModel viewModel = getViewModel(PledgeRecordViewModel.class);
         mBinding.setVm(viewModel);
         mBinding.titleLayout.title.setOnClickListener(view -> {
-            new CancelTipDialog(this).show();
+            CancelTipDialog cancelTipDialog = new CancelTipDialog(this);
+            cancelTipDialog.setListener(() -> {
+
+            });
+            cancelTipDialog.show();
+
         });
     }
 
