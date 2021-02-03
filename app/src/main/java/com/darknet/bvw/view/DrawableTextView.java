@@ -47,8 +47,11 @@ public class DrawableTextView extends AppCompatTextView {
                 case R.styleable.DrawableTextView_drawableHeight:
                     drawableHeight = typedArray.getDimensionPixelSize(attr,0);
                     break;
+                default:
+                    break;
             }
         }
+        typedArray.recycle();
         if(null != drawableLeft){
             drawableLeft.setBounds(0,0, drawableWidth, drawableHeight);
         }
