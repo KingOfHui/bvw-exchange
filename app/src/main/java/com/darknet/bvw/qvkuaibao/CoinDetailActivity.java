@@ -87,7 +87,7 @@ public class CoinDetailActivity extends BasePayActivity<ActivityCoinDetailBindin
                         mViewModel.getWalletData(mViewModel.getSymbol());
                     });
                 });
-            });
+            }).setIsIn(true);
             zhangDialog.show();
         });
         mBinding.tvOut.setOnClickListener(view -> {
@@ -99,7 +99,7 @@ public class CoinDetailActivity extends BasePayActivity<ActivityCoinDetailBindin
                 }
                 zhangDialog.dismiss();
                 mViewModel.out(amount, pwd, ()->{/*zhangDialog.dismiss()*/});
-            });
+            }).setIsIn(false);
             zhangDialog.show();
         });
         mBinding.tvAll.setOnClickListener(view -> BonusActivity.start(this, getIntent().getStringExtra("symbol")));

@@ -19,6 +19,9 @@ import java.math.BigDecimal;
 
 public class PoszhuanZhangDialog extends BottomDialog {
     private BigDecimal mAmount;
+    private TextView mTvAmountTip;
+    private EditText mEtAmount;
+
     public PoszhuanZhangDialog(@NonNull Context context, String amount) {
         super(context);
 //        mAmount = new BigDecimal(amount);
@@ -28,13 +31,13 @@ public class PoszhuanZhangDialog extends BottomDialog {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_pos_zhuan_zhang);
-        TextView tvTotal = findViewById(R.id.tvTotalPrice);
-        EditText etAmount = findViewById(R.id.etAmount);
+        mTvAmountTip = findViewById(R.id.tvAmountTip);
+        mEtAmount = findViewById(R.id.etAmount);
         EditText etPwd = findViewById(R.id.etPwd);
-        ViewUtil.addFilter(etAmount, ViewUtil.get2NumPoint(6, 1000));
+        ViewUtil.addFilter(mEtAmount, ViewUtil.get2NumPoint(6, 1000));
         findViewById(R.id.tvPay).setOnClickListener(view -> {
             String pwd = etPwd.getText().toString().trim();
-            String amount = etAmount.getText().toString().trim();
+            String amount = mEtAmount.getText().toString().trim();
             if (TextUtils.isEmpty(pwd)) {
                 ToastUtils.showToast(getContext().getString(R.string.empty_pwd));
                 return;
@@ -48,12 +51,18 @@ public class PoszhuanZhangDialog extends BottomDialog {
 
     private OnPayClickListener mOnPayClickListener;
 
+    public PoszhuanZhangDialog setIsIn(boolean isIn) {
+        mTvAmountTip.setText(isIn ? getContext().getString(R.string.transfer_in_number) : getContext().getString(R.string.transfer_out_number));
+        mEtAmount.setHint(isIn ? getContext().getString(R.string.input_in_number) : getContext().getString(R.string.input_out_number));
+        return this;
+    }
+
     public PoszhuanZhangDialog setOnPayClickListener(OnPayClickListener onPayClickListener) {
         mOnPayClickListener = onPayClickListener;
         return this;
     }
 
-    public interface OnPayClickListener{
+    public interface OnPayClickListener {
         void payClick(String amount, String pwd);
     }
 }

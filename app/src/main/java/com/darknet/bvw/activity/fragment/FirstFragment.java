@@ -28,6 +28,7 @@ import com.darknet.bvw.activity.NoticeActivity;
 import com.darknet.bvw.activity.SuanLiWaKuangActivity;
 import com.darknet.bvw.activity.TradeListActivity;
 import com.darknet.bvw.activity.YuBiBaoDetailActivity;
+import com.darknet.bvw.fund.ui.activity.MiningFundActivity;
 import com.darknet.bvw.qvkuaibao.CoinDetailActivity;
 import com.darknet.bvw.config.ConfigNetWork;
 import com.darknet.bvw.config.UrlPath;
@@ -430,6 +431,7 @@ public class FirstFragment extends Fragment {
             }
         });
 
+        view.findViewById(R.id.tvMining).setOnClickListener(view1 -> MiningFundActivity.start(requireContext()));
     }
 
     private void checkBidState(Runnable callback){

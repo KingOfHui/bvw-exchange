@@ -19,7 +19,7 @@
         android:paddingEnd="@dimen/dimen_20dp"
         android:background="#141624"
         android:layout_height="match_parent">
-
+<!--
         <TextView
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -42,37 +42,46 @@
             android:textColor="#94A0C1"
             android:text="收益稳·省心选"
             android:layout_marginStart="@dimen/dp_10"
-            />
-        <androidx.recyclerview.widget.RecyclerView
+            />-->
+       <!-- <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:id="@+id/rvFund"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             adapter="@{adapter}"
             submitList="@{vm.listLive}"
-            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            app:layout_constraintTop_toTopOf="parent"
             tools:itemCount="3"
             tools:listitem="@layout/item_fund_pledge"
-            />
+            app:layout_constraintBottom_toTopOf="@id/tvBTD"
+            android:layout_marginBottom="@dimen/dp_10"
+            />-->
         <TextView
             android:layout_width="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_height="wrap_content"
-            android:text="BTD上线计划"
+            android:text="@string/online_plan_btd"
+            android:textColor="#15D496"
+            android:layout_marginBottom="@dimen/dimen_20dp"
             android:id="@+id/tvBTD"
+            android:textSize="@dimen/dp_14"
             app:layout_constraintBottom_toTopOf="@id/tvPledge"
             />
         <TextView
             android:id="@+id/tvPledge"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/dimen_50dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:text="立即质押"
+            android:text="@string/pledge_now"
+            android:textSize="@dimen/sp_16"
+            android:textStyle="bold"
             android:gravity="center"
             android:layout_marginBottom="@dimen/dp_10"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:textColor="@color/white"/>
+            android:background="@drawable/shape_circle_rect_white"
+            android:backgroundTint="#15D496"
+            android:textColor="@color/black"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

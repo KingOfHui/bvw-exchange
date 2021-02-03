@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#141624">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/img_mining_bg"
+            app:layout_constraintTop_toTopOf="@id/tvTitle"/>
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_20dp"
+            android:layout_marginTop="@dimen/dimen_30dp"
+            android:text="@string/defi_liquid_mining"
+            android:textColor="@color/white"
+            android:textSize="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvHistoryBonus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_left_circle_rect_green"
+            android:drawableLeft="@mipmap/icon_time_history"
+            android:drawablePadding="@dimen/dimen_5dp"
+            android:paddingStart="@dimen/dimen_10dp"
+            android:paddingTop="7dp"
+            android:paddingEnd="@dimen/dimen_20dp"
+            android:paddingBottom="7dp"
+            android:text="@string/history_bonus_home"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dp12"
+            app:layout_constraintBottom_toBottomOf="@id/tvTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvTitle" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            style="@style/NormalTabLayoutStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_60"
+            android:layout_marginTop="@dimen/dimen_80dp"
+            app:layout_constraintStart_toStartOf="@id/tvTitle"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+
+        <TextView
+            app:layout_constraintTop_toBottomOf="@id/tabLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_30dp"
+            android:layout_marginStart="@dimen/dimen_20dp"
+            android:lines="1"
+            android:text="@string/selected_power_fund"
+            android:id="@+id/tvTip"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_14"
+            />
+        <TextView
+            app:layout_constraintTop_toTopOf="@id/tvTip"
+            app:layout_constraintBottom_toBottomOf="@id/tvTip"
+            app:layout_constraintStart_toEndOf="@id/tvTip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/dp_10"
+            android:textColor="#94A0C1"
+            android:text="@string/fund_tip"
+            android:layout_marginStart="@dimen/dp_10"
+            />
+        <com.darknet.bvw.view.DrawableTextView
+            android:id="@+id/tvMyAsset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/my_asset"
+            app:layout_constraintTop_toTopOf="@id/tvTip"
+            app:layout_constraintBottom_toBottomOf="@id/tvTip"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="@dimen/dimen_10dp"
+            android:background="@drawable/shape_circle_rect_green"
+            android:backgroundTint="#15D496"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:paddingStart="@dimen/dp_10"
+            android:paddingEnd="@dimen/dp_10"
+            app:drawableLeft="@mipmap/icon_my_asset"
+            app:drawableWidth="12dp"
+            android:drawablePadding="@dimen/dimen_5dp"
+            app:drawableHeight="@dimen/dp12"/>
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/vp"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTip" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

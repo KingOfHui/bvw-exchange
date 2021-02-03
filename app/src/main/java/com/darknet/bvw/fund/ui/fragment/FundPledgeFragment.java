@@ -4,7 +4,12 @@ import androidx.databinding.ViewDataBinding;
 
 import com.darknet.bvw.R;
 import com.darknet.bvw.common.BaseBindingFragment;
+import com.darknet.bvw.databinding.FragmentFundPledgeBinding;
+import com.darknet.bvw.db.WalletDaoUtils;
+import com.darknet.bvw.fund.ui.activity.AboutBTDActivity;
+import com.darknet.bvw.fund.ui.dialog.PledgeDialog;
 import com.darknet.bvw.fund.vm.FundViewModel;
+import com.darknet.bvw.util.ToastUtils;
 
 /**
  * <pre>
@@ -15,7 +20,7 @@ import com.darknet.bvw.fund.vm.FundViewModel;
  *     version: 1.0
  * </pre>
  */
-public class FundPledgeFragment extends BaseBindingFragment<FundViewModel, ViewDataBinding> {
+public class FundPledgeFragment extends BaseBindingFragment<FundViewModel, FragmentFundPledgeBinding> {
 
     @Override
     public int setLayoutResId() {
@@ -29,7 +34,18 @@ public class FundPledgeFragment extends BaseBindingFragment<FundViewModel, ViewD
 
     @Override
     protected void initView() {
-
+        mDataBinding.tvBTD.setOnClickListener(view -> AboutBTDActivity.start(requireContext()));
+        mDataBinding.tvPledge.setOnClickListener(view -> {
+            PledgeDialog pledgeDialog = new PledgeDialog(requireContext(), "2000BIW");
+            pledgeDialog.setListener(pwd -> {
+                if (!WalletDaoUtils.checkPassword(pwd)) {
+                    ToastUtils.showToast(R.string.wrong_pwd);
+                    return;
+                }
+                mViewModel.isLoadingLive.setValue(true);
+            });
+            pledgeDialog.show();
+        });
     }
 
     @Override

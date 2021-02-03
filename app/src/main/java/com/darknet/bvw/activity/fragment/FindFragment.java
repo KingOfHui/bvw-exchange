@@ -243,7 +243,6 @@ public class FindFragment extends Fragment implements View.OnClickListener {
 				Toast.makeText(activity, getString(R.string.find_no_open), Toast.LENGTH_SHORT).show();
 				break;*/
 			case R.id.find_three_layout:
-				PledgeDetailActivity.start(requireContext());
 				Toast.makeText(activity, getString(R.string.find_no_open), Toast.LENGTH_SHORT).show();
 				break;
 			case R.id.find_four_layout:
@@ -263,6 +262,7 @@ public class FindFragment extends Fragment implements View.OnClickListener {
 			case R.id.find_bid_model_view:
 				Toast.makeText(activity, getString(R.string.find_no_open), Toast.LENGTH_SHORT).show();
 				break;
+			default:break;
 		}
 	}
 

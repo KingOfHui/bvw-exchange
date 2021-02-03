@@ -13,7 +13,6 @@
         android:layout_gravity="center|top"
         android:background="@mipmap/first_bg_img" />
 
-
     <com.handmark.pulltorefresh.library.PullToRefreshScrollView
         android:id="@+id/pull_refresh_scrollview"
         android:layout_width="match_parent"
@@ -110,15 +109,21 @@
                             android:layout_alignParentLeft="true"
                             android:orientation="vertical">
 
-                            <com.darknet.bvw.view.DrawableTextView
+                            <TextView
                                 android:id="@+id/tvMining"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/defi_liquid_mining"
-                                app:drawableLeft="@mipmap/icon_mining"
-                                ptr:drawableWidth="@dimen/dp_14"
+                                android:drawableLeft="@mipmap/icon_mining"
+                                android:drawablePadding="@dimen/dimen_5dp"
+                                android:paddingStart="@dimen/dp_10"
                                 android:textColor="@color/black"
                                 android:background="@drawable/shape_circle_rect_green"
+                                android:paddingEnd="@dimen/dp_10"
+                                android:paddingTop="@dimen/dp_4"
+                                android:paddingBottom="@dimen/dp_4"
+                                android:layout_marginTop="@dimen/dimen_10dp"
+                                android:layout_marginStart="@dimen/dimen_20dp"
                                 />
 
                             <LinearLayout

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.darknet.bvw.fund.vm.PledgeDetailViewModel" />
+
+        <variable
+            name="adapter"
+            type="com.darknet.bvw.fund.ui.adapter.WithdrawRecordAdapter" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#141624">
+
+        <include
+            android:id="@+id/title_layout"
+            layout="@layout/lay_head_back_binding" />
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            hasMore="@{vm.hasMore}"
+            onLoadMoreListener="@{()->vm.tryToLoadNext()}"
+            onRefreshListener="@{()->vm.refresh()}"
+            refreshing="@{vm.refreshing}"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/dimen_20dp"
+            android:layout_marginEnd="@dimen/dimen_20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title_layout">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvIncomeFund"
+                adapter="@{adapter}"
+                submitList="@{vm.listLive}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

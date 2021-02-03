@@ -1127,4 +1127,21 @@
     <string name="pledge_number">质押数量(BTD)</string>
     <string name="all">全部</string>
     <string name="defi_liquid_mining">Defi流动性挖矿</string>
+    <string name="my_asset">我的资产</string>
+    <string name="transfer">转账</string>
+    <string name="transfer_in_number">转入数量</string>
+    <string name="transfer_out_number">转出数量</string>
+    <string name="input_in_number">请输入转入数量</string>
+    <string name="input_out_number">请输入转出数量</string>
+    <string name="pledge">质押</string>
+    <string name="password">密码</string>
+    <string name="input_pay_password">请输入支付密码</string>
+    <string name="pay_password">支付密码</string>
+    <string name="pledge_record">质押记录</string>
+    <string name="history_bonus_home">历史收益</string>
+    <string name="selected_power_fund">精选算力基金</string>
+    <string name="fund_tip">收益稳·省心选</string>
+    <string name="pledge_now">立即质押</string>
+    <string name="extract">提取</string>
+    <string name="cancel_pledge_tip">BIW质押期最短时间为30天，如未满30天提出质押币将扣除质押币数量的30％为手续费。</string>
 </resources>
