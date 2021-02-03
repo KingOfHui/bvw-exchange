@@ -90,7 +90,7 @@ public class DividerLine extends ItemDecoration {
     /**
      * 分隔线绘制模式,水平，垂直，两者都绘制
      */
-    enum LineDrawMode {
+    public enum LineDrawMode {
         HORIZONTAL, VERTICAL, BOTH
     }
 }
