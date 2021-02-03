@@ -1072,4 +1072,12 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="transfer_in">Transfer in</string>
     <string name="transfer_out">Transfer out</string>
     <string name="incomes">Incomes</string>
+    <string name="online_plan_btd">Online Plan About BTD</string>
+    <string name="income_detail">Income</string>
+    <string name="withdraw_record">提币记录</string>
+    <string name="net_amount">全网总持仓(BTD)</string>
+    <string name="history_bonus">历史总收益(BTD)</string>
+    <string name="withdraw_balance">可提币余额(BTD)</string>
+    <string name="pledge_number">质押数量(BTD)</string>
+    <string name="all">全部</string>
 </resources>

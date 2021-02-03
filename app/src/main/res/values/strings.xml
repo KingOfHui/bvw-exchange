@@ -1118,4 +1118,12 @@
     <string name="transfer_in">转入</string>
     <string name="transfer_out">转出</string>
     <string name="incomes">收益</string>
+    <string name="online_plan_btd">关于BTD上线计划</string>
+    <string name="income_detail">收益明细</string>
+    <string name="withdraw_record">提币记录</string>
+    <string name="net_amount">全网总持仓(BTD)</string>
+    <string name="history_bonus">历史总收益(BTD)</string>
+    <string name="withdraw_balance">可提币余额(BTD)</string>
+    <string name="pledge_number">质押数量(BTD)</string>
+    <string name="all">全部</string>
 </resources>

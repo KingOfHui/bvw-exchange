@@ -20,32 +20,27 @@ import com.darknet.bvw.activity.BidIntroActivity;
 import com.darknet.bvw.activity.BidZhenMaActivity;
 import com.darknet.bvw.activity.BidZhenMaTwoActivity;
 import com.darknet.bvw.activity.HardwareMineralActivity;
-import com.darknet.bvw.activity.ImageActivity;
 import com.darknet.bvw.activity.ShareInviteActivity;
 import com.darknet.bvw.activity.ZhenLieActivity;
-import com.darknet.bvw.base.BaseListBean;
 import com.darknet.bvw.common.BaseResponse;
 import com.darknet.bvw.config.ConfigNetWork;
 import com.darknet.bvw.config.UrlPath;
 import com.darknet.bvw.db.Entity.ETHWalletModel;
 import com.darknet.bvw.db.WalletDaoUtils;
-import com.darknet.bvw.mall.bean.GoodsDetailBean;
-import com.darknet.bvw.mall.ui.MallActivity;
-import com.darknet.bvw.model.Event;
+import com.darknet.bvw.fund.ui.activity.AboutBTDActivity;
+import com.darknet.bvw.fund.ui.activity.PledgeDetailActivity;
 import com.darknet.bvw.model.event.BidSuccessEvent;
 import com.darknet.bvw.model.response.BidStateResponse;
 import com.darknet.bvw.net.retrofit.ApiInterface;
 import com.darknet.bvw.net.retrofit.BIWNetworkApi;
 import com.darknet.bvw.net.retrofit.BaseObserver;
 import com.darknet.bvw.net.retrofit.MvvmNetworkObserver;
-import com.darknet.bvw.util.Language;
 import com.darknet.bvw.util.bitcoinj.BitcoinjKit;
 import com.darknet.bvw.util.language.SPUtil;
 import com.darknet.bvw.view.BidDialogView;
 import com.darknet.bvw.view.BidTwoDialogView;
 import com.darknet.bvw.view.ZhenPopWindow;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
@@ -53,7 +48,6 @@ import com.lzy.okgo.model.Response;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import retrofit2.Retrofit;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -249,6 +243,7 @@ public class FindFragment extends Fragment implements View.OnClickListener {
 				Toast.makeText(activity, getString(R.string.find_no_open), Toast.LENGTH_SHORT).show();
 				break;*/
 			case R.id.find_three_layout:
+				PledgeDetailActivity.start(requireContext());
 				Toast.makeText(activity, getString(R.string.find_no_open), Toast.LENGTH_SHORT).show();
 				break;
 			case R.id.find_four_layout:
