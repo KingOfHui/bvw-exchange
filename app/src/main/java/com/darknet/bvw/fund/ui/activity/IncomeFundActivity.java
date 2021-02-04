@@ -34,6 +34,7 @@ public class IncomeFundActivity extends BaseBindingActivity<ActivityInconeFundBi
         mBinding.setAdapter(new IncomeFundAdapter());
         IncomeFundViewModel viewModel = getViewModel(IncomeFundViewModel.class);
         mBinding.setVm(viewModel);
+        viewModel.refresh();
 
     }
 

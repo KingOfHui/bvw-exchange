@@ -9,8 +9,8 @@
             name="adapter"
             type="com.darknet.bvw.fund.ui.adapter.FundPledgeAdapter" />
         <variable
-            name="vm"
-            type="com.darknet.bvw.fund.vm.FundViewModel" />
+            name="list"
+            type="java.util.ArrayList&lt;com.darknet.bvw.fund.bean.DefiProduct&gt;" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -56,6 +56,15 @@
             app:layout_constraintBottom_toTopOf="@id/tvBTD"
             android:layout_marginBottom="@dimen/dp_10"
             />-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/tvBTD"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            submitList="@{list}"
+            adapter="@{adapter}"
+            />
         <TextView
             android:layout_width="wrap_content"
             app:layout_constraintStart_toStartOf="parent"

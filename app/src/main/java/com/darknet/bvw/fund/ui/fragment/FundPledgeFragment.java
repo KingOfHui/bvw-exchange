@@ -1,15 +1,24 @@
 package com.darknet.bvw.fund.ui.fragment;
 
+import android.os.Bundle;
+import android.os.Parcelable;
+
 import androidx.databinding.ViewDataBinding;
+import androidx.fragment.app.Fragment;
 
 import com.darknet.bvw.R;
 import com.darknet.bvw.common.BaseBindingFragment;
 import com.darknet.bvw.databinding.FragmentFundPledgeBinding;
 import com.darknet.bvw.db.WalletDaoUtils;
+import com.darknet.bvw.fund.bean.DefiProduct;
 import com.darknet.bvw.fund.ui.activity.AboutBTDActivity;
+import com.darknet.bvw.fund.ui.adapter.FundPledgeAdapter;
 import com.darknet.bvw.fund.ui.dialog.PledgeDialog;
 import com.darknet.bvw.fund.vm.FundViewModel;
 import com.darknet.bvw.util.ToastUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <pre>
@@ -21,6 +30,14 @@ import com.darknet.bvw.util.ToastUtils;
  * </pre>
  */
 public class FundPledgeFragment extends BaseBindingFragment<FundViewModel, FragmentFundPledgeBinding> {
+
+    public static Fragment newInstance(ArrayList<DefiProduct> value) {
+        FundPledgeFragment fragment = new FundPledgeFragment();
+        Bundle bundle = new Bundle();
+        bundle.putParcelableArrayList("list",value);
+        fragment.setArguments(bundle);
+        return fragment;
+    }
 
     @Override
     public int setLayoutResId() {
@@ -46,10 +63,17 @@ public class FundPledgeFragment extends BaseBindingFragment<FundViewModel, Fragm
             });
             pledgeDialog.show();
         });
+        mDataBinding.setAdapter(new FundPledgeAdapter());
     }
 
     @Override
     protected void initData() {
+
+        Bundle bundle = getArguments();
+        if (bundle!=null) {
+            ArrayList<DefiProduct> list = bundle.getParcelableArrayList("list");
+            mDataBinding.setList(list);
+        }
 
     }
 }

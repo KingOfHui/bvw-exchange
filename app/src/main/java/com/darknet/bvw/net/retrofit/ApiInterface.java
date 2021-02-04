@@ -3,6 +3,11 @@ package com.darknet.bvw.net.retrofit;
 import com.darknet.bvw.base.BaseListBean;
 import com.darknet.bvw.common.BaseResponse;
 import com.darknet.bvw.config.UrlPath;
+import com.darknet.bvw.fund.bean.DefiBonus;
+import com.darknet.bvw.fund.bean.DefiInvest;
+import com.darknet.bvw.fund.bean.DefiProduct;
+import com.darknet.bvw.fund.bean.DefiTotalDataBySymbol;
+import com.darknet.bvw.fund.bean.DefiWithdraw;
 import com.darknet.bvw.mall.bean.CategoryBean;
 import com.darknet.bvw.mall.bean.GoodsDetailBean;
 import com.darknet.bvw.mall.bean.ShopHomeBean;
@@ -212,5 +217,29 @@ public interface ApiInterface {
      */
     @POST(UrlPath.POST_POS_OUT_BY_AMOUNT)
     Observable<BaseResponse<Boolean>> outBySymbol(@Body RequestBody body);
+
+    //收益列表
+    @GET("api/v1/defi/bonusList")
+    Observable<BaseResponse<BaseListBean<DefiBonus>>> getDefiBonusList(@Query("invest_symbol") String invest_symbol, @Query("limit") int limit, @Query("page") int page);
+
+    //投资列表
+    @GET("api/v1/defi/investList")
+    Observable<BaseResponse<BaseListBean<DefiInvest>>> getDefiInvestList(@Query("invest_symbol") String invest_symbol, @Query("limit") int limit, @Query("page") int page);
+
+    //解压
+    @POST("api/v1/defi/investRelease")
+    Observable<BaseResponse<Object>> investRelease(@Body RequestBody body);
+
+    //产品列表
+    @GET("api/v1/defi/productList")
+    Observable<BaseResponse<BaseListBean<DefiProduct>>> getDefiProductList(@Query("limit") int limit, @Query("page") int page);
+
+    //用户挖矿数据统计
+    @GET("api/v1/defi/totalDataBySymbol")
+    Observable<BaseResponse<DefiTotalDataBySymbol>> getTotalDataBySymbol(@Query("invest_symbol") String invest_symbol);
+
+    //提币记录
+    @GET("api/v1/defi/withdrawList")
+    Observable<BaseResponse<BaseListBean<DefiWithdraw>>> getWithdrawList(@Query("limit") int limit, @Query("page") int page);
 
 }

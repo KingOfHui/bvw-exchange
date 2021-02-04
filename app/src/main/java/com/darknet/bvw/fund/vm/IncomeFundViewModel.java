@@ -3,8 +3,17 @@ package com.darknet.bvw.fund.vm;
 import android.app.Application;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.MutableLiveData;
 
+import com.darknet.bvw.base.BaseListBean;
 import com.darknet.bvw.common.BaseListViewModel;
+import com.darknet.bvw.common.BaseResponse;
+import com.darknet.bvw.fund.bean.DefiBonus;
+import com.darknet.bvw.net.retrofit.BIWNetworkApi;
+import com.darknet.bvw.net.retrofit.BaseObserver;
+import com.darknet.bvw.net.retrofit.MvvmNetworkObserver;
+import com.darknet.bvw.qvkuaibao.bean.PosBonus;
+import com.darknet.bvw.util.ToastUtils;
 
 /**
  * <pre>
@@ -15,13 +24,26 @@ import com.darknet.bvw.common.BaseListViewModel;
  *     version: 1.0
  * </pre>
  */
-public class IncomeFundViewModel extends BaseListViewModel<String> {
+public class IncomeFundViewModel extends BaseListViewModel<DefiBonus> {
+    public MutableLiveData<String> symbolLive = new MutableLiveData<>();
     public IncomeFundViewModel(@NonNull Application application) {
         super(application);
     }
 
     @Override
     protected void loadData(int pageNum, boolean isClear) {
+        apiService.getDefiBonusList("BIW", 20, pageNum)
+                .compose(BIWNetworkApi.getInstance().applySchedulers())
+                .subscribe(new BaseObserver<>(this, new MvvmNetworkObserver<BaseResponse<BaseListBean<DefiBonus>>>() {
+                    @Override
+                    public void onSuccess(BaseResponse<BaseListBean<DefiBonus>> t, boolean isFromCache) {
+                        notifyResultToTopViewModel(BaseListBean.getItems(t.getData()));
+                    }
 
+                    @Override
+                    public void onFailure(Throwable throwable) {
+                        ToastUtils.showToast(throwable.getMessage());
+                    }
+                }));
     }
 }

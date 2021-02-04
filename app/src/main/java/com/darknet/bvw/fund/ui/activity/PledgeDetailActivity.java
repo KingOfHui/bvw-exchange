@@ -5,9 +5,12 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.view.View;
 
+import androidx.lifecycle.Observer;
+
 import com.darknet.bvw.R;
 import com.darknet.bvw.activity.BaseBindingActivity;
 import com.darknet.bvw.databinding.ActivityPledgeDetailBinding;
+import com.darknet.bvw.fund.bean.DefiTotalDataBySymbol;
 import com.darknet.bvw.fund.ui.adapter.WithdrawRecordAdapter;
 import com.darknet.bvw.fund.vm.PledgeDetailViewModel;
 import com.darknet.bvw.net.retrofit.MvvmNetworkObserver;
@@ -41,6 +44,16 @@ public class PledgeDetailActivity extends BaseBindingActivity<ActivityPledgeDeta
         mBinding.setAdapter(new WithdrawRecordAdapter());
         PledgeDetailViewModel viewModel = getViewModel(PledgeDetailViewModel.class);
         mBinding.setVm(viewModel);
+        viewModel.mDefiTotalDataBySymbolMutableLiveData.observe(this, new Observer<DefiTotalDataBySymbol>() {
+            @Override
+            public void onChanged(DefiTotalDataBySymbol defiTotalDataBySymbol) {
+                mBinding.cvvNetAmount.setTopStr(defiTotalDataBySymbol.getInvestAmount());
+                mBinding.cvvHistoryBonus.setTopStr(defiTotalDataBySymbol.getHistoryBonus());
+                mBinding.cvvWithdraw.setTopStr(defiTotalDataBySymbol.getBalance());
+//                mBinding.cvvPledgeAmount.setTopStr(defiTotalDataBySymbol.);
+            }
+        });
+        viewModel.getTotalDataBySymbol("BIW");
     }
 
     @Override
