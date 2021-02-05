@@ -40,7 +40,6 @@ public class FundPledgeAdapter extends BaseQuickAdapter<DefiProduct, BaseViewHol
     }
 
     public DefiProduct getSelected() {
-
         List<DefiProduct> data = getData();
         if (CollectionUtil.isNotEmpty(data)) {
             for (DefiProduct datum : data) {
@@ -50,5 +49,10 @@ public class FundPledgeAdapter extends BaseQuickAdapter<DefiProduct, BaseViewHol
             }
         }
         return null;
+    }
+
+    public void setOriginStatusList() {
+        getSelected().setSelected(false);
+        notifyDataSetChanged();
     }
 }

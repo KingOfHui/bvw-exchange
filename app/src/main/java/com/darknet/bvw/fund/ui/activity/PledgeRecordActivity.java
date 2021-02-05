@@ -39,7 +39,7 @@ public class PledgeRecordActivity extends BaseBindingActivity<ActivityPledgeReco
         pledgeRecordAdapter.setOnItemChildClickListener((adapter, view, position) -> {
             DefiInvest item = pledgeRecordAdapter.getItem(position);
             if (item != null) {
-                CancelTipDialog cancelTipDialog = new CancelTipDialog(this);
+                CancelTipDialog cancelTipDialog = new CancelTipDialog(this, item);
                 cancelTipDialog.setListener(() -> viewModel.cancelPledge(item.getId()));
                 cancelTipDialog.show();
             }

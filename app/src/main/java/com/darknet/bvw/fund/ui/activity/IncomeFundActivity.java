@@ -3,6 +3,10 @@ package com.darknet.bvw.fund.ui.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.DividerItemDecoration;
 
 import com.darknet.bvw.R;
 import com.darknet.bvw.activity.BaseBindingActivity;
@@ -31,6 +35,9 @@ public class IncomeFundActivity extends BaseBindingActivity<ActivityInconeFundBi
         StatusBarUtil.setStatusBarColor(this, R.color.bg_141624);
         mBinding.titleLayout.layBack.setOnClickListener(v -> finish());
         mBinding.titleLayout.title.setText(R.string.income_detail);
+        DividerItemDecoration decoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+        decoration.setDrawable(new ColorDrawable(ContextCompat.getColor(this, R.color.line_4E4A5E)));
+        mBinding.rvIncomeFund.addItemDecoration(decoration);
         mBinding.setAdapter(new IncomeFundAdapter());
         IncomeFundViewModel viewModel = getViewModel(IncomeFundViewModel.class);
         mBinding.setVm(viewModel);

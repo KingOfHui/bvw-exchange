@@ -21,6 +21,9 @@
         <include
             android:id="@+id/title_layout"
             layout="@layout/lay_head_back_binding" />
+        <View style="@style/Line_White_02"
+            app:layout_constraintTop_toBottomOf="@id/title_layout"
+            app:layout_constraintStart_toStartOf="parent"/>
 
         <com.scwang.smartrefresh.layout.SmartRefreshLayout
             hasMore="@{vm.hasMore}"
@@ -38,6 +41,8 @@
                 android:id="@+id/rvIncomeFund"
                 adapter="@{adapter}"
                 submitList="@{vm.listLive}"
+                emptyImageResource="@{@drawable/img_history_empty}"
+                emptyText="@{@string/no_data_two}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />

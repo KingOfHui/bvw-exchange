@@ -32,16 +32,19 @@ public class IncomeFundViewModel extends BaseListViewModel<DefiBonus> {
 
     @Override
     protected void loadData(int pageNum, boolean isClear) {
+        showLoading();
         apiService.getDefiBonusList(symbolLive.getValue(), 20, pageNum)
                 .compose(BIWNetworkApi.getInstance().applySchedulers())
                 .subscribe(new BaseObserver<>(this, new MvvmNetworkObserver<BaseResponse<BaseListBean<DefiBonus>>>() {
                     @Override
                     public void onSuccess(BaseResponse<BaseListBean<DefiBonus>> t, boolean isFromCache) {
+                        hideLoading();
                         notifyResultToTopViewModel(BaseListBean.getItems(t.getData()));
                     }
 
                     @Override
                     public void onFailure(Throwable throwable) {
+                        hideLoading();
                         ToastUtils.showToast(throwable.getMessage());
                     }
                 }));

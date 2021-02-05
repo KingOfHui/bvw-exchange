@@ -3,10 +3,13 @@ package com.darknet.bvw.fund.ui.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.text.TextUtils;
 import android.view.View;
 
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.Observer;
+import androidx.recyclerview.widget.DividerItemDecoration;
 
 import com.darknet.bvw.R;
 import com.darknet.bvw.activity.BaseBindingActivity;
@@ -45,6 +48,9 @@ public class PledgeDetailActivity extends BaseBindingActivity<ActivityPledgeDeta
         mBinding.titleLayout.titleRight.setTextColor(Color.parseColor("#15D496"));
         mBinding.titleLayout.titleRight.setOnClickListener(view -> PledgeRecordActivity.start(this, symbol));
         mBinding.tvAll.setOnClickListener(view -> WithdrawRecordActivity.start(this));
+        DividerItemDecoration decoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+        decoration.setDrawable(new ColorDrawable(ContextCompat.getColor(this, R.color.line_4E4A5E)));
+        mBinding.rv.addItemDecoration(decoration);
         mBinding.setAdapter(new WithdrawRecordAdapter());
         PledgeDetailViewModel viewModel = getViewModel(PledgeDetailViewModel.class);
         mBinding.setVm(viewModel);
@@ -55,7 +61,7 @@ public class PledgeDetailActivity extends BaseBindingActivity<ActivityPledgeDeta
                     holder.append(deFiTotalInvestVO.getInvestAmount()).append(deFiTotalInvestVO.getSymbol()).append(" ");
                 }
             }
-            mBinding.tvHolderDetail.setText(TextUtils.isEmpty(holder.toString()) ? getString(R.string.none) : holder.toString());
+            mBinding.tvHolderDetail.setText(TextUtils.isEmpty(holder.toString()) ? "0" : holder.toString());
             mBinding.cvvNetAmount.setTopStr(defiTotalDataBySymbol.getInvestAmount());
             mBinding.cvvNetAmount.setBottomText(String.format(getString(R.string.net_amount), defiTotalDataBySymbol.getSymbol()));
             mBinding.cvvHistoryBonus.setTopStr(defiTotalDataBySymbol.getHistoryBonus());

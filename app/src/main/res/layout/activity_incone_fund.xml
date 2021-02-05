@@ -21,6 +21,9 @@
         <include
             android:id="@+id/title_layout"
             layout="@layout/lay_head_back_binding" />
+        <View style="@style/Line_White_02"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title_layout"/>
 
         <com.scwang.smartrefresh.layout.SmartRefreshLayout
             hasMore="@{vm.hasMore}"

@@ -1,5 +1,7 @@
 package com.darknet.bvw.fund.bean;
 
+import java.math.BigDecimal;
+
 public class DefiInvest {
 
     /**
@@ -39,6 +41,24 @@ public class DefiInvest {
     private String update_time;
     private String user_address;
     private int user_id;
+    private int min_lock_days;
+    private BigDecimal min_lock_release_rate;
+
+    public int getMin_lock_days() {
+        return min_lock_days;
+    }
+
+    public void setMin_lock_days(int min_lock_days) {
+        this.min_lock_days = min_lock_days;
+    }
+
+    public BigDecimal getMin_lock_release_rate() {
+        return min_lock_release_rate;
+    }
+
+    public void setMin_lock_release_rate(BigDecimal min_lock_release_rate) {
+        this.min_lock_release_rate = min_lock_release_rate;
+    }
 
     public String getAmount() {
         return amount;

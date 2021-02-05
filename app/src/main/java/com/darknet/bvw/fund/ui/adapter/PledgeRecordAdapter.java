@@ -12,11 +12,12 @@ public class PledgeRecordAdapter extends BaseQuickAdapter<DefiInvest, BaseViewHo
 
     @Override
     protected void convert(BaseViewHolder helper, DefiInvest item) {
+        helper.setText(R.id.tvSymbol, item.getProduct_symbol());
         helper.setText(R.id.tvTime, item.getCreate_time());
         helper.setText(R.id.tvAmount, item.getAmount()+item.getProduct_symbol());
         helper.setVisible(R.id.tvCancel, item.getState() == 1);
         helper.setVisible(R.id.tvStatus, item.getState() != 1);
-        helper.setText(R.id.tvStatus, item.getState() == 0 ? mContext.getString(R.string.paying) : mContext.getString(R.string.end));
+        helper.setText(R.id.tvStatus, item.getState() == 0 ? mContext.getString(R.string.paying) : mContext.getString(R.string.refunded));
         helper.addOnClickListener(R.id.tvCancel);
     }
 }

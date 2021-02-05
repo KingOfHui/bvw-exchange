@@ -24,33 +24,39 @@ public class PledgeDetailViewModel extends BaseListViewModel<DefiWithdraw> {
 
     @Override
     protected void loadData(int pageNum, boolean isClear) {
+        showLoading();
         apiService.getWithdrawList(20,pageNum)
                 .compose(BIWNetworkApi.getInstance().applySchedulers())
                 .subscribe(new BaseObserver<>(this, new MvvmNetworkObserver<BaseResponse<BaseListBean<DefiWithdraw>>>() {
                     @Override
                     public void onSuccess(BaseResponse<BaseListBean<DefiWithdraw>> t, boolean isFromCache) {
+                        hideLoading();
                         notifyResultToTopViewModel(BaseListBean.getItems(t.getData()));
                     }
 
                     @Override
                     public void onFailure(Throwable throwable) {
+                        hideLoading();
                         ToastUtils.showToast(throwable.getMessage());
                     }
                 }));
     }
 
     public void getTotalDataBySymbol() {
+        showLoading();
         apiService.getTotalDataBySymbol()
                 .compose(BIWNetworkApi.getInstance().applySchedulers())
                 .subscribe(new BaseObserver<>(this, new MvvmNetworkObserver<BaseResponse<DefiTotalDataBySymbol>>() {
                     @Override
                     public void onSuccess(BaseResponse<DefiTotalDataBySymbol> t, boolean isFromCache) {
+                        hideLoading();
                         mDefiTotalDataBySymbolMutableLiveData.setValue(t.getData());
                         refresh();
                     }
 
                     @Override
                     public void onFailure(Throwable throwable) {
+                        hideLoading();
                         ToastUtils.showToast(throwable.getMessage());
                     }
                 }));

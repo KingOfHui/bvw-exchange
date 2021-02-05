@@ -39,6 +39,7 @@ public class PledgeDialog extends BottomDialog {
                 return;
             }
             if (mListener != null) {
+                dismiss();
                 mListener.sure(pwd);
             }
         });

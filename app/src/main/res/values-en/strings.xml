@@ -1097,7 +1097,7 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="fund_tip">Stable Income·Easy Select</string>
     <string name="pledge_now">Pledge Now</string>
     <string name="extract">Extract</string>
-    <string name="cancel_pledge_tip">The shortest time of the BiW pledge period is 30 days, such as 30% of the quantity of the quantity of the quantity in less than 30 days.</string>
+    <string name="cancel_pledge_tip">The shortest time of the %s pledge period is %s days, in less than %s days, such as %s% of the quantity of the quantity of the quantity .</string>
     <string name="tip_about_btd">I. Declaring from the media: \n\n
         We will collect 300 domestic and foreign self-media data and quotations, the foundation is selected, and we will do it, but we believe that you can achieve the effect from the media to pack more than 30 packages. Because the domestic exchanges on non-small numbers are mostly, we are global, so that we can save many expenses can also play the effect. Clip Synthetic Batch news.\n\n
         II. About BTD Promotion Copywriter and System Design:\n\n
@@ -1115,7 +1115,6 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="my_position">My Position：</string>
     <string name="cancel_pledge_success">Refund Success</string>
     <string name="refund">Refund</string>
-    <string name="end">End</string>
     <string name="paying">Paying</string>
     <string name="income_in">Income</string>
 </resources>

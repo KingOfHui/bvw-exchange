@@ -378,7 +378,7 @@ public class MarketFragment extends Fragment implements View.OnClickListener {
     private void setZxData(List<TradeZxResponse.ZxModel> list) {
         zfList.clear();
         zfList.addAll(list);
-        mAdapter = new MarketAdapter(getActivity(), list);
+        mAdapter = new MarketAdapter(requireActivity(), list);
         mListView.setAdapter(mAdapter);
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

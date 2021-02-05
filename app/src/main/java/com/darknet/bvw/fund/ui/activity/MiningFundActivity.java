@@ -2,9 +2,7 @@ package com.darknet.bvw.fund.ui.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.darknet.bvw.R;
@@ -12,15 +10,16 @@ import com.darknet.bvw.activity.BaseBindingActivity;
 import com.darknet.bvw.base.BaseFragmentPagerAdapter;
 import com.darknet.bvw.databinding.ActivityMiningFundBinding;
 import com.darknet.bvw.fund.bean.DefiProduct;
+import com.darknet.bvw.fund.bean.ClearSelectedStatusEvent;
 import com.darknet.bvw.fund.ui.fragment.FundPledgeFragment;
 import com.darknet.bvw.fund.vm.FundViewModel;
 import com.darknet.bvw.util.StatusBarUtil;
 import com.darknet.bvw.view.wrap.OnTabSelectedListenerWrap;
 import com.google.android.material.tabs.TabLayout;
-import com.jingui.lib.utils.wrap.SmallToBigComparator;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -43,6 +42,7 @@ public class MiningFundActivity extends BaseBindingActivity<ActivityMiningFundBi
     @Override
     public void initView() {
         StatusBarUtil.setStatusBarColor(this, R.color.bg_141624);
+        mBinding.titleLayout.layBack.setOnClickListener(view -> finish());
         mBinding.tvHistoryBonus.setOnClickListener(view -> IncomeFundActivity.start(this, symbol));
         mBinding.tvMyAsset.setOnClickListener(view -> PledgeDetailActivity.start(this, symbol));
         mBinding.tabLayout.addOnTabSelectedListener(new OnTabSelectedListenerWrap() {
@@ -52,6 +52,7 @@ public class MiningFundActivity extends BaseBindingActivity<ActivityMiningFundBi
                 if (text!=null) {
                     symbol = text.toString();
                 }
+                EventBus.getDefault().post(new ClearSelectedStatusEvent());
             }
         });
     }
