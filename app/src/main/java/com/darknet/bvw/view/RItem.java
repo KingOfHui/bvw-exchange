@@ -72,7 +72,7 @@ public class RItem extends ConstraintLayout {
 
     }
 
-    private void setRightText(String rightText) {
+    public void setRightText(String rightText) {
         if (rightText != null) {
             mTvRight.setText(rightText);
         }

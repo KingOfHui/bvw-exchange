@@ -4,6 +4,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.darknet.bvw.R;
 import com.darknet.bvw.fund.bean.DefiBonus;
+import com.darknet.bvw.view.RItem;
 
 /**
  * <pre>
@@ -21,6 +22,9 @@ public class IncomeFundAdapter extends BaseQuickAdapter<DefiBonus, BaseViewHolde
 
     @Override
     protected void convert(BaseViewHolder helper, DefiBonus item) {
-
+        RItem rItem = helper.getView(R.id.rItem);
+        rItem.setTopTitle(mContext.getString(R.string.income_in));
+        rItem.setBottomInfo(item.getCreate_time());
+        rItem.setRightText(item.getBonus() + "BTD");
     }
 }

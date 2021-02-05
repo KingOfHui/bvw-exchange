@@ -1075,7 +1075,7 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
     <string name="online_plan_btd">Online Plan About BTD</string>
     <string name="income_detail">Income</string>
     <string name="withdraw_record">Withdraw Record</string>
-    <string name="net_amount">Net Total(BTD)</string>
+    <string name="net_amount">My Position(%s)</string>
     <string name="history_bonus">History Income(BTD)</string>
     <string name="withdraw_balance">Withdraw Balance(BTD)</string>
     <string name="pledge_number">Pledge Number(BTD)</string>
@@ -1110,4 +1110,12 @@ Among the partners of the privileged user for 24 months, the YuBi Bank contract 
         E: Digits BTDs in the establishment of BTC Eth USDT as a pledged form when the biw market circulation is reduced. \n\n
         F: When the market value of the Foundation is basically no pressure when BTC Eth USDT is entered, we are about to launch a second sector with a model-like currency, increasing the market viscosity, the heat of the Fried Biw Exchange, and the Fund The demand for large data of each sector will be. \n\n
         G: In view of our overall market operation plan, we ask the market-value management team technical team to cooperate with each other to achieve the completion of the market operation plan. 3. Our operation team requires 300,000 costs, used for advertising, self-cultivation, business school construction, lecturer training, etc. The cost of the post-operation team is: 10% of the market performance, 1 million performance is a single settlement node, as in the future, the market leadership costs We recommend not higher than 20%. And the welfare time should not be too long. 4. In the cooperation with the Foundation, we will strictly abide by the confidential rules, strict requirements, with the interests of the Foundation, think that the Foundation has created profits as our responsibility, and I hope that the Foundation will also comply with the rules to achieve a win-win situation.</string>
+    <string name="tip_select_pledge_num">Please select the number of pledges</string>
+    <string name="pledge_success">Pledge Success</string>
+    <string name="my_position">My Position：</string>
+    <string name="cancel_pledge_success">Refund Success</string>
+    <string name="refund">Refund</string>
+    <string name="end">End</string>
+    <string name="paying">Paying</string>
+    <string name="income_in">Income</string>
 </resources>

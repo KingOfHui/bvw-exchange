@@ -14,7 +14,7 @@ import com.darknet.bvw.util.StatusBarUtil;
  *     author : dinghui
  *     e-mail : dinghui@bcbook.com
  *     time   : 2021/02/03
- *     desc   :
+ *     desc   : 关于BTD上线计划
  *     version: 1.0
  * </pre>
  */
@@ -29,7 +29,6 @@ public class AboutBTDActivity extends BaseBindingActivity<ActivityAboutBtdBindin
         StatusBarUtil.setStatusBarColor(this, R.color.bg_141624);
         mBinding.titleLayout.layBack.setOnClickListener(v -> finish());
         mBinding.titleLayout.title.setText(R.string.online_plan_btd);
-        mBinding.titleLayout.title.setOnClickListener(v -> IncomeFundActivity.start(this,""));
     }
 
     @Override

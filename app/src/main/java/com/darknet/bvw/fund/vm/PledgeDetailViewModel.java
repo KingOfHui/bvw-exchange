@@ -39,8 +39,8 @@ public class PledgeDetailViewModel extends BaseListViewModel<DefiWithdraw> {
                 }));
     }
 
-    public void getTotalDataBySymbol(String symbol) {
-        apiService.getTotalDataBySymbol(symbol)
+    public void getTotalDataBySymbol() {
+        apiService.getTotalDataBySymbol()
                 .compose(BIWNetworkApi.getInstance().applySchedulers())
                 .subscribe(new BaseObserver<>(this, new MvvmNetworkObserver<BaseResponse<DefiTotalDataBySymbol>>() {
                     @Override

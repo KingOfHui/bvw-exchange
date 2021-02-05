@@ -26,6 +26,7 @@ public class CancelTipDialog extends CenterBaseDialog {
         setContentView(R.layout.dialog_pledge_cancel_tip);
         findViewById(R.id.tvSure).setOnClickListener(view -> {
             if (mListener != null) {
+                dismiss();
                 mListener.sure();
             }
         });

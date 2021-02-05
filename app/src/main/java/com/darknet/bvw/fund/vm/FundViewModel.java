@@ -29,16 +29,19 @@ public class FundViewModel extends BaseListViewModel<DefiProduct> {
 
     @Override
     protected void loadData(int pageNum, boolean isClear) {
+        showLoading();
         apiService.getDefiProductList(100,1)
                 .compose(BIWNetworkApi.getInstance().applySchedulers())
                 .subscribe(new BaseObserver<>(this, new MvvmNetworkObserver<BaseResponse<BaseListBean<DefiProduct>>>() {
                     @Override
                     public void onSuccess(BaseResponse<BaseListBean<DefiProduct>> t, boolean isFromCache) {
                         notifyResultToTopViewModel(BaseListBean.getItems(t.getData()));
+                        hideLoading();
                     }
 
                     @Override
                     public void onFailure(Throwable throwable) {
+                        hideLoading();
                         ToastUtils.showToast(throwable.getMessage());
                     }
                 }));

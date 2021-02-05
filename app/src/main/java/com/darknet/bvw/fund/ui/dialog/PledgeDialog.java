@@ -15,9 +15,11 @@ import com.jingui.lib.utils.ViewUtil;
 
 public class PledgeDialog extends BottomDialog {
     private String amount = "";
-    public PledgeDialog(@NonNull Context context,String amount) {
+    private String symbol = "";
+    public PledgeDialog(@NonNull Context context, String amount, String symbol) {
         super(context);
         this.amount = amount;
+        this.symbol = symbol;
     }
 
     @Override
@@ -27,7 +29,7 @@ public class PledgeDialog extends BottomDialog {
         TextView tvAmount = findViewById(R.id.tvAmount);
         TextView tvSure = findViewById(R.id.tvSure);
         EditText etPwd = findViewById(R.id.etPwd);
-        tvAmount.setText(amount);
+        tvAmount.setText(String.format("%s%s", amount, symbol));
         findViewById(R.id.ivClose).setOnClickListener(view -> dismiss());
         tvSure.setOnClickListener(view -> {
             String pwd = etPwd.getText().toString().trim();

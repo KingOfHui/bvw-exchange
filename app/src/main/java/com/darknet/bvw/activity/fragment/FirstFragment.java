@@ -223,6 +223,7 @@ public class FirstFragment extends Fragment {
             if(allWallets != null) {
                 nameView.setText(allWallets.getName());
             }
+            getLeftMoney();
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -28,6 +28,7 @@ public class WithdrawRecordActivity extends BaseBindingActivity<ActivityWithdraw
         mBinding.rvIncomeFund.addItemDecoration(new DividerLine(this, DividerLine.LineDrawMode.VERTICAL,1));
         PledgeDetailViewModel viewModel = getViewModel(PledgeDetailViewModel.class);
         mBinding.setVm(viewModel);
+        viewModel.refresh();
     }
 
     @Override

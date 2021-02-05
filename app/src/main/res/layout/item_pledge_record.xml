@@ -10,20 +10,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:lines="1"
+        android:text="BTD"
         android:textColor="@color/white"
         android:textSize="@dimen/dp_14"
         app:layout_constraintBottom_toTopOf="@+id/tvTime"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
-        tools:text="BTD" />
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
         android:id="@+id/tvTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:alpha="0.5"
         android:layout_marginTop="@dimen/dimen_5dp"
+        android:alpha="0.5"
         android:lines="1"
         android:textColor="@color/white"
         android:textSize="11dp"
@@ -38,8 +38,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:textSize="@dimen/dp_14"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guideline4"
         app:layout_constraintTop_toTopOf="@id/tvSymbol"
         tools:text="20.000BIW" />
 
@@ -48,11 +47,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/shape_circle_rect_stroke_green"
-        android:paddingStart="@dimen/dp_10"
-        android:paddingEnd="@dimen/dp_10"
-        android:text="退款"
+        android:paddingStart="@dimen/dimen_15dp"
+        android:paddingTop="3dp"
+        android:paddingEnd="@dimen/dimen_15dp"
+        android:paddingBottom="3dp"
+        android:text="@string/refund"
         android:textColor="#15D496"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/dimen_15dp"
+        android:paddingTop="3dp"
+        android:paddingEnd="@dimen/dimen_15dp"
+        android:paddingBottom="3dp"
+        android:text="@string/refund"
+        android:textColor="@color/white"
+        android:alpha="0.5"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.4" />
 </androidx.constraintlayout.widget.ConstraintLayout>

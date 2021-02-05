@@ -43,6 +43,7 @@ public class PayViewModel extends BaseViewModel {
 
                     @Override
                     public void onFailure(Throwable throwable) {
+                        ToastUtils.showToast(throwable.getMessage());
                         hideLoading();
                     }
                 }));
@@ -65,6 +66,7 @@ public class PayViewModel extends BaseViewModel {
 
                     @Override
                     public void onFailure(Throwable throwable) {
+                        ToastUtils.showToast(throwable.getMessage());
                         hideLoading();
                     }
                 }));
@@ -107,6 +109,20 @@ public class PayViewModel extends BaseViewModel {
         sendTradeRequest.setType(17);
         senTradeRequest(sendTradeRequest);
     }
+
+    //质押
+    public void sendPledgeTrade(String afterSignVal, String price, String address, String symbol, int id) {
+        showLoading();
+        SendTradeRequest sendTradeRequest = new SendTradeRequest();
+        sendTradeRequest.setAmount(price);
+        sendTradeRequest.setRaw(afterSignVal);
+        sendTradeRequest.setSymbol(symbol);
+        sendTradeRequest.setOrder_id(id);
+        sendTradeRequest.setTo_address(address);
+        sendTradeRequest.setType(21);
+        sendTradeRequest.setDemo("质押支付");
+        senTradeRequest(sendTradeRequest);
+    }
     private void senTradeRequest(SendTradeRequest sendTradeRequest) {
         apiService.sendRawTx(new RequestBodyBuilder().build(sendTradeRequest))
                 .compose(BIWNetworkApi.getInstance().applySchedulers())
@@ -120,6 +136,7 @@ public class PayViewModel extends BaseViewModel {
                     @Override
                     public void onFailure(Throwable throwable) {
                         hideLoading();
+                        ToastUtils.showToast(throwable.getMessage());
                     }
                 }));
     }
@@ -137,6 +154,7 @@ public class PayViewModel extends BaseViewModel {
                     @Override
                     public void onFailure(Throwable throwable) {
                         hideLoading();
+                        ToastUtils.showToast(throwable.getMessage());
                     }
                 }));
     }

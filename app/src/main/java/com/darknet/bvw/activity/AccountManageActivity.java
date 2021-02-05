@@ -3,6 +3,7 @@ package com.darknet.bvw.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -113,7 +114,7 @@ public class AccountManageActivity extends BaseActivity implements View.OnClickL
             TypefaceTextView txtCurrentAccount = (TypefaceTextView) walletItem.findViewById(R.id.txt_current_account);
             ETHWalletModel ethWalletModel = allWallets.get(i);
 
-//            Log.e("wallet", ethWalletModel.getName());
+            Log.e("wallet", ethWalletModel.getName() + "--" + ethWalletModel.getAddress());
 
 
             nickNameView.setText(TextUtils.isEmpty(ethWalletModel.getName()) ? "BIW-Wallet-" + i : ethWalletModel.getName());

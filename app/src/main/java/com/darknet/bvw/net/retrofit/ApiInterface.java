@@ -224,7 +224,7 @@ public interface ApiInterface {
 
     //投资列表
     @GET("api/v1/defi/investList")
-    Observable<BaseResponse<BaseListBean<DefiInvest>>> getDefiInvestList(@Query("invest_symbol") String invest_symbol, @Query("limit") int limit, @Query("page") int page);
+    Observable<BaseResponse<BaseListBean<DefiInvest>>> getDefiInvestList(@Query("limit") int limit, @Query("page") int page);
 
     //解压
     @POST("api/v1/defi/investRelease")
@@ -235,8 +235,8 @@ public interface ApiInterface {
     Observable<BaseResponse<BaseListBean<DefiProduct>>> getDefiProductList(@Query("limit") int limit, @Query("page") int page);
 
     //用户挖矿数据统计
-    @GET("api/v1/defi/totalDataBySymbol")
-    Observable<BaseResponse<DefiTotalDataBySymbol>> getTotalDataBySymbol(@Query("invest_symbol") String invest_symbol);
+    @GET("api/v1/defi/totalData")
+    Observable<BaseResponse<DefiTotalDataBySymbol>> getTotalDataBySymbol();
 
     //提币记录
     @GET("api/v1/defi/withdrawList")

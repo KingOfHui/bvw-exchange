@@ -32,7 +32,7 @@ public class IncomeFundViewModel extends BaseListViewModel<DefiBonus> {
 
     @Override
     protected void loadData(int pageNum, boolean isClear) {
-        apiService.getDefiBonusList("BIW", 20, pageNum)
+        apiService.getDefiBonusList(symbolLive.getValue(), 20, pageNum)
                 .compose(BIWNetworkApi.getInstance().applySchedulers())
                 .subscribe(new BaseObserver<>(this, new MvvmNetworkObserver<BaseResponse<BaseListBean<DefiBonus>>>() {
                     @Override

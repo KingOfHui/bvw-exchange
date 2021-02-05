@@ -81,6 +81,12 @@ public class CustomVerticalView extends ConstraintLayout {
         }
     }
 
+    public void setBottomText(String text) {
+        if (text != null) {
+            mTv_bottom.setText(text);
+        }
+    }
+
 /*
     fun setTopStr(topText:String?) {
 //        tv_top.textSize = DisplayUtil.dip2px(context,8)

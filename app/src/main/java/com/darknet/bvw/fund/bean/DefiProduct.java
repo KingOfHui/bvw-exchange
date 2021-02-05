@@ -26,6 +26,15 @@ public class DefiProduct implements Parcelable {
     private int orders;
     private int state;
     private String symbol;
+    private boolean isSelected;
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
+    }
 
     public String getAmount() {
         return amount;
@@ -115,6 +124,7 @@ public class DefiProduct implements Parcelable {
         dest.writeInt(this.orders);
         dest.writeInt(this.state);
         dest.writeString(this.symbol);
+        dest.writeByte(this.isSelected ? (byte) 1 : (byte) 0);
     }
 
     public DefiProduct() {
@@ -130,6 +140,7 @@ public class DefiProduct implements Parcelable {
         this.orders = in.readInt();
         this.state = in.readInt();
         this.symbol = in.readString();
+        this.isSelected = in.readByte() != 0;
     }
 
     public static final Parcelable.Creator<DefiProduct> CREATOR = new Parcelable.Creator<DefiProduct>() {

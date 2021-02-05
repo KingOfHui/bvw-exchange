@@ -42,6 +42,8 @@
                 android:id="@+id/rvIncomeFund"
                 adapter="@{adapter}"
                 submitList="@{vm.listLive}"
+                emptyImageResource="@{@drawable/img_history_empty}"
+                emptyText="@{@string/no_data_two}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:itemCount="15"
