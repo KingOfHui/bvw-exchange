@@ -5,6 +5,16 @@
     android:layout_height="wrap_content"
     android:background="@drawable/shape_circle_rect_white">
 
+    <ImageView
+        android:layout_width="@dimen/dimen_35dp"
+        android:layout_height="@dimen/dimen_35dp"
+        android:src="@mipmap/lib_update_app_close"
+        android:padding="@dimen/dp_10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/ivClose"
+        />
+
 
     <ImageView
         android:id="@+id/ivTip"

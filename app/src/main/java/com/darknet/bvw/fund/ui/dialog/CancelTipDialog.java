@@ -31,9 +31,13 @@ public class CancelTipDialog extends CenterBaseDialog {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_pledge_cancel_tip);
         TextView tvTip = findViewById(R.id.tvTip);
-        if (invest != null) {
-            tvTip.setText(String.format(getContext().getString(R.string.cancel_pledge_tip), invest.getProduct_symbol(), invest.getMin_lock_days(),
-                    invest.getMin_lock_days(),invest.getMin_lock_release_rate().multiply(new BigDecimal(100)).stripTrailingZeros().toPlainString()));
+        try {
+            if (invest != null) {
+                tvTip.setText(String.format(getContext().getString(R.string.cancel_pledge_tip), invest.getProduct_symbol(), invest.getMin_lock_days(),
+                        invest.getMin_lock_days(),invest.getMin_lock_release_rate().multiply(new BigDecimal(100)).stripTrailingZeros().toPlainString()));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         findViewById(R.id.tvSure).setOnClickListener(view -> {
             if (mListener != null) {
@@ -41,6 +45,7 @@ public class CancelTipDialog extends CenterBaseDialog {
                 mListener.sure();
             }
         });
+        findViewById(R.id.ivClose).setOnClickListener(v -> dismiss());
     }
 
     private OnSureClickListener mListener;
