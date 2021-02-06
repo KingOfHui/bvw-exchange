@@ -9,6 +9,8 @@ import androidx.lifecycle.MutableLiveData;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.hutool.core.collection.CollectionUtil;
+
 /**
  * @ClassName BaseRefreshViewModel
  * @Description 实现加载更多基类ViewModel
@@ -78,10 +80,10 @@ public abstract class BaseListViewModel<DATA> extends BaseViewModel {
         }
         if (dataList != null && !dataList.isEmpty()) {
             mPageNum ++;
-            hasMore.setValue(dataList.size() >= size);
             list.addAll(dataList);
             mListLive.setValue(list);
         }
+        hasMore.setValue(CollectionUtil.isNotEmpty(dataList) && dataList.size() >= size);
         refreshing.setValue(false);
     }
 

@@ -35,7 +35,7 @@ public class FundViewModel extends BaseListViewModel<DefiProduct> {
                 .subscribe(new BaseObserver<>(this, new MvvmNetworkObserver<BaseResponse<BaseListBean<DefiProduct>>>() {
                     @Override
                     public void onSuccess(BaseResponse<BaseListBean<DefiProduct>> t, boolean isFromCache) {
-                        notifyResultToTopViewModel(BaseListBean.getItems(t.getData()));
+                        notifyResultToTopViewModel(BaseListBean.getItems(t.getData()), 20);
                         hideLoading();
                     }
 

@@ -31,7 +31,7 @@ public class PledgeRecordViewModel extends BaseListViewModel<DefiInvest> {
                 .subscribe(new BaseObserver<>(this, new MvvmNetworkObserver<BaseResponse<BaseListBean<DefiInvest>>>() {
                     @Override
                     public void onSuccess(BaseResponse<BaseListBean<DefiInvest>> t, boolean isFromCache) {
-                        notifyResultToTopViewModel(BaseListBean.getItems(t.getData()));
+                        notifyResultToTopViewModel(BaseListBean.getItems(t.getData()), 20);
                         hideLoading();
                     }
 

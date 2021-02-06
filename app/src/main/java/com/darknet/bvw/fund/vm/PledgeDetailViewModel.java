@@ -31,7 +31,7 @@ public class PledgeDetailViewModel extends BaseListViewModel<DefiWithdraw> {
                     @Override
                     public void onSuccess(BaseResponse<BaseListBean<DefiWithdraw>> t, boolean isFromCache) {
                         hideLoading();
-                        notifyResultToTopViewModel(BaseListBean.getItems(t.getData()));
+                        notifyResultToTopViewModel(BaseListBean.getItems(t.getData()), 20);
                     }
 
                     @Override

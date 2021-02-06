@@ -39,7 +39,7 @@ public class IncomeFundViewModel extends BaseListViewModel<DefiBonus> {
                     @Override
                     public void onSuccess(BaseResponse<BaseListBean<DefiBonus>> t, boolean isFromCache) {
                         hideLoading();
-                        notifyResultToTopViewModel(BaseListBean.getItems(t.getData()));
+                        notifyResultToTopViewModel(BaseListBean.getItems(t.getData()), 20);
                     }
 
                     @Override
